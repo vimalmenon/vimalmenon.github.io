@@ -1,9 +1,6 @@
 # Vimal Menon
 
 
-## Members:
-    Ai Agent: Elara AKA Ela
-
 ## Details
 <br/>
 <b>Version</b>: 0.0.1
@@ -14,3 +11,6 @@
 <br/>
 <b>WebSite</b>: https://vimalmenon.github.io/
 <br/>
+
+## Members:
+- Ai Agent: Elara AKA Ela
