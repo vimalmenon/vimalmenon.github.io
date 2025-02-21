@@ -1,5 +1,9 @@
 # Vimal Menon
 
+
+## Members:
+    Ai Agent: Elara AKA Ela
+
 ## Details
 <br/>
 <b>Version</b>: 0.0.1
