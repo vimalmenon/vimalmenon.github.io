@@ -2,5 +2,5 @@
 This is Website for Vimal Menon
 
 ### To Do
-- [x] Project Setup
-- [x] GitHub Page
+- [ ] Set up UI Library
+- [ ] Basic Page with Header and Footer
