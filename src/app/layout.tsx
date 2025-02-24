@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import { Footer, Header } from "@common";
-
-
-
+import { Footer, Header } from '@common';
 
 export const metadata: Metadata = {
-  title: "Vimal Menon",
+  title: 'Vimal Menon',
   description: "This is Vimal Menon's personal website",
 };
 

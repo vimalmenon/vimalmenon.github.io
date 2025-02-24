@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "eslint": "npx eslint",
+    "eslint:fix": "npx eslint --fix",
     "update": "ncu -u --timeout 300000",
     "tsc": "tsc"
   },
@@ -26,7 +28,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.1.7",
-    "typescript": "^5"
+    "eslint-config-next": "^15.1.7",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "prettier": "^3.5.2",
+    "typescript": "^5",
+    "typescript-eslint": "^8.25.0"
   }
 }
