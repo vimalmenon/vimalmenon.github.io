@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
         color: teal[500],
       }}
     >
-      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
         <span style={{ fontSize: '0.8rem' }}>V{version}</span>
         <span style={{ fontSize: '0.8rem' }}>
           Copyright © 2025{' '}
@@ -36,6 +36,16 @@ export const Footer: React.FC = () => {
           Resources
         </Box>
         <span style={{ fontSize: '14px' }}>
+          <MuiLink component={Link} href="/" underline="none" sx={{ color: teal[500] }}>
+            Home
+          </MuiLink>
+        </span>
+        <span style={{ fontSize: '14px' }}>
+          <MuiLink component={Link} href="/about" underline="none" sx={{ color: teal[500] }}>
+            About
+          </MuiLink>
+        </span>
+        <span style={{ fontSize: '14px' }}>
           <MuiLink
             component={Link}
             href="/release-notes"
@@ -43,11 +53,6 @@ export const Footer: React.FC = () => {
             sx={{ color: teal[500] }}
           >
             Release Notes
-          </MuiLink>
-        </span>
-        <span style={{ fontSize: '14px' }}>
-          <MuiLink component={Link} href="/about" underline="none" sx={{ color: teal[500] }}>
-            About
           </MuiLink>
         </span>
       </Box>

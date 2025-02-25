@@ -80,7 +80,7 @@ const About: INavigation = {
     },
   ],
 };
-export const HeaderNavigation = [Home, About, Blogs];
+export const HeaderNavigation = [Home, Blogs];
 
 export const Navigation = {
   Home,
