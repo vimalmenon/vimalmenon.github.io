@@ -11,3 +11,4 @@ Version: 0.0.1
 - [ ] Provide basic styling for the page
 - [ ] Add framer motion
 - [ ] Fix all the warnings
+- [ ] Add 404 Page
