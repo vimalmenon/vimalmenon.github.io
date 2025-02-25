@@ -13,15 +13,16 @@ const Page: React.FC = () => {
       <div>
         <div>0.0.1</div>
         <ul>
-            <li>Create Basic Layout</li>
+          <li>Create Basic Layout</li>
+          <li>Create Release Notes</li>
         </ul>
       </div>
       <div>
         <div>0.0.0</div>
         <ul>
-            <li>Use NextJs</li>
-            <li>GitHub Action Build to update page</li>
-            <li>Add Eslint</li>
+          <li>Use NextJs</li>
+          <li>GitHub Action to build page</li>
+          <li>Add Eslint</li>
         </ul>
       </div>
     </Box>
