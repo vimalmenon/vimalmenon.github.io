@@ -4,15 +4,14 @@ export interface IReactChildren {
   children: React.ReactNode;
 }
 
-export interface IBreadcrumbs {
+export interface INavigationSlim {
   name: string;
   link: string;
 }
-export interface INavigation {
-  name: string;
+
+export interface INavigation extends INavigationSlim {
   title: string;
   description: string;
-  link: string;
-  breadcrumbs: IBreadcrumbs[];
+  breadcrumbs: INavigationSlim[];
 }
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
