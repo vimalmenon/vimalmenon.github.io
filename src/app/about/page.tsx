@@ -14,13 +14,13 @@ const Page: React.FC = () => {
       <Breadcrumbs navigation={Navigation.About} />
       <div>This is About page</div>
       <div>
-        # About Me 
+        <h2>About Me</h2>
         <div>
-        Hello and welcome! My name is **Vimal Menon**, and I’m thrilled to have you here. I’m currently based in the
-          vibrant city of **Hong Kong**, where I spend my time exploring the fascinating world of
-          technology and sharing my knowledge with others.
+          Hello and welcome! My name is **Vimal Menon**, and I’m thrilled to have you here. I’m
+          currently based in the vibrant city of **Hong Kong**, where I spend my time exploring the
+          fascinating world of technology and sharing my knowledge with others.
         </div>
-        ## My Interests and Expertise
+        <h3>My Interests and Expertise</h3>
         <div>
           I have a deep passion for **Software Engineering** and **Artificial Intelligence (AI)**,
           two fields that are shaping the future of technology. My expertise lies in **AI**,
@@ -29,7 +29,7 @@ const Page: React.FC = () => {
           applications, or diving into the latest advancements in AI, I’m always eager to learn and
           grow.{' '}
         </div>
-        ## What I Do
+        <h3> What I Do</h3>
         <div>
           I’m a content creator who loves sharing my knowledge and experiences with the world.
           Through my **blogs** and **YouTube videos**, I aim to make complex topics in software
@@ -52,7 +52,9 @@ const Page: React.FC = () => {
         </div>
         <div>Thank you for stopping by, and I look forward to connecting with you! </div>
         <div>Warm regards,</div>
-        <div>**Vimal Menon**</div>
+        <div>
+          <h3> Vimal Menon</h3>
+        </div>
       </div>
     </Box>
   );
