@@ -4,7 +4,7 @@ import MuiLink from '@mui/material/Link';
 
 export const Header: React.FC = () => {
   return (
-    <Box component={'header'} sx={{ display: 'flex', justifyContent: 'space-between', marginY: 3 }}>
+    <Box component="header" sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}>
       <Box sx={{ display: 'flex', fontSize: '25px' }}>Vimal Menon</Box>
       <Box sx={{ borderRadius: 10, display: 'flex', gap: 2 }}>
         <MuiLink component={Link} href="/" underline="none">

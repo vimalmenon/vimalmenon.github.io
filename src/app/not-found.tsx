@@ -1,10 +1,10 @@
+import Box from '@mui/material/Box';
+
 const Page: React.FC = () => {
   return (
-    <div>
-      <main>
-        <div>Requested page not found</div>
-      </main>
-    </div>
+    <Box component="main">
+      <div>Requested page not found</div>
+    </Box>
   );
 };
 export default Page;

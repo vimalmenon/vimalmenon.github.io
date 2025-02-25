@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Box from '@mui/material/Box';
 
 export const metadata: Metadata = {
   title: 'About | Vimal Menon',
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
 
 const Page: React.FC = () => {
   return (
-    <div>
+    <Box component="div">
       <main>
         <div>This is About page</div>
       </main>
-    </div>
+    </Box>
   );
 };
 
