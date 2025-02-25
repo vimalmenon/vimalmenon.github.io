@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import Box from '@mui/material/Box';
+import { Breadcrumbs } from '@common';
+import { Navigation } from '@data';
 
 export const metadata: Metadata = {
   title: 'Blogs | Vimal Menon',
@@ -7,11 +10,10 @@ export const metadata: Metadata = {
 
 const Page: React.FC = () => {
   return (
-    <div>
-      <main>
-        <div>This is Blogs page</div>
-      </main>
-    </div>
+    <Box component="main">
+      <Breadcrumbs navigation={Navigation.Blogs} />
+      <div>This is Blogs page</div>
+    </Box>
   );
 };
 

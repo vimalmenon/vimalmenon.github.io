@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Box from '@mui/material/Box';
+import { Breadcrumbs } from '@common';
+import { Navigation } from '@data';
 
 export const metadata: Metadata = {
   title: 'Release Notes | Vimal Menon',
@@ -8,8 +10,17 @@ export const metadata: Metadata = {
 
 const Page: React.FC = () => {
   return (
-    <Box component={'main'}>
+    <Box component="main">
+      <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>Release Notes</div>
+      <div>
+        <div>0.0.2</div>
+        <ul>
+          <li>Set up CI Check</li>
+          <li>Set up Breadcrumbs</li>
+          <li>Show Selected Navigation</li>
+        </ul>
+      </div>
       <div>
         <div>0.0.1</div>
         <ul>
