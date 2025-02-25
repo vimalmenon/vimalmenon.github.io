@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import './globals.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { Footer, Header } from '@common';
 import { IReactChildren } from '@types';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 
 export const metadata: Metadata = {
   title: 'Vimal Menon',
@@ -18,9 +19,15 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
       <body>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <CssBaseline />
-          <Header />
-          {children}
-          <Footer />
+          <Container
+            maxWidth="xl"
+            sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+          >
+            <Header />
+            <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
+
+            <Footer />
+          </Container>
         </AppRouterCacheProvider>
       </body>
     </html>
