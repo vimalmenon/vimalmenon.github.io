@@ -2,9 +2,7 @@
 
 import { createTheme } from '@mui/material/styles';
 import { palette } from './palette';
-import { useMemo } from 'react';
 
-const themePalette = useMemo(() => palette(), []);
 
 export const theme = createTheme({
   breakpoints: {
@@ -16,5 +14,5 @@ export const theme = createTheme({
       xl: 1440,
     },
   },
-  palette: themePalette,
+  palette: palette(),
 });
