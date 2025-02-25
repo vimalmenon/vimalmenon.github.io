@@ -11,6 +11,10 @@ const Page: React.FC = () => {
     <Box component={'main'}>
       <div>Release Notes</div>
       <div>
+        <div>0.0.2</div>
+        <ul></ul>
+      </div>
+      <div>
         <div>0.0.1</div>
         <ul>
           <li>Create Basic Layout</li>
