@@ -17,4 +17,5 @@ This is Website for Vimal Menon
 - [x] Show Selected Navigation
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
-- [ ] Need to get ICON for WebSite
+- [ ] Need to get ICON for Website
+- [ ] Add Resume for Download from Website

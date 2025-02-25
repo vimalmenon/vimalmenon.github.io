@@ -18,6 +18,7 @@ const Page: React.FC = () => {
         <ul>
           <li>Set up CI Check</li>
           <li>Set up Breadcrumbs</li>
+          <li>Show Selected Navigation</li>
         </ul>
       </div>
       <div>
