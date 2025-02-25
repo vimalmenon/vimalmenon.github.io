@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component Snapshot Testing 1`] = `
+<div>
+  <header
+    class="MuiBox-root css-t9n792"
+  >
+    <div
+      class="MuiBox-root css-odc2gb"
+    >
+      Vimal Menon
+    </div>
+    <div
+      class="MuiBox-root css-1uqgzwp"
+    >
+      <a
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-kq3110-MuiTypography-root-MuiLink-root"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-kq3110-MuiTypography-root-MuiLink-root"
+        href="/blogs"
+      >
+        Blogs
+      </a>
+    </div>
+  </header>
+</div>
+`;

@@ -11,11 +11,11 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [x] Make Test Work
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
 - [ ] Need to get ICON for Website
 - [ ] Add Resume for Download from Website
-- [ ] Add Test Case
 - [ ] Add Dark and White Theme
 - [ ] Provision to choses color
 - [ ] Create SubFooter for the page
