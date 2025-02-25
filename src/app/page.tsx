@@ -4,9 +4,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <ol>
-          <li>This is Home Paage</li>
-        </ol>
+        <div>This is Home Page</div>
       </main>
     </div>
   );

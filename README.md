@@ -10,3 +10,4 @@ Version: 0.0.1
 - [x] Basic Page with Header and Footer
 - [ ] Provide basic styling for the page
 - [ ] Add framer motion
+- [ ] Fix all the warnings
