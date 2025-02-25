@@ -20,3 +20,9 @@ This is Website for Vimal Menon
 - [ ] Provision to choses color
 - [ ] Create SubFooter for the page
 - [ ] Make the Page Responsive
+
+## Ideas
+
+- Show Team Member
+- Show Link to YouTube Channel
+- 

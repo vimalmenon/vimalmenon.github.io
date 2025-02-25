@@ -14,6 +14,13 @@ const Page: React.FC = () => {
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>Release Notes</div>
       <div>
+        <div>0.0.3</div>
+        <ul>
+          <li>Added Test</li>
+          <li>Added Content About me page</li>
+        </ul>
+      </div>
+      <div>
         <div>0.0.2</div>
         <ul>
           <li>Set up CI Check</li>
