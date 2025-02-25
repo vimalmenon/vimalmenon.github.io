@@ -47,8 +47,26 @@ const NotFound: INavigation = {
   ],
 };
 
+const Blogs: INavigation = {
+  name: 'Blogs',
+  title: 'Blogs | Vimal Menon',
+  description: 'This is Vimal Menon personal website',
+  link: '/blogs',
+  breadcrumbs: [
+    {
+      name: 'Home',
+      link: '/',
+    },
+    {
+      name: 'Blogs',
+      link: '/blogs',
+    },
+  ],
+};
+
 export const Navigation = {
   Home,
   ReleaseNote,
   NotFound,
+  Blogs,
 };
