@@ -14,6 +14,6 @@ This is Website for Vimal Menon
 - [x] Create Breadcrumbs
 - [x] Make page consistent
 - [x] Set up CI Check
+- [x] Show Selected Navigation
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
-- [ ] Show Selected Navigation
