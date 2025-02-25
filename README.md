@@ -12,3 +12,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [ ] Add framer motion
+- [ ] Make page consistent
+- [ ] Create SubNavigation for Blogs
+- [ ] Create Breadcrumbs
+- [ ] Set up Eslint Check

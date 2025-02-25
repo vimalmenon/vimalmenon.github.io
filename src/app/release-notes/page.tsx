@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Box from '@mui/material/Box';
+import { Breadcrumbs } from '@common';
 
 export const metadata: Metadata = {
   title: 'Release Notes | Vimal Menon',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 const Page: React.FC = () => {
   return (
     <Box component={'main'}>
+      <Breadcrumbs />
       <div>Release Notes</div>
       <div>
         <div>0.0.2</div>
