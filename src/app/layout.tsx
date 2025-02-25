@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import { Footer, Header, SubFooter } from '@common';
+import { Footer, Header } from '@common';
 import { IReactChildren } from '@types';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -27,7 +27,6 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
             >
               <Header />
               <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
-              <SubFooter />
               <Footer />
             </Container>
           </ThemeProvider>

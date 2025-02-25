@@ -27,12 +27,29 @@ export const Footer: React.FC = () => {
           Vimal Menon
         </MuiLink>
       </span>
-      <span style={{ fontSize: '14px' }}>
-        <MuiLink component={Link} href="/release-notes" underline="none" sx={{ color: teal[500] }}>
-          Release Notes
-        </MuiLink>
-      </span>
-      <span style={{ fontSize: '14px' }}>{version}</span>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <span style={{ fontSize: '14px' }}>
+          <MuiLink
+            component={Link}
+            href="/release-notes"
+            underline="none"
+            sx={{ color: teal[500] }}
+          >
+            Release Notes
+          </MuiLink>
+        </span>
+        <span style={{ fontSize: '14px' }}>
+          <MuiLink
+            component={Link}
+            href="/release-notes"
+            underline="none"
+            sx={{ color: teal[500] }}
+          >
+            Release Notes
+          </MuiLink>
+        </span>
+        <span style={{ fontSize: '14px' }}>{version}</span>
+      </Box>
     </Box>
   );
 };
