@@ -1,4 +1,6 @@
-const ReleaseNote = {
+import { INavigation } from '@types';
+
+const ReleaseNote: INavigation = {
   name: 'Release Notes',
   title: 'Release Notes | Vimal Menon',
   description: "This is Vimal Menon's personal website",
@@ -15,7 +17,7 @@ const ReleaseNote = {
   ],
 };
 
-const Home = {
+const Home: INavigation = {
   name: 'Vimal Menon',
   title: 'Vimal Menon',
   description: "This is Vimal Menon's personal website",
@@ -28,7 +30,25 @@ const Home = {
   ],
 };
 
+const NotFound: INavigation = {
+  name: 'Not Found',
+  title: 'Not Found | Vimal Menon',
+  description: 'This is Vimal Menon personal website',
+  link: '/*',
+  breadcrumbs: [
+    {
+      name: 'Home',
+      link: '/',
+    },
+    {
+      name: 'Not Found',
+      link: '/*',
+    },
+  ],
+};
+
 export const Navigation = {
   Home,
   ReleaseNote,
+  NotFound,
 };
