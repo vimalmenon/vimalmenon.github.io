@@ -1,4 +1,4 @@
-import { INavigation } from '@data';
+import { INavigation } from '@types';
 
 export interface IBreadcrumbs {
   navigation: INavigation;
