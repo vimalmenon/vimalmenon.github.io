@@ -53,10 +53,19 @@ const Page: React.FC = () => {
           my journey as I continue to explore and share the exciting world of technology.
         </div>
         <div>Thank you for stopping by, and I look forward to connecting with you! </div>
+        <br />
+        <br />
         <div>Warm regards,</div>
         <div>
-          <h3> Vimal Menon</h3>
+          <b> Vimal Menon</b>
         </div>
+        <br />
+        <br />
+        <br />
+        <div>Updated Date : 25 February 2025</div>
+        <br />
+        <br />
+        <br />
       </div>
     </Box>
   );
