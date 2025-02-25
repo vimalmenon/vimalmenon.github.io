@@ -1,4 +1,3 @@
-import styles from '../page.module.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -6,13 +5,14 @@ export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
 };
 
-export default function Home() {
+const Page: React.FC = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <div>
+      <main>
         <div>This is About page</div>
       </main>
-      <footer className={styles.footer}></footer>
     </div>
   );
-}
+};
+
+export default Page;

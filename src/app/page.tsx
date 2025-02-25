@@ -1,11 +1,10 @@
-import styles from './page.module.css';
-
-export default function Home() {
+const Page: React.FC = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <div>
+      <main>
         <div>This is Home Page</div>
       </main>
     </div>
   );
-}
+};
+export default Page;
