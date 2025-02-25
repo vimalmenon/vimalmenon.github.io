@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import { HeaderNavigation } from '@data';
 import { Link } from './Link';
-import { blueGrey } from '@mui/material/colors';
+import { blueGrey, teal } from '@mui/material/colors';
 
 export const Header: React.FC = () => {
   return (
@@ -11,7 +11,6 @@ export const Header: React.FC = () => {
         borderRadius: 1,
         display: 'flex',
         justifyContent: 'space-between',
-        marginY: 1,
         backgroundColor: blueGrey[100],
         padding: 1,
       }}
@@ -21,7 +20,7 @@ export const Header: React.FC = () => {
           marginX: 1,
           display: 'flex',
           fontSize: '1.5em',
-          color: blueGrey[500],
+          color: teal[500],
           alignItems: 'center',
           fontWeight: 'bold',
         }}
@@ -30,10 +29,10 @@ export const Header: React.FC = () => {
       </Box>
       <Box
         sx={{
-          borderRadius: 2,
+          borderRadius: 1,
           display: 'flex',
           gap: 2,
-          backgroundColor: blueGrey[500],
+          backgroundColor: teal[500],
           padding: 1,
         }}
       >

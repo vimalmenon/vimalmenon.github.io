@@ -4,7 +4,7 @@ import MuiLink from '@mui/material/Link';
 import NextLink from 'next/link';
 import { ILink } from './Link';
 import { usePathname } from 'next/navigation';
-import { blueGrey } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
 
 export const Link: React.FC<ILink> = ({ navigation }) => {
   const pathname = usePathname();
@@ -18,7 +18,7 @@ export const Link: React.FC<ILink> = ({ navigation }) => {
         fontSize: '16px',
         alignItems: 'center',
         display: 'flex',
-        backgroundColor: selected ? blueGrey[400] : blueGrey[500],
+        backgroundColor: selected ? teal[400] : teal[500],
         borderRadius: 2,
         paddingX: 2,
         paddingY: 0.5,
