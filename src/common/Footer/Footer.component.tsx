@@ -16,18 +16,25 @@ export const Footer: React.FC = () => {
         color: teal[500],
       }}
     >
-      <span style={{ fontSize: '14px' }}>
-        Copyright © 2025{' '}
-        <MuiLink
-          component={Link}
-          href="https://vimalmenon.com/"
-          underline="none"
-          sx={{ color: teal[500] }}
-        >
-          Vimal Menon
-        </MuiLink>
-      </span>
+      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <span style={{ fontSize: '0.8rem' }}>V{version}</span>
+        <span style={{ fontSize: '0.8rem' }}>
+          Copyright © 2025{' '}
+          <MuiLink
+            component={Link}
+            href="https://vimalmenon.com/"
+            underline="none"
+            sx={{ color: teal[500] }}
+          >
+            Vimal Menon
+          </MuiLink>
+        </span>
+      </Box>
+
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box component="span" sx={{ fontSize: '1.5rem' }}>
+          Resources
+        </Box>
         <span style={{ fontSize: '14px' }}>
           <MuiLink
             component={Link}
@@ -39,16 +46,10 @@ export const Footer: React.FC = () => {
           </MuiLink>
         </span>
         <span style={{ fontSize: '14px' }}>
-          <MuiLink
-            component={Link}
-            href="/release-notes"
-            underline="none"
-            sx={{ color: teal[500] }}
-          >
-            Release Notes
+          <MuiLink component={Link} href="/about" underline="none" sx={{ color: teal[500] }}>
+            About
           </MuiLink>
         </span>
-        <span style={{ fontSize: '14px' }}>{version}</span>
       </Box>
     </Box>
   );
