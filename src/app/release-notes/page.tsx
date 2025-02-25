@@ -15,6 +15,7 @@ const Page: React.FC = () => {
         <ul>
           <li>Create Basic Layout</li>
           <li>Create Release Notes</li>
+          <li>Show Version Number</li>
         </ul>
       </div>
       <div>
