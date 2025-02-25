@@ -13,7 +13,7 @@ This is Website for Vimal Menon
 
 - [x] Create Breadcrumbs
 - [x] Make page consistent
+- [x] Set up CI Check
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
-- [ ] Set up Eslint Check
 - [ ] Show Selected Navigation
