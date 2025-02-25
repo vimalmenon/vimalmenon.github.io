@@ -10,5 +10,5 @@ Version: 0.0.1
 - [x] Basic Page with Header and Footer
 - [x] Add 404 Page
 - [x] Fix all the warnings
-- [ ] Provide basic styling for the page
+- [x] Provide basic styling for the page
 - [ ] Add framer motion
