@@ -10,8 +10,8 @@ export const Footer: React.FC = () => {
       component="footer"
       sx={{
         display: 'flex',
-        marginY: 2,
         padding: 2,
+        borderRadius: 3,
         justifyContent: 'space-between',
         background: blueGrey[100],
         color: blueGrey[500],
