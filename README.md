@@ -6,15 +6,11 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.2
+<b>Version</b>: 0.0.3
 <br/>
 
 ## To Do
 
-- [x] Create Breadcrumbs
-- [x] Make page consistent
-- [x] Set up CI Check
-- [x] Show Selected Navigation
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
 - [ ] Need to get ICON for Website
