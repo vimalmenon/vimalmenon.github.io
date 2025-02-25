@@ -18,7 +18,7 @@ const ReleaseNote: INavigation = {
 };
 
 const Home: INavigation = {
-  name: 'Vimal Menon',
+  name: 'Home',
   title: 'Vimal Menon',
   description: "This is Vimal Menon's personal website",
   link: '/',
@@ -64,9 +64,28 @@ const Blogs: INavigation = {
   ],
 };
 
+const About: INavigation = {
+  name: 'About',
+  title: 'About | Vimal Menon',
+  description: 'This is Vimal Menon personal website',
+  link: '/about',
+  breadcrumbs: [
+    {
+      name: 'Home',
+      link: '/',
+    },
+    {
+      name: 'About',
+      link: '/about',
+    },
+  ],
+};
+export const HeaderNavigation = [Home, About, Blogs];
+
 export const Navigation = {
   Home,
   ReleaseNote,
   NotFound,
   Blogs,
+  About,
 };
