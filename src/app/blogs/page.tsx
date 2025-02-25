@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About | Vimal Menon',
+  title: 'Blogs | Vimal Menon',
   description: "This is Vimal Menon's personal website",
 };
 
@@ -9,7 +9,7 @@ const Page: React.FC = () => {
   return (
     <div>
       <main>
-        <div>This is About page</div>
+        <div>This is Blogs page</div>
       </main>
     </div>
   );

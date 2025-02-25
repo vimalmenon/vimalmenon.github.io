@@ -2,7 +2,7 @@ const Page: React.FC = () => {
   return (
     <div>
       <main>
-        <div>This is Home Page</div>
+        <div>Requested page not found</div>
       </main>
     </div>
   );
