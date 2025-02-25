@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 
 export const metadata: Metadata = {
   title: 'Vimal Menon',
-  description: "This is Vimal Menon's personal website",
+  description: 'This is Vimal Menon personal website',
 };
 
 const RootLayout: React.FC<IReactChildren> = ({ children }) => {

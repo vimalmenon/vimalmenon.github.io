@@ -15,6 +15,20 @@ const ReleaseNote = {
   ],
 };
 
+const Home = {
+  name: 'Vimal Menon',
+  title: 'Vimal Menon',
+  description: "This is Vimal Menon's personal website",
+  link: '/',
+  breadcrumbs: [
+    {
+      name: 'Home',
+      link: '/',
+    },
+  ],
+};
+
 export const Navigation = {
+  Home,
   ReleaseNote,
 };
