@@ -8,7 +8,7 @@ Version: 0.0.1
 ### To Do
 - [x] Set up UI Library
 - [x] Basic Page with Header and Footer
+- [x] Add 404 Page
+- [x] Fix all the warnings
 - [ ] Provide basic styling for the page
 - [ ] Add framer motion
-- [ ] Fix all the warnings
-- [ ] Add 404 Page
