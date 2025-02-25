@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: React.FC<IReactChildren> = ({ children }) => {
-  // console.log(theme);
   return (
     <html lang="en">
       <meta name="viewport" content="initial-scale=1, width=device-width" />
