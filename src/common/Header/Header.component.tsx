@@ -6,6 +6,7 @@ export const Header: React.FC = () => {
       <div>
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
+        <Link href="/asdf">Not Found</Link>
       </div>
     </header>
   );
