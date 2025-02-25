@@ -12,6 +12,8 @@ export const Link: React.FC<ILink> = ({ navigation }) => {
       component={NextLink}
       href={navigation.link}
       underline={pathname === navigation.link ? 'always' : 'none'}
+      sx={{ fontSize: '16px', alignItems: 'center', display: 'flex' }}
+      color="text.primary"
     >
       {navigation.name}
     </MuiLink>
