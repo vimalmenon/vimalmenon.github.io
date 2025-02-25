@@ -8,10 +8,8 @@ export const metadata: Metadata = {
 
 const Page: React.FC = () => {
   return (
-    <Box component="div">
-      <main>
-        <div>This is About page</div>
-      </main>
+    <Box component="main">
+      <div>This is About page</div>
     </Box>
   );
 };
