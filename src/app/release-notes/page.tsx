@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const Page: React.FC = () => {
   return (
     <Box component={'main'}>
-      <div>This is Blogs page</div>
+      <div>Release Notes</div>
       <div>
         <div>0.0.1</div>
         <ul>
