@@ -9,7 +9,13 @@ export const Breadcrumbs: React.FC<IBreadcrumbs> = ({ navigation }) => {
     <MuiBreadcrumbs aria-label="breadcrumb">
       {navigation.breadcrumbs.map((breadcrumb) => {
         return (
-          <MuiLink component={Link} href={breadcrumb.link} underline="none" key={breadcrumb.name}>
+          <MuiLink
+            component={Link}
+            href={breadcrumb.link}
+            underline="none"
+            key={breadcrumb.name}
+            color="text.primary"
+          >
             {breadcrumb.name}
           </MuiLink>
         );
