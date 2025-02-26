@@ -1,1 +1,1 @@
-export * from "./ThemeWrapper.component";
+export * from './ThemeWrapper.component';
