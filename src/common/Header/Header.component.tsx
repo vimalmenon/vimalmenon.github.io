@@ -8,7 +8,7 @@ import Toolbar from '@mui/material/Toolbar';
 export const Header: React.FC = () => {
   return (
     <AppBar position="static" sx={{ background: 'transparent' }}>
-      <Toolbar variant="dense">
+      <Toolbar variant="dense" sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box
           sx={{
             marginX: 1,
@@ -25,9 +25,8 @@ export const Header: React.FC = () => {
           sx={{
             borderRadius: 1,
             display: 'flex',
-            gap: 2,
+            gap: 1,
             backgroundColor: teal[500],
-            padding: 1,
           }}
         >
           {HeaderNavigation.map((nav) => (
