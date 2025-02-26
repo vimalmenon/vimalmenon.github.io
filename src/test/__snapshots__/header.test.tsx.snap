@@ -3,28 +3,37 @@
 exports[`Header component Snapshot Testing 1`] = `
 <div>
   <header
-    class="MuiBox-root css-t9n792"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-d8mtz7-MuiPaper-root-MuiAppBar-root"
+    style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
   >
     <div
-      class="MuiBox-root css-odc2gb"
+      class="MuiContainer-root MuiContainer-maxWidthXl css-hhdjsd-MuiContainer-root"
     >
-      Vimal Menon
-    </div>
-    <div
-      class="MuiBox-root css-1uqgzwp"
-    >
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-kq3110-MuiTypography-root-MuiLink-root"
-        href="/"
+      <div
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-dgltuh-MuiToolbar-root"
       >
-        Home
-      </a>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-kq3110-MuiTypography-root-MuiLink-root"
-        href="/blogs"
-      >
-        Blogs
-      </a>
+        <div
+          class="MuiBox-root css-odc2gb"
+        >
+          Vimal Menon
+        </div>
+        <div
+          class="MuiBox-root css-suo9w"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-kq3110-MuiTypography-root-MuiLink-root"
+            href="/"
+          >
+            Home
+          </a>
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-kq3110-MuiTypography-root-MuiLink-root"
+            href="/blogs"
+          >
+            Blogs
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 </div>
