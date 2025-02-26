@@ -1,22 +1,14 @@
 import Box from '@mui/material/Box';
 import { HeaderNavigation } from '@data';
 import { Link } from './Link';
-import { blueGrey, teal } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
 import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 
 export const Header: React.FC = () => {
   return (
-    <Box
-      component="header"
-      sx={{
-        borderRadius: 1,
-        display: 'flex',
-        justifyContent: 'space-between',
-        backgroundColor: blueGrey[100],
-        padding: 1,
-      }}
-    >
-      <AppBar position="static" color="inherit" elevation={0} sx={{ background: 'transparent' }}>
+    <AppBar position="static" sx={{ background: 'transparent' }}>
+      <Toolbar variant="dense">
         <Box
           sx={{
             marginX: 1,
@@ -42,7 +34,7 @@ export const Header: React.FC = () => {
             <Link navigation={nav} key={nav.name} />
           ))}
         </Box>
-      </AppBar>
-    </Box>
+      </Toolbar>
+    </AppBar>
   );
 };

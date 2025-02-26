@@ -12,6 +12,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Make Test Work
+- [ ] Set up Template
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
 - [ ] Need to get ICON for Website
@@ -23,6 +24,5 @@ This is Website for Vimal Menon
 
 ## Ideas
 
-- Show Team Member
-- Show Link to YouTube Channel
-- 
+- Show Team Members
+- Show Link to Social Media
