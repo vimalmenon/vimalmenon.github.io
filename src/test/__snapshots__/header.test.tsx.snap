@@ -21,13 +21,13 @@ exports[`Header component Snapshot Testing 1`] = `
           class="MuiBox-root css-suo9w"
         >
           <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-kq3110-MuiTypography-root-MuiLink-root"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-180oxxk-MuiTypography-root-MuiLink-root"
             href="/"
           >
             Home
           </a>
           <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-kq3110-MuiTypography-root-MuiLink-root"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-180oxxk-MuiTypography-root-MuiLink-root"
             href="/blogs"
           >
             Blogs

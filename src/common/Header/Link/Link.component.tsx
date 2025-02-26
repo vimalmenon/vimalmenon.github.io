@@ -15,11 +15,10 @@ export const Link: React.FC<ILink> = ({ navigation }) => {
       href={navigation.link}
       underline={selected ? 'always' : 'none'}
       sx={{
-        fontSize: '16px',
         alignItems: 'center',
         display: 'flex',
         backgroundColor: selected ? teal[400] : teal[500],
-        borderRadius: 2,
+        borderRadius: 1,
         paddingX: 2,
         paddingY: 0.5,
       }}
