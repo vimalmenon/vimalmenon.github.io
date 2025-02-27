@@ -12,11 +12,12 @@ exports[`Header component Snapshot Testing 1`] = `
       <div
         class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-dgltuh-MuiToolbar-root"
       >
-        <div
-          class="MuiBox-root css-odc2gb"
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-w3fons-MuiTypography-root-MuiLink-root"
+          href="/"
         >
           Vimal Menon
-        </div>
+        </a>
         <div
           class="MuiBox-root css-suo9w"
         >
