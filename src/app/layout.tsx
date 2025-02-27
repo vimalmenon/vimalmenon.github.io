@@ -18,7 +18,7 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
           <Header />
           <Container
             maxWidth="xl"
-            sx={{ display: 'flex', flexDirection: 'column', minHeight: '90vh' }}
+            sx={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 180px)' }}
           >
             <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
           </Container>
