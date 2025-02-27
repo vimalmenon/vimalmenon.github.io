@@ -5,7 +5,7 @@ import { teal } from '@mui/material/colors';
 
 export const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: teal,
   },
 });
