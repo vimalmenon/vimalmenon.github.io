@@ -6,12 +6,11 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.3
+<b>Version</b>: 0.0.4
 <br/>
 
 ## To Do
 
-- [x] Make Test Work
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
 - [ ] Need to get ICON for Website
