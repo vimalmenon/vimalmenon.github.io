@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
-import CssBaseline from '@mui/material/CssBaseline';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import { Footer, Header } from '@common';
+import { Footer, Header, ThemeWrapper } from '@common';
 import { IReactChildren } from '@types';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from '@data';
+import { AppContext } from '@context';
 
 export const metadata: Metadata = {
   title: 'Vimal Menon',
@@ -14,25 +11,22 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: React.FC<IReactChildren> = ({ children }) => {
-  // console.log(theme);
   return (
     <html lang="en">
       <meta name="viewport" content="initial-scale=1, width=device-width" />
       <body>
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <CssBaseline />
-          <ThemeProvider theme={theme}>
+        <ThemeWrapper>
+          <AppContext>
+            <Header />
             <Container
               maxWidth="xl"
-              sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+              sx={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 180px)' }}
             >
-              <Header />
               <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
-
-              <Footer />
             </Container>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+            <Footer />
+          </AppContext>
+        </ThemeWrapper>
       </body>
     </html>
   );

@@ -23,8 +23,9 @@
       "@types": ["./src/types"],
       "@data": ["./src/data"],
       "@component": ["./src/component"],
+      "@context": ["./src/context"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.config.js"],
   "exclude": ["node_modules"]
 }

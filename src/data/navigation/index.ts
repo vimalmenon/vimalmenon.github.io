@@ -4,7 +4,7 @@ const ReleaseNote: INavigation = {
   name: 'Release Notes',
   title: 'Release Notes | Vimal Menon',
   description: "This is Vimal Menon's personal website",
-  link: '/release-notes',
+  link: '/release-notes/',
   breadcrumbs: [
     {
       name: 'Home',
@@ -12,7 +12,7 @@ const ReleaseNote: INavigation = {
     },
     {
       name: 'Release Notes',
-      link: '/release-notes',
+      link: '/release-notes/',
     },
   ],
 };
@@ -51,7 +51,7 @@ const Blogs: INavigation = {
   name: 'Blogs',
   title: 'Blogs | Vimal Menon',
   description: 'This is Vimal Menon personal website',
-  link: '/blogs',
+  link: '/blogs/',
   breadcrumbs: [
     {
       name: 'Home',
@@ -59,7 +59,7 @@ const Blogs: INavigation = {
     },
     {
       name: 'Blogs',
-      link: '/blogs',
+      link: '/blogs/',
     },
   ],
 };
@@ -68,7 +68,7 @@ const About: INavigation = {
   name: 'About',
   title: 'About | Vimal Menon',
   description: 'This is Vimal Menon personal website',
-  link: '/about',
+  link: '/about/',
   breadcrumbs: [
     {
       name: 'Home',
@@ -76,11 +76,11 @@ const About: INavigation = {
     },
     {
       name: 'About',
-      link: '/about',
+      link: '/about/',
     },
   ],
 };
-export const HeaderNavigation = [Home, About, Blogs];
+export const HeaderNavigation = [Home, Blogs];
 
 export const Navigation = {
   Home,
