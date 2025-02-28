@@ -12,6 +12,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Redirect to Home Page on click on Title
+- [ ] Make the Header Responsive
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
 - [ ] Need to get ICON for Website

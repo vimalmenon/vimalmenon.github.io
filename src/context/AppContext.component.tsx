@@ -1,8 +1,14 @@
 'use client';
 
 import { IReactChildren } from '@types';
-import { Fragment } from 'react';
+import { useReducer } from 'react';
+import { reducer, initialState, Context, toggleTheme } from './AppContext.service';
 
 export const AppContext: React.FC<IReactChildren> = ({ children }) => {
-  return <Fragment>{children}</Fragment>;
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <Context.Provider value={{ ...state, toggleTheme: () => toggleTheme(dispatch) }}>
+      {children}
+    </Context.Provider>
+  );
 };

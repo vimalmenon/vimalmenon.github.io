@@ -24,6 +24,7 @@
       "@data": ["./src/data"],
       "@component": ["./src/component"],
       "@context": ["./src/context"],
+      "@utility": ["./src/utility"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.config.js"],
