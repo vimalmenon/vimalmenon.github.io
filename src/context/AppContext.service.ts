@@ -19,15 +19,26 @@ export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => 
 
 export const initialState: IAppReducer = {
   theme: 'light',
+  showDrawer: false,
 };
+
+export enum ActionType {
+  TOGGLE_THEME = 'TOGGLE_THEME',
+  TOGGLE_DRAWER = 'TOGGLE_DRAWER',
+}
 
 export const Context = createContext<IAppContext>({
   ...initialState,
   toggleTheme: NotImplemented,
+  toggleDrawer: NotImplemented,
 });
 
 export const toggleTheme = (dispatch: DispatchType): void => {
-  dispatch({ type: 'TOGGLE_THEME' });
+  dispatch({ type: ActionType.TOGGLE_THEME });
+};
+
+export const toggleDrawer = (dispatch: DispatchType): void => {
+  dispatch({ type: ActionType.TOGGLE_DRAWER });
 };
 
 export const useAppContext = (): IAppContext => {
