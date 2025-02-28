@@ -21,6 +21,7 @@ This is Website for Vimal Menon
 - [ ] Provision to choses color
 - [ ] Create SubFooter for the page
 - [ ] Make the Page Responsive
+- [ ] Fix the Header Margin
 
 ## Ideas
 

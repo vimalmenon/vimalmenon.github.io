@@ -8,6 +8,8 @@ import MuiLink from '@mui/material/Link';
 import NextLink from 'next/link';
 import { ToggleTheme } from './ToggleTheme';
 import { MobileHeader, DesktopHeader } from './Header.style';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 
 export const Header: React.FC = () => {
   return (
@@ -46,7 +48,11 @@ export const Header: React.FC = () => {
             <ToggleTheme />
           </Box>
         </DesktopHeader>
-        <MobileHeader variant="dense"></MobileHeader>
+        <MobileHeader variant="dense">
+          <IconButton>
+            <MenuIcon />
+          </IconButton>
+        </MobileHeader>
       </Container>
     </AppBar>
   );
