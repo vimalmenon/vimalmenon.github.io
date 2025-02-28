@@ -64,6 +64,23 @@ const Blogs: INavigation = {
   ],
 };
 
+const Config: INavigation = {
+  name: 'Config',
+  title: 'Config | Vimal Menon',
+  description: 'This is Vimal Menon personal website',
+  link: '/config/',
+  breadcrumbs: [
+    {
+      name: 'Home',
+      link: '/',
+    },
+    {
+      name: 'Config',
+      link: '/config/',
+    },
+  ],
+};
+
 const About: INavigation = {
   name: 'About',
   title: 'About | Vimal Menon',
@@ -88,4 +105,5 @@ export const Navigation = {
   NotFound,
   Blogs,
   About,
+  Config,
 };

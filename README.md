@@ -22,6 +22,7 @@ This is Website for Vimal Menon
 - [ ] Create SubFooter for the page
 - [ ] Make the Page Responsive
 - [ ] Fix the Header Margin
+- [ ] Fix Sorting issue on Eslint
 
 ## Ideas
 
