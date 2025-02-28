@@ -10,7 +10,7 @@ exports[`Header component Snapshot Testing 1`] = `
       class="MuiContainer-root MuiContainer-maxWidthXl css-hhdjsd-MuiContainer-root"
     >
       <div
-        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-dgltuh-MuiToolbar-root"
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-nk5xtv-MuiToolbar-root"
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-w3fons-MuiTypography-root-MuiLink-root"
@@ -60,6 +60,9 @@ exports[`Header component Snapshot Testing 1`] = `
           </div>
         </div>
       </div>
+      <div
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-1vill88-MuiToolbar-root"
+      />
     </div>
   </header>
 </div>

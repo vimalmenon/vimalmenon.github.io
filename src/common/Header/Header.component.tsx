@@ -3,17 +3,17 @@ import { HeaderNavigation } from '@data';
 import { Link } from './Link';
 import { teal } from '@mui/material/colors';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import MuiLink from '@mui/material/Link';
 import NextLink from 'next/link';
 import { ToggleTheme } from './ToggleTheme';
+import { MobileHeader, DesktopHeader } from './Header.style';
 
 export const Header: React.FC = () => {
   return (
     <AppBar position="static" sx={{ background: 'transparent' }}>
       <Container maxWidth="xl">
-        <Toolbar variant="dense" sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <DesktopHeader variant="dense">
           <MuiLink
             component={NextLink}
             href={'/'}
@@ -45,7 +45,8 @@ export const Header: React.FC = () => {
             </Box>
             <ToggleTheme />
           </Box>
-        </Toolbar>
+        </DesktopHeader>
+        <MobileHeader variant="dense"></MobileHeader>
       </Container>
     </AppBar>
   );
