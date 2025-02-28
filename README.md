@@ -13,6 +13,7 @@ This is Website for Vimal Menon
 
 - [x] Redirect to Home Page on click on Title
 - [ ] Make the Header Responsive
+- [ ] Make the Footer Responsive
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
 - [ ] Need to get ICON for Website
