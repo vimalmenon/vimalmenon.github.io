@@ -97,6 +97,9 @@ const About: INavigation = {
     },
   ],
 };
+
+export const FooterNavigation = [Home, About, Config, ReleaseNote];
+
 export const HeaderNavigation = [Home, Blogs];
 
 export const Navigation = {

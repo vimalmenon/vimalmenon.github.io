@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
 import { blueGrey, teal } from '@mui/material/colors';
+import { FooterNavigation } from '@data';
 
 export const Footer: React.FC = () => {
   const version = process.env.npm_package_version;
@@ -35,26 +36,15 @@ export const Footer: React.FC = () => {
         <Box component="span" sx={{ fontSize: '1.5rem' }}>
           Resources
         </Box>
-        <span style={{ fontSize: '14px' }}>
-          <MuiLink component={Link} href="/" underline="none" sx={{ color: teal[500] }}>
-            Home
-          </MuiLink>
-        </span>
-        <span style={{ fontSize: '14px' }}>
-          <MuiLink component={Link} href="/about" underline="none" sx={{ color: teal[500] }}>
-            About
-          </MuiLink>
-        </span>
-        <span style={{ fontSize: '14px' }}>
-          <MuiLink
-            component={Link}
-            href="/release-notes"
-            underline="none"
-            sx={{ color: teal[500] }}
-          >
-            Release Notes
-          </MuiLink>
-        </span>
+        {FooterNavigation.map((data) => {
+          return (
+            <span style={{ fontSize: '14px' }} key={data.name}>
+              <MuiLink component={Link} href={data.link} underline="none" sx={{ color: teal[500] }}>
+                {data.name}
+              </MuiLink>
+            </span>
+          );
+        })}
       </Box>
     </Box>
   );
