@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
             href={'/'}
             underline="none"
             sx={{
-              marginX: 1,
+              paddingX: 1,
               display: 'flex',
               fontSize: '1.5em',
               color: teal[500],
@@ -52,6 +52,7 @@ export const Header: React.FC = () => {
           <IconButton>
             <MenuIcon />
           </IconButton>
+          <ToggleTheme />
         </MobileHeader>
       </Container>
     </AppBar>
