@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
           >
             Vimal Menon
           </MuiLink>
-          <Box sx={{ display: 'flex' }}>
+          <Box sx={{ display: 'flex', gap: 1 }}>
             <Box
               sx={{
                 borderRadius: 1,
