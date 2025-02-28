@@ -7,6 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import MuiLink from '@mui/material/Link';
 import NextLink from 'next/link';
+import { ToggleTheme } from './ToggleTheme';
 
 export const Header: React.FC = () => {
   return (
@@ -28,18 +29,21 @@ export const Header: React.FC = () => {
           >
             Vimal Menon
           </MuiLink>
-          <Box
-            sx={{
-              borderRadius: 1,
-              display: 'flex',
-              gap: 1,
-              backgroundColor: teal[500],
-              padding: 0.5,
-            }}
-          >
-            {HeaderNavigation.map((nav) => (
-              <Link navigation={nav} key={nav.name} />
-            ))}
+          <Box sx={{ display: 'flex' }}>
+            <Box
+              sx={{
+                borderRadius: 1,
+                display: 'flex',
+                gap: 1,
+                backgroundColor: teal[500],
+                padding: 0.5,
+              }}
+            >
+              {HeaderNavigation.map((nav) => (
+                <Link navigation={nav} key={nav.name} />
+              ))}
+            </Box>
+            <ToggleTheme />
           </Box>
         </Toolbar>
       </Container>

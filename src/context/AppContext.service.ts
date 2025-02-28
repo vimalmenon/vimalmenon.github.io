@@ -1,4 +1,6 @@
-import { createContext } from 'react';
+'use client';
+
+import { createContext, useContext } from 'react';
 import { IAppReducer, IAppAction, IAppContext, DispatchType } from './AppContext';
 import { NotImplemented } from '@utility';
 
@@ -26,4 +28,8 @@ export const Context = createContext<IAppContext>({
 
 export const toggleTheme = (dispatch: DispatchType): void => {
   dispatch({ type: 'TOGGLE_THEME' });
+};
+
+export const useAppContext = (): IAppContext => {
+  return useContext<IAppContext>(Context);
 };
