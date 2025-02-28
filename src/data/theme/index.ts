@@ -1,11 +1,14 @@
 'use client';
 
-import { createTheme } from '@mui/material/styles';
+import { createTheme, PaletteMode } from '@mui/material/styles';
 import { teal } from '@mui/material/colors';
+import { Theme } from '@emotion/react';
 
-export const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: teal,
-  },
-});
+export const getTheme = (mode: PaletteMode = 'light'): Theme => {
+  return createTheme({
+    palette: {
+      mode,
+      primary: teal,
+    },
+  });
+};

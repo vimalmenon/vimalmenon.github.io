@@ -22,7 +22,7 @@ export const initialState: IAppReducer = {
 };
 
 export const Context = createContext<IAppContext>({
-  theme: 'dark',
+  ...initialState,
   toggleTheme: NotImplemented,
 });
 
