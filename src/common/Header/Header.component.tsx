@@ -4,33 +4,18 @@ import { Link } from './Link';
 import { teal } from '@mui/material/colors';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
-import MuiLink from '@mui/material/Link';
-import NextLink from 'next/link';
 import { ToggleTheme } from './ToggleTheme';
 import { MobileHeader, DesktopHeader } from './Header.style';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
+import { Logo } from './Logo';
 
 export const Header: React.FC = () => {
   return (
     <AppBar position="static" sx={{ background: 'transparent' }}>
       <Container maxWidth="xl">
         <DesktopHeader variant="dense">
-          <MuiLink
-            component={NextLink}
-            href={'/'}
-            underline="none"
-            sx={{
-              paddingX: 1,
-              display: 'flex',
-              fontSize: '1.5em',
-              color: teal[500],
-              alignItems: 'center',
-              fontWeight: 'bold',
-            }}
-          >
-            Vimal Menon
-          </MuiLink>
+          <Logo />
           <Box sx={{ display: 'flex', gap: 1 }}>
             <Box
               sx={{
@@ -49,21 +34,7 @@ export const Header: React.FC = () => {
           </Box>
         </DesktopHeader>
         <MobileHeader variant="dense">
-          <MuiLink
-            component={NextLink}
-            href={'/'}
-            underline="none"
-            sx={{
-              paddingX: 1,
-              display: 'flex',
-              fontSize: '1.5em',
-              color: teal[500],
-              alignItems: 'center',
-              fontWeight: 'bold',
-            }}
-          >
-            Vimal Menon
-          </MuiLink>
+          <Logo />
           <Box sx={{ display: 'flex' }}>
             <ToggleTheme />
             <IconButton>
