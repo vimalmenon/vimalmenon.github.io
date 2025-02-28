@@ -49,10 +49,27 @@ export const Header: React.FC = () => {
           </Box>
         </DesktopHeader>
         <MobileHeader variant="dense">
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
-          <ToggleTheme />
+          <MuiLink
+            component={NextLink}
+            href={'/'}
+            underline="none"
+            sx={{
+              paddingX: 1,
+              display: 'flex',
+              fontSize: '1.5em',
+              color: teal[500],
+              alignItems: 'center',
+              fontWeight: 'bold',
+            }}
+          >
+            Vimal Menon
+          </MuiLink>
+          <Box sx={{ display: 'flex' }}>
+            <ToggleTheme />
+            <IconButton>
+              <MenuIcon />
+            </IconButton>
+          </Box>
         </MobileHeader>
       </Container>
     </AppBar>
