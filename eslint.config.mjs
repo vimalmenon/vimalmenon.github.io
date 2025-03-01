@@ -24,7 +24,6 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   eslintPluginPrettierRecommended,
-  // importPlugin.flatConfigs.recommended,
   pluginReact.configs.flat.recommended,
   {
     ignores: [
@@ -52,36 +51,36 @@ export default [
       // Why would you want unused vars?
       '@typescript-eslint/no-unused-vars': ['error'],
 
+      // 'import/order': [
+      //   'error',
+      //   {
+      //     alphabetize: {
+      //       caseInsensitive: true,
+      //       order: 'asc',
+      //     },
+      //     groups: ['builtin', 'external', 'internal'],
+      //     'newlines-between': 'always',
+      //     pathGroups: [
+      //       {
+      //         group: 'external',
+      //         pattern: 'react',
+      //         position: 'before',
+      //       },
+      //     ],
+      //     pathGroupsExcludedImportTypes: ['react'],
+      //   },
+      // ],
       // This rule is not compatible with Next.js's <Link /> components
       'jsx-a11y/anchor-is-valid': 'off',
       'jsx-a11y/no-onchange': 0,
-      'no-console': ['error', { allow: ['warn', 'error'] }],
 
+      'no-console': ['error', { allow: ['warn', 'error'] }],
       'prettier/prettier': ['error', {}, { usePrettierrc: true }],
       // We will use TypeScript's types for component props instead
       'react/prop-types': 'off',
       // No need to import React when using Next.js
       'react/react-in-jsx-scope': 'off',
       'react-hooks/exhaustive-deps': 'off',
-      // 'import/order': [
-      //   'error',
-      //   {
-      //     groups: ['builtin', 'external', 'internal'],
-      //     pathGroups: [
-      //       {
-      //         pattern: 'react',
-      //         group: 'external',
-      //         position: 'before',
-      //       },
-      //     ],
-      //     pathGroupsExcludedImportTypes: ['react'],
-      //     'newlines-between': 'always',
-      //     alphabetize: {
-      //       order: 'asc',
-      //       caseInsensitive: true,
-      //     },
-      //   },
-      // ],
     },
   },
 ];
