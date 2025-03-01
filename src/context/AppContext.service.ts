@@ -30,6 +30,12 @@ export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => 
       primaryTheme: theme,
     };
   }
+  if (type === 'CLOSE_DRAWER') {
+    return {
+      ...state,
+      showDrawer: false,
+    };
+  }
   return state;
 };
 
@@ -45,11 +51,13 @@ export enum ActionType {
   TOGGLE_MODE = 'TOGGLE_MODE',
   TOGGLE_DRAWER = 'TOGGLE_DRAWER',
   CHANGE_THEME = 'CHANGE_THEME',
+  CLOSE_DRAWER = 'CLOSE_DRAWER',
 }
 
 export const Context = createContext<IAppContext>({
   ...initialState,
   changeTheme: NotImplemented,
+  closeDrawer: NotImplemented,
   toggleDrawer: NotImplemented,
   toggleMode: NotImplemented,
 });
@@ -64,6 +72,9 @@ export const toggleDrawer = (dispatch: DispatchType): void => {
 
 export const changeTheme = (dispatch: DispatchType, payload: string): void => {
   dispatch({ payload, type: ActionType.CHANGE_THEME });
+};
+export const closeDrawer = (dispatch: DispatchType): void => {
+  dispatch({ type: ActionType.CLOSE_DRAWER });
 };
 
 export const useAppContext = (): IAppContext => {

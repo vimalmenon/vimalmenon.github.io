@@ -8,7 +8,7 @@ export interface IAppReducer {
   tertiaryTheme: PaletteColorOptions;
 }
 
-export type ActionType = 'TOGGLE_MODE' | 'TOGGLE_DRAWER' | 'CHANGE_THEME';
+export type ActionType = 'TOGGLE_MODE' | 'TOGGLE_DRAWER' | 'CHANGE_THEME' | 'CLOSE_DRAWER';
 
 export interface IAppAction<T = string> {
   type: ActionType;
@@ -18,6 +18,7 @@ export interface IAppAction<T = string> {
 export interface IAppContext extends IAppReducer {
   toggleMode: () => void;
   toggleDrawer: () => void;
+  closeDrawer: () => void;
   changeTheme: (data: AnyType) => void;
 }
 

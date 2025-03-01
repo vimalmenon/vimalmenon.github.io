@@ -10,7 +10,7 @@ import { ILink } from './Link';
 export const Link: React.FC<ILink> = ({ navigation }) => {
   const pathname = usePathname();
   const selected = pathname === navigation.link;
-  const { toggleDrawer } = useAppContext();
+  const { closeDrawer } = useAppContext();
   return (
     <MuiLink
       component={NextLink}
@@ -25,7 +25,7 @@ export const Link: React.FC<ILink> = ({ navigation }) => {
         paddingY: 0.5,
       }}
       color="common.white"
-      onClick={toggleDrawer}
+      onClick={closeDrawer}
     >
       {navigation.name}
     </MuiLink>

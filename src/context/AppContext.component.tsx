@@ -4,6 +4,7 @@ import { useReducer } from 'react';
 import { IReactChildren } from '@types';
 import {
   changeTheme,
+  closeDrawer,
   Context,
   initialState,
   reducer,
@@ -18,6 +19,7 @@ export const AppContext: React.FC<IReactChildren> = ({ children }) => {
       value={{
         ...state,
         changeTheme: (data) => changeTheme(dispatch, data),
+        closeDrawer: () => closeDrawer(dispatch),
         toggleDrawer: () => toggleDrawer(dispatch),
         toggleMode: () => toggleMode(dispatch),
       }}
