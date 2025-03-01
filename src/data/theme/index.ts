@@ -3,6 +3,7 @@
 import { createTheme, PaletteMode } from '@mui/material/styles';
 import { PaletteColorOptions } from '@mui/material/styles';
 import { Theme } from '@emotion/react';
+import { AnyType } from '@types';
 
 export const getTheme = (mode: PaletteMode = 'light', primaryTheme: PaletteColorOptions): Theme => {
   return createTheme({
@@ -10,7 +11,7 @@ export const getTheme = (mode: PaletteMode = 'light', primaryTheme: PaletteColor
       mode,
       primary: {
         ...primaryTheme,
-        main: primaryTheme[500 as any] as string,
+        main: (primaryTheme as AnyType)[500] as string,
       },
     },
   });
