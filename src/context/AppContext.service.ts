@@ -63,7 +63,7 @@ export const toggleDrawer = (dispatch: DispatchType): void => {
 };
 
 export const changeTheme = (dispatch: DispatchType, payload: string): void => {
-  dispatch({ type: ActionType.CHANGE_THEME }, payload);
+  dispatch({ type: ActionType.CHANGE_THEME, payload });
 };
 
 export const useAppContext = (): IAppContext => {

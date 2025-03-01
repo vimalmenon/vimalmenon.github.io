@@ -8,10 +8,10 @@ import { getTheme } from '@data';
 import { useAppContext } from '@context';
 
 export const ThemeWrapper: React.FC<IReactChildren> = ({ children }) => {
-  const { theme } = useAppContext();
+  const { theme, primaryTheme } = useAppContext();
   return (
     <AppRouterCacheProvider>
-      <ThemeProvider theme={getTheme(theme)}>
+      <ThemeProvider theme={getTheme(theme, primaryTheme)}>
         <CssBaseline />
         {children}
       </ThemeProvider>

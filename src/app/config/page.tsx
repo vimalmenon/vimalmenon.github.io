@@ -23,6 +23,7 @@ import {
   grey,
   blueGrey,
 } from '@mui/material/colors';
+import { ColorItem } from './ColorItem';
 
 export const metadata: Metadata = {
   title: 'Config | Vimal Menon',
@@ -63,12 +64,7 @@ const Page: React.FC = () => {
           return (
             <Box key={color[500]}>
               {shades.map((shade: string | number, index) => {
-                return (
-                  <Box
-                    sx={{ width: '100px', height: '50px', background: color[shade] }}
-                    key={`${color[shade]}-${index}`}
-                  />
-                );
+                return <ColorItem color={color[shade]} key={`${color[shade]}-${index}`} />;
               })}
             </Box>
           );

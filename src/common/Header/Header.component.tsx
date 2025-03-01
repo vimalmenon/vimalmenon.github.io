@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import { HeaderNavigation } from '@data';
 import { Link } from './Link';
-import { teal } from '@mui/material/colors';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import { ToggleTheme } from './ToggleTheme';
@@ -22,7 +21,7 @@ export const Header: React.FC = () => {
                 borderRadius: 1,
                 display: 'flex',
                 gap: 1,
-                backgroundColor: teal[500],
+                backgroundColor: 'primary.main',
                 padding: 0.5,
               }}
             >
