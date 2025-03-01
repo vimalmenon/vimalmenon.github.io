@@ -4,7 +4,6 @@ import { Breadcrumbs } from '@common';
 import { Navigation, colors } from '@data';
 
 import { ColorItem } from './ColorItem';
-import { ColorMenu } from './ColorMenu';
 
 export const metadata: Metadata = {
   title: 'Config | Vimal Menon',
@@ -47,7 +46,6 @@ const Page: React.FC = () => {
             </Box>
           );
         })}
-        <ColorMenu />
       </Box>
     </Box>
   );
