@@ -5,9 +5,8 @@ import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import { ToggleTheme } from './ToggleTheme';
 import { MobileHeader, DesktopHeader } from './Header.style';
-import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from '@mui/material/IconButton';
 import { Logo } from './Logo';
+import { Drawer } from './Drawer';
 
 export const Header: React.FC = () => {
   return (
@@ -36,9 +35,7 @@ export const Header: React.FC = () => {
           <Logo />
           <Box sx={{ display: 'flex' }}>
             <ToggleTheme />
-            <IconButton>
-              <MenuIcon />
-            </IconButton>
+            <Drawer />
           </Box>
         </MobileHeader>
       </Container>
