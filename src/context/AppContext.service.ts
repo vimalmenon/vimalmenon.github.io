@@ -10,10 +10,10 @@ export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => 
   const { type, payload } = action;
 
   if (type === 'TOGGLE_MODE') {
-    const theme = state.theme === 'dark' ? 'light' : 'dark';
+    const mode = state.mode === 'dark' ? 'light' : 'dark';
     return {
       ...state,
-      theme,
+      mode,
     };
   }
   if (type === 'TOGGLE_DRAWER') {
@@ -34,11 +34,11 @@ export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => 
 };
 
 export const initialState: IAppReducer = {
-  theme: 'light',
+  mode: 'light',
   showDrawer: false,
-  primaryTheme: teal[500],
-  secondaryTheme: teal[500],
-  tertiaryTheme: teal[500],
+  primaryTheme: teal,
+  secondaryTheme: teal,
+  tertiaryTheme: teal,
 };
 
 export enum ActionType {

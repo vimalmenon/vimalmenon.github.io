@@ -1,10 +1,11 @@
 import { AnyType } from '@types';
+import { PaletteColorOptions } from '@mui/material/styles';
 export interface IAppReducer {
-  theme: 'dark' | 'light';
+  mode: 'dark' | 'light';
   showDrawer: boolean;
-  primaryTheme: string;
-  secondaryTheme: string;
-  tertiaryTheme: string;
+  primaryTheme: PaletteColorOptions;
+  secondaryTheme: PaletteColorOptions;
+  tertiaryTheme: PaletteColorOptions;
 }
 
 export type ActionType = 'TOGGLE_MODE' | 'TOGGLE_DRAWER' | 'CHANGE_THEME';
