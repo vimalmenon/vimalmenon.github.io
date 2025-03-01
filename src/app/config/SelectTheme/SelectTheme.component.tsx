@@ -112,8 +112,14 @@ export const SelectTheme: React.FC = () => {
           </Box>
         ) : null}
       </Box>
-      <Button variant="contained">Save</Button>
-      <Button variant="contained">Cancel</Button>
+      <Box sx={{ display: 'flex', gap: 1 }}>
+        <Button variant="contained" fullWidth startIcon={<Icons.Save />}>
+          Save
+        </Button>
+        <Button variant="contained" fullWidth>
+          Cancel
+        </Button>
+      </Box>
     </Box>
   );
 };
