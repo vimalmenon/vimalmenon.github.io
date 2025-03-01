@@ -13,7 +13,7 @@ This is Website for Vimal Menon
 
 - [x] Redirect to Home Page on click on Title
 - [x] [Not Required] Create SubFooter for the page
-- [ ] Make the Header Responsive
+- [x] Make the Header Responsive
 - [ ] Make the Footer Responsive
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
