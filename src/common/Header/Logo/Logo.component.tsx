@@ -10,7 +10,6 @@ export const Logo: React.FC = () => {
       href={'/'}
       underline="none"
       sx={{
-        paddingX: 1,
         display: 'flex',
         fontSize: '1.5em',
         color: teal[500],

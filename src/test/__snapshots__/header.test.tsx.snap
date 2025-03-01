@@ -13,7 +13,7 @@ exports[`Header component Snapshot Testing 1`] = `
         class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-116rgql-MuiToolbar-root"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-153lbq8-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-7ds9w2-MuiTypography-root-MuiLink-root"
           href="/"
         >
           Vimal Menon
@@ -64,7 +64,7 @@ exports[`Header component Snapshot Testing 1`] = `
         class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-11gkf18-MuiToolbar-root"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-153lbq8-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-7ds9w2-MuiTypography-root-MuiLink-root"
           href="/"
         >
           Vimal Menon

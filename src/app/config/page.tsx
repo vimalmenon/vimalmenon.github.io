@@ -12,7 +12,7 @@ const Page: React.FC = () => {
   return (
     <Box component="main">
       <Breadcrumbs navigation={Navigation.Config} />
-      <div>This is Blogs page</div>
+      <div>This is Config page</div>
     </Box>
   );
 };
