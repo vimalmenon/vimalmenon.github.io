@@ -13,6 +13,7 @@ This is Website for Vimal Menon
 
 - [x] Fix the Header Margin
 - [x] Fix Sorting issue on Eslint
+- [x] Close the drawer once navigated
 - [ ] Disable the other theme on select
 - [ ] Make Header Mobile Navigation more user friendly
 - [ ] Make the Footer Responsive
