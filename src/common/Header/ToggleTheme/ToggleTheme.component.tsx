@@ -7,10 +7,10 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import IconButton from '@mui/material/IconButton';
 
 export const ToggleTheme: React.FC = () => {
-  const { theme, toggleTheme } = useAppContext();
+  const { theme, toggleMode } = useAppContext();
   return (
     <Box>
-      <IconButton onClick={toggleTheme}>
+      <IconButton onClick={toggleMode}>
         {theme === 'light' ? <Brightness4Icon /> : <LightModeIcon />}
       </IconButton>
     </Box>

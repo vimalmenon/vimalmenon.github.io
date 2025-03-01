@@ -1,18 +1,23 @@
+import { AnyType } from '@types';
 export interface IAppReducer {
   theme: 'dark' | 'light';
   showDrawer: boolean;
+  primaryTheme: string;
+  secondaryTheme: string;
+  tertiaryTheme: string;
 }
 
-export type ActionType = 'TOGGLE_THEME' | 'TOGGLE_DRAWER';
+export type ActionType = 'TOGGLE_MODE' | 'TOGGLE_DRAWER' | 'CHANGE_THEME';
 
-export interface IAppAction {
+export interface IAppAction<T = string> {
   type: ActionType;
-  payload: string;
+  payload?: T;
 }
 
 export interface IAppContext extends IAppReducer {
-  toggleTheme: () => void;
+  toggleMode: () => void;
   toggleDrawer: () => void;
+  changeTheme: (data: AnyType) => void;
 }
 
 export type DispatchType = ActionDispatch<[action: IAppAction]>;
