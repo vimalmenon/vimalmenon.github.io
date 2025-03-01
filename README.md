@@ -12,6 +12,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Fix the Header Margin
+- [x] Fix Sorting issue on Eslint
 - [ ] Make Header Mobile Navigation more user friendly
 - [ ] Make the Footer Responsive
 - [ ] Add framer motion
@@ -21,7 +22,7 @@ This is Website for Vimal Menon
 - [ ] Add Dark and White Theme
 - [ ] Provision to choose color
 - [ ] Make the Page Responsive
-- [ ] Fix Sorting issue on Eslint
+- [ ] Grouping import
 
 ## Ideas
 
