@@ -3,4 +3,7 @@ export interface IColorItem {
   name: string;
   onClick: () => void;
   selectedColor?: string;
+  main?: string;
+  light?: string;
+  dark?: string;
 }

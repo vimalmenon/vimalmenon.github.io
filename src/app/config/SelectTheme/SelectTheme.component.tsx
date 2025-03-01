@@ -2,7 +2,7 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { colors, shades } from '@data';
+import { colors, shades, Icons } from '@data';
 import { ColorItem } from './ColorItem';
 import { AnyType } from '@types';
 import { useState } from 'react';
@@ -10,6 +10,11 @@ import { useState } from 'react';
 export const SelectTheme: React.FC = () => {
   const [theme, setTheme] = useState<Record<string, string>>({});
   const [selectedColor, setColor] = useState<AnyType>(null);
+  const removeColor = (type: string): string => {
+    const { [type]: _, ...rest } = theme;
+    setTheme(rest);
+    return _;
+  };
   const onShadeClick = (selectedColor: string): void => {
     if (!theme.main) {
       setTheme({
@@ -30,40 +35,47 @@ export const SelectTheme: React.FC = () => {
       light: selectedColor,
     });
   };
+  const onColorClick = (color: AnyType): void => {
+    setColor(color);
+    setTheme({});
+  };
   return (
     <Box sx={{ display: 'flex', gap: 1, flexDirection: 'column' }}>
       <Box sx={{ display: 'flex', gap: 1 }}>
         <Box
           sx={{
             display: 'flex',
-            height: '50px',
-            width: '50px',
+            height: '70px',
+            width: '70px',
             border: '1px solid red',
             background: theme.main ? theme.main : 'white',
           }}
         >
+          <Icons.Close fontSize="small" onClick={() => removeColor('main')} />
           main
         </Box>
         <Box
           sx={{
             display: 'flex',
-            height: '50px',
-            width: '50px',
+            height: '70px',
+            width: '70px',
             border: '1px solid red',
             background: theme.dark ? theme.dark : 'white',
           }}
         >
+          <Icons.Close fontSize="small" onClick={() => removeColor('dark')} />
           dark
         </Box>
         <Box
           sx={{
             display: 'flex',
-            height: '50px',
-            width: '50px',
+            height: '70px',
+            width: '70px',
             border: '1px solid red',
             background: theme.light ? theme.light : 'white',
           }}
         >
+          <Icons.Close fontSize="small" onClick={() => removeColor('light')} />
           light
         </Box>
       </Box>
@@ -75,7 +87,7 @@ export const SelectTheme: React.FC = () => {
                 <ColorItem
                   color={(colors as AnyType)[color][500]}
                   name={color}
-                  onClick={() => setColor((colors as AnyType)[color])}
+                  onClick={() => onColorClick((colors as AnyType)[color])}
                   selectedColor={selectedColor ? selectedColor[500] : undefined}
                 />
               </Box>
@@ -91,6 +103,9 @@ export const SelectTheme: React.FC = () => {
                   key={`${selectedColor[shade]}-${index}`}
                   name={String(shade)}
                   onClick={() => onShadeClick(selectedColor[shade])}
+                  main={theme.main}
+                  dark={theme.dark}
+                  light={theme.light}
                 />
               );
             })}

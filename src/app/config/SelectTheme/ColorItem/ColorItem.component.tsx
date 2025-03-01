@@ -7,11 +7,34 @@ import { Icons } from '@data';
 
 const { Check } = Icons;
 
-export const ColorItem: React.FC<IColorItem> = ({ color, name, onClick, selectedColor }) => {
+export const ColorItem: React.FC<IColorItem> = ({
+  color,
+  name,
+  onClick,
+  selectedColor,
+  main,
+  dark,
+  light,
+}) => {
   return (
     <Box sx={{ width: '50px', height: '150px', background: color }} onClick={onClick}>
-      <Typography sx={{ writingMode: 'vertical-rl', padding: 1 }}>
-        {name} {selectedColor === color ? <Check /> : null}{' '}
+      <Typography
+        component="div"
+        sx={{
+          writingMode: 'vertical-rl',
+          padding: 1,
+          display: 'flex',
+          justifyContent: 'space-between',
+          height: '100%',
+        }}
+      >
+        <span>{name}</span>{' '}
+        <span>
+          {selectedColor === color ? <Check /> : null}
+          {main === color && main ? 'M' : null}
+          {dark === color && main ? 'D' : null}
+          {light === color && main ? 'L' : null}
+        </span>
       </Typography>
     </Box>
   );
