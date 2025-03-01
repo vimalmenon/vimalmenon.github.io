@@ -1,13 +1,13 @@
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import type { Metadata } from 'next';
 import { Footer, Header, ThemeWrapper } from '@common';
-import { IReactChildren } from '@types';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
 import { AppContext } from '@context';
+import { IReactChildren } from '@types';
 
 export const metadata: Metadata = {
-  title: 'Vimal Menon',
   description: 'This is Vimal Menon personal website',
+  title: 'Vimal Menon',
 };
 
 const RootLayout: React.FC<IReactChildren> = ({ children }) => {
@@ -23,8 +23,8 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                minHeight: 'calc(100vh - 180px)',
                 marginY: 1,
+                minHeight: 'calc(100vh - 180px)',
               }}
             >
               <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>

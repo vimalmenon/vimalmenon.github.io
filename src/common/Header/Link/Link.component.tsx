@@ -1,10 +1,10 @@
 'use client';
 
+import { teal } from '@mui/material/colors';
 import MuiLink from '@mui/material/Link';
 import NextLink from 'next/link';
-import { ILink } from './Link';
 import { usePathname } from 'next/navigation';
-import { teal } from '@mui/material/colors';
+import { ILink } from './Link';
 
 export const Link: React.FC<ILink> = ({ navigation }) => {
   const pathname = usePathname();
@@ -16,9 +16,9 @@ export const Link: React.FC<ILink> = ({ navigation }) => {
       underline={selected ? 'always' : 'none'}
       sx={{
         alignItems: 'center',
-        display: 'flex',
         backgroundColor: selected ? teal[400] : teal[500],
         borderRadius: 1,
+        display: 'flex',
         paddingX: 2,
         paddingY: 0.5,
       }}

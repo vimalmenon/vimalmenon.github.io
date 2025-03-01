@@ -1,13 +1,13 @@
 'use client';
 
-import { createContext, useContext } from 'react';
-import { IAppReducer, IAppAction, IAppContext, DispatchType } from './AppContext';
-import { NotImplemented } from '@utility';
 import { teal } from '@mui/material/colors';
+import { createContext, useContext } from 'react';
 import { AnyType } from '@types';
+import { NotImplemented } from '@utility';
+import { DispatchType, IAppAction, IAppContext, IAppReducer } from './AppContext';
 
 export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => {
-  const { type, payload } = action;
+  const { payload, type } = action;
 
   if (type === 'TOGGLE_MODE') {
     const mode = state.mode === 'dark' ? 'light' : 'dark';
@@ -35,9 +35,9 @@ export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => 
 
 export const initialState: IAppReducer = {
   mode: 'light',
-  showDrawer: false,
   primaryTheme: teal,
   secondaryTheme: teal,
+  showDrawer: false,
   tertiaryTheme: teal,
 };
 
@@ -49,9 +49,9 @@ export enum ActionType {
 
 export const Context = createContext<IAppContext>({
   ...initialState,
-  toggleMode: NotImplemented,
-  toggleDrawer: NotImplemented,
   changeTheme: NotImplemented,
+  toggleDrawer: NotImplemented,
+  toggleMode: NotImplemented,
 });
 
 export const toggleMode = (dispatch: DispatchType): void => {
@@ -63,7 +63,7 @@ export const toggleDrawer = (dispatch: DispatchType): void => {
 };
 
 export const changeTheme = (dispatch: DispatchType, payload: string): void => {
-  dispatch({ type: ActionType.CHANGE_THEME, payload });
+  dispatch({ payload, type: ActionType.CHANGE_THEME });
 };
 
 export const useAppContext = (): IAppContext => {

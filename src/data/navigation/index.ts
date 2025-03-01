@@ -1,101 +1,101 @@
 import { INavigation } from '@types';
 
 const ReleaseNote: INavigation = {
-  name: 'Release Notes',
-  title: 'Release Notes | Vimal Menon',
-  description: "This is Vimal Menon's personal website",
-  link: '/release-notes/',
   breadcrumbs: [
     {
-      name: 'Home',
       link: '/',
+      name: 'Home',
     },
     {
-      name: 'Release Notes',
       link: '/release-notes/',
+      name: 'Release Notes',
     },
   ],
+  description: "This is Vimal Menon's personal website",
+  link: '/release-notes/',
+  name: 'Release Notes',
+  title: 'Release Notes | Vimal Menon',
 };
 
 const Home: INavigation = {
-  name: 'Home',
-  title: 'Vimal Menon',
-  description: "This is Vimal Menon's personal website",
-  link: '/',
   breadcrumbs: [
     {
-      name: 'Home',
       link: '/',
+      name: 'Home',
     },
   ],
+  description: "This is Vimal Menon's personal website",
+  link: '/',
+  name: 'Home',
+  title: 'Vimal Menon',
 };
 
 const NotFound: INavigation = {
-  name: 'Not Found',
-  title: 'Not Found | Vimal Menon',
-  description: 'This is Vimal Menon personal website',
-  link: '/*',
   breadcrumbs: [
     {
-      name: 'Home',
       link: '/',
+      name: 'Home',
     },
     {
-      name: 'Not Found',
       link: '/*',
+      name: 'Not Found',
     },
   ],
+  description: 'This is Vimal Menon personal website',
+  link: '/*',
+  name: 'Not Found',
+  title: 'Not Found | Vimal Menon',
 };
 
 const Blogs: INavigation = {
-  name: 'Blogs',
-  title: 'Blogs | Vimal Menon',
-  description: 'This is Vimal Menon personal website',
-  link: '/blogs/',
   breadcrumbs: [
     {
-      name: 'Home',
       link: '/',
+      name: 'Home',
     },
     {
-      name: 'Blogs',
       link: '/blogs/',
+      name: 'Blogs',
     },
   ],
+  description: 'This is Vimal Menon personal website',
+  link: '/blogs/',
+  name: 'Blogs',
+  title: 'Blogs | Vimal Menon',
 };
 
 const Config: INavigation = {
-  name: 'Config',
-  title: 'Config | Vimal Menon',
-  description: 'This is Vimal Menon personal website',
-  link: '/config/',
   breadcrumbs: [
     {
-      name: 'Home',
       link: '/',
+      name: 'Home',
     },
     {
-      name: 'Config',
       link: '/config/',
+      name: 'Config',
     },
   ],
+  description: 'This is Vimal Menon personal website',
+  link: '/config/',
+  name: 'Config',
+  title: 'Config | Vimal Menon',
 };
 
 const About: INavigation = {
-  name: 'About',
-  title: 'About | Vimal Menon',
-  description: 'This is Vimal Menon personal website',
-  link: '/about/',
   breadcrumbs: [
     {
-      name: 'Home',
       link: '/',
+      name: 'Home',
     },
     {
-      name: 'About',
       link: '/about/',
+      name: 'About',
     },
   ],
+  description: 'This is Vimal Menon personal website',
+  link: '/about/',
+  name: 'About',
+  title: 'About | Vimal Menon',
 };
 
 export const FooterNavigation = [Home, About, Config, ReleaseNote];
@@ -103,10 +103,10 @@ export const FooterNavigation = [Home, About, Config, ReleaseNote];
 export const HeaderNavigation = [Home, Blogs];
 
 export const Navigation = {
-  Home,
-  ReleaseNote,
-  NotFound,
-  Blogs,
   About,
+  Blogs,
   Config,
+  Home,
+  NotFound,
+  ReleaseNote,
 };

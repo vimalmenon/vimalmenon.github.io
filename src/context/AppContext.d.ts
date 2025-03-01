@@ -1,5 +1,5 @@
-import { AnyType } from '@types';
 import { PaletteColorOptions } from '@mui/material/styles';
+import { AnyType } from '@types';
 export interface IAppReducer {
   mode: 'dark' | 'light';
   showDrawer: boolean;

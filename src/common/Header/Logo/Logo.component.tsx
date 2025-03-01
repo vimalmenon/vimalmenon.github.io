@@ -1,7 +1,7 @@
-import React from 'react';
+import { teal } from '@mui/material/colors';
 import MuiLink from '@mui/material/Link';
 import NextLink from 'next/link';
-import { teal } from '@mui/material/colors';
+import React from 'react';
 
 export const Logo: React.FC = () => {
   return (
@@ -10,10 +10,10 @@ export const Logo: React.FC = () => {
       href={'/'}
       underline="none"
       sx={{
+        alignItems: 'center',
+        color: teal[500],
         display: 'flex',
         fontSize: '1.5em',
-        color: teal[500],
-        alignItems: 'center',
         fontWeight: 'bold',
       }}
     >

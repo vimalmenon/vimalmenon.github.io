@@ -10,10 +10,10 @@ exports[`Header component Snapshot Testing 1`] = `
       class="MuiContainer-root MuiContainer-maxWidthXl css-hhdjsd-MuiContainer-root"
     >
       <div
-        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-116rgql-MuiToolbar-root"
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-1grrzla-MuiToolbar-root"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-7ds9w2-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-9jnsrb-MuiTypography-root-MuiLink-root"
           href="/"
         >
           Vimal Menon
@@ -22,16 +22,16 @@ exports[`Header component Snapshot Testing 1`] = `
           class="MuiBox-root css-1i27l4i"
         >
           <div
-            class="MuiBox-root css-1m6ogct"
+            class="MuiBox-root css-1drg1hh"
           >
             <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-180oxxk-MuiTypography-root-MuiLink-root"
+              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1tpsndj-MuiTypography-root-MuiLink-root"
               href="/"
             >
               Home
             </a>
             <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-180oxxk-MuiTypography-root-MuiLink-root"
+              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1tpsndj-MuiTypography-root-MuiLink-root"
               href="/blogs"
             >
               Blogs
@@ -61,10 +61,10 @@ exports[`Header component Snapshot Testing 1`] = `
         </div>
       </div>
       <div
-        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-11gkf18-MuiToolbar-root"
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-wt0soi-MuiToolbar-root"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-7ds9w2-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-9jnsrb-MuiTypography-root-MuiLink-root"
           href="/"
         >
           Vimal Menon

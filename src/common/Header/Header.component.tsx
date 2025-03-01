@@ -1,12 +1,12 @@
-import Box from '@mui/material/Box';
-import { HeaderNavigation } from '@data';
-import { Link } from './Link';
 import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { ToggleTheme } from './ToggleTheme';
-import { MobileHeader, DesktopHeader } from './Header.style';
-import { Logo } from './Logo';
+import { HeaderNavigation } from '@data';
 import { Drawer } from './Drawer';
+import { DesktopHeader, MobileHeader } from './Header.style';
+import { Link } from './Link';
+import { Logo } from './Logo';
+import { ToggleTheme } from './ToggleTheme';
 
 export const Header: React.FC = () => {
   return (
@@ -17,10 +17,10 @@ export const Header: React.FC = () => {
           <Box sx={{ display: 'flex', gap: 1 }}>
             <Box
               sx={{
+                backgroundColor: 'primary.main',
                 borderRadius: 1,
                 display: 'flex',
                 gap: 1,
-                backgroundColor: 'primary.main',
                 padding: 0.5,
               }}
             >

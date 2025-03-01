@@ -1,11 +1,11 @@
 'use client';
 
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { IReactChildren } from '@types';
-import { getTheme } from '@data';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { useAppContext } from '@context';
+import { getTheme } from '@data';
+import { IReactChildren } from '@types';
 
 export const ThemeWrapper: React.FC<IReactChildren> = ({ children }) => {
   const { mode, primaryTheme } = useAppContext();

@@ -1,8 +1,8 @@
-import React from 'react';
-import { IBreadcrumbs } from './Breadcrumbs';
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs';
 import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
+import React from 'react';
+import { IBreadcrumbs } from './Breadcrumbs';
 
 export const Breadcrumbs: React.FC<IBreadcrumbs> = ({ navigation }) => {
   return (

@@ -1,2 +1,2 @@
-export * from './notImplemented';
 export * from './addImportant';
+export * from './notImplemented';

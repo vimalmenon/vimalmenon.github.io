@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
+import { blueGrey, teal } from '@mui/material/colors';
 import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
-import { blueGrey, teal } from '@mui/material/colors';
 import { FooterNavigation } from '@data';
 
 export const Footer: React.FC = () => {
@@ -10,11 +10,11 @@ export const Footer: React.FC = () => {
     <Box
       component="footer"
       sx={{
-        display: 'flex',
-        padding: 2,
-        justifyContent: 'space-between',
         background: blueGrey[100],
         color: teal[500],
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: 2,
       }}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>

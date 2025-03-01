@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
 import Box from '@mui/material/Box';
+import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
 import { Navigation } from '@data';
 
 export const metadata: Metadata = {
-  title: 'Blogs | Vimal Menon',
   description: "This is Vimal Menon's personal website",
+  title: 'Blogs | Vimal Menon',
 };
 
 const Page: React.FC = () => {

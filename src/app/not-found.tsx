@@ -1,11 +1,11 @@
-import { Breadcrumbs } from '@common';
-import { Navigation } from '@data';
 import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
+import { Breadcrumbs } from '@common';
+import { Navigation } from '@data';
 
 export const metadata: Metadata = {
-  title: 'Page Not Found | Vimal Menon',
   description: "This is Vimal Menon's personal website",
+  title: 'Page Not Found | Vimal Menon',
 };
 
 const Page: React.FC = () => {
