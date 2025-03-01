@@ -6,14 +6,12 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.4
+<b>Version</b>: 0.0.5
 <br/>
 
 ## To Do
 
-- [x] Redirect to Home Page on click on Title
-- [x] [Not Required] Create SubFooter for the page
-- [x] Make the Header Responsive
+- [ ] Make Header Mobile Navigation more user friendly
 - [ ] Make the Footer Responsive
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs

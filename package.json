@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "version": "0.0.4",
+  "name": "vimalmenon.com",
+  "version": "0.0.5",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
