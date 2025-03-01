@@ -15,3 +15,6 @@ export interface INavigation extends INavigationSlim {
   breadcrumbs: INavigationSlim[];
 }
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
+
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+export type AnyType = any;

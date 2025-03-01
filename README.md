@@ -6,20 +6,24 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.3
+<b>Version</b>: 0.0.4
 <br/>
 
 ## To Do
 
-- [x] Make Test Work
+- [x] Redirect to Home Page on click on Title
+- [x] [Not Required] Create SubFooter for the page
+- [x] Make the Header Responsive
+- [ ] Make the Footer Responsive
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
 - [ ] Need to get ICON for Website
 - [ ] Add Resume for Download from Website
 - [ ] Add Dark and White Theme
-- [ ] Provision to choses color
-- [ ] Create SubFooter for the page
+- [ ] Provision to choose color
 - [ ] Make the Page Responsive
+- [ ] Fix the Header Margin
+- [ ] Fix Sorting issue on Eslint
 
 ## Ideas
 

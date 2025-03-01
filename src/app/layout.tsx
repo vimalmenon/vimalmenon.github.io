@@ -15,18 +15,23 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
     <html lang="en">
       <meta name="viewport" content="initial-scale=1, width=device-width" />
       <body>
-        <ThemeWrapper>
-          <AppContext>
+        <AppContext>
+          <ThemeWrapper>
             <Header />
             <Container
               maxWidth="xl"
-              sx={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 180px)' }}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: 'calc(100vh - 180px)',
+                marginY: 1,
+              }}
             >
               <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
             </Container>
             <Footer />
-          </AppContext>
-        </ThemeWrapper>
+          </ThemeWrapper>
+        </AppContext>
       </body>
     </html>
   );
