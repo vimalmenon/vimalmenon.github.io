@@ -25,7 +25,6 @@ export const Footer: React.FC = () => {
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-          <span style={{ fontSize: '0.8rem' }}>V{version}</span>
           <span style={{ fontSize: '0.8rem' }}>
             Copyright © 2025{' '}
             <MuiLink
@@ -34,7 +33,7 @@ export const Footer: React.FC = () => {
               underline="none"
               sx={{ color: teal[500] }}
             >
-              Vimal Menon
+              Vimal Menon V{version}
             </MuiLink>
           </span>
           <Box sx={{ display: 'flex', gap: 1 }}>
