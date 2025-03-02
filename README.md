@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Make the Footer Responsive
+- [ ] Better footer Color
 - [ ] Set up Google Analytics
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
