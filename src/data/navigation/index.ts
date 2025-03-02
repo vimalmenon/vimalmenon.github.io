@@ -115,12 +115,17 @@ export const Navigation = {
 export const SocialMedias = [
   {
     Icon: Icons.YouTube,
-    link: 'https://youtube.com',
+    link: 'https://www.youtube.com/@real_vimal_menon',
     name: 'YouTube',
   },
   {
     Icon: Icons.GitHub,
     link: 'https://x.com',
     name: 'GitHub',
+  },
+  {
+    Icon: Icons.LinkedIn,
+    link: 'https://www.linkedin.com/in/vimal-menon-72ab931a/',
+    name: 'LinkedIn',
   },
 ];
