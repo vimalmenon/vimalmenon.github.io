@@ -15,6 +15,7 @@ This is Website for Vimal Menon
 
 - [x] Make the Footer Responsive
 - [ ] Better footer Color
+- [ ] Black Mode cant distinguish header and body
 - [ ] Set up Google Analytics
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
