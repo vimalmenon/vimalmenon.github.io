@@ -70,10 +70,9 @@ const Page: React.FC = () => {
         </div>
         <br />
         <br />
-        <br />
-        <div>Updated Date : 25 February 2025</div>
-        <br />
-        <br />
+        <div>
+          <b>Updated Date</b> : 25 February 2025
+        </div>
         <br />
       </div>
     </Box>
