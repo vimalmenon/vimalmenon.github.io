@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import { blueGrey, teal } from '@mui/material/colors';
 import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
-import { FooterNavigation } from '@data';
+import { FooterNavigation, SocialMedias } from '@data';
 
 export const Footer: React.FC = () => {
   const version = process.env.npm_package_version;
@@ -30,6 +30,15 @@ export const Footer: React.FC = () => {
             Vimal Menon
           </MuiLink>
         </span>
+        <Box sx={{display: "flex", gap: 1}}>
+          {SocialMedias.map((media) => {
+            return (
+              <MuiLink component={Link} href={media.link} underline="none" key={media.link} target="_blank">
+                <media.Icon />
+              </MuiLink>
+            );
+          })}
+        </Box>
       </Box>
 
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>

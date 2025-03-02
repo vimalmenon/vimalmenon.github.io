@@ -1,3 +1,4 @@
+import { Icons } from '@data';
 import { INavigation } from '@types';
 
 const ReleaseNote: INavigation = {
@@ -110,3 +111,16 @@ export const Navigation = {
   NotFound,
   ReleaseNote,
 };
+
+export const SocialMedias = [
+  {
+    Icon: Icons.YouTube,
+    link: 'https://youtube.com',
+    name: 'YouTube',
+  },
+  {
+    Icon: Icons.GitHub,
+    link: 'https://x.com',
+    name: 'GitHub',
+  },
+];
