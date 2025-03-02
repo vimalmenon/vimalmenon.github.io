@@ -19,6 +19,7 @@ This is Website for Vimal Menon
 - [x] Add Dark and White Theme
 - [x] Add Social media link
 - [x] [Not Defined] Make the Page Responsive
+- [x] Provision to choose color
 - [ ] Set up Google Analytics
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
@@ -27,7 +28,6 @@ This is Website for Vimal Menon
 - [ ] Create sub navigation for Blogs
 - [ ] Create favicon for Website
 - [ ] Add Resume for Download from Website
-- [ ] Provision to choose color
 - [ ] Grouping import
 - [ ] Create API for website
 - [ ] Create Contact US Page
