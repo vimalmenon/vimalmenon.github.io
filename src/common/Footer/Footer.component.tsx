@@ -8,11 +8,16 @@ import { FooterNavigation, SocialMedias } from '@data';
 export const Footer: React.FC = () => {
   const version = process.env.npm_package_version;
   return (
-    <Box component="footer">
+    <Box
+      component="footer"
+      sx={{
+        background: blueGrey[100],
+        display: 'flex',
+      }}
+    >
       <Container
         maxWidth="xl"
         sx={{
-          background: blueGrey[100],
           color: teal[500],
           display: 'flex',
           justifyContent: 'space-between',
