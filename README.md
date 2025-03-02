@@ -15,7 +15,7 @@ This is Website for Vimal Menon
 - [x] Fix Sorting issue on Eslint
 - [x] Close the drawer once navigated
 - [x] Add Dark and White Theme
-- [ ] Add Social media link
+- [x] Add Social media link
 - [ ] Disable the other theme on select
 - [ ] Make Header Mobile Navigation more user friendly
 - [ ] Make the Footer Responsive

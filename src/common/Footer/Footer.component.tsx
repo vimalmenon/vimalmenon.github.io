@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
 
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Box component="span" sx={{ fontSize: '1.5rem' }}>
-          Resources
+          Pages
         </Box>
         {FooterNavigation.map((data) => {
           return (

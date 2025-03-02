@@ -120,7 +120,7 @@ export const SocialMedias = [
   },
   {
     Icon: Icons.GitHub,
-    link: 'https://x.com',
+    link: 'https://github.com/vimalmenon',
     name: 'GitHub',
   },
   {
