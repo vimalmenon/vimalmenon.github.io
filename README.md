@@ -17,7 +17,7 @@ This is Website for Vimal Menon
 - [x] Add Dark and White Theme
 - [x] Add Social media link
 - [ ] Disable the other theme on select
-- [ ] Make Header Mobile Navigation more user friendly
+- [ ] Improve UI for Mobile Header Navigation
 - [ ] Make the Footer Responsive
 - [ ] Add framer motion
 - [ ] Create SubNavigation for Blogs
