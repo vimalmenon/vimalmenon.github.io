@@ -1,14 +1,15 @@
 'use client';
 
-import { IReactChildren } from '@types';
 import { useReducer } from 'react';
+import { IReactChildren } from '@types';
 import {
-  reducer,
-  initialState,
-  Context,
-  toggleMode,
-  toggleDrawer,
   changeTheme,
+  closeDrawer,
+  Context,
+  initialState,
+  reducer,
+  toggleDrawer,
+  toggleMode,
 } from './AppContext.service';
 
 export const AppContext: React.FC<IReactChildren> = ({ children }) => {
@@ -17,9 +18,10 @@ export const AppContext: React.FC<IReactChildren> = ({ children }) => {
     <Context.Provider
       value={{
         ...state,
-        toggleMode: () => toggleMode(dispatch),
-        toggleDrawer: () => toggleDrawer(dispatch),
         changeTheme: (data) => changeTheme(dispatch, data),
+        closeDrawer: () => closeDrawer(dispatch),
+        toggleDrawer: () => toggleDrawer(dispatch),
+        toggleMode: () => toggleMode(dispatch),
       }}
     >
       {children}

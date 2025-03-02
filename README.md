@@ -6,24 +6,31 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.4
+<b>Version</b>: 0.0.5
+<br/>
+<b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Redirect to Home Page on click on Title
-- [x] [Not Required] Create SubFooter for the page
-- [x] Make the Header Responsive
+- [x] Fix the Header Margin
+- [x] Fix Sorting issue on Eslint
+- [x] Close the drawer once navigated
+- [x] Add Dark and White Theme
+- [x] Add Social media link
+- [x] [Not Defined] Make the Page Responsive
+- [x] Provision to choose color
+- [ ] Set up Google Analytics
+- [ ] Improve the theme choosing UI
+- [ ] Improve UI for Mobile Header Navigation
 - [ ] Make the Footer Responsive
 - [ ] Add framer motion
-- [ ] Create SubNavigation for Blogs
-- [ ] Need to get ICON for Website
+- [ ] Create sub navigation for Blogs
+- [ ] Create favicon for Website
 - [ ] Add Resume for Download from Website
-- [ ] Add Dark and White Theme
-- [ ] Provision to choose color
-- [ ] Make the Page Responsive
-- [ ] Fix the Header Margin
-- [ ] Fix Sorting issue on Eslint
+- [ ] Grouping import
+- [ ] Create API for website
+- [ ] Create Contact US Page
 
 ## Ideas
 

@@ -1,13 +1,13 @@
 'use client';
 
-import { createContext, useContext } from 'react';
-import { IAppReducer, IAppAction, IAppContext, DispatchType } from './AppContext';
-import { NotImplemented } from '@utility';
 import { teal } from '@mui/material/colors';
+import { createContext, useContext } from 'react';
 import { AnyType } from '@types';
+import { NotImplemented } from '@utility';
+import { DispatchType, IAppAction, IAppContext, IAppReducer } from './AppContext';
 
 export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => {
-  const { type, payload } = action;
+  const { payload, type } = action;
 
   if (type === 'TOGGLE_MODE') {
     const mode = state.mode === 'dark' ? 'light' : 'dark';
@@ -30,14 +30,20 @@ export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => 
       primaryTheme: theme,
     };
   }
+  if (type === 'CLOSE_DRAWER') {
+    return {
+      ...state,
+      showDrawer: false,
+    };
+  }
   return state;
 };
 
 export const initialState: IAppReducer = {
   mode: 'light',
-  showDrawer: false,
   primaryTheme: teal,
   secondaryTheme: teal,
+  showDrawer: false,
   tertiaryTheme: teal,
 };
 
@@ -45,13 +51,15 @@ export enum ActionType {
   TOGGLE_MODE = 'TOGGLE_MODE',
   TOGGLE_DRAWER = 'TOGGLE_DRAWER',
   CHANGE_THEME = 'CHANGE_THEME',
+  CLOSE_DRAWER = 'CLOSE_DRAWER',
 }
 
 export const Context = createContext<IAppContext>({
   ...initialState,
-  toggleMode: NotImplemented,
-  toggleDrawer: NotImplemented,
   changeTheme: NotImplemented,
+  closeDrawer: NotImplemented,
+  toggleDrawer: NotImplemented,
+  toggleMode: NotImplemented,
 });
 
 export const toggleMode = (dispatch: DispatchType): void => {
@@ -63,7 +71,10 @@ export const toggleDrawer = (dispatch: DispatchType): void => {
 };
 
 export const changeTheme = (dispatch: DispatchType, payload: string): void => {
-  dispatch({ type: ActionType.CHANGE_THEME, payload });
+  dispatch({ payload, type: ActionType.CHANGE_THEME });
+};
+export const closeDrawer = (dispatch: DispatchType): void => {
+  dispatch({ type: ActionType.CLOSE_DRAWER });
 };
 
 export const useAppContext = (): IAppContext => {
