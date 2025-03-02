@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import { blueGrey, teal } from '@mui/material/colors';
 import Container from '@mui/material/Container';
+import IconButton from '@mui/material/IconButton';
 import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
 import { FooterNavigation, SocialMedias } from '@data';
@@ -46,7 +47,9 @@ export const Footer: React.FC = () => {
                   key={media.link}
                   target="_blank"
                 >
-                  <media.Icon />
+                  <IconButton>
+                    <media.Icon />
+                  </IconButton>
                 </MuiLink>
               );
             })}

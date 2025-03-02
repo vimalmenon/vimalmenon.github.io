@@ -27,6 +27,8 @@ This is Website for Vimal Menon
 - [ ] Add Resume for Download from Website
 - [ ] Provision to choose color
 - [ ] Grouping import
+- [ ] Create API for website
+- [ ] Create Contact US Page
 
 ## Ideas
 

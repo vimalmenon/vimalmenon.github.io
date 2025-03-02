@@ -99,7 +99,7 @@ const About: INavigation = {
   title: 'About | Vimal Menon',
 };
 
-export const FooterNavigation = [Home, About, Config, ReleaseNote];
+export const FooterNavigation = [About, Config, ReleaseNote];
 
 export const HeaderNavigation = [Home, Blogs];
 
