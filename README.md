@@ -13,10 +13,10 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [x] Make the Footer Responsive
 - [ ] Set up Google Analytics
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
-- [ ] Make the Footer Responsive
 - [ ] Add framer motion
 - [ ] Create sub navigation for Blogs
 - [ ] Create favicon for Website
