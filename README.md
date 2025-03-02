@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 - [x] Fix the Header Margin
 - [x] Fix Sorting issue on Eslint
 - [x] Close the drawer once navigated
+- [x] Add Dark and White Theme
 - [ ] Add Social media link
 - [ ] Disable the other theme on select
 - [ ] Make Header Mobile Navigation more user friendly
@@ -22,7 +23,6 @@ This is Website for Vimal Menon
 - [ ] Create SubNavigation for Blogs
 - [ ] Need to get ICON for Website
 - [ ] Add Resume for Download from Website
-- [ ] Add Dark and White Theme
 - [ ] Provision to choose color
 - [ ] Make the Page Responsive
 - [ ] Grouping import
