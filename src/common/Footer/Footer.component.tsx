@@ -30,10 +30,16 @@ export const Footer: React.FC = () => {
             Vimal Menon
           </MuiLink>
         </span>
-        <Box sx={{display: "flex", gap: 1}}>
+        <Box sx={{ display: 'flex', gap: 1 }}>
           {SocialMedias.map((media) => {
             return (
-              <MuiLink component={Link} href={media.link} underline="none" key={media.link} target="_blank">
+              <MuiLink
+                component={Link}
+                href={media.link}
+                underline="none"
+                key={media.link}
+                target="_blank"
+              >
                 <media.Icon />
               </MuiLink>
             );
