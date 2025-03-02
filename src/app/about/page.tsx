@@ -15,28 +15,28 @@ const Page: React.FC = () => {
       <div>
         <h2>About Me</h2>
         <div>
-          Hello and welcome! My name is **Vimal Menon**, and I’m thrilled to have you here. I’m
-          currently based in the vibrant city of **Hong Kong**, where I spend my time exploring the
-          fascinating world of technology and sharing my knowledge with others.
+          Hello and welcome! My name is <b>Vimal Menon</b>, and I’m thrilled to have you here. I’m
+          currently based in the vibrant city of <b>Hong Kong</b>, where I spend my time exploring
+          the fascinating world of technology and sharing my knowledge with others.
         </div>
         <h3>My Interests and Expertise</h3>
         <div>
-          I have a deep passion for **Software Engineering** and **Artificial Intelligence (AI)**,
-          two fields that are shaping the future of technology. My expertise lies in **AI**,
-          **Python**, and **JavaScript**, and I love using these tools to solve complex problems and
-          create innovative solutions. Whether it’s building intelligent systems, developing web
-          applications, or diving into the latest advancements in AI, I’m always eager to learn and
-          grow.{' '}
+          I have a deep passion for <b>Software Engineering</b> and{' '}
+          <b>Artificial Intelligence (AI)</b>, two fields that are shaping the future of technology.
+          My expertise lies in <b>AI</b>, <b>Python</b>, and <b>JavaScript</b>, and I love using
+          these tools to solve complex problems and create innovative solutions. Whether it’s
+          building intelligent systems, developing web applications, or diving into the latest
+          advancements in AI, I’m always eager to learn and grow.{' '}
         </div>
         <h3> What I Do</h3>
         <div>
           I’m a content creator who loves sharing my knowledge and experiences with the world.
-          Through my **blogs** and **YouTube videos**, I aim to make complex topics in software
-          engineering and AI more accessible and engaging. My goal is to inspire others to explore
-          these fields and discover the endless possibilities they offer. -
+          Through my <b>blogs</b> and <b>YouTube videos</b>, I aim to make complex topics in
+          software engineering and AI more accessible and engaging. My goal is to inspire others to
+          explore these fields and discover the endless possibilities they offer. -
           <br />
-          **YouTube Channel**: [real_vimal_menon](https://www.youtube.com/real_vimal_menon) Here, I
-          share tutorials, insights, and discussions on topics related to AI, Python, JavaScript,
+          <b>YouTube Channel</b>: [real_vimal_menon](https://www.youtube.com/real_vimal_menon) Here,
+          I share tutorials, insights, and discussions on topics related to AI, Python, JavaScript,
           and more. Whether you’re a beginner or an experienced developer, there’s something for
           everyone!
         </div>
@@ -53,7 +53,6 @@ const Page: React.FC = () => {
           my journey as I continue to explore and share the exciting world of technology.
         </div>
         <div>Thank you for stopping by, and I look forward to connecting with you! </div>
-        <br />
         <br />
         <div>Warm regards,</div>
         <div>
