@@ -26,51 +26,50 @@ export const Footer: React.FC = () => {
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-          <span style={{ fontSize: '0.8rem' }}>
-            Copyright © 2025{' '}
-            <MuiLink
-              component={Link}
-              href="https://vimalmenon.com/"
-              underline="none"
-              sx={{ color: teal[500] }}
-            >
-              Vimal Menon V{version}
-            </MuiLink>
-          </span>
-          <Box sx={{ display: 'flex', gap: 1 }}>
-            {SocialMedias.map((media) => {
+          <Box sx={{ display: 'flex', gap: 2, marginY: 1 }}>
+            {FooterNavigation.map((data) => {
               return (
-                <MuiLink
-                  component={Link}
-                  href={media.link}
-                  underline="none"
-                  key={media.link}
-                  target="_blank"
-                >
-                  <IconButton>
-                    <media.Icon />
-                  </IconButton>
-                </MuiLink>
+                <span style={{ fontSize: '14px' }} key={data.name}>
+                  <MuiLink
+                    component={Link}
+                    href={data.link}
+                    underline="always"
+                    sx={{ color: teal[500], fontWeight: 'bold' }}
+                  >
+                    {data.name}
+                  </MuiLink>
+                </span>
               );
             })}
           </Box>
-        </Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Box component="span" sx={{ fontSize: '1.5rem' }}>
-            Pages
+          <Box sx={{ display: 'flex', gap: 2, marginY: 1 }}>
+            <span style={{ fontSize: '0.8rem' }}>
+              Copyright © 2025{' '}
+              <MuiLink
+                component={Link}
+                href="https://vimalmenon.com/"
+                underline="none"
+                sx={{ color: teal[500] }}
+              >
+                Vimal Menon V{version}
+              </MuiLink>
+            </span>
           </Box>
-          {FooterNavigation.map((data) => {
+        </Box>
+        <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
+          {SocialMedias.map((media) => {
             return (
-              <span style={{ fontSize: '14px' }} key={data.name}>
-                <MuiLink
-                  component={Link}
-                  href={data.link}
-                  underline="none"
-                  sx={{ color: teal[500] }}
-                >
-                  {data.name}
-                </MuiLink>
-              </span>
+              <MuiLink
+                component={Link}
+                href={media.link}
+                underline="none"
+                key={media.link}
+                target="_blank"
+              >
+                <IconButton>
+                  <media.Icon />
+                </IconButton>
+              </MuiLink>
             );
           })}
         </Box>
