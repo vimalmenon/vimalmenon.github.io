@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import MuiLink from '@mui/material/Link';
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
 import { Navigation } from '@data';
@@ -34,18 +35,27 @@ const Page: React.FC = () => {
           Through my <b>blogs</b> and <b>YouTube videos</b>, I aim to make complex topics in
           software engineering and AI more accessible and engaging. My goal is to inspire others to
           explore these fields and discover the endless possibilities they offer. -
-          <br />
-          <b>YouTube Channel</b>: [real_vimal_menon](https://www.youtube.com/real_vimal_menon) Here,
-          I share tutorials, insights, and discussions on topics related to AI, Python, JavaScript,
-          and more. Whether you’re a beginner or an experienced developer, there’s something for
-          everyone!
+          <b>YouTube Channel</b> :{' '}
+          <MuiLink
+            href="https://www.youtube.com/@real_vimal_menon"
+            target="_blank"
+            rel="noreferrer"
+          >
+            real_vimal_menon
+          </MuiLink>{' '}
+          Here, I share tutorials, insights, and discussions on topics related to AI, Python,
+          JavaScript, and more. Whether you’re a beginner or an experienced developer, there’s
+          something for everyone! - **Email**:
+          [realvimalmenon@proton.me](mailto:realvimalmenon@proton.me) Feel free to reach out if you
+          have any questions, collaboration ideas, or just want to connect. I’d love to hear from
+          you!
         </div>
-        - **Email**: [realvimalmenon@proton.me](mailto:realvimalmenon@proton.me) Feel free to reach
-        out if you have any questions, collaboration ideas, or just want to connect. I’d love to
-        hear from you! ## Why I Do It Technology has the power to transform lives, and I believe
-        that sharing knowledge is one of the best ways to contribute to this transformation. By
-        creating content, I hope to empower others to learn, innovate, and make a positive impact in
-        the world of tech.
+        <h3> Why I Do It</h3>
+        <div>
+          Technology has the power to transform lives, and I believe that sharing knowledge is one
+          of the best ways to contribute to this transformation. By creating content, I hope to
+          empower others to learn, innovate, and make a positive impact in the world of tech.
+        </div>
         <h3> Let’s Connect!</h3>
         <div>
           If you’re as passionate about software engineering, AI, or technology in general as I am,
