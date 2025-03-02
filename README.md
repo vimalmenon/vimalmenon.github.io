@@ -16,7 +16,7 @@ This is Website for Vimal Menon
 - [x] Close the drawer once navigated
 - [x] Add Dark and White Theme
 - [x] Add Social media link
-- [ ] Disable the other theme on select
+- [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Make the Footer Responsive
 - [ ] Add framer motion
