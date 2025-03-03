@@ -6,14 +6,13 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.6
+<b>Version</b>: 0.0.7
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Make the Footer Responsive
 - [ ] Better footer Color
 - [ ] Black Mode cant distinguish header and body
 - [ ] Set up Google Analytics
