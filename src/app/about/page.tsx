@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import MuiLink from '@mui/material/Link';
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
+import { CopyToClipboard } from '@component';
 import { Navigation } from '@data';
 
 export const metadata: Metadata = {
@@ -46,9 +47,9 @@ const Page: React.FC = () => {
           Here, I share tutorials, insights, and discussions on topics related to AI, Python,
           JavaScript, and more. Whether you’re a beginner or an experienced developer, there’s
           something for everyone! - <b>Email</b> :
-          [realvimalmenon@proton.me](mailto:realvimalmenon@proton.me) Feel free to reach out if you
-          have any questions, collaboration ideas, or just want to connect. I’d love to hear from
-          you!
+          [realvimalmenon@proton.me](mailto:realvimalmenon@proton.me)
+          <CopyToClipboard /> Feel free to reach out if you have any questions, collaboration ideas,
+          or just want to connect. I’d love to hear from you!
         </div>
         <h3> Why I Do It</h3>
         <div>
