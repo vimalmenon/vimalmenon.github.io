@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import { blueGrey, teal } from '@mui/material/colors';
+import { grey, teal } from '@mui/material/colors';
 import Container from '@mui/material/Container';
 import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
     <Box
       component="footer"
       sx={{
-        background: blueGrey[100],
+        background: grey[100],
         display: 'flex',
       }}
     >
