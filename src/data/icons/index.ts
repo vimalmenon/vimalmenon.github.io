@@ -1,4 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DoneIcon from '@mui/icons-material/Done';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -10,6 +11,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 export const Icons = {
   Check: DoneIcon,
   Close: CloseIcon,
+  Copy: ContentCopyIcon,
   DownloadFile: FileDownloadIcon,
   GitHub: GitHubIcon,
   LinkedIn: LinkedInIcon,

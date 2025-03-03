@@ -24,7 +24,7 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 marginY: 1,
-                minHeight: 'calc(100vh - 180px)',
+                minHeight: 'calc(100vh - 160px)',
               }}
             >
               <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>

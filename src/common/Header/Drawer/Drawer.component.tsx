@@ -2,9 +2,10 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
+import MuiLink from '@mui/material/Link';
 import { Fragment } from 'react';
 import { useAppContext } from '@context';
-import { HeaderNavigation } from '@data';
+import { HeaderNavigation, SocialMedias } from '@data';
 import { Link } from '../Link';
 import { MobileDrawer } from './Drawer.style';
 
@@ -17,6 +18,17 @@ export const Drawer: React.FC = () => {
           {HeaderNavigation.map((nav) => (
             <Link navigation={nav} key={nav.name} />
           ))}
+        </Box>
+        <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-evenly' }}>
+          {SocialMedias.map((media) => {
+            return (
+              <MuiLink href={media.link} underline="none" key={media.link} target="_blank">
+                <IconButton>
+                  <media.Icon />
+                </IconButton>
+              </MuiLink>
+            );
+          })}
         </Box>
       </MobileDrawer>
       <IconButton onClick={toggleDrawer}>
