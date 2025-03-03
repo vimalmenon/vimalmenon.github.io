@@ -1,21 +1,16 @@
 import Box from '@mui/material/Box';
-import { grey, teal } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
 import Container from '@mui/material/Container';
 import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
 import { FooterNavigation } from '@data';
+import { StyledFooter } from './Footer.style';
 import { SocialMedia } from './SocialMedia';
 
 export const Footer: React.FC = () => {
   const version = process.env.npm_package_version;
   return (
-    <Box
-      component="footer"
-      sx={{
-        background: grey[100],
-        display: 'flex',
-      }}
-    >
+    <StyledFooter>
       <Container
         maxWidth="xl"
         sx={{
@@ -58,6 +53,6 @@ export const Footer: React.FC = () => {
         </Box>
         <SocialMedia />
       </Container>
-    </Box>
+    </StyledFooter>
   );
 };
