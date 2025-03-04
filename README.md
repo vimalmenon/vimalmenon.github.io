@@ -6,16 +6,19 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.7
+<b>Version</b>: 0.0.8
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Better footer Color
-- [ ] Black Mode cant distinguish header and body
-- [ ] UI improvement fo about me page
+- [x] Set up Google Analytics
+- [x] Improved About me page
+- [x] Black Mode cant distinguish header and body
+- [x] UI improvement fo about me page
+- [ ] Fix the breadcrumbs navigation
+- [ ] Move all the Style to Style folder
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
@@ -25,7 +28,6 @@ This is Website for Vimal Menon
 - [ ] Grouping import
 - [ ] Create API for website
 - [ ] Create Contact US Page
-- [ ] Set up Google Analytics
 
 ## Ideas
 

@@ -89,7 +89,7 @@ const About: INavigation = {
       name: 'Home',
     },
     {
-      link: '/about/',
+      link: '',
       name: 'About',
     },
   ],
