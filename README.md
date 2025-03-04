@@ -17,7 +17,7 @@ This is Website for Vimal Menon
 - [x] Improved About me page
 - [x] Black Mode cant distinguish header and body
 - [x] UI improvement fo about me page
-- [x] Fix the breadcrumbs navigation
+- [ ] Fix the breadcrumbs navigation
 - [ ] Move all the Style to Style folder
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
