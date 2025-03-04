@@ -3,6 +3,7 @@ import Container from '@mui/material/Container';
 import type { Metadata } from 'next';
 import { Footer, Header, ThemeWrapper } from '@common';
 import { AppContext } from '@context';
+import { StyledBody } from '@style';
 import { IReactChildren } from '@types';
 import { Google } from './Google';
 
@@ -20,7 +21,7 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
           <AppContext>
             <ThemeWrapper>
               <Header />
-              <Box sx={{ display: 'flex' }}>
+              <StyledBody>
                 <Container
                   maxWidth="xl"
                   sx={{
@@ -32,7 +33,7 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
                 >
                   <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
                 </Container>
-              </Box>
+              </StyledBody>
 
               <Footer />
             </ThemeWrapper>

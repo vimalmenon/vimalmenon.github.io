@@ -6,7 +6,7 @@ import { IBreadcrumbs } from './Breadcrumbs';
 
 export const Breadcrumbs: React.FC<IBreadcrumbs> = ({ navigation }) => {
   return (
-    <MuiBreadcrumbs aria-label="breadcrumb">
+    <MuiBreadcrumbs aria-label="breadcrumb" sx={{ marginY: 2 }}>
       {navigation.breadcrumbs.map((breadcrumb) => {
         return (
           <MuiLink
