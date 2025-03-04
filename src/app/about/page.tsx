@@ -1,4 +1,3 @@
-import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import MuiLink from '@mui/material/Link';
 import type { Metadata } from 'next';
@@ -17,9 +16,9 @@ const Page: React.FC = () => {
       <Breadcrumbs navigation={Navigation.About} />
       <div>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography sx={{ color: 'primary.main', textDecoration: 'underline' }}>
+          <Box sx={{ color: 'primary.main', textDecoration: 'underline' }}>
             <h2>About Me</h2>
-          </Typography>
+          </Box>
 
           <Box sx={{ alignItems: 'center', display: 'flex' }}>
             <b>Updated Date</b> : 25 February 2025
