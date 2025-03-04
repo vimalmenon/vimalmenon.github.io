@@ -15,8 +15,10 @@ This is Website for Vimal Menon
 
 - [x] Set up Google Analytics
 - [x] Improved About me page
-- [ ] Black Mode cant distinguish header and body
-- [ ] UI improvement fo about me page
+- [x] Black Mode cant distinguish header and body
+- [x] UI improvement fo about me page
+- [ ] Fix the breadcrumbs navigation
+- [ ] Move all the Style to Style folder
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
