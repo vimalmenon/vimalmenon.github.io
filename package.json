@@ -1,6 +1,6 @@
 {
   "name": "vimalmenon.com",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -21,10 +21,11 @@
     "@mui/icons-material": "^6.4.6",
     "@mui/material": "^6.4.6",
     "@mui/material-nextjs": "^6.4.3",
-    "framer-motion": "^12.4.7",
-    "next": "15.2.0",
+    "framer-motion": "^12.4.10",
+    "next": "15.2.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-gtm-module": "^2.0.11"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -32,11 +33,12 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.13.8",
+    "@types/node": "^22.13.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-gtm-module": "^2.0.4",
     "eslint": "^9",
-    "eslint-config-next": "^15.2.0",
+    "eslint-config-next": "^15.2.1",
     "eslint-config-prettier": "^10.0.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.3",
@@ -49,6 +51,6 @@
     "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
     "typescript": "^5",
-    "typescript-eslint": "^8.25.0"
+    "typescript-eslint": "^8.26.0"
   }
 }

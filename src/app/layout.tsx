@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Footer, Header, ThemeWrapper } from '@common';
 import { AppContext } from '@context';
 import { IReactChildren } from '@types';
+import { Google } from './Google';
 
 export const metadata: Metadata = {
   description: 'This is Vimal Menon personal website',
@@ -15,23 +16,28 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
     <html lang="en">
       <meta name="viewport" content="initial-scale=1, width=device-width" />
       <body>
-        <AppContext>
-          <ThemeWrapper>
-            <Header />
-            <Container
-              maxWidth="xl"
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                marginY: 1,
-                minHeight: 'calc(100vh - 160px)',
-              }}
-            >
-              <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
-            </Container>
-            <Footer />
-          </ThemeWrapper>
-        </AppContext>
+        <Google>
+          <AppContext>
+            <ThemeWrapper>
+              <Header />
+              <Box sx={{ display: 'flex' }}>
+                <Container
+                  maxWidth="xl"
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    marginY: 1,
+                    minHeight: 'calc(100vh - 160px)',
+                  }}
+                >
+                  <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
+                </Container>
+              </Box>
+
+              <Footer />
+            </ThemeWrapper>
+          </AppContext>
+        </Google>
       </body>
     </html>
   );

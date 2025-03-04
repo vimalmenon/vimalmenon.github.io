@@ -12,7 +12,13 @@ const Page: React.FC = () => {
   return (
     <Box component="main">
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
-      <div>Release Notes</div>
+      <div>
+        <div>0.0.7</div>
+        <ul>
+          <li>Improved Footer UI</li>
+          {/* <li></li> */}
+        </ul>
+      </div>
       <div>
         <div>0.0.5</div>
         <ul>
