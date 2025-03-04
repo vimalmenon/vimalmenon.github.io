@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Set up Google Analytics
+- [x] Improved About me page
 - [ ] Black Mode cant distinguish header and body
 - [ ] UI improvement fo about me page
 - [ ] Improve the theme choosing UI

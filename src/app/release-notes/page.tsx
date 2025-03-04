@@ -14,6 +14,9 @@ const Page: React.FC = () => {
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
         <div>0.0.8</div>
+        <ul>
+          <li>Improved About Me Page</li>
+        </ul>
       </div>
       <div>
         <div>0.0.7</div>
