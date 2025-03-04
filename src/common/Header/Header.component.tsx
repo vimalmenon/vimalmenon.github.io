@@ -1,18 +1,17 @@
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { HeaderNavigation } from '@data';
+import { StyledAppBar, StyledDesktopHeader, StyledMobileHeader } from '@style';
 import { Drawer } from './Drawer';
-import { DesktopHeader, MobileHeader } from './Header.style';
 import { Link } from './Link';
 import { Logo } from './Logo';
 import { ToggleTheme } from './ToggleTheme';
 
 export const Header: React.FC = () => {
   return (
-    <AppBar position="static" sx={{ background: 'transparent' }}>
+    <StyledAppBar position="static">
       <Container maxWidth="xl">
-        <DesktopHeader variant="dense">
+        <StyledDesktopHeader variant="dense">
           <Logo />
           <Box sx={{ display: 'flex', gap: 1 }}>
             <Box
@@ -30,15 +29,15 @@ export const Header: React.FC = () => {
             </Box>
             <ToggleTheme />
           </Box>
-        </DesktopHeader>
-        <MobileHeader variant="dense">
+        </StyledDesktopHeader>
+        <StyledMobileHeader variant="dense">
           <Logo />
           <Box sx={{ display: 'flex' }}>
             <ToggleTheme />
             <Drawer />
           </Box>
-        </MobileHeader>
+        </StyledMobileHeader>
       </Container>
-    </AppBar>
+    </StyledAppBar>
   );
 };
