@@ -13,10 +13,13 @@ const Page: React.FC = () => {
     <Box component="main">
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
+        <div>0.0.8</div>
+      </div>
+      <div>
         <div>0.0.7</div>
         <ul>
           <li>Improved Footer UI</li>
-          {/* <li></li> */}
+          <li>Set up Google Analytics</li>
         </ul>
       </div>
       <div>
