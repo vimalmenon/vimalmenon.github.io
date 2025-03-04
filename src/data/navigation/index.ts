@@ -125,7 +125,7 @@ export const SocialMedias = [
   },
   {
     Icon: Icons.LinkedIn,
-    link: 'https://www.linkedin.com/in/vimal-menon-72ab931a/',
+    link: 'https://www.linkedin.com/in/real-vimal-menon/',
     name: 'LinkedIn',
   },
 ];

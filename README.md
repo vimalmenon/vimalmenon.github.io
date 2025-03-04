@@ -13,9 +13,9 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Better footer Color
+- [x] Better footer Color
 - [ ] Black Mode cant distinguish header and body
-- [ ] Set up Google Analytics
+- [ ] UI improvement fo about me page
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
@@ -25,6 +25,7 @@ This is Website for Vimal Menon
 - [ ] Grouping import
 - [ ] Create API for website
 - [ ] Create Contact US Page
+- [ ] Set up Google Analytics
 
 ## Ideas
 
