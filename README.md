@@ -14,7 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Fix the breadcrumbs navigation
-- [ ] Fix the Mobile Header navigation
+- [x] Fix the Mobile Header navigation
 - [ ] Move all the Style to Style folder
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
