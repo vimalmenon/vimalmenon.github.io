@@ -15,6 +15,7 @@ This is Website for Vimal Menon
 
 - [x] Fix the breadcrumbs navigation
 - [x] Fix the Mobile Header navigation
+- [ ] Create release with tag
 - [ ] Move all the Style to Style folder
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
