@@ -30,6 +30,8 @@ export const StyledDesktopHeader = styled(Toolbar)(({ theme }) => {
 export const StyledAppBar = styled(AppBar)(() => {
   return {
     background: 'transparent',
+    display: 'flex',
+    flex: 0,
     position: 'relative',
     zIndex: 3000,
   };

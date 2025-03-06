@@ -8,6 +8,7 @@ export const StyledFooter = styled('footer')(({ theme }) => {
   return {
     background: theme.palette.mode === 'dark' ? theme.palette.background.paper : grey[200],
     display: 'flex',
+    flex: 0,
   };
 });
 

@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
 import { Footer, Header, ThemeWrapper } from '@common';
 import { AppContext } from '@context';
-import { StyledBody, StyledBodyContainer } from '@style';
+import { StyledBox, StyledMain, StyledMainContainer } from '@style';
 import { IReactChildren } from '@types';
 import { Google } from './Google';
 
@@ -15,18 +15,19 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
   return (
     <html lang="en">
       <meta name="viewport" content="initial-scale=1, width=device-width" />
-      <body>
+      <body style={{ height: '100vh' }}>
         <Google>
           <AppContext>
             <ThemeWrapper>
-              <Header />
-              <StyledBody>
-                <StyledBodyContainer maxWidth="xl">
-                  <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
-                </StyledBodyContainer>
-              </StyledBody>
-
-              <Footer />
+              <StyledBox>
+                <Header />
+                <StyledMain>
+                  <StyledMainContainer maxWidth="xl">
+                    <Box sx={{ display: 'flex' }}>{children}</Box>
+                  </StyledMainContainer>
+                </StyledMain>
+                <Footer />
+              </StyledBox>
             </ThemeWrapper>
           </AppContext>
         </Google>
