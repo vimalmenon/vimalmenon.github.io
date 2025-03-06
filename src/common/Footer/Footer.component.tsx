@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
 import { FooterNavigation } from '@data';
-import { StyledFooter } from './Footer.style';
+import { StyledFooter } from '@style';
 import { SocialMedia } from './SocialMedia';
 
 export const Footer: React.FC = () => {
