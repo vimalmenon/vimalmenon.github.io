@@ -99,12 +99,29 @@ const About: INavigation = {
   title: 'About | Vimal Menon',
 };
 
+const Admin: INavigation = {
+  breadcrumbs: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '',
+      name: 'Admin',
+    },
+  ],
+  description: 'This is Vimal Menon personal website',
+  link: '/admin/',
+  name: 'Admin',
+  title: 'Admin | Vimal Menon',
+};
 export const FooterNavigation = [About, ReleaseNote];
 
 export const HeaderNavigation = [Home, Blogs];
 
 export const Navigation = {
   About,
+  Admin,
   Blogs,
   Config,
   Home,
