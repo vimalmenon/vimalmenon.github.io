@@ -15,9 +15,9 @@ This is Website for Vimal Menon
 
 - [x] Fix the breadcrumbs navigation
 - [x] Fix the Mobile Header navigation
-- [ ] Make the Body Height Dynamic
+- [x] Make the Body Height Dynamic
+- [x] Move all the Style to Style folder
 - [ ] Create release with tag
-- [ ] Move all the Style to Style folder
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
