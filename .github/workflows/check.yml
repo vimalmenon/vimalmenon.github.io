@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  build-and-deploy:
+  quality-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

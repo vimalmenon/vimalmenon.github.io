@@ -13,7 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Create release with tag
+- [x] Create release with tag
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
