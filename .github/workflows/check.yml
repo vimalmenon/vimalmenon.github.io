@@ -5,6 +5,9 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  tag: '0.0.10'
+
 
 permissions:
   contents: write
@@ -33,7 +36,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: v${{ env.tag }}
+          release_name: Release v${{ env.tag }}
           draft: false
           prerelease: false
