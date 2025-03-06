@@ -8,6 +8,12 @@ on:
     branches: [ main ]
 
 
+permissions:
+  contents: write
+  pull-requests: write
+  repository-projects: write
+
+
 jobs:
   # Single deploy job since we're just deploying
   build-and-deploy:
