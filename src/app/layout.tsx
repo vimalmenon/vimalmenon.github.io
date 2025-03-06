@@ -1,9 +1,8 @@
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import type { Metadata } from 'next';
 import { Footer, Header, ThemeWrapper } from '@common';
 import { AppContext } from '@context';
-import { StyledBody } from '@style';
+import { StyledBody, StyledBodyContainer } from '@style';
 import { IReactChildren } from '@types';
 import { Google } from './Google';
 
@@ -22,17 +21,9 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
             <ThemeWrapper>
               <Header />
               <StyledBody>
-                <Container
-                  maxWidth="xl"
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    marginY: 1,
-                    minHeight: 'calc(100vh - 160px)',
-                  }}
-                >
+                <StyledBodyContainer maxWidth="xl">
                   <Box sx={{ display: 'flex', flex: '100%' }}>{children}</Box>
-                </Container>
+                </StyledBodyContainer>
               </StyledBody>
 
               <Footer />
