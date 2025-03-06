@@ -6,17 +6,13 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.9
+<b>Version</b>: 0.0.10
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Fix the breadcrumbs navigation
-- [x] Fix the Mobile Header navigation
-- [x] Make the Body Height Dynamic
-- [x] Move all the Style to Style folder
 - [ ] Create release with tag
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
