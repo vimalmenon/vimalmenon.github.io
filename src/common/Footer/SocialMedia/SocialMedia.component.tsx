@@ -3,11 +3,11 @@ import MuiLink from '@mui/material/Link';
 import Link from 'next/link';
 import React from 'react';
 import { SocialMedias } from '@data';
-import { SocialMediaBox } from './SocialMedia.style';
+import { StyledSocialMedia } from '@style';
 
 export const SocialMedia: React.FC = () => {
   return (
-    <SocialMediaBox>
+    <StyledSocialMedia>
       {SocialMedias.map((media) => {
         return (
           <MuiLink
@@ -23,6 +23,6 @@ export const SocialMedia: React.FC = () => {
           </MuiLink>
         );
       })}
-    </SocialMediaBox>
+    </StyledSocialMedia>
   );
 };

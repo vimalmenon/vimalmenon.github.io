@@ -6,8 +6,8 @@ import MuiLink from '@mui/material/Link';
 import { Fragment } from 'react';
 import { useAppContext } from '@context';
 import { HeaderNavigation, SocialMedias } from '@data';
+import { MobileDrawer } from '@style';
 import { Link } from '../Link';
-import { MobileDrawer } from './Drawer.style';
 
 export const Drawer: React.FC = () => {
   const { showDrawer, toggleDrawer } = useAppContext();

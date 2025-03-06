@@ -1,18 +1,25 @@
-name: Build and deploy
+name: Build, deploy and Release
+
+env:
+  tag: '0.0.10'
+
 
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
 
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
+  pull-requests: write
+  repository-projects: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -45,3 +52,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: v${{ env.tag }}
+          release_name: Release v${{ env.tag }}
+          draft: false
+          prerelease: false
