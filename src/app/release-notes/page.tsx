@@ -16,6 +16,7 @@ const Page: React.FC = () => {
         <div>0.0.10</div>
         <ul>
           <li>Create tag & release</li>
+          <li>Improve UI</li>
         </ul>
       </div>
       <div>
@@ -25,7 +26,6 @@ const Page: React.FC = () => {
           <li>Partial Google Analytics</li>
           <li>Set up CI & CD</li>
           <li>Release Notes</li>
-          <li>Show Version Number</li>
           <li>Static Website</li>
           <li>GitHub Action</li>
           <li>Added Eslint</li>
