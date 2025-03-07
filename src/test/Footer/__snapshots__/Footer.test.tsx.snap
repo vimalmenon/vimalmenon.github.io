@@ -57,7 +57,9 @@ exports[`Footer component Snapshot Testing 1`] = `
         class="MuiBox-root css-cxzwvu"
       >
         <a
+          aria-label="YouTube"
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-18rqtra-MuiTypography-root-MuiLink-root"
+          data-mui-internal-clone-element="true"
           href="https://www.youtube.com/@real_vimal_menon"
           target="_blank"
         >
@@ -80,7 +82,9 @@ exports[`Footer component Snapshot Testing 1`] = `
           </button>
         </a>
         <a
+          aria-label="GitHub"
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-18rqtra-MuiTypography-root-MuiLink-root"
+          data-mui-internal-clone-element="true"
           href="https://github.com/vimalmenon"
           target="_blank"
         >
@@ -103,7 +107,9 @@ exports[`Footer component Snapshot Testing 1`] = `
           </button>
         </a>
         <a
+          aria-label="LinkedIn"
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-18rqtra-MuiTypography-root-MuiLink-root"
+          data-mui-internal-clone-element="true"
           href="https://www.linkedin.com/in/real-vimal-menon/"
           target="_blank"
         >
@@ -126,7 +132,9 @@ exports[`Footer component Snapshot Testing 1`] = `
           </button>
         </a>
         <a
+          aria-label="Resume"
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-18rqtra-MuiTypography-root-MuiLink-root"
+          data-mui-internal-clone-element="true"
           href="https://vimalmenon.com/vimal-menon.pdf"
           target="_blank"
         >
