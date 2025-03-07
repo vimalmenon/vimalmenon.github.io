@@ -163,4 +163,9 @@ export const SocialMedias = [
     link: 'https://www.linkedin.com/in/real-vimal-menon/',
     name: 'LinkedIn',
   },
+  {
+    Icon: Icons.DownloadFile,
+    link: 'https://vimalmenon.com/vimal-menon.pdf',
+    name: 'Resume',
+  },
 ];

@@ -125,6 +125,29 @@ exports[`Footer component Snapshot Testing 1`] = `
             </svg>
           </button>
         </a>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-18rqtra-MuiTypography-root-MuiLink-root"
+          href="https://vimalmenon.com/vimal-menon.pdf"
+          target="_blank"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-53g0n7-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="FileDownloadIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 9h-4V3H9v6H5l7 7zM5 18v2h14v-2z"
+              />
+            </svg>
+          </button>
+        </a>
       </div>
     </div>
   </footer>
