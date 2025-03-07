@@ -5,13 +5,13 @@ import { Navigation } from '@data';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Admin | Vimal Menon',
+  title: 'Contact | Vimal Menon',
 };
 
 const Page: React.FC = () => {
   return (
     <Box component="main">
-      <Breadcrumbs navigation={Navigation.Admin} />
+      <Breadcrumbs navigation={Navigation.Contact} />
       <div>This is Contact page</div>
     </Box>
   );
