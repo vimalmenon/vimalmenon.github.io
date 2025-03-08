@@ -23,10 +23,15 @@ const Page: React.FC = () => {
         <ul>
           <li>Create tag & release</li>
           <li>Download Resume</li>
-          <li>[Pages] Release Notes | About</li>
+          <li>
+            [Pages]
+            <ul>
+              <li>Release Notes</li>
+              <li>About</li>
+            </ul>
+          </li>
           <li>Partial Google Analytics</li>
           <li>Set up CI & CD</li>
-          <li>Release Notes</li>
           <li>Static Website</li>
           <li>GitHub Action</li>
           <li>Added Eslint</li>
