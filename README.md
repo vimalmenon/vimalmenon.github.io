@@ -28,3 +28,9 @@ This is Website for Vimal Menon
 
 - Show Team Members
 - Show Link to Social Media
+
+## Command
+Clean up Remote branch
+```sh
+git remote update origin --prune
+```
