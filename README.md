@@ -13,6 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [x] Setup env
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion

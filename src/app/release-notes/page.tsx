@@ -15,7 +15,7 @@ const Page: React.FC = () => {
       <div>
         <div>0.0.11</div>
         <ul>
-          <li></li>
+          <li>Setup env</li>
         </ul>
       </div>
       <div>
