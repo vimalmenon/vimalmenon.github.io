@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import { Header } from '@common';
+import { Footer } from '@common';
 
-describe('Header component', () => {
+describe('Footer component', () => {
   it('Snapshot Testing', () => {
-    const { container } = render(<Header />);
+    const { container } = render(<Footer />);
     expect(container).toMatchSnapshot();
   });
 });

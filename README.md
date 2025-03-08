@@ -13,13 +13,14 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Create release with tag
+- [x] Create release with tag
+- [x] Tooltip what the icon is about
+- [x] Add Resume for Download from Website
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
 - [ ] Create sub navigation for Blogs
 - [ ] Create favicon for Website
-- [ ] Add Resume for Download from Website
 - [ ] Grouping import
 - [ ] Create API for website
 - [ ] Create Contact US Page
