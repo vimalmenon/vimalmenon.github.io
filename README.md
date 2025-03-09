@@ -15,6 +15,10 @@ This is Website for Vimal Menon
 
 - [x] Setup env
 - [x] Coming Soon Page
+- [x] Google moved to Component
+- [ ] Move theme choose to admin page
+- [ ] Remove Config Page
+- [ ] Show Admin only when local
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
