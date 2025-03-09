@@ -16,6 +16,7 @@ This is Website for Vimal Menon
 - [x] Setup env
 - [x] Coming Soon Page
 - [x] Google moved to Component
+- [ ] Get Tag Number automatically
 - [ ] Move theme choose to admin page
 - [ ] Remove Config Page
 - [ ] Show Admin only when local
