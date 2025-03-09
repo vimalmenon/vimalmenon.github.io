@@ -1,10 +1,9 @@
 import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
-import { Footer, Header, ThemeWrapper } from '@common';
+import { Footer, Google, Header, ThemeWrapper } from '@common';
 import { AppContext } from '@context';
 import { StyledBox, StyledMain, StyledMainContainer } from '@style';
 import { IReactChildren } from '@types';
-import { Google } from './Google';
 
 export const metadata: Metadata = {
   description: 'This is Vimal Menon personal website',

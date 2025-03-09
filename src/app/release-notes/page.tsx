@@ -13,19 +13,27 @@ const Page: React.FC = () => {
     <Box component="main">
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
-        <div>0.0.10</div>
+        <div>0.0.11</div>
         <ul>
-          <li>Create tag & release</li>
-          <li>Improve UI</li>
+          <li>Setup env</li>
+          <li>Some Refactoring</li>
+          <li>Access Admin only in local</li>
         </ul>
       </div>
       <div>
-        <div>[0.0.9 - 0.0.0]</div>
+        <div>[0.0.10 - 0.0.0]</div>
         <ul>
-          <li>[Pages] Release Notes | About</li>
+          <li>Create tag & release</li>
+          <li>Download Resume</li>
+          <li>
+            [Pages]
+            <ul>
+              <li>Release Notes</li>
+              <li>About</li>
+            </ul>
+          </li>
           <li>Partial Google Analytics</li>
           <li>Set up CI & CD</li>
-          <li>Release Notes</li>
           <li>Static Website</li>
           <li>GitHub Action</li>
           <li>Added Eslint</li>

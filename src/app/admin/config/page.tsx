@@ -1,19 +1,19 @@
 import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
-import { ComingSoon } from '@component';
 import { Navigation } from '@data';
+import { AdminConfig } from '@page';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Blogs | Vimal Menon',
+  title: 'Config | Admin | Vimal Menon',
 };
 
 const Page: React.FC = () => {
   return (
     <Box component="main">
-      <Breadcrumbs navigation={Navigation.Blogs} />
-      <ComingSoon page="Blogs Page" />
+      <Breadcrumbs navigation={Navigation.Admin} />
+      <AdminConfig />
     </Box>
   );
 };

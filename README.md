@@ -6,16 +6,20 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.10
+<b>Version</b>: 0.0.11
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Create release with tag
-- [x] Tooltip what the icon is about
-- [x] Add Resume for Download from Website
+- [x] Setup env
+- [x] Coming Soon Page
+- [x] Google moved to Component
+- [ ] Get Tag Number automatically
+- [ ] Move theme choose to admin page
+- [ ] Remove Config Page
+- [ ] Show Admin only when local
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
@@ -30,3 +34,9 @@ This is Website for Vimal Menon
 
 - Show Team Members
 - Show Link to Social Media
+
+## Command
+Clean up Remote branch
+```sh
+git remote update origin --prune
+```
