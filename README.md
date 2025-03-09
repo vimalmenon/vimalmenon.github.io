@@ -14,7 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Setup env
-- [ ] Coming Soon Page
+- [x] Coming Soon Page
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
 - [ ] Add framer motion
