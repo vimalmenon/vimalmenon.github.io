@@ -2,8 +2,8 @@ name: Build, deploy and Release
 
 env:
   tag: '0.0.12'
-  ENV: secrets.ENV
-  TEST: secrets.TEST
+  ENV: ${{ secrets.ENV }}
+  TEST: ${{ secrets.TEST }}
 
 
 on:
@@ -47,8 +47,8 @@ jobs:
           npm ci
           npm run build
         env:
-          ENV: env.ENV
-          TEST: env.TEST
+          ENV: ${{ env.ENV }}
+          TEST: ${{ env.TEST }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
