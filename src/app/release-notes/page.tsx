@@ -16,6 +16,8 @@ const Page: React.FC = () => {
         <div>0.0.11</div>
         <ul>
           <li>Setup env</li>
+          <li>Some Refactoring</li>
+          <li>Access Admin only in local</li>
         </ul>
       </div>
       <div>

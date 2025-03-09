@@ -1,5 +1,8 @@
 import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
+import { Fragment } from 'react';
+import { ComingSoon } from '@component';
+import { env } from '@data';
 import { IReactChildren } from '@types';
 
 export const metadata: Metadata = {
@@ -7,13 +10,12 @@ export const metadata: Metadata = {
   title: 'Admin | Vimal Menon',
 };
 
-const RootLayout: React.FC<IReactChildren> = ({ children }) => {
+const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
   return (
     <Box>
-      This is Admin Page
-      {children}
+      {env.ENV === 'local' ? <Fragment>{children}</Fragment> : <ComingSoon page="Admin Page" />}
     </Box>
   );
 };
 
-export default RootLayout;
+export default AdminLayout;
