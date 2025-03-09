@@ -2,12 +2,15 @@ name: Build, deploy and Release
 
 env:
   tag: '0.0.11'
+  ENV: secrets.ENV
 
 
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+
+
 
 
   # Allows you to run this workflow manually from the Actions tab
@@ -42,6 +45,8 @@ jobs:
         run: |
           npm ci
           npm run build
+        env:
+          ENV: env.ENV
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
