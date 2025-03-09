@@ -3,6 +3,7 @@ name: Build, deploy and Release
 env:
   tag: '0.0.11'
   ENV: secrets.ENV
+  TEST: secrets.TEST
 
 
 on:
@@ -47,6 +48,7 @@ jobs:
           npm run build
         env:
           ENV: env.ENV
+          TEST: env.TEST
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
