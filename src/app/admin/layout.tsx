@@ -1,10 +1,8 @@
 import Box from '@mui/material/Box';
-import { teal } from '@mui/material/colors';
-import MuiLink from '@mui/material/Link';
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { AdminNavigation as Navigation } from '@common';
 import { ComingSoon } from '@component';
-import { AdminNavigation, env } from '@data';
+import { env } from '@data';
 import { IReactChildren } from '@types';
 
 export const metadata: Metadata = {
@@ -17,21 +15,7 @@ const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
     <Box>
       {env.ENV === 'local' ? (
         <Box sx={{ display: 'flex', gap: 2 }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', marginY: 2 }}>
-            {AdminNavigation.map((data) => {
-              return (
-                <MuiLink
-                  component={Link}
-                  href={data.link}
-                  underline="always"
-                  sx={{ color: teal[500], fontWeight: 'bold' }}
-                  key={data.name}
-                >
-                  {data.name}
-                </MuiLink>
-              );
-            })}
-          </Box>
+          <Navigation />
           {children}
         </Box>
       ) : (
