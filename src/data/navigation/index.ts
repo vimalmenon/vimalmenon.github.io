@@ -134,7 +134,9 @@ const Contact: INavigation = {
 };
 export const FooterNavigation = [About, ReleaseNote];
 
-export const HeaderNavigation = [Home, Blogs];
+export const HeaderNavigation = [Home, Blogs, Admin];
+
+export const AdminNavigation = [Admin];
 
 export const Navigation = {
   About,
