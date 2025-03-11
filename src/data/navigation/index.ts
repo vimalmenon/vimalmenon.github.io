@@ -65,23 +65,6 @@ const Blogs: INavigation = {
   title: 'Blogs | Vimal Menon',
 };
 
-const Config: INavigation = {
-  breadcrumbs: [
-    {
-      link: '/',
-      name: 'Home',
-    },
-    {
-      link: '/config/',
-      name: 'Config',
-    },
-  ],
-  description: 'This is Vimal Menon personal website',
-  link: '/config/',
-  name: 'Config',
-  title: 'Config | Vimal Menon',
-};
-
 const About: INavigation = {
   breadcrumbs: [
     {
@@ -132,15 +115,39 @@ const Contact: INavigation = {
   name: 'Contact',
   title: 'contact | Vimal Menon',
 };
+
+const AdminConfig: INavigation = {
+  breadcrumbs: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '/admin/',
+      name: 'Admin',
+    },
+    {
+      link: '/admin/config/',
+      name: 'Config',
+    },
+  ],
+  description: 'This is Vimal Menon personal website',
+  link: '/admin/config/',
+  name: 'Config',
+  title: 'Config | Admin | Vimal Menon',
+};
+
 export const FooterNavigation = [About, ReleaseNote];
 
-export const HeaderNavigation = [Home, Blogs];
+export const HeaderNavigation = [Home, Blogs, Admin];
+
+export const AdminNavigation = [AdminConfig];
 
 export const Navigation = {
   About,
   Admin,
+  AdminConfig,
   Blogs,
-  Config,
   Contact,
   Home,
   NotFound,

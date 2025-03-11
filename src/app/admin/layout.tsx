@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
-import { Fragment } from 'react';
+import { AdminNavigation as Navigation } from '@common';
 import { ComingSoon } from '@component';
 import { env } from '@data';
 import { IReactChildren } from '@types';
@@ -13,7 +13,14 @@ export const metadata: Metadata = {
 const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
   return (
     <Box>
-      {env.ENV === 'local' ? <Fragment>{children}</Fragment> : <ComingSoon page="Admin Page" />}
+      {env.ENV === 'local' ? (
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Navigation />
+          {children}
+        </Box>
+      ) : (
+        <ComingSoon page="Admin Page" />
+      )}
     </Box>
   );
 };
