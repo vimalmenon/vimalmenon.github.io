@@ -1,11 +1,11 @@
-import Box from '@mui/material/Box';
 import { Home } from '@page';
+import { StyledPage } from '@style';
 
 const Page: React.FC = () => {
   return (
-    <Box component="main">
+    <StyledPage>
       <Home />
-    </Box>
+    </StyledPage>
   );
 };
 export default Page;

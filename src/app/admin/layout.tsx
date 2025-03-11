@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { AdminNavigation as Navigation } from '@common';
 import { ComingSoon } from '@component';
 import { env } from '@data';
+import { StyledPage } from '@style';
 import { IReactChildren } from '@types';
 
 export const metadata: Metadata = {
@@ -19,7 +20,9 @@ const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
           {children}
         </Box>
       ) : (
-        <ComingSoon page="Admin Page" />
+        <StyledPage>
+          <ComingSoon page="Admin Page" />
+        </StyledPage>
       )}
     </Box>
   );
