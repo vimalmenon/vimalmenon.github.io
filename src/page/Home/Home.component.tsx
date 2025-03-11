@@ -1,5 +1,11 @@
 import Box from '@mui/material/Box';
+import { OurTeam } from './OurTeam';
 
 export const Home: React.FC = () => {
-  return <Box>This is Home Pag</Box>;
+  return (
+    <Box>
+      <Box>This is Home Page</Box>
+      <OurTeam />
+    </Box>
+  );
 };
