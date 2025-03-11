@@ -6,16 +6,13 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.12
+<b>Version</b>: 0.0.13
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Move theme choose to admin page
-- [x] Remove Config Page
-- [x] Show Admin only when local
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
