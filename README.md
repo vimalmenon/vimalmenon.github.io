@@ -26,6 +26,7 @@ This is Website for Vimal Menon
 - [ ] Create API for website
 - [ ] Create Contact US Page
 - [ ] Create Admin Page
+- [ ] Add Sitemap.xml
 
 ## Ideas
 

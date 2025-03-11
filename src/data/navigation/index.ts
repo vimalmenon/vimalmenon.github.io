@@ -65,23 +65,6 @@ const Blogs: INavigation = {
   title: 'Blogs | Vimal Menon',
 };
 
-const Config: INavigation = {
-  breadcrumbs: [
-    {
-      link: '/',
-      name: 'Home',
-    },
-    {
-      link: '/config/',
-      name: 'Config',
-    },
-  ],
-  description: 'This is Vimal Menon personal website',
-  link: '/config/',
-  name: 'Config',
-  title: 'Config | Vimal Menon',
-};
-
 const About: INavigation = {
   breadcrumbs: [
     {
@@ -165,7 +148,6 @@ export const Navigation = {
   Admin,
   AdminConfig,
   Blogs,
-  Config,
   Contact,
   Home,
   NotFound,
