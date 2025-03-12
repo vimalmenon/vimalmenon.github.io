@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const Page: React.FC = () => {
   return (
     <StyledMain>
-      <Breadcrumbs navigation={Navigation.Admin} />
+      <Breadcrumbs navigation={Navigation.AdminLinks} />
       <Admin />
     </StyledMain>
   );

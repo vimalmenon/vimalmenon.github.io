@@ -127,7 +127,7 @@ const AdminConfig: INavigation = {
       name: 'Admin',
     },
     {
-      link: '/admin/config/',
+      link: '',
       name: 'Config',
     },
   ],
@@ -137,16 +137,38 @@ const AdminConfig: INavigation = {
   title: 'Config | Admin | Vimal Menon',
 };
 
+const AdminLinks: INavigation = {
+  breadcrumbs: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '/admin/',
+      name: 'Admin',
+    },
+    {
+      link: '',
+      name: 'Links',
+    },
+  ],
+  description: 'This is Vimal Menon personal website',
+  link: '/admin/links/',
+  name: 'Links',
+  title: 'Links | Admin | Vimal Menon',
+};
+
 export const FooterNavigation = [About, ReleaseNote];
 
 export const HeaderNavigation = [Home, Blogs, Admin];
 
-export const AdminNavigation = [AdminConfig];
+export const AdminNavigation = [AdminConfig, AdminLinks];
 
 export const Navigation = {
   About,
   Admin,
   AdminConfig,
+  AdminLinks,
   Blogs,
   Contact,
   Home,
