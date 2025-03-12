@@ -6,7 +6,7 @@ import { StyledMain } from '@style';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Admin | Vimal Menon',
+  title: 'Links | Admin | Vimal Menon',
 };
 
 const Page: React.FC = () => {
