@@ -6,18 +6,13 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.13
+<b>Version</b>: 0.0.14
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Remove Admin navigation if not applicable
-- [x] Create Admin Page
-- [x] use menu item for admin navigation
-- [x] [Fix] Issue with Admin Navigation
-- [x] use menu item for mobile navigation
 - [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI
