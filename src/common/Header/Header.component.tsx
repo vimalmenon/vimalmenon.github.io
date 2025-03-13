@@ -2,9 +2,9 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { HeaderNavigation } from '@data';
 import { StyledAppBar, StyledDesktopHeader, StyledMobileHeader } from '@style';
-import { Drawer } from './Drawer';
 import { Link } from './Link';
 import { Logo } from './Logo';
+import { MobileDrawer } from './MobileDrawer';
 import { ToggleTheme } from './ToggleTheme';
 
 export const Header: React.FC = () => {
@@ -34,7 +34,7 @@ export const Header: React.FC = () => {
           <Logo />
           <Box sx={{ display: 'flex' }}>
             <ToggleTheme />
-            <Drawer />
+            <MobileDrawer />
           </Box>
         </StyledMobileHeader>
       </Container>

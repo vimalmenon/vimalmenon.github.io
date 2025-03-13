@@ -1,8 +1,8 @@
-import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
 import { Navigation } from '@data';
 import { AdminConfig } from '@page';
+import { StyledPage } from '@style';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 const Page: React.FC = () => {
   return (
-    <Box component="main">
+    <StyledPage sx={{ flexDirection: 'column' }}>
       <Breadcrumbs navigation={Navigation.AdminConfig} />
       <AdminConfig />
-    </Box>
+    </StyledPage>
   );
 };
 

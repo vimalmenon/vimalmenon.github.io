@@ -1,4 +1,4 @@
-import { Icons } from '@data';
+import { env, Icons } from '@data';
 import { INavigation } from '@types';
 
 const ReleaseNote: INavigation = {
@@ -15,6 +15,7 @@ const ReleaseNote: INavigation = {
   description: "This is Vimal Menon's personal website",
   link: '/release-notes/',
   name: 'Release Notes',
+  show: true,
   title: 'Release Notes | Vimal Menon',
 };
 
@@ -28,6 +29,7 @@ const Home: INavigation = {
   description: "This is Vimal Menon's personal website",
   link: '/',
   name: 'Home',
+  show: true,
   title: 'Vimal Menon',
 };
 
@@ -45,6 +47,7 @@ const NotFound: INavigation = {
   description: 'This is Vimal Menon personal website',
   link: '/*',
   name: 'Not Found',
+  show: true,
   title: 'Not Found | Vimal Menon',
 };
 
@@ -62,6 +65,7 @@ const Blogs: INavigation = {
   description: 'This is Vimal Menon personal website',
   link: '/blogs/',
   name: 'Blogs',
+  show: true,
   title: 'Blogs | Vimal Menon',
 };
 
@@ -79,6 +83,7 @@ const About: INavigation = {
   description: 'This is Vimal Menon personal website',
   link: '/about/',
   name: 'About',
+  show: true,
   title: 'About | Vimal Menon',
 };
 
@@ -96,6 +101,7 @@ const Admin: INavigation = {
   description: 'This is Vimal Menon personal website',
   link: '/admin/',
   name: 'Admin',
+  show: env.IS_LOCAL,
   title: 'Admin | Vimal Menon',
 };
 
@@ -113,6 +119,7 @@ const Contact: INavigation = {
   description: 'This is Vimal Menon personal website',
   link: '/contact/',
   name: 'Contact',
+  show: true,
   title: 'contact | Vimal Menon',
 };
 
@@ -127,26 +134,50 @@ const AdminConfig: INavigation = {
       name: 'Admin',
     },
     {
-      link: '/admin/config/',
+      link: '',
       name: 'Config',
     },
   ],
   description: 'This is Vimal Menon personal website',
   link: '/admin/config/',
   name: 'Config',
+  show: env.IS_LOCAL,
   title: 'Config | Admin | Vimal Menon',
+};
+
+const AdminLinks: INavigation = {
+  breadcrumbs: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '/admin/',
+      name: 'Admin',
+    },
+    {
+      link: '',
+      name: 'Links',
+    },
+  ],
+  description: 'This is Vimal Menon personal website',
+  link: '/admin/links/',
+  name: 'Links',
+  show: env.IS_LOCAL,
+  title: 'Links | Admin | Vimal Menon',
 };
 
 export const FooterNavigation = [About, ReleaseNote];
 
 export const HeaderNavigation = [Home, Blogs, Admin];
 
-export const AdminNavigation = [AdminConfig];
+export const AdminNavigation = [AdminConfig, AdminLinks];
 
 export const Navigation = {
   About,
   Admin,
   AdminConfig,
+  AdminLinks,
   Blogs,
   Contact,
   Home,

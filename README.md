@@ -6,16 +6,19 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.12
+<b>Version</b>: 0.0.13
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Move theme choose to admin page
-- [x] Remove Config Page
-- [x] Show Admin only when local
+- [x] Remove Admin navigation if not applicable
+- [x] Create Admin Page
+- [x] use menu item for admin navigation
+- [x] [Fix] Issue with Admin Navigation
+- [x] use menu item for mobile navigation
+- [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
@@ -25,7 +28,6 @@ This is Website for Vimal Menon
 - [ ] Grouping import
 - [ ] Create API for website
 - [ ] Create Contact US Page
-- [ ] Create Admin Page
 - [ ] Add Sitemap.xml
 
 ## Ideas

@@ -1,6 +1,6 @@
 {
   "name": "vimalmenon.com",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -21,7 +21,7 @@
     "@mui/icons-material": "^6.4.7",
     "@mui/material": "^6.4.7",
     "@mui/material-nextjs": "^6.4.3",
-    "framer-motion": "^12.4.13",
+    "framer-motion": "^12.5.0",
     "next": "15.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

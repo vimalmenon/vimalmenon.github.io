@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { AdminNavigation as Navigation } from '@common';
 import { ComingSoon } from '@component';
 import { env } from '@data';
+import { StyledPage } from '@style';
 import { IReactChildren } from '@types';
 
 export const metadata: Metadata = {
@@ -11,17 +12,18 @@ export const metadata: Metadata = {
 };
 
 const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
+  if (env.IS_LOCAL) {
+    return (
+      <Box sx={{ display: 'flex', flex: '1 1 100%', gap: 2 }}>
+        <Navigation />
+        {children}
+      </Box>
+    );
+  }
   return (
-    <Box>
-      {env.ENV === 'local' ? (
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <Navigation />
-          {children}
-        </Box>
-      ) : (
-        <ComingSoon page="Admin Page" />
-      )}
-    </Box>
+    <StyledPage>
+      <ComingSoon page="Admin Page" />
+    </StyledPage>
   );
 };
 

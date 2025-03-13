@@ -1,8 +1,8 @@
-import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
 import { ComingSoon } from '@component';
 import { Navigation } from '@data';
+import { StyledPage } from '@style';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 const Page: React.FC = () => {
   return (
-    <Box component="main">
+    <StyledPage>
       <Breadcrumbs navigation={Navigation.Blogs} />
       <ComingSoon page="Blogs Page" />
-    </Box>
+    </StyledPage>
   );
 };
 
