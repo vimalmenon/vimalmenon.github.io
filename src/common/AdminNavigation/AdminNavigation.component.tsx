@@ -17,16 +17,15 @@ export const AdminNavigation: React.FC = () => {
         {Navigation.map((data) => {
           if (data.show) {
             return (
-              <MenuItem key={data.name}>
-                <MuiLink
-                  component={Link}
-                  href={data.link}
-                  underline={pathname === data.link ? 'always' : 'none'}
-                  sx={{ color: teal[500], fontWeight: 'bold' }}
-                >
-                  {data.name}
-                </MuiLink>
-              </MenuItem>
+              <MuiLink
+                component={Link}
+                href={data.link}
+                underline={pathname === data.link ? 'always' : 'none'}
+                sx={{ color: teal[500], fontWeight: 'bold' }}
+                key={data.name}
+              >
+                <MenuItem selected={pathname === data.link}>{data.name}</MenuItem>
+              </MuiLink>
             );
           }
           return null;
