@@ -13,16 +13,14 @@ const Page: React.FC = () => {
     <StyledPage>
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
-        <div>0.0.11</div>
-        <ul>
-          <li>Setup env</li>
-          <li>Some Refactoring</li>
-          <li>Access Admin only in local</li>
-        </ul>
+        <div>0.0.14</div>
+        <ul></ul>
       </div>
       <div>
-        <div>[0.0.10 - 0.0.0]</div>
+        <div>[0.0.13 - 0.0.0]</div>
         <ul>
+          <li>Env Set up</li>
+          <li>Limited Access to admin</li>
           <li>Create tag & release</li>
           <li>Download Resume</li>
           <li>
