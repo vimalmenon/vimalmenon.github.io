@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
   return (
     <Box>
-      {env.ENV === 'local' ? (
+      {env.IS_LOCAL ? (
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Navigation />
           {children}

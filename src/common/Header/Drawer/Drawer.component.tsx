@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import MuiLink from '@mui/material/Link';
 import { Fragment } from 'react';
 import { useAppContext } from '@context';
-import { AdminNavigation, HeaderNavigation, SocialMedias } from '@data';
+import { AdminNavigation, env, HeaderNavigation, SocialMedias } from '@data';
 import { MobileDrawer } from '@style';
 import { Link } from '../Link';
 
@@ -15,13 +15,14 @@ export const Drawer: React.FC = () => {
     <Fragment>
       <MobileDrawer anchor={'top'} open={showDrawer} onClose={toggleDrawer}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, padding: 2 }}>
-          {HeaderNavigation.map((nav) => (
-            <Link navigation={nav} key={nav.name} />
-          ))}
-          <Box sx={{ display: 'flex', flexDirection: 'column', marginLeft: 2 }}>
-            {AdminNavigation.map((nav) => (
-              <Link navigation={nav} key={nav.name} />
-            ))}
+          {HeaderNavigation.map((nav) => {
+            if (nav.show) {
+              return <Link navigation={nav} key={nav.name} />;
+            }
+            return null;
+          })}
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, marginLeft: 2 }}>
+            {env.IS_LOCAL && AdminNavigation.map((nav) => <Link navigation={nav} key={nav.name} />)}
           </Box>
         </Box>
 
