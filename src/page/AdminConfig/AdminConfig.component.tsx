@@ -15,10 +15,6 @@ export const AdminConfig: React.FC = () => {
           <Box>API</Box>
           <Box>{env.API}</Box>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Box>TEST</Box>
-          <Box>{env.TEST}</Box>
-        </Box>
       </Box>
       <Box>Select a Theme</Box>
       <SelectTheme />
