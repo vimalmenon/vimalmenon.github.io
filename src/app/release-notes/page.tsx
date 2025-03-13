@@ -31,9 +31,8 @@ const Page: React.FC = () => {
             </ul>
           </li>
           <li>Partial Google Analytics</li>
-          <li>Set up CI & CD</li>
+          <li>Set up CI & CD with GitHub Action</li>
           <li>Static Website</li>
-          <li>GitHub Action</li>
           <li>Added Eslint</li>
           <li>Added Test</li>
           <li>Responsive UI</li>
