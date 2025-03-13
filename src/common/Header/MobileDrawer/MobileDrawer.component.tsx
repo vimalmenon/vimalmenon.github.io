@@ -6,14 +6,14 @@ import MuiLink from '@mui/material/Link';
 import { Fragment } from 'react';
 import { useAppContext } from '@context';
 import { AdminNavigation, env, HeaderNavigation, SocialMedias } from '@data';
-import { MobileDrawer } from '@style';
+import { StyledMobileDrawer } from '@style';
 import { Link } from '../Link';
 
-export const Drawer: React.FC = () => {
+export const MobileDrawer: React.FC = () => {
   const { showDrawer, toggleDrawer } = useAppContext();
   return (
     <Fragment>
-      <MobileDrawer anchor={'top'} open={showDrawer} onClose={toggleDrawer}>
+      <StyledMobileDrawer anchor={'top'} open={showDrawer} onClose={toggleDrawer}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, padding: 2 }}>
           {HeaderNavigation.map((nav) => {
             if (nav.show) {
@@ -37,7 +37,7 @@ export const Drawer: React.FC = () => {
             );
           })}
         </Box>
-      </MobileDrawer>
+      </StyledMobileDrawer>
       <IconButton onClick={toggleDrawer}>
         <MenuIcon />
       </IconButton>

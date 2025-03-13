@@ -37,7 +37,7 @@ export const StyledAppBar = styled(AppBar)(() => {
   };
 });
 
-export const MobileDrawer = styled(MuiDrawer)(({ theme }) => {
+export const StyledMobileDrawer = styled(MuiDrawer)(({ theme }) => {
   return {
     [theme.breakpoints.up('md')]: {
       display: 'none',
