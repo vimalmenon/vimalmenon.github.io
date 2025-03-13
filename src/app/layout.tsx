@@ -22,7 +22,7 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
                 <Header />
                 <StyledMain>
                   <StyledMainContainer maxWidth="xl">
-                    <Box sx={{ display: 'flex' }}>{children}</Box>
+                    <Box sx={{ display: 'flex', flex: '1 1 100%' }}>{children}</Box>
                   </StyledMainContainer>
                 </StyledMain>
                 <Footer />

@@ -8,8 +8,8 @@ export const StyledAdminNavigation = styled(Box)(({ theme }) => {
       display: 'none',
     },
     display: 'flex',
+    flex: '1 1 20%',
     flexDirection: 'column',
     margin: theme.spacing(2, 0),
-    width: '100px',
   };
 });

@@ -12,19 +12,18 @@ export const metadata: Metadata = {
 };
 
 const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
+  if (env.IS_LOCAL) {
+    return (
+      <Box sx={{ display: 'flex', flex: '1 1 100%', gap: 2 }}>
+        <Navigation />
+        {children}
+      </Box>
+    );
+  }
   return (
-    <Box>
-      {env.IS_LOCAL ? (
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <Navigation />
-          {children}
-        </Box>
-      ) : (
-        <StyledPage>
-          <ComingSoon page="Admin Page" />
-        </StyledPage>
-      )}
-    </Box>
+    <StyledPage>
+      <ComingSoon page="Admin Page" />
+    </StyledPage>
   );
 };
 
