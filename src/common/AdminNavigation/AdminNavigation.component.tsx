@@ -12,17 +12,20 @@ export const AdminNavigation: React.FC = () => {
   return (
     <StyledAdminNavigation>
       {Navigation.map((data) => {
-        return (
-          <MuiLink
-            component={Link}
-            href={data.link}
-            underline={pathname === data.link ? 'always' : 'none'}
-            sx={{ color: teal[500], fontWeight: 'bold' }}
-            key={data.name}
-          >
-            {data.name}
-          </MuiLink>
-        );
+        if (data.show) {
+          return (
+            <MuiLink
+              component={Link}
+              href={data.link}
+              underline={pathname === data.link ? 'always' : 'none'}
+              sx={{ color: teal[500], fontWeight: 'bold' }}
+              key={data.name}
+            >
+              {data.name}
+            </MuiLink>
+          );
+        }
+        return null;
       })}
     </StyledAdminNavigation>
   );

@@ -13,8 +13,9 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [x] Remove Admin navigation if not applicable
+- [x] Create Admin Page
 - [ ] use menu item for navigation
-- [ ] Remove Admin navigation if not applicable
 - [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI
@@ -25,7 +26,6 @@ This is Website for Vimal Menon
 - [ ] Grouping import
 - [ ] Create API for website
 - [ ] Create Contact US Page
-- [ ] Create Admin Page
 - [ ] Add Sitemap.xml
 
 ## Ideas
