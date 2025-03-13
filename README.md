@@ -17,6 +17,7 @@ This is Website for Vimal Menon
 - [x] Create Admin Page
 - [x] use menu item for admin navigation
 - [ ] use menu item for mobile navigation
+- [ ] [Fix] Issue with Admin Navigation
 - [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI

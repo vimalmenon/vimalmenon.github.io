@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const Page: React.FC = () => {
   return (
-    <StyledPage>
+    <StyledPage sx={{ flexDirection: 'column' }}>
       <Breadcrumbs navigation={Navigation.AdminConfig} />
       <AdminConfig />
     </StyledPage>
