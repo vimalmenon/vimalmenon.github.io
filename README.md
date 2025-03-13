@@ -13,7 +13,8 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Remove Admin Config if not applicable
+- [ ] use menu item for navigation
+- [ ] Remove Admin navigation if not applicable
 - [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI
