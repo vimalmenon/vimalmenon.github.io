@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
 import { APIs, Navigation } from '@data';
-import { AdminWorkflows } from '@page';
+import { AdminWorkflowId } from '@page';
 import { StyledPage } from '@style';
 import { IGenericResponse, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
@@ -15,7 +15,7 @@ const Page: React.FC = () => {
   return (
     <StyledPage sx={{ flexDirection: 'column' }}>
       <Breadcrumbs navigation={Navigation.AdminWorkflow} />
-      <AdminWorkflows />
+      <AdminWorkflowId />
     </StyledPage>
   );
 };
