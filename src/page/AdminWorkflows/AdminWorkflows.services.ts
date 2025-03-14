@@ -7,6 +7,7 @@ import { IWorkflows } from './AdminWorkflows';
 
 export const useAdminWorkflows = () => {
   const [llms, setLlms] = useState<IWorkflows[]>([]);
+  const [uuid, setUuid] = useState<string>('');
   const getLLMs = async (): Promise<void> => {
     const result = await makeRequest<{ data: IWorkflows[] }>(APIs.GetLLMs());
     setLlms(result.data);
@@ -14,7 +15,13 @@ export const useAdminWorkflows = () => {
   useEffect(() => {
     getLLMs();
   }, []);
+  const createUUID = async (): Promise<void> => {
+    const result = await makeRequest<{ data: string }>(APIs.getUUID());
+    setUuid(result.data);
+  };
   return {
+    createUUID,
     llms,
+    uuid,
   };
 };

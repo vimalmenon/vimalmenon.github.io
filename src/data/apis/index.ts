@@ -14,7 +14,15 @@ const GetLLMs = (): IAPI => {
   };
 };
 
+const getUUID = (): IAPI => {
+  return {
+    method: 'GET',
+    url: 'uuid',
+  };
+};
+
 export const APIs = {
   GetLLMs,
+  getUUID,
   GetWorkflows,
 };

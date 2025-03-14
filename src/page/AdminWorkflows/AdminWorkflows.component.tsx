@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,12 +9,13 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import TextField from '@mui/material/TextField';
 import { Icons } from '@data';
 import { useAdminWorkflows } from './AdminWorkflows.services';
 import { Workflows } from './Workflows';
 
 export const AdminWorkflows: React.FC = () => {
-  const { llms } = useAdminWorkflows();
+  const { createUUID, llms, uuid } = useAdminWorkflows();
   return (
     <Box sx={{ display: 'flex', gap: 2 }}>
       <Box>
@@ -61,6 +63,12 @@ export const AdminWorkflows: React.FC = () => {
       </Box>
       <Box>
         <Workflows />
+      </Box>
+      <Box>
+        <TextField required label="UUID" value={uuid} size="small" disabled={true} />
+        <Button variant="outlined" onClick={createUUID}>
+          Create
+        </Button>
       </Box>
     </Box>
   );
