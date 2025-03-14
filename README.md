@@ -15,6 +15,9 @@ This is Website for Vimal Menon
 
 - [x] Added DVH instead of VH
 - [ ] Create a Workflow from UI
+- [ ] Add Delete Icon
+- [ ] Add Breadcrumbs for Workflow
+- [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
 - [ ] Show the Graph for the Workflow
 - [ ] Improve Our Team
