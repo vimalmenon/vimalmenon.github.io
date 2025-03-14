@@ -26,15 +26,15 @@ export const Workflows: React.FC = () => {
             </TableRow>
 
             <TableRow>
-              <TableCell>Name</TableCell>
-              {/* <TableCell>Model</TableCell>
-              <TableCell align="right">Supported</TableCell> */}
+              <TableCell>ID</TableCell>
+              <TableCell align="right">Name</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {workflows.map((workflow) => {
               return (
                 <TableRow key={workflow.name}>
+                  <TableCell>{workflow.id}</TableCell>
                   <TableCell>{workflow.name}</TableCell>
                 </TableRow>
               );
