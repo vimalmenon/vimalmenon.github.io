@@ -1,4 +1,5 @@
 'use client';
+
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -9,13 +10,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Icons } from '@data';
 import { useAdminWorkflows } from './AdminWorkflows.services';
+import { Workflows } from './Workflows';
 
 export const AdminWorkflows: React.FC = () => {
   const { llms } = useAdminWorkflows();
   return (
-    <Box>
+    <Box sx={{ display: 'flex', gap: 2 }}>
       <Box>
-        <Box></Box>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -45,7 +46,11 @@ export const AdminWorkflows: React.FC = () => {
                       {llm.model}
                     </TableCell>
                     <TableCell padding="normal" align="right">
-                      {llm.supported ? <Icons.Check /> : <Icons.Close />}
+                      {llm.supported ? (
+                        <Icons.Check fontSize="small" />
+                      ) : (
+                        <Icons.Close fontSize="small" />
+                      )}
                     </TableCell>
                   </TableRow>
                 );
@@ -53,6 +58,9 @@ export const AdminWorkflows: React.FC = () => {
             </TableBody>
           </Table>
         </TableContainer>
+      </Box>
+      <Box>
+        <Workflows />
       </Box>
     </Box>
   );
