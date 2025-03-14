@@ -7,6 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { Icons } from '@data';
 import { useAdminWorkflows } from './AdminWorkflows.services';
 
 export const AdminWorkflows: React.FC = () => {
@@ -44,7 +45,7 @@ export const AdminWorkflows: React.FC = () => {
                       {llm.model}
                     </TableCell>
                     <TableCell padding="normal" align="right">
-                      {llm.supported ? 'True' : 'False'}
+                      {llm.supported ? <Icons.Check /> : <Icons.Close />}
                     </TableCell>
                   </TableRow>
                 );
