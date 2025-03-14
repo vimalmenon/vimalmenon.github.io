@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
-import { Navigation } from '@data';
+import { APIs, Navigation } from '@data';
 import { AdminWorkflows } from '@page';
 import { StyledPage } from '@style';
+import { IGenericResponse, IWorkflow } from '@types';
+import { makeRequest } from '@utility';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
@@ -18,12 +20,14 @@ const Page: React.FC = () => {
   );
 };
 
-export const generateStaticParams = () => {
-  return [
-    {
-      id: '123456',
-    },
-  ];
+export const generateStaticParams = async () => {
+  const result = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
+
+  return result.data.map((data) => {
+    return {
+      id: data.id,
+    };
+  });
 };
 
 export default Page;

@@ -29,3 +29,11 @@ export interface IAPI {
 export interface IGenericResponse<T> {
   data: T;
 }
+
+export interface IWorkflow {
+  id: string;
+  name: string;
+  detail: string;
+  agents: [];
+  connections: Record<string, string[]>;
+}

@@ -6,6 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import NextLink from 'next/link';
 import { useEffect } from 'react';
 import { useAdminWorkflows } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
@@ -36,7 +37,9 @@ export const Workflows: React.FC = () => {
             {workflows.map((workflow) => {
               return (
                 <TableRow key={workflow.name}>
-                  <TableCell>{workflow.id}</TableCell>
+                  <TableCell>
+                    <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.id}</NextLink>
+                  </TableCell>
                   <TableCell>{workflow.name}</TableCell>
                 </TableRow>
               );
