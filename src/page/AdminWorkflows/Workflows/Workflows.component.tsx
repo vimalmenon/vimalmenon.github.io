@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useEffect } from 'react';
 import { useAdminWorkflows } from '../AdminWorkflows.services';
+import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
   const { getWorkflows, workflows } = useAdminWorkflows();
@@ -16,6 +17,7 @@ export const Workflows: React.FC = () => {
   }, []);
   return (
     <Box>
+      <CreateWorkflow />
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
