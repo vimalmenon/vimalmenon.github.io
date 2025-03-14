@@ -11,3 +11,9 @@ export interface IWorkflow {
   agents: [];
   connections: Record<string, string[]>;
 }
+
+export interface ITool {
+  id: string;
+  name: string;
+  tool_name: string;
+}

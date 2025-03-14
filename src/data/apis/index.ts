@@ -21,8 +21,16 @@ const getUUID = (): IAPI => {
   };
 };
 
+const GetTools = (): IAPI => {
+  return {
+    method: 'GET',
+    url: 'tools',
+  };
+};
+
 export const APIs = {
   GetLLMs,
+  GetTools,
   getUUID,
   GetWorkflows,
 };

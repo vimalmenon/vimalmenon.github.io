@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useAdminWorkflows } from './AdminWorkflows.services';
 import { LLM } from './LLM';
+import { Tools } from './Tools';
 import { Workflows } from './Workflows';
 
 export const AdminWorkflows: React.FC = () => {
@@ -20,6 +21,9 @@ export const AdminWorkflows: React.FC = () => {
       </Box>
       <Box>
         <Workflows />
+      </Box>
+      <Box>
+        <Tools />
       </Box>
     </Box>
   );
