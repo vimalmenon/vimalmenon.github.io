@@ -14,7 +14,7 @@ const Page: React.FC = () => {
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
         <div>0.0.14</div>
-        <ul></ul>
+        <ul>Changed height from VH to DVH</ul>
       </div>
       <div>
         <div>[0.0.13 - 0.0.0]</div>
