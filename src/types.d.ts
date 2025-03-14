@@ -25,3 +25,7 @@ export interface IAPI {
   url: string;
   method: 'GET' | 'DELETE' | 'POST' | 'PUT';
 }
+
+export interface IGenericResponse<T> {
+  data: T;
+}
