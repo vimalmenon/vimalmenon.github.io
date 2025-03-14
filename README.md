@@ -24,6 +24,7 @@ This is Website for Vimal Menon
 - [ ] Create API for website
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
+- [ ] Added DVH instead of VH
 
 ## Ideas
 
