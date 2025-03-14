@@ -7,7 +7,11 @@ export const AdminWorkflows: React.FC = () => {
   return (
     <Box>
       {llms.map((llm) => {
-        return <Box key={llm.name}>{llm.name}</Box>;
+        return (
+          <Box key={llm.name}>
+            {llm.name} | {llm.model} | {llm.supported ? 'True' : 'False'}
+          </Box>
+        );
       })}
     </Box>
   );
