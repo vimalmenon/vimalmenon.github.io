@@ -36,8 +36,16 @@ const CreateWorkflow = (body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
   };
 };
 
+const DeleteWorkflow = (id: string): IAPI => {
+  return {
+    method: 'DELETE',
+    url: `workflows/${id}`,
+  };
+};
+
 export const APIs = {
   CreateWorkflow,
+  DeleteWorkflow,
   GetLLMs,
   GetTools,
   getUUID,

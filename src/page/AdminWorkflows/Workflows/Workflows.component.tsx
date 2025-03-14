@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,11 +9,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import NextLink from 'next/link';
 import { useEffect } from 'react';
+import { Icons } from '@data';
 import { useAdminWorkflows } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
-  const { getWorkflows, workflows } = useAdminWorkflows();
+  const { deleteWorkflow, getWorkflows, workflows } = useAdminWorkflows();
   useEffect(() => {
     getWorkflows();
   }, []);
@@ -30,7 +32,8 @@ export const Workflows: React.FC = () => {
 
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell align="right">Name</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell align="right">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -41,6 +44,11 @@ export const Workflows: React.FC = () => {
                     <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.id}</NextLink>
                   </TableCell>
                   <TableCell>{workflow.name}</TableCell>
+                  <TableCell>
+                    <IconButton onClick={() => deleteWorkflow(workflow.id)}>
+                      <Icons.Close />
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               );
             })}

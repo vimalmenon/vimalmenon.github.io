@@ -37,9 +37,15 @@ export const useAdminWorkflows = () => {
     );
     await getWorkflows();
   };
+
+  const deleteWorkflow = async (id: string): Promise<void> => {
+    await makeRequest<IGenericResponse<ITool[]>>(APIs.DeleteWorkflow(id));
+    await getWorkflows();
+  };
   return {
     createUUID,
     createWorkflow,
+    deleteWorkflow,
     getLLMs,
     getTools,
     getWorkflows,
