@@ -14,6 +14,7 @@ export interface INavigation extends INavigationSlim {
   description: string;
   breadcrumbs: INavigationSlim[];
   show: boolean;
+  children: INavigationSlim[];
 }
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
 

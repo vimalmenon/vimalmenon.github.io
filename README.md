@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Added DVH instead of VH
+- [ ] Improve Our Team
 - [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI
