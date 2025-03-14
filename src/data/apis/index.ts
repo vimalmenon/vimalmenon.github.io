@@ -3,7 +3,7 @@ import { IAPI } from '@types';
 const GetWorkflows = (): IAPI => {
   return {
     method: 'GET',
-    url: 'workflow',
+    url: 'workflows',
   };
 };
 

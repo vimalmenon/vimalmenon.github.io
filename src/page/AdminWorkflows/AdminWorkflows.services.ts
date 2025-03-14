@@ -3,18 +3,19 @@
 import { useState } from 'react';
 import { APIs } from '@data';
 import { makeRequest } from '@utility';
-import { IWorkflows } from './AdminWorkflows';
+import { ILLM, IWorkflow } from './AdminWorkflows';
 
 export const useAdminWorkflows = () => {
-  const [llms, setLlms] = useState<IWorkflows[]>([]);
+  const [llms, setLlms] = useState<ILLM[]>([]);
+  const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
   const [uuid, setUuid] = useState<string>('');
   const getLLMs = async (): Promise<void> => {
-    const result = await makeRequest<{ data: IWorkflows[] }>(APIs.GetLLMs());
+    const result = await makeRequest<{ data: ILLM[] }>(APIs.GetLLMs());
     setLlms(result.data);
   };
   const getWorkflows = async (): Promise<void> => {
-    const result = await makeRequest<{ data: IWorkflows[] }>(APIs.GetWorkflows());
-    console.log(result);
+    const result = await makeRequest<{ data: IWorkflow[] }>(APIs.GetWorkflows());
+    setWorkflows(result.data);
   };
   const createUUID = async (): Promise<void> => {
     const result = await makeRequest<{ data: string }>(APIs.getUUID());
@@ -26,5 +27,6 @@ export const useAdminWorkflows = () => {
     getWorkflows,
     llms,
     uuid,
+    workflows,
   };
 };
