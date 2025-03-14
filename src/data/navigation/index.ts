@@ -167,17 +167,40 @@ const AdminLinks: INavigation = {
   title: 'Links | Admin | Vimal Menon',
 };
 
+const AdminWorkflow: INavigation = {
+  breadcrumbs: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '/admin/',
+      name: 'Admin',
+    },
+    {
+      link: '',
+      name: 'Workflows',
+    },
+  ],
+  description: 'This is Vimal Menon personal website',
+  link: '/admin/workflows/',
+  name: 'Workflows',
+  show: env.IS_LOCAL,
+  title: 'Workflows | Admin | Vimal Menon',
+};
+
 export const FooterNavigation = [About, ReleaseNote];
 
 export const HeaderNavigation = [Home, Blogs, Admin];
 
-export const AdminNavigation = [AdminConfig, AdminLinks];
+export const AdminNavigation = [AdminConfig, AdminLinks, AdminWorkflow];
 
 export const Navigation = {
   About,
   Admin,
   AdminConfig,
   AdminLinks,
+  AdminWorkflow,
   Blogs,
   Contact,
   Home,
