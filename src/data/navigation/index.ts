@@ -103,7 +103,20 @@ const Admin: INavigation = {
       name: 'Admin',
     },
   ],
-  children: [],
+  children: [
+    {
+      link: '/admin/config/',
+      name: 'Config',
+    },
+    {
+      link: '/admin/links/',
+      name: 'Links',
+    },
+    {
+      link: '/admin/workflows/',
+      name: 'Workflows',
+    },
+  ],
   description: 'This is Vimal Menon personal website',
   link: '/admin/',
   name: 'Admin',

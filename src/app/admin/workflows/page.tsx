@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
 import { Navigation } from '@data';
-import { AdminLinks } from '@page';
+import { AdminWorkflows } from '@page';
 import { StyledPage } from '@style';
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ const Page: React.FC = () => {
   return (
     <StyledPage sx={{ flexDirection: 'column' }}>
       <Breadcrumbs navigation={Navigation.AdminWorkflow} />
-      <AdminLinks />
+      <AdminWorkflows />
     </StyledPage>
   );
 };
