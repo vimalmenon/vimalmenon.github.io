@@ -17,7 +17,7 @@ const Page: NextPage<IPage> = async ({ params }) => {
   return (
     <StyledPage sx={{ flexDirection: 'column' }}>
       <Breadcrumbs navigation={GenerateWorkflow(id)} />
-      <AdminWorkflowId />
+      <AdminWorkflowId id={id} />
     </StyledPage>
   );
 };
