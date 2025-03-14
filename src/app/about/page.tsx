@@ -26,9 +26,9 @@ const Page: React.FC = () => {
           </Box>
         </Box>
         <Box sx={{ textIndent: '20px' }}>
-          Hello and welcome! My name is <b>Vimal Menon</b>, and I’m thrilled to have you here. I’m
-          currently based in the vibrant city of <b>Hong Kong</b>, where I spend my time exploring
-          the fascinating world of technology and sharing my knowledge with others.
+          Hello and welcome! My name is <b>Vimal Menon</b>, and I&apos;m thrilled to have you here.
+          I&apos;m currently based in the vibrant city of <b>Hong Kong</b>, where I spend my time
+          exploring the fascinating world of technology and sharing my knowledge with others.
         </Box>
         <Box component="h3" sx={{ color: 'primary.main' }}>
           My Interests and Expertise
@@ -37,7 +37,7 @@ const Page: React.FC = () => {
           I have a deep passion for <b>Software Engineering</b> and{' '}
           <b>Artificial Intelligence (AI)</b>, two fields that are shaping the future of technology.
           My expertise lies in <b>AI</b>, <b>Python</b>, and <b>JavaScript</b>, and I love using
-          these tools to solve complex problems and create innovative solutions. Whether it’s
+          these tools to solve complex problems and create innovative solutions. Whether it&apos;s
           building intelligent systems, developing web applications, or diving into the latest
           advancements in AI, I’m always eager to learn and grow.{' '}
         </Box>
@@ -45,7 +45,7 @@ const Page: React.FC = () => {
           What I Do
         </Box>
         <Box sx={{ textIndent: '20px' }}>
-          I’m a content creator who loves sharing my knowledge and experiences with the world.
+          I&apos;m a content creator who loves sharing my knowledge and experiences with the world.
           Through my <b>blogs</b> and <b>YouTube videos</b>, I aim to make complex topics in
           software engineering and AI more accessible and engaging. My goal is to inspire others to
           explore these fields and discover the endless possibilities they offer. -
