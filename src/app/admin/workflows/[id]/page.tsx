@@ -5,7 +5,7 @@ import { AdminWorkflowId } from '@page';
 import { StyledPage } from '@style';
 import { IGenericResponse, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
-import { IPage } from './id';
+import { IPage, IWorkflowId } from './id';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
@@ -22,9 +22,8 @@ const Page: NextPage<IPage> = async ({ params }) => {
   );
 };
 
-export const generateStaticParams = async () => {
+export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
   const result = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
-
   return result.data.map((data) => {
     return {
       id: data.id,

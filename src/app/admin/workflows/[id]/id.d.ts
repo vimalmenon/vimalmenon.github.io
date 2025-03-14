@@ -1,5 +1,7 @@
+export interface IWorkflowId {
+  id: string;
+}
+
 export interface IPage {
-  params: Promise<{
-    id: string;
-  }>;
+  params: Promise<IWorkflowId>;
 }
