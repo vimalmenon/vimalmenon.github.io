@@ -1,0 +1,29 @@
+import type { Metadata } from 'next';
+import { Breadcrumbs } from '@common';
+import { Navigation } from '@data';
+import { AdminWorkflows } from '@page';
+import { StyledPage } from '@style';
+
+export const metadata: Metadata = {
+  description: "This is Vimal Menon's personal website",
+  title: 'Workflows | Admin | Vimal Menon',
+};
+
+const Page: React.FC = () => {
+  return (
+    <StyledPage sx={{ flexDirection: 'column' }}>
+      <Breadcrumbs navigation={Navigation.AdminWorkflow} />
+      <AdminWorkflows />
+    </StyledPage>
+  );
+};
+
+export const generateStaticParams = () => {
+  return [
+    {
+      id: '123456',
+    },
+  ];
+};
+
+export default Page;
