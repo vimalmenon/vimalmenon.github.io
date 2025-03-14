@@ -21,9 +21,10 @@ export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export type AnyType = any;
 
-export interface IAPI {
+export interface IAPI<T = unknown> {
   url: string;
   method: 'GET' | 'DELETE' | 'POST' | 'PUT';
+  body?: T;
 }
 
 export interface IGenericResponse<T> {
@@ -36,4 +37,10 @@ export interface IWorkflow {
   detail: string;
   agents: [];
   connections: Record<string, string[]>;
+}
+
+export interface IWorkflowSlim {
+  id?: string;
+  name: string;
+  detail: string;
 }

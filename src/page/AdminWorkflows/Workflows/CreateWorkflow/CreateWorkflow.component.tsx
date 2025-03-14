@@ -4,10 +4,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
+import { useAdminWorkflows } from '../../AdminWorkflows.services';
 
 export const CreateWorkflow: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [detail, setDetail] = useState<string>('');
+  const { createWorkflow } = useAdminWorkflows();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <Box>
@@ -35,7 +37,9 @@ export const CreateWorkflow: React.FC = () => {
         />
       </Box>
       <Box>
-        <Button variant="outlined">Create Workflow</Button>
+        <Button variant="outlined" onClick={() => createWorkflow(name, detail)}>
+          Create Workflow
+        </Button>
       </Box>
     </Box>
   );

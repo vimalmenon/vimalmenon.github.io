@@ -1,4 +1,4 @@
-import { IAPI } from '@types';
+import { IAPI, IWorkflowSlim } from '@types';
 
 const GetWorkflows = (): IAPI => {
   return {
@@ -28,7 +28,16 @@ const GetTools = (): IAPI => {
   };
 };
 
+const CreateWorkflow = (body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
+  return {
+    body,
+    method: 'PUT',
+    url: 'workflows/create',
+  };
+};
+
 export const APIs = {
+  CreateWorkflow,
   GetLLMs,
   GetTools,
   getUUID,
