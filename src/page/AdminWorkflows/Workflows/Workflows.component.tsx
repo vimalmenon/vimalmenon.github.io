@@ -36,7 +36,7 @@ export const Workflows: React.FC = () => {
           <TableBody>
             {workflows.map((workflow) => {
               return (
-                <TableRow key={workflow.name}>
+                <TableRow key={workflow.id}>
                   <TableCell>
                     <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.id}</NextLink>
                   </TableCell>
