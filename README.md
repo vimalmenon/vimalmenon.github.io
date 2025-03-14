@@ -13,6 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [x] Added DVH instead of VH
 - [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI
@@ -24,7 +25,6 @@ This is Website for Vimal Menon
 - [ ] Create API for website
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
-- [ ] Added DVH instead of VH
 
 ## Ideas
 
