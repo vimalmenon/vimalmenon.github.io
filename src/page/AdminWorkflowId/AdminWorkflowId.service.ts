@@ -1,5 +1,7 @@
 'use client';
 
-export const useAdminWorkflowId = () => {
-  return {};
+export const useAdminWorkflowId = (id: string) => {
+  return {
+    id,
+  };
 };
