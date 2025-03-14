@@ -7,6 +7,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SaveIcon from '@mui/icons-material/Save';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const Icons = {
   Check: DoneIcon,
@@ -18,4 +19,5 @@ export const Icons = {
   Save: SaveIcon,
   Twitter: XIcon,
   YouTube: YouTubeIcon,
+  Delete: DeleteIcon
 };

@@ -46,7 +46,7 @@ export const Workflows: React.FC = () => {
                   <TableCell>{workflow.name}</TableCell>
                   <TableCell>
                     <IconButton onClick={() => deleteWorkflow(workflow.id)}>
-                      <Icons.Close />
+                      <Icons.Delete />
                     </IconButton>
                   </TableCell>
                 </TableRow>
