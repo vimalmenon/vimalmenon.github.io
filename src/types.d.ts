@@ -20,3 +20,8 @@ export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export type AnyType = any;
+
+export interface IAPI {
+  url: string;
+  method: 'GET' | 'DELETE' | 'POST' | 'PUT';
+}
