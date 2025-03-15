@@ -13,8 +13,8 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Create a Workflow from UI
-- [ ] Add Breadcrumbs for Workflow
+- [x] Create a Workflow from UI
+- [x] Add Breadcrumbs for Workflow
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
 - [ ] Show the Graph for the Workflow
