@@ -1,12 +1,14 @@
 'use client';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import { Icons } from '@data';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Nodes } from './Nodes';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  const { addNodes, nodes } = useAdminWorkflowId(id);
+  const { addNodes, nodes, removeNode } = useAdminWorkflowId(id);
   return (
     <Box>
       <Box>Workflow {id}</Box>
@@ -17,7 +19,14 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
       </Box>
       <Box>
         {nodes.map((_, index) => {
-          return <Nodes key={index} />;
+          return (
+            <Box key={index} sx={{ display: 'flex' }}>
+              <Nodes />
+              <IconButton onClick={() => removeNode(index)}>
+                <Icons.Close />
+              </IconButton>
+            </Box>
+          );
         })}
       </Box>
     </Box>
