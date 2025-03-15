@@ -49,3 +49,5 @@ export interface IMakeRequest<T> {
   response: T;
   error?: string;
 }
+
+export type VoidFunction = () => void;

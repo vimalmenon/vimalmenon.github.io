@@ -12,7 +12,7 @@ export const useAdminWorkflowId = (id: string) => {
     nodes.splice(index, 1);
     setNodes([...nodes]);
   };
-  const onTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const onTabChange = (event: React.SyntheticEvent, newValue: number): void => {
     selectedTab(newValue);
   };
   return {
