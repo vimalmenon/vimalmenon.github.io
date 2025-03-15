@@ -12,20 +12,20 @@ export const useAdminWorkflows = () => {
   const [tools, setTools] = useState<ITool[]>([]);
   const [uuid, setUuid] = useState<string>('');
   const getLLMs = async (): Promise<void> => {
-    const result = await makeRequest<IGenericResponse<ILLM[]>>(APIs.GetLLMs());
-    setLlms(result.data);
+    const { response } = await makeRequest<IGenericResponse<ILLM[]>>(APIs.GetLLMs());
+    setLlms(response.data);
   };
   const getWorkflows = async (): Promise<void> => {
-    const result = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
-    setWorkflows(result.data);
+    const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
+    setWorkflows(response.data);
   };
   const createUUID = async (): Promise<void> => {
-    const result = await makeRequest<IGenericResponse<string>>(APIs.getUUID());
-    setUuid(result.data);
+    const { response } = await makeRequest<IGenericResponse<string>>(APIs.getUUID());
+    setUuid(response.data);
   };
   const getTools = async (): Promise<void> => {
-    const result = await makeRequest<IGenericResponse<ITool[]>>(APIs.GetTools());
-    setTools(result.data);
+    const { response } = await makeRequest<IGenericResponse<ITool[]>>(APIs.GetTools());
+    setTools(response.data);
   };
 
   const createWorkflow = async (name: string, detail: string): Promise<void> => {
