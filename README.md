@@ -6,17 +6,16 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.14
+<b>Version</b>: 0.0.15
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Added DVH instead of VH
-- [ ] Create a Workflow from UI
-- [x] Add Delete Icon
-- [ ] Add Breadcrumbs for Workflow
+- [x] Create a Workflow from UI
+- [x] Add Breadcrumbs for Workflow
+- [ ] Fix Build
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
 - [ ] Show the Graph for the Workflow

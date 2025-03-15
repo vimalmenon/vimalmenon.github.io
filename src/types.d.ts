@@ -44,3 +44,8 @@ export interface IWorkflowSlim {
   name: string;
   detail: string;
 }
+
+export interface IMakeRequest<T> {
+  response: T;
+  error?: string;
+}

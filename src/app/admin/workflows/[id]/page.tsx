@@ -23,8 +23,15 @@ const Page: NextPage<IPage> = async ({ params }) => {
 };
 
 export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
-  const result = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
-  return result.data.map((data) => {
+  const { error, response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
+  if (error) {
+    return [
+      {
+        id: '123',
+      },
+    ];
+  }
+  return response.data.map((data) => {
     return {
       id: data.id,
     };
