@@ -11,7 +11,7 @@ import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Nodes } from './Nodes';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  const { addNodes, nodes, removeNode } = useAdminWorkflowId(id);
+  const { addNodes, nodes, onTabChange, removeNode, tab } = useAdminWorkflowId(id);
   return (
     <Box>
       <Box>Workflow {id}</Box>
@@ -21,13 +21,20 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
         </Button>
       </Box>
       <Box>
-        <Tabs value={0}>
+        <Tabs value={tab} onChange={onTabChange}>
           {nodes.map((_, index) => {
             return (
               <Tab
                 label={
-                  <Box>
-                    {index}
+                  <Box
+                    sx={{
+                      alignItems: 'center',
+                      display: 'flex',
+                      gap: 1,
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <span>{index}</span>
                     <IconButton onClick={() => removeNode(index)}>
                       <Icons.Close />
                     </IconButton>
@@ -39,14 +46,16 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
           })}
         </Tabs>
         {nodes.map((_, index) => {
-          return (
-            <Box key={index} sx={{ display: 'flex' }}>
-              <Nodes />
-              <IconButton onClick={() => removeNode(index)}>
-                <Icons.Close />
-              </IconButton>
-            </Box>
-          );
+          if (tab === index) {
+            return (
+              <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Nodes name={''} type={''} id={`${index}`} />
+                <IconButton onClick={() => removeNode(index)}>
+                  <Icons.Close />
+                </IconButton>
+              </Box>
+            );
+          }
         })}
       </Box>
     </Box>
