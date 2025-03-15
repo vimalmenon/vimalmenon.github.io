@@ -1,11 +1,11 @@
 {
   "name": "vimalmenon.com",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "lint": "next lint",
     "eslint": "npx eslint",
     "eslint:fix": "npx eslint --fix",

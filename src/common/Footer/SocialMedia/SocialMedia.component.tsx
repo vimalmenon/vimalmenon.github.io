@@ -1,3 +1,5 @@
+'use client';
+
 import IconButton from '@mui/material/IconButton';
 import MuiLink from '@mui/material/Link';
 import Tooltip from '@mui/material/Tooltip';

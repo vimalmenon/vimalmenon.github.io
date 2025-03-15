@@ -24,5 +24,5 @@ export const StyledBox = styled(Box)({
   display: 'flex',
   flex: '1 1 100%',
   flexDirection: 'column',
-  height: '100vh',
+  height: '100dvh',
 });

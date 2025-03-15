@@ -14,8 +14,33 @@ export interface INavigation extends INavigationSlim {
   description: string;
   breadcrumbs: INavigationSlim[];
   show: boolean;
+  children: INavigationSlim[];
 }
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export type AnyType = any;
+
+export interface IAPI<T = unknown> {
+  url: string;
+  method: 'GET' | 'DELETE' | 'POST' | 'PUT';
+  body?: T;
+}
+
+export interface IGenericResponse<T> {
+  data: T;
+}
+
+export interface IWorkflow {
+  id: string;
+  name: string;
+  detail: string;
+  agents: [];
+  connections: Record<string, string[]>;
+}
+
+export interface IWorkflowSlim {
+  id?: string;
+  name: string;
+  detail: string;
+}

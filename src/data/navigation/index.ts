@@ -12,6 +12,7 @@ const ReleaseNote: INavigation = {
       name: 'Release Notes',
     },
   ],
+  children: [],
   description: "This is Vimal Menon's personal website",
   link: '/release-notes/',
   name: 'Release Notes',
@@ -26,6 +27,7 @@ const Home: INavigation = {
       name: 'Home',
     },
   ],
+  children: [],
   description: "This is Vimal Menon's personal website",
   link: '/',
   name: 'Home',
@@ -44,6 +46,7 @@ const NotFound: INavigation = {
       name: 'Not Found',
     },
   ],
+  children: [],
   description: 'This is Vimal Menon personal website',
   link: '/*',
   name: 'Not Found',
@@ -62,6 +65,7 @@ const Blogs: INavigation = {
       name: 'Blogs',
     },
   ],
+  children: [],
   description: 'This is Vimal Menon personal website',
   link: '/blogs/',
   name: 'Blogs',
@@ -80,6 +84,7 @@ const About: INavigation = {
       name: 'About',
     },
   ],
+  children: [],
   description: 'This is Vimal Menon personal website',
   link: '/about/',
   name: 'About',
@@ -96,6 +101,20 @@ const Admin: INavigation = {
     {
       link: '',
       name: 'Admin',
+    },
+  ],
+  children: [
+    {
+      link: '/admin/config/',
+      name: 'Config',
+    },
+    {
+      link: '/admin/links/',
+      name: 'Links',
+    },
+    {
+      link: '/admin/workflows/',
+      name: 'Workflows',
     },
   ],
   description: 'This is Vimal Menon personal website',
@@ -116,6 +135,7 @@ const Contact: INavigation = {
       name: 'Contact',
     },
   ],
+  children: [],
   description: 'This is Vimal Menon personal website',
   link: '/contact/',
   name: 'Contact',
@@ -138,6 +158,7 @@ const AdminConfig: INavigation = {
       name: 'Config',
     },
   ],
+  children: [],
   description: 'This is Vimal Menon personal website',
   link: '/admin/config/',
   name: 'Config',
@@ -160,6 +181,7 @@ const AdminLinks: INavigation = {
       name: 'Links',
     },
   ],
+  children: [],
   description: 'This is Vimal Menon personal website',
   link: '/admin/links/',
   name: 'Links',
@@ -167,17 +189,70 @@ const AdminLinks: INavigation = {
   title: 'Links | Admin | Vimal Menon',
 };
 
+const AdminWorkflow: INavigation = {
+  breadcrumbs: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '/admin/',
+      name: 'Admin',
+    },
+    {
+      link: '',
+      name: 'Workflows',
+    },
+  ],
+  children: [],
+  description: 'This is Vimal Menon personal website',
+  link: '/admin/workflows/',
+  name: 'Workflows',
+  show: env.IS_LOCAL,
+  title: 'Workflows | Admin | Vimal Menon',
+};
+
 export const FooterNavigation = [About, ReleaseNote];
 
 export const HeaderNavigation = [Home, Blogs, Admin];
 
-export const AdminNavigation = [AdminConfig, AdminLinks];
+export const AdminNavigation = [AdminConfig, AdminLinks, AdminWorkflow];
+
+export const GenerateWorkflow = (id: string): INavigation => {
+  return {
+    breadcrumbs: [
+      {
+        link: '/',
+        name: 'Home',
+      },
+      {
+        link: '/admin/',
+        name: 'Admin',
+      },
+      {
+        link: '/admin/workflows/',
+        name: 'Workflows',
+      },
+      {
+        link: '',
+        name: id,
+      },
+    ],
+    children: [],
+    description: 'This is Vimal Menon personal website',
+    link: `/admin/workflows/${id}`,
+    name: id,
+    show: env.IS_LOCAL,
+    title: `${id} | Workflows | Admin | Vimal Menon`,
+  };
+};
 
 export const Navigation = {
   About,
   Admin,
   AdminConfig,
   AdminLinks,
+  AdminWorkflow,
   Blogs,
   Contact,
   Home,
