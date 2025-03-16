@@ -31,23 +31,9 @@ export interface IGenericResponse<T> {
   data: T;
 }
 
-export interface IWorkflow {
-  id: string;
-  name: string;
-  detail: string;
-  agents: [];
-  connections: Record<string, string[]>;
-}
-
 export interface IWorkflowSlim {
-  id?: string;
   name: string;
   detail: string;
-}
-
-export interface IMakeRequest<T> {
-  response: T;
-  error?: string;
 }
 
 export interface INodeSlim {
@@ -56,6 +42,18 @@ export interface INodeSlim {
 
 export interface INode extends INodeSlim {
   id: string;
+}
+
+export interface IWorkflow extends IWorkflowSlim {
+  id: string;
+  agents: [];
+  connections: Record<string, string[]>;
+  nodes: Record<string, INode>;
+}
+
+export interface IMakeRequest<T> {
+  response: T;
+  error?: string;
 }
 
 export type VoidFunction = () => void;

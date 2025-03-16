@@ -28,6 +28,13 @@ const GetTools = (): IAPI => {
   };
 };
 
+const GetWorkflowById = (id: string): IAPI => {
+  return {
+    method: 'GET',
+    url: `workflows/${id}`,
+  };
+};
+
 const CreateWorkflow = (body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
   return {
     body,
@@ -66,6 +73,7 @@ export const APIs = {
   GetLLMs,
   GetTools,
   getUUID,
+  GetWorkflowById,
   GetWorkflows,
   UpdateWorkflowNode,
 };

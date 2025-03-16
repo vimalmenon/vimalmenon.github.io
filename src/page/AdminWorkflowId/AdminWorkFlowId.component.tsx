@@ -2,17 +2,19 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
-import { Icons } from '@data';
+import { useEffect } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Nodes } from './Nodes';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  const { addNodes, node, nodes, onTabChange, removeNode, setNode, tab } = useAdminWorkflowId(id);
+  const { addNodes, getWorkFlow, node, nodes, onTabChange, setNode, tab } = useAdminWorkflowId(id);
+  useEffect(() => {
+    getWorkFlow();
+  }, [id]);
   return (
     <Box>
       <Box>Workflow {id}</Box>
@@ -34,7 +36,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
       </Box>
       <Box>
         <Tabs value={tab} onChange={onTabChange}>
-          {nodes.map((_, index) => {
+          {nodes.map((name) => {
             return (
               <Tab
                 label={
@@ -46,13 +48,10 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
                       justifyContent: 'space-between',
                     }}
                   >
-                    <span>{index}</span>
-                    <IconButton onClick={() => removeNode(index)}>
-                      <Icons.Close />
-                    </IconButton>
+                    <span>{name}</span>
                   </Box>
                 }
-                key={index}
+                key={name}
               />
             );
           })}
