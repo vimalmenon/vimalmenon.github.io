@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { IWorkflowForm } from './WorkflowForm';
 
-export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode }) => {
+export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel }) => {
   const [id, setId] = useState<string>(data?.id || '');
   const [name, setName] = useState<string>(data?.name || '');
   const [detail, setDetail] = useState<string>(data?.detail || '');
@@ -74,7 +74,9 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode }) => {
         </FormControl>
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button variant="outlined">Cancel</Button>
+        <Button variant="outlined" onClick={onCancel}>
+          Cancel
+        </Button>
         <Button variant="contained">Update</Button>
       </Box>
     </Box>

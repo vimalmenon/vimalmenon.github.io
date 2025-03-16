@@ -2,12 +2,12 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
+import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
-import { useEffect } from 'react';
-import { Icons } from '@data';
+import { useEffect, useState } from 'react';
+import { FormMode } from '@types';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Node } from './Node';
@@ -15,6 +15,7 @@ import { ViewWorkflow } from './ViewWorkflow';
 import { WorkflowForm } from './WorkflowForm';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
+  const [mode, setMode] = useState<FormMode>('VIEW');
   const {
     addNodes,
     deleteWorkflowNode,
@@ -31,12 +32,17 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   }, [id]);
   return (
     <Box>
-      <IconButton>
-        <Icons.Edit />
-      </IconButton>
-      {workflow ? <ViewWorkflow data={workflow} /> : null}
-      {workflow ? <WorkflowForm mode="UPDATE" data={workflow} /> : null}
-
+      {workflow && mode === 'VIEW' ? (
+        <ViewWorkflow data={workflow} onEdit={() => setMode('UPDATE')} />
+      ) : null}
+      {workflow && mode === 'UPDATE' ? (
+        <WorkflowForm mode="UPDATE" data={workflow} onCancel={() => setMode('VIEW')} />
+      ) : null}
+      <br />
+      <br />
+      <Divider />
+      <br />
+      <br />
       <Box>
         {' '}
         <TextField
@@ -84,6 +90,8 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
             );
           }
         })}
+        <br />
+        <br />
       </Box>
     </Box>
   );

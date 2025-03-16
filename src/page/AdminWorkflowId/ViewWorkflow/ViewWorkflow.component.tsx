@@ -4,13 +4,13 @@ import IconButton from '@mui/material/IconButton';
 import { Icons } from '@data';
 import { IViewWorkflow } from './ViewWorkflow';
 
-export const ViewWorkflow: React.FC<IViewWorkflow> = ({ data }) => {
+export const ViewWorkflow: React.FC<IViewWorkflow> = ({ data, onEdit }) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Item</Box>
         <Box>
-          <IconButton>
+          <IconButton onClick={onEdit}>
             <Icons.Edit />
           </IconButton>
         </Box>
