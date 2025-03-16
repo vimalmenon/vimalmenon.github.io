@@ -2,8 +2,12 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
+import { NodeType } from '@data';
 import { INodeForm } from './NodeForm';
 
 export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
@@ -39,15 +43,21 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
         {/* <FormHelperText>This is Error</FormHelperText> */}
       </FormControl>
       {mode === 'UPDATE' ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="Type"
-            variant="outlined"
-            size="small"
-            required
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          />
+        <FormControl variant="outlined" fullWidth required size="small">
+          <InputLabel id="node-type">Type</InputLabel>
+
+          <Select value={type} labelId="node-type" onChange={(e) => setType(e.target.value)}>
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {NodeType.map((node) => {
+              return (
+                <MenuItem value={node.value} key={node.value}>
+                  {node.name}
+                </MenuItem>
+              );
+            })}
+          </Select>
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
