@@ -11,6 +11,7 @@ import { Icons } from '@data';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Node } from './Node';
+import { WorkflowForm } from './WorkflowForm';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   const {
@@ -37,6 +38,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
       <Box>Name : {workflow?.name}</Box>
       <Box>Detail : {workflow?.detail}</Box>
       <Box>Complete : {workflow?.complete ? 'True' : 'False'}</Box>
+      {workflow ? <WorkflowForm mode="UPDATE" data={workflow} /> : null}
       <Box>
         {' '}
         <TextField
