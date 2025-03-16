@@ -11,13 +11,16 @@ import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Nodes } from './Nodes';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  const { addNodes, getWorkFlow, node, nodes, onTabChange, setNode, tab } = useAdminWorkflowId(id);
+  const { addNodes, getWorkFlow, node, nodes, onTabChange, setNode, tab, workflow } =
+    useAdminWorkflowId(id);
   useEffect(() => {
     getWorkFlow();
   }, [id]);
   return (
     <Box>
-      <Box>Workflow {id}</Box>
+      <Box>Workflow : {id}</Box>
+      <Box>Name : {workflow?.name}</Box>
+      <Box>Detail : {workflow?.detail}</Box>
       <Box>
         {' '}
         <TextField

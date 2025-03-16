@@ -46,7 +46,6 @@ export interface INode extends INodeSlim {
 
 export interface IWorkflow extends IWorkflowSlim {
   id: string;
-  agents: [];
   connections: Record<string, string[]>;
   nodes: Record<string, INode>;
 }
