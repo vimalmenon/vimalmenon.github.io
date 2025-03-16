@@ -31,7 +31,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
     getWorkFlow();
   }, [id]);
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       {workflow && mode === 'VIEW' ? (
         <ViewWorkflow data={workflow} onEdit={() => setMode('UPDATE')} />
       ) : null}
