@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import { INodeForm } from './NodeForm';
 
-export const NodeForm: React.FC<INodeForm> = () => {
+export const NodeForm: React.FC<INodeForm> = ({ onCancel }) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <FormControl variant="outlined" fullWidth required>
@@ -29,7 +29,9 @@ export const NodeForm: React.FC<INodeForm> = () => {
         {/* <FormHelperText>This is Error</FormHelperText> */}
       </FormControl>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button variant="outlined">Cancel</Button>
+        <Button variant="outlined" onClick={onCancel}>
+          Cancel
+        </Button>
         <Button variant="contained">Update</Button>
       </Box>
     </Box>
