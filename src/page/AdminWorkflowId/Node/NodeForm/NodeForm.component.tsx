@@ -24,6 +24,10 @@ export const NodeForm: React.FC<INodeForm> = () => {
         <TextField label="LLM" variant="outlined" size="small" required />
         {/* <FormHelperText>This is Error</FormHelperText> */}
       </FormControl>
+      <FormControl variant="outlined" fullWidth required>
+        <TextField label="Prompt" variant="outlined" size="small" required />
+        {/* <FormHelperText>This is Error</FormHelperText> */}
+      </FormControl>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button variant="outlined">Cancel</Button>
         <Button variant="contained">Update</Button>
