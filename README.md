@@ -13,8 +13,8 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [x] Fix Build
-- [ ] Fix Dynamic Height
+- [x] Fix Dynamic Height
+- [x] Create API for website
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
 - [ ] Show Graph at the side
@@ -28,7 +28,6 @@ This is Website for Vimal Menon
 - [ ] Create sub navigation for Blogs
 - [ ] Create favicon for Website
 - [ ] Grouping import
-- [ ] Create API for website
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
 
