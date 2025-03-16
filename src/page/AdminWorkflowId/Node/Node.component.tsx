@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { INode } from './Node';
 import { NodeForm } from './NodeForm';
+import { ViewNode } from './ViewNode';
 
 export const Node: React.FC<INode> = ({ data, deleteNode }) => {
   return (
@@ -13,9 +14,9 @@ export const Node: React.FC<INode> = ({ data, deleteNode }) => {
         <Box>Name: {data.name}</Box>
         <Box>Type: </Box>
       </Box>
-      <NodeForm />
+      <ViewNode />
+      <NodeForm data={data} />
       <Box>
-        <Button variant="outlined">Save</Button>
         <Button variant="outlined" onClick={deleteNode}>
           Delete
         </Button>

@@ -3,8 +3,9 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
+import { INodeForm } from './NodeForm';
 
-export const NodeForm: React.FC = () => {
+export const NodeForm: React.FC<INodeForm> = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <FormControl variant="outlined" fullWidth required>
