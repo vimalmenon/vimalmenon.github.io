@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
+import TextField from '@mui/material/TextField';
 import { Icons } from '@data';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
@@ -15,6 +16,17 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   return (
     <Box>
       <Box>Workflow {id}</Box>
+      <Box>
+        {' '}
+        <TextField
+          required
+          label="Name"
+          size="small"
+          fullWidth
+          //   value={name}
+          //   onChange={(e) => setName(e.target.value)}
+        />
+      </Box>
       <Box>
         <Button variant="outlined" onClick={addNodes}>
           Create Node

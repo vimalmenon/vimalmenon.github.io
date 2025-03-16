@@ -13,7 +13,7 @@ const Page: React.FC = () => {
     <StyledPage>
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
-        <div>0.0.14</div>
+        <div>0.0.15</div>
         <ul>Changed height from VH to DVH</ul>
       </div>
       <div>
@@ -21,6 +21,7 @@ const Page: React.FC = () => {
         <ul>
           <li>Env Set up</li>
           <li>Limited Access to admin</li>
+          <ul>Adapt Height to Mobile</ul>
           <li>Create tag & release</li>
           <li>Download Resume</li>
           <li>
