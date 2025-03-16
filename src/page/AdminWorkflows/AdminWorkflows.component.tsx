@@ -21,13 +21,14 @@ export const AdminWorkflows: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <Tabs value={tab} onChange={handleChange}>
+        <Tab label="Workflows" />
         <Tab label="LLM" />
         <Tab label="UUID" />
-        <Tab label="Workflows" />
         <Tab label="Tools" />
       </Tabs>
-      {tab === 0 ? <LLM /> : null}
-      {tab === 1 ? (
+      {tab === 0 ? <Workflows /> : null}
+      {tab === 1 ? <LLM /> : null}
+      {tab === 2 ? (
         <Box>
           <TextField required label="UUID" value={uuid} size="small" disabled={true} />
           <Button variant="outlined" onClick={createUUID}>
@@ -35,11 +36,7 @@ export const AdminWorkflows: React.FC = () => {
           </Button>
         </Box>
       ) : null}
-      {tab === 2 ? (
-        <Box>
-          <Workflows />
-        </Box>
-      ) : null}
+
       {tab === 3 ? (
         <Box>
           <Tools />

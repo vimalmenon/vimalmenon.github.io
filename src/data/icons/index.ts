@@ -1,3 +1,4 @@
+import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -10,6 +11,7 @@ import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export const Icons = {
+  Add: AddIcon,
   Check: DoneIcon,
   Close: CloseIcon,
   Copy: ContentCopyIcon,
