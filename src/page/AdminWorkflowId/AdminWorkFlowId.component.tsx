@@ -50,9 +50,6 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
             return (
               <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Nodes name={''} type={''} id={`${index}`} />
-                <IconButton onClick={() => removeNode(index)}>
-                  <Icons.Close />
-                </IconButton>
               </Box>
             );
           }

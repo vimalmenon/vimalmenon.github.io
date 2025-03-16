@@ -17,6 +17,7 @@ This is Website for Vimal Menon
 - [ ] Fix Dynamic Height
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
+- [ ] Show Graph at the side
 - [ ] Show the Graph for the Workflow
 - [ ] Improve Our Team
 - [ ] Add Links to Admin Page
