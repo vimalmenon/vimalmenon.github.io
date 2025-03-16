@@ -11,9 +11,8 @@ import { useState } from 'react';
 import { IWorkflowForm } from './WorkflowForm';
 
 export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel }) => {
-  const [id, setId] = useState<string>(data?.id || '');
-  const [name, setName] = useState<string>(data?.name || '');
-  const [detail, setDetail] = useState<string>(data?.detail || '');
+  const [name, setName] = useState<string>(data?.name ?? '');
+  const [detail, setDetail] = useState<string>(data?.detail ?? '');
   const [complete, setComplete] = useState<boolean>(data?.complete || false);
 
   return (
@@ -25,8 +24,8 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel }) 
             variant="outlined"
             size="small"
             required
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            defaultValue={data?.id}
+            disabled
           />
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
