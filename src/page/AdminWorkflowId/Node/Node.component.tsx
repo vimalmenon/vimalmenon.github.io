@@ -14,7 +14,9 @@ export const Node: React.FC<INode> = ({ data, deleteNode }) => {
       {mode === 'VIEW' ? (
         <ViewNode data={data} onEdit={() => setMode('UPDATE')} onDelete={deleteNode} />
       ) : null}
-      {mode === 'UPDATE' ? <NodeForm data={data} onCancel={() => setMode('VIEW')} /> : null}
+      {mode === 'UPDATE' ? (
+        <NodeForm data={data} onCancel={() => setMode('VIEW')} mode="UPDATE" />
+      ) : null}
     </Box>
   );
 };
