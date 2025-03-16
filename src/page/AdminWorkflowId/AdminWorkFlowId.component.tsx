@@ -2,10 +2,12 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
 import { useEffect } from 'react';
+import { Icons } from '@data';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Node } from './Node';
@@ -27,9 +29,14 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   }, [id]);
   return (
     <Box>
+      <IconButton>
+        <Icons.Edit />
+      </IconButton>
+
       <Box>Workflow : {id}</Box>
       <Box>Name : {workflow?.name}</Box>
       <Box>Detail : {workflow?.detail}</Box>
+      <Box>Complete : {workflow?.complete ? 'True' : 'False'}</Box>
       <Box>
         {' '}
         <TextField
