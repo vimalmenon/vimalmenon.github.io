@@ -30,9 +30,10 @@ const Page: React.FC = () => {
             <ul>
               <li>Release Notes</li>
               <li>About</li>
+              <li>Admin</li>
             </ul>
           </li>
-          <li>Show Social media links</li>
+          <li>Social media links</li>
           <li>Partial Google Analytics</li>
           <li>Set up CI & CD with GitHub Action</li>
           <li>Static Website</li>
