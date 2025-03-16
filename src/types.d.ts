@@ -57,3 +57,5 @@ export interface IMakeRequest<T> {
 }
 
 export type VoidFunction = () => void;
+
+export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
