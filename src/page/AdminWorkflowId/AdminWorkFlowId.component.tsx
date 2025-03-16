@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import { useEffect } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
-import { Nodes } from './Nodes';
+import { Node } from './Node';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   const { addNodes, getWorkFlow, node, nodes, onTabChange, setNode, tab, workflow } =
@@ -63,11 +63,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
           if (tab === index && workflow?.nodes[node]) {
             return (
               <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Nodes
-                  {...{
-                    ...workflow?.nodes[node],
-                  }}
-                />
+                <Node data={workflow.nodes[node]} />
               </Box>
             );
           }
