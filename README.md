@@ -28,13 +28,13 @@ This is Website for Vimal Menon
 - [ ] Create sub navigation for Blogs
 - [ ] Create favicon for Website
 - [ ] Grouping import
+- [ ] Create API for production
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
 
 ## Ideas
 
 - Show Team Members
-- Show Link to Social Media
 
 ## Command
 Clean up Remote branch
