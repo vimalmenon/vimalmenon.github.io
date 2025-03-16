@@ -12,7 +12,7 @@ import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Nodes } from './Nodes';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  const { addNodes, nodes, onTabChange, removeNode, tab } = useAdminWorkflowId(id);
+  const { addNodes, node, nodes, onTabChange, removeNode, setNode, tab } = useAdminWorkflowId(id);
   return (
     <Box>
       <Box>Workflow {id}</Box>
@@ -23,8 +23,8 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
           label="Name"
           size="small"
           fullWidth
-          //   value={name}
-          //   onChange={(e) => setName(e.target.value)}
+          value={node}
+          onChange={(e) => setNode(e.target.value)}
         />
       </Box>
       <Box>

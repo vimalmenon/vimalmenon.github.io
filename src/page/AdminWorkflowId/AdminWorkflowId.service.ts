@@ -1,11 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+import { APIs } from '@data';
+import { makeRequest } from '@utility';
 
 export const useAdminWorkflowId = (id: string) => {
   const [nodes, setNodes] = useState<string[]>([]);
   const [tab, selectedTab] = useState<number>(0);
-  const addNodes = (): void => {
+  const [node, setNode] = useState<string>('');
+  const addNodes = async (): Promise<void> => {
+    const {} = await makeRequest(
+      APIs.CreateWorkflowNode(id, {
+        name: node,
+      })
+    );
     setNodes([...nodes, '']);
   };
   const removeNode = (index: number): void => {
@@ -18,9 +26,11 @@ export const useAdminWorkflowId = (id: string) => {
   return {
     addNodes,
     id,
+    node,
     nodes,
     onTabChange,
     removeNode,
+    setNode,
     tab,
   };
 };

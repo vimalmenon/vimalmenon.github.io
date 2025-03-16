@@ -14,10 +14,11 @@ const Page: React.FC = () => {
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
         <div>0.0.15</div>
-        <ul>Changed height from VH to DVH</ul>
+        <ul>Fix the height bug</ul>
+        <ul>Workflow and nodes</ul>
       </div>
       <div>
-        <div>[0.0.13 - 0.0.0]</div>
+        <div>[0.0.15 - 0.0.0]</div>
         <ul>
           <li>Env Set up</li>
           <li>Limited Access to admin</li>

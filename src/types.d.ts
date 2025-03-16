@@ -50,4 +50,12 @@ export interface IMakeRequest<T> {
   error?: string;
 }
 
+export interface INodeSlim {
+  name: string;
+}
+
+export interface INode extends INodeSlim {
+  id: string;
+}
+
 export type VoidFunction = () => void;
