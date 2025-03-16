@@ -14,7 +14,7 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
   return (
     <html lang="en">
       <meta name="viewport" content="initial-scale=1, width=device-width" />
-      <body style={{ height: '100vh' }}>
+      <body style={{ height: '100dvh' }}>
         <Google>
           <AppContext>
             <ThemeWrapper>

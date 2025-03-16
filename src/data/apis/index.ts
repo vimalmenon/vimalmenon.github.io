@@ -1,4 +1,4 @@
-import { IAPI, IWorkflowSlim } from '@types';
+import { IAPI, INodeSlim, IWorkflowSlim } from '@types';
 
 const GetWorkflows = (): IAPI => {
   return {
@@ -28,6 +28,13 @@ const GetTools = (): IAPI => {
   };
 };
 
+const GetWorkflowById = (id: string): IAPI => {
+  return {
+    method: 'GET',
+    url: `workflows/${id}`,
+  };
+};
+
 const CreateWorkflow = (body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
   return {
     body,
@@ -36,6 +43,28 @@ const CreateWorkflow = (body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
   };
 };
 
+const CreateWorkflowNode = (wdId: string, body: INodeSlim): IAPI<INodeSlim> => {
+  return {
+    body,
+    method: 'PUT',
+    url: `workflows/node/${wdId}`,
+  };
+};
+
+const UpdateWorkflowNode = (wfId: string, id: string, body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
+  return {
+    body,
+    method: 'POST',
+    url: `workflows/node/${wfId}/${id}`,
+  };
+};
+
+const DeleteWorkflowNode = (wfId: string, id: string): IAPI => {
+  return {
+    method: 'DELETE',
+    url: `workflows/node/${wfId}/${id}`,
+  };
+};
 const DeleteWorkflow = (id: string): IAPI => {
   return {
     method: 'DELETE',
@@ -45,9 +74,13 @@ const DeleteWorkflow = (id: string): IAPI => {
 
 export const APIs = {
   CreateWorkflow,
+  CreateWorkflowNode,
   DeleteWorkflow,
+  DeleteWorkflowNode,
   GetLLMs,
   GetTools,
   getUUID,
+  GetWorkflowById,
   GetWorkflows,
+  UpdateWorkflowNode,
 };

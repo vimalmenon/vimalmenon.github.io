@@ -28,10 +28,9 @@ export const useAdminWorkflows = () => {
     setTools(response.data);
   };
 
-  const createWorkflow = async (name: string, detail: string): Promise<void> => {
+  const createWorkflow = async (name: string): Promise<void> => {
     await makeRequest<IGenericResponse<ITool[]>>(
       APIs.CreateWorkflow({
-        detail,
         name,
       })
     );

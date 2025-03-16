@@ -31,21 +31,31 @@ export interface IGenericResponse<T> {
   data: T;
 }
 
-export interface IWorkflow {
-  id: string;
+export interface IWorkflowSlim {
   name: string;
-  detail: string;
-  agents: [];
-  connections: Record<string, string[]>;
 }
 
-export interface IWorkflowSlim {
-  id?: string;
+export interface INodeSlim {
   name: string;
+}
+
+export interface INode extends INodeSlim {
+  id: string;
+}
+
+export interface IWorkflow extends IWorkflowSlim {
+  id: string;
   detail: string;
+  connections: Record<string, string[]>;
+  nodes: Record<string, INode>;
+  complete: boolean;
 }
 
 export interface IMakeRequest<T> {
   response: T;
   error?: string;
 }
+
+export type VoidFunction = () => void;
+
+export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
