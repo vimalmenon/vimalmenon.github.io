@@ -33,7 +33,6 @@ export interface IGenericResponse<T> {
 
 export interface IWorkflowSlim {
   name: string;
-  detail: string;
 }
 
 export interface INodeSlim {
@@ -46,8 +45,10 @@ export interface INode extends INodeSlim {
 
 export interface IWorkflow extends IWorkflowSlim {
   id: string;
+  detail: string;
   connections: Record<string, string[]>;
   nodes: Record<string, INode>;
+  complete: boolean;
 }
 
 export interface IMakeRequest<T> {

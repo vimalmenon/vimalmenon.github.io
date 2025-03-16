@@ -18,10 +18,6 @@ export const useAdminWorkflowId = (id: string) => {
     );
     await getWorkFlow();
   };
-  const removeNode = (index: number): void => {
-    nodes.splice(index, 1);
-    setNodes([...nodes]);
-  };
   const onTabChange = (event: React.SyntheticEvent, newValue: number): void => {
     selectedTab(newValue);
   };
@@ -34,6 +30,7 @@ export const useAdminWorkflowId = (id: string) => {
   const deleteWorkflowNode = async (nodeId: string): Promise<void> => {
     await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
     await getWorkFlow();
+    selectedTab(0);
   };
   return {
     addNodes,
@@ -43,7 +40,6 @@ export const useAdminWorkflowId = (id: string) => {
     node,
     nodes,
     onTabChange,
-    removeNode,
     setNode,
     tab,
     workflow,

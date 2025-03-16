@@ -47,22 +47,22 @@ const CreateWorkflowNode = (wdId: string, body: INodeSlim): IAPI<INodeSlim> => {
   return {
     body,
     method: 'PUT',
-    url: `workflows/node/create/${wdId}`,
+    url: `workflows/node/${wdId}`,
   };
 };
 
 const UpdateWorkflowNode = (wfId: string, id: string, body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
   return {
     body,
-    method: 'PUT',
-    url: `workflows/node/updated/${wfId}/${id}`,
+    method: 'POST',
+    url: `workflows/node/${wfId}/${id}`,
   };
 };
 
 const DeleteWorkflowNode = (wfId: string, id: string): IAPI => {
   return {
     method: 'DELETE',
-    url: `workflows/node/delete/${wfId}/${id}`,
+    url: `workflows/node/${wfId}/${id}`,
   };
 };
 const DeleteWorkflow = (id: string): IAPI => {

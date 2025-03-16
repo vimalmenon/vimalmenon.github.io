@@ -8,7 +8,6 @@ import { useAdminWorkflows } from '../../AdminWorkflows.services';
 
 export const CreateWorkflow: React.FC = () => {
   const [name, setName] = useState<string>('');
-  const [detail, setDetail] = useState<string>('');
   const { createWorkflow } = useAdminWorkflows();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -24,20 +23,7 @@ export const CreateWorkflow: React.FC = () => {
         />
       </Box>
       <Box>
-        {' '}
-        <TextField
-          required
-          label="Detail"
-          size="small"
-          multiline={true}
-          rows={5}
-          fullWidth
-          value={detail}
-          onChange={(e) => setDetail(e.target.value)}
-        />
-      </Box>
-      <Box>
-        <Button variant="outlined" onClick={() => createWorkflow(name, detail)}>
+        <Button variant="outlined" onClick={() => createWorkflow(name)}>
           Create Workflow
         </Button>
       </Box>
