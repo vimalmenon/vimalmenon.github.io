@@ -59,7 +59,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
           Create Node
         </Button>
       </Box>
-      <Box>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={tab} onChange={onTabChange}>
           {nodes.map((name) => {
             return (

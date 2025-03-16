@@ -6,7 +6,7 @@ import { IViewWorkflow } from './ViewWorkflow';
 
 export const ViewWorkflow: React.FC<IViewWorkflow> = ({ data, onEdit }) => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Item</Box>
         <Box>

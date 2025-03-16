@@ -6,7 +6,7 @@ import { IViewNode } from './ViewNode';
 
 export const ViewNode: React.FC<IViewNode> = ({ data, onEdit }) => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Node Item</Box>
         <Box>

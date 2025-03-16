@@ -11,7 +11,7 @@ import { ViewNode } from './ViewNode';
 export const Node: React.FC<INode> = ({ data, deleteNode }) => {
   const [mode, setMode] = useState<FormMode>('VIEW');
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column' }}>
       {mode === 'VIEW' ? <ViewNode data={data} onEdit={() => setMode('UPDATE')} /> : null}
       {mode === 'UPDATE' ? <NodeForm data={data} onCancel={() => setMode('VIEW')} /> : null}
       <Box>
