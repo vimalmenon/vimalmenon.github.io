@@ -2,15 +2,15 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { INodes } from './Nodes';
+import { INode } from '@types';
 
-export const Nodes: React.FC<INodes> = ({ id, name, type }) => {
+export const Nodes: React.FC<INode> = ({ id, name }) => {
   return (
     <Box>
       <Box>
         <Box>Id: {id}</Box>
         <Box>Name: {name}</Box>
-        <Box>Type: {type}</Box>
+        <Box>Type: </Box>
       </Box>
       <Box>
         <Button variant="outlined">Delete</Button>

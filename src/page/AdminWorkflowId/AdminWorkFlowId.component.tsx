@@ -59,11 +59,15 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
             );
           })}
         </Tabs>
-        {nodes.map((_, index) => {
-          if (tab === index) {
+        {nodes.map((node, index) => {
+          if (tab === index && workflow?.nodes[node]) {
             return (
               <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Nodes name={''} type={''} id={`${index}`} />
+                <Nodes
+                  {...{
+                    ...workflow?.nodes[node],
+                  }}
+                />
               </Box>
             );
           }
