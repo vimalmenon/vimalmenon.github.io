@@ -16,7 +16,7 @@ export const useAdminWorkflowId = (id: string) => {
         name: node,
       })
     );
-    setNodes([...nodes, '']);
+    await getWorkFlow();
   };
   const removeNode = (index: number): void => {
     nodes.splice(index, 1);
@@ -31,8 +31,13 @@ export const useAdminWorkflowId = (id: string) => {
     setNodes(Object.keys(workflow.nodes));
     setWorkflows(response.data);
   };
+  const deleteWorkflowNode = async (nodeId: string): Promise<void> => {
+    await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
+    await getWorkFlow();
+  };
   return {
     addNodes,
+    deleteWorkflowNode,
     getWorkFlow,
     id,
     node,

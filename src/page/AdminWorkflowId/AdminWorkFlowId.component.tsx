@@ -11,8 +11,17 @@ import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Node } from './Node';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  const { addNodes, getWorkFlow, node, nodes, onTabChange, setNode, tab, workflow } =
-    useAdminWorkflowId(id);
+  const {
+    addNodes,
+    deleteWorkflowNode,
+    getWorkFlow,
+    node,
+    nodes,
+    onTabChange,
+    setNode,
+    tab,
+    workflow,
+  } = useAdminWorkflowId(id);
   useEffect(() => {
     getWorkFlow();
   }, [id]);
@@ -63,7 +72,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
           if (tab === index && workflow?.nodes[node]) {
             return (
               <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Node data={workflow.nodes[node]} />
+                <Node data={workflow.nodes[node]} deleteNode={() => deleteWorkflowNode(node)} />
               </Box>
             );
           }

@@ -59,6 +59,12 @@ const UpdateWorkflowNode = (wfId: string, id: string, body: IWorkflowSlim): IAPI
   };
 };
 
+const DeleteWorkflowNode = (wfId: string, id: string): IAPI => {
+  return {
+    method: 'DELETE',
+    url: `workflows/node/delete/${wfId}/${id}`,
+  };
+};
 const DeleteWorkflow = (id: string): IAPI => {
   return {
     method: 'DELETE',
@@ -70,6 +76,7 @@ export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
   DeleteWorkflow,
+  DeleteWorkflowNode,
   GetLLMs,
   GetTools,
   getUUID,

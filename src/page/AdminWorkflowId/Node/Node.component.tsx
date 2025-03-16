@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { INode } from './Node';
 
-export const Node: React.FC<INode> = ({ data }) => {
+export const Node: React.FC<INode> = ({ data, deleteNode }) => {
   return (
     <Box>
       <Box>
@@ -14,7 +14,9 @@ export const Node: React.FC<INode> = ({ data }) => {
       </Box>
       <Box>
         <Button variant="outlined">Save</Button>
-        <Button variant="outlined">Delete</Button>
+        <Button variant="outlined" onClick={deleteNode}>
+          Delete
+        </Button>
       </Box>
     </Box>
   );
