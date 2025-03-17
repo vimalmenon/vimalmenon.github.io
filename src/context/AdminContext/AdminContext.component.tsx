@@ -1,8 +1,20 @@
 'use client';
 
-import { IReactChildren } from '@types';
-import { Context, initialState } from './AdminContext.service';
+import { useReducer } from 'react';
+import { ILLM, IReactChildren } from '@types';
+import { addLlms, Context, initialState, reducer } from './AdminContext.service';
 
 export const AdminContext: React.FC<IReactChildren> = ({ children }) => {
-  return <Context.Provider value={initialState}>{children}</Context.Provider>;
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <Context.Provider
+      value={{
+        ...state,
+        addLlms: (llms: ILLM[]) => addLlms(dispatch, llms),
+      }}
+    >
+      {children}
+    </Context.Provider>
+  );
 };
