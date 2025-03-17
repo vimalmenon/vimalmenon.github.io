@@ -43,10 +43,15 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
         {/* <FormHelperText>This is Error</FormHelperText> */}
       </FormControl>
       {mode === 'UPDATE' ? (
-        <FormControl variant="outlined" fullWidth required size="small">
+        <FormControl fullWidth required size="small">
           <InputLabel id="node-type">Type</InputLabel>
 
-          <Select value={type} labelId="node-type" onChange={(e) => setType(e.target.value)}>
+          <Select
+            value={type}
+            labelId="node-type"
+            label="Type"
+            onChange={(e) => setType(e.target.value)}
+          >
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
