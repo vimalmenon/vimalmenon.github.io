@@ -60,6 +60,12 @@ export interface IMakeRequest<T> {
   error?: string;
 }
 
+export interface ILLM {
+  name: string;
+  model: string;
+  supported: boolean;
+}
+
 export type VoidFunction = () => void;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
