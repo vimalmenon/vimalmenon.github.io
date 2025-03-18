@@ -1,2 +1,2 @@
-export { AdminContext } from './AdminContext';
+export * from './AdminContext';
 export { AppContext, useAppContext } from './AppContext';
