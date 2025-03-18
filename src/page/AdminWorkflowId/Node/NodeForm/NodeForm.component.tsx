@@ -11,7 +11,7 @@ import { useAdminContext } from '@context';
 import { NodeType } from '@data';
 import { INodeForm } from './NodeForm';
 
-export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
+export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode }) => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');
   const [llm, setLlm] = useState<string>(data?.llm ?? '');
@@ -123,7 +123,21 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
         <Button variant="outlined" onClick={onCancel}>
           Cancel
         </Button>
-        <Button variant="contained">Update</Button>
+        <Button
+          variant="contained"
+          onClick={() =>
+            updateNode({
+              id: data.id,
+              llm,
+              name,
+              prompt,
+              tools,
+              type,
+            })
+          }
+        >
+          Update
+        </Button>
       </Box>
     </Box>
   );

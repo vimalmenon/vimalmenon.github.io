@@ -27,6 +27,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
     onTabChange,
     setNode,
     tab,
+    updateNode,
     workflow,
   } = useAdminWorkflowId(id);
   useEffect(() => {
@@ -98,7 +99,11 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
           if (tab === index && workflow?.nodes[node]) {
             return (
               <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Node data={workflow.nodes[node]} deleteNode={() => deleteWorkflowNode(node)} />
+                <Node
+                  data={workflow.nodes[node]}
+                  deleteNode={() => deleteWorkflowNode(node)}
+                  updateNode={(data) => updateNode(node, data)}
+                />
               </Box>
             );
           }
