@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { IGenericResponse, ILLM, ITool, IWorkflow } from '@types';
+import { IGenericResponse, ILLM, INode, ITool, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
 
 export const useAdminWorkflowId = (id: string) => {
@@ -42,6 +42,10 @@ export const useAdminWorkflowId = (id: string) => {
     const { response } = await makeRequest<IGenericResponse<ITool[]>>(APIs.GetTools());
     addTools(response.data);
   };
+  const updateNode = async (nodeId: string, data: INode): Promise<void> => {
+    await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
+    await getWorkFlow();
+  };
   return {
     addNodes,
     deleteWorkflowNode,
@@ -54,6 +58,7 @@ export const useAdminWorkflowId = (id: string) => {
     onTabChange,
     setNode,
     tab,
+    updateNode,
     workflow,
   };
 };

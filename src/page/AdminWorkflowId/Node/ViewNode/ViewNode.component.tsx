@@ -10,11 +10,11 @@ export const ViewNode: React.FC<IViewNode> = ({ data, onDelete, onEdit }) => {
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Node Item</Box>
         <Box>
-          <IconButton onClick={onEdit}>
-            <Icons.Edit />
-          </IconButton>
           <IconButton onClick={onDelete}>
             <Icons.Delete />
+          </IconButton>
+          <IconButton onClick={onEdit}>
+            <Icons.Edit />
           </IconButton>
         </Box>
       </Box>

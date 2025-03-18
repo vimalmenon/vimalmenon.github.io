@@ -1,4 +1,4 @@
-import { IAPI, INodeSlim, IWorkflowSlim } from '@types';
+import { IAPI, INode, INodeSlim, IWorkflowSlim } from '@types';
 
 const GetWorkflows = (): IAPI => {
   return {
@@ -51,7 +51,7 @@ const CreateWorkflowNode = (wdId: string, body: INodeSlim): IAPI<INodeSlim> => {
   };
 };
 
-const UpdateWorkflowNode = (wfId: string, id: string, body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
+const UpdateWorkflowNode = (wfId: string, id: string, body: INode): IAPI<INode> => {
   return {
     body,
     method: 'POST',
