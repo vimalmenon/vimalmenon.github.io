@@ -48,7 +48,7 @@ export const Workflows: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {workflows.map((workflow) => {
+              {workflows?.map((workflow) => {
                 return (
                   <TableRow key={workflow.id}>
                     <TableCell>

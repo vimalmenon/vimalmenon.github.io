@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
+import { useAdminContext } from '@context';
 import { NodeType } from '@data';
 import { INodeForm } from './NodeForm';
 
@@ -15,7 +16,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
   const [type, setType] = useState<string>(data?.type ?? '');
   const [llm, setLlm] = useState<string>(data?.llm ?? '');
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
-
+  const { llms } = useAdminContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {mode === 'UPDATE' ? (
@@ -67,18 +68,40 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
         </FormControl>
       ) : null}
       {mode === 'UPDATE' ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="LLM"
-            variant="outlined"
-            size="small"
-            required
+        <FormControl fullWidth required size="small">
+          <InputLabel id="node-type">LLM</InputLabel>
+
+          <Select
             value={llm}
+            labelId="node-type"
+            label="LLM"
             onChange={(e) => setLlm(e.target.value)}
-          />
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {llms.map((node) => {
+              return (
+                <MenuItem value={node.name} key={node.name}>
+                  {node.name} {node.model}
+                </MenuItem>
+              );
+            })}
+          </Select>
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
-      ) : null}
+      ) : // <FormControl variant="outlined" fullWidth required>
+      //   <TextField
+      //     label="LLM"
+      //     variant="outlined"
+      //     size="small"
+      //     required
+      //     value={llm}
+      //     onChange={(e) => setLlm(e.target.value)}
+      //   />
+      //   {/* <FormHelperText>This is Error</FormHelperText> */}
+      // </FormControl>
+      null}
       {mode === 'UPDATE' ? (
         <FormControl variant="outlined" fullWidth required>
           <TextField

@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { IGenericResponse, IWorkflow } from '@types';
+import { IGenericResponse, ILLM, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
 
 export const useAdminWorkflowId = (id: string) => {
@@ -10,6 +11,7 @@ export const useAdminWorkflowId = (id: string) => {
   const [tab, selectedTab] = useState<number>(0);
   const [node, setNode] = useState<string>('');
   const [workflow, setWorkflows] = useState<IWorkflow>();
+  const { addLlms } = useAdminContext();
   const addNodes = async (): Promise<void> => {
     await makeRequest(
       APIs.CreateWorkflowNode(id, {
@@ -32,9 +34,14 @@ export const useAdminWorkflowId = (id: string) => {
     await getWorkFlow();
     selectedTab(0);
   };
+  const getLLMs = async (): Promise<void> => {
+    const { response } = await makeRequest<IGenericResponse<ILLM[]>>(APIs.GetLLMs());
+    addLlms(response.data);
+  };
   return {
     addNodes,
     deleteWorkflowNode,
+    getLLMs,
     getWorkFlow,
     id,
     node,

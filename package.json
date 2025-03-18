@@ -22,7 +22,7 @@
     "@mui/material": "^6.4.8",
     "@mui/material-nextjs": "^6.4.3",
     "framer-motion": "^12.5.0",
-    "next": "15.2.2",
+    "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-gtm-module": "^2.0.11"
@@ -38,7 +38,7 @@
     "@types/react-dom": "^19",
     "@types/react-gtm-module": "^2.0.4",
     "eslint": "^9",
-    "eslint-config-next": "^15.2.2",
+    "eslint-config-next": "^15.2.3",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.3",

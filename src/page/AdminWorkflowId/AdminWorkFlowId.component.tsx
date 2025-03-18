@@ -19,6 +19,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   const {
     addNodes,
     deleteWorkflowNode,
+    getLLMs,
     getWorkFlow,
     node,
     nodes,
@@ -29,6 +30,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   } = useAdminWorkflowId(id);
   useEffect(() => {
     getWorkFlow();
+    getLLMs();
   }, [id]);
   const [showAddNode] = useState<boolean>(false);
   return (
