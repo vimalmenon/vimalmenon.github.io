@@ -6,31 +6,38 @@ import { AnyType } from '@types';
 import { NotImplemented } from '@utility';
 import { DispatchType, IAppAction, IAppContext, IAppReducer } from './AppContext';
 
+export enum ActionType {
+  TOGGLE_MODE = 'TOGGLE_MODE',
+  TOGGLE_DRAWER = 'TOGGLE_DRAWER',
+  CHANGE_THEME = 'CHANGE_THEME',
+  CLOSE_DRAWER = 'CLOSE_DRAWER',
+}
+
 export const reducer = (state: IAppReducer, action: IAppAction<unknown>): IAppReducer => {
   const { payload, type } = action;
 
-  if (type === 'TOGGLE_MODE') {
+  if (type === ActionType.TOGGLE_MODE) {
     const mode = state.mode === 'dark' ? 'light' : 'dark';
     return {
       ...state,
       mode,
     };
   }
-  if (type === 'TOGGLE_DRAWER') {
+  if (type === ActionType.TOGGLE_DRAWER) {
     const showDrawer = !state.showDrawer;
     return {
       ...state,
       showDrawer,
     };
   }
-  if (type === 'CHANGE_THEME') {
+  if (type === ActionType.CHANGE_THEME) {
     const { theme } = payload as AnyType;
     return {
       ...state,
       primaryTheme: theme,
     };
   }
-  if (type === 'CLOSE_DRAWER') {
+  if (type === ActionType.CLOSE_DRAWER) {
     return {
       ...state,
       showDrawer: false,
@@ -46,13 +53,6 @@ export const initialState: IAppReducer = {
   showDrawer: false,
   tertiaryTheme: teal,
 };
-
-export enum ActionType {
-  TOGGLE_MODE = 'TOGGLE_MODE',
-  TOGGLE_DRAWER = 'TOGGLE_DRAWER',
-  CHANGE_THEME = 'CHANGE_THEME',
-  CLOSE_DRAWER = 'CLOSE_DRAWER',
-}
 
 export const Context = createContext<IAppContext>({
   ...initialState,
