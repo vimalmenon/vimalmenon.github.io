@@ -13,7 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Fix the issue with Layout
+- [x] Fix the issue with Layout
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
 - [ ] Show Graph at the side
