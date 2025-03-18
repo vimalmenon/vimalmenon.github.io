@@ -16,6 +16,8 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
   const [type, setType] = useState<string>(data?.type ?? '');
   const [llm, setLlm] = useState<string>(data?.llm ?? '');
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
+  const [tools, setTools] = useState<string[]>(data?.tools ?? []);
+
   const { llms } = useAdminContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -90,18 +92,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
           </Select>
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
-      ) : // <FormControl variant="outlined" fullWidth required>
-      //   <TextField
-      //     label="LLM"
-      //     variant="outlined"
-      //     size="small"
-      //     required
-      //     value={llm}
-      //     onChange={(e) => setLlm(e.target.value)}
-      //   />
-      //   {/* <FormHelperText>This is Error</FormHelperText> */}
-      // </FormControl>
-      null}
+      ) : null}
       {mode === 'UPDATE' ? (
         <FormControl variant="outlined" fullWidth required>
           <TextField
@@ -111,6 +102,19 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel }) => {
             required
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
+          />
+          {/* <FormHelperText>This is Error</FormHelperText> */}
+        </FormControl>
+      ) : null}
+      {mode === 'UPDATE' ? (
+        <FormControl variant="outlined" fullWidth required>
+          <TextField
+            label="Tools"
+            variant="outlined"
+            size="small"
+            required
+            value={tools}
+            onChange={(e) => setTools([e.target.value])}
           />
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>

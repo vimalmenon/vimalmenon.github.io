@@ -38,6 +38,10 @@ export const ViewNode: React.FC<IViewNode> = ({ data, onDelete, onEdit }) => {
         <Box>LLM</Box>
         <Box>{data.llm}</Box>
       </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box>Tools</Box>
+        <Box>{data.tools}</Box>
+      </Box>
     </Box>
   );
 };
