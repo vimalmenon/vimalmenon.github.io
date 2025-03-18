@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { IGenericResponse, ILLM, IWorkflow } from '@types';
+import { IGenericResponse, ILLM, ITool, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
 
 export const useAdminWorkflowId = (id: string) => {
@@ -11,7 +11,7 @@ export const useAdminWorkflowId = (id: string) => {
   const [tab, selectedTab] = useState<number>(0);
   const [node, setNode] = useState<string>('');
   const [workflow, setWorkflows] = useState<IWorkflow>();
-  const { addLlms } = useAdminContext();
+  const { addLlms, addTools } = useAdminContext();
   const addNodes = async (): Promise<void> => {
     await makeRequest(
       APIs.CreateWorkflowNode(id, {
@@ -38,10 +38,15 @@ export const useAdminWorkflowId = (id: string) => {
     const { response } = await makeRequest<IGenericResponse<ILLM[]>>(APIs.GetLLMs());
     addLlms(response.data);
   };
+  const getTools = async (): Promise<void> => {
+    const { response } = await makeRequest<IGenericResponse<ITool[]>>(APIs.GetTools());
+    addTools(response.data);
+  };
   return {
     addNodes,
     deleteWorkflowNode,
     getLLMs,
+    getTools,
     getWorkFlow,
     id,
     node,
