@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { APIs } from '@data';
-import { IGenericResponse, IWorkflow } from '@types';
+import { IGenericResponse, ILLM, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
-import { ILLM, ITool } from './AdminWorkflows';
+import { ITool } from './AdminWorkflows';
 
 export const useAdminWorkflows = () => {
   const [llms, setLlms] = useState<ILLM[]>([]);

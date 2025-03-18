@@ -1,3 +1,4 @@
+import { ActionDispatch } from 'react';
 import { ILLM } from '@types';
 
 export interface IAdminContext {
@@ -7,9 +8,9 @@ export interface IAdminContext {
 
 export type ActionType = 'ADD_LLMS';
 
-export interface IAdminAction<T = string> {
+export interface IAdminAction<T> {
   type: ActionType;
   payload?: T;
 }
 
-export type DispatchType = ActionDispatch<[action: IAppAction]>;
+export type DispatchType<T> = ActionDispatch<[action: IAdminAction<T>]>;

@@ -14,10 +14,10 @@ export const Context = createContext<IAdminContext>({ ...initialState });
 
 export const useAdminContext = (): IAdminContext => useContext<IAdminContext>(Context);
 
-export const reducer = (state: IAdminContext, action: IAdminAction): IAdminContext => {
+export const reducer = (state: IAdminContext, action: IAdminAction<ILLM[]>): IAdminContext => {
   const { payload, type } = action;
   if (type === 'ADD_LLMS') {
-    const llms = payload as unknown as ILLM[];
+    const llms = payload as ILLM[];
     return {
       ...state,
       llms: llms,
@@ -30,6 +30,6 @@ export enum ActionType {
   ADD_LLMS = 'ADD_LLMS',
 }
 
-export const addLlms = (dispatch: DispatchType, llms: ILLM[]): void => {
+export const addLlms = (dispatch: DispatchType<ILLM[]>, llms: ILLM[]): void => {
   dispatch({ payload: llms, type: ActionType.ADD_LLMS });
 };
