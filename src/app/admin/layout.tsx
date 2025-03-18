@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
 import { AdminNavigation as Navigation } from '@common';
 import { ComingSoon } from '@component';
+import { AdminContext } from '@context';
 import { env } from '@data';
 import { StyledPage } from '@style';
 import { IReactChildren } from '@types';
@@ -14,10 +15,12 @@ export const metadata: Metadata = {
 const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
   if (env.IS_LOCAL) {
     return (
-      <Box sx={{ display: 'flex', flex: '1 1 100%', gap: 2 }}>
-        <Navigation />
-        {children}
-      </Box>
+      <AdminContext>
+        <Box sx={{ display: 'flex', flex: '1 1 100%', gap: 2 }}>
+          <Navigation />
+          {children}
+        </Box>
+      </AdminContext>
     );
   }
   return (

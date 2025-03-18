@@ -1,5 +1,7 @@
 import { PaletteColorOptions } from '@mui/material/styles';
+import { ActionDispatch } from 'react';
 import { AnyType } from '@types';
+
 export interface IAppReducer {
   mode: 'dark' | 'light';
   showDrawer: boolean;
@@ -22,4 +24,4 @@ export interface IAppContext extends IAppReducer {
   changeTheme: (data: AnyType) => void;
 }
 
-export type DispatchType = ActionDispatch<[action: IAppAction]>;
+export type DispatchType<T> = ActionDispatch<[action: IAppAction<T>]>;

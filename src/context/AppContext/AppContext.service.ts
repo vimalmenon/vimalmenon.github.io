@@ -6,7 +6,7 @@ import { AnyType } from '@types';
 import { NotImplemented } from '@utility';
 import { DispatchType, IAppAction, IAppContext, IAppReducer } from './AppContext';
 
-export const reducer = (state: IAppReducer, action: IAppAction): IAppReducer => {
+export const reducer = (state: IAppReducer, action: IAppAction<unknown>): IAppReducer => {
   const { payload, type } = action;
 
   if (type === 'TOGGLE_MODE') {
@@ -62,18 +62,18 @@ export const Context = createContext<IAppContext>({
   toggleMode: NotImplemented,
 });
 
-export const toggleMode = (dispatch: DispatchType): void => {
+export const toggleMode = (dispatch: DispatchType<unknown>): void => {
   dispatch({ type: ActionType.TOGGLE_MODE });
 };
 
-export const toggleDrawer = (dispatch: DispatchType): void => {
+export const toggleDrawer = (dispatch: DispatchType<unknown>): void => {
   dispatch({ type: ActionType.TOGGLE_DRAWER });
 };
 
-export const changeTheme = (dispatch: DispatchType, payload: string): void => {
+export const changeTheme = (dispatch: DispatchType<unknown>, payload: string): void => {
   dispatch({ payload, type: ActionType.CHANGE_THEME });
 };
-export const closeDrawer = (dispatch: DispatchType): void => {
+export const closeDrawer = (dispatch: DispatchType<unknown>): void => {
   dispatch({ type: ActionType.CLOSE_DRAWER });
 };
 

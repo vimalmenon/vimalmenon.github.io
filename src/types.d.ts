@@ -41,6 +41,10 @@ export interface INodeSlim {
 
 export interface INode extends INodeSlim {
   id: string;
+  prompt: string;
+  type: string;
+  llm: string;
+  tools: string[];
 }
 
 export interface IWorkflow extends IWorkflowSlim {
@@ -54,6 +58,12 @@ export interface IWorkflow extends IWorkflowSlim {
 export interface IMakeRequest<T> {
   response: T;
   error?: string;
+}
+
+export interface ILLM {
+  name: string;
+  model: string;
+  supported: boolean;
 }
 
 export type VoidFunction = () => void;

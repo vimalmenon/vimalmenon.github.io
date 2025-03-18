@@ -1,2 +1,2 @@
-export * from './AppContext.component';
-export { useAppContext } from './AppContext.service';
+export * from './AdminContext';
+export { AppContext, useAppContext } from './AppContext';

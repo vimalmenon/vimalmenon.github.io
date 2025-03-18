@@ -6,7 +6,7 @@ import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { FormMode } from '@types';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
@@ -19,6 +19,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   const {
     addNodes,
     deleteWorkflowNode,
+    getLLMs,
     getWorkFlow,
     node,
     nodes,
@@ -29,37 +30,47 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   } = useAdminWorkflowId(id);
   useEffect(() => {
     getWorkFlow();
+    getLLMs();
   }, [id]);
+  const [showAddNode] = useState<boolean>(false);
   return (
-    <Box>
-      {workflow && mode === 'VIEW' ? (
-        <ViewWorkflow data={workflow} onEdit={() => setMode('UPDATE')} />
-      ) : null}
-      {workflow && mode === 'UPDATE' ? (
-        <WorkflowForm mode="UPDATE" data={workflow} onCancel={() => setMode('VIEW')} />
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      {!showAddNode ? (
+        <Fragment>
+          {workflow && mode === 'VIEW' ? (
+            <ViewWorkflow data={workflow} onEdit={() => setMode('UPDATE')} />
+          ) : null}
+          {workflow && mode === 'UPDATE' ? (
+            <WorkflowForm mode="UPDATE" data={workflow} onCancel={() => setMode('VIEW')} />
+          ) : null}
+        </Fragment>
       ) : null}
       <br />
       <br />
       <Divider />
       <br />
       <br />
-      <Box>
-        {' '}
-        <TextField
-          required
-          label="Name"
-          size="small"
-          fullWidth
-          value={node}
-          onChange={(e) => setNode(e.target.value)}
-        />
-      </Box>
-      <Box>
-        <Button variant="outlined" onClick={addNodes}>
-          Create Node
-        </Button>
-      </Box>
-      <Box>
+      {showAddNode ? (
+        <Fragment>
+          <Box>
+            {' '}
+            <TextField
+              required
+              label="Name"
+              size="small"
+              fullWidth
+              value={node}
+              onChange={(e) => setNode(e.target.value)}
+            />
+          </Box>
+          <Box>
+            <Button variant="outlined" onClick={addNodes}>
+              Create Node
+            </Button>
+          </Box>
+        </Fragment>
+      ) : null}
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={tab} onChange={onTabChange}>
           {nodes.map((name) => {
             return (
