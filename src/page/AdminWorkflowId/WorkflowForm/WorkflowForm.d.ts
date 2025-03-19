@@ -4,4 +4,5 @@ export interface IWorkflowForm {
   mode: 'CREATE' | 'UPDATE';
   data?: IWorkflow;
   onCancel: VoidFunction;
+  updateWorkflow: (data: IWorkflow) => void;
 }

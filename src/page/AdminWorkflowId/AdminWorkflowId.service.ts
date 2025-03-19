@@ -10,7 +10,7 @@ export const useAdminWorkflowId = (id: string) => {
   const [nodes, setNodes] = useState<string[]>([]);
   const [tab, selectedTab] = useState<number>(0);
   const [node, setNode] = useState<string>('');
-  const [workflow, setWorkflows] = useState<IWorkflow>();
+  const [workflow, setWorkflow] = useState<IWorkflow>();
   const { addLlms, addTools } = useAdminContext();
   const addNodes = async (): Promise<void> => {
     await makeRequest(
@@ -27,7 +27,7 @@ export const useAdminWorkflowId = (id: string) => {
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
     const workflow = response.data;
     setNodes(Object.keys(workflow.nodes));
-    setWorkflows(response.data);
+    setWorkflow(response.data);
   };
   const deleteWorkflowNode = async (nodeId: string): Promise<void> => {
     await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
@@ -46,6 +46,10 @@ export const useAdminWorkflowId = (id: string) => {
     await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
     await getWorkFlow();
   };
+  const updateWorkflow = async (data: IWorkflow): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
+    await getWorkFlow();
+  };
   return {
     addNodes,
     deleteWorkflowNode,
@@ -59,6 +63,7 @@ export const useAdminWorkflowId = (id: string) => {
     setNode,
     tab,
     updateNode,
+    updateWorkflow,
     workflow,
   };
 };

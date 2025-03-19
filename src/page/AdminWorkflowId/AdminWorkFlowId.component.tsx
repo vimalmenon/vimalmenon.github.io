@@ -28,6 +28,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
     setNode,
     tab,
     updateNode,
+    updateWorkflow,
     workflow,
   } = useAdminWorkflowId(id);
   useEffect(() => {
@@ -44,7 +45,12 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
             <ViewWorkflow data={workflow} onEdit={() => setMode('UPDATE')} />
           ) : null}
           {workflow && mode === 'UPDATE' ? (
-            <WorkflowForm mode="UPDATE" data={workflow} onCancel={() => setMode('VIEW')} />
+            <WorkflowForm
+              mode="UPDATE"
+              data={workflow}
+              onCancel={() => setMode('VIEW')}
+              updateWorkflow={updateWorkflow}
+            />
           ) : null}
         </Fragment>
       ) : null}
