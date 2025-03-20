@@ -1,4 +1,4 @@
-enum fields {
+export enum fields {
   LLM = 'LLM',
   Prompt = 'Prompt',
   Tools = 'Tools',

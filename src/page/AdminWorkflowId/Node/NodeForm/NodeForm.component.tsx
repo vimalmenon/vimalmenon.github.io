@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useAdminContext } from '@context';
 import { NodeType } from '@data';
-import { nodeType } from '../Node.service';
+import { fields, nodeType } from '../Node.service';
 import { INodeForm } from './NodeForm';
 
 export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode }) => {
@@ -18,6 +18,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
   const [llm, setLlm] = useState<string>(data?.llm ?? '');
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
+  const [input, setInput] = useState<string>(data?.input ?? '');
 
   const value = nodeType(type);
   const { llms, tools: toolsList } = useAdminContext();
@@ -72,7 +73,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes('LLM') ? (
+      {mode === 'UPDATE' && value.includes(fields.LLM) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">LLM</InputLabel>
 
@@ -96,7 +97,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes('Prompt') ? (
+      {mode === 'UPDATE' && value.includes(fields.Prompt) ? (
         <FormControl variant="outlined" fullWidth required>
           <TextField
             label="Prompt"
@@ -109,7 +110,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes('Tools') ? (
+      {mode === 'UPDATE' && value.includes(fields.Tools) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">LLM</InputLabel>
 
@@ -133,6 +134,19 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
+      {mode === 'UPDATE' && value.includes(fields.Input) ? (
+        <FormControl variant="outlined" fullWidth required>
+          <TextField
+            label="Input"
+            variant="outlined"
+            size="small"
+            required
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          {/* <FormHelperText>This is Error</FormHelperText> */}
+        </FormControl>
+      ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button variant="outlined" onClick={onCancel}>
           Cancel
@@ -142,6 +156,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           onClick={() =>
             updateNode({
               id: data.id,
+              input,
               llm,
               name,
               prompt,
