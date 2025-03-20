@@ -118,6 +118,13 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
         <br />
         <br />
       </Box>
+      {workflow?.complete ? (
+        <Box>
+          <Button variant="outlined">Execute</Button>
+        </Box>
+      ) : null}
+      <br />
+      <br />
     </Box>
   );
 };
