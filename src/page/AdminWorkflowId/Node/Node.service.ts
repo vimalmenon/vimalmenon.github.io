@@ -1,3 +1,9 @@
+'use client';
+
+import { SelectChangeEvent } from '@mui/material';
+import { ChangeEvent, useState } from 'react';
+import { INode } from '@types';
+
 export enum fields {
   LLM = 'LLM',
   Prompt = 'Prompt',
@@ -13,4 +19,47 @@ export const nodeType = (type: string): string[] => {
     return [fields.Input];
   }
   return [];
+};
+
+export const useNodeForm = (data: INode) => {
+  const [name, setName] = useState<string>(data?.name ?? '');
+  const [type, setType] = useState<string>(data?.type ?? '');
+  const [llm, setLlm] = useState<string>(data?.llm ?? '');
+  const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
+  const [tools, setTools] = useState<string[]>(data?.tools ?? []);
+  const [input, setInput] = useState<string>(data?.input ?? '');
+  const onInputUpdate = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    const { name, value } = event.target;
+    if (name === 'name') {
+      setName(value);
+    }
+    if (name === 'input') {
+      setInput(value);
+    }
+    if (name === 'prompt') {
+      setPrompt(value);
+    }
+  };
+  const onSelectUpdate = (event: SelectChangeEvent<string>): void => {
+    const { name, value } = event.target;
+    if (name === 'llm') {
+      setLlm(value);
+    }
+    if (name === 'tools') {
+      setTools(value.split(','));
+    }
+    if (name === 'type') {
+      setType(value);
+    }
+  };
+  return {
+    input,
+    llm,
+    name,
+    onInputUpdate,
+    onSelectUpdate,
+    prompt,
+    tools,
+    type,
+  };
 };

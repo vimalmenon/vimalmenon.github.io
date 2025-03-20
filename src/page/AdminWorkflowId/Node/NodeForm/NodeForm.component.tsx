@@ -1,4 +1,5 @@
 'use client';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
@@ -6,19 +7,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
 import { useAdminContext } from '@context';
 import { NodeType } from '@data';
-import { fields, nodeType } from '../Node.service';
+import { fields, nodeType, useNodeForm } from '../Node.service';
 import { INodeForm } from './NodeForm';
 
 export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode }) => {
-  const [name, setName] = useState<string>(data?.name ?? '');
-  const [type, setType] = useState<string>(data?.type ?? '');
-  const [llm, setLlm] = useState<string>(data?.llm ?? '');
-  const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
-  const [tools, setTools] = useState<string[]>(data?.tools ?? []);
-  const [input, setInput] = useState<string>(data?.input ?? '');
+  const { input, llm, name, onInputUpdate, onSelectUpdate, prompt, tools, type } =
+    useNodeForm(data);
 
   const value = nodeType(type);
   const { llms, tools: toolsList } = useAdminContext();
@@ -44,20 +40,21 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           variant="outlined"
           size="small"
           required
+          name="name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={onInputUpdate}
         />
         {/* <FormHelperText>This is Error</FormHelperText> */}
       </FormControl>
       {mode === 'UPDATE' ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">Type</InputLabel>
-
           <Select
             value={type}
             labelId="node-type"
             label="Type"
-            onChange={(e) => setType(e.target.value)}
+            name="type"
+            onChange={onSelectUpdate}
           >
             <MenuItem value="">
               <em>None</em>
@@ -77,12 +74,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">LLM</InputLabel>
 
-          <Select
-            value={llm}
-            labelId="node-type"
-            label="LLM"
-            onChange={(e) => setLlm(e.target.value)}
-          >
+          <Select value={llm} labelId="node-type" label="LLM" name="llm" onChange={onSelectUpdate}>
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
@@ -105,20 +97,21 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
             size="small"
             required
             value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
+            name="prompt"
+            onChange={onInputUpdate}
           />
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tools) ? (
         <FormControl fullWidth required size="small">
-          <InputLabel id="node-type">LLM</InputLabel>
-
+          <InputLabel id="node-type">Tools</InputLabel>
           <Select
-            value={llm}
+            value={tools.join(',')}
             labelId="node-type"
-            label="LLM"
-            onChange={(e) => setTools([e.target.value])}
+            label="Tools"
+            name="tools"
+            onChange={onSelectUpdate}
           >
             <MenuItem value="">
               <em>None</em>
@@ -142,7 +135,8 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
             size="small"
             required
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            name="input"
+            onChange={onInputUpdate}
           />
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
