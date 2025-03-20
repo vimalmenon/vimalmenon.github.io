@@ -20,7 +20,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
 
   const value = nodeType(type);
-  const { llms } = useAdminContext();
+  const { llms, tools: toolsList } = useAdminContext();
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -110,18 +110,40 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes('Tools') ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="Tools"
-            variant="outlined"
-            size="small"
-            required
-            value={tools}
+        <FormControl fullWidth required size="small">
+          <InputLabel id="node-type">LLM</InputLabel>
+
+          <Select
+            value={llm}
+            labelId="node-type"
+            label="LLM"
             onChange={(e) => setTools([e.target.value])}
-          />
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {toolsList.map((node) => {
+              return (
+                <MenuItem value={node.name} key={node.name}>
+                  {node.name} {node.tool_name}
+                </MenuItem>
+              );
+            })}
+          </Select>
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
-      ) : null}
+      ) : // <FormControl variant="outlined" fullWidth required>
+      //   <TextField
+      //     label="Tools"
+      //     variant="outlined"
+      //     size="small"
+      //     required
+      //     value={tools}
+      //     onChange={(e) => setTools([e.target.value])}
+      //   />
+      //   {/* <FormHelperText>This is Error</FormHelperText> */}
+      // </FormControl>
+      null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button variant="outlined" onClick={onCancel}>
           Cancel
