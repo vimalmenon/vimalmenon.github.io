@@ -1,4 +1,4 @@
-import { IAPI, INodeSlim, IWorkflowSlim } from '@types';
+import { IAPI, INode, INodeSlim, IWorkflow, IWorkflowSlim } from '@types';
 
 const GetWorkflows = (): IAPI => {
   return {
@@ -51,7 +51,7 @@ const CreateWorkflowNode = (wdId: string, body: INodeSlim): IAPI<INodeSlim> => {
   };
 };
 
-const UpdateWorkflowNode = (wfId: string, id: string, body: IWorkflowSlim): IAPI<IWorkflowSlim> => {
+const UpdateWorkflowNode = (wfId: string, id: string, body: INode): IAPI<INode> => {
   return {
     body,
     method: 'POST',
@@ -72,6 +72,14 @@ const DeleteWorkflow = (id: string): IAPI => {
   };
 };
 
+const UpdateWorkflow = (id: string, body: IWorkflow): IAPI => {
+  return {
+    body,
+    method: 'POST',
+    url: `workflows/${id}`,
+  };
+};
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
@@ -82,5 +90,6 @@ export const APIs = {
   getUUID,
   GetWorkflowById,
   GetWorkflows,
+  UpdateWorkflow,
   UpdateWorkflowNode,
 };

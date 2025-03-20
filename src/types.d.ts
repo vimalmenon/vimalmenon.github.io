@@ -66,6 +66,12 @@ export interface ILLM {
   supported: boolean;
 }
 
+export interface ITool {
+  id: string;
+  name: string;
+  tool_name: string;
+}
+
 export type VoidFunction = () => void;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';

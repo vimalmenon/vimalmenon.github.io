@@ -7,7 +7,6 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
 import { Fragment, useEffect, useState } from 'react';
-import { FormMode } from '@types';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Node } from './Node';
@@ -15,33 +14,44 @@ import { ViewWorkflow } from './ViewWorkflow';
 import { WorkflowForm } from './WorkflowForm';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  const [mode, setMode] = useState<FormMode>('VIEW');
   const {
     addNodes,
     deleteWorkflowNode,
+    editWorkflowFormMode,
     getLLMs,
+    getTools,
     getWorkFlow,
     node,
     nodes,
     onTabChange,
     setNode,
     tab,
+    updateNode,
+    updateWorkflow,
+    viewWorkflowFormMode,
     workflow,
+    workflowFormMode,
   } = useAdminWorkflowId(id);
   useEffect(() => {
     getWorkFlow();
     getLLMs();
+    getTools();
   }, [id]);
   const [showAddNode] = useState<boolean>(false);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       {!showAddNode ? (
         <Fragment>
-          {workflow && mode === 'VIEW' ? (
-            <ViewWorkflow data={workflow} onEdit={() => setMode('UPDATE')} />
+          {workflow && workflowFormMode === 'VIEW' ? (
+            <ViewWorkflow data={workflow} onEdit={editWorkflowFormMode} />
           ) : null}
-          {workflow && mode === 'UPDATE' ? (
-            <WorkflowForm mode="UPDATE" data={workflow} onCancel={() => setMode('VIEW')} />
+          {workflow && workflowFormMode === 'UPDATE' ? (
+            <WorkflowForm
+              mode="UPDATE"
+              data={workflow}
+              onCancel={viewWorkflowFormMode}
+              updateWorkflow={updateWorkflow}
+            />
           ) : null}
         </Fragment>
       ) : null}
@@ -96,7 +106,11 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
           if (tab === index && workflow?.nodes[node]) {
             return (
               <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Node data={workflow.nodes[node]} deleteNode={() => deleteWorkflowNode(node)} />
+                <Node
+                  data={workflow.nodes[node]}
+                  deleteNode={() => deleteWorkflowNode(node)}
+                  updateNode={(data) => updateNode(node, data)}
+                />
               </Box>
             );
           }
