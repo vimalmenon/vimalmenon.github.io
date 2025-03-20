@@ -27,16 +27,16 @@ export const ViewNode: React.FC<IViewNode> = ({ data, onDelete, onEdit }) => {
         <Box>{data.name}</Box>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Box>Prompt</Box>
-        <Box>{data.prompt}</Box>
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Type</Box>
         <Box>{data.type}</Box>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>LLM</Box>
         <Box>{data.llm}</Box>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box>Prompt</Box>
+        <Box>{data.prompt}</Box>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Tools</Box>
