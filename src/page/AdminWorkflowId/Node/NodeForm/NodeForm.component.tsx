@@ -132,18 +132,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           </Select>
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
-      ) : // <FormControl variant="outlined" fullWidth required>
-      //   <TextField
-      //     label="Tools"
-      //     variant="outlined"
-      //     size="small"
-      //     required
-      //     value={tools}
-      //     onChange={(e) => setTools([e.target.value])}
-      //   />
-      //   {/* <FormHelperText>This is Error</FormHelperText> */}
-      // </FormControl>
-      null}
+      ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button variant="outlined" onClick={onCancel}>
           Cancel
