@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { IGenericResponse, ILLM, INode, ITool, IWorkflow } from '@types';
+import { FormMode, IGenericResponse, ILLM, INode, ITool, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
 
 export const useAdminWorkflowId = (id: string) => {
@@ -12,6 +12,8 @@ export const useAdminWorkflowId = (id: string) => {
   const [node, setNode] = useState<string>('');
   const [workflow, setWorkflow] = useState<IWorkflow>();
   const { addLlms, addTools } = useAdminContext();
+  const [workflowFormMode, setWorkFlowMode] = useState<FormMode>('VIEW');
+
   const addNodes = async (): Promise<void> => {
     await makeRequest(
       APIs.CreateWorkflowNode(id, {
@@ -49,10 +51,18 @@ export const useAdminWorkflowId = (id: string) => {
   const updateWorkflow = async (data: IWorkflow): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
     await getWorkFlow();
+    setWorkFlowMode('VIEW');
+  };
+  const editWorkflowFormMode = (): void => {
+    setWorkFlowMode('UPDATE');
+  };
+  const viewWorkflowFormMode = (): void => {
+    setWorkFlowMode('VIEW');
   };
   return {
     addNodes,
     deleteWorkflowNode,
+    editWorkflowFormMode,
     getLLMs,
     getTools,
     getWorkFlow,
@@ -64,6 +74,8 @@ export const useAdminWorkflowId = (id: string) => {
     tab,
     updateNode,
     updateWorkflow,
+    viewWorkflowFormMode,
     workflow,
+    workflowFormMode,
   };
 };

@@ -7,7 +7,6 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
 import { Fragment, useEffect, useState } from 'react';
-import { FormMode } from '@types';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Node } from './Node';
@@ -15,10 +14,10 @@ import { ViewWorkflow } from './ViewWorkflow';
 import { WorkflowForm } from './WorkflowForm';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  const [mode, setMode] = useState<FormMode>('VIEW');
   const {
     addNodes,
     deleteWorkflowNode,
+    editWorkflowFormMode,
     getLLMs,
     getTools,
     getWorkFlow,
@@ -29,7 +28,9 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
     tab,
     updateNode,
     updateWorkflow,
+    viewWorkflowFormMode,
     workflow,
+    workflowFormMode,
   } = useAdminWorkflowId(id);
   useEffect(() => {
     getWorkFlow();
@@ -41,14 +42,14 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       {!showAddNode ? (
         <Fragment>
-          {workflow && mode === 'VIEW' ? (
-            <ViewWorkflow data={workflow} onEdit={() => setMode('UPDATE')} />
+          {workflow && workflowFormMode === 'VIEW' ? (
+            <ViewWorkflow data={workflow} onEdit={editWorkflowFormMode} />
           ) : null}
-          {workflow && mode === 'UPDATE' ? (
+          {workflow && workflowFormMode === 'UPDATE' ? (
             <WorkflowForm
               mode="UPDATE"
               data={workflow}
-              onCancel={() => setMode('VIEW')}
+              onCancel={viewWorkflowFormMode}
               updateWorkflow={updateWorkflow}
             />
           ) : null}
