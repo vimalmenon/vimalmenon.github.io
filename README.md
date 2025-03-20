@@ -6,14 +6,13 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.18
+<b>Version</b>: 0.0.19
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Fix the issue with Layout
 - [ ] Show Loading indicator
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
