@@ -50,6 +50,10 @@ export const useNodeForm = (data: INode) => {
     }
     if (name === 'type') {
       setType(value);
+      setPrompt('');
+      setLlm('');
+      setTools([]);
+      setInput('');
     }
   };
   return {
