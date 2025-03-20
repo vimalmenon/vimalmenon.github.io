@@ -2,13 +2,17 @@
 
 import Box from '@mui/material/Box';
 import { useState } from 'react';
-import { FormMode } from '@types';
+import { FormMode, INode as INodeData } from '@types';
 import { INode } from './Node';
 import { NodeForm } from './NodeForm';
 import { ViewNode } from './ViewNode';
 
 export const Node: React.FC<INode> = ({ data, deleteNode, updateNode }) => {
   const [mode, setMode] = useState<FormMode>('VIEW');
+  const updateNodeWithMode = async (data: INodeData): Promise<void> => {
+    await updateNode(data);
+    setMode('VIEW');
+  };
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column' }}>
       {mode === 'VIEW' ? (
@@ -19,7 +23,7 @@ export const Node: React.FC<INode> = ({ data, deleteNode, updateNode }) => {
           data={data}
           onCancel={() => setMode('VIEW')}
           mode="UPDATE"
-          updateNode={updateNode}
+          updateNode={updateNodeWithMode}
         />
       ) : null}
     </Box>
