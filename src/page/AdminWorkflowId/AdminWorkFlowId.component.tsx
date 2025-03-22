@@ -10,8 +10,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Node } from './Node';
-import { ViewWorkflow } from './ViewWorkflow';
-import { WorkflowForm } from './WorkflowForm';
+import { Workflow } from './Workflow';
 
 export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   const {
@@ -39,27 +38,15 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
   }, [id]);
   const [showAddNode] = useState<boolean>(false);
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      {!showAddNode ? (
-        <Fragment>
-          {workflow && workflowFormMode === 'VIEW' ? (
-            <ViewWorkflow data={workflow} onEdit={editWorkflowFormMode} />
-          ) : null}
-          {workflow && workflowFormMode === 'UPDATE' ? (
-            <WorkflowForm
-              mode="UPDATE"
-              data={workflow}
-              onCancel={viewWorkflowFormMode}
-              updateWorkflow={updateWorkflow}
-            />
-          ) : null}
-        </Fragment>
-      ) : null}
-      <br />
-      <br />
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <Workflow
+        mode={workflowFormMode}
+        onCancel={viewWorkflowFormMode}
+        updateWorkflow={updateWorkflow}
+        onEdit={editWorkflowFormMode}
+        data={workflow}
+      />
       <Divider />
-      <br />
-      <br />
       {showAddNode ? (
         <Fragment>
           <Box>
@@ -105,7 +92,10 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
         {nodes.map((node, index) => {
           if (tab === index && workflow?.nodes[node]) {
             return (
-              <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Box
+                key={node}
+                sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}
+              >
                 <Node
                   data={workflow.nodes[node]}
                   deleteNode={() => deleteWorkflowNode(node)}
@@ -115,8 +105,6 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
             );
           }
         })}
-        <br />
-        <br />
       </Box>
       {workflow?.complete ? (
         <Box>

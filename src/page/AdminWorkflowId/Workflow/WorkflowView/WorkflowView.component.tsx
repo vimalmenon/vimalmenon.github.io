@@ -2,9 +2,9 @@
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import { Icons } from '@data';
-import { IViewWorkflow } from './ViewWorkflow';
+import { IWorkflowView } from './WorkflowView';
 
-export const ViewWorkflow: React.FC<IViewWorkflow> = ({ data, onEdit }) => {
+export const WorkflowView: React.FC<IWorkflowView> = ({ data, onEdit }) => {
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

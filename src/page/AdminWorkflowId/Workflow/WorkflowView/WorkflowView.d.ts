@@ -1,6 +1,6 @@
 import { IWorkflow, VoidFunction } from '@types';
 
-export interface IViewWorkflow {
+export interface IWorkflowView {
   data: IWorkflow;
   onEdit: VoidFunction;
 }
