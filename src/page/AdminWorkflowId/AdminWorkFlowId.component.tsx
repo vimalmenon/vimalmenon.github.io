@@ -92,10 +92,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
         {nodes.map((node, index) => {
           if (tab === index && workflow?.nodes[node]) {
             return (
-              <Box
-                key={node}
-                sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}
-              >
+              <Box key={node} sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}>
                 <Node
                   data={workflow.nodes[node]}
                   deleteNode={() => deleteWorkflowNode(node)}
