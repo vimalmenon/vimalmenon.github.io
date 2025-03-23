@@ -16,3 +16,12 @@ export const NodeType = [
     value: 'humanInput',
   },
 ];
+
+export const Nodes = [
+  {
+    name: 'START',
+  },
+  {
+    name: 'END',
+  },
+];
