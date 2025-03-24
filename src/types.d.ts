@@ -74,6 +74,11 @@ export interface ITool {
   tool_name: string;
 }
 
+export interface IMultiSelectOption {
+  label: string;
+  value: string;
+}
+
 export type VoidFunction = () => void;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
