@@ -21,10 +21,17 @@ export const nodeType = (type: string): string[] => {
   return [];
 };
 
-export const convertToolOption = (tools: ITool[]): IMultiSelectOption[] => {
+export const convertToolsToOption = (tools: ITool[]): IMultiSelectOption[] => {
   return tools.map((tool) => ({
     label: tool.name,
     value: tool.id,
+  }));
+};
+
+export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => {
+  return nodes.map((node) => ({
+    label: node.name,
+    value: node.id,
   }));
 };
 export const useNodeForm = (data: INode) => {

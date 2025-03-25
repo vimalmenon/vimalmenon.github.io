@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 import { MultiSelect } from '@component';
 import { useAdminContext } from '@context';
 import { NodeType } from '@data';
-import { convertToolOption, fields, nodeType, useNodeForm } from '../Node.service';
+import { convertToolsToOption, fields, nodeType, useNodeForm } from '../Node.service';
 import { INodeForm } from './NodeForm';
 
 export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode }) => {
@@ -115,7 +115,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tools) ? (
         <MultiSelect
-          options={convertToolOption(toolsList)}
+          options={convertToolsToOption(toolsList)}
           value={tools}
           label={'Tools'}
           id={'Tools'}
@@ -136,6 +136,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
+      
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button variant="outlined" onClick={onCancel}>
           Cancel
