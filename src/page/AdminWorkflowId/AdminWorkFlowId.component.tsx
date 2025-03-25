@@ -8,7 +8,7 @@ import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
 import { Fragment, useEffect, useState } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
-import { useAdminWorkflowId } from './AdminWorkflowId.service';
+import { getNodeAsList, useAdminWorkflowId } from './AdminWorkflowId.service';
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
@@ -95,6 +95,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
               <Box key={node} sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}>
                 <Node
                   data={workflow.nodes[node]}
+                  nodes={getNodeAsList(workflow.nodes)}
                   deleteNode={() => deleteWorkflowNode(node)}
                   updateNode={(data) => updateNode(node, data)}
                 />

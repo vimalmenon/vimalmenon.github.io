@@ -6,6 +6,10 @@ import { APIs } from '@data';
 import { FormMode, IGenericResponse, ILLM, INode, ITool, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
 
+export const getNodeAsList = (node: Record<string, INode>): INode[] => {
+  return Object.keys(node).map((key) => node[key]);
+};
+
 export const useAdminWorkflowId = (id: string) => {
   const [nodes, setNodes] = useState<string[]>([]);
   const [tab, selectedTab] = useState<number>(0);
