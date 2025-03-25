@@ -7,14 +7,24 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+import { MultiSelect } from '@component';
 import { useAdminContext } from '@context';
 import { NodeType } from '@data';
-import { fields, nodeType, useNodeForm } from '../Node.service';
+import { convertToolOption, fields, nodeType, useNodeForm } from '../Node.service';
 import { INodeForm } from './NodeForm';
 
 export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode }) => {
-  const { input, llm, name, onInputUpdate, onSelectUpdate, prompt, tools, type } =
-    useNodeForm(data);
+  const {
+    input,
+    llm,
+    name,
+    onInputUpdate,
+    onMultiSelectUpdate,
+    onSelectUpdate,
+    prompt,
+    tools,
+    type,
+  } = useNodeForm(data);
 
   const value = nodeType(type);
   const { llms, tools: toolsList } = useAdminContext();
@@ -104,28 +114,13 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tools) ? (
-        <FormControl fullWidth required size="small">
-          <InputLabel id="node-type">Tools</InputLabel>
-          <Select
-            value={tools.join(',')}
-            labelId="node-type"
-            label="Tools"
-            name="tools"
-            onChange={onSelectUpdate}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            {toolsList.map((node) => {
-              return (
-                <MenuItem value={node.name} key={node.name}>
-                  {node.name} {node.tool_name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-          {/* <FormHelperText>This is Error</FormHelperText> */}
-        </FormControl>
+        <MultiSelect
+          options={convertToolOption(toolsList)}
+          value={tools}
+          label={'Tools'}
+          id={'Tools'}
+          onChange={onMultiSelectUpdate}
+        />
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Input) ? (
         <FormControl variant="outlined" fullWidth required>

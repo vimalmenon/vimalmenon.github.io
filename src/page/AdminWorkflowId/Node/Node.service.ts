@@ -2,7 +2,7 @@
 
 import { SelectChangeEvent } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
-import { INode } from '@types';
+import { IMultiSelectOption, INode, ITool } from '@types';
 
 export enum fields {
   LLM = 'LLM',
@@ -21,6 +21,12 @@ export const nodeType = (type: string): string[] => {
   return [];
 };
 
+export const convertToolOption = (tools: ITool[]): IMultiSelectOption[] => {
+  return tools.map((tool) => ({
+    label: tool.name,
+    value: tool.id,
+  }));
+};
 export const useNodeForm = (data: INode) => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');
@@ -47,9 +53,6 @@ export const useNodeForm = (data: INode) => {
     if (name === 'llm') {
       setLlm(value);
     }
-    if (name === 'tools') {
-      setTools(value.split(','));
-    }
     if (name === 'next') {
       setNext(value);
     }
@@ -61,12 +64,16 @@ export const useNodeForm = (data: INode) => {
       setInput('');
     }
   };
+  const onMultiSelectUpdate = (value: string[]): void => {
+    setTools(value);
+  };
   return {
     input,
     llm,
     name,
     next,
     onInputUpdate,
+    onMultiSelectUpdate,
     onSelectUpdate,
     prompt,
     tools,
