@@ -27,7 +27,7 @@ export const MultiSelect: React.FC<IMultiSelect> = ({ id, label, onChange, optio
         input={<OutlinedInput label={label} />}
       >
         {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
+          <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
             <Checkbox checked={false} />
             {option.label}
           </MenuItem>

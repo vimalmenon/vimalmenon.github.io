@@ -77,6 +77,7 @@ export interface ITool {
 export interface IMultiSelectOption {
   label: string;
   value: string;
+  disabled?: boolean;
 }
 
 export type VoidFunction = () => void;

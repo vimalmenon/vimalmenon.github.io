@@ -18,6 +18,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
     input,
     llm,
     name,
+    next,
     onInputUpdate,
     onMultiSelectUpdate,
     onSelectUpdate,
@@ -136,7 +137,20 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
-      
+      {mode === 'UPDATE' ? (
+        <FormControl variant="outlined" fullWidth required>
+          <TextField
+            label="Next"
+            variant="outlined"
+            size="small"
+            required
+            value={next}
+            name="next"
+            onChange={onInputUpdate}
+          />
+          {/* <FormHelperText>This is Error</FormHelperText> */}
+        </FormControl>
+      ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button variant="outlined" onClick={onCancel}>
           Cancel
