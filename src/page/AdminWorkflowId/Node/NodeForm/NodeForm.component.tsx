@@ -23,6 +23,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
     onMultiSelectUpdate,
     onSelectUpdate,
     prompt,
+    tool,
     tools,
     type,
   } = useNodeForm(data);
@@ -134,6 +135,31 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
             name="input"
             onChange={onInputUpdate}
           />
+          {/* <FormHelperText>This is Error</FormHelperText> */}
+        </FormControl>
+      ) : null}
+      {mode === 'UPDATE' && value.includes(fields.Tool) ? (
+        <FormControl fullWidth required size="small">
+          <InputLabel id="node-type">Tool</InputLabel>
+
+          <Select
+            value={tool}
+            labelId="node-type"
+            label="Tool"
+            name="tool"
+            onChange={onSelectUpdate}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {convertToolsToOption(toolsList).map((node) => {
+              return (
+                <MenuItem value={node.value} key={node.value}>
+                  {node.label}
+                </MenuItem>
+              );
+            })}
+          </Select>
           {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}

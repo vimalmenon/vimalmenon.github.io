@@ -9,6 +9,7 @@ export enum fields {
   Prompt = 'Prompt',
   Tools = 'Tools',
   Input = 'Input',
+  Tool = 'Tool',
 }
 
 export const nodeType = (type: string): string[] => {
@@ -17,6 +18,9 @@ export const nodeType = (type: string): string[] => {
   }
   if (type === 'humanInput') {
     return [fields.Input];
+  }
+  if (type === 'tool') {
+    return [fields.Tool];
   }
   return [];
 };
@@ -42,6 +46,7 @@ export const useNodeForm = (data: INode) => {
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
   const [input, setInput] = useState<string>(data?.input ?? '');
   const [next, setNext] = useState<string | undefined>(data?.next);
+  const [tool, setTool] = useState<string>(data?.tool ?? '');
 
   const onInputUpdate = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = event.target;
@@ -63,6 +68,9 @@ export const useNodeForm = (data: INode) => {
     if (name === 'next') {
       setNext(value);
     }
+    if (name === 'tool') {
+      setTool(value);
+    }
     if (name === 'type') {
       setType(value);
       setPrompt('');
@@ -83,6 +91,7 @@ export const useNodeForm = (data: INode) => {
     onMultiSelectUpdate,
     onSelectUpdate,
     prompt,
+    tool,
     tools,
     type,
   };
