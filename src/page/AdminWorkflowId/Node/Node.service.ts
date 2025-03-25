@@ -77,6 +77,8 @@ export const useNodeForm = (data: INode) => {
       setLlm('');
       setTools([]);
       setInput('');
+      setNext('');
+      setTool('');
     }
   };
   const onMultiSelectUpdate = (value: string[]): void => {
