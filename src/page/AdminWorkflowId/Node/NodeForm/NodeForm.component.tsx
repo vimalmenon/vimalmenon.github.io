@@ -192,6 +192,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
               input,
               llm,
               name,
+              next,
               prompt,
               tools,
               type,
