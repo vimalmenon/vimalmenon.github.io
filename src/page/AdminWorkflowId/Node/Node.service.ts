@@ -45,7 +45,7 @@ export const useNodeForm = (data: INode) => {
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
   const [input, setInput] = useState<string>(data?.input ?? '');
-  const [next, setNext] = useState<string | undefined>(data?.next);
+  const [next, setNext] = useState<string[]>(data?.next ?? []);
   const [tool, setTool] = useState<string>(data?.tool ?? '');
 
   const onInputUpdate = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
@@ -65,9 +65,6 @@ export const useNodeForm = (data: INode) => {
     if (name === 'llm') {
       setLlm(value);
     }
-    if (name === 'next') {
-      setNext(value);
-    }
     if (name === 'tool') {
       setTool(value);
     }
@@ -77,7 +74,7 @@ export const useNodeForm = (data: INode) => {
       setLlm('');
       setTools([]);
       setInput('');
-      setNext('');
+      setNext([]);
       setTool('');
     }
   };
@@ -90,7 +87,7 @@ export const useNodeForm = (data: INode) => {
       setTools(values);
     }
     if (name === 'next') {
-      setNext(values[0]);
+      setNext(values);
     }
   };
   return {

@@ -173,25 +173,13 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
       {mode === 'UPDATE' ? (
         <MultiSelect
           options={convertNodeToOption(nodes)}
-          value={next ? [next] : []}
+          value={next}
           label={'Next'}
           id={'next'}
           name={'next'}
           onChange={onMultiSelectUpdate}
         />
-      ) : // <FormControl variant="outlined" fullWidth required>
-      //   <TextField
-      //     label="Next"
-      //     variant="outlined"
-      //     size="small"
-      //     required
-      //     value={next}
-      //     name="next"
-      //     onChange={onInputUpdate}
-      //   />
-      //   {/* <FormHelperText>This is Error</FormHelperText> */}
-      // </FormControl>
-      null}
+      ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button variant="outlined" onClick={onCancel}>
           Cancel
