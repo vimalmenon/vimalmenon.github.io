@@ -13,7 +13,8 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Need to fix select
+- [x] Need to fix select
+- [ ] Execute the workflow
 - [ ] Show Loading indicator
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
