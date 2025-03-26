@@ -63,10 +63,14 @@ export const useAdminWorkflowId = (id: string) => {
   const viewWorkflowFormMode = (): void => {
     setWorkFlowMode('VIEW');
   };
+  const executeWorkflow = async (): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
+  };
   return {
     addNodes,
     deleteWorkflowNode,
     editWorkflowFormMode,
+    executeWorkflow,
     getLLMs,
     getTools,
     getWorkFlow,

@@ -17,6 +17,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
     addNodes,
     deleteWorkflowNode,
     editWorkflowFormMode,
+    executeWorkflow,
     getLLMs,
     getTools,
     getWorkFlow,
@@ -106,7 +107,9 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
       </Box>
       {workflow?.complete ? (
         <Box>
-          <Button variant="outlined">Execute</Button>
+          <Button variant="outlined" onClick={executeWorkflow}>
+            Execute
+          </Button>
         </Box>
       ) : null}
       <br />
