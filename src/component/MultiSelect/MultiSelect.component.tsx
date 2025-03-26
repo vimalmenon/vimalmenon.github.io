@@ -5,24 +5,26 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import { IMultiSelect } from './MultiSelect';
 
-export const MultiSelect: React.FC<IMultiSelect> = ({ id, label, onChange, options, value }) => {
-  const handleChange = (event: SelectChangeEvent<string[]>): void => {
-    const {
-      target: { value },
-    } = event;
-    onChange(typeof value === 'string' ? value.split(',') : value);
-  };
+export const MultiSelect: React.FC<IMultiSelect> = ({
+  id,
+  label,
+  name,
+  onChange,
+  options,
+  value,
+}) => {
   return (
     <FormControl size="small" fullWidth>
       <InputLabel id={id}>{label}</InputLabel>
       <Select
         labelId={id}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
         multiple
+        name={name}
         renderValue={(selected) => selected.join(', ')}
         input={<OutlinedInput label={label} />}
       >

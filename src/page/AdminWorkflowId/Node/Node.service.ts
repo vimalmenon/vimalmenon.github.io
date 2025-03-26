@@ -81,8 +81,17 @@ export const useNodeForm = (data: INode) => {
       setTool('');
     }
   };
-  const onMultiSelectUpdate = (value: string[]): void => {
-    setTools(value);
+  const onMultiSelectUpdate = (event: SelectChangeEvent<string[]>): void => {
+    const {
+      target: { name, value },
+    } = event;
+    const values = typeof value === 'string' ? value.split(',') : value;
+    if (name === 'tools') {
+      setTools(values);
+    }
+    if (name === 'next') {
+      setNext(values[0]);
+    }
   };
   return {
     input,

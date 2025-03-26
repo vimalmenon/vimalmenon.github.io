@@ -10,10 +10,16 @@ import TextField from '@mui/material/TextField';
 import { MultiSelect } from '@component';
 import { useAdminContext } from '@context';
 import { NodeType } from '@data';
-import { convertToolsToOption, fields, nodeType, useNodeForm } from '../Node.service';
+import {
+  convertNodeToOption,
+  convertToolsToOption,
+  fields,
+  nodeType,
+  useNodeForm,
+} from '../Node.service';
 import { INodeForm } from './NodeForm';
 
-export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode }) => {
+export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, updateNode }) => {
   const {
     input,
     llm,
@@ -122,6 +128,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
           label={'Tools'}
           id={'Tools'}
           onChange={onMultiSelectUpdate}
+          name={'tools'}
         />
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Input) ? (
@@ -164,19 +171,27 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, onCancel, updateNode
         </FormControl>
       ) : null}
       {mode === 'UPDATE' ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="Next"
-            variant="outlined"
-            size="small"
-            required
-            value={next}
-            name="next"
-            onChange={onInputUpdate}
-          />
-          {/* <FormHelperText>This is Error</FormHelperText> */}
-        </FormControl>
-      ) : null}
+        <MultiSelect
+          options={convertNodeToOption(nodes)}
+          value={next ? [next] : []}
+          label={'Next'}
+          id={'next'}
+          name={'next'}
+          onChange={onMultiSelectUpdate}
+        />
+      ) : // <FormControl variant="outlined" fullWidth required>
+      //   <TextField
+      //     label="Next"
+      //     variant="outlined"
+      //     size="small"
+      //     required
+      //     value={next}
+      //     name="next"
+      //     onChange={onInputUpdate}
+      //   />
+      //   {/* <FormHelperText>This is Error</FormHelperText> */}
+      // </FormControl>
+      null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button variant="outlined" onClick={onCancel}>
           Cancel

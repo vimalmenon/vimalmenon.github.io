@@ -1,3 +1,4 @@
+import { SelectChangeEvent } from '@mui/material/Select';
 import { IMultiSelectOption } from '@types';
 
 export interface IMultiSelect {
@@ -5,5 +6,6 @@ export interface IMultiSelect {
   value: string[];
   label: string;
   id: string;
-  onChange: (value: string[]) => void;
+  name: string;
+  onChange: (event: SelectChangeEvent<string[]>) => void;
 }
