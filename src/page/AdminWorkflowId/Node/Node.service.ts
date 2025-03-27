@@ -33,10 +33,13 @@ export const convertToolsToOption = (tools: ITool[]): IMultiSelectOption[] => {
 };
 
 export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => {
-  return nodes.map((node) => ({
-    label: node.name,
-    value: node.id,
-  }));
+  return [
+    ...nodes.map((node) => ({
+      label: node.name,
+      value: node.id,
+    })),
+    { label: 'END', value: 'END' },
+  ];
 };
 export const useNodeForm = (data: INode) => {
   const [name, setName] = useState<string>(data?.name ?? '');
