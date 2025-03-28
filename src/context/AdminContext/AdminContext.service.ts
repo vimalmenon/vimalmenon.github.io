@@ -7,8 +7,6 @@ import { makeRequest, NotImplemented } from '@utility';
 import { DispatchType, IAdminAction, IAdminContext } from './AdminContext';
 
 export const initialState: IAdminContext = {
-  addLlms: NotImplemented,
-  addTools: NotImplemented,
   getLLMs: NotImplemented,
   getTools: NotImplemented,
   llms: [],
