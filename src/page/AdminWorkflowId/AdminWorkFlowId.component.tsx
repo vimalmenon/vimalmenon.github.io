@@ -21,21 +21,12 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
-  const { nodes, workflow } = useWorkflowContext();
+  const { nodes, workflow, workflowFormMode } = useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
-  const { getLLMs, getTools, getWorkFlow, id } = useWorkflowDataHelper();
+  const { getLLMs, getTools, getWorkFlow, id, updateWorkflow } = useWorkflowDataHelper();
   const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
-  const {
-    addNodes,
-    deleteWorkflowNode,
-    executeWorkflow,
-
-    node,
-    setNode,
-    updateNode,
-    updateWorkflow,
-    workflowFormMode,
-  } = useAdminWorkflowId(id);
+  const { addNodes, deleteWorkflowNode, executeWorkflow, node, setNode, updateNode } =
+    useAdminWorkflowId(id);
   useEffect(() => {
     getWorkFlow();
     getLLMs();
