@@ -8,11 +8,21 @@ import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
 import { Fragment, useEffect, useState } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
-import { getNodeAsList, useAdminWorkflowId } from './AdminWorkflowId.service';
+import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
+import {
+  getNodeAsList,
+  useAdminWorkflowId,
+  useTabHelper,
+  useWorkflowContext,
+  useWorkflowDataHelper,
+} from './AdminWorkflowId.service';
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
-export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
+export const Component: React.FC = () => {
+  const { nodes, workflow } = useWorkflowContext();
+  const { onTabChange, selectedTab } = useTabHelper();
+  const { getWorkFlow, id } = useWorkflowDataHelper();
   const {
     addNodes,
     deleteWorkflowNode,
@@ -20,16 +30,16 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
     executeWorkflow,
     getLLMs,
     getTools,
-    getWorkFlow,
+    // getWorkFlow,
     node,
-    nodes,
-    onTabChange,
+    // nodes,
+    // onTabChange,
     setNode,
     tab,
     updateNode,
     updateWorkflow,
     viewWorkflowFormMode,
-    workflow,
+    // workflow,
     workflowFormMode,
   } = useAdminWorkflowId(id);
   useEffect(() => {
@@ -69,7 +79,7 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
         </Fragment>
       ) : null}
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Tabs value={tab} onChange={onTabChange}>
+        <Tabs value={selectedTab} onChange={onTabChange}>
           {nodes.map((name) => {
             return (
               <Tab
@@ -115,5 +125,13 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
       <br />
       <br />
     </Box>
+  );
+};
+
+export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
+  return (
+    <AdminWorkflowIdContext id={id}>
+      <Component />
+    </AdminWorkflowIdContext>
   );
 };
