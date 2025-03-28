@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { IWorkflow } from '@types';
+import { FormMode, IWorkflow } from '@types';
 import { IAdminWorkflowIdContext } from './AdminWorkflowId';
 import { Context } from './AdminWorkflowId.service';
 
@@ -10,6 +10,8 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
   const [workflowLoading, setWorkflowLoading] = useState<boolean>(false);
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const [nodes, setNodes] = useState<string[]>([]);
+  const [workflowFormMode, setWorkflowFormMode] = useState<FormMode>('VIEW');
+
   return (
     <Context.Provider
       value={{
@@ -19,8 +21,10 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
         setNodes,
         setSelectedTab,
         setWorkflow,
+        setWorkflowFormMode,
         setWorkflowLoading,
         workflow,
+        workflowFormMode,
         workflowLoading,
       }}
     >

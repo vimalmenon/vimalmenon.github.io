@@ -30,16 +30,11 @@ export const Component: React.FC = () => {
     executeWorkflow,
     getLLMs,
     getTools,
-    // getWorkFlow,
     node,
-    // nodes,
-    // onTabChange,
     setNode,
-    tab,
     updateNode,
     updateWorkflow,
     viewWorkflowFormMode,
-    // workflow,
     workflowFormMode,
   } = useAdminWorkflowId(id);
   useEffect(() => {
@@ -101,7 +96,7 @@ export const Component: React.FC = () => {
           })}
         </Tabs>
         {nodes.map((node, index) => {
-          if (tab === index && workflow?.nodes[node]) {
+          if (selectedTab === index && workflow?.nodes[node]) {
             return (
               <Box key={node} sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}>
                 <Node

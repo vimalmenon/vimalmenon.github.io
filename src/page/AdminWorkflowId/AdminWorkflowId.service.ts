@@ -18,17 +18,16 @@ export const Context = createContext<IContext>({
   setNodes: NotImplemented,
   setSelectedTab: NotImplemented,
   setWorkflow: NotImplemented,
+  setWorkflowFormMode: NotImplemented,
   setWorkflowLoading: NotImplemented,
+  workflowFormMode: 'VIEW',
   workflowLoading: false,
 });
 
 export const useWorkflowContext = (): IContext => useContext(Context);
 
 export const useAdminWorkflowId = (id: string) => {
-  const [nodes, setNodes] = useState<string[]>([]);
-  const [tab, selectedTab] = useState<number>(0);
   const [node, setNode] = useState<string>('');
-  const [workflow, setWorkflow] = useState<IWorkflow>();
   const [workflowFormMode, setWorkFlowMode] = useState<FormMode>('VIEW');
   const { addLlms, addTools } = useAdminContext();
 
@@ -38,21 +37,12 @@ export const useAdminWorkflowId = (id: string) => {
         name: node,
       })
     );
-    await getWorkFlow();
-  };
-  const onTabChange = (event: React.SyntheticEvent, newValue: number): void => {
-    selectedTab(newValue);
-  };
-  const getWorkFlow = async (): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
-    const workflow = response.data;
-    setNodes(Object.keys(workflow.nodes));
-    setWorkflow(response.data);
+    // await getWorkFlow();
   };
   const deleteWorkflowNode = async (nodeId: string): Promise<void> => {
     await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
-    await getWorkFlow();
-    selectedTab(0);
+    // await getWorkFlow();
+    // selectedTab(0);
   };
   const getLLMs = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<ILLM[]>>(APIs.GetLLMs());
@@ -64,11 +54,11 @@ export const useAdminWorkflowId = (id: string) => {
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
     await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
-    await getWorkFlow();
+    // await getWorkFlow();
   };
   const updateWorkflow = async (data: IWorkflow): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
-    await getWorkFlow();
+    // await getWorkFlow();
     setWorkFlowMode('VIEW');
   };
   const editWorkflowFormMode = (): void => {
@@ -87,17 +77,12 @@ export const useAdminWorkflowId = (id: string) => {
     executeWorkflow,
     getLLMs,
     getTools,
-    getWorkFlow,
     id,
     node,
-    nodes,
-    onTabChange,
     setNode,
-    tab,
     updateNode,
     updateWorkflow,
     viewWorkflowFormMode,
-    workflow,
     workflowFormMode,
   };
 };
