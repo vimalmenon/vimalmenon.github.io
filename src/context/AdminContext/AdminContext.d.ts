@@ -6,6 +6,8 @@ export interface IAdminContext {
   tools: ITool[];
   addLlms: (llms: ILLM[]) => void;
   addTools: (tools: ITool[]) => void;
+  getTools: () => Promise<void>;
+  getLLMs: () => Promise<void>;
 }
 
 export type ActionType = 'ADD_LLMS' | 'ADD_TOOLS';

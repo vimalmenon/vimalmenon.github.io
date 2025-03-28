@@ -15,6 +15,7 @@ import {
   useTabHelper,
   useWorkflowContext,
   useWorkflowDataHelper,
+  useWorkflowFormHelper,
 } from './AdminWorkflowId.service';
 import { Node } from './Node';
 import { Workflow } from './Workflow';
@@ -22,19 +23,17 @@ import { Workflow } from './Workflow';
 export const Component: React.FC = () => {
   const { nodes, workflow } = useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
-  const { getWorkFlow, id } = useWorkflowDataHelper();
+  const { getLLMs, getTools, getWorkFlow, id } = useWorkflowDataHelper();
+  const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
   const {
     addNodes,
     deleteWorkflowNode,
-    editWorkflowFormMode,
     executeWorkflow,
-    getLLMs,
-    getTools,
+
     node,
     setNode,
     updateNode,
     updateWorkflow,
-    viewWorkflowFormMode,
     workflowFormMode,
   } = useAdminWorkflowId(id);
   useEffect(() => {

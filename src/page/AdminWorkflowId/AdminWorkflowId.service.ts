@@ -3,7 +3,7 @@
 import { createContext, useContext, useState } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { FormMode, IGenericResponse, ILLM, INode, ITool, IWorkflow } from '@types';
+import { FormMode, IGenericResponse, INode, ITool, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import { IContext } from './AdminWorkflowId';
 
@@ -29,7 +29,6 @@ export const useWorkflowContext = (): IContext => useContext(Context);
 export const useAdminWorkflowId = (id: string) => {
   const [node, setNode] = useState<string>('');
   const [workflowFormMode, setWorkFlowMode] = useState<FormMode>('VIEW');
-  const { addLlms, addTools } = useAdminContext();
 
   const addNodes = async (): Promise<void> => {
     await makeRequest(
@@ -44,14 +43,6 @@ export const useAdminWorkflowId = (id: string) => {
     // await getWorkFlow();
     // selectedTab(0);
   };
-  const getLLMs = async (): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<ILLM[]>>(APIs.GetLLMs());
-    addLlms(response.data);
-  };
-  const getTools = async (): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<ITool[]>>(APIs.GetTools());
-    addTools(response.data);
-  };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
     await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
     // await getWorkFlow();
@@ -61,34 +52,25 @@ export const useAdminWorkflowId = (id: string) => {
     // await getWorkFlow();
     setWorkFlowMode('VIEW');
   };
-  const editWorkflowFormMode = (): void => {
-    setWorkFlowMode('UPDATE');
-  };
-  const viewWorkflowFormMode = (): void => {
-    setWorkFlowMode('VIEW');
-  };
   const executeWorkflow = async (): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
   };
   return {
     addNodes,
     deleteWorkflowNode,
-    editWorkflowFormMode,
     executeWorkflow,
-    getLLMs,
-    getTools,
-    id,
     node,
     setNode,
     updateNode,
     updateWorkflow,
-    viewWorkflowFormMode,
     workflowFormMode,
   };
 };
 
 export const useWorkflowDataHelper = () => {
-  const { id, setNodes, setWorkflow, setWorkflowLoading } = useWorkflowContext();
+  const { id, setNodes, setWorkflow, setWorkflowFormMode, setWorkflowLoading } =
+    useWorkflowContext();
+  const { getLLMs, getTools } = useAdminContext();
   const getWorkFlow = async (): Promise<void> => {
     setWorkflowLoading(true);
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
@@ -97,10 +79,17 @@ export const useWorkflowDataHelper = () => {
     setWorkflow(workflow);
     setWorkflowLoading(false);
   };
-
+  const updateWorkflow = async (data: IWorkflow): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
+    await getWorkFlow();
+    setWorkflowFormMode('VIEW');
+  };
   return {
+    getLLMs,
+    getTools,
     getWorkFlow,
     id,
+    updateWorkflow,
   };
 };
 
@@ -112,5 +101,20 @@ export const useTabHelper = () => {
   return {
     onTabChange,
     selectedTab,
+  };
+};
+
+export const useWorkflowFormHelper = () => {
+  const { setWorkflowFormMode, workflowFormMode } = useWorkflowContext();
+  const editWorkflowFormMode = (): void => {
+    setWorkflowFormMode('UPDATE');
+  };
+  const viewWorkflowFormMode = (): void => {
+    setWorkflowFormMode('VIEW');
+  };
+  return {
+    editWorkflowFormMode,
+    viewWorkflowFormMode,
+    workflowFormMode,
   };
 };
