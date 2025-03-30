@@ -37,30 +37,19 @@ export const useAdminWorkflowId = (id: string) => {
     );
     // await getWorkFlow();
   };
-  const deleteWorkflowNode = async (nodeId: string): Promise<void> => {
-    await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
-    // await getWorkFlow();
-    // selectedTab(0);
-  };
-  const updateNode = async (nodeId: string, data: INode): Promise<void> => {
-    await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
-    // await getWorkFlow();
-  };
   const executeWorkflow = async (): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
   };
   return {
     addNodes,
-    deleteWorkflowNode,
     executeWorkflow,
     node,
     setNode,
-    updateNode,
   };
 };
 
 export const useWorkflowDataHelper = () => {
-  const { id, setNodes, setWorkflow, setWorkflowFormMode, setWorkflowLoading } =
+  const { id, setNodes, setSelectedTab, setWorkflow, setWorkflowFormMode, setWorkflowLoading } =
     useWorkflowContext();
   const { getLLMs, getTools } = useAdminContext();
   const getWorkFlow = async (): Promise<void> => {
@@ -76,11 +65,22 @@ export const useWorkflowDataHelper = () => {
     await getWorkFlow();
     setWorkflowFormMode('VIEW');
   };
+  const deleteNode = async (nodeId: string): Promise<void> => {
+    await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
+    await getWorkFlow();
+    setSelectedTab(0);
+  };
+  const updateNode = async (nodeId: string, data: INode): Promise<void> => {
+    await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
+    await getWorkFlow();
+  };
   return {
+    deleteNode,
     getLLMs,
     getTools,
     getWorkFlow,
     id,
+    updateNode,
     updateWorkflow,
   };
 };

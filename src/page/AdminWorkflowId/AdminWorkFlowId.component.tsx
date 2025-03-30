@@ -23,10 +23,10 @@ import { Workflow } from './Workflow';
 export const Component: React.FC = () => {
   const { nodes, workflow, workflowFormMode } = useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
-  const { getLLMs, getTools, getWorkFlow, id, updateWorkflow } = useWorkflowDataHelper();
+  const { deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode, updateWorkflow } =
+    useWorkflowDataHelper();
   const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
-  const { addNodes, deleteWorkflowNode, executeWorkflow, node, setNode, updateNode } =
-    useAdminWorkflowId(id);
+  const { addNodes, executeWorkflow, node, setNode } = useAdminWorkflowId(id);
   useEffect(() => {
     getWorkFlow();
     getLLMs();
@@ -92,7 +92,7 @@ export const Component: React.FC = () => {
                 <Node
                   data={workflow.nodes[node]}
                   nodes={getNodeAsList(workflow.nodes)}
-                  deleteNode={() => deleteWorkflowNode(node)}
+                  deleteNode={() => deleteNode(node)}
                   updateNode={(data) => updateNode(node, data)}
                 />
               </Box>
