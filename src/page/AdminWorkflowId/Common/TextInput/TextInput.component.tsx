@@ -2,6 +2,7 @@
 
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
+// import FormHelperText from '@mui/material/FormHelperText';
 import React from 'react';
 import { ITextInput } from './TextInput';
 
@@ -9,10 +10,12 @@ export const TextInput: React.FC<ITextInput> = ({
   defaultValue,
   disabled,
   label,
+  multiline,
   name,
   onChange,
   placeholder,
   required,
+  rows,
   value,
 }) => {
   return (
@@ -28,6 +31,8 @@ export const TextInput: React.FC<ITextInput> = ({
         placeholder={placeholder}
         onChange={onChange}
         disabled={disabled}
+        multiline={multiline}
+        rows={rows}
       />
       {/* <FormHelperText>This is Error</FormHelperText> */}
     </FormControl>

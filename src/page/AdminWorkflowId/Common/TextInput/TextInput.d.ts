@@ -9,4 +9,6 @@ export interface ITextInput {
   onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   disabled?: boolean;
   required?: boolean;
+  multiline?: boolean;
+  rows?: number;
 }

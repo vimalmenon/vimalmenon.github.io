@@ -100,6 +100,8 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
             variant="outlined"
             size="small"
             required
+            multiline
+            rows={5}
             value={prompt}
             name="prompt"
             onChange={onInputUpdate}
