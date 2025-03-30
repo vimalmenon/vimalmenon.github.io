@@ -1,16 +1,16 @@
 'use client';
 
 import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import MuiSelect from '@mui/material/Select';
 import { ISelect } from './Select';
 
-export const Select: React.FC<ISelect> = ({ label, name, onchange, options, value }) => {
+export const Select: React.FC<ISelect> = ({ error, label, name, onchange, options, value }) => {
   return (
     <FormControl fullWidth required size="small">
       <InputLabel id="node-type">{label}</InputLabel>
-
       <MuiSelect value={value} labelId="node-type" label={label} name={name} onChange={onchange}>
         <MenuItem value="">
           <em>None</em>
@@ -23,7 +23,7 @@ export const Select: React.FC<ISelect> = ({ label, name, onchange, options, valu
           );
         })}
       </MuiSelect>
-      {/* <FormHelperText>This is Error</FormHelperText> */}
+      {error ? <FormHelperText error={!!error}>{error}</FormHelperText> : null}{' '}
     </FormControl>
   );
 };

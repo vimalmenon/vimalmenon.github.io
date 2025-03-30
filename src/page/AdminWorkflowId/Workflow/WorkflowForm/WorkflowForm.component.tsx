@@ -26,7 +26,6 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel, up
             defaultValue={data?.id}
             disabled
           />
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       <FormControl variant="outlined" fullWidth required>
@@ -38,7 +37,6 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel, up
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        {/* <FormHelperText>This is Error</FormHelperText> */}
       </FormControl>
       {mode === 'UPDATE' ? (
         <FormControl variant="outlined" fullWidth required>
@@ -52,7 +50,6 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel, up
             value={detail}
             onChange={(e) => setDetail(e.target.value)}
           />
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       {mode === 'UPDATE' ? (

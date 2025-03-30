@@ -7,4 +7,5 @@ export interface ISelect {
   value: string;
   options: IMultiSelectOption[];
   onchange: (event: SelectChangeEvent<string>) => void;
+  error?: string;
 }

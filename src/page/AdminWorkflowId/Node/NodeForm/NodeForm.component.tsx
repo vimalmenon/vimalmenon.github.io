@@ -71,13 +71,11 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
               );
             })}
           </Select>
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.LLM) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">LLM</InputLabel>
-
           <Select value={llm} labelId="node-type" label="LLM" name="llm" onChange={onSelectUpdate}>
             <MenuItem value="">
               <em>None</em>
@@ -90,7 +88,6 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
               );
             })}
           </Select>
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Prompt) ? (
@@ -106,7 +103,6 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
             name="prompt"
             onChange={onInputUpdate}
           />
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tools) ? (
@@ -130,7 +126,6 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
             name="input"
             onChange={onInputUpdate}
           />
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tool) ? (
@@ -155,7 +150,6 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
               );
             })}
           </Select>
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       {mode === 'UPDATE' ? (
