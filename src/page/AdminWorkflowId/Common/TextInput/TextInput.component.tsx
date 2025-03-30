@@ -1,14 +1,15 @@
 'use client';
 
 import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
-// import FormHelperText from '@mui/material/FormHelperText';
 import React from 'react';
 import { ITextInput } from './TextInput';
 
 export const TextInput: React.FC<ITextInput> = ({
   defaultValue,
   disabled,
+  error,
   label,
   multiline,
   name,
@@ -34,7 +35,7 @@ export const TextInput: React.FC<ITextInput> = ({
         multiline={multiline}
         rows={rows}
       />
-      {/* <FormHelperText>This is Error</FormHelperText> */}
+      {error ? <FormHelperText error={!!error}>{error}</FormHelperText> : null}
     </FormControl>
   );
 };

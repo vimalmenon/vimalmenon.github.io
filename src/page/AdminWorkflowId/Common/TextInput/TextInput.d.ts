@@ -11,4 +11,5 @@ export interface ITextInput {
   required?: boolean;
   multiline?: boolean;
   rows?: number;
+  error?: string;
 }
