@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import { MultiSelect } from '@component';
 import { useAdminContext } from '@context';
 import { NodeType } from '@data';
+import { TextInput } from '../../Common';
 import {
   convertNodeToOption,
   convertToolsToOption,
@@ -40,30 +41,15 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {mode === 'UPDATE' ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="ID"
-            variant="outlined"
-            size="small"
-            required
-            defaultValue={data.id}
-            disabled
-          />
-          {/* <FormHelperText>This is Error</FormHelperText> */}
-        </FormControl>
+        <TextInput placeholder="ID" name="id" label="ID" defaultValue={data.id} disabled />
       ) : null}
-      <FormControl variant="outlined" fullWidth required>
-        <TextField
-          label="Name"
-          variant="outlined"
-          size="small"
-          required
-          name="name"
-          value={name}
-          onChange={onInputUpdate}
-        />
-        {/* <FormHelperText>This is Error</FormHelperText> */}
-      </FormControl>
+      <TextInput
+        value={name}
+        label="Name"
+        placeholder="Name"
+        name="name"
+        onChange={onInputUpdate}
+      />
       {mode === 'UPDATE' ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">Type</InputLabel>
