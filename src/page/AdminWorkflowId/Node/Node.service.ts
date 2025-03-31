@@ -41,7 +41,7 @@ export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => {
     { label: 'END', value: 'END' },
   ];
 };
-export const useNodeForm = (data: INode) => {
+export const useNodeForm = (data?: INode) => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');
   const [llm, setLlm] = useState<string>(data?.llm ?? '');

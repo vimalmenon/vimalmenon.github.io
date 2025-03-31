@@ -7,20 +7,27 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+import { TextInput } from '..';
 import { MultiSelect } from '@component';
 import { useAdminContext } from '@context';
 import { NodeType } from '@data';
-import { TextInput } from '../../Common';
 import {
   convertNodeToOption,
   convertToolsToOption,
   fields,
   nodeType,
   useNodeForm,
-} from '../Node.service';
+} from '../../Node/Node.service';
 import { INodeForm } from './NodeForm';
 
-export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, updateNode }) => {
+export const NodeForm: React.FC<INodeForm> = ({
+  createNode,
+  data,
+  mode,
+  nodes,
+  onCancel,
+  updateNode,
+}) => {
   const {
     input,
     llm,
@@ -40,7 +47,7 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      {mode === 'UPDATE' ? (
+      {mode === 'UPDATE' && data ? (
         <TextInput placeholder="ID" name="id" label="ID" defaultValue={data.id} disabled />
       ) : null}
       <TextInput
@@ -166,23 +173,37 @@ export const NodeForm: React.FC<INodeForm> = ({ data, mode, nodes, onCancel, upd
         <Button variant="outlined" onClick={onCancel}>
           Cancel
         </Button>
-        <Button
-          variant="contained"
-          onClick={() =>
-            updateNode({
-              id: data.id,
-              input,
-              llm,
-              name,
-              next,
-              prompt,
-              tools,
-              type,
-            })
-          }
-        >
-          Update
-        </Button>
+        {mode === 'UPDATE' && updateNode ? (
+          <Button
+            variant="contained"
+            onClick={() =>
+              updateNode({
+                id: data?.id ?? '',
+                input,
+                llm,
+                name,
+                next,
+                prompt,
+                tools,
+                type,
+              })
+            }
+          >
+            Update
+          </Button>
+        ) : null}
+        {mode === 'CREATE' && createNode ? (
+          <Button
+            variant="contained"
+            onClick={() =>
+              createNode({
+                name,
+              })
+            }
+          >
+            Create
+          </Button>
+        ) : null}
       </Box>
     </Box>
   );

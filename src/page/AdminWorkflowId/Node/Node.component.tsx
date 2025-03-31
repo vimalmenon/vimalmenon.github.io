@@ -3,8 +3,8 @@
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { FormMode, INode as INodeData } from '@types';
+import { NodeForm } from '../Common/NodeForm';
 import { INode } from './Node';
-import { NodeForm } from './NodeForm';
 import { ViewNode } from './ViewNode';
 
 export const Node: React.FC<INode> = ({ data, deleteNode, nodes, updateNode }) => {

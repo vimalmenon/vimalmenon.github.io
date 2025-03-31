@@ -5,34 +5,42 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import TextField from '@mui/material/TextField';
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
   getNodeAsList,
-  useAdminWorkflowId,
   useTabHelper,
   useWorkflowContext,
   useWorkflowDataHelper,
   useWorkflowFormHelper,
 } from './AdminWorkflowId.service';
+import { NodeForm } from './Common';
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
   const { nodes, workflow, workflowFormMode } = useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
-  const { deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode, updateWorkflow } =
-    useWorkflowDataHelper();
+  const {
+    createNode,
+    deleteNode,
+    executeWorkflow,
+    getLLMs,
+    getTools,
+    getWorkFlow,
+    id,
+    updateNode,
+    updateWorkflow,
+  } = useWorkflowDataHelper();
   const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
-  const { addNodes, executeWorkflow, node, setNode } = useAdminWorkflowId(id);
+
   useEffect(() => {
     getWorkFlow();
     getLLMs();
     getTools();
   }, [id]);
-  const [showAddNode] = useState<boolean>(false);
+  const [showAddNode, setShowAddNode] = useState<boolean>(false);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <Workflow
@@ -44,24 +52,13 @@ export const Component: React.FC = () => {
       />
       <Divider />
       {showAddNode ? (
-        <Fragment>
-          <Box>
-            {' '}
-            <TextField
-              required
-              label="Name"
-              size="small"
-              fullWidth
-              value={node}
-              onChange={(e) => setNode(e.target.value)}
-            />
-          </Box>
-          <Box>
-            <Button variant="outlined" onClick={addNodes}>
-              Create Node
-            </Button>
-          </Box>
-        </Fragment>
+        <NodeForm
+          data={undefined}
+          onCancel={() => setShowAddNode(false)}
+          createNode={createNode}
+          mode="CREATE"
+          nodes={[]}
+        />
       ) : null}
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>

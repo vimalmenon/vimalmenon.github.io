@@ -1,9 +1,9 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { IGenericResponse, INode, ITool, IWorkflow } from '@types';
+import { IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import { IContext } from './AdminWorkflowId';
 
@@ -25,28 +25,6 @@ export const Context = createContext<IContext>({
 });
 
 export const useWorkflowContext = (): IContext => useContext(Context);
-
-export const useAdminWorkflowId = (id: string) => {
-  const [node, setNode] = useState<string>('');
-
-  const addNodes = async (): Promise<void> => {
-    await makeRequest(
-      APIs.CreateWorkflowNode(id, {
-        name: node,
-      })
-    );
-    // await getWorkFlow();
-  };
-  const executeWorkflow = async (): Promise<void> => {
-    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
-  };
-  return {
-    addNodes,
-    executeWorkflow,
-    node,
-    setNode,
-  };
-};
 
 export const useWorkflowDataHelper = () => {
   const { id, setNodes, setSelectedTab, setWorkflow, setWorkflowFormMode, setWorkflowLoading } =
@@ -74,8 +52,17 @@ export const useWorkflowDataHelper = () => {
     await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
     await getWorkFlow();
   };
+  const createNode = async (data: INodeSlim): Promise<void> => {
+    await makeRequest(APIs.CreateWorkflowNode(id, data));
+    await getWorkFlow();
+  };
+  const executeWorkflow = async (): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
+  };
   return {
+    createNode,
     deleteNode,
+    executeWorkflow,
     getLLMs,
     getTools,
     getWorkFlow,
