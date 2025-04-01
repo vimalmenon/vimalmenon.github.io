@@ -13,7 +13,6 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [x] Need to fix select
 - [ ] Create cookie accepter
 - [ ] Execute the workflow
 - [ ] Show Loading indicator
