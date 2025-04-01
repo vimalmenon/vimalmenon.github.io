@@ -17,6 +17,7 @@ import {
 } from './AdminWorkflowId.service';
 import { NodeForm } from './Common';
 import { Node } from './Node';
+import { Panel } from './Panel';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
@@ -43,6 +44,7 @@ export const Component: React.FC = () => {
   const [showAddNode, setShowAddNode] = useState<boolean>(false);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <Panel />
       <Workflow
         mode={workflowFormMode}
         onCancel={viewWorkflowFormMode}

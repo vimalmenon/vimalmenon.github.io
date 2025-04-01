@@ -10,10 +10,6 @@ export const WorkflowView: React.FC<IWorkflowView> = ({ data, onEdit }) => {
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Workflow Item</Box>
         <Box>
-          <IconButton>
-            <Icons.Add />
-          </IconButton>
-
           <IconButton onClick={onEdit}>
             <Icons.Edit />
           </IconButton>
