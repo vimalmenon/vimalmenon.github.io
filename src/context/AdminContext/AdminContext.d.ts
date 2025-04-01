@@ -4,8 +4,8 @@ import { ILLM, ITool } from '@types';
 export interface IAdminContext {
   llms: ILLM[];
   tools: ITool[];
-  addLlms: (llms: ILLM[]) => void;
-  addTools: (tools: ITool[]) => void;
+  getTools: () => Promise<void>;
+  getLLMs: () => Promise<void>;
 }
 
 export type ActionType = 'ADD_LLMS' | 'ADD_TOOLS';

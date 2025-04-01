@@ -5,83 +5,65 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import TextField from '@mui/material/TextField';
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
-import { useAdminWorkflowId } from './AdminWorkflowId.service';
+import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
+import {
+  getNodeAsList,
+  useTabHelper,
+  useWorkflowContext,
+  useWorkflowDataHelper,
+  useWorkflowFormHelper,
+} from './AdminWorkflowId.service';
+import { NodeForm } from './Common';
 import { Node } from './Node';
-import { ViewWorkflow } from './ViewWorkflow';
-import { WorkflowForm } from './WorkflowForm';
+import { Panel } from './Panel';
+import { Workflow } from './Workflow';
 
-export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
+export const Component: React.FC = () => {
+  const { nodes, workflow, workflowFormMode } = useWorkflowContext();
+  const { onTabChange, selectedTab } = useTabHelper();
   const {
-    addNodes,
-    deleteWorkflowNode,
-    editWorkflowFormMode,
+    createNode,
+    deleteNode,
+    executeWorkflow,
     getLLMs,
     getTools,
     getWorkFlow,
-    node,
-    nodes,
-    onTabChange,
-    setNode,
-    tab,
+    id,
     updateNode,
     updateWorkflow,
-    viewWorkflowFormMode,
-    workflow,
-    workflowFormMode,
-  } = useAdminWorkflowId(id);
+  } = useWorkflowDataHelper();
+  const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
+
   useEffect(() => {
     getWorkFlow();
     getLLMs();
     getTools();
   }, [id]);
-  const [showAddNode] = useState<boolean>(false);
+  const [showAddNode, setShowAddNode] = useState<boolean>(false);
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      {!showAddNode ? (
-        <Fragment>
-          {workflow && workflowFormMode === 'VIEW' ? (
-            <ViewWorkflow data={workflow} onEdit={editWorkflowFormMode} />
-          ) : null}
-          {workflow && workflowFormMode === 'UPDATE' ? (
-            <WorkflowForm
-              mode="UPDATE"
-              data={workflow}
-              onCancel={viewWorkflowFormMode}
-              updateWorkflow={updateWorkflow}
-            />
-          ) : null}
-        </Fragment>
-      ) : null}
-      <br />
-      <br />
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <Panel onCreateNode={() => setShowAddNode(true)} />
+      <Workflow
+        mode={workflowFormMode}
+        onCancel={viewWorkflowFormMode}
+        updateWorkflow={updateWorkflow}
+        onEdit={editWorkflowFormMode}
+        data={workflow}
+      />
       <Divider />
-      <br />
-      <br />
       {showAddNode ? (
-        <Fragment>
-          <Box>
-            {' '}
-            <TextField
-              required
-              label="Name"
-              size="small"
-              fullWidth
-              value={node}
-              onChange={(e) => setNode(e.target.value)}
-            />
-          </Box>
-          <Box>
-            <Button variant="outlined" onClick={addNodes}>
-              Create Node
-            </Button>
-          </Box>
-        </Fragment>
+        <NodeForm
+          data={undefined}
+          onCancel={() => setShowAddNode(false)}
+          createNode={createNode}
+          mode="CREATE"
+          nodes={[]}
+        />
       ) : null}
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Tabs value={tab} onChange={onTabChange}>
+        <Tabs value={selectedTab} onChange={onTabChange}>
           {nodes.map((name) => {
             return (
               <Tab
@@ -103,21 +85,37 @@ export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
           })}
         </Tabs>
         {nodes.map((node, index) => {
-          if (tab === index && workflow?.nodes[node]) {
+          if (selectedTab === index && workflow?.nodes[node]) {
             return (
-              <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Box key={node} sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}>
                 <Node
                   data={workflow.nodes[node]}
-                  deleteNode={() => deleteWorkflowNode(node)}
+                  nodes={getNodeAsList(workflow.nodes)}
+                  deleteNode={() => deleteNode(node)}
                   updateNode={(data) => updateNode(node, data)}
                 />
               </Box>
             );
           }
         })}
-        <br />
-        <br />
       </Box>
+      {workflow?.complete ? (
+        <Box>
+          <Button variant="outlined" onClick={executeWorkflow}>
+            Execute
+          </Button>
+        </Box>
+      ) : null}
+      <br />
+      <br />
     </Box>
+  );
+};
+
+export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
+  return (
+    <AdminWorkflowIdContext id={id}>
+      <Component />
+    </AdminWorkflowIdContext>
   );
 };

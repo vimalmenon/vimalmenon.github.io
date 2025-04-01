@@ -1,81 +1,99 @@
 'use client';
 
-import { useState } from 'react';
+import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { FormMode, IGenericResponse, ILLM, INode, ITool, IWorkflow } from '@types';
-import { makeRequest } from '@utility';
+import { IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
+import { makeRequest, NotImplemented } from '@utility';
+import { IContext } from './AdminWorkflowId';
 
-export const useAdminWorkflowId = (id: string) => {
-  const [nodes, setNodes] = useState<string[]>([]);
-  const [tab, selectedTab] = useState<number>(0);
-  const [node, setNode] = useState<string>('');
-  const [workflow, setWorkflow] = useState<IWorkflow>();
-  const { addLlms, addTools } = useAdminContext();
-  const [workflowFormMode, setWorkFlowMode] = useState<FormMode>('VIEW');
+export const getNodeAsList = (node: Record<string, INode>): INode[] => {
+  return Object.keys(node).map((key) => node[key]);
+};
 
-  const addNodes = async (): Promise<void> => {
-    await makeRequest(
-      APIs.CreateWorkflowNode(id, {
-        name: node,
-      })
-    );
-    await getWorkFlow();
-  };
-  const onTabChange = (event: React.SyntheticEvent, newValue: number): void => {
-    selectedTab(newValue);
-  };
+export const Context = createContext<IContext>({
+  id: '0',
+  nodes: [],
+  selectedTab: 0,
+  setNodes: NotImplemented,
+  setSelectedTab: NotImplemented,
+  setWorkflow: NotImplemented,
+  setWorkflowFormMode: NotImplemented,
+  setWorkflowLoading: NotImplemented,
+  workflowFormMode: 'VIEW',
+  workflowLoading: false,
+});
+
+export const useWorkflowContext = (): IContext => useContext(Context);
+
+export const useWorkflowDataHelper = () => {
+  const { id, setNodes, setSelectedTab, setWorkflow, setWorkflowFormMode, setWorkflowLoading } =
+    useWorkflowContext();
+  const { getLLMs, getTools } = useAdminContext();
   const getWorkFlow = async (): Promise<void> => {
+    setWorkflowLoading(true);
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
     const workflow = response.data;
     setNodes(Object.keys(workflow.nodes));
-    setWorkflow(response.data);
+    setWorkflow(workflow);
+    setWorkflowLoading(false);
   };
-  const deleteWorkflowNode = async (nodeId: string): Promise<void> => {
+  const updateWorkflow = async (data: IWorkflow): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
+    await getWorkFlow();
+    setWorkflowFormMode('VIEW');
+  };
+  const deleteNode = async (nodeId: string): Promise<void> => {
     await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
     await getWorkFlow();
-    selectedTab(0);
-  };
-  const getLLMs = async (): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<ILLM[]>>(APIs.GetLLMs());
-    addLlms(response.data);
-  };
-  const getTools = async (): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<ITool[]>>(APIs.GetTools());
-    addTools(response.data);
+    setSelectedTab(0);
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
     await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
     await getWorkFlow();
   };
-  const updateWorkflow = async (data: IWorkflow): Promise<void> => {
-    await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
+  const createNode = async (data: INodeSlim): Promise<void> => {
+    await makeRequest(APIs.CreateWorkflowNode(id, data));
     await getWorkFlow();
-    setWorkFlowMode('VIEW');
   };
-  const editWorkflowFormMode = (): void => {
-    setWorkFlowMode('UPDATE');
-  };
-  const viewWorkflowFormMode = (): void => {
-    setWorkFlowMode('VIEW');
+  const executeWorkflow = async (): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
   };
   return {
-    addNodes,
-    deleteWorkflowNode,
-    editWorkflowFormMode,
+    createNode,
+    deleteNode,
+    executeWorkflow,
     getLLMs,
     getTools,
     getWorkFlow,
     id,
-    node,
-    nodes,
-    onTabChange,
-    setNode,
-    tab,
     updateNode,
     updateWorkflow,
+  };
+};
+
+export const useTabHelper = () => {
+  const { selectedTab, setSelectedTab } = useWorkflowContext();
+  const onTabChange = (event: React.SyntheticEvent, newValue: number): void => {
+    setSelectedTab(newValue);
+  };
+  return {
+    onTabChange,
+    selectedTab,
+  };
+};
+
+export const useWorkflowFormHelper = () => {
+  const { setWorkflowFormMode, workflowFormMode } = useWorkflowContext();
+  const editWorkflowFormMode = (): void => {
+    setWorkflowFormMode('UPDATE');
+  };
+  const viewWorkflowFormMode = (): void => {
+    setWorkflowFormMode('VIEW');
+  };
+  return {
+    editWorkflowFormMode,
     viewWorkflowFormMode,
-    workflow,
     workflowFormMode,
   };
 };

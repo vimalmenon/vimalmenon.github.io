@@ -47,9 +47,13 @@ export const ViewNode: React.FC<IViewNode> = ({ data, onDelete, onEdit }) => {
       {value.includes('Tools') ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Tools</Box>
-          <Box>{data.tools}</Box>
+          <Box>{data.tools.join(', ')}</Box>
         </Box>
       ) : null}
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box>Next</Box>
+        <Box>{data.next}</Box>
+      </Box>
     </Box>
   );
 };

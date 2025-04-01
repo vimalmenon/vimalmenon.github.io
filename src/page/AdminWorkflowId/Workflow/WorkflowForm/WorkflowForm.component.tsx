@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-// import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { IWorkflowForm } from './WorkflowForm';
@@ -27,7 +26,6 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel, up
             defaultValue={data?.id}
             disabled
           />
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       <FormControl variant="outlined" fullWidth required>
@@ -39,7 +37,6 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel, up
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        {/* <FormHelperText>This is Error</FormHelperText> */}
       </FormControl>
       {mode === 'UPDATE' ? (
         <FormControl variant="outlined" fullWidth required>
@@ -53,7 +50,6 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({ data, mode, onCancel, up
             value={detail}
             onChange={(e) => setDetail(e.target.value)}
           />
-          {/* <FormHelperText>This is Error</FormHelperText> */}
         </FormControl>
       ) : null}
       {mode === 'UPDATE' ? (

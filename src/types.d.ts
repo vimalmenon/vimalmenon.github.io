@@ -45,6 +45,9 @@ export interface INode extends INodeSlim {
   type: string;
   llm: string;
   tools: string[];
+  input: string;
+  next?: string[];
+  tool?: string;
 }
 
 export interface IWorkflow extends IWorkflowSlim {
@@ -70,6 +73,12 @@ export interface ITool {
   id: string;
   name: string;
   tool_name: string;
+}
+
+export interface IMultiSelectOption {
+  label: string;
+  value: string;
+  disabled?: boolean;
 }
 
 export type VoidFunction = () => void;

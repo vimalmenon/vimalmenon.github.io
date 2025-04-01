@@ -80,11 +80,18 @@ const UpdateWorkflow = (id: string, body: IWorkflow): IAPI => {
   };
 };
 
+const ExecuteWorkflow = (id: string): IAPI => {
+  return {
+    method: 'POST',
+    url: `workflows/execute/${id}`,
+  };
+};
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
   DeleteWorkflow,
   DeleteWorkflowNode,
+  ExecuteWorkflow,
   GetLLMs,
   GetTools,
   getUUID,
