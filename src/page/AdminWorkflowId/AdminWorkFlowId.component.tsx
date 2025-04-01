@@ -44,7 +44,7 @@ export const Component: React.FC = () => {
   const [showAddNode, setShowAddNode] = useState<boolean>(false);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <Panel />
+      <Panel onCreateNode={() => setShowAddNode(true)} />
       <Workflow
         mode={workflowFormMode}
         onCancel={viewWorkflowFormMode}
