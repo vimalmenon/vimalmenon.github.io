@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [ ] Create cookie accepter
+- [ ] Set eslint warning threshold of 10
 - [ ] Execute the workflow
 - [ ] Show Loading indicator
 - [ ] Update MetaData on Workflow

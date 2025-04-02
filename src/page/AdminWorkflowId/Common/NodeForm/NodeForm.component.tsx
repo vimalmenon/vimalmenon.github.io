@@ -35,6 +35,7 @@ export const NodeForm: React.FC<INodeForm> = ({
     next,
     onInputUpdate,
     onMultiSelectUpdate,
+    onSelectClear,
     onSelectUpdate,
     prompt,
     tool,
@@ -120,6 +121,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           id={'Tools'}
           onChange={onMultiSelectUpdate}
           name={'tools'}
+          onClear={() => onSelectClear('tools')}
         />
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Input) ? (
@@ -167,6 +169,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           id={'next'}
           name={'next'}
           onChange={onMultiSelectUpdate}
+          onClear={() => onSelectClear('next')}
         />
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

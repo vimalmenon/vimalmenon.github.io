@@ -93,6 +93,14 @@ export const useNodeForm = (data?: INode) => {
       setNext(values);
     }
   };
+  const onSelectClear = (input: string): void => {
+    if (input === 'next') {
+      setNext([]);
+    }
+    if (input === 'tools') {
+      setTools([]);
+    }
+  };
   return {
     input,
     llm,
@@ -100,6 +108,7 @@ export const useNodeForm = (data?: INode) => {
     next,
     onInputUpdate,
     onMultiSelectUpdate,
+    onSelectClear,
     onSelectUpdate,
     prompt,
     tool,
