@@ -1,8 +1,8 @@
 'use client';
 
-import { SelectChangeEvent } from '@mui/material';
-import { ChangeEvent, useState } from 'react';
-import { IMultiSelectOption, INode, ITool } from '@types';
+import { useState } from 'react';
+import { IMultiSelectOption, INode, InputChangeType, ITool, SelectChangeType } from '@types';
+import { IUseNodeForm } from './Node';
 
 export enum fields {
   LLM = 'LLM',
@@ -41,7 +41,7 @@ export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => {
     { label: 'END', value: 'END' },
   ];
 };
-export const useNodeForm = (data?: INode) => {
+export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');
   const [llm, setLlm] = useState<string>(data?.llm ?? '');
@@ -51,7 +51,7 @@ export const useNodeForm = (data?: INode) => {
   const [next, setNext] = useState<string[]>(data?.next ?? []);
   const [tool, setTool] = useState<string>(data?.tool ?? '');
 
-  const onInputUpdate = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+  const onInputUpdate: InputChangeType = (event) => {
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
@@ -63,7 +63,7 @@ export const useNodeForm = (data?: INode) => {
       setPrompt(value);
     }
   };
-  const onSelectUpdate = (event: SelectChangeEvent<string>): void => {
+  const onSelectUpdate: SelectChangeType<string> = (event): void => {
     const { name, value } = event.target;
     if (name === 'llm') {
       setLlm(value);
@@ -81,7 +81,7 @@ export const useNodeForm = (data?: INode) => {
       setTool('');
     }
   };
-  const onMultiSelectUpdate = (event: SelectChangeEvent<string[]>): void => {
+  const onMultiSelectUpdate: SelectChangeType<string[]> = (event): void => {
     const {
       target: { name, value },
     } = event;
@@ -102,6 +102,7 @@ export const useNodeForm = (data?: INode) => {
     }
   };
   return {
+    id: data?.id ?? '',
     input,
     llm,
     name,

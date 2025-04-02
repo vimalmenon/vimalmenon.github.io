@@ -164,7 +164,7 @@ export const NodeForm: React.FC<INodeForm> = ({
       {mode === 'UPDATE' ? (
         <MultiSelect
           options={convertNodeToOption(nodes)}
-          value={next}
+          value={next ?? []}
           label={'Next'}
           id={'next'}
           name={'next'}
