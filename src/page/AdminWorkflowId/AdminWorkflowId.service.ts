@@ -19,9 +19,11 @@ export const Context = createContext<IContext>({
   setLoading: NotImplemented,
   setNodes: NotImplemented,
   setSelectedTab: NotImplemented,
+  setShowAddNode: NotImplemented,
   setWorkflow: NotImplemented,
   setWorkflowFormMode: NotImplemented,
   setWorkflowLoading: NotImplemented,
+  showAddNode: false,
   workflowFormMode: 'VIEW',
   workflowLoading: false,
 });

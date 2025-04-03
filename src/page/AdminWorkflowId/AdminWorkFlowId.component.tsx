@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
@@ -20,7 +20,8 @@ import { Panel } from './Panel';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
-  const { loading, nodes, workflow, workflowFormMode } = useWorkflowContext();
+  const { loading, nodes, setShowAddNode, showAddNode, workflow, workflowFormMode } =
+    useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
   const {
     createNode,
@@ -40,7 +41,7 @@ export const Component: React.FC = () => {
     getLLMs();
     getTools();
   }, [id]);
-  const [showAddNode, setShowAddNode] = useState<boolean>(false);
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <Panel

@@ -23,6 +23,8 @@ export interface IContext {
   setWorkflowFormMode: ReactSetState<FormMode>;
   loading: boolean;
   setLoading: ReactSetState<boolean>;
+  showAddNode: boolean;
+  setShowAddNode: ReactSetState<boolean>;
 }
 
 export interface IUseTabHelper {
