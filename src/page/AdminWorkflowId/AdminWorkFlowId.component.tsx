@@ -1,7 +1,6 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
@@ -104,15 +103,6 @@ export const Component: React.FC = () => {
           }
         })}
       </Box>
-      {workflow?.complete ? (
-        <Box>
-          <Button variant="outlined" onClick={executeWorkflow}>
-            Execute
-          </Button>
-        </Box>
-      ) : null}
-      <br />
-      <br />
     </Box>
   );
 };
