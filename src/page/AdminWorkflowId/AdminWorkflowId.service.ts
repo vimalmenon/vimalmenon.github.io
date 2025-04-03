@@ -5,7 +5,7 @@ import { useAdminContext } from '@context';
 import { APIs } from '@data';
 import { IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
-import { IContext, IUseTabHelper } from './AdminWorkflowId';
+import { IContext, IUseTabHelper, IUseWorkflowFormHelper } from './AdminWorkflowId';
 
 export const getNodeAsList = (node: Record<string, INode>): INode[] => {
   return Object.keys(node).map((key) => node[key]);
@@ -94,7 +94,7 @@ export const useTabHelper = (): IUseTabHelper => {
   };
 };
 
-export const useWorkflowFormHelper = () => {
+export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
   const { setWorkflowFormMode, workflowFormMode } = useWorkflowContext();
   const editWorkflowFormMode = (): void => {
     setWorkflowFormMode('UPDATE');

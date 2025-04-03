@@ -1,5 +1,5 @@
 import { SyntheticEvent } from 'react';
-import { FormMode, IReactChildren, IWorkflow, ReactSetState } from '@types';
+import { FormMode, IReactChildren, IWorkflow, ReactSetState, VoidFunction } from '@types';
 
 export interface IAdminWorkflowId {
   id: string;
@@ -28,4 +28,10 @@ export interface IContext {
 export interface IUseTabHelper {
   onTabChange: (event: SyntheticEvent, newValue: number) => void;
   selectedTab: number;
+}
+
+export interface IUseWorkflowFormHelper {
+  editWorkflowFormMode: VoidFunction;
+  viewWorkflowFormMode: VoidFunction;
+  workflowFormMode: FormMode;
 }
