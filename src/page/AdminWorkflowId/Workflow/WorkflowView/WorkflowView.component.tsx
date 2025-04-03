@@ -1,6 +1,7 @@
 'use client';
+
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
+import { Icon } from '@component';
 import { Icons } from '@data';
 import { IWorkflowView } from './WorkflowView';
 
@@ -9,11 +10,11 @@ export const WorkflowView: React.FC<IWorkflowView> = ({ data, onEdit }) => {
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Workflow</Box>
-        <Box>
-          <IconButton onClick={onEdit}>
-            <Icons.Edit />
-          </IconButton>
-        </Box>
+        {!data.complete ? (
+          <Box>
+            <Icon toolTip="Edit" icon={<Icons.Edit />} onClick={onEdit} />
+          </Box>
+        ) : null}
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>ID</Box>
