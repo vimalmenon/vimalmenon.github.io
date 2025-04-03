@@ -29,8 +29,15 @@ export const Context = createContext<IContext>({
 export const useWorkflowContext = (): IContext => useContext(Context);
 
 export const useWorkflowDataHelper = () => {
-  const { id, setNodes, setSelectedTab, setWorkflow, setWorkflowFormMode, setWorkflowLoading } =
-    useWorkflowContext();
+  const {
+    id,
+    setLoading,
+    setNodes,
+    setSelectedTab,
+    setWorkflow,
+    setWorkflowFormMode,
+    setWorkflowLoading,
+  } = useWorkflowContext();
   const { getLLMs, getTools } = useAdminContext();
   const getWorkFlow = async (): Promise<void> => {
     setWorkflowLoading(true);
@@ -41,9 +48,11 @@ export const useWorkflowDataHelper = () => {
     setWorkflowLoading(false);
   };
   const updateWorkflow = async (data: IWorkflow): Promise<void> => {
+    setLoading(true);
     await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
     await getWorkFlow();
     setWorkflowFormMode('VIEW');
+    setLoading(false);
   };
   const deleteNode = async (nodeId: string): Promise<void> => {
     await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
