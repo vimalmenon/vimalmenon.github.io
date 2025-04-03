@@ -8,7 +8,7 @@ export const WorkflowView: React.FC<IWorkflowView> = ({ data, onEdit }) => {
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Box>Workflow Item</Box>
+        <Box>Workflow</Box>
         <Box>
           <IconButton onClick={onEdit}>
             <Icons.Edit />

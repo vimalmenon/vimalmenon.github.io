@@ -7,6 +7,7 @@ import { WorkflowView } from './WorkflowView';
 
 export const Workflow: React.FC<IWorkflowComponent> = ({
   data,
+  loading,
   mode,
   onCancel,
   onEdit,
@@ -20,6 +21,7 @@ export const Workflow: React.FC<IWorkflowComponent> = ({
           data={data}
           onCancel={onCancel}
           updateWorkflow={updateWorkflow}
+          loading={loading}
         />
       ) : null}
       {data && mode === 'VIEW' ? <WorkflowView data={data} onEdit={onEdit} /> : null}

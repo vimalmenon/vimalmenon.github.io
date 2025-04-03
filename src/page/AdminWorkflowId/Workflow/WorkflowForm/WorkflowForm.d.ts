@@ -5,4 +5,5 @@ export interface IWorkflowForm {
   data?: IWorkflow;
   onCancel: VoidFunction;
   updateWorkflow: (data: IWorkflow) => void;
+  loading: boolean;
 }

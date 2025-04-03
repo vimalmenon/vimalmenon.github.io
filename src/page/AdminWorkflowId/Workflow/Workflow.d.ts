@@ -6,4 +6,5 @@ export interface IWorkflowComponent {
   onCancel: VoidFunction;
   updateWorkflow: (data: IWorkflow) => void;
   onEdit: VoidFunction;
+  loading: boolean;
 }

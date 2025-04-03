@@ -21,7 +21,7 @@ import { Panel } from './Panel';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
-  const { nodes, workflow, workflowFormMode } = useWorkflowContext();
+  const { loading, nodes, workflow, workflowFormMode } = useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
   const {
     createNode,
@@ -55,6 +55,7 @@ export const Component: React.FC = () => {
         updateWorkflow={updateWorkflow}
         onEdit={editWorkflowFormMode}
         data={workflow}
+        loading={loading}
       />
       <Divider />
       {showAddNode ? (
