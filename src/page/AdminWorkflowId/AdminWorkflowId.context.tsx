@@ -11,13 +11,16 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const [nodes, setNodes] = useState<string[]>([]);
   const [workflowFormMode, setWorkflowFormMode] = useState<FormMode>('VIEW');
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <Context.Provider
       value={{
         id,
+        loading,
         nodes,
         selectedTab,
+        setLoading,
         setNodes,
         setSelectedTab,
         setWorkflow,

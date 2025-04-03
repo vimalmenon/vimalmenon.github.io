@@ -13,8 +13,10 @@ export const getNodeAsList = (node: Record<string, INode>): INode[] => {
 
 export const Context = createContext<IContext>({
   id: '0',
+  loading: false,
   nodes: [],
   selectedTab: 0,
+  setLoading: NotImplemented,
   setNodes: NotImplemented,
   setSelectedTab: NotImplemented,
   setWorkflow: NotImplemented,
