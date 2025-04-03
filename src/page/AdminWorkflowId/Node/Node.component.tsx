@@ -1,7 +1,12 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import { Fragment, useState } from 'react';
+import { Icon } from '@component';
+import { Icons } from '@data';
 import { FormMode, INode as INodeData } from '@types';
 import { NodeForm } from '../Common/NodeForm';
 import { INode } from './Node';
@@ -15,18 +20,29 @@ export const Node: React.FC<INode> = ({ data, deleteNode, nodes, updateNode }) =
   };
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column' }}>
-      {mode === 'VIEW' ? (
-        <ViewNode data={data} onEdit={() => setMode('UPDATE')} onDelete={deleteNode} />
-      ) : null}
-      {mode === 'UPDATE' ? (
-        <NodeForm
-          data={data}
-          onCancel={() => setMode('VIEW')}
-          mode="UPDATE"
-          nodes={nodes}
-          updateNode={updateNodeWithMode}
+      <Card>
+        <CardHeader
+          title={mode === 'VIEW' ? 'Node' : 'Edit Node'}
+          action={
+            <Fragment>
+              <Icon toolTip="Delete Node" icon={<Icons.Delete />} onClick={deleteNode} />
+              <Icon toolTip="Edit Node" icon={<Icons.Edit />} onClick={() => setMode('UPDATE')} />
+            </Fragment>
+          }
         />
-      ) : null}
+        <CardContent>
+          {mode === 'VIEW' ? <ViewNode data={data} /> : null}
+          {mode === 'UPDATE' ? (
+            <NodeForm
+              data={data}
+              onCancel={() => setMode('VIEW')}
+              mode="UPDATE"
+              nodes={nodes}
+              updateNode={updateNodeWithMode}
+            />
+          ) : null}
+        </CardContent>
+      </Card>
     </Box>
   );
 };
