@@ -5,7 +5,7 @@ import { useAdminContext } from '@context';
 import { APIs } from '@data';
 import { IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
-import { IContext } from './AdminWorkflowId';
+import { IContext, IUseTabHelper } from './AdminWorkflowId';
 
 export const getNodeAsList = (node: Record<string, INode>): INode[] => {
   return Object.keys(node).map((key) => node[key]);
@@ -72,7 +72,7 @@ export const useWorkflowDataHelper = () => {
   };
 };
 
-export const useTabHelper = () => {
+export const useTabHelper = (): IUseTabHelper => {
   const { selectedTab, setSelectedTab } = useWorkflowContext();
   const onTabChange = (event: React.SyntheticEvent, newValue: number): void => {
     setSelectedTab(newValue);

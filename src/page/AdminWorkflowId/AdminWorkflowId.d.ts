@@ -1,3 +1,4 @@
+import { SyntheticEvent } from 'react';
 import { FormMode, IReactChildren, IWorkflow, ReactSetState } from '@types';
 
 export interface IAdminWorkflowId {
@@ -20,4 +21,9 @@ export interface IContext {
   setNodes: ReactSetState<string[]>;
   workflowFormMode: FormMode;
   setWorkflowFormMode: ReactSetState<FormMode>;
+}
+
+export interface IUseTabHelper {
+  onTabChange: (event: SyntheticEvent, newValue: number) => void;
+  selectedTab: number;
 }
