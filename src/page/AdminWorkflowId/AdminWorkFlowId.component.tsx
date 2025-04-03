@@ -57,7 +57,6 @@ export const Component: React.FC = () => {
         data={workflow}
         loading={loading}
       />
-      <Divider />
       {showAddNode ? (
         <NodeForm
           data={undefined}
@@ -67,6 +66,7 @@ export const Component: React.FC = () => {
           nodes={[]}
         />
       ) : null}
+      <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>
           {nodes.map((name) => {

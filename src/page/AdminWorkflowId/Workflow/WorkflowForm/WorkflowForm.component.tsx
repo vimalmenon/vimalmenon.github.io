@@ -79,7 +79,13 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({
         </FormControl>
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button variant="outlined" onClick={onCancel} endIcon={<Icons.Close />} loading={loading}>
+        <Button
+          variant="outlined"
+          onClick={onCancel}
+          endIcon={<Icons.Close />}
+          loading={loading}
+          loadingPosition="end"
+        >
           Cancel
         </Button>
         {data ? (
