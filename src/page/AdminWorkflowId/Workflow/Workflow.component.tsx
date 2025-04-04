@@ -7,14 +7,19 @@ import CardHeader from '@mui/material/CardHeader';
 import React, { Fragment } from 'react';
 import { Icon } from '@component';
 import { Icons } from '@data';
-import { useWorkflowContext, useWorkflowDataHelper } from '../AdminWorkflowId.service';
+import {
+  useTabHelper,
+  useWorkflowContext,
+  useWorkflowDataHelper,
+} from '../AdminWorkflowId.service';
 import { IWorkflowComponent } from './Workflow';
 import { WorkflowForm } from './WorkflowForm';
 import { WorkflowView } from './WorkflowView';
 
 export const Workflow: React.FC<IWorkflowComponent> = ({ data, mode, onCancel, onEdit }) => {
-  const { loading, setShowAddNode } = useWorkflowContext();
+  const { loading } = useWorkflowContext();
   const { executeWorkflow, updateWorkflow } = useWorkflowDataHelper();
+  const { onAddNodeTab } = useTabHelper();
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Card>
@@ -22,7 +27,7 @@ export const Workflow: React.FC<IWorkflowComponent> = ({ data, mode, onCancel, o
           title={mode === 'VIEW' ? 'Workflow' : 'Edit Workflow'}
           action={
             <Fragment>
-              <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={() => setShowAddNode(true)} />
+              <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
               <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={onEdit} />
               {!data?.complete ? (
                 <Icon toolTip="Execute" icon={<Icons.Play />} onClick={executeWorkflow} />

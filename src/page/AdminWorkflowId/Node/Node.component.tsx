@@ -12,8 +12,8 @@ import { NodeForm } from '../Common/NodeForm';
 import { INode } from './Node';
 import { ViewNode } from './ViewNode';
 
-export const Node: React.FC<INode> = ({ data, deleteNode, nodes, updateNode }) => {
-  const [mode, setMode] = useState<FormMode>('VIEW');
+export const Node: React.FC<INode> = ({ data, deleteNode, mode, nodes, updateNode }) => {
+  const [, setMode] = useState<FormMode>('VIEW');
   const updateNodeWithMode = async (data: INodeData): Promise<void> => {
     await updateNode(data);
     setMode('VIEW');
@@ -31,12 +31,12 @@ export const Node: React.FC<INode> = ({ data, deleteNode, nodes, updateNode }) =
           }
         />
         <CardContent>
-          {mode === 'VIEW' ? <ViewNode data={data} /> : null}
-          {mode === 'UPDATE' ? (
+          {mode === 'VIEW' && data ? <ViewNode data={data} /> : null}
+          {mode === 'UPDATE' || mode === 'CREATE' ? (
             <NodeForm
               data={data}
               onCancel={() => setMode('VIEW')}
-              mode="UPDATE"
+              mode={mode}
               nodes={nodes}
               updateNode={updateNodeWithMode}
             />

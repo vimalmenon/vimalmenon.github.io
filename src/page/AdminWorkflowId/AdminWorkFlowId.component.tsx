@@ -14,17 +14,14 @@ import {
   useWorkflowDataHelper,
   useWorkflowFormHelper,
 } from './AdminWorkflowId.service';
-import { NodeForm } from './Common';
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
-  const { nodes, setShowAddNode, showAddNode, workflow, workflowFormMode } = useWorkflowContext();
+  const { nodeTabs, workflow, workflowFormMode } = useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
-  const { createNode, deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } =
-    useWorkflowDataHelper();
+  const { deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } = useWorkflowDataHelper();
   const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
-
   useEffect(() => {
     getWorkFlow();
     getLLMs();
@@ -39,20 +36,13 @@ export const Component: React.FC = () => {
         onEdit={editWorkflowFormMode}
         data={workflow}
       />
-      {showAddNode ? (
-        <NodeForm
-          data={undefined}
-          onCancel={() => setShowAddNode(false)}
-          createNode={createNode}
-          mode="CREATE"
-        />
-      ) : null}
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>
-          {nodes.map((name) => {
+          {nodeTabs.map((node) => {
             return (
               <Tab
+                disabled={node.disabled}
                 label={
                   <Box
                     sx={{
@@ -62,25 +52,25 @@ export const Component: React.FC = () => {
                       justifyContent: 'space-between',
                     }}
                   >
-                    <span>{name}</span>
+                    <span>{node.name}</span>
                   </Box>
                 }
-                key={name}
+                key={node.name}
               />
             );
           })}
         </Tabs>
-        {nodes.map((node, index) => {
-          if (selectedTab === index && workflow?.nodes[node]) {
+        {nodeTabs.map((node, index) => {
+          if (selectedTab === index && workflow) {
             return (
-              <Box key={node} sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}>
-                <Node
-                  data={workflow.nodes[node]}
-                  nodes={getNodeAsList(workflow.nodes)}
-                  deleteNode={() => deleteNode(node)}
-                  updateNode={(data) => updateNode(node, data)}
-                />
-              </Box>
+              <Node
+                data={workflow.nodes[node.name]}
+                key={node.name}
+                mode={node.mode}
+                nodes={getNodeAsList(workflow.nodes)}
+                deleteNode={() => deleteNode(node.name)}
+                updateNode={(data) => updateNode(node.name, data)}
+              />
             );
           }
         })}
