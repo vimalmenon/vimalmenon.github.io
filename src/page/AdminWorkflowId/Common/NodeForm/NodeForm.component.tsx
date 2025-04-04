@@ -24,7 +24,7 @@ export const NodeForm: React.FC<INodeForm> = ({
   createNode,
   data,
   mode,
-  nodes,
+  nodes = [],
   onCancel,
   updateNode,
 }) => {

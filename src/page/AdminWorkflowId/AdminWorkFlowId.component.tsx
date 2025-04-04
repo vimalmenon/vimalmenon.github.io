@@ -16,24 +16,13 @@ import {
 } from './AdminWorkflowId.service';
 import { NodeForm } from './Common';
 import { Node } from './Node';
-import { Panel } from './Panel';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
-  const { loading, nodes, setShowAddNode, showAddNode, workflow, workflowFormMode } =
-    useWorkflowContext();
+  const { nodes, setShowAddNode, showAddNode, workflow, workflowFormMode } = useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
-  const {
-    createNode,
-    deleteNode,
-    executeWorkflow,
-    getLLMs,
-    getTools,
-    getWorkFlow,
-    id,
-    updateNode,
-    updateWorkflow,
-  } = useWorkflowDataHelper();
+  const { createNode, deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } =
+    useWorkflowDataHelper();
   const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
 
   useEffect(() => {
@@ -44,18 +33,11 @@ export const Component: React.FC = () => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <Panel
-        onCreateNode={() => setShowAddNode(true)}
-        onExecute={executeWorkflow}
-        complete={workflow?.complete ?? false}
-      />
       <Workflow
         mode={workflowFormMode}
         onCancel={viewWorkflowFormMode}
-        updateWorkflow={updateWorkflow}
         onEdit={editWorkflowFormMode}
         data={workflow}
-        loading={loading}
       />
       {showAddNode ? (
         <NodeForm
@@ -63,7 +45,6 @@ export const Component: React.FC = () => {
           onCancel={() => setShowAddNode(false)}
           createNode={createNode}
           mode="CREATE"
-          nodes={[]}
         />
       ) : null}
       <Divider />
