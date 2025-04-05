@@ -21,10 +21,14 @@ export const Header: React.FC = () => {
       title={workflowFormMode === 'VIEW' ? 'Workflow' : 'Edit Workflow'}
       action={
         <Fragment>
-          <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
-          <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={editWorkflowFormMode} />
-          {!workflow?.complete ? (
-            <Icon toolTip="Execute" icon={<Icons.Play />} onClick={executeWorkflow} />
+          {workflowFormMode === 'VIEW' ? (
+            <Fragment>
+              <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
+              <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={editWorkflowFormMode} />
+              {!workflow?.complete ? (
+                <Icon toolTip="Execute" icon={<Icons.Play />} onClick={executeWorkflow} />
+              ) : null}
+            </Fragment>
           ) : null}
         </Fragment>
       }

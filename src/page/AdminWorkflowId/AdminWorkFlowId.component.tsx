@@ -35,24 +35,7 @@ export const Component: React.FC = () => {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>
           {nodeTabs.map((node) => {
-            return (
-              <Tab
-                disabled={node.disabled}
-                label={
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      gap: 1,
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <span>{node.name}</span>
-                  </Box>
-                }
-                key={node.name}
-              />
-            );
+            return <Tab disabled={node.disabled} label={node.name} key={node.name} />;
           })}
         </Tabs>
         {nodeTabs.map((node, index) => {
