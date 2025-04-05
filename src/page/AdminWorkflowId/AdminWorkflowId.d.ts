@@ -61,5 +61,5 @@ export interface IUseWorkflowDataHelper {
   getWorkFlow: VoidFunction<Promise<void>>;
   id: string;
   updateNode: (nodeId: string, data: INode) => Promise<void>;
-  updateWorkflow: VoidFunction<Promise<void>>;
+  updateWorkflow: (data: IWorkflow) => Promise<void>;
 }

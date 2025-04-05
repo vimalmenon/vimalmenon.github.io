@@ -81,7 +81,7 @@ export interface IMultiSelectOption {
   disabled?: boolean;
 }
 
-export type VoidFunction = () => void;
+export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
 

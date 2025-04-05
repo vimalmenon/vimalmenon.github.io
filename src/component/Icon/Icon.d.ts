@@ -1,7 +1,8 @@
 import React from 'react';
+import { VoidFunction } from '@types';
 
 export interface IIcon {
-  onClick?: () => void;
+  onClick?: VoidFunction<Promise<void> | void>;
   toolTip: string;
   icon: React.ReactNode;
 }
