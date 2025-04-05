@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
             <Fragment>
               <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
               <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={editWorkflowFormMode} />
-              {!workflow?.complete ? (
+              {workflow?.complete ? (
                 <Icon toolTip="Execute" icon={<Icons.Play />} onClick={executeWorkflow} />
               ) : null}
             </Fragment>
