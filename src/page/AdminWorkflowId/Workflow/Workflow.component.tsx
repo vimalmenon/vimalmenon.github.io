@@ -3,40 +3,22 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import React, { Fragment } from 'react';
-import { Icon } from '@component';
-import { Icons } from '@data';
-import {
-  useTabHelper,
-  useWorkflowContext,
-  useWorkflowDataHelper,
-} from '../AdminWorkflowId.service';
+import React from 'react';
+import { useWorkflowContext, useWorkflowDataHelper } from '../AdminWorkflowId.service';
+import { Header } from './Header';
 import { IWorkflowComponent } from './Workflow';
 import { WorkflowForm } from './WorkflowForm';
 import { WorkflowView } from './WorkflowView';
 
-export const Workflow: React.FC<IWorkflowComponent> = ({ data, mode, onCancel, onEdit }) => {
-  const { loading } = useWorkflowContext();
-  const { executeWorkflow, updateWorkflow } = useWorkflowDataHelper();
-  const { onAddNodeTab } = useTabHelper();
+export const Workflow: React.FC<IWorkflowComponent> = ({ data, onCancel }) => {
+  const { loading, workflowFormMode } = useWorkflowContext();
+  const { updateWorkflow } = useWorkflowDataHelper();
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Card>
-        <CardHeader
-          title={mode === 'VIEW' ? 'Workflow' : 'Edit Workflow'}
-          action={
-            <Fragment>
-              <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
-              <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={onEdit} />
-              {!data?.complete ? (
-                <Icon toolTip="Execute" icon={<Icons.Play />} onClick={executeWorkflow} />
-              ) : null}
-            </Fragment>
-          }
-        />
+        <Header />
         <CardContent>
-          {data && mode === 'UPDATE' ? (
+          {data && workflowFormMode === 'UPDATE' ? (
             <WorkflowForm
               mode="UPDATE"
               data={data}
@@ -45,7 +27,7 @@ export const Workflow: React.FC<IWorkflowComponent> = ({ data, mode, onCancel, o
               loading={loading}
             />
           ) : null}
-          {data && mode === 'VIEW' ? <WorkflowView data={data} /> : null}
+          {data && workflowFormMode === 'VIEW' ? <WorkflowView data={data} /> : null}
         </CardContent>
       </Card>
     </Box>

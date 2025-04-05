@@ -18,10 +18,10 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
-  const { nodeTabs, workflow, workflowFormMode } = useWorkflowContext();
+  const { nodeTabs, workflow } = useWorkflowContext();
   const { onTabChange, selectedTab } = useTabHelper();
   const { deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } = useWorkflowDataHelper();
-  const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
+  const { viewWorkflowFormMode } = useWorkflowFormHelper();
   useEffect(() => {
     getWorkFlow();
     getLLMs();
@@ -30,12 +30,7 @@ export const Component: React.FC = () => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <Workflow
-        mode={workflowFormMode}
-        onCancel={viewWorkflowFormMode}
-        onEdit={editWorkflowFormMode}
-        data={workflow}
-      />
+      <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>
