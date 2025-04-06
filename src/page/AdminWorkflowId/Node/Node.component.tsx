@@ -15,8 +15,10 @@ import { ViewNode } from './ViewNode';
 export const Node: React.FC<INode> = ({ data, deleteNode, mode, nodes, updateNode }) => {
   const [, setMode] = useState<FormMode>('VIEW');
   const updateNodeWithMode = async (data: INodeData): Promise<void> => {
-    await updateNode(data);
-    setMode('VIEW');
+    if (updateNode) {
+      await updateNode(data);
+      setMode('VIEW');
+    }
   };
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column' }}>

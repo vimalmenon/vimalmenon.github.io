@@ -2,9 +2,9 @@ import { FormMode, INode as INodeData, InputChangeType, SelectChangeType } from 
 
 export interface INode {
   data?: INodeData;
-  nodes: INodeData[];
-  deleteNode: () => Promise<void>;
-  updateNode: (data: INodeData) => Promise<void>;
+  nodes?: INodeData[];
+  deleteNode?: () => Promise<void>;
+  updateNode?: (data: INodeData) => Promise<void>;
   mode: FormMode;
 }
 

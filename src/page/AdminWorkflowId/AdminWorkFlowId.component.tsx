@@ -35,27 +35,31 @@ export const Component: React.FC = () => {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>
           {selectedNode === 'Create Node' ? (
-            <Tab label="Create Node" />
+            <Tab label={selectedNode} />
           ) : (
             nodeTabs.map((node) => {
               return <Tab disabled={node.disabled} label={node.name} key={node.name} />;
             })
           )}
         </Tabs>
-        {nodeTabs.map((node, index) => {
-          if (selectedTab === index && workflow) {
-            return (
-              <Node
-                data={workflow.nodes[node.name]}
-                key={node.name}
-                mode={node.mode}
-                nodes={getNodeAsList(workflow.nodes)}
-                deleteNode={() => deleteNode(node.name)}
-                updateNode={(data) => updateNode(node.name, data)}
-              />
-            );
-          }
-        })}
+        {selectedNode === 'Create Node' ? (
+          <Node mode="CREATE" />
+        ) : (
+          nodeTabs.map((node, index) => {
+            if (selectedTab === index && workflow) {
+              return (
+                <Node
+                  data={workflow.nodes[node.name]}
+                  key={node.name}
+                  mode={node.mode}
+                  nodes={getNodeAsList(workflow.nodes)}
+                  deleteNode={() => deleteNode(node.name)}
+                  updateNode={(data) => updateNode(node.name, data)}
+                />
+              );
+            }
+          })
+        )}
       </Box>
     </Box>
   );
