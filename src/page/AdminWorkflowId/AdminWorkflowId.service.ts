@@ -37,20 +37,13 @@ export const Context = createContext<IContext>({
 export const useWorkflowContext = (): IContext => useContext(Context);
 
 export const createNodeTab = (names: string[]): INodeTab[] => {
-  return [
-    {
-      disabled: true,
-      mode: 'CREATE',
-      name: 'Create Node',
-    },
-    ...names.map<INodeTab>((name) => {
-      return {
-        disabled: false,
-        mode: 'VIEW',
-        name: name,
-      };
-    }),
-  ];
+  return names.map<INodeTab>((name) => {
+    return {
+      disabled: false,
+      mode: 'VIEW',
+      name: name,
+    };
+  });
 };
 
 export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
@@ -136,7 +129,8 @@ export const useTabHelper = (): IUseTabHelper => {
   return {
     onAddNodeTab,
     onTabChange,
-    selectedTab: selectedTab === -1 ? 1 : selectedTab,
+    selectedNode,
+    selectedTab: selectedTab === -1 ? 0 : selectedTab,
   };
 };
 

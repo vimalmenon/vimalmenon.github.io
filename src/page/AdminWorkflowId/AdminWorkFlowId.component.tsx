@@ -19,7 +19,7 @@ import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
   const { nodeTabs, workflow } = useWorkflowContext();
-  const { onTabChange, selectedTab } = useTabHelper();
+  const { onTabChange, selectedNode, selectedTab } = useTabHelper();
   const { deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } = useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
   useEffect(() => {
@@ -34,9 +34,13 @@ export const Component: React.FC = () => {
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>
-          {nodeTabs.map((node) => {
-            return <Tab disabled={node.disabled} label={node.name} key={node.name} />;
-          })}
+          {selectedNode === 'Create Node' ? (
+            <Tab label="Create Node" />
+          ) : (
+            nodeTabs.map((node) => {
+              return <Tab disabled={node.disabled} label={node.name} key={node.name} />;
+            })
+          )}
         </Tabs>
         {nodeTabs.map((node, index) => {
           if (selectedTab === index && workflow) {
