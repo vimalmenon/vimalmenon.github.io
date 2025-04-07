@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Set eslint warning threshold of 5
+- [ ] Store value in Cookie
 - [ ] Create cookie accepter
 - [ ] Execute the workflow
 - [ ] Show Loading indicator
