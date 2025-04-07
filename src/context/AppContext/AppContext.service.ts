@@ -50,6 +50,7 @@ export const initialState: IAppReducer = {
   mode: 'light',
   primaryTheme: teal,
   secondaryTheme: teal,
+  showAcceptCookie: false,
   showDrawer: false,
   tertiaryTheme: teal,
 };

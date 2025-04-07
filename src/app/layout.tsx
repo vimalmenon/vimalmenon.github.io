@@ -23,9 +23,9 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
                 <StyledMain>
                   <StyledMainContainer maxWidth="xl">
                     <Box sx={{ display: 'flex', flex: '1 1 100%' }}>{children}</Box>
+                    <AcceptCookie />
                   </StyledMainContainer>
                 </StyledMain>
-                <AcceptCookie />
                 <Footer />
               </StyledBox>
             </ThemeWrapper>
