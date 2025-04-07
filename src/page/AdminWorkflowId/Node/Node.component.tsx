@@ -8,7 +8,7 @@ import { Fragment, useState } from 'react';
 import { Icon } from '@component';
 import { Icons } from '@data';
 import { FormMode, INode as INodeData } from '@types';
-import { NodeForm } from '../Common/NodeForm';
+import { NodeForm } from '../Common';
 import { INode } from './Node';
 import { ViewNode } from './ViewNode';
 

@@ -123,10 +123,19 @@ export const useTabHelper = (): IUseTabHelper => {
     );
     setSelectedNode('Create Node');
   };
+  const onAddNodeCancel = (): void => {
+    if (nodeTabs.length > 0) {
+      setSelectedNode(nodeTabs[0].name);
+    } else {
+      setSelectedNode('');
+    }
+  };
   const selectedTab = nodeTabs.findIndex((node) => {
     return node.name === selectedNode;
   });
+
   return {
+    onAddNodeCancel,
     onAddNodeTab,
     onTabChange,
     selectedNode,

@@ -44,6 +44,7 @@ export interface IUseTabHelper {
   onTabChange: (event: SyntheticEvent, newValue: number) => void;
   selectedTab: number;
   onAddNodeTab: VoidFunction;
+  onAddNodeCancel: VoidFunction;
   selectedNode: string;
 }
 
