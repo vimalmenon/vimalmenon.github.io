@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
-import { Footer, Google, Header, ThemeWrapper } from '@common';
+import { AcceptCookie, Footer, Google, Header, ThemeWrapper } from '@common';
 import { AppContext } from '@context';
 import { StyledBox, StyledMain, StyledMainContainer } from '@style';
 import { IReactChildren } from '@types';
@@ -25,6 +25,7 @@ const RootLayout: React.FC<IReactChildren> = ({ children }) => {
                     <Box sx={{ display: 'flex', flex: '1 1 100%' }}>{children}</Box>
                   </StyledMainContainer>
                 </StyledMain>
+                <AcceptCookie />
                 <Footer />
               </StyledBox>
             </ThemeWrapper>
