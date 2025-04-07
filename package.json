@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "npx serve@latest out",
     "lint": "next lint",
-    "eslint": "npx eslint",
+    "eslint": "npx eslint --max-warnings 5",
     "eslint:fix": "npx eslint --fix",
     "update": "ncu -u --timeout 300000",
     "tsc": "tsc",

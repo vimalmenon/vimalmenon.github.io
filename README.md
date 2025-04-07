@@ -13,8 +13,8 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [x] Set eslint warning threshold of 5
 - [ ] Create cookie accepter
-- [ ] Set eslint warning threshold of 10
 - [ ] Execute the workflow
 - [ ] Show Loading indicator
 - [ ] Update MetaData on Workflow
