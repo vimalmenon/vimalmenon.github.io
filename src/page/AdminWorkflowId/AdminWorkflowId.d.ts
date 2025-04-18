@@ -1,7 +1,21 @@
-import { FormMode, IReactChildren, IWorkflow, ReactSetState } from '@types';
+import { SyntheticEvent } from 'react';
+import {
+  FormMode,
+  INodeSlim,
+  IReactChildren,
+  IWorkflow,
+  ReactSetState,
+  VoidFunction,
+} from '@types';
 
 export interface IAdminWorkflowId {
   id: string;
+}
+
+export interface INodeTab {
+  name: string;
+  mode: FormMode;
+  disabled: boolean;
 }
 
 export interface IAdminWorkflowIdContext extends IReactChildren {
@@ -14,10 +28,40 @@ export interface IContext {
   setWorkflow: ReactSetState<IWorkflow | undefined>;
   workflowLoading: boolean;
   setWorkflowLoading: ReactSetState<boolean>;
-  selectedTab: number;
-  setSelectedTab: ReactSetState<number>;
   nodes: string[];
   setNodes: ReactSetState<string[]>;
   workflowFormMode: FormMode;
   setWorkflowFormMode: ReactSetState<FormMode>;
+  loading: boolean;
+  setLoading: ReactSetState<boolean>;
+  nodeTabs: INodeTab[];
+  setNodeTabs: ReactSetState<INodeTab[]>;
+  selectedNode: string;
+  setSelectedNode: ReactSetState<string>;
+}
+
+export interface IUseTabHelper {
+  onTabChange: (event: SyntheticEvent, newValue: number) => void;
+  selectedTab: number;
+  onAddNodeTab: VoidFunction;
+  onAddNodeCancel: VoidFunction;
+  selectedNode: string;
+}
+
+export interface IUseWorkflowFormHelper {
+  editWorkflowFormMode: VoidFunction;
+  viewWorkflowFormMode: VoidFunction;
+  workflowFormMode: FormMode;
+}
+
+export interface IUseWorkflowDataHelper {
+  createNode: (data: INodeSlim) => Promise<void>;
+  deleteNode: (nodeId: string) => Promise<void>;
+  executeWorkflow: VoidFunction<Promise<void>>;
+  getLLMs: VoidFunction<Promise<void>>;
+  getTools: VoidFunction<Promise<void>>;
+  getWorkFlow: VoidFunction<Promise<void>>;
+  id: string;
+  updateNode: (nodeId: string, data: INode) => Promise<void>;
+  updateWorkflow: (data: IWorkflow) => Promise<void>;
 }

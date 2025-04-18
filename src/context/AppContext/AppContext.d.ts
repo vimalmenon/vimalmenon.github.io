@@ -5,6 +5,7 @@ import { AnyType } from '@types';
 export interface IAppReducer {
   mode: 'dark' | 'light';
   showDrawer: boolean;
+  showAcceptCookie: boolean;
   primaryTheme: PaletteColorOptions;
   secondaryTheme: PaletteColorOptions;
   tertiaryTheme: PaletteColorOptions;

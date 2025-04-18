@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction } from 'react';
-
+import { SelectChangeEvent } from '@mui/material';
+import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
 export interface IReactChildren {
   children: React.ReactNode;
 }
@@ -81,6 +81,10 @@ export interface IMultiSelectOption {
   disabled?: boolean;
 }
 
-export type VoidFunction = () => void;
+export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
+
+export type InputChangeType = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+
+export type SelectChangeType<T> = (event: SelectChangeEvent<T>) => void;

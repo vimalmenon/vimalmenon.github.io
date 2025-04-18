@@ -1,20 +1,11 @@
 'use client';
+
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import { Icons } from '@data';
 import { IWorkflowView } from './WorkflowView';
 
-export const WorkflowView: React.FC<IWorkflowView> = ({ data, onEdit }) => {
+export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => {
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Box>Workflow Item</Box>
-        <Box>
-          <IconButton onClick={onEdit}>
-            <Icons.Edit />
-          </IconButton>
-        </Box>
-      </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>ID</Box>
         <Box>{data.id}</Box>

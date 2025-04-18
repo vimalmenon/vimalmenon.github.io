@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 import { TextInput } from '..';
 import { MultiSelect } from '@component';
 import { useAdminContext } from '@context';
-import { NodeType } from '@data';
+import { Icons, NodeType } from '@data';
 import {
   convertNodeToOption,
   convertToolsToOption,
@@ -24,7 +24,7 @@ export const NodeForm: React.FC<INodeForm> = ({
   createNode,
   data,
   mode,
-  nodes,
+  nodes = [],
   onCancel,
   updateNode,
 }) => {
@@ -35,6 +35,7 @@ export const NodeForm: React.FC<INodeForm> = ({
     next,
     onInputUpdate,
     onMultiSelectUpdate,
+    onSelectClear,
     onSelectUpdate,
     prompt,
     tool,
@@ -120,6 +121,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           id={'Tools'}
           onChange={onMultiSelectUpdate}
           name={'tools'}
+          onClear={() => onSelectClear('tools')}
         />
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Input) ? (
@@ -162,20 +164,28 @@ export const NodeForm: React.FC<INodeForm> = ({
       {mode === 'UPDATE' ? (
         <MultiSelect
           options={convertNodeToOption(nodes)}
-          value={next}
+          value={next ?? []}
           label={'Next'}
           id={'next'}
           name={'next'}
           onChange={onMultiSelectUpdate}
+          onClear={() => onSelectClear('next')}
         />
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button variant="outlined" onClick={onCancel}>
+        <Button
+          variant="outlined"
+          onClick={onCancel}
+          endIcon={<Icons.Close />}
+          // loading={loading}
+          // loadingPosition="end"
+        >
           Cancel
         </Button>
         {mode === 'UPDATE' && updateNode ? (
           <Button
             variant="contained"
+            startIcon={<Icons.Save />}
             onClick={() =>
               updateNode({
                 id: data?.id ?? '',
@@ -195,6 +205,7 @@ export const NodeForm: React.FC<INodeForm> = ({
         {mode === 'CREATE' && createNode ? (
           <Button
             variant="contained"
+            startIcon={<Icons.Save />}
             onClick={() =>
               createNode({
                 name,

@@ -13,11 +13,11 @@ const Page: React.FC = () => {
     <StyledPage>
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
-        <div>0.0.19</div>
+        <div>0.0.20</div>
         <ul></ul>
       </div>
       <div>
-        <div>[0.0.18 - 0.0.0]</div>
+        <div>[0.0.19 - 0.0.0]</div>
         <ul>
           <li>Add Workflow and nodes</li>
           <li>Env Set up</li>

@@ -1,7 +1,5 @@
-import { INode, VoidFunction } from '@types';
+import { INode } from '@types';
 
 export interface IViewNode {
   data: INode;
-  onEdit: VoidFunction;
-  onDelete: VoidFunction;
 }

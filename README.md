@@ -6,14 +6,15 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.19
+<b>Version</b>: 0.0.20
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Need to fix select
+- [x] Set eslint warning threshold of 5
+- [ ] Store value in Cookie
 - [ ] Create cookie accepter
 - [ ] Execute the workflow
 - [ ] Show Loading indicator

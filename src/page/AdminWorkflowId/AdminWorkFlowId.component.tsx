@@ -1,11 +1,10 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
@@ -15,99 +14,53 @@ import {
   useWorkflowDataHelper,
   useWorkflowFormHelper,
 } from './AdminWorkflowId.service';
-import { NodeForm } from './Common';
 import { Node } from './Node';
-import { Panel } from './Panel';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
-  const { nodes, workflow, workflowFormMode } = useWorkflowContext();
-  const { onTabChange, selectedTab } = useTabHelper();
-  const {
-    createNode,
-    deleteNode,
-    executeWorkflow,
-    getLLMs,
-    getTools,
-    getWorkFlow,
-    id,
-    updateNode,
-    updateWorkflow,
-  } = useWorkflowDataHelper();
-  const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
-
+  const { nodeTabs, workflow } = useWorkflowContext();
+  const { onTabChange, selectedNode, selectedTab } = useTabHelper();
+  const { deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } = useWorkflowDataHelper();
+  const { viewWorkflowFormMode } = useWorkflowFormHelper();
   useEffect(() => {
     getWorkFlow();
     getLLMs();
     getTools();
   }, [id]);
-  const [showAddNode, setShowAddNode] = useState<boolean>(false);
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <Panel onCreateNode={() => setShowAddNode(true)} />
-      <Workflow
-        mode={workflowFormMode}
-        onCancel={viewWorkflowFormMode}
-        updateWorkflow={updateWorkflow}
-        onEdit={editWorkflowFormMode}
-        data={workflow}
-      />
+      <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
-      {showAddNode ? (
-        <NodeForm
-          data={undefined}
-          onCancel={() => setShowAddNode(false)}
-          createNode={createNode}
-          mode="CREATE"
-          nodes={[]}
-        />
-      ) : null}
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>
-          {nodes.map((name) => {
-            return (
-              <Tab
-                label={
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      gap: 1,
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <span>{name}</span>
-                  </Box>
-                }
-                key={name}
-              />
-            );
-          })}
+          {selectedNode === 'Create Node' ? (
+            <Tab label={selectedNode} />
+          ) : (
+            nodeTabs.map((node) => {
+              return <Tab disabled={node.disabled} label={node.name} key={node.name} />;
+            })
+          )}
         </Tabs>
-        {nodes.map((node, index) => {
-          if (selectedTab === index && workflow?.nodes[node]) {
-            return (
-              <Box key={node} sx={{ display: 'flex', justifyContent: 'space-between', marginY: 2 }}>
+        {selectedNode === 'Create Node' ? (
+          <Node mode="CREATE" />
+        ) : (
+          nodeTabs.map((node, index) => {
+            if (selectedTab === index && workflow) {
+              return (
                 <Node
-                  data={workflow.nodes[node]}
+                  data={workflow.nodes[node.name]}
+                  key={node.name}
+                  mode={node.mode}
                   nodes={getNodeAsList(workflow.nodes)}
-                  deleteNode={() => deleteNode(node)}
-                  updateNode={(data) => updateNode(node, data)}
+                  deleteNode={() => deleteNode(node.name)}
+                  updateNode={(data) => updateNode(node.name, data)}
                 />
-              </Box>
-            );
-          }
-        })}
+              );
+            }
+          })
+        )}
       </Box>
-      {workflow?.complete ? (
-        <Box>
-          <Button variant="outlined" onClick={executeWorkflow}>
-            Execute
-          </Button>
-        </Box>
-      ) : null}
-      <br />
-      <br />
     </Box>
   );
 };
