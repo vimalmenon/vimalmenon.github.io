@@ -12,7 +12,14 @@ import { NodeForm } from '../Common';
 import { INode } from './Node';
 import { ViewNode } from './ViewNode';
 
-export const Node: React.FC<INode> = ({ data, deleteNode, mode, nodes, updateNode }) => {
+export const Node: React.FC<INode> = ({
+  createNode,
+  data,
+  deleteNode,
+  mode,
+  nodes,
+  updateNode,
+}) => {
   const [, setMode] = useState<FormMode>('VIEW');
   const updateNodeWithMode = async (data: INodeData): Promise<void> => {
     if (updateNode) {
@@ -41,6 +48,7 @@ export const Node: React.FC<INode> = ({ data, deleteNode, mode, nodes, updateNod
               mode={mode}
               nodes={nodes}
               updateNode={updateNodeWithMode}
+              createNode={createNode}
             />
           ) : null}
         </CardContent>

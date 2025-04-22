@@ -1,10 +1,11 @@
-import { FormMode, INode as INodeData, InputChangeType, SelectChangeType } from '@types';
+import { FormMode, INode as INodeData, INodeSlim, InputChangeType, SelectChangeType } from '@types';
 
 export interface INode {
   data?: INodeData;
   nodes?: INodeData[];
   deleteNode?: () => Promise<void>;
   updateNode?: (data: INodeData) => Promise<void>;
+  createNode?: (data: INodeSlim) => Promise<void>;
   mode: FormMode;
 }
 

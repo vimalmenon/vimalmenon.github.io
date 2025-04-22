@@ -20,7 +20,8 @@ import { Workflow } from './Workflow';
 export const Component: React.FC = () => {
   const { nodeTabs, workflow } = useWorkflowContext();
   const { onTabChange, selectedNode, selectedTab } = useTabHelper();
-  const { deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } = useWorkflowDataHelper();
+  const { createNode, deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } =
+    useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
   useEffect(() => {
     getWorkFlow();
@@ -55,6 +56,7 @@ export const Component: React.FC = () => {
                   nodes={getNodeAsList(workflow.nodes)}
                   deleteNode={() => deleteNode(node.name)}
                   updateNode={(data) => updateNode(node.name, data)}
+                  createNode={createNode}
                 />
               );
             }
