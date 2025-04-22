@@ -87,6 +87,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const createNode = async (data: INodeSlim): Promise<void> => {
     await makeRequest(APIs.CreateWorkflowNode(id, data));
     await getWorkFlow();
+    setWorkflowFormMode('VIEW');
   };
   const executeWorkflow = async (): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));

@@ -28,7 +28,6 @@ export const Component: React.FC = () => {
     getLLMs();
     getTools();
   }, [id]);
-
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
@@ -44,7 +43,7 @@ export const Component: React.FC = () => {
           )}
         </Tabs>
         {selectedNode === 'Create Node' ? (
-          <Node mode="CREATE" />
+          <Node mode="CREATE" createNode={createNode} />
         ) : (
           nodeTabs.map((node, index) => {
             if (selectedTab === index && workflow) {
@@ -56,7 +55,6 @@ export const Component: React.FC = () => {
                   nodes={getNodeAsList(workflow.nodes)}
                   deleteNode={() => deleteNode(node.name)}
                   updateNode={(data) => updateNode(node.name, data)}
-                  createNode={createNode}
                 />
               );
             }
