@@ -3,7 +3,7 @@
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
+import { FormMode, IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
@@ -156,5 +156,24 @@ export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
     editWorkflowFormMode,
     viewWorkflowFormMode,
     workflowFormMode,
+  };
+};
+
+export const useNodeTabsHelper = () => {
+  const { nodeTabs, setNodeTabs } = useWorkflowContext();
+  const editNodeMode = (index: number, mode: FormMode): void => {
+    setNodeTabs(
+      nodeTabs.map((node, indexValue) => {
+        if (indexValue === index) {
+          node.mode = mode;
+          return node;
+        }
+        return node;
+      })
+    );
+  };
+  return {
+    editNodeMode,
+    nodeTabs,
   };
 };

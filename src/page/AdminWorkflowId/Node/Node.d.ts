@@ -7,6 +7,7 @@ export interface INode {
   updateNode?: (data: INodeData) => Promise<void>;
   createNode?: (data: INodeSlim) => Promise<void>;
   mode: FormMode;
+  setMode?: (mode: FormMode) => void;
 }
 
 export interface IUseNodeForm extends INodeData {

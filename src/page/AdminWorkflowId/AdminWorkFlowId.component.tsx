@@ -9,6 +9,7 @@ import { IAdminWorkflowId } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
   getNodeAsList,
+  useNodeTabsHelper,
   useTabHelper,
   useWorkflowContext,
   useWorkflowDataHelper,
@@ -18,11 +19,12 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 export const Component: React.FC = () => {
-  const { nodeTabs, workflow } = useWorkflowContext();
+  const { workflow } = useWorkflowContext();
   const { onTabChange, selectedNode, selectedTab } = useTabHelper();
   const { createNode, deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } =
     useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
+  const { editNodeMode, nodeTabs } = useNodeTabsHelper();
   useEffect(() => {
     getWorkFlow();
     getLLMs();
@@ -55,6 +57,7 @@ export const Component: React.FC = () => {
                   nodes={getNodeAsList(workflow.nodes)}
                   deleteNode={() => deleteNode(node.name)}
                   updateNode={(data) => updateNode(node.name, data)}
+                  setMode={(mode) => editNodeMode(index, mode)}
                 />
               );
             }
