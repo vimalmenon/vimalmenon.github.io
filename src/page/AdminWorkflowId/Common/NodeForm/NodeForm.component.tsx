@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import { TextInput } from '..';
-import { MultiSelect } from '@component';
+import { AsyncButton, MultiSelect } from '@component';
 import { useAdminContext } from '@context';
 import { Icons, NodeType } from '@data';
 import {
@@ -183,7 +183,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           Cancel
         </Button>
         {mode === 'UPDATE' && updateNode ? (
-          <Button
+          <AsyncButton
             variant="contained"
             startIcon={<Icons.Save />}
             onClick={() =>
@@ -200,7 +200,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             }
           >
             Update
-          </Button>
+          </AsyncButton>
         ) : null}
         {mode === 'CREATE' && createNode ? (
           <Button
