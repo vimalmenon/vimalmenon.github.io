@@ -68,5 +68,5 @@ export interface IUseWorkflowDataHelper {
 
 export interface IUseNodeTabsHelper {
   nodeTabs: INodeTab[];
-  editNodeMode: (index: number, mode: FormMode) => void;
+  setNodeMode: (index: number, mode: FormMode) => void;
 }

@@ -24,7 +24,7 @@ export const Component: React.FC = () => {
   const { createNode, deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } =
     useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
-  const { editNodeMode, nodeTabs } = useNodeTabsHelper();
+  const { nodeTabs, setNodeMode } = useNodeTabsHelper();
   useEffect(() => {
     getWorkFlow();
     getLLMs();
@@ -57,7 +57,7 @@ export const Component: React.FC = () => {
                   nodes={getNodeAsList(workflow.nodes)}
                   deleteNode={() => deleteNode(node.name)}
                   updateNode={(data) => updateNode(node.name, data)}
-                  setMode={(mode) => editNodeMode(index, mode)}
+                  setMode={(mode) => setNodeMode(index, mode)}
                 />
               );
             }
