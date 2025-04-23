@@ -65,3 +65,8 @@ export interface IUseWorkflowDataHelper {
   updateNode: (nodeId: string, data: INode) => Promise<void>;
   updateWorkflow: (data: IWorkflow) => Promise<void>;
 }
+
+export interface IUseNodeTabsHelper {
+  nodeTabs: INodeTab[];
+  editNodeMode: (index: number, mode: FormMode) => void;
+}

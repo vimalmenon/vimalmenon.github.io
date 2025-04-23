@@ -8,6 +8,7 @@ import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
   INodeTab,
+  IUseNodeTabsHelper,
   IUseTabHelper,
   IUseWorkflowDataHelper,
   IUseWorkflowFormHelper,
@@ -159,7 +160,7 @@ export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
   };
 };
 
-export const useNodeTabsHelper = () => {
+export const useNodeTabsHelper = (): IUseNodeTabsHelper => {
   const { nodeTabs, setNodeTabs } = useWorkflowContext();
   const editNodeMode = (index: number, mode: FormMode): void => {
     setNodeTabs(
