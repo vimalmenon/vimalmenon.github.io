@@ -40,7 +40,7 @@ const Component: React.FC = () => {
             <Tab label="Create Node" />
           ) : (
             nodeTabs.map((node) => {
-              return <Tab disabled={node.disabled} label={node.name} key={node.name} />;
+              return <Tab label={node.name} key={node.name} />;
             })
           )}
         </Tabs>

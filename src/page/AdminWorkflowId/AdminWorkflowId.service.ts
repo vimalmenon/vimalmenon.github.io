@@ -120,16 +120,6 @@ export const useTabHelper = (): IUseTabHelper => {
     setNodeFormMode('UPDATE');
   };
   const onAddNodeTab = (): void => {
-    setNodeTabs(
-      nodeTabs.map((node, index) => {
-        if (index === 0) {
-          node.disabled = false;
-        } else {
-          node.disabled = true;
-        }
-        return node;
-      })
-    );
     setNodeFormMode('CREATE');
   };
   const onAddNodeCancel = (): void => {
