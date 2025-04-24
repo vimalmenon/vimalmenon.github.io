@@ -21,10 +21,12 @@ export const getNodeAsList = (node: Record<string, INode>): INode[] => {
 export const Context = createContext<IContext>({
   id: '0',
   loading: false,
+  nodeFormMode: 'UPDATE',
   nodes: [],
   nodeTabs: [],
   selectedNode: '',
   setLoading: NotImplemented,
+  setNodeFormMode: NotImplemented,
   setNodes: NotImplemented,
   setNodeTabs: NotImplemented,
   setSelectedNode: NotImplemented,
@@ -107,7 +109,8 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
 };
 
 export const useTabHelper = (): IUseTabHelper => {
-  const { nodeTabs, selectedNode, setNodeTabs, setSelectedNode } = useWorkflowContext();
+  const { nodeFormMode, nodeTabs, selectedNode, setNodeFormMode, setNodeTabs, setSelectedNode } =
+    useWorkflowContext();
   const onTabChange = (event: React.SyntheticEvent, value: number): void => {
     const selectedTab = nodeTabs[value];
     setSelectedNode(selectedTab.name ?? '');
@@ -123,7 +126,7 @@ export const useTabHelper = (): IUseTabHelper => {
         return node;
       })
     );
-    setSelectedNode('Create Node');
+    setNodeFormMode('CREATE');
   };
   const onAddNodeCancel = (): void => {
     if (nodeTabs.length > 0) {
@@ -137,6 +140,7 @@ export const useTabHelper = (): IUseTabHelper => {
   });
 
   return {
+    nodeFormMode,
     onAddNodeCancel,
     onAddNodeTab,
     onTabChange,

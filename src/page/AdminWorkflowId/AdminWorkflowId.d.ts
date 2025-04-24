@@ -38,6 +38,8 @@ export interface IContext {
   setNodeTabs: ReactSetState<INodeTab[]>;
   selectedNode: string;
   setSelectedNode: ReactSetState<string>;
+  nodeFormMode: FormMode;
+  setNodeFormMode: ReactSetState<FormMode>;
 }
 
 export interface IUseTabHelper {
@@ -46,6 +48,7 @@ export interface IUseTabHelper {
   onAddNodeTab: VoidFunction;
   onAddNodeCancel: VoidFunction;
   selectedNode: string;
+  nodeFormMode: FormMode;
 }
 
 export interface IUseWorkflowFormHelper {
