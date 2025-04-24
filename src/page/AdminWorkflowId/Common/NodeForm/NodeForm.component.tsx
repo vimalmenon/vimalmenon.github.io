@@ -23,6 +23,7 @@ import { INodeForm } from './NodeForm';
 export const NodeForm: React.FC<INodeForm> = ({
   createNode,
   data,
+  loading,
   mode,
   nodes = [],
   onCancel,
@@ -57,6 +58,7 @@ export const NodeForm: React.FC<INodeForm> = ({
         placeholder="Name"
         name="name"
         onChange={onInputUpdate}
+        disabled={loading}
       />
       {mode === 'UPDATE' ? (
         <FormControl fullWidth required size="small">
@@ -67,6 +69,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             label="Type"
             name="type"
             onChange={onSelectUpdate}
+            disabled={loading}
           >
             <MenuItem value="">
               <em>None</em>
@@ -84,7 +87,14 @@ export const NodeForm: React.FC<INodeForm> = ({
       {mode === 'UPDATE' && value.includes(fields.LLM) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">LLM</InputLabel>
-          <Select value={llm} labelId="node-type" label="LLM" name="llm" onChange={onSelectUpdate}>
+          <Select
+            value={llm}
+            labelId="node-type"
+            label="LLM"
+            name="llm"
+            onChange={onSelectUpdate}
+            disabled={loading}
+          >
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
@@ -110,6 +120,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             value={prompt}
             name="prompt"
             onChange={onInputUpdate}
+            disabled={loading}
           />
         </FormControl>
       ) : null}
@@ -134,6 +145,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             value={input}
             name="input"
             onChange={onInputUpdate}
+            disabled={loading}
           />
         </FormControl>
       ) : null}
@@ -147,6 +159,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             label="Tool"
             name="tool"
             onChange={onSelectUpdate}
+            disabled={loading}
           >
             <MenuItem value="">
               <em>None</em>
@@ -177,6 +190,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           variant="outlined"
           onClick={onCancel}
           endIcon={<Icons.Close />}
+          disabled={loading}
           // loading={loading}
           // loadingPosition="end"
         >

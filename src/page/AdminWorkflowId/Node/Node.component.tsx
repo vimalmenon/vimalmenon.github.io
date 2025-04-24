@@ -4,10 +4,10 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Icon } from '@component';
 import { Icons } from '@data';
-import { INode as INodeData } from '@types';
+import { INode as INodeData, INodeSlim } from '@types';
 import { NodeForm } from '../Common';
 import { INode } from './Node';
 import { getTitleFromMode } from './Node.service';
@@ -23,10 +23,20 @@ export const Node: React.FC<INode> = ({
   setMode,
   updateNode,
 }) => {
+  const [loading, setLoading] = useState<boolean>(false);
   const updateNodeWithMode = async (data: INodeData): Promise<void> => {
     if (updateNode && setMode) {
+      setLoading(true);
       await updateNode(data);
       setMode('VIEW');
+      setLoading(false);
+    }
+  };
+  const createNodeWithLoading = async (data: INodeSlim): Promise<void> => {
+    if (createNode) {
+      setLoading(true);
+      await createNode(data);
+      setLoading(false);
     }
   };
   const title = getTitleFromMode(mode);
@@ -59,7 +69,8 @@ export const Node: React.FC<INode> = ({
               mode={mode}
               nodes={nodes}
               updateNode={updateNodeWithMode}
-              createNode={createNode}
+              createNode={createNodeWithLoading}
+              loading={loading}
             />
           ) : null}
         </CardContent>
