@@ -37,12 +37,16 @@ export const Node: React.FC<INode> = ({
           title={title}
           action={
             <Fragment>
-              <Icon toolTip="Delete Node" icon={<Icons.Delete />} onClick={deleteNode} />
-              <Icon
-                toolTip={`Edit Node`}
-                icon={<Icons.Edit />}
-                onClick={() => setMode && setMode('UPDATE')}
-              />
+              {mode === 'VIEW' ? (
+                <Fragment>
+                  <Icon toolTip="Delete Node" icon={<Icons.Delete />} onClick={deleteNode} />
+                  <Icon
+                    toolTip={`Edit Node`}
+                    icon={<Icons.Edit />}
+                    onClick={() => setMode && setMode('UPDATE')}
+                  />
+                </Fragment>
+              ) : null}
             </Fragment>
           }
         />
