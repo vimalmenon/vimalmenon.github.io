@@ -24,12 +24,10 @@ export const Context = createContext<IContext>({
   nodeFormMode: 'UPDATE',
   nodes: [],
   nodeTabs: [],
-  selectedNode: '',
   setLoading: NotImplemented,
   setNodeFormMode: NotImplemented,
   setNodes: NotImplemented,
   setNodeTabs: NotImplemented,
-  setSelectedNode: NotImplemented,
   setWorkflow: NotImplemented,
   setWorkflowFormMode: NotImplemented,
   setWorkflowLoading: NotImplemented,
@@ -53,11 +51,9 @@ export const createNodeTab = (names: string[]): INodeTab[] => {
 export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
-    selectedNode,
     setLoading,
     setNodes,
     setNodeTabs,
-    setSelectedNode,
     setWorkflow,
     setWorkflowFormMode,
     setWorkflowLoading,
@@ -68,7 +64,6 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
     const workflow = response.data;
     setNodes(Object.keys(workflow.nodes));
-    setSelectedNode(selectedNode ?? Object.keys(workflow.nodes)[0] ?? '');
     setNodeTabs(createNodeTab(Object.keys(workflow.nodes)));
     setWorkflow(workflow);
     setWorkflowLoading(false);
@@ -110,11 +105,19 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
 };
 
 export const useTabHelper = (): IUseTabHelper => {
-  const { nodeFormMode, nodeTabs, selectedNode, setNodeFormMode, setNodeTabs, setSelectedNode } =
-    useWorkflowContext();
+  const { nodeFormMode, nodeTabs, setNodeFormMode, setNodeTabs } = useWorkflowContext();
   const onTabChange = (event: React.SyntheticEvent, value: number): void => {
-    const selectedTab = nodeTabs[value];
-    setSelectedNode(selectedTab.name ?? '');
+    setNodeTabs(
+      nodeTabs.map((node, index) => {
+        if (index === value) {
+          node.selected = true;
+        } else {
+          node.selected = false;
+        }
+        return node;
+      })
+    );
+    setNodeFormMode('UPDATE');
   };
   const onAddNodeTab = (): void => {
     setNodeTabs(
@@ -130,14 +133,10 @@ export const useTabHelper = (): IUseTabHelper => {
     setNodeFormMode('CREATE');
   };
   const onAddNodeCancel = (): void => {
-    if (nodeTabs.length > 0) {
-      setSelectedNode(nodeTabs[0].name);
-    } else {
-      setSelectedNode('');
-    }
+    setNodeFormMode('UPDATE');
   };
   const selectedTab = nodeTabs.findIndex((node) => {
-    return node.name === selectedNode;
+    return node.selected;
   });
 
   return {
@@ -145,7 +144,6 @@ export const useTabHelper = (): IUseTabHelper => {
     onAddNodeCancel,
     onAddNodeTab,
     onTabChange,
-    selectedNode,
     selectedTab: selectedTab === -1 ? 0 : selectedTab,
   };
 };

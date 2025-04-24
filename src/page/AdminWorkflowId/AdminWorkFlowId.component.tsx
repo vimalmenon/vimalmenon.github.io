@@ -18,9 +18,9 @@ import {
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
-export const Component: React.FC = () => {
+const Component: React.FC = () => {
   const { workflow } = useWorkflowContext();
-  const { nodeFormMode, onTabChange, selectedNode, selectedTab } = useTabHelper();
+  const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
   const { createNode, deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } =
     useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
@@ -37,7 +37,7 @@ export const Component: React.FC = () => {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs value={selectedTab} onChange={onTabChange}>
           {nodeFormMode === 'CREATE' ? (
-            <Tab label={selectedNode} />
+            <Tab label="Create Node" />
           ) : (
             nodeTabs.map((node) => {
               return <Tab disabled={node.disabled} label={node.name} key={node.name} />;

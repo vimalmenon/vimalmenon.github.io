@@ -8,7 +8,6 @@ import { Context } from './AdminWorkflowId.service';
 export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ children, id }) => {
   const [workflow, setWorkflow] = useState<IWorkflow>();
   const [workflowLoading, setWorkflowLoading] = useState<boolean>(false);
-  const [selectedNode, setSelectedNode] = useState<string>('');
   const [nodes, setNodes] = useState<string[]>([]);
   const [nodeTabs, setNodeTabs] = useState<INodeTab[]>([]);
   const [workflowFormMode, setWorkflowFormMode] = useState<FormMode>('VIEW');
@@ -22,12 +21,10 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
         nodeFormMode,
         nodes,
         nodeTabs,
-        selectedNode,
         setLoading,
         setNodeFormMode,
         setNodes,
         setNodeTabs,
-        setSelectedNode,
         setWorkflow,
         setWorkflowFormMode,
         setWorkflowLoading,
