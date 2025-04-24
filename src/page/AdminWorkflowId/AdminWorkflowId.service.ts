@@ -52,6 +52,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
     setLoading,
+    setNodeFormMode,
     setNodes,
     setNodeTabs,
     setWorkflow,
@@ -87,6 +88,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     await makeRequest(APIs.CreateWorkflowNode(id, data));
     await getWorkFlow();
     setWorkflowFormMode('VIEW');
+    setNodeFormMode('UPDATE');
   };
   const executeWorkflow = async (): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));

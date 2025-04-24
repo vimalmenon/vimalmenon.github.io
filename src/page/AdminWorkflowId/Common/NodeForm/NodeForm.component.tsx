@@ -204,7 +204,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </AsyncButton>
         ) : null}
         {mode === 'CREATE' && createNode ? (
-          <Button
+          <AsyncButton
             variant="contained"
             startIcon={<Icons.Save />}
             loadingPosition="start"
@@ -215,7 +215,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             }
           >
             Create
-          </Button>
+          </AsyncButton>
         ) : null}
       </Box>
     </Box>
