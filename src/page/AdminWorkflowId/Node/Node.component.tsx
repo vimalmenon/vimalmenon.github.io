@@ -13,6 +13,7 @@ import { INode } from './Node';
 import { ViewNode } from './ViewNode';
 
 export const Node: React.FC<INode> = ({
+  cancelNode,
   createNode,
   data,
   deleteNode,
@@ -48,7 +49,7 @@ export const Node: React.FC<INode> = ({
           {mode === 'UPDATE' || mode === 'CREATE' ? (
             <NodeForm
               data={data}
-              onCancel={() => setMode && setMode('VIEW')}
+              onCancel={cancelNode}
               mode={mode}
               nodes={nodes}
               updateNode={updateNodeWithMode}

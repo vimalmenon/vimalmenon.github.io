@@ -58,6 +58,7 @@ export const Component: React.FC = () => {
                   deleteNode={() => deleteNode(node.name)}
                   updateNode={(data) => updateNode(node.name, data)}
                   setMode={(mode) => setNodeMode(index, mode)}
+                  cancelNode={() => setNodeMode(index, 'VIEW')}
                 />
               );
             }

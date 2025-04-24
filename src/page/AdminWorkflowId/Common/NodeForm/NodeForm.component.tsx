@@ -186,6 +186,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           <AsyncButton
             variant="contained"
             startIcon={<Icons.Save />}
+            loadingPosition="start"
             onClick={() =>
               updateNode({
                 id: data?.id ?? '',
@@ -206,6 +207,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           <Button
             variant="contained"
             startIcon={<Icons.Save />}
+            loadingPosition="start"
             onClick={() =>
               createNode({
                 name,
