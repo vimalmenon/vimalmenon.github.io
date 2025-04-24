@@ -10,6 +10,7 @@ import { Icons } from '@data';
 import { INode as INodeData } from '@types';
 import { NodeForm } from '../Common';
 import { INode } from './Node';
+import { getTitleFromMode } from './Node.service';
 import { ViewNode } from './ViewNode';
 
 export const Node: React.FC<INode> = ({
@@ -28,16 +29,17 @@ export const Node: React.FC<INode> = ({
       setMode('VIEW');
     }
   };
+  const title = getTitleFromMode(mode);
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column' }}>
       <Card>
         <CardHeader
-          title={mode === 'VIEW' ? 'Node' : 'Edit Node'}
+          title={title}
           action={
             <Fragment>
               <Icon toolTip="Delete Node" icon={<Icons.Delete />} onClick={deleteNode} />
               <Icon
-                toolTip="Edit Node"
+                toolTip={`Edit Node`}
                 icon={<Icons.Edit />}
                 onClick={() => setMode && setMode('UPDATE')}
               />

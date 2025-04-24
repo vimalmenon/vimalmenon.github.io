@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { IMultiSelectOption, INode, InputChangeType, ITool, SelectChangeType } from '@types';
+import {
+  FormMode,
+  IMultiSelectOption,
+  INode,
+  InputChangeType,
+  ITool,
+  SelectChangeType,
+} from '@types';
 import { IUseNodeForm } from './Node';
 
 export enum fields {
@@ -116,4 +123,14 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     tools,
     type,
   };
+};
+
+export const getTitleFromMode = (mode: FormMode): string => {
+  if (mode === 'VIEW') {
+    return 'Node';
+  }
+  if (mode === 'CREATE') {
+    return 'New Node';
+  }
+  return 'Edit Node';
 };
