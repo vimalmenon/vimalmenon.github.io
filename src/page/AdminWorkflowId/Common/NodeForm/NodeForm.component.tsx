@@ -133,6 +133,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           onChange={onMultiSelectUpdate}
           name={'tools'}
           onClear={() => onSelectClear('tools')}
+          disabled={loading}
         />
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Input) ? (
@@ -152,7 +153,6 @@ export const NodeForm: React.FC<INodeForm> = ({
       {mode === 'UPDATE' && value.includes(fields.Tool) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">Tool</InputLabel>
-
           <Select
             value={tool}
             labelId="node-type"
@@ -183,6 +183,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           name={'next'}
           onChange={onMultiSelectUpdate}
           onClear={() => onSelectClear('next')}
+          disabled={loading}
         />
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

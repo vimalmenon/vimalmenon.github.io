@@ -12,6 +12,7 @@ import { Icons } from '@data';
 import { IMultiSelect } from './MultiSelect';
 
 export const MultiSelect: React.FC<IMultiSelect> = ({
+  disabled,
   id,
   label,
   name,
@@ -30,6 +31,7 @@ export const MultiSelect: React.FC<IMultiSelect> = ({
         multiple
         name={name}
         renderValue={(selected) => selected.join(', ')}
+        disabled={disabled}
         input={
           <OutlinedInput
             label={label}

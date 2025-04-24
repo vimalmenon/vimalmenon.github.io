@@ -9,4 +9,5 @@ export interface IMultiSelect {
   name: string;
   onChange: (event: SelectChangeEvent<string[]>) => void;
   onClear: VoidFunction;
+  disabled?: boolean;
 }
