@@ -45,6 +45,7 @@ export const createNodeTab = (names: string[]): INodeTab[] => {
       disabled: false,
       mode: 'VIEW',
       name: name,
+      selected: false,
     };
   });
 };
