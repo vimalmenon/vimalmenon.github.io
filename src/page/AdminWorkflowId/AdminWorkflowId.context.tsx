@@ -13,6 +13,7 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
   const [workflowFormMode, setWorkflowFormMode] = useState<FormMode>('VIEW');
   const [loading, setLoading] = useState<boolean>(false);
   const [nodeFormMode, setNodeFormMode] = useState<FormMode>('UPDATE');
+  const [selectedNode, setSelectedNode] = useState<INodeTab | null>(null);
   return (
     <Context.Provider
       value={{
@@ -21,10 +22,12 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
         nodeFormMode,
         nodes,
         nodeTabs,
+        selectedNode,
         setLoading,
         setNodeFormMode,
         setNodes,
         setNodeTabs,
+        setSelectedNode,
         setWorkflow,
         setWorkflowFormMode,
         setWorkflowLoading,

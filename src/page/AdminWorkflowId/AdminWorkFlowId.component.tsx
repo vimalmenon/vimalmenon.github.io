@@ -5,6 +5,7 @@ import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useEffect } from 'react';
+import { ConfirmDialog } from '@component';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
@@ -19,7 +20,7 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const { setNodeFormMode, workflow } = useWorkflowContext();
+  const { selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
   const { createNode, deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } =
     useWorkflowDataHelper();
@@ -32,6 +33,13 @@ const Component: React.FC = () => {
   }, [id]);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <ConfirmDialog
+        info="ERROR"
+        title={'Are you sure you want to delete?'}
+        open={!!selectedNode}
+        onConfirm={() => false}
+        onCancel={() => false}
+      />
       <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>

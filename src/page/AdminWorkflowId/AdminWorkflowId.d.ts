@@ -38,6 +38,8 @@ export interface IContext {
   setNodeTabs: ReactSetState<INodeTab[]>;
   nodeFormMode: FormMode;
   setNodeFormMode: ReactSetState<FormMode>;
+  selectedNode: INodeTab | null;
+  setSelectedNode: ReactSetState<INodeTab | null>;
 }
 
 export interface IUseTabHelper {
