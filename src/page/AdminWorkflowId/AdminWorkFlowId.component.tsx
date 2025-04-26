@@ -53,41 +53,45 @@ const Component: React.FC = () => {
       ) : null}
       <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Tabs value={selectedTab} onChange={onTabChange}>
+      {nodeTabs.length ? (
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Tabs value={selectedTab} onChange={onTabChange}>
+            {nodeFormMode === 'CREATE' ? (
+              <Tab label="Create Node" />
+            ) : (
+              nodeTabs.map((node) => {
+                return <Tab label={node.name} key={node.name} />;
+              })
+            )}
+          </Tabs>
           {nodeFormMode === 'CREATE' ? (
-            <Tab label="Create Node" />
+            <Node
+              mode="CREATE"
+              createNode={createNode}
+              cancelNode={() => setNodeFormMode('UPDATE')}
+            />
           ) : (
-            nodeTabs.map((node) => {
-              return <Tab label={node.name} key={node.name} />;
+            nodeTabs.map((node, index) => {
+              if (selectedTab === index && workflow) {
+                return (
+                  <Node
+                    data={workflow.nodes[node.name]}
+                    key={node.name}
+                    mode={node.mode}
+                    nodes={getNodeAsList(workflow.nodes)}
+                    deleteNode={() => deleteNode(node.name)}
+                    updateNode={(data) => updateNode(node.name, data)}
+                    setMode={(mode) => setNodeMode(index, mode)}
+                    cancelNode={() => setNodeMode(index, 'VIEW')}
+                  />
+                );
+              }
             })
           )}
-        </Tabs>
-        {nodeFormMode === 'CREATE' ? (
-          <Node
-            mode="CREATE"
-            createNode={createNode}
-            cancelNode={() => setNodeFormMode('UPDATE')}
-          />
-        ) : (
-          nodeTabs.map((node, index) => {
-            if (selectedTab === index && workflow) {
-              return (
-                <Node
-                  data={workflow.nodes[node.name]}
-                  key={node.name}
-                  mode={node.mode}
-                  nodes={getNodeAsList(workflow.nodes)}
-                  deleteNode={() => deleteNode(node.name)}
-                  updateNode={(data) => updateNode(node.name, data)}
-                  setMode={(mode) => setNodeMode(index, mode)}
-                  cancelNode={() => setNodeMode(index, 'VIEW')}
-                />
-              );
-            }
-          })
-        )}
-      </Box>
+        </Box>
+      ) : (
+        <Box>Create a new node</Box>
+      )}
     </Box>
   );
 };
