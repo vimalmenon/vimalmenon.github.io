@@ -91,6 +91,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     if (selectedNode) {
       await makeRequest(APIs.DeleteWorkflowNode(id, selectedNode.id));
       await getWorkFlow();
+      setSelectedNode(null);
     }
   };
   const deleteNodeCancel = (): void => {

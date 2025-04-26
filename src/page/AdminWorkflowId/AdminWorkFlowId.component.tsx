@@ -26,6 +26,7 @@ const Component: React.FC = () => {
     createNode,
     deleteNode,
     deleteNodeCancel,
+    deleteNodeConfirm,
     getLLMs,
     getTools,
     getWorkFlow,
@@ -46,7 +47,7 @@ const Component: React.FC = () => {
           icon="ERROR"
           title={`Are you sure you want to delete ?`}
           open={!!selectedNode}
-          onConfirm={() => false}
+          onConfirm={deleteNodeConfirm}
           onCancel={deleteNodeCancel}
         />
       ) : null}
