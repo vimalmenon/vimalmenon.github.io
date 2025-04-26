@@ -45,7 +45,7 @@ const Component: React.FC = () => {
       {selectedNode ? (
         <ConfirmDialog
           icon="ERROR"
-          title={`Are you sure you want to delete ?`}
+          title={`Are you sure you want to delete?`}
           open={!!selectedNode}
           onConfirm={deleteNodeConfirm}
           onCancel={deleteNodeCancel}
