@@ -6,6 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import React from 'react';
+import { AsyncButton } from '@component';
 import { Icons } from '@data';
 import { IConfirmDialog, IShowIcon, IShowTitle } from './ConfirmDialog';
 
@@ -44,9 +45,9 @@ export const ConfirmDialog: React.FC<IConfirmDialog> = ({
         <Button onClick={onCancel} variant="outlined">
           Cancel
         </Button>
-        <Button onClick={onConfirm} variant="contained">
+        <AsyncButton onClick={onConfirm} variant="contained">
           Confirm
-        </Button>
+        </AsyncButton>
       </DialogActions>
     </Dialog>
   );

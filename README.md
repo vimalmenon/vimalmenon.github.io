@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Working on AsyncButton
+- [x] Confirm on Delete
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
 - [ ] Execute the workflow

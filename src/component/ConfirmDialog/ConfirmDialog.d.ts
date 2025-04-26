@@ -1,8 +1,9 @@
+import { VoidFunction } from '@types';
 export interface IConfirmDialog {
   icon: 'WARNING' | 'ERROR' | 'INFO';
   title: string;
   open: boolean;
-  onConfirm: VoidFunction;
+  onConfirm: VoidFunction<Promise<void>>;
   onCancel: VoidFunction;
 }
 
