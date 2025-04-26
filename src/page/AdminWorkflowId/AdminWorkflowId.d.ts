@@ -1,6 +1,7 @@
 import { SyntheticEvent } from 'react';
 import {
   FormMode,
+  INode,
   INodeSlim,
   IReactChildren,
   IWorkflow,
@@ -15,7 +16,7 @@ export interface IAdminWorkflowId {
 export interface INodeTab {
   name: string;
   mode: FormMode;
-  disabled: boolean;
+  selected: boolean;
 }
 
 export interface IAdminWorkflowIdContext extends IReactChildren {
@@ -36,8 +37,10 @@ export interface IContext {
   setLoading: ReactSetState<boolean>;
   nodeTabs: INodeTab[];
   setNodeTabs: ReactSetState<INodeTab[]>;
-  selectedNode: string;
-  setSelectedNode: ReactSetState<string>;
+  nodeFormMode: FormMode;
+  setNodeFormMode: ReactSetState<FormMode>;
+  selectedNode: INode | null;
+  setSelectedNode: ReactSetState<INode | null>;
 }
 
 export interface IUseTabHelper {
@@ -45,7 +48,7 @@ export interface IUseTabHelper {
   selectedTab: number;
   onAddNodeTab: VoidFunction;
   onAddNodeCancel: VoidFunction;
-  selectedNode: string;
+  nodeFormMode: FormMode;
 }
 
 export interface IUseWorkflowFormHelper {
@@ -64,4 +67,11 @@ export interface IUseWorkflowDataHelper {
   id: string;
   updateNode: (nodeId: string, data: INode) => Promise<void>;
   updateWorkflow: (data: IWorkflow) => Promise<void>;
+  deleteNodeConfirm: () => Promise<void>;
+  deleteNodeCancel: VoidFunction;
+}
+
+export interface IUseNodeTabsHelper {
+  nodeTabs: INodeTab[];
+  setNodeMode: (index: number, mode: FormMode) => void;
 }

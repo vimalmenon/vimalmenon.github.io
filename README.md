@@ -6,14 +6,15 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.20
+<b>Version</b>: 0.0.21
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Set eslint warning threshold of 5
+- [x] Working on AsyncButton
+- [x] Confirm on Delete
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
 - [ ] Execute the workflow

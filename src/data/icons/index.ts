@@ -1,14 +1,17 @@
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import DangerousIcon from '@mui/icons-material/Dangerous';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import EditIcon from '@mui/icons-material/Edit';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import InfoIcon from '@mui/icons-material/Info';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SaveIcon from '@mui/icons-material/Save';
+import WarningIcon from '@mui/icons-material/Warning';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
@@ -17,13 +20,16 @@ export const Icons = {
   Check: DoneIcon,
   Close: CloseIcon,
   Copy: ContentCopyIcon,
+  Danger: DangerousIcon,
   Delete: DeleteIcon,
   DownloadFile: FileDownloadIcon,
   Edit: EditIcon,
   GitHub: GitHubIcon,
+  Info: InfoIcon,
   LinkedIn: LinkedInIcon,
   Play: PlayArrowIcon,
   Save: SaveIcon,
   Twitter: XIcon,
+  Warning: WarningIcon,
   YouTube: YouTubeIcon,
 };

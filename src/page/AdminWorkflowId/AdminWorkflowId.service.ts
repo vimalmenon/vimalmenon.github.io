@@ -3,11 +3,12 @@
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
+import { FormMode, IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
   INodeTab,
+  IUseNodeTabsHelper,
   IUseTabHelper,
   IUseWorkflowDataHelper,
   IUseWorkflowFormHelper,
@@ -20,10 +21,12 @@ export const getNodeAsList = (node: Record<string, INode>): INode[] => {
 export const Context = createContext<IContext>({
   id: '0',
   loading: false,
+  nodeFormMode: 'UPDATE',
   nodes: [],
   nodeTabs: [],
-  selectedNode: '',
+  selectedNode: null,
   setLoading: NotImplemented,
+  setNodeFormMode: NotImplemented,
   setNodes: NotImplemented,
   setNodeTabs: NotImplemented,
   setSelectedNode: NotImplemented,
@@ -42,6 +45,7 @@ export const createNodeTab = (names: string[]): INodeTab[] => {
       disabled: false,
       mode: 'VIEW',
       name: name,
+      selected: false,
     };
   });
 };
@@ -51,12 +55,14 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     id,
     selectedNode,
     setLoading,
+    setNodeFormMode,
     setNodes,
     setNodeTabs,
     setSelectedNode,
     setWorkflow,
     setWorkflowFormMode,
     setWorkflowLoading,
+    workflow,
   } = useWorkflowContext();
   const { getLLMs, getTools } = useAdminContext();
   const getWorkFlow = async (): Promise<void> => {
@@ -64,7 +70,6 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
     const workflow = response.data;
     setNodes(Object.keys(workflow.nodes));
-    setSelectedNode(selectedNode ?? Object.keys(workflow.nodes)[0] ?? '');
     setNodeTabs(createNodeTab(Object.keys(workflow.nodes)));
     setWorkflow(workflow);
     setWorkflowLoading(false);
@@ -76,9 +81,21 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowFormMode('VIEW');
     setLoading(false);
   };
+  const getNodeByID = (nodeId: string): INode | null => {
+    return (workflow && workflow.nodes[nodeId]) ?? null;
+  };
   const deleteNode = async (nodeId: string): Promise<void> => {
-    await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
-    await getWorkFlow();
+    setSelectedNode(getNodeByID(nodeId));
+  };
+  const deleteNodeConfirm = async (): Promise<void> => {
+    if (selectedNode) {
+      await makeRequest(APIs.DeleteWorkflowNode(id, selectedNode.id));
+      await getWorkFlow();
+      setSelectedNode(null);
+    }
+  };
+  const deleteNodeCancel = (): void => {
+    setSelectedNode(null);
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
     await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
@@ -87,6 +104,8 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const createNode = async (data: INodeSlim): Promise<void> => {
     await makeRequest(APIs.CreateWorkflowNode(id, data));
     await getWorkFlow();
+    setWorkflowFormMode('VIEW');
+    setNodeFormMode('UPDATE');
   };
   const executeWorkflow = async (): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
@@ -94,6 +113,8 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   return {
     createNode,
     deleteNode,
+    deleteNodeCancel,
+    deleteNodeConfirm,
     executeWorkflow,
     getLLMs,
     getTools,
@@ -105,40 +126,35 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
 };
 
 export const useTabHelper = (): IUseTabHelper => {
-  const { nodeTabs, selectedNode, setNodeTabs, setSelectedNode } = useWorkflowContext();
+  const { nodeFormMode, nodeTabs, setNodeFormMode, setNodeTabs } = useWorkflowContext();
   const onTabChange = (event: React.SyntheticEvent, value: number): void => {
-    const selectedTab = nodeTabs[value];
-    setSelectedNode(selectedTab.name ?? '');
-  };
-  const onAddNodeTab = (): void => {
     setNodeTabs(
       nodeTabs.map((node, index) => {
-        if (index === 0) {
-          node.disabled = false;
+        if (index === value) {
+          node.selected = true;
         } else {
-          node.disabled = true;
+          node.selected = false;
         }
         return node;
       })
     );
-    setSelectedNode('Create Node');
+    setNodeFormMode('UPDATE');
+  };
+  const onAddNodeTab = (): void => {
+    setNodeFormMode('CREATE');
   };
   const onAddNodeCancel = (): void => {
-    if (nodeTabs.length > 0) {
-      setSelectedNode(nodeTabs[0].name);
-    } else {
-      setSelectedNode('');
-    }
+    setNodeFormMode('UPDATE');
   };
   const selectedTab = nodeTabs.findIndex((node) => {
-    return node.name === selectedNode;
+    return node.selected;
   });
 
   return {
+    nodeFormMode,
     onAddNodeCancel,
     onAddNodeTab,
     onTabChange,
-    selectedNode,
     selectedTab: selectedTab === -1 ? 0 : selectedTab,
   };
 };
@@ -155,5 +171,24 @@ export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
     editWorkflowFormMode,
     viewWorkflowFormMode,
     workflowFormMode,
+  };
+};
+
+export const useNodeTabsHelper = (): IUseNodeTabsHelper => {
+  const { nodeTabs, setNodeTabs } = useWorkflowContext();
+  const setNodeMode = (index: number, mode: FormMode): void => {
+    setNodeTabs(
+      nodeTabs.map((node, indexValue) => {
+        if (indexValue === index) {
+          node.mode = mode;
+          return node;
+        }
+        return node;
+      })
+    );
+  };
+  return {
+    nodeTabs,
+    setNodeMode,
   };
 };

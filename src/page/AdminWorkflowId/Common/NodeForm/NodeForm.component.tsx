@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import { TextInput } from '..';
-import { MultiSelect } from '@component';
+import { AsyncButton, MultiSelect } from '@component';
 import { useAdminContext } from '@context';
 import { Icons, NodeType } from '@data';
 import {
@@ -23,6 +23,7 @@ import { INodeForm } from './NodeForm';
 export const NodeForm: React.FC<INodeForm> = ({
   createNode,
   data,
+  loading,
   mode,
   nodes = [],
   onCancel,
@@ -57,6 +58,7 @@ export const NodeForm: React.FC<INodeForm> = ({
         placeholder="Name"
         name="name"
         onChange={onInputUpdate}
+        disabled={loading}
       />
       {mode === 'UPDATE' ? (
         <FormControl fullWidth required size="small">
@@ -67,6 +69,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             label="Type"
             name="type"
             onChange={onSelectUpdate}
+            disabled={loading}
           >
             <MenuItem value="">
               <em>None</em>
@@ -84,7 +87,14 @@ export const NodeForm: React.FC<INodeForm> = ({
       {mode === 'UPDATE' && value.includes(fields.LLM) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">LLM</InputLabel>
-          <Select value={llm} labelId="node-type" label="LLM" name="llm" onChange={onSelectUpdate}>
+          <Select
+            value={llm}
+            labelId="node-type"
+            label="LLM"
+            name="llm"
+            onChange={onSelectUpdate}
+            disabled={loading}
+          >
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
@@ -110,6 +120,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             value={prompt}
             name="prompt"
             onChange={onInputUpdate}
+            disabled={loading}
           />
         </FormControl>
       ) : null}
@@ -122,6 +133,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           onChange={onMultiSelectUpdate}
           name={'tools'}
           onClear={() => onSelectClear('tools')}
+          disabled={loading}
         />
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Input) ? (
@@ -134,19 +146,20 @@ export const NodeForm: React.FC<INodeForm> = ({
             value={input}
             name="input"
             onChange={onInputUpdate}
+            disabled={loading}
           />
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tool) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">Tool</InputLabel>
-
           <Select
             value={tool}
             labelId="node-type"
             label="Tool"
             name="tool"
             onChange={onSelectUpdate}
+            disabled={loading}
           >
             <MenuItem value="">
               <em>None</em>
@@ -170,6 +183,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           name={'next'}
           onChange={onMultiSelectUpdate}
           onClear={() => onSelectClear('next')}
+          disabled={loading}
         />
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -177,15 +191,17 @@ export const NodeForm: React.FC<INodeForm> = ({
           variant="outlined"
           onClick={onCancel}
           endIcon={<Icons.Close />}
+          disabled={loading}
           // loading={loading}
           // loadingPosition="end"
         >
           Cancel
         </Button>
         {mode === 'UPDATE' && updateNode ? (
-          <Button
+          <AsyncButton
             variant="contained"
             startIcon={<Icons.Save />}
+            loadingPosition="start"
             onClick={() =>
               updateNode({
                 id: data?.id ?? '',
@@ -200,12 +216,13 @@ export const NodeForm: React.FC<INodeForm> = ({
             }
           >
             Update
-          </Button>
+          </AsyncButton>
         ) : null}
         {mode === 'CREATE' && createNode ? (
-          <Button
+          <AsyncButton
             variant="contained"
             startIcon={<Icons.Save />}
+            loadingPosition="start"
             onClick={() =>
               createNode({
                 name,
@@ -213,7 +230,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             }
           >
             Create
-          </Button>
+          </AsyncButton>
         ) : null}
       </Box>
     </Box>

@@ -7,4 +7,5 @@ export interface INodeForm {
   data?: INode;
   updateNode?: (data: INode) => Promise<void>;
   createNode?: (data: INodeSlim) => Promise<void>;
+  loading: boolean;
 }

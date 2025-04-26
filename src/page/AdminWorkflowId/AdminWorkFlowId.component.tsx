@@ -5,10 +5,12 @@ import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useEffect } from 'react';
+import { ConfirmDialog } from '@component';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
   getNodeAsList,
+  useNodeTabsHelper,
   useTabHelper,
   useWorkflowContext,
   useWorkflowDataHelper,
@@ -17,50 +19,79 @@ import {
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
-export const Component: React.FC = () => {
-  const { nodeTabs, workflow } = useWorkflowContext();
-  const { onTabChange, selectedNode, selectedTab } = useTabHelper();
-  const { deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } = useWorkflowDataHelper();
+const Component: React.FC = () => {
+  const { selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
+  const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
+  const {
+    createNode,
+    deleteNode,
+    deleteNodeCancel,
+    deleteNodeConfirm,
+    getLLMs,
+    getTools,
+    getWorkFlow,
+    id,
+    updateNode,
+  } = useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
+  const { nodeTabs, setNodeMode } = useNodeTabsHelper();
   useEffect(() => {
     getWorkFlow();
     getLLMs();
     getTools();
   }, [id]);
-
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      {selectedNode ? (
+        <ConfirmDialog
+          icon="ERROR"
+          title={`Are you sure you want to delete?`}
+          open={!!selectedNode}
+          onConfirm={deleteNodeConfirm}
+          onCancel={deleteNodeCancel}
+        />
+      ) : null}
       <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Tabs value={selectedTab} onChange={onTabChange}>
-          {selectedNode === 'Create Node' ? (
-            <Tab label={selectedNode} />
+      {nodeTabs.length ? (
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Tabs value={selectedTab} onChange={onTabChange}>
+            {nodeFormMode === 'CREATE' ? (
+              <Tab label="Create Node" />
+            ) : (
+              nodeTabs.map((node) => {
+                return <Tab label={node.name} key={node.name} />;
+              })
+            )}
+          </Tabs>
+          {nodeFormMode === 'CREATE' ? (
+            <Node
+              mode="CREATE"
+              createNode={createNode}
+              cancelNode={() => setNodeFormMode('UPDATE')}
+            />
           ) : (
-            nodeTabs.map((node) => {
-              return <Tab disabled={node.disabled} label={node.name} key={node.name} />;
+            nodeTabs.map((node, index) => {
+              if (selectedTab === index && workflow) {
+                return (
+                  <Node
+                    data={workflow.nodes[node.name]}
+                    key={node.name}
+                    mode={node.mode}
+                    nodes={getNodeAsList(workflow.nodes)}
+                    deleteNode={() => deleteNode(node.name)}
+                    updateNode={(data) => updateNode(node.name, data)}
+                    setMode={(mode) => setNodeMode(index, mode)}
+                    cancelNode={() => setNodeMode(index, 'VIEW')}
+                  />
+                );
+              }
             })
           )}
-        </Tabs>
-        {selectedNode === 'Create Node' ? (
-          <Node mode="CREATE" />
-        ) : (
-          nodeTabs.map((node, index) => {
-            if (selectedTab === index && workflow) {
-              return (
-                <Node
-                  data={workflow.nodes[node.name]}
-                  key={node.name}
-                  mode={node.mode}
-                  nodes={getNodeAsList(workflow.nodes)}
-                  deleteNode={() => deleteNode(node.name)}
-                  updateNode={(data) => updateNode(node.name, data)}
-                />
-              );
-            }
-          })
-        )}
-      </Box>
+        </Box>
+      ) : (
+        <Box>Create a new node</Box>
+      )}
     </Box>
   );
 };
