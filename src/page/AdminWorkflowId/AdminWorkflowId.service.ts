@@ -53,13 +53,16 @@ export const createNodeTab = (names: string[]): INodeTab[] => {
 export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
+    selectedNode,
     setLoading,
     setNodeFormMode,
     setNodes,
     setNodeTabs,
+    setSelectedNode,
     setWorkflow,
     setWorkflowFormMode,
     setWorkflowLoading,
+    workflow,
   } = useWorkflowContext();
   const { getLLMs, getTools } = useAdminContext();
   const getWorkFlow = async (): Promise<void> => {
@@ -78,9 +81,20 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowFormMode('VIEW');
     setLoading(false);
   };
+  const getNodeByID = (nodeId: string): INode | null => {
+    return (workflow && workflow.nodes[nodeId]) ?? null;
+  };
   const deleteNode = async (nodeId: string): Promise<void> => {
-    await makeRequest(APIs.DeleteWorkflowNode(id, nodeId));
-    await getWorkFlow();
+    setSelectedNode(getNodeByID(nodeId));
+  };
+  const deleteNodeConfirm = async (): Promise<void> => {
+    if (selectedNode) {
+      await makeRequest(APIs.DeleteWorkflowNode(id, selectedNode.id));
+      await getWorkFlow();
+    }
+  };
+  const deleteNodeCancel = (): void => {
+    setSelectedNode(null);
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
     await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
@@ -98,6 +112,8 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   return {
     createNode,
     deleteNode,
+    deleteNodeCancel,
+    deleteNodeConfirm,
     executeWorkflow,
     getLLMs,
     getTools,

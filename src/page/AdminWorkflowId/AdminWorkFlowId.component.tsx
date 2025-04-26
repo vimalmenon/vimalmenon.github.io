@@ -22,8 +22,16 @@ import { Workflow } from './Workflow';
 const Component: React.FC = () => {
   const { selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
-  const { createNode, deleteNode, getLLMs, getTools, getWorkFlow, id, updateNode } =
-    useWorkflowDataHelper();
+  const {
+    createNode,
+    deleteNode,
+    deleteNodeCancel,
+    getLLMs,
+    getTools,
+    getWorkFlow,
+    id,
+    updateNode,
+  } = useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
   const { nodeTabs, setNodeMode } = useNodeTabsHelper();
   useEffect(() => {
@@ -33,13 +41,15 @@ const Component: React.FC = () => {
   }, [id]);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <ConfirmDialog
-        info="ERROR"
-        title={'Are you sure you want to delete?'}
-        open={!!selectedNode}
-        onConfirm={() => false}
-        onCancel={() => false}
-      />
+      {selectedNode ? (
+        <ConfirmDialog
+          icon="ERROR"
+          title={`Are you sure you want to delete ?`}
+          open={!!selectedNode}
+          onConfirm={() => false}
+          onCancel={deleteNodeCancel}
+        />
+      ) : null}
       <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>

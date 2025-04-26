@@ -1,5 +1,5 @@
 export interface IConfirmDialog {
-  info: 'WARNING' | 'ERROR' | 'INFO';
+  icon: 'WARNING' | 'ERROR' | 'INFO';
   title: string;
   open: boolean;
   onConfirm: VoidFunction;
@@ -7,5 +7,10 @@ export interface IConfirmDialog {
 }
 
 export interface IShowIcon {
-  info: 'WARNING' | 'ERROR' | 'INFO';
+  icon: 'WARNING' | 'ERROR' | 'INFO';
+}
+
+export interface IShowTitle {
+  icon: 'WARNING' | 'ERROR' | 'INFO';
+  title: string;
 }
