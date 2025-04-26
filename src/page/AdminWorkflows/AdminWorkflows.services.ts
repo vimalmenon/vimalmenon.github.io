@@ -5,8 +5,9 @@ import { useAdminContext } from '@context';
 import { APIs } from '@data';
 import { IGenericResponse, ITool, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
+import { IUseAdminWorkflows } from './AdminWorkflows';
 
-export const useAdminWorkflows = () => {
+export const useAdminWorkflows = (): IUseAdminWorkflows => {
   const { getLLMs, getTools, llms, tools } = useAdminContext();
   const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
   const [uuid, setUuid] = useState<string>('');
