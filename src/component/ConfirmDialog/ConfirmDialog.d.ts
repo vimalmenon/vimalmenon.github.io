@@ -1,17 +1,17 @@
 import { VoidFunction } from '@types';
-export interface IConfirmDialog {
-  icon: 'WARNING' | 'ERROR' | 'INFO';
-  title: string;
+
+type IconType = 'WARNING' | 'ERROR' | 'INFO';
+
+export interface IConfirmDialog extends IShowTitle {
   open: boolean;
   onConfirm: VoidFunction<Promise<void>>;
   onCancel: VoidFunction;
 }
 
 export interface IShowIcon {
-  icon: 'WARNING' | 'ERROR' | 'INFO';
+  icon: IconType;
 }
 
-export interface IShowTitle {
-  icon: 'WARNING' | 'ERROR' | 'INFO';
+export interface IShowTitle extends IShowIcon {
   title: string;
 }
