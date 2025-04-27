@@ -86,6 +86,14 @@ const ExecuteWorkflow = (id: string): IAPI => {
     url: `workflows/execute/${id}`,
   };
 };
+
+const HistoryWorkflow = (): IAPI => {
+  return {
+    method: 'POST',
+    url: 'workflows/history',
+  };
+};
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
@@ -97,6 +105,7 @@ export const APIs = {
   getUUID,
   GetWorkflowById,
   GetWorkflows,
+  HistoryWorkflow,
   UpdateWorkflow,
   UpdateWorkflowNode,
 };
