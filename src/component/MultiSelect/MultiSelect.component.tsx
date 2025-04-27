@@ -9,7 +9,19 @@ import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Select from '@mui/material/Select';
 import { Icons } from '@data';
+import { IMultiSelectOption } from '@types';
 import { IMultiSelect } from './MultiSelect';
+
+const renderValue = (selected: string[], options: IMultiSelectOption[]): string => {
+  return options
+    .filter((option) => {
+      return selected.includes(option.value);
+    })
+    .map((option) => {
+      return option.label;
+    })
+    .join(', ');
+};
 
 export const MultiSelect: React.FC<IMultiSelect> = ({
   disabled,
@@ -30,7 +42,7 @@ export const MultiSelect: React.FC<IMultiSelect> = ({
         onChange={onChange}
         multiple
         name={name}
-        renderValue={(selected) => selected.join(', ')}
+        renderValue={(selected) => renderValue(selected, options)}
         disabled={disabled}
         input={
           <OutlinedInput
@@ -47,7 +59,7 @@ export const MultiSelect: React.FC<IMultiSelect> = ({
       >
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
-            <Checkbox checked={false} />
+            <Checkbox checked={value.includes(option.value)} />
             {option.label}
           </MenuItem>
         ))}
