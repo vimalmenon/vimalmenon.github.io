@@ -13,6 +13,8 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [x] Fix multiselect value
+- [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
 - [ ] Execute the workflow
