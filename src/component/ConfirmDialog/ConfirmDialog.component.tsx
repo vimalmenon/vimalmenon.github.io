@@ -20,14 +20,12 @@ const ShowIcon: React.FC<IShowIcon> = ({ icon }) => {
   return <Icons.Info color="info" />;
 };
 
-const ShowTitle: React.FC<IShowTitle> = ({ icon, title }) => {
-  return (
-    <Box>
-      <ShowIcon icon={icon} />
-      {title}
-    </Box>
-  );
-};
+const ShowTitle: React.FC<IShowTitle> = ({ icon, title }) => (
+  <Box>
+    <ShowIcon icon={icon} />
+    {title}
+  </Box>
+);
 
 export const ConfirmDialog: React.FC<IConfirmDialog> = ({
   icon,
@@ -35,20 +33,18 @@ export const ConfirmDialog: React.FC<IConfirmDialog> = ({
   onConfirm,
   open,
   title,
-}) => {
-  return (
-    <Dialog open={open} keepMounted onClose={onCancel} maxWidth="md" fullWidth>
-      <DialogTitle>
-        <ShowTitle icon={icon} title={title} />
-      </DialogTitle>
-      <DialogActions>
-        <Button onClick={onCancel} variant="outlined">
-          Cancel
-        </Button>
-        <AsyncButton onClick={onConfirm} variant="contained">
-          Confirm
-        </AsyncButton>
-      </DialogActions>
-    </Dialog>
-  );
-};
+}) => (
+  <Dialog open={open} keepMounted onClose={onCancel} maxWidth="md" fullWidth>
+    <DialogTitle>
+      <ShowTitle icon={icon} title={title} />
+    </DialogTitle>
+    <DialogActions>
+      <Button onClick={onCancel} variant="outlined">
+        Cancel
+      </Button>
+      <AsyncButton onClick={onConfirm} variant="contained">
+        Confirm
+      </AsyncButton>
+    </DialogActions>
+  </Dialog>
+);

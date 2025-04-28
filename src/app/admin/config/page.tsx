@@ -9,13 +9,11 @@ export const metadata: Metadata = {
   title: 'Config | Admin | Vimal Menon',
 };
 
-const Page: React.FC = () => {
-  return (
-    <StyledPage sx={{ flexDirection: 'column' }}>
-      <Breadcrumbs navigation={Navigation.AdminConfig} />
-      <AdminConfig />
-    </StyledPage>
-  );
-};
+const Page: React.FC = () => (
+  <StyledPage sx={{ flexDirection: 'column' }}>
+    <Breadcrumbs navigation={Navigation.AdminConfig} />
+    <AdminConfig />
+  </StyledPage>
+);
 
 export default Page;

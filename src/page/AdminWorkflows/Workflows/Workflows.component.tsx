@@ -48,21 +48,19 @@ export const Workflows: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {workflows?.map((workflow) => {
-                return (
-                  <TableRow key={workflow.id}>
-                    <TableCell>
-                      <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.id}</NextLink>
-                    </TableCell>
-                    <TableCell>{workflow.name}</TableCell>
-                    <TableCell>
-                      <IconButton onClick={() => deleteWorkflow(workflow.id)}>
-                        <Icons.Delete />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+              {workflows?.map((workflow) => (
+                <TableRow key={workflow.id}>
+                  <TableCell>
+                    <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.id}</NextLink>
+                  </TableCell>
+                  <TableCell>{workflow.name}</TableCell>
+                  <TableCell>
+                    <IconButton onClick={() => deleteWorkflow(workflow.id)}>
+                      <Icons.Delete />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

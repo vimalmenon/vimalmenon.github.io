@@ -18,24 +18,22 @@ export const TextInput: React.FC<ITextInput> = ({
   required,
   rows,
   value,
-}) => {
-  return (
-    <FormControl variant="outlined" fullWidth required>
-      <TextField
-        label={label}
-        variant="outlined"
-        size="small"
-        required={required}
-        value={value}
-        defaultValue={defaultValue}
-        name={name}
-        placeholder={placeholder}
-        onChange={onChange}
-        disabled={disabled}
-        multiline={multiline}
-        rows={rows}
-      />
-      {error ? <FormHelperText error={!!error}>{error}</FormHelperText> : null}
-    </FormControl>
-  );
-};
+}) => (
+  <FormControl variant="outlined" fullWidth required>
+    <TextField
+      label={label}
+      variant="outlined"
+      size="small"
+      required={required}
+      value={value}
+      defaultValue={defaultValue}
+      name={name}
+      placeholder={placeholder}
+      onChange={onChange}
+      disabled={disabled}
+      multiline={multiline}
+      rows={rows}
+    />
+    {error ? <FormHelperText error={!!error}>{error}</FormHelperText> : null}
+  </FormControl>
+);

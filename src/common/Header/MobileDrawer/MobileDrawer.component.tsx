@@ -31,15 +31,13 @@ export const MobileDrawer: React.FC = () => {
         </Box>
 
         <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-evenly' }}>
-          {SocialMedias.map((media) => {
-            return (
-              <MuiLink href={media.link} underline="none" key={media.link} target="_blank">
-                <IconButton>
-                  <media.Icon />
-                </IconButton>
-              </MuiLink>
-            );
-          })}
+          {SocialMedias.map((media) => (
+            <MuiLink href={media.link} underline="none" key={media.link} target="_blank">
+              <IconButton>
+                <media.Icon />
+              </IconButton>
+            </MuiLink>
+          ))}
         </Box>
       </StyledMobileDrawer>
       <IconButton onClick={toggleDrawer}>

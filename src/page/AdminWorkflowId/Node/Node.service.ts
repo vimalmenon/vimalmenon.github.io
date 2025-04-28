@@ -32,22 +32,19 @@ export const nodeType = (type: string): string[] => {
   return [];
 };
 
-export const convertToolsToOption = (tools: ITool[]): IMultiSelectOption[] => {
-  return tools.map((tool) => ({
+export const convertToolsToOption = (tools: ITool[]): IMultiSelectOption[] =>
+  tools.map((tool) => ({
     label: tool.name,
     value: tool.id,
   }));
-};
 
-export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => {
-  return [
-    ...nodes.map((node) => ({
-      label: node.name,
-      value: node.id,
-    })),
-    { label: 'END', value: 'END' },
-  ];
-};
+export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => [
+  ...nodes.map((node) => ({
+    label: node.name,
+    value: node.id,
+  })),
+  { label: 'END', value: 'END' },
+];
 export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');

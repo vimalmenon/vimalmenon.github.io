@@ -9,13 +9,11 @@ export const metadata: Metadata = {
   title: 'AI | Blogs | Vimal Menon',
 };
 
-const Page: React.FC = () => {
-  return (
-    <StyledPage>
-      <Breadcrumbs navigation={Navigation.Blogs} />
-      <ComingSoon page="AI Blog Page" />
-    </StyledPage>
-  );
-};
+const Page: React.FC = () => (
+  <StyledPage>
+    <Breadcrumbs navigation={Navigation.Blogs} />
+    <ComingSoon page="AI Blog Page" />
+  </StyledPage>
+);
 
 export default Page;

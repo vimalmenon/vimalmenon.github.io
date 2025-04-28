@@ -12,16 +12,11 @@ import { Icons } from '@data';
 import { IMultiSelectOption } from '@types';
 import { IMultiSelect } from './MultiSelect';
 
-const renderValue = (selected: string[], options: IMultiSelectOption[]): string => {
-  return options
-    .filter((option) => {
-      return selected.includes(option.value);
-    })
-    .map((option) => {
-      return option.label;
-    })
+const renderValue = (selected: string[], options: IMultiSelectOption[]): string =>
+  options
+    .filter((option) => selected.includes(option.value))
+    .map((option) => option.label)
     .join(', ');
-};
 
 export const MultiSelect: React.FC<IMultiSelect> = ({
   disabled,
@@ -32,38 +27,36 @@ export const MultiSelect: React.FC<IMultiSelect> = ({
   onClear,
   options,
   value,
-}) => {
-  return (
-    <FormControl size="small" fullWidth>
-      <InputLabel id={id}>{label}</InputLabel>
-      <Select
-        labelId={id}
-        value={value}
-        onChange={onChange}
-        multiple
-        name={name}
-        renderValue={(selected) => renderValue(selected, options)}
-        disabled={disabled}
-        input={
-          <OutlinedInput
-            label={label}
-            startAdornment={
-              <InputAdornment position="start">
-                <IconButton aria-label={id} onClick={onClear} edge="end">
-                  <Icons.Close />
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        }
-      >
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
-            <Checkbox checked={value.includes(option.value)} />
-            {option.label}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  );
-};
+}) => (
+  <FormControl size="small" fullWidth>
+    <InputLabel id={id}>{label}</InputLabel>
+    <Select
+      labelId={id}
+      value={value}
+      onChange={onChange}
+      multiple
+      name={name}
+      renderValue={(selected) => renderValue(selected, options)}
+      disabled={disabled}
+      input={
+        <OutlinedInput
+          label={label}
+          startAdornment={
+            <InputAdornment position="start">
+              <IconButton aria-label={id} onClick={onClear} edge="end">
+                <Icons.Close />
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      }
+    >
+      {options.map((option) => (
+        <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
+          <Checkbox checked={value.includes(option.value)} />
+          {option.label}
+        </MenuItem>
+      ))}
+    </Select>
+  </FormControl>
+);

@@ -4,8 +4,8 @@ import { Theme } from '@emotion/react';
 import { createTheme, PaletteColorOptions, PaletteMode } from '@mui/material/styles';
 import { AnyType } from '@types';
 
-export const getTheme = (mode: PaletteMode = 'light', primaryTheme: PaletteColorOptions): Theme => {
-  return createTheme({
+export const getTheme = (mode: PaletteMode = 'light', primaryTheme: PaletteColorOptions): Theme =>
+  createTheme({
     palette: {
       mode,
       primary: {
@@ -14,4 +14,3 @@ export const getTheme = (mode: PaletteMode = 'light', primaryTheme: PaletteColor
       },
     },
   });
-};

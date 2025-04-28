@@ -15,27 +15,25 @@ export const ColorItem: React.FC<IColorItem> = ({
   name,
   onClick,
   selectedColor,
-}) => {
-  return (
-    <Box sx={{ background: color, height: '150px', width: '50px' }} onClick={onClick}>
-      <Typography
-        component="div"
-        sx={{
-          display: 'flex',
-          height: '100%',
-          justifyContent: 'space-between',
-          padding: 1,
-          writingMode: 'vertical-rl',
-        }}
-      >
-        <span>{name}</span>{' '}
-        <span>
-          {selectedColor === color ? <Check /> : null}
-          {main === color && main ? 'M' : null}
-          {dark === color && main ? 'D' : null}
-          {light === color && main ? 'L' : null}
-        </span>
-      </Typography>
-    </Box>
-  );
-};
+}) => (
+  <Box sx={{ background: color, height: '150px', width: '50px' }} onClick={onClick}>
+    <Typography
+      component="div"
+      sx={{
+        display: 'flex',
+        height: '100%',
+        justifyContent: 'space-between',
+        padding: 1,
+        writingMode: 'vertical-rl',
+      }}
+    >
+      <span>{name}</span>{' '}
+      <span>
+        {selectedColor === color ? <Check /> : null}
+        {main === color && main ? 'M' : null}
+        {dark === color && main ? 'D' : null}
+        {light === color && main ? 'L' : null}
+      </span>
+    </Typography>
+  </Box>
+);

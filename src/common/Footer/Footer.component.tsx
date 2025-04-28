@@ -22,20 +22,18 @@ export const Footer: React.FC = () => {
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
           <Box sx={{ display: 'flex', gap: 2, marginY: 1 }}>
-            {FooterNavigation.map((data) => {
-              return (
-                <span style={{ fontSize: '14px' }} key={data.name}>
-                  <MuiLink
-                    component={Link}
-                    href={data.link}
-                    underline="always"
-                    sx={{ color: teal[500], fontWeight: 'bold' }}
-                  >
-                    {data.name}
-                  </MuiLink>
-                </span>
-              );
-            })}
+            {FooterNavigation.map((data) => (
+              <span style={{ fontSize: '14px' }} key={data.name}>
+                <MuiLink
+                  component={Link}
+                  href={data.link}
+                  underline="always"
+                  sx={{ color: teal[500], fontWeight: 'bold' }}
+                >
+                  {data.name}
+                </MuiLink>
+              </span>
+            ))}
           </Box>
           <Box sx={{ display: 'flex', gap: 2, marginY: 1 }}>
             <span style={{ fontSize: '0.8rem' }}>

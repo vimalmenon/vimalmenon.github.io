@@ -1,3 +1,1 @@
-export const AdminLinks: React.FC = () => {
-  return null;
-};
+export const AdminLinks: React.FC = () => null;

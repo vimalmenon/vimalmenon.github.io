@@ -58,9 +58,7 @@ const Component: React.FC = () => {
           {nodeFormMode === 'CREATE' ? (
             <Tab label="Create Node" />
           ) : (
-            nodeTabs.map((node) => {
-              return <Tab label={node.name} key={node.name} />;
-            })
+            nodeTabs.map((node) => <Tab label={node.name} key={node.name} />)
           )}
         </Tabs>
         {nodeFormMode === 'CREATE' ? (
@@ -92,10 +90,8 @@ const Component: React.FC = () => {
   );
 };
 
-export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  return (
-    <AdminWorkflowIdContext id={id}>
-      <Component />
-    </AdminWorkflowIdContext>
-  );
-};
+export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => (
+  <AdminWorkflowIdContext id={id}>
+    <Component />
+  </AdminWorkflowIdContext>
+);

@@ -9,13 +9,11 @@ export const metadata: Metadata = {
   title: 'Contact | Vimal Menon',
 };
 
-const Page: React.FC = () => {
-  return (
-    <Box component="main">
-      <Breadcrumbs navigation={Navigation.Contact} />
-      <ComingSoon page="Contact page" />
-    </Box>
-  );
-};
+const Page: React.FC = () => (
+  <Box component="main">
+    <Breadcrumbs navigation={Navigation.Contact} />
+    <ComingSoon page="Contact page" />
+  </Box>
+);
 
 export default Page;

@@ -74,13 +74,11 @@ export const NodeForm: React.FC<INodeForm> = ({
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {NodeType.map((node) => {
-              return (
-                <MenuItem value={node.value} key={node.value}>
-                  {node.name}
-                </MenuItem>
-              );
-            })}
+            {NodeType.map((node) => (
+              <MenuItem value={node.value} key={node.value}>
+                {node.name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       ) : null}
@@ -98,13 +96,11 @@ export const NodeForm: React.FC<INodeForm> = ({
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {llms.map((node) => {
-              return (
-                <MenuItem value={node.name} key={node.name}>
-                  {node.name} {node.model}
-                </MenuItem>
-              );
-            })}
+            {llms.map((node) => (
+              <MenuItem value={node.name} key={node.name}>
+                {node.name} {node.model}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       ) : null}
@@ -164,13 +160,11 @@ export const NodeForm: React.FC<INodeForm> = ({
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {convertToolsToOption(toolsList).map((node) => {
-              return (
-                <MenuItem value={node.value} key={node.value}>
-                  {node.label}
-                </MenuItem>
-              );
-            })}
+            {convertToolsToOption(toolsList).map((node) => (
+              <MenuItem value={node.value} key={node.value}>
+                {node.label}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       ) : null}

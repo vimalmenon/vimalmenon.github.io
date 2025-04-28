@@ -218,34 +218,32 @@ export const HeaderNavigation = [Home, Blogs, Admin];
 
 export const AdminNavigation = [AdminConfig, AdminLinks, AdminWorkflow];
 
-export const GenerateWorkflow = (id: string): INavigation => {
-  return {
-    breadcrumbs: [
-      {
-        link: '/',
-        name: 'Home',
-      },
-      {
-        link: '/admin/',
-        name: 'Admin',
-      },
-      {
-        link: '/admin/workflows/',
-        name: 'Workflows',
-      },
-      {
-        link: '',
-        name: id,
-      },
-    ],
-    children: [],
-    description: 'This is Vimal Menon personal website',
-    link: `/admin/workflows/${id}`,
-    name: id,
-    show: env.IS_LOCAL,
-    title: `${id} | Workflows | Admin | Vimal Menon`,
-  };
-};
+export const GenerateWorkflow = (id: string): INavigation => ({
+  breadcrumbs: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '/admin/',
+      name: 'Admin',
+    },
+    {
+      link: '/admin/workflows/',
+      name: 'Workflows',
+    },
+    {
+      link: '',
+      name: id,
+    },
+  ],
+  children: [],
+  description: 'This is Vimal Menon personal website',
+  link: `/admin/workflows/${id}`,
+  name: id,
+  show: env.IS_LOCAL,
+  title: `${id} | Workflows | Admin | Vimal Menon`,
+});
 
 export const Navigation = {
   About,

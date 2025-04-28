@@ -78,6 +78,4 @@ export const closeDrawer = (dispatch: DispatchType<unknown>): void => {
   dispatch({ type: ActionType.CLOSE_DRAWER });
 };
 
-export const useAppContext = (): IAppContext => {
-  return useContext<IAppContext>(Context);
-};
+export const useAppContext = (): IAppContext => useContext<IAppContext>(Context);

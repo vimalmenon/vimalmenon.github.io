@@ -34,18 +34,13 @@ export const Tools: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {tools.map((tool) => {
-              return (
-                <TableRow
-                  key={tool.name}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell>{tool.id}</TableCell>
-                  <TableCell>{tool.name}</TableCell>
-                  <TableCell>{tool.tool_name}</TableCell>
-                </TableRow>
-              );
-            })}
+            {tools.map((tool) => (
+              <TableRow key={tool.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell>{tool.id}</TableCell>
+                <TableCell>{tool.name}</TableCell>
+                <TableCell>{tool.tool_name}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

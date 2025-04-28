@@ -9,13 +9,11 @@ export const metadata: Metadata = {
   title: 'Workflows | Admin | Vimal Menon',
 };
 
-const Page: React.FC = () => {
-  return (
-    <StyledPage sx={{ flexDirection: 'column' }}>
-      <Breadcrumbs navigation={Navigation.AdminWorkflow} />
-      <AdminWorkflows />
-    </StyledPage>
-  );
-};
+const Page: React.FC = () => (
+  <StyledPage sx={{ flexDirection: 'column' }}>
+    <Breadcrumbs navigation={Navigation.AdminWorkflow} />
+    <AdminWorkflows />
+  </StyledPage>
+);
 
 export default Page;
