@@ -14,6 +14,9 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Fix multiselect value
+- [ ] Need to show Error in UI
+- [ ] Confirm and Cancel to show icon in Confirm dialogue 
+- [ ] Close Confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
