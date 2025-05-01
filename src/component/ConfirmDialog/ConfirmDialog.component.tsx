@@ -21,9 +21,9 @@ const ShowIcon: React.FC<IShowIcon> = ({ icon }) => {
 };
 
 const ShowTitle: React.FC<IShowTitle> = ({ icon, title }) => (
-  <Box>
+  <Box sx={{ alignItems: 'center', display: 'flex', gap: 2 }}>
     <ShowIcon icon={icon} />
-    {title}
+    <Box>{title}</Box>
   </Box>
 );
 

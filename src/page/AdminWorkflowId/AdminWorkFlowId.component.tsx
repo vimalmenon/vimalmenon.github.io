@@ -44,7 +44,7 @@ const Component: React.FC = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {selectedNode ? (
         <ConfirmDialog
-          icon="ERROR"
+          icon="WARNING"
           title={`Are you sure you want to delete?`}
           open={!!selectedNode}
           onConfirm={deleteNodeConfirm}
