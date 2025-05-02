@@ -25,6 +25,7 @@ export const AdminWorkflows: React.FC = () => {
         <Tab label="LLM" />
         <Tab label="UUID" />
         <Tab label="Tools" />
+        <Tab label="Others" />
       </Tabs>
       {tab === 0 ? <Workflows /> : null}
       {tab === 1 ? <LLM /> : null}

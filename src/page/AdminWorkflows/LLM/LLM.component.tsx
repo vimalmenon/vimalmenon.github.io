@@ -37,12 +37,8 @@ export const LLM: React.FC = () => {
           <TableBody>
             {llms.map((llm) => (
               <TableRow key={llm.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell padding="normal" align="right">
-                  {llm.name}
-                </TableCell>
-                <TableCell padding="normal" align="right">
-                  {llm.model}
-                </TableCell>
+                <TableCell padding="normal">{llm.name}</TableCell>
+                <TableCell padding="normal">{llm.model}</TableCell>
                 <TableCell padding="normal" align="right">
                   {llm.supported ? (
                     <Icons.Check fontSize="small" />

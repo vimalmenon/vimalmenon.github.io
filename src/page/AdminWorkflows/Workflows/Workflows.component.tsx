@@ -54,7 +54,7 @@ export const Workflows: React.FC = () => {
                     <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.id}</NextLink>
                   </TableCell>
                   <TableCell>{workflow.name}</TableCell>
-                  <TableCell>
+                  <TableCell align="right">
                     <IconButton onClick={() => deleteWorkflow(workflow.id)}>
                       <Icons.Delete />
                     </IconButton>

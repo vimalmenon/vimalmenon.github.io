@@ -14,14 +14,14 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Fix multiselect value
+- [x] Confirm and Cancel to show icon in confirm dialogue
+- [ ] Show Loading indicator on Workflow page
 - [ ] Need to show Error in UI
-- [ ] Confirm and Cancel to show icon in Confirm dialogue 
 - [ ] Close Confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
 - [ ] Execute the workflow
-- [ ] Show Loading indicator
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
 - [ ] Show Graph at the side

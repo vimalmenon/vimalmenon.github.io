@@ -38,7 +38,7 @@ export const Tools: React.FC = () => {
               <TableRow key={tool.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell>{tool.id}</TableCell>
                 <TableCell>{tool.name}</TableCell>
-                <TableCell>{tool.tool_name}</TableCell>
+                <TableCell align="right">{tool.tool_name}</TableCell>
               </TableRow>
             ))}
           </TableBody>
