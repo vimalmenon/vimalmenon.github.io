@@ -6,7 +6,7 @@ import { Navigation } from '@data';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Contact | Vimal Menon',
+  title: Navigation.Contact.title,
 };
 
 const Page: React.FC = () => (

@@ -6,7 +6,7 @@ import { StyledPage } from '@style';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Workflows | Admin | Vimal Menon',
+  title: Navigation.AdminWorkflow.title,
 };
 
 const Page: React.FC = () => (
