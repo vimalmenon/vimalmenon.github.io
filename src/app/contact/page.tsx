@@ -6,16 +6,14 @@ import { Navigation } from '@data';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Contact | Vimal Menon',
+  title: Navigation.Contact.title,
 };
 
-const Page: React.FC = () => {
-  return (
-    <Box component="main">
-      <Breadcrumbs navigation={Navigation.Contact} />
-      <ComingSoon page="Contact page" />
-    </Box>
-  );
-};
+const Page: React.FC = () => (
+  <Box component="main">
+    <Breadcrumbs navigation={Navigation.Contact} />
+    <ComingSoon page="Contact page" />
+  </Box>
+);
 
 export default Page;

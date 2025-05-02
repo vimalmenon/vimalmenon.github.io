@@ -6,16 +6,14 @@ import { StyledPage } from '@style';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Blogs | Vimal Menon',
+  title: Navigation.Blogs.title,
 };
 
-const Page: React.FC = () => {
-  return (
-    <StyledPage>
-      <Breadcrumbs navigation={Navigation.Blogs} />
-      <ComingSoon page="Blogs Page" />
-    </StyledPage>
-  );
-};
+const Page: React.FC = () => (
+  <StyledPage>
+    <Breadcrumbs navigation={Navigation.Blogs} />
+    <ComingSoon page="Blogs Page" />
+  </StyledPage>
+);
 
 export default Page;

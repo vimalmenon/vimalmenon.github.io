@@ -35,25 +35,19 @@ export const LLM: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {llms.map((llm) => {
-              return (
-                <TableRow key={llm.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell padding="normal" align="right">
-                    {llm.name}
-                  </TableCell>
-                  <TableCell padding="normal" align="right">
-                    {llm.model}
-                  </TableCell>
-                  <TableCell padding="normal" align="right">
-                    {llm.supported ? (
-                      <Icons.Check fontSize="small" />
-                    ) : (
-                      <Icons.Close fontSize="small" />
-                    )}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {llms.map((llm) => (
+              <TableRow key={llm.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell padding="normal">{llm.name}</TableCell>
+                <TableCell padding="normal">{llm.model}</TableCell>
+                <TableCell padding="normal" align="right">
+                  {llm.supported ? (
+                    <Icons.Check fontSize="small" />
+                  ) : (
+                    <Icons.Close fontSize="small" />
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

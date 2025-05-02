@@ -31,11 +31,9 @@ export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
       },
     ];
   }
-  return response.data.map((data) => {
-    return {
-      id: data.id,
-    };
-  });
+  return response.data.map((data) => ({
+    id: data.id,
+  }));
 };
 
 export default Page;

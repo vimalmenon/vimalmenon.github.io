@@ -47,9 +47,9 @@ export default [
           allowExpressions: true,
         },
       ],
-
       // Why would you want unused vars?
       '@typescript-eslint/no-unused-vars': ['error'],
+      'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
 
       // 'import/order': [
       //   'error',

@@ -8,20 +8,16 @@ import React from 'react';
 import { SocialMedias } from '@data';
 import { StyledSocialMedia } from '@style';
 
-export const SocialMedia: React.FC = () => {
-  return (
-    <StyledSocialMedia>
-      {SocialMedias.map((media) => {
-        return (
-          <Tooltip title={media.name} key={media.link}>
-            <MuiLink component={Link} href={media.link} underline="none" target="_blank">
-              <IconButton>
-                <media.Icon />
-              </IconButton>
-            </MuiLink>
-          </Tooltip>
-        );
-      })}
-    </StyledSocialMedia>
-  );
-};
+export const SocialMedia: React.FC = () => (
+  <StyledSocialMedia>
+    {SocialMedias.map((media) => (
+      <Tooltip title={media.name} key={media.link}>
+        <MuiLink component={Link} href={media.link} underline="none" target="_blank">
+          <IconButton>
+            <media.Icon />
+          </IconButton>
+        </MuiLink>
+      </Tooltip>
+    ))}
+  </StyledSocialMedia>
+);

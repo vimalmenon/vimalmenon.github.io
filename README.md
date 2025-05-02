@@ -6,19 +6,22 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.21
+<b>Version</b>: 0.0.22
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Working on AsyncButton
-- [x] Confirm on Delete
+- [x] Fix multiselect value
+- [x] Confirm and Cancel to show icon in confirm dialogue
+- [ ] Show Loading indicator on Workflow page
+- [ ] Need to show Error in UI
+- [ ] Close Confirm dialogue when error
+- [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
 - [ ] Execute the workflow
-- [ ] Show Loading indicator
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
 - [ ] Show Graph at the side

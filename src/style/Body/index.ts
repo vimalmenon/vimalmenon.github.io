@@ -4,14 +4,12 @@ import Box from '@mui/material/Box';
 import { grey } from '@mui/material/colors';
 import Container from '@mui/material/Container';
 
-export const StyledMain = styled('main')(({ theme }) => {
-  return {
-    background: theme.palette.mode === 'dark' ? grey[900] : grey[50],
-    display: 'flex',
-    flex: '1 1 100%',
-    position: 'relative',
-  };
-});
+export const StyledMain = styled('main')(({ theme }) => ({
+  background: theme.palette.mode === 'dark' ? grey[900] : grey[50],
+  display: 'flex',
+  flex: '1 1 100%',
+  position: 'relative',
+}));
 
 export const StyledMainContainer = styled(Container)({
   display: 'flex',

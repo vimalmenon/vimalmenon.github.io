@@ -44,7 +44,7 @@ const Component: React.FC = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {selectedNode ? (
         <ConfirmDialog
-          icon="ERROR"
+          icon="WARNING"
           title={`Are you sure you want to delete?`}
           open={!!selectedNode}
           onConfirm={deleteNodeConfirm}
@@ -53,53 +53,45 @@ const Component: React.FC = () => {
       ) : null}
       <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
-      {nodeTabs.length ? (
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Tabs value={selectedTab} onChange={onTabChange}>
-            {nodeFormMode === 'CREATE' ? (
-              <Tab label="Create Node" />
-            ) : (
-              nodeTabs.map((node) => {
-                return <Tab label={node.name} key={node.name} />;
-              })
-            )}
-          </Tabs>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Tabs value={selectedTab} onChange={onTabChange}>
           {nodeFormMode === 'CREATE' ? (
-            <Node
-              mode="CREATE"
-              createNode={createNode}
-              cancelNode={() => setNodeFormMode('UPDATE')}
-            />
+            <Tab label="Create Node" />
           ) : (
-            nodeTabs.map((node, index) => {
-              if (selectedTab === index && workflow) {
-                return (
-                  <Node
-                    data={workflow.nodes[node.name]}
-                    key={node.name}
-                    mode={node.mode}
-                    nodes={getNodeAsList(workflow.nodes)}
-                    deleteNode={() => deleteNode(node.name)}
-                    updateNode={(data) => updateNode(node.name, data)}
-                    setMode={(mode) => setNodeMode(index, mode)}
-                    cancelNode={() => setNodeMode(index, 'VIEW')}
-                  />
-                );
-              }
-            })
+            nodeTabs.map((node) => <Tab label={node.name} key={node.name} />)
           )}
-        </Box>
-      ) : (
-        <Box>Create a new node</Box>
-      )}
+        </Tabs>
+        {nodeFormMode === 'CREATE' ? (
+          <Node
+            mode="CREATE"
+            createNode={createNode}
+            cancelNode={() => setNodeFormMode('UPDATE')}
+          />
+        ) : (
+          nodeTabs.map((node, index) => {
+            if (selectedTab === index && workflow) {
+              return (
+                <Node
+                  data={workflow.nodes[node.name]}
+                  key={node.name}
+                  mode={node.mode}
+                  nodes={getNodeAsList(workflow.nodes)}
+                  deleteNode={() => deleteNode(node.name)}
+                  updateNode={(data) => updateNode(node.name, data)}
+                  setMode={(mode) => setNodeMode(index, mode)}
+                  cancelNode={() => setNodeMode(index, 'VIEW')}
+                />
+              );
+            }
+          })
+        )}
+      </Box>
     </Box>
   );
 };
 
-export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => {
-  return (
-    <AdminWorkflowIdContext id={id}>
-      <Component />
-    </AdminWorkflowIdContext>
-  );
-};
+export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => (
+  <AdminWorkflowIdContext id={id}>
+    <Component />
+  </AdminWorkflowIdContext>
+);

@@ -81,34 +81,30 @@ export const SelectTheme: React.FC = () => {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          {Object.keys(colors).map((color) => {
-            return (
-              <Box key={color}>
-                <ColorItem
-                  color={(colors as AnyType)[color][500]}
-                  name={color}
-                  onClick={() => onColorClick((colors as AnyType)[color])}
-                  selectedColor={selectedColor ? selectedColor[500] : undefined}
-                />
-              </Box>
-            );
-          })}
+          {Object.keys(colors).map((color) => (
+            <Box key={color}>
+              <ColorItem
+                color={(colors as AnyType)[color][500]}
+                name={color}
+                onClick={() => onColorClick((colors as AnyType)[color])}
+                selectedColor={selectedColor ? selectedColor[500] : undefined}
+              />
+            </Box>
+          ))}
         </Box>
         {selectedColor ? (
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-            {shades.map((shade: string | number, index) => {
-              return (
-                <ColorItem
-                  color={selectedColor[shade]}
-                  key={`${selectedColor[shade]}-${index}`}
-                  name={String(shade)}
-                  onClick={() => onShadeClick(selectedColor[shade])}
-                  main={theme.main}
-                  dark={theme.dark}
-                  light={theme.light}
-                />
-              );
-            })}
+            {shades.map((shade: string | number, index) => (
+              <ColorItem
+                color={selectedColor[shade]}
+                key={`${selectedColor[shade]}-${index}`}
+                name={String(shade)}
+                onClick={() => onShadeClick(selectedColor[shade])}
+                main={theme.main}
+                dark={theme.dark}
+                light={theme.light}
+              />
+            ))}
           </Box>
         ) : null}
       </Box>

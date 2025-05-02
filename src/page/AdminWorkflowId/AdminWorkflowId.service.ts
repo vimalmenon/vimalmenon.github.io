@@ -14,9 +14,8 @@ import {
   IUseWorkflowFormHelper,
 } from './AdminWorkflowId';
 
-export const getNodeAsList = (node: Record<string, INode>): INode[] => {
-  return Object.keys(node).map((key) => node[key]);
-};
+export const getNodeAsList = (node: Record<string, INode>): INode[] =>
+  Object.keys(node).map((key) => node[key]);
 
 export const Context = createContext<IContext>({
   id: '0',
@@ -39,16 +38,13 @@ export const Context = createContext<IContext>({
 
 export const useWorkflowContext = (): IContext => useContext(Context);
 
-export const createNodeTab = (names: string[]): INodeTab[] => {
-  return names.map<INodeTab>((name) => {
-    return {
-      disabled: false,
-      mode: 'VIEW',
-      name: name,
-      selected: false,
-    };
-  });
-};
+export const createNodeTab = (names: string[]): INodeTab[] =>
+  names.map<INodeTab>((name) => ({
+    disabled: false,
+    mode: 'VIEW',
+    name: name,
+    selected: false,
+  }));
 
 export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
@@ -81,9 +77,8 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowFormMode('VIEW');
     setLoading(false);
   };
-  const getNodeByID = (nodeId: string): INode | null => {
-    return (workflow && workflow.nodes[nodeId]) ?? null;
-  };
+  const getNodeByID = (nodeId: string): INode | null =>
+    (workflow && workflow.nodes[nodeId]) ?? null;
   const deleteNode = async (nodeId: string): Promise<void> => {
     setSelectedNode(getNodeByID(nodeId));
   };
@@ -146,9 +141,7 @@ export const useTabHelper = (): IUseTabHelper => {
   const onAddNodeCancel = (): void => {
     setNodeFormMode('UPDATE');
   };
-  const selectedTab = nodeTabs.findIndex((node) => {
-    return node.selected;
-  });
+  const selectedTab = nodeTabs.findIndex((node) => node.selected);
 
   return {
     nodeFormMode,

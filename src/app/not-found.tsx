@@ -9,12 +9,10 @@ export const metadata: Metadata = {
   title: 'Page Not Found | Vimal Menon',
 };
 
-const Page: React.FC = () => {
-  return (
-    <StyledPage>
-      <Breadcrumbs navigation={Navigation.NotFound} />
-      <Box>Requested page not found</Box>
-    </StyledPage>
-  );
-};
+const Page: React.FC = () => (
+  <StyledPage>
+    <Breadcrumbs navigation={Navigation.NotFound} />
+    <Box>Requested page not found</Box>
+  </StyledPage>
+);
 export default Page;

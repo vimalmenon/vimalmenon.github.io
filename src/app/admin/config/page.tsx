@@ -6,16 +6,14 @@ import { StyledPage } from '@style';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Config | Admin | Vimal Menon',
+  title: Navigation.AdminConfig.title,
 };
 
-const Page: React.FC = () => {
-  return (
-    <StyledPage sx={{ flexDirection: 'column' }}>
-      <Breadcrumbs navigation={Navigation.AdminConfig} />
-      <AdminConfig />
-    </StyledPage>
-  );
-};
+const Page: React.FC = () => (
+  <StyledPage sx={{ flexDirection: 'column' }}>
+    <Breadcrumbs navigation={Navigation.AdminConfig} />
+    <AdminConfig />
+  </StyledPage>
+);
 
 export default Page;
