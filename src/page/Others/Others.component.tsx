@@ -5,6 +5,7 @@ import { Tools } from './Tools';
 export const Others: React.FC = () => (
   <div>
     <Tools />
+    <br />
     <Divider />
   </div>
 );

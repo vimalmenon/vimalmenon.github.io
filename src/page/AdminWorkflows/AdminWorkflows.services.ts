@@ -8,7 +8,7 @@ import { makeRequest } from '@utility';
 import { IUseAdminWorkflows } from './AdminWorkflows';
 
 export const useAdminWorkflows = (): IUseAdminWorkflows => {
-  const { getLLMs, getTools, llms, tools } = useAdminContext();
+  const { getLLMs, llms } = useAdminContext();
   const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
   const [uuid, setUuid] = useState<string>('');
   const getWorkflows = async (): Promise<void> => {
@@ -38,10 +38,8 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
     createWorkflow,
     deleteWorkflow,
     getLLMs,
-    getTools,
     getWorkflows,
     llms,
-    tools,
     uuid,
     workflows,
   };
