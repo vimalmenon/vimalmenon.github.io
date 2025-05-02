@@ -2,6 +2,7 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { Icons } from '@data';
@@ -13,8 +14,7 @@ export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow }) =>
   const { createWorkflow } = useAdminWorkflows();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <Box>
-        {' '}
+      <FormControl variant="outlined" fullWidth required>
         <TextField
           required
           label="Name"
@@ -23,7 +23,7 @@ export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow }) =>
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-      </Box>
+      </FormControl>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           variant="outlined"
@@ -34,7 +34,7 @@ export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow }) =>
           Cancel
         </Button>
         <Button
-          variant="outlined"
+          variant="contained"
           onClick={() => createWorkflow(name)}
           startIcon={<Icons.Save />}
           loadingPosition="start"
