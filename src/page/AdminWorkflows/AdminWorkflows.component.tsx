@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useAdminWorkflows } from './AdminWorkflows.services';
 import { LLM } from './LLM';
-import { Tools } from './Tools';
 import { Workflows } from './Workflows';
 
 export const AdminWorkflows: React.FC = () => {
@@ -24,8 +23,6 @@ export const AdminWorkflows: React.FC = () => {
         <Tab label="Workflows" />
         <Tab label="LLM" />
         <Tab label="UUID" />
-        <Tab label="Tools" />
-        <Tab label="Others" />
       </Tabs>
       {tab === 0 ? <Workflows /> : null}
       {tab === 1 ? <LLM /> : null}
@@ -35,12 +32,6 @@ export const AdminWorkflows: React.FC = () => {
           <Button variant="outlined" onClick={createUUID}>
             Create
           </Button>
-        </Box>
-      ) : null}
-
-      {tab === 3 ? (
-        <Box>
-          <Tools />
         </Box>
       ) : null}
     </Box>

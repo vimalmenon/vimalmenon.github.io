@@ -1,8 +1,10 @@
+import { Divider } from '@mui/material';
 import React from 'react';
+import { Tools } from './Tools';
 
 export const Others: React.FC = () => (
   <div>
-    <h1>Others</h1>
-    <p>This is the Others page.</p>
+    <Tools />
+    <Divider />
   </div>
 );

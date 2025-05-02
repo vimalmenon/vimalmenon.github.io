@@ -9,7 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import React, { useEffect } from 'react';
-import { useAdminWorkflows } from '../AdminWorkflows.services';
+import { useAdminWorkflows } from '../../AdminWorkflows/AdminWorkflows.services';
 
 export const Tools: React.FC = () => {
   const { getTools, tools } = useAdminWorkflows();
