@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
+import { Icons } from '@data';
 import { useAdminWorkflows } from '../../AdminWorkflows.services';
 import { ICreateWorkflow } from './CreateWorkflow';
 
@@ -23,11 +24,21 @@ export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow }) =>
           onChange={(e) => setName(e.target.value)}
         />
       </Box>
-      <Box>
-        <Button variant="outlined" onClick={cancelWorkflow}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Button
+          variant="outlined"
+          endIcon={<Icons.Close />}
+          disabled={false}
+          onClick={cancelWorkflow}
+        >
           Cancel
         </Button>
-        <Button variant="outlined" onClick={() => createWorkflow(name)}>
+        <Button
+          variant="outlined"
+          onClick={() => createWorkflow(name)}
+          startIcon={<Icons.Save />}
+          loadingPosition="start"
+        >
           Create
         </Button>
       </Box>
