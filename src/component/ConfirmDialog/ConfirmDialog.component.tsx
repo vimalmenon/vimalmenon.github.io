@@ -39,10 +39,10 @@ export const ConfirmDialog: React.FC<IConfirmDialog> = ({
       <ShowTitle icon={icon} title={title} />
     </DialogTitle>
     <DialogActions>
-      <Button onClick={onCancel} variant="outlined">
+      <Button onClick={onCancel} variant="outlined" endIcon={<Icons.Close />}>
         Cancel
       </Button>
-      <AsyncButton onClick={onConfirm} variant="contained">
+      <AsyncButton onClick={onConfirm} variant="contained" startIcon={<Icons.Check />}>
         Confirm
       </AsyncButton>
     </DialogActions>
