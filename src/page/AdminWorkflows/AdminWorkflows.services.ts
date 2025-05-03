@@ -8,14 +8,10 @@ import { IUseAdminWorkflows } from './AdminWorkflows';
 
 export const useAdminWorkflows = (): IUseAdminWorkflows => {
   const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
-  const [uuid, setUuid] = useState<string>('');
+
   const getWorkflows = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
     setWorkflows(response.data);
-  };
-  const createUUID = async (): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<string>>(APIs.getUUID());
-    setUuid(response.data);
   };
 
   const createWorkflow = async (name: string): Promise<void> => {
@@ -32,11 +28,9 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
     await getWorkflows();
   };
   return {
-    createUUID,
     createWorkflow,
     deleteWorkflow,
     getWorkflows,
-    uuid,
     workflows,
   };
 };
