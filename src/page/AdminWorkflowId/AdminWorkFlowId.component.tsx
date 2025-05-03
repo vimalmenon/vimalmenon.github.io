@@ -2,6 +2,7 @@
 
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+import LinearProgress from '@mui/material/LinearProgress';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useEffect } from 'react';
@@ -20,7 +21,7 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const { selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
+  const { loading, selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
   const {
     createNode,
@@ -42,6 +43,7 @@ const Component: React.FC = () => {
   }, [id]);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      {loading ? <LinearProgress /> : null}
       {selectedNode ? (
         <ConfirmDialog
           icon="WARNING"
