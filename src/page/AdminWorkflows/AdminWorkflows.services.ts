@@ -1,14 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { useAdminContext } from '@context';
 import { APIs } from '@data';
 import { IGenericResponse, ITool, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
 import { IUseAdminWorkflows } from './AdminWorkflows';
 
 export const useAdminWorkflows = (): IUseAdminWorkflows => {
-  const { getLLMs, llms } = useAdminContext();
   const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
   const [uuid, setUuid] = useState<string>('');
   const getWorkflows = async (): Promise<void> => {
@@ -37,9 +35,7 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
     createUUID,
     createWorkflow,
     deleteWorkflow,
-    getLLMs,
     getWorkflows,
-    llms,
     uuid,
     workflows,
   };

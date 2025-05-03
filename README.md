@@ -48,6 +48,10 @@ Clean up Remote branch
 ```sh
 git remote update origin --prune
 ```
+Eslint copilot
+```sh
+copilot-debug npm run eslint:fix
+```
 
 
 https://reactflow.dev/components/templates/workflow-editor

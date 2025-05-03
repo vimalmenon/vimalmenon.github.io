@@ -9,11 +9,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import React, { useEffect } from 'react';
+import { useAdminContext } from '@context';
 import { Icons } from '@data';
-import { useAdminWorkflows } from '../AdminWorkflows.services';
 
 export const LLM: React.FC = () => {
-  const { getLLMs, llms } = useAdminWorkflows();
+  const { getLLMs, llms } = useAdminContext();
   useEffect(() => {
     getLLMs();
   }, []);

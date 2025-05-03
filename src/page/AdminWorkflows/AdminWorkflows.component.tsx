@@ -7,7 +7,6 @@ import Tabs from '@mui/material/Tabs';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useAdminWorkflows } from './AdminWorkflows.services';
-import { LLM } from './LLM';
 import { Workflows } from './Workflows';
 
 export const AdminWorkflows: React.FC = () => {
@@ -21,11 +20,9 @@ export const AdminWorkflows: React.FC = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <Tabs value={tab} onChange={handleChange}>
         <Tab label="Workflows" />
-        <Tab label="LLM" />
         <Tab label="UUID" />
       </Tabs>
       {tab === 0 ? <Workflows /> : null}
-      {tab === 1 ? <LLM /> : null}
       {tab === 2 ? (
         <Box>
           <TextField required label="UUID" value={uuid} size="small" disabled={true} />
