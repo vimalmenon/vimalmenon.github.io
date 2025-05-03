@@ -15,6 +15,7 @@ export interface IAdminWorkflowId {
 
 export interface INodeTab {
   name: string;
+  label: string;
   mode: FormMode;
   selected: boolean;
 }

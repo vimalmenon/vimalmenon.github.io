@@ -47,7 +47,11 @@ const Component: React.FC = () => {
       {selectedNode ? (
         <ConfirmDialog
           icon="WARNING"
-          title={`Are you sure you want to delete?`}
+          title={
+            <span>
+              Delete node <b>{selectedNode.name}</b>?
+            </span>
+          }
           open={!!selectedNode}
           onConfirm={deleteNodeConfirm}
           onCancel={deleteNodeCancel}
@@ -60,7 +64,7 @@ const Component: React.FC = () => {
           {nodeFormMode === 'CREATE' ? (
             <Tab label="Create Node" />
           ) : (
-            nodeTabs.map((node) => <Tab label={node.name} key={node.name} />)
+            nodeTabs.map((node) => <Tab label={node.label} key={node.name} />)
           )}
         </Tabs>
         {nodeFormMode === 'CREATE' ? (

@@ -40,9 +40,10 @@ export const Context = createContext<IContext>({
 
 export const useWorkflowContext = (): IContext => useContext(Context);
 
-export const createNodeTab = (names: string[]): INodeTab[] =>
+export const createNodeTab = (names: string[], nodeMap: Record<string, INode>): INodeTab[] =>
   names.map<INodeTab>((name) => ({
     disabled: false,
+    label: nodeMap[name].name,
     mode: 'VIEW',
     name: name,
     selected: false,
@@ -68,7 +69,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
     const workflow = response.data;
     setNodes(Object.keys(workflow.nodes));
-    setNodeTabs(createNodeTab(Object.keys(workflow.nodes)));
+    setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
     setWorkflow(workflow);
     setWorkflowLoading(false);
   };
