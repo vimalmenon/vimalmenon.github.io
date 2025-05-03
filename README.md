@@ -13,9 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [x] Fix multiselect value
-- [x] Confirm and Cancel to show icon in confirm dialogue
-- [ ] Show Loading indicator on Workflow page
+- [x] Show Loading indicator on Workflow page
 - [ ] Need to show Error in UI
 - [ ] Close Confirm dialogue when error
 - [ ] Fix clear on multiselect
