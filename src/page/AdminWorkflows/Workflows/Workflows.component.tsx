@@ -11,14 +11,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import NextLink from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Icons } from '@data';
-import { useAdminWorkflows } from '../AdminWorkflows.services';
+import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
+  const { mode, setMode } = useAdminWorkflowsContext();
   const { deleteWorkflow, getWorkflows, loading, workflows } = useAdminWorkflows();
-  const [mode, setMode] = useState<'VIEW' | 'CREATE'>('VIEW');
   useEffect(() => {
     getWorkflows();
   }, []);

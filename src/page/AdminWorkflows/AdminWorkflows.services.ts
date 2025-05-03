@@ -1,15 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { createContext, useContext } from 'react';
 import { APIs } from '@data';
 import { IGenericResponse, ITool, IWorkflow } from '@types';
-import { makeRequest } from '@utility';
-import { IUseAdminWorkflows } from './AdminWorkflows';
+import { makeRequest, NotImplemented } from '@utility';
+import { IContext, IUseAdminWorkflows } from './AdminWorkflows';
+
+export const Context = createContext<IContext>({
+  loading: false,
+  mode: 'VIEW',
+  setLoading: NotImplemented,
+  setMode: NotImplemented,
+  setWorkflows: NotImplemented,
+  workflows: [],
+});
+
+export const useAdminWorkflowsContext = (): IContext => useContext<IContext>(Context);
 
 export const useAdminWorkflows = (): IUseAdminWorkflows => {
-  const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-
+  const { loading, setLoading, setMode, setWorkflows, workflows } = useAdminWorkflowsContext();
   const getWorkflows = async (): Promise<void> => {
     setLoading(true);
     const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
@@ -26,6 +35,7 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
     );
     await getWorkflows();
     setLoading(false);
+    setMode('VIEW');
   };
 
   const deleteWorkflow = async (id: string): Promise<void> => {
