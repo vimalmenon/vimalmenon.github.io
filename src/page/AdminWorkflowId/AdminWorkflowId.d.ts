@@ -41,6 +41,8 @@ export interface IContext {
   setNodeFormMode: ReactSetState<FormMode>;
   selectedNode: INode | null;
   setSelectedNode: ReactSetState<INode | null>;
+  error: string | null;
+  setError: ReactSetState<string | null>;
 }
 
 export interface IUseTabHelper {
