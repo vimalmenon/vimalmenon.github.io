@@ -1,5 +1,6 @@
 'use client';
 
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
@@ -20,7 +21,7 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const { selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
+  const { error, selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
   const {
     createNode,
@@ -55,6 +56,8 @@ const Component: React.FC = () => {
           onCancel={deleteNodeCancel}
         />
       ) : null}
+      {error ? <Alert severity="error">{error}</Alert> : null}
+
       <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
