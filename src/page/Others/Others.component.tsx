@@ -1,8 +1,32 @@
-import React from 'react';
+'use client';
 
-export const Others: React.FC = () => (
-  <div>
-    <h1>Others</h1>
-    <p>This is the Others page.</p>
-  </div>
-);
+import { Divider } from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import React from 'react';
+import { LLM } from './LLM';
+import { useOthersHelper } from './Others.service';
+import { Tools } from './Tools';
+
+export const Others: React.FC = () => {
+  const { createUUID, uuid } = useOthersHelper();
+  return (
+    <div>
+      <Box>
+        <TextField required label="UUID" value={uuid} size="small" disabled={true} />
+        <Button variant="outlined" onClick={createUUID}>
+          Create
+        </Button>
+      </Box>
+      <br />
+      <Divider />
+      <br />
+      <Tools />
+      <br />
+      <Divider />
+      <br />
+      <LLM />
+    </div>
+  );
+};

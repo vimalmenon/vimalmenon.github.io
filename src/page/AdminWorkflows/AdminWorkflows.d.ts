@@ -1,14 +1,19 @@
-import { ILLM, ITool, IWorkflow } from '@types';
+import { FormMode, IWorkflow, ReactSetState } from '@types';
 
 export interface IUseAdminWorkflows {
-  createUUID: () => Promise<void>;
   createWorkflow: (name: string) => Promise<void>;
   deleteWorkflow: (id: string) => Promise<void>;
-  getLLMs: () => Promise<void>;
-  getTools: () => Promise<void>;
   getWorkflows: () => Promise<void>;
-  llms: ILLM[];
-  tools: ITool[];
-  uuid: string;
   workflows: IWorkflow[];
+  loading: boolean;
+  setLoading: ReactSetState<boolean>;
+}
+
+export interface IContext {
+  mode: FormMode;
+  setMode: ReactSetState<FormMode>;
+  loading: boolean;
+  setLoading: ReactSetState<boolean>;
+  workflows: IWorkflow[];
+  setWorkflows: ReactSetState<IWorkflow[]>;
 }

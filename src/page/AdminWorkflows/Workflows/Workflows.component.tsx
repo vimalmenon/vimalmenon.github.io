@@ -2,6 +2,7 @@
 
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
+import LinearProgress from '@mui/material/LinearProgress';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,14 +11,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import NextLink from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Icons } from '@data';
-import { useAdminWorkflows } from '../AdminWorkflows.services';
+import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
-  const { deleteWorkflow, getWorkflows, workflows } = useAdminWorkflows();
-  const [mode, setMode] = useState<'VIEW' | 'CREATE'>('VIEW');
+  const { mode, setMode } = useAdminWorkflowsContext();
+  const { deleteWorkflow, getWorkflows, loading, workflows } = useAdminWorkflows();
   useEffect(() => {
     getWorkflows();
   }, []);
@@ -30,7 +31,7 @@ export const Workflows: React.FC = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell colSpan={4}>
+                <TableCell colSpan={2}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                     <span>Workflows</span>
 
@@ -40,29 +41,34 @@ export const Workflows: React.FC = () => {
                   </Box>
                 </TableCell>
               </TableRow>
-
-              <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell align="right">Action</TableCell>
-              </TableRow>
             </TableHead>
-            <TableBody>
-              {workflows?.map((workflow) => (
-                <TableRow key={workflow.id}>
-                  <TableCell>
-                    <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.id}</NextLink>
-                  </TableCell>
-                  <TableCell>{workflow.name}</TableCell>
-                  <TableCell align="right">
-                    <IconButton onClick={() => deleteWorkflow(workflow.id)}>
-                      <Icons.Delete />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
           </Table>
+          {loading ? (
+            <LinearProgress />
+          ) : (
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell align="right">Action</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {workflows?.map((workflow) => (
+                  <TableRow key={workflow.id}>
+                    <TableCell>
+                      <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.name}</NextLink>
+                    </TableCell>
+                    <TableCell align="right">
+                      <IconButton onClick={() => deleteWorkflow(workflow.id)}>
+                        <Icons.Delete />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </TableContainer>
       )}
     </Box>

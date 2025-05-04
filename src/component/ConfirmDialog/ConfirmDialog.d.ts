@@ -13,5 +13,5 @@ export interface IShowIcon {
 }
 
 export interface IShowTitle extends IShowIcon {
-  title: string;
+  title: string | JSX.Element;
 }

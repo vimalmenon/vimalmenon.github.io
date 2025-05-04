@@ -15,6 +15,7 @@ export interface IAdminWorkflowId {
 
 export interface INodeTab {
   name: string;
+  label: string;
   mode: FormMode;
   selected: boolean;
 }
@@ -41,6 +42,8 @@ export interface IContext {
   setNodeFormMode: ReactSetState<FormMode>;
   selectedNode: INode | null;
   setSelectedNode: ReactSetState<INode | null>;
+  error: string | null;
+  setError: ReactSetState<string | null>;
 }
 
 export interface IUseTabHelper {

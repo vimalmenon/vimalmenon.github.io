@@ -6,16 +6,14 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.22
+<b>Version</b>: 0.0.23
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Fix multiselect value
-- [x] Confirm and Cancel to show icon in confirm dialogue
-- [ ] Show Loading indicator on Workflow page
+- [x] Show Loading indicator on Workflow page
 - [ ] Need to show Error in UI
 - [ ] Close Confirm dialogue when error
 - [ ] Fix clear on multiselect
@@ -47,6 +45,10 @@ This is Website for Vimal Menon
 Clean up Remote branch
 ```sh
 git remote update origin --prune
+```
+Eslint copilot
+```sh
+copilot-debug npm run eslint:fix
 ```
 
 

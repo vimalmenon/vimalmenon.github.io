@@ -1,5 +1,6 @@
 'use client';
 
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
@@ -20,7 +21,7 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const { selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
+  const { error, selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
   const {
     createNode,
@@ -45,12 +46,18 @@ const Component: React.FC = () => {
       {selectedNode ? (
         <ConfirmDialog
           icon="WARNING"
-          title={`Are you sure you want to delete?`}
+          title={
+            <span>
+              Delete node <b>{selectedNode.name}</b>?
+            </span>
+          }
           open={!!selectedNode}
           onConfirm={deleteNodeConfirm}
           onCancel={deleteNodeCancel}
         />
       ) : null}
+      {error ? <Alert severity="error">{error}</Alert> : null}
+
       <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -58,7 +65,7 @@ const Component: React.FC = () => {
           {nodeFormMode === 'CREATE' ? (
             <Tab label="Create Node" />
           ) : (
-            nodeTabs.map((node) => <Tab label={node.name} key={node.name} />)
+            nodeTabs.map((node) => <Tab label={node.label} key={node.name} />)
           )}
         </Tabs>
         {nodeFormMode === 'CREATE' ? (

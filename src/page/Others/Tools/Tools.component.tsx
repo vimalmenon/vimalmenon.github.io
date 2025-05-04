@@ -9,13 +9,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import React, { useEffect } from 'react';
-import { Icons } from '@data';
-import { useAdminWorkflows } from '../AdminWorkflows.services';
+import { useAdminContext } from '@context';
 
-export const LLM: React.FC = () => {
-  const { getLLMs, llms } = useAdminWorkflows();
+export const Tools: React.FC = () => {
+  const { getTools, tools } = useAdminContext();
   useEffect(() => {
-    getLLMs();
+    getTools();
   }, []);
   return (
     <Box>
@@ -24,28 +23,22 @@ export const LLM: React.FC = () => {
           <TableHead>
             <TableRow>
               <TableCell colSpan={3} align="center">
-                LLM&apos;s
+                Tools
               </TableCell>
             </TableRow>
 
             <TableRow>
+              <TableCell>ID</TableCell>
               <TableCell>Name</TableCell>
-              <TableCell>Model</TableCell>
-              <TableCell align="right">Supported</TableCell>
+              <TableCell align="right">Tool Name</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {llms.map((llm) => (
-              <TableRow key={llm.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell padding="normal">{llm.name}</TableCell>
-                <TableCell padding="normal">{llm.model}</TableCell>
-                <TableCell padding="normal" align="right">
-                  {llm.supported ? (
-                    <Icons.Check fontSize="small" />
-                  ) : (
-                    <Icons.Close fontSize="small" />
-                  )}
-                </TableCell>
+            {tools.map((tool) => (
+              <TableRow key={tool.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell>{tool.id}</TableCell>
+                <TableCell>{tool.name}</TableCell>
+                <TableCell align="right">{tool.tool_name}</TableCell>
               </TableRow>
             ))}
           </TableBody>

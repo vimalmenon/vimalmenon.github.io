@@ -1,48 +1,55 @@
 'use client';
 
-import { useState } from 'react';
-import { useAdminContext } from '@context';
+import { createContext, useContext } from 'react';
 import { APIs } from '@data';
 import { IGenericResponse, ITool, IWorkflow } from '@types';
-import { makeRequest } from '@utility';
-import { IUseAdminWorkflows } from './AdminWorkflows';
+import { makeRequest, NotImplemented } from '@utility';
+import { IContext, IUseAdminWorkflows } from './AdminWorkflows';
+
+export const Context = createContext<IContext>({
+  loading: false,
+  mode: 'VIEW',
+  setLoading: NotImplemented,
+  setMode: NotImplemented,
+  setWorkflows: NotImplemented,
+  workflows: [],
+});
+
+export const useAdminWorkflowsContext = (): IContext => useContext<IContext>(Context);
 
 export const useAdminWorkflows = (): IUseAdminWorkflows => {
-  const { getLLMs, getTools, llms, tools } = useAdminContext();
-  const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
-  const [uuid, setUuid] = useState<string>('');
+  const { loading, setLoading, setMode, setWorkflows, workflows } = useAdminWorkflowsContext();
   const getWorkflows = async (): Promise<void> => {
+    setLoading(true);
     const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
     setWorkflows(response.data);
-  };
-  const createUUID = async (): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<string>>(APIs.getUUID());
-    setUuid(response.data);
+    setLoading(false);
   };
 
   const createWorkflow = async (name: string): Promise<void> => {
+    setLoading(true);
     await makeRequest<IGenericResponse<ITool[]>>(
       APIs.CreateWorkflow({
         name,
       })
     );
     await getWorkflows();
+    setLoading(false);
+    setMode('VIEW');
   };
 
   const deleteWorkflow = async (id: string): Promise<void> => {
+    setLoading(true);
     await makeRequest<IGenericResponse<ITool[]>>(APIs.DeleteWorkflow(id));
     await getWorkflows();
+    setLoading(false);
   };
   return {
-    createUUID,
     createWorkflow,
     deleteWorkflow,
-    getLLMs,
-    getTools,
     getWorkflows,
-    llms,
-    tools,
-    uuid,
+    loading,
+    setLoading,
     workflows,
   };
 };
