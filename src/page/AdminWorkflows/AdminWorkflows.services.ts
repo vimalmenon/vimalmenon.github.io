@@ -9,8 +9,10 @@ import { IContext, IUseAdminWorkflows } from './AdminWorkflows';
 export const Context = createContext<IContext>({
   loading: false,
   mode: 'VIEW',
+  selectedWorkflow: null,
   setLoading: NotImplemented,
   setMode: NotImplemented,
+  setSelectedWorkflow: NotImplemented,
   setWorkflows: NotImplemented,
   workflows: [],
 });
