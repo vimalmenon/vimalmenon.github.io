@@ -1,12 +1,14 @@
-import { FormMode, IWorkflow, ReactSetState } from '@types';
+import { FormMode, IWorkflow, ReactSetState, VoidFunction } from '@types';
 
 export interface IUseAdminWorkflows {
   createWorkflow: (name: string) => Promise<void>;
-  deleteWorkflow: (id: string) => Promise<void>;
+  deleteWorkflow: (workflow: IWorkflow) => Promise<void>;
   getWorkflows: () => Promise<void>;
   workflows: IWorkflow[];
   loading: boolean;
   setLoading: ReactSetState<boolean>;
+  deleteWorkflowConfirm: () => Promise<void>;
+  deleteWorkflowCancel: VoidFunction;
 }
 
 export interface IContext {

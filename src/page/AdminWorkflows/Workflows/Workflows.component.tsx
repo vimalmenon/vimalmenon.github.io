@@ -14,13 +14,19 @@ import NextLink from 'next/link';
 import { useEffect } from 'react';
 import { ConfirmDialog } from '@component';
 import { Icons } from '@data';
-import { NotImplemented } from '@utility';
 import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
   const { mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
-  const { deleteWorkflow, getWorkflows, loading, workflows } = useAdminWorkflows();
+  const {
+    deleteWorkflow,
+    deleteWorkflowCancel,
+    deleteWorkflowConfirm,
+    getWorkflows,
+    loading,
+    workflows,
+  } = useAdminWorkflows();
   useEffect(() => {
     getWorkflows();
   }, []);
@@ -35,8 +41,8 @@ export const Workflows: React.FC = () => {
             </span>
           }
           open={!!selectedWorkflow}
-          onConfirm={NotImplemented}
-          onCancel={NotImplemented}
+          onConfirm={deleteWorkflowConfirm}
+          onCancel={deleteWorkflowCancel}
         />
       ) : null}
       {mode === 'CREATE' ? (
@@ -75,7 +81,7 @@ export const Workflows: React.FC = () => {
                       <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.name}</NextLink>
                     </TableCell>
                     <TableCell align="right">
-                      <IconButton onClick={() => deleteWorkflow(workflow.id)}>
+                      <IconButton onClick={() => deleteWorkflow(workflow)}>
                         <Icons.Delete />
                       </IconButton>
                     </TableCell>
