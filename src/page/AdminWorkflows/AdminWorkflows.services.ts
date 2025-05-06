@@ -57,6 +57,7 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
       await makeRequest<IGenericResponse<ITool[]>>(APIs.DeleteWorkflow(selectedWorkflow.id));
       await getWorkflows();
       setLoading(false);
+      setSelectedWorkflow(null);
     }
   };
   const deleteWorkflowCancel = (): void => {
