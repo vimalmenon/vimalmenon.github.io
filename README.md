@@ -14,7 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Show Loading indicator on Workflow page
-- [ ] Execute the workflow
+- [x] Execute the workflow
 - [ ] Show workflow history
 - [ ] Show Loading indicator on Pages
 - [ ] Need to show Error in UI
