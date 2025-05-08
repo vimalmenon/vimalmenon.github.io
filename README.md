@@ -14,13 +14,14 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Show Loading indicator on Workflow page
+- [ ] Execute the workflow
+- [ ] Show workflow history
 - [ ] Show Loading indicator on Pages
 - [ ] Need to show Error in UI
 - [ ] Close Confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
-- [ ] Execute the workflow
 - [ ] Update MetaData on Workflow
 - [ ] Create a Graph for the Workflow
 - [ ] Show Graph at the side
