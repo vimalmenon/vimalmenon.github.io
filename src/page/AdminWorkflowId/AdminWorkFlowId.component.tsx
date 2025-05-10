@@ -31,6 +31,7 @@ const Component: React.FC = () => {
     getLLMs,
     getTools,
     getWorkFlow,
+    getWorkflowTypes,
     id,
     updateNode,
   } = useWorkflowDataHelper();
@@ -40,6 +41,7 @@ const Component: React.FC = () => {
     getWorkFlow();
     getLLMs();
     getTools();
+    getWorkflowTypes();
   }, [id]);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

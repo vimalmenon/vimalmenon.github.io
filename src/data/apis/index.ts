@@ -67,6 +67,10 @@ const HistoryWorkflow = (): IAPI => ({
   method: 'POST',
   url: 'workflow/history',
 });
+const GetWorkflowTypes = (): IAPI => ({
+  method: 'GET',
+  url: '/workflow_types',
+});
 
 export const APIs = {
   CreateWorkflow,
@@ -79,6 +83,7 @@ export const APIs = {
   getUUID,
   GetWorkflowById,
   GetWorkflows,
+  GetWorkflowTypes,
   HistoryWorkflow,
   UpdateWorkflow,
   UpdateWorkflowNode,

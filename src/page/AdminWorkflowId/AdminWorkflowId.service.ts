@@ -65,7 +65,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowLoading,
     workflow,
   } = useWorkflowContext();
-  const { getLLMs, getTools } = useAdminContext();
+  const { getLLMs, getTools, getWorkflowTypes } = useAdminContext();
   const getWorkFlow = async (): Promise<void> => {
     setWorkflowLoading(true);
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
@@ -119,6 +119,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     getLLMs,
     getTools,
     getWorkFlow,
+    getWorkflowTypes,
     id,
     updateNode,
     updateWorkflow,

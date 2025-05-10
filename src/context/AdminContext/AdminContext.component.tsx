@@ -2,7 +2,14 @@
 
 import { useReducer } from 'react';
 import { IReactChildren } from '@types';
-import { Context, getLLMs, getTools, initialState, reducer } from './AdminContext.service';
+import {
+  Context,
+  getLLMs,
+  getTools,
+  getWorkflowTypes,
+  initialState,
+  reducer,
+} from './AdminContext.service';
 
 export const AdminContext: React.FC<IReactChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -16,6 +23,9 @@ export const AdminContext: React.FC<IReactChildren> = ({ children }) => {
         },
         getTools: async () => {
           await getTools(dispatch);
+        },
+        getWorkflowTypes: async () => {
+          await getWorkflowTypes(dispatch);
         },
       }}
     >

@@ -72,8 +72,9 @@ export interface IUseWorkflowDataHelper {
   id: string;
   updateNode: (nodeId: string, data: INode) => Promise<void>;
   updateWorkflow: (data: IWorkflow) => Promise<void>;
-  deleteNodeConfirm: () => Promise<void>;
+  deleteNodeConfirm: VoidFunction<Promise<void>>;
   deleteNodeCancel: VoidFunction;
+  getWorkflowTypes: VoidFunction<Promise<void>>;
 }
 
 export interface IUseNodeTabsHelper {
