@@ -20,13 +20,13 @@ export enum fields {
 }
 
 export const nodeType = (type: string): string[] => {
-  if (type === 'agent') {
+  if (type === 'Agent') {
     return [fields.LLM, fields.Prompt, fields.Tools];
   }
-  if (type === 'humanInput') {
+  if (type === 'HumanInput') {
     return [fields.Input];
   }
-  if (type === 'tool') {
+  if (type === 'Tool') {
     return [fields.Tool];
   }
   return [];
