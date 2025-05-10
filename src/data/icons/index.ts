@@ -7,6 +7,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import EditIcon from '@mui/icons-material/Edit';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import HistoryIcon from '@mui/icons-material/History';
 import InfoIcon from '@mui/icons-material/Info';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -25,6 +26,7 @@ export const Icons = {
   DownloadFile: FileDownloadIcon,
   Edit: EditIcon,
   GitHub: GitHubIcon,
+  History: HistoryIcon,
   Info: InfoIcon,
   LinkedIn: LinkedInIcon,
   Play: PlayArrowIcon,
