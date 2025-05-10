@@ -13,6 +13,18 @@ import { INode } from './Node';
 import { getTitleFromMode } from './Node.service';
 import { ViewNode } from './ViewNode';
 
+const cleanData = (data: INodeData): INodeData => {
+  const { llm, type, ...rest } = data;
+  const result: INodeData = { ...rest };
+  if (llm) {
+    result.llm = llm;
+  }
+  if (type) {
+    result.type = type;
+  }
+  return result;
+};
+
 export const Node: React.FC<INode> = ({
   cancelNode,
   createNode,
@@ -23,17 +35,6 @@ export const Node: React.FC<INode> = ({
   setMode,
   updateNode,
 }) => {
-  const cleanData = (data: INodeData): INodeData => {
-    const { llm, type, ...rest } = data;
-    const result: INodeData = { ...rest };
-    if (llm) {
-      result.llm = llm;
-    }
-    if (type) {
-      result.type = type;
-    }
-    return result;
-  };
   const [loading, setLoading] = useState<boolean>(false);
   const updateNodeWithMode = async (data: INodeData): Promise<void> => {
     if (updateNode && setMode) {
