@@ -12,6 +12,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SaveIcon from '@mui/icons-material/Save';
+import SchemaIcon from '@mui/icons-material/Schema';
 import WarningIcon from '@mui/icons-material/Warning';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -31,6 +32,7 @@ export const Icons = {
   LinkedIn: LinkedInIcon,
   Play: PlayArrowIcon,
   Save: SaveIcon,
+  Schema: SchemaIcon,
   Twitter: XIcon,
   Warning: WarningIcon,
   YouTube: YouTubeIcon,

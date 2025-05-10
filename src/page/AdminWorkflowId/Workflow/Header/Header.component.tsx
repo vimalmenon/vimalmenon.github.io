@@ -28,6 +28,8 @@ export const Header: React.FC = () => {
               {workflow?.complete ? (
                 <Icon toolTip="Execute" icon={<Icons.Play />} onClick={executeWorkflow} />
               ) : null}
+              <Icon toolTip="History" icon={<Icons.History />} />
+              <Icon toolTip="Graph" icon={<Icons.Schema />} />
             </Fragment>
           ) : null}
         </Fragment>
