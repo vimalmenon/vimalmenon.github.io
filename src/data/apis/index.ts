@@ -69,7 +69,7 @@ const HistoryWorkflow = (): IAPI => ({
 });
 const GetWorkflowTypes = (): IAPI => ({
   method: 'GET',
-  url: '/workflow_types',
+  url: 'workflow_types',
 });
 
 export const APIs = {

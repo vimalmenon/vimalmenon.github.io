@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 import { TextInput } from '..';
 import { AsyncButton, MultiSelect } from '@component';
 import { useAdminContext } from '@context';
-import { Icons, NodeType } from '@data';
+import { Icons } from '@data';
 import {
   convertNodeToOption,
   convertToolsToOption,
@@ -45,8 +45,7 @@ export const NodeForm: React.FC<INodeForm> = ({
   } = useNodeForm(data);
 
   const value = nodeType(type);
-  const { llms, tools: toolsList } = useAdminContext();
-
+  const { llms, tools: toolsList, workflowTypes } = useAdminContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {mode === 'UPDATE' && data ? (
@@ -74,9 +73,9 @@ export const NodeForm: React.FC<INodeForm> = ({
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {NodeType.map((node) => (
-              <MenuItem value={node.value} key={node.value}>
-                {node.name}
+            {workflowTypes.map((node) => (
+              <MenuItem value={node} key={node}>
+                {node}
               </MenuItem>
             ))}
           </Select>
