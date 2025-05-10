@@ -19,7 +19,7 @@ export enum fields {
   Tool = 'Tool',
 }
 
-export const nodeType = (type: string): string[] => {
+export const nodeType = (type?: string): string[] => {
   if (type === 'Agent') {
     return [fields.LLM, fields.Prompt, fields.Tools];
   }
@@ -48,7 +48,7 @@ export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => [
 export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');
-  const [llm, setLlm] = useState<string>(data?.llm ?? '');
+  const [llm, setLlm] = useState<string | undefined>(data?.llm);
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
   const [input, setInput] = useState<string>(data?.input ?? '');

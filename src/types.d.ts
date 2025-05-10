@@ -42,8 +42,8 @@ export interface INodeSlim {
 export interface INode extends INodeSlim {
   id: string;
   prompt: string;
-  type: string;
-  llm: string;
+  type?: string;
+  llm?: string;
   tools: string[];
   input: string;
   next?: string[];

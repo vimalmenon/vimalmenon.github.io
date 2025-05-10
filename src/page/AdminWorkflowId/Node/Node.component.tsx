@@ -23,11 +23,22 @@ export const Node: React.FC<INode> = ({
   setMode,
   updateNode,
 }) => {
+  const cleanData = (data: INodeData): INodeData => {
+    const { llm, type, ...rest } = data;
+    const result: INodeData = { ...rest };
+    if (llm) {
+      result.llm = llm;
+    }
+    if (type) {
+      result.type = type;
+    }
+    return result;
+  };
   const [loading, setLoading] = useState<boolean>(false);
   const updateNodeWithMode = async (data: INodeData): Promise<void> => {
     if (updateNode && setMode) {
       setLoading(true);
-      await updateNode(data);
+      await updateNode(cleanData(data));
       setMode('VIEW');
       setLoading(false);
     }
