@@ -44,6 +44,8 @@ export interface IContext {
   setSelectedNode: ReactSetState<INode | null>;
   error: string | null;
   setError: ReactSetState<string | null>;
+  showHistory: boolean;
+  setShowHistory: ReactSetState<boolean>;
 }
 
 export interface IUseTabHelper {
