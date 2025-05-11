@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from 'react';
 import { APIs } from '@data';
-import { IGenericResponse, ILLM, ITool } from '@types';
+import { IGenericResponse, ILLM } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import { DispatchType, IAdminAction, IAdminContext } from './AdminContext';
 
@@ -27,7 +27,7 @@ export enum ActionType {
 
 export const reducer = (
   state: IAdminContext,
-  action: IAdminAction<ILLM[] | ITool[] | string[]>
+  action: IAdminAction<ILLM[] | string[] | string[]>
 ): IAdminContext => {
   const { payload, type } = action;
   if (type === ActionType.ADD_LLMS) {
@@ -38,8 +38,7 @@ export const reducer = (
     };
   }
   if (type === ActionType.ADD_TOOLS) {
-    const tools = payload as ITool[];
-
+    const tools = payload as string[];
     return {
       ...state,
       tools,
@@ -59,15 +58,15 @@ export const addLlms = (dispatch: DispatchType<ILLM[]>, llms: ILLM[]): void => {
   dispatch({ payload: llms, type: ActionType.ADD_LLMS });
 };
 
-export const addTools = (dispatch: DispatchType<ITool[]>, tools: ITool[]): void => {
+export const addTools = (dispatch: DispatchType<string[]>, tools: string[]): void => {
   dispatch({ payload: tools, type: ActionType.ADD_TOOLS });
 };
 export const addWorkflowTypes = (dispatch: DispatchType<string[]>, types: string[]): void => {
   dispatch({ payload: types, type: ActionType.ADD_WORKFLOW_TYPES });
 };
 
-export const getTools = async (dispatch: DispatchType<ITool[]>): Promise<void> => {
-  const { response } = await makeRequest<IGenericResponse<ITool[]>>(APIs.GetTools());
+export const getTools = async (dispatch: DispatchType<string[]>): Promise<void> => {
+  const { response } = await makeRequest<IGenericResponse<string[]>>(APIs.GetTools());
   addTools(dispatch, response.data);
 };
 

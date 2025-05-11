@@ -3,7 +3,7 @@
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { FormMode, IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
+import { FormMode, IGenericResponse, INode, INodeSlim, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
@@ -98,7 +98,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setSelectedNode(null);
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
-    await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
+    await makeRequest<IGenericResponse<string[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
     await getWorkFlow();
   };
   const createNode = async (data: INodeSlim): Promise<void> => {

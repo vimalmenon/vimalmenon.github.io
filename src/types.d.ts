@@ -69,12 +69,6 @@ export interface ILLM {
   supported: boolean;
 }
 
-export interface ITool {
-  id: string;
-  name: string;
-  tool_name: string;
-}
-
 export interface IMultiSelectOption {
   label: string;
   value: string;

@@ -1,9 +1,9 @@
 import { ActionDispatch } from 'react';
-import { ILLM, ITool } from '@types';
+import { ILLM } from '@types';
 
 export interface IAdminContext {
   llms: ILLM[];
-  tools: ITool[];
+  tools: string[];
   workflowTypes: string[];
   getTools: () => Promise<void>;
   getLLMs: () => Promise<void>;

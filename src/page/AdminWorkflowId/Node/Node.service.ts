@@ -1,14 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  FormMode,
-  IMultiSelectOption,
-  INode,
-  InputChangeType,
-  ITool,
-  SelectChangeType,
-} from '@types';
+import { FormMode, IMultiSelectOption, INode, InputChangeType, SelectChangeType } from '@types';
 import { IUseNodeForm } from './Node';
 
 export enum fields {
@@ -32,10 +25,10 @@ export const nodeType = (type?: string): string[] => {
   return [];
 };
 
-export const convertToolsToOption = (tools: ITool[]): IMultiSelectOption[] =>
+export const convertToolsToOption = (tools: string[]): IMultiSelectOption[] =>
   tools.map((tool) => ({
-    label: tool.name,
-    value: tool.id,
+    label: tool,
+    value: tool,
   }));
 
 export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => [

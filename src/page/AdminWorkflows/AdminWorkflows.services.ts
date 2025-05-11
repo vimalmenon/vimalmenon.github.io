@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from 'react';
 import { APIs } from '@data';
-import { IGenericResponse, ITool, IWorkflow } from '@types';
+import { IGenericResponse, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import { IContext, IUseAdminWorkflows } from './AdminWorkflows';
 
@@ -38,7 +38,7 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
 
   const createWorkflow = async (name: string): Promise<void> => {
     setLoading(true);
-    await makeRequest<IGenericResponse<ITool[]>>(
+    await makeRequest<IGenericResponse<string[]>>(
       APIs.CreateWorkflow({
         name,
       })
@@ -54,7 +54,7 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
   const deleteWorkflowConfirm = async (): Promise<void> => {
     if (selectedWorkflow) {
       setLoading(true);
-      await makeRequest<IGenericResponse<ITool[]>>(APIs.DeleteWorkflow(selectedWorkflow.id));
+      await makeRequest<IGenericResponse<string[]>>(APIs.DeleteWorkflow(selectedWorkflow.id));
       await getWorkflows();
       setLoading(false);
       setSelectedWorkflow(null);
