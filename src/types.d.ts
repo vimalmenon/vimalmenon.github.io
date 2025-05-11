@@ -56,6 +56,7 @@ export interface IWorkflow extends IWorkflowSlim {
   connections: Record<string, string[]>;
   nodes: Record<string, INode>;
   complete: boolean;
+  updated_at: string;
 }
 
 export interface IMakeRequest<T> {

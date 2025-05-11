@@ -14,9 +14,9 @@ This is Website for Vimal Menon
 ## To Do
 
 - [ ] Show workflow history
-- [ ] Show Loading indicator on Pages
-- [ ] Need to show Error in UI
-- [ ] Close Confirm dialogue when error
+- [ ] Show loading indicator on Pages
+- [ ] Show error in UI
+- [ ] Close confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
