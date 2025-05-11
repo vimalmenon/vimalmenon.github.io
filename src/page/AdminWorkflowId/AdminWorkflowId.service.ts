@@ -3,7 +3,7 @@
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { FormMode, IGenericResponse, INode, INodeSlim, ITool, IWorkflow } from '@types';
+import { FormMode, IGenericResponse, INode, INodeSlim, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
@@ -31,9 +31,11 @@ export const Context = createContext<IContext>({
   setNodes: NotImplemented,
   setNodeTabs: NotImplemented,
   setSelectedNode: NotImplemented,
+  setShowHistory: NotImplemented,
   setWorkflow: NotImplemented,
   setWorkflowFormMode: NotImplemented,
   setWorkflowLoading: NotImplemented,
+  showHistory: false,
   workflowFormMode: 'VIEW',
   workflowLoading: false,
 });
@@ -63,7 +65,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowLoading,
     workflow,
   } = useWorkflowContext();
-  const { getLLMs, getTools } = useAdminContext();
+  const { getLLMs, getTools, getWorkflowTypes } = useAdminContext();
   const getWorkFlow = async (): Promise<void> => {
     setWorkflowLoading(true);
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
@@ -96,7 +98,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setSelectedNode(null);
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
-    await makeRequest<IGenericResponse<ITool[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
+    await makeRequest<IGenericResponse<string[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
     await getWorkFlow();
   };
   const createNode = async (data: INodeSlim): Promise<void> => {
@@ -117,6 +119,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     getLLMs,
     getTools,
     getWorkFlow,
+    getWorkflowTypes,
     id,
     updateNode,
     updateWorkflow,

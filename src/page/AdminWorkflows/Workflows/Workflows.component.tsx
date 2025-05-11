@@ -12,18 +12,39 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import NextLink from 'next/link';
 import { useEffect } from 'react';
+import { ConfirmDialog } from '@component';
 import { Icons } from '@data';
 import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
-  const { mode, setMode } = useAdminWorkflowsContext();
-  const { deleteWorkflow, getWorkflows, loading, workflows } = useAdminWorkflows();
+  const { mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
+  const {
+    deleteWorkflow,
+    deleteWorkflowCancel,
+    deleteWorkflowConfirm,
+    getWorkflows,
+    loading,
+    workflows,
+  } = useAdminWorkflows();
   useEffect(() => {
     getWorkflows();
   }, []);
   return (
     <Box>
+      {selectedWorkflow ? (
+        <ConfirmDialog
+          icon="WARNING"
+          title={
+            <span>
+              Delete Workflow <b>{selectedWorkflow.name}</b>?
+            </span>
+          }
+          open={!!selectedWorkflow}
+          onConfirm={deleteWorkflowConfirm}
+          onCancel={deleteWorkflowCancel}
+        />
+      ) : null}
       {mode === 'CREATE' ? (
         <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} />
       ) : (
@@ -60,7 +81,7 @@ export const Workflows: React.FC = () => {
                       <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.name}</NextLink>
                     </TableCell>
                     <TableCell align="right">
-                      <IconButton onClick={() => deleteWorkflow(workflow.id)}>
+                      <IconButton onClick={() => deleteWorkflow(workflow)}>
                         <Icons.Delete />
                       </IconButton>
                     </TableCell>

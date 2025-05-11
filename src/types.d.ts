@@ -42,8 +42,8 @@ export interface INodeSlim {
 export interface INode extends INodeSlim {
   id: string;
   prompt: string;
-  type: string;
-  llm: string;
+  type?: string;
+  llm?: string;
   tools: string[];
   input: string;
   next?: string[];
@@ -67,12 +67,6 @@ export interface ILLM {
   name: string;
   model: string;
   supported: boolean;
-}
-
-export interface ITool {
-  id: string;
-  name: string;
-  tool_name: string;
 }
 
 export interface IMultiSelectOption {

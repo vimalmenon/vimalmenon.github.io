@@ -8,9 +8,20 @@ export const AdminWorkflowsContext: React.FC<IReactChildren> = ({ children }) =>
   const [mode, setMode] = useState<FormMode>('VIEW');
   const [loading, setLoading] = useState<boolean>(false);
   const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
-
+  const [selectedWorkflow, setSelectedWorkflow] = useState<IWorkflow | null>(null);
   return (
-    <Context.Provider value={{ loading, mode, setLoading, setMode, setWorkflows, workflows }}>
+    <Context.Provider
+      value={{
+        loading,
+        mode,
+        selectedWorkflow,
+        setLoading,
+        setMode,
+        setSelectedWorkflow,
+        setWorkflows,
+        workflows,
+      }}
+    >
       {children}
     </Context.Provider>
   );

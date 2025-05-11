@@ -1,14 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  FormMode,
-  IMultiSelectOption,
-  INode,
-  InputChangeType,
-  ITool,
-  SelectChangeType,
-} from '@types';
+import { FormMode, IMultiSelectOption, INode, InputChangeType, SelectChangeType } from '@types';
 import { IUseNodeForm } from './Node';
 
 export enum fields {
@@ -19,23 +12,23 @@ export enum fields {
   Tool = 'Tool',
 }
 
-export const nodeType = (type: string): string[] => {
-  if (type === 'agent') {
+export const nodeType = (type?: string): string[] => {
+  if (type === 'Agent') {
     return [fields.LLM, fields.Prompt, fields.Tools];
   }
-  if (type === 'humanInput') {
+  if (type === 'HumanInput') {
     return [fields.Input];
   }
-  if (type === 'tool') {
+  if (type === 'Tool') {
     return [fields.Tool];
   }
   return [];
 };
 
-export const convertToolsToOption = (tools: ITool[]): IMultiSelectOption[] =>
+export const convertToolsToOption = (tools: string[]): IMultiSelectOption[] =>
   tools.map((tool) => ({
-    label: tool.name,
-    value: tool.id,
+    label: tool,
+    value: tool,
   }));
 
 export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => [
@@ -48,7 +41,7 @@ export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => [
 export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');
-  const [llm, setLlm] = useState<string>(data?.llm ?? '');
+  const [llm, setLlm] = useState<string | undefined>(data?.llm);
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
   const [input, setInput] = useState<string>(data?.input ?? '');
