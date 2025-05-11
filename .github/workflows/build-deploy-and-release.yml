@@ -1,7 +1,7 @@
 name: Build, deploy and Release
 
 env:
-  tag: '0.0.24'
+  tag: '0.0.25'
   ENV: ${{ secrets.ENV }}
   NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
   NEXT_PUBLIC_ENV: ${{ secrets.NEXT_PUBLIC_ENV }}
