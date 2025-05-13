@@ -59,9 +59,9 @@ export interface IWorkflow extends IWorkflowSlim {
   updated_at: string;
 }
 
-export interface IMakeRequest<T> {
+export interface IMakeRequest<T, E = string> {
   response: T;
-  error?: string;
+  error?: E;
 }
 
 export interface ILLM {
