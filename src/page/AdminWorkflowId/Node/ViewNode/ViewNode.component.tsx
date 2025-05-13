@@ -16,10 +16,12 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
         <Box>Name</Box>
         <Box>{data.name}</Box>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Box>Type</Box>
-        <Box>{data.type}</Box>
-      </Box>
+      {data.type ? (
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box>Type</Box>
+          <Box>{data.type}</Box>
+        </Box>
+      ) : null}
       {value.includes(fields.LLM) ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>LLM</Box>
@@ -44,11 +46,12 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
           <Box>{data.tool}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Next)}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Box>Next</Box>
-        <Box>{data.next}</Box>
-      </Box>
+      {value.includes(fields.Next) ? (
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box>Next</Box>
+          <Box>{data.next}</Box>
+        </Box>
+      ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Updated at</Box>
         <Box>{data.updated_at}</Box>
