@@ -10,29 +10,8 @@ import { Icons } from '@data';
 import { INode as INodeData, INodeSlim } from '@types';
 import { NodeForm } from '../Common';
 import { INode } from './Node';
-import { getTitleFromMode } from './Node.service';
+import { cleanData, getTitleFromMode } from './Node.service';
 import { ViewNode } from './ViewNode';
-
-const cleanData = (data: INodeData): INodeData => {
-  const { input, llm, prompt, tool, type, ...rest } = data;
-  const result: INodeData = { ...rest };
-  if (llm) {
-    result.llm = llm;
-  }
-  if (type) {
-    result.type = type;
-  }
-  if (prompt) {
-    result.prompt = prompt;
-  }
-  if (input) {
-    result.input = input;
-  }
-  if (tool) {
-    result.tool = tool;
-  }
-  return result;
-};
 
 export const Node: React.FC<INode> = ({
   cancelNode,

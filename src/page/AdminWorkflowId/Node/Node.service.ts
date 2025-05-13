@@ -29,6 +29,26 @@ export const nodeType = (type?: string): string[] => {
   return [];
 };
 
+export const cleanData = (data: INode): INode => {
+  const { input, llm, prompt, tool, type, ...rest } = data;
+  const result: INode = { ...rest };
+  if (llm) {
+    result.llm = llm;
+  }
+  if (type) {
+    result.type = type;
+  }
+  if (prompt) {
+    result.prompt = prompt;
+  }
+  if (input) {
+    result.input = input;
+  }
+  if (tool) {
+    result.tool = tool;
+  }
+  return result;
+};
 export const convertToolsToOption = (tools: string[]): IMultiSelectOption[] =>
   tools.map((tool) => ({
     label: tool,
