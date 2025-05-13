@@ -167,7 +167,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' ? (
+      {mode === 'UPDATE' && value.includes(fields.Next) ? (
         <MultiSelect
           options={convertNodeToOption(nodes)}
           value={next ?? []}
