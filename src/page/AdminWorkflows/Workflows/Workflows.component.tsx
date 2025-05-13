@@ -70,7 +70,8 @@ export const Workflows: React.FC = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>ID</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Status</TableCell>
                   <TableCell align="right">Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -79,6 +80,13 @@ export const Workflows: React.FC = () => {
                   <TableRow key={workflow.id}>
                     <TableCell>
                       <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.name}</NextLink>
+                    </TableCell>
+                    <TableCell>
+                      {workflow.complete ? (
+                        <Icons.Check color="success" />
+                      ) : (
+                        <Icons.Close color="warning" />
+                      )}
                     </TableCell>
                     <TableCell align="right">
                       <IconButton onClick={() => deleteWorkflow(workflow)}>
