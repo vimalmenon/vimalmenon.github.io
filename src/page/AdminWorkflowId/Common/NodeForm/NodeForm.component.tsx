@@ -203,6 +203,7 @@ export const NodeForm: React.FC<INodeForm> = ({
                 name,
                 next,
                 prompt,
+                tool,
                 tools,
                 type,
               })

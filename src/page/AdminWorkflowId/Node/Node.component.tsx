@@ -14,13 +14,22 @@ import { getTitleFromMode } from './Node.service';
 import { ViewNode } from './ViewNode';
 
 const cleanData = (data: INodeData): INodeData => {
-  const { llm, type, ...rest } = data;
+  const { input, llm, prompt, tool, type, ...rest } = data;
   const result: INodeData = { ...rest };
   if (llm) {
     result.llm = llm;
   }
   if (type) {
     result.type = type;
+  }
+  if (prompt) {
+    result.prompt = prompt;
+  }
+  if (input) {
+    result.input = input;
+  }
+  if (tool) {
+    result.tool = tool;
   }
   return result;
 };
