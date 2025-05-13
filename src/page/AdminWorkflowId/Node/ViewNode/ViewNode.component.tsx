@@ -42,6 +42,10 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
         <Box>Next</Box>
         <Box>{data.next}</Box>
       </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box>Updated at</Box>
+        <Box>{data.updated_at}</Box>
+      </Box>
     </Box>
   );
 };
