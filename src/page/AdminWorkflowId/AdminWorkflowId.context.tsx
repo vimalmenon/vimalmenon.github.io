@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FormMode, INode, IWorkflow } from '@types';
+import { FormMode, INode, ISelectOption, IWorkflow } from '@types';
 import { IAdminWorkflowIdContext, INodeTab } from './AdminWorkflowId';
 import { Context } from './AdminWorkflowId.service';
 
@@ -16,18 +16,21 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
   const [selectedNode, setSelectedNode] = useState<INode | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showHistory, setShowHistory] = useState<boolean>(false);
+  const [nextNodeOptions, setNextNodeOptions] = useState<ISelectOption[]>([]);
   return (
     <Context.Provider
       value={{
         error,
         id,
         loading,
+        nextNodeOptions,
         nodeFormMode,
         nodes,
         nodeTabs,
         selectedNode,
         setError,
         setLoading,
+        setNextNodeOptions,
         setNodeFormMode,
         setNodes,
         setNodeTabs,
