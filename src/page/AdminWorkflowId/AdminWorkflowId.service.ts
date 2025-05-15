@@ -14,21 +14,16 @@ import {
   IUseWorkflowFormHelper,
 } from './AdminWorkflowId';
 
-export const getNodeAsList = (node: Record<string, INode>): INode[] =>
-  Object.keys(node).map((key) => node[key]);
-
 export const Context = createContext<IContext>({
   error: null,
   id: '0',
   loading: false,
-  nextNodeOptions: [],
   nodeFormMode: 'UPDATE',
   nodes: [],
   nodeTabs: [],
   selectedNode: null,
   setError: NotImplemented,
   setLoading: NotImplemented,
-  setNextNodeOptions: NotImplemented,
   setNodeFormMode: NotImplemented,
   setNodes: NotImplemented,
   setNodeTabs: NotImplemented,

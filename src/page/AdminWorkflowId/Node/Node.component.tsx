@@ -19,7 +19,6 @@ export const Node: React.FC<INode> = ({
   data,
   deleteNode,
   mode,
-  nodes,
   setMode,
   updateNode,
 }) => {
@@ -67,7 +66,6 @@ export const Node: React.FC<INode> = ({
               data={data}
               onCancel={cancelNode}
               mode={mode}
-              nodes={nodes}
               updateNode={updateNodeWithMode}
               createNode={createNodeWithLoading}
               loading={loading}

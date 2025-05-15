@@ -10,7 +10,6 @@ import { ConfirmDialog } from '@component';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
-  getNodeAsList,
   useNodeTabsHelper,
   useTabHelper,
   useWorkflowContext,
@@ -88,7 +87,6 @@ const Component: React.FC = () => {
                       data={workflow.nodes[node.name]}
                       key={node.name}
                       mode={node.mode}
-                      nodes={getNodeAsList(workflow.nodes)}
                       deleteNode={() => deleteNode(node.name)}
                       updateNode={(data) => updateNode(node.name, data)}
                       setMode={(mode) => setNodeMode(index, mode)}

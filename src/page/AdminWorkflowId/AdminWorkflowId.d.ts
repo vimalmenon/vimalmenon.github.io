@@ -4,7 +4,6 @@ import {
   INode,
   INodeSlim,
   IReactChildren,
-  ISelectOption,
   IWorkflow,
   ReactSetState,
   VoidFunction,
@@ -47,8 +46,6 @@ export interface IContext {
   setError: ReactSetState<string | null>;
   showHistory: boolean;
   setShowHistory: ReactSetState<boolean>;
-  nextNodeOptions: ISelectOption[];
-  setNextNodeOptions: ReactSetState<ISelectOption[]>;
 }
 
 export interface IUseTabHelper {

@@ -11,13 +11,7 @@ import { TextInput } from '..';
 import { AsyncButton, MultiSelect } from '@component';
 import { useAdminContext } from '@context';
 import { Icons } from '@data';
-import {
-  convertNodeToOption,
-  convertToolsToOption,
-  fields,
-  nodeType,
-  useNodeForm,
-} from '../../Node/Node.service';
+import { convertToolsToOption, fields, nodeType, useNodeForm } from '../../Node/Node.service';
 import { INodeForm } from './NodeForm';
 
 export const NodeForm: React.FC<INodeForm> = ({
@@ -25,11 +19,11 @@ export const NodeForm: React.FC<INodeForm> = ({
   data,
   loading,
   mode,
-  nodes = [],
   onCancel,
   updateNode,
 }) => {
   const {
+    convertNodeToOptions,
     input,
     llm,
     name,
@@ -169,7 +163,7 @@ export const NodeForm: React.FC<INodeForm> = ({
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Next) ? (
         <MultiSelect
-          options={convertNodeToOption(nodes)}
+          options={convertNodeToOptions()}
           value={next ?? []}
           label={'Next'}
           id={'next'}

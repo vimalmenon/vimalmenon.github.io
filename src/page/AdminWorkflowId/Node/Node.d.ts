@@ -1,5 +1,6 @@
 import {
   FormMode,
+  IMultiSelectOption,
   INode as INodeData,
   INodeSlim,
   InputChangeType,
@@ -9,7 +10,6 @@ import {
 
 export interface INode {
   data?: INodeData;
-  nodes?: INodeData[];
   deleteNode?: () => Promise<void>;
   updateNode?: (data: INodeData) => Promise<void>;
   createNode?: (data: INodeSlim) => Promise<void>;
@@ -23,4 +23,5 @@ export interface IUseNodeForm extends INodeData {
   onMultiSelectUpdate: SelectChangeType<string[]>;
   onSelectClear: (input: string) => void;
   onSelectUpdate: SelectChangeType<string>;
+  convertNodeToOptions: () => IMultiSelectOption[];
 }

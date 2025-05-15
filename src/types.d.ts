@@ -77,11 +77,6 @@ export interface IMultiSelectOption {
   disabled?: boolean;
 }
 
-export interface ISelectOption {
-  label: string;
-  value: string;
-}
-
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';

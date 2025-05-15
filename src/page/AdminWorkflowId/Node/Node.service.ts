@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FormMode, IMultiSelectOption, INode, InputChangeType, SelectChangeType } from '@types';
+import { useWorkflowContext } from '../AdminWorkflowId.service';
 import { IUseNodeForm } from './Node';
 
 export enum fields {
@@ -55,13 +56,6 @@ export const convertToolsToOption = (tools: string[]): IMultiSelectOption[] =>
     value: tool,
   }));
 
-export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => [
-  ...nodes.map((node) => ({
-    label: node.name,
-    value: node.id,
-  })),
-  { label: 'END', value: 'END' },
-];
 export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');
@@ -71,7 +65,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [input, setInput] = useState<string>(data?.input ?? '');
   const [next, setNext] = useState<string[]>(data?.next ?? []);
   const [tool, setTool] = useState<string>(data?.tool ?? '');
-
+  const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {
     const { name, value } = event.target;
     if (name === 'name') {
@@ -122,7 +116,15 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setTools([]);
     }
   };
+  const convertNodeToOptions = (): IMultiSelectOption[] => {
+    const nodes = workflow?.nodes ?? {};
+    return Object.keys(nodes).map<IMultiSelectOption>((node) => ({
+      label: `${nodes[node].name} (${nodes[node].id})`,
+      value: node,
+    }));
+  };
   return {
+    convertNodeToOptions,
     id: data?.id ?? '',
     input,
     llm,
