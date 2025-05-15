@@ -118,10 +118,13 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   };
   const convertNodeToOptions = (): IMultiSelectOption[] => {
     const nodes = workflow?.nodes ?? {};
-    return Object.keys(nodes).map<IMultiSelectOption>((node) => ({
-      label: `${nodes[node].name} (${nodes[node].id})`,
-      value: node,
-    }));
+
+    return Object.keys(nodes)
+      .filter((node) => node !== data?.id)
+      .map<IMultiSelectOption>((node) => ({
+        label: `${nodes[node].name} (${nodes[node].id})`,
+        value: node,
+      }));
   };
   return {
     convertNodeToOptions,
