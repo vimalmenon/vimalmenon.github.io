@@ -1,9 +1,13 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import { INode } from '@types';
 import { useWorkflowContext } from '../../AdminWorkflowId.service';
 import { fields, nodeType } from '../Node.service';
 import { IViewNode } from './ViewNode';
+
+const convertNextToString = (nodes: Record<string, INode>, next: string[]): string =>
+  next.map((node) => nodes[node].name).join(', ');
 
 export const ViewNode: React.FC<IViewNode> = ({ data }) => {
   const value = nodeType(data.type);
@@ -51,7 +55,7 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
       {value.includes(fields.Next) && workflow && data.next ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Next</Box>
-          <Box>{workflow?.nodes[data.next[0] ?? ''].name}</Box>
+          <Box>{convertNextToString(workflow?.nodes, data.next)}</Box>
         </Box>
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
