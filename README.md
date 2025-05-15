@@ -14,6 +14,8 @@ This is Website for Vimal Menon
 ## To Do
 
 - [ ] Show workflow history
+- [ ] Fix the issue with node name not updated
+- [ ] Create dropdown for next
 - [ ] Show loading indicator on Pages
 - [ ] Show error in UI
 - [ ] Close confirm dialogue when error
