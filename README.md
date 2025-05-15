@@ -6,7 +6,7 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.25
+<b>Version</b>: 0.0.26
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
@@ -15,7 +15,6 @@ This is Website for Vimal Menon
 
 - [ ] Show workflow history
 - [ ] Fix the issue with node name not updated
-- [x] Create dropdown for next
 - [ ] Show loading indicator on Pages
 - [ ] Show error in UI
 - [ ] Close confirm dialogue when error
