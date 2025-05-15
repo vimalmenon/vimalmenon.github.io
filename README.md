@@ -6,19 +6,19 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.24
+<b>Version</b>: 0.0.25
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Show Loading indicator on Workflow page
-- [x] Execute the workflow
 - [ ] Show workflow history
-- [ ] Show Loading indicator on Pages
-- [ ] Need to show Error in UI
-- [ ] Close Confirm dialogue when error
+- [ ] Fix the issue with node name not updated
+- [x] Create dropdown for next
+- [ ] Show loading indicator on Pages
+- [ ] Show error in UI
+- [ ] Close confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter

@@ -10,20 +10,8 @@ import { Icons } from '@data';
 import { INode as INodeData, INodeSlim } from '@types';
 import { NodeForm } from '../Common';
 import { INode } from './Node';
-import { getTitleFromMode } from './Node.service';
+import { cleanData, getTitleFromMode } from './Node.service';
 import { ViewNode } from './ViewNode';
-
-const cleanData = (data: INodeData): INodeData => {
-  const { llm, type, ...rest } = data;
-  const result: INodeData = { ...rest };
-  if (llm) {
-    result.llm = llm;
-  }
-  if (type) {
-    result.type = type;
-  }
-  return result;
-};
 
 export const Node: React.FC<INode> = ({
   cancelNode,
@@ -31,7 +19,6 @@ export const Node: React.FC<INode> = ({
   data,
   deleteNode,
   mode,
-  nodes,
   setMode,
   updateNode,
 }) => {
@@ -79,7 +66,6 @@ export const Node: React.FC<INode> = ({
               data={data}
               onCancel={cancelNode}
               mode={mode}
-              nodes={nodes}
               updateNode={updateNodeWithMode}
               createNode={createNodeWithLoading}
               loading={loading}

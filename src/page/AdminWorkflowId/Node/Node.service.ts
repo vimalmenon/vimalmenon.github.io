@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FormMode, IMultiSelectOption, INode, InputChangeType, SelectChangeType } from '@types';
+import { useWorkflowContext } from '../AdminWorkflowId.service';
 import { IUseNodeForm } from './Node';
 
 export enum fields {
@@ -10,34 +11,51 @@ export enum fields {
   Tools = 'Tools',
   Input = 'Input',
   Tool = 'Tool',
+  Next = 'Next',
 }
 
 export const nodeType = (type?: string): string[] => {
   if (type === 'Agent') {
-    return [fields.LLM, fields.Prompt, fields.Tools];
+    return [fields.LLM, fields.Prompt, fields.Tools, fields.Next];
   }
   if (type === 'HumanInput') {
-    return [fields.Input];
+    return [fields.Input, fields.Next];
   }
   if (type === 'Tool') {
-    return [fields.Tool];
+    return [fields.Tool, fields.Next];
+  }
+  if (type === 'LLM') {
+    return [fields.Prompt, fields.Next];
   }
   return [];
 };
 
+export const cleanData = (data: INode): INode => {
+  const { input, llm, prompt, tool, type, ...rest } = data;
+  const result: INode = { ...rest };
+  if (llm) {
+    result.llm = llm;
+  }
+  if (type) {
+    result.type = type;
+  }
+  if (prompt) {
+    result.prompt = prompt;
+  }
+  if (input) {
+    result.input = input;
+  }
+  if (tool) {
+    result.tool = tool;
+  }
+  return result;
+};
 export const convertToolsToOption = (tools: string[]): IMultiSelectOption[] =>
   tools.map((tool) => ({
     label: tool,
     value: tool,
   }));
 
-export const convertNodeToOption = (nodes: INode[]): IMultiSelectOption[] => [
-  ...nodes.map((node) => ({
-    label: node.name,
-    value: node.id,
-  })),
-  { label: 'END', value: 'END' },
-];
 export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [type, setType] = useState<string>(data?.type ?? '');
@@ -47,7 +65,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [input, setInput] = useState<string>(data?.input ?? '');
   const [next, setNext] = useState<string[]>(data?.next ?? []);
   const [tool, setTool] = useState<string>(data?.tool ?? '');
-
+  const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {
     const { name, value } = event.target;
     if (name === 'name') {
@@ -98,7 +116,18 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setTools([]);
     }
   };
+  const convertNodeToOptions = (): IMultiSelectOption[] => {
+    const nodes = workflow?.nodes ?? {};
+
+    return Object.keys(nodes)
+      .filter((node) => node !== data?.id)
+      .map<IMultiSelectOption>((node) => ({
+        label: `${nodes[node].name} (${nodes[node].id})`,
+        value: node,
+      }));
+  };
   return {
+    convertNodeToOptions,
     id: data?.id ?? '',
     input,
     llm,

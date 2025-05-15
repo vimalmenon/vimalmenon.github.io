@@ -41,13 +41,14 @@ export interface INodeSlim {
 
 export interface INode extends INodeSlim {
   id: string;
-  prompt: string;
+  prompt?: string;
   type?: string;
   llm?: string;
   tools: string[];
-  input: string;
-  next?: string[];
+  input?: string;
+  next: string[];
   tool?: string;
+  updated_at?: string;
 }
 
 export interface IWorkflow extends IWorkflowSlim {
@@ -56,11 +57,12 @@ export interface IWorkflow extends IWorkflowSlim {
   connections: Record<string, string[]>;
   nodes: Record<string, INode>;
   complete: boolean;
+  updated_at: string;
 }
 
-export interface IMakeRequest<T> {
+export interface IMakeRequest<T, E = string> {
   response: T;
-  error?: string;
+  error?: E;
 }
 
 export interface ILLM {

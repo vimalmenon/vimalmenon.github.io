@@ -1,7 +1,7 @@
 import { env } from '@data';
 import { IAPI, IMakeRequest } from '@types';
 
-export const makeRequest = async <T>(data: IAPI): Promise<IMakeRequest<T>> => {
+export const makeRequest = async <T, E = unknown>(data: IAPI): Promise<IMakeRequest<T, E>> => {
   const url = `${env.API}${data.url}`;
   try {
     const response = fetch(url, {
@@ -11,12 +11,19 @@ export const makeRequest = async <T>(data: IAPI): Promise<IMakeRequest<T>> => {
       },
       method: data.method,
     });
-    return {
-      response: await (await response).json(),
-    };
+    const newResponse = await response;
+    if (newResponse.ok) {
+      return {
+        response: await newResponse.json(),
+      };
+    }
+    return Promise.resolve<IMakeRequest<T, E>>({
+      error: (await newResponse.json()) as E,
+      response: '' as T,
+    });
   } catch (error) {
-    return Promise.resolve({
-      error: `Error while connecting ${error}`,
+    return Promise.resolve<IMakeRequest<T, E>>({
+      error: `Error while connecting ${error}` as E,
       response: '' as T,
     });
   }

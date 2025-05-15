@@ -21,5 +21,9 @@ export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (
       <Box>Complete</Box>
       <Box>{data.complete ? 'True' : 'False'}</Box>
     </Box>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box>Updated At</Box>
+      <Box>{data.updated_at}</Box>
+    </Box>
   </Box>
 );

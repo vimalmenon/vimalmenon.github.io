@@ -14,9 +14,6 @@ import {
   IUseWorkflowFormHelper,
 } from './AdminWorkflowId';
 
-export const getNodeAsList = (node: Record<string, INode>): INode[] =>
-  Object.keys(node).map((key) => node[key]);
-
 export const Context = createContext<IContext>({
   error: null,
   id: '0',
