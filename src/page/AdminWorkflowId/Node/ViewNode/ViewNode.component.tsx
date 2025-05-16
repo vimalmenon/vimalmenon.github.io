@@ -40,7 +40,7 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
           <Box>{data.prompt}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Tools) ? (
+      {value.includes(fields.Tools) && data.tools.length ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Tools</Box>
           <Box>{data.tools.join(', ')}</Box>
