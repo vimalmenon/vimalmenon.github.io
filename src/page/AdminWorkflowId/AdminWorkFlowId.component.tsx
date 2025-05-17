@@ -28,19 +28,13 @@ const Component: React.FC = () => {
     deleteNode,
     deleteNodeCancel,
     deleteNodeConfirm,
-    getLLMs,
-    getTools,
-    getWorkFlow,
-    getWorkflowTypes,
+    getAllData,
     id,
     updateNode,
   } = useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
   useEffect(() => {
-    getWorkFlow();
-    getLLMs();
-    getTools();
-    getWorkflowTypes();
+    getAllData();
   }, [id]);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

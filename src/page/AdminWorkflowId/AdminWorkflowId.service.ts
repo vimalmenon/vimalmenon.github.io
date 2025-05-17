@@ -61,15 +61,31 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowLoading,
     workflow,
   } = useWorkflowContext();
-  const { getLLMs, getTools, getWorkflowTypes } = useAdminContext();
-  const getWorkFlow = async (): Promise<void> => {
+  const { getLLMs, getServices, getTools, getWorkflowTypes } = useAdminContext();
+
+  const getAllData = async (): Promise<void> => {
     setWorkflowLoading(true);
+    await Promise.all([
+      getServices(),
+      getLLMs(),
+      getTools(),
+      getWorkflowTypes(),
+      getWorkFlow(false),
+    ]);
+    setWorkflowLoading(false);
+  };
+  const getWorkFlow = async (skipLoading: boolean = true): Promise<void> => {
+    if (skipLoading) {
+      setWorkflowLoading(true);
+    }
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
     const workflow = response.data;
     setNodes(Object.keys(workflow.nodes));
     setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
     setWorkflow(workflow);
-    setWorkflowLoading(false);
+    if (skipLoading) {
+      setWorkflowLoading(false);
+    }
   };
   const updateWorkflow = async (data: IWorkflow): Promise<void> => {
     setLoading(true);
@@ -112,10 +128,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     deleteNodeCancel,
     deleteNodeConfirm,
     executeWorkflow,
-    getLLMs,
-    getTools,
-    getWorkFlow,
-    getWorkflowTypes,
+    getAllData,
     id,
     updateNode,
     updateWorkflow,
