@@ -20,6 +20,11 @@ const GetTools = (): IAPI => ({
   url: 'tools',
 });
 
+const GetServices = (): IAPI => ({
+  method: 'GET',
+  url: 'services',
+});
+
 const GetWorkflowById = (id: string): IAPI => ({
   method: 'GET',
   url: `workflow/${id}`,
@@ -79,6 +84,7 @@ export const APIs = {
   DeleteWorkflowNode,
   ExecuteWorkflow,
   GetLLMs,
+  GetServices,
   GetTools,
   getUUID,
   GetWorkflowById,

@@ -3,9 +3,11 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import { TextInput } from '..';
 import { AsyncButton, MultiSelect } from '@component';
@@ -25,6 +27,7 @@ export const NodeForm: React.FC<INodeForm> = ({
   const {
     convertNodeToOptions,
     input,
+    is_start,
     llm,
     name,
     next,
@@ -173,6 +176,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           disabled={loading}
         />
       ) : null}
+      <FormControlLabel control={<Switch checked={is_start} />} label="Is Start" />
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           variant="outlined"
@@ -193,6 +197,7 @@ export const NodeForm: React.FC<INodeForm> = ({
               updateNode({
                 id: data?.id ?? '',
                 input,
+                is_start: false,
                 llm,
                 name,
                 next,

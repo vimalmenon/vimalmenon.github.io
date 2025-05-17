@@ -65,6 +65,8 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [input, setInput] = useState<string>(data?.input ?? '');
   const [next, setNext] = useState<string[]>(data?.next ?? []);
   const [tool, setTool] = useState<string>(data?.tool ?? '');
+  const [isStart, setIsStart] = useState<boolean>(data?.is_start ?? false);
+
   const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {
     const { name, value } = event.target;
@@ -130,6 +132,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     convertNodeToOptions,
     id: data?.id ?? '',
     input,
+    is_start: isStart,
     llm,
     name,
     next,

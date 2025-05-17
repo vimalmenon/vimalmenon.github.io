@@ -49,6 +49,7 @@ export interface INode extends INodeSlim {
   next: string[];
   tool?: string;
   updated_at?: string;
+  is_start: boolean;
 }
 
 export interface IWorkflow extends IWorkflowSlim {
