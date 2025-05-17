@@ -54,6 +54,7 @@ export interface IUseTabHelper {
   onAddNodeTab: VoidFunction;
   onAddNodeCancel: VoidFunction;
   nodeFormMode: FormMode;
+  setNodeMode: (index: number, mode: FormMode) => void;
 }
 
 export interface IUseWorkflowFormHelper {
@@ -75,9 +76,4 @@ export interface IUseWorkflowDataHelper {
   deleteNodeConfirm: VoidFunction<Promise<void>>;
   deleteNodeCancel: VoidFunction;
   getWorkflowTypes: VoidFunction<Promise<void>>;
-}
-
-export interface IUseNodeTabsHelper {
-  nodeTabs: INodeTab[];
-  setNodeMode: (index: number, mode: FormMode) => void;
 }

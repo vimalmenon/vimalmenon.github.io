@@ -8,7 +8,6 @@ import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
   INodeTab,
-  IUseNodeTabsHelper,
   IUseTabHelper,
   IUseWorkflowDataHelper,
   IUseWorkflowFormHelper,
@@ -123,6 +122,21 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   };
 };
 
+export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
+  const { setWorkflowFormMode, workflowFormMode } = useWorkflowContext();
+  const editWorkflowFormMode = (): void => {
+    setWorkflowFormMode('UPDATE');
+  };
+  const viewWorkflowFormMode = (): void => {
+    setWorkflowFormMode('VIEW');
+  };
+  return {
+    editWorkflowFormMode,
+    viewWorkflowFormMode,
+    workflowFormMode,
+  };
+};
+
 export const useTabHelper = (): IUseTabHelper => {
   const { nodeFormMode, nodeTabs, setNodeFormMode, setNodeTabs } = useWorkflowContext();
   const onTabChange = (event: React.SyntheticEvent, value: number): void => {
@@ -145,33 +159,6 @@ export const useTabHelper = (): IUseTabHelper => {
     setNodeFormMode('UPDATE');
   };
   const selectedTab = nodeTabs.findIndex((node) => node.selected);
-
-  return {
-    nodeFormMode,
-    onAddNodeCancel,
-    onAddNodeTab,
-    onTabChange,
-    selectedTab: selectedTab === -1 ? 0 : selectedTab,
-  };
-};
-
-export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
-  const { setWorkflowFormMode, workflowFormMode } = useWorkflowContext();
-  const editWorkflowFormMode = (): void => {
-    setWorkflowFormMode('UPDATE');
-  };
-  const viewWorkflowFormMode = (): void => {
-    setWorkflowFormMode('VIEW');
-  };
-  return {
-    editWorkflowFormMode,
-    viewWorkflowFormMode,
-    workflowFormMode,
-  };
-};
-
-export const useNodeTabsHelper = (): IUseNodeTabsHelper => {
-  const { nodeTabs, setNodeTabs } = useWorkflowContext();
   const setNodeMode = (index: number, mode: FormMode): void => {
     setNodeTabs((nodeTabs) =>
       nodeTabs.map<INodeTab>((node, indexValue) => {
@@ -184,7 +171,11 @@ export const useNodeTabsHelper = (): IUseNodeTabsHelper => {
     );
   };
   return {
-    nodeTabs,
+    nodeFormMode,
+    onAddNodeCancel,
+    onAddNodeTab,
+    onTabChange,
+    selectedTab: selectedTab === -1 ? 0 : selectedTab,
     setNodeMode,
   };
 };

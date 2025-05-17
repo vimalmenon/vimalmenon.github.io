@@ -10,7 +10,6 @@ import { ConfirmDialog } from '@component';
 import { IAdminWorkflowId } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
-  useNodeTabsHelper,
   useTabHelper,
   useWorkflowContext,
   useWorkflowDataHelper,
@@ -23,7 +22,7 @@ import { Workflow } from './Workflow';
 const Component: React.FC = () => {
   const { error, nodeTabs, selectedNode, setNodeFormMode, showHistory, workflow } =
     useWorkflowContext();
-  const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
+  const { nodeFormMode, onTabChange, selectedTab, setNodeMode } = useTabHelper();
   const {
     createNode,
     deleteNode,
@@ -37,7 +36,6 @@ const Component: React.FC = () => {
     updateNode,
   } = useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
-  const { setNodeMode } = useNodeTabsHelper();
   useEffect(() => {
     getWorkFlow();
     getLLMs();
