@@ -35,6 +35,7 @@ export const NodeForm: React.FC<INodeForm> = ({
     onMultiSelectUpdate,
     onSelectClear,
     onSelectUpdate,
+    onSwitchUpdate,
     prompt,
     tool,
     tools,
@@ -170,13 +171,16 @@ export const NodeForm: React.FC<INodeForm> = ({
           value={next ?? []}
           label={'Next'}
           id={'next'}
-          name={'next'}
+          name="next"
           onChange={onMultiSelectUpdate}
           onClear={() => onSelectClear('next')}
           disabled={loading}
         />
       ) : null}
-      <FormControlLabel control={<Switch checked={is_start} />} label="Is Start" />
+      <FormControlLabel
+        control={<Switch checked={is_start} name="isStart" onChange={onSwitchUpdate} />}
+        label="Is Start"
+      />
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           variant="outlined"

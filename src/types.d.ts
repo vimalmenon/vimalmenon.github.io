@@ -83,5 +83,6 @@ export type VoidFunction<T = void> = () => T;
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
 
 export type InputChangeType = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+export type SwitchChangeType = (event: ChangeEvent<HTMLInputElement>) => void;
 
 export type SelectChangeType<T> = (event: SelectChangeEvent<T>) => void;

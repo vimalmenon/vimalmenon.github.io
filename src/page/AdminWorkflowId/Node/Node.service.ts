@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { FormMode, IMultiSelectOption, INode, InputChangeType, SelectChangeType } from '@types';
+import {
+  FormMode,
+  IMultiSelectOption,
+  INode,
+  InputChangeType,
+  SelectChangeType,
+  SwitchChangeType,
+} from '@types';
 import { useWorkflowContext } from '../AdminWorkflowId.service';
 import { IUseNodeForm } from './Node';
 
@@ -80,6 +87,14 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setPrompt(value);
     }
   };
+
+  const onSwitchUpdate: SwitchChangeType = (event) => {
+    const { checked, name } = event.target;
+
+    if (name === 'isStart') {
+      setIsStart(checked);
+    }
+  };
   const onSelectUpdate: SelectChangeType<string> = (event): void => {
     const { name, value } = event.target;
     if (name === 'llm') {
@@ -96,6 +111,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setInput('');
       setNext([]);
       setTool('');
+      setIsStart(false);
     }
   };
   const onMultiSelectUpdate: SelectChangeType<string[]> = (event): void => {
@@ -140,6 +156,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     onMultiSelectUpdate,
     onSelectClear,
     onSelectUpdate,
+    onSwitchUpdate,
     prompt,
     tool,
     tools,
