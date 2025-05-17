@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Fix the issue with node name not updated
+- [ ] Disable starting point for other nodes
 - [ ] Show workflow history
 - [ ] Show loading indicator on Pages
 - [ ] Show error in UI
