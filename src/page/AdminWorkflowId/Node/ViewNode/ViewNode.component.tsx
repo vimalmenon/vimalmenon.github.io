@@ -58,6 +58,12 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
           <Box>{convertNextToString(workflow?.nodes, data.next)}</Box>
         </Box>
       ) : null}
+      {data.is_start ? (
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box>Is Start</Box>
+          <Box>True</Box>
+        </Box>
+      ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Updated at</Box>
         <Box>{data.updated_at}</Box>

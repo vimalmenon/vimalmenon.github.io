@@ -201,7 +201,7 @@ export const NodeForm: React.FC<INodeForm> = ({
               updateNode({
                 id: data?.id ?? '',
                 input,
-                is_start: false,
+                is_start,
                 llm,
                 name,
                 next,
