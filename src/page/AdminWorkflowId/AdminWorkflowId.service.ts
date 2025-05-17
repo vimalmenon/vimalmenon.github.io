@@ -140,7 +140,7 @@ export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
 export const useTabHelper = (): IUseTabHelper => {
   const { nodeFormMode, nodeTabs, setNodeFormMode, setNodeTabs } = useWorkflowContext();
   const onTabChange = (event: React.SyntheticEvent, value: number): void => {
-    setNodeTabs(
+    setNodeTabs((nodeTabs) =>
       nodeTabs.map((node, index) => {
         if (index === value) {
           node.selected = true;
