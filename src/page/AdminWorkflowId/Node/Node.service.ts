@@ -19,20 +19,21 @@ export enum fields {
   Input = 'Input',
   Tool = 'Tool',
   Next = 'Next',
+  IsStart = 'IsStart',
 }
 
 export const nodeType = (type?: string): string[] => {
   if (type === 'Agent') {
-    return [fields.LLM, fields.Prompt, fields.Tools, fields.Next];
+    return [fields.LLM, fields.Prompt, fields.Tools, fields.Next, fields.IsStart];
   }
   if (type === 'HumanInput') {
-    return [fields.Input, fields.Next];
+    return [fields.Input, fields.Next, fields.IsStart];
   }
   if (type === 'Tool') {
-    return [fields.Tool, fields.Next];
+    return [fields.Tool, fields.Next, fields.IsStart];
   }
   if (type === 'LLM') {
-    return [fields.Prompt, fields.Next];
+    return [fields.Prompt, fields.Next, fields.IsStart];
   }
   return [];
 };

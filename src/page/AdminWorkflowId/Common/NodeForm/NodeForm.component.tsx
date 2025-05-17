@@ -177,10 +177,13 @@ export const NodeForm: React.FC<INodeForm> = ({
           disabled={loading}
         />
       ) : null}
-      <FormControlLabel
-        control={<Switch checked={is_start} name="isStart" onChange={onSwitchUpdate} />}
-        label="Is Start"
-      />
+      {mode === 'UPDATE' && value.includes(fields.IsStart) ? (
+        <FormControlLabel
+          control={<Switch checked={is_start} name="isStart" onChange={onSwitchUpdate} />}
+          label="Is Start"
+        />
+      ) : null}
+
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           variant="outlined"
