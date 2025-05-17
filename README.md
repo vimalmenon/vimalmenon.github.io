@@ -13,8 +13,8 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [x] Fix the issue with node name not updated
 - [ ] Show workflow history
-- [ ] Fix the issue with node name not updated
 - [ ] Show loading indicator on Pages
 - [ ] Show error in UI
 - [ ] Close confirm dialogue when error

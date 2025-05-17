@@ -173,7 +173,7 @@ export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
 export const useNodeTabsHelper = (): IUseNodeTabsHelper => {
   const { nodeTabs, setNodeTabs } = useWorkflowContext();
   const setNodeMode = (index: number, mode: FormMode): void => {
-    setNodeTabs(
+    setNodeTabs((nodeTabs) =>
       nodeTabs.map<INodeTab>((node, indexValue) => {
         if (indexValue === index) {
           node.mode = mode;

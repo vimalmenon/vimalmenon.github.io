@@ -21,7 +21,8 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const { error, selectedNode, setNodeFormMode, showHistory, workflow } = useWorkflowContext();
+  const { error, nodeTabs, selectedNode, setNodeFormMode, showHistory, workflow } =
+    useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab } = useTabHelper();
   const {
     createNode,
@@ -36,7 +37,7 @@ const Component: React.FC = () => {
     updateNode,
   } = useWorkflowDataHelper();
   const { viewWorkflowFormMode } = useWorkflowFormHelper();
-  const { nodeTabs, setNodeMode } = useNodeTabsHelper();
+  const { setNodeMode } = useNodeTabsHelper();
   useEffect(() => {
     getWorkFlow();
     getLLMs();
