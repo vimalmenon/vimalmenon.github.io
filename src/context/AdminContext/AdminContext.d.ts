@@ -1,13 +1,15 @@
 import { ActionDispatch } from 'react';
-import { ILLM } from '@types';
+import { ILLM, VoidFunction } from '@types';
 
 export interface IAdminContext {
   llms: ILLM[];
   tools: string[];
+  services: string[];
   workflowTypes: string[];
-  getTools: () => Promise<void>;
-  getLLMs: () => Promise<void>;
-  getWorkflowTypes: () => Promise<void>;
+  getTools: VoidFunction<Promise<void>>;
+  getLLMs: VoidFunction<Promise<void>>;
+  getWorkflowTypes: VoidFunction<Promise<void>>;
+  getServices: VoidFunction<Promise<void>>;
 }
 
 export type ActionType = 'ADD_LLMS' | 'ADD_TOOLS' | 'ADD_WORKFLOW_TYPES';
