@@ -77,6 +77,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [input, setInput] = useState<string>(data?.input ?? '');
   const [next, setNext] = useState<string[]>(data?.next ?? []);
   const [tool, setTool] = useState<string>(data?.tool ?? '');
+  const [service, setService] = useState<string>(data?.service ?? '');
   const [isStart, setIsStart] = useState<boolean>(data?.is_start ?? false);
 
   const { workflow } = useWorkflowContext();
@@ -108,6 +109,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     if (name === 'tool') {
       setTool(value);
     }
+    if (name === 'service') {
+      setService(value);
+    }
     if (name === 'type') {
       setType(value);
       setPrompt('');
@@ -117,6 +121,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setNext([]);
       setTool('');
       setIsStart(false);
+      setService('');
     }
   };
   const onMultiSelectUpdate: SelectChangeType<string[]> = (event): void => {
@@ -163,6 +168,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     onSelectUpdate,
     onSwitchUpdate,
     prompt,
+    service,
     tool,
     tools,
     type,

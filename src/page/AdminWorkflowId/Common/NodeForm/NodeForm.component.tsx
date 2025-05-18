@@ -37,6 +37,7 @@ export const NodeForm: React.FC<INodeForm> = ({
     onSelectUpdate,
     onSwitchUpdate,
     prompt,
+    service,
     tool,
     tools,
     type,
@@ -167,9 +168,9 @@ export const NodeForm: React.FC<INodeForm> = ({
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Service) ? (
         <FormControl fullWidth required size="small">
-          <InputLabel id="service">Tool</InputLabel>
+          <InputLabel id="service">Service</InputLabel>
           <Select
-            value={tool}
+            value={service}
             labelId="service"
             label="Service"
             name="service"
@@ -231,6 +232,7 @@ export const NodeForm: React.FC<INodeForm> = ({
                 name,
                 next,
                 prompt,
+                service,
                 tool,
                 tools,
                 type,

@@ -48,6 +48,7 @@ export interface INode extends INodeSlim {
   input?: string;
   next: string[];
   tool?: string;
+  service?: string;
   updated_at?: string;
   is_start: boolean;
 }

@@ -52,6 +52,12 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
           <Box>{data.tool}</Box>
         </Box>
       ) : null}
+      {value.includes(fields.Service) ? (
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box>Service</Box>
+          <Box>{data.service}</Box>
+        </Box>
+      ) : null}
       {value.includes(fields.Next) && workflow && data.next ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Next</Box>
