@@ -37,7 +37,7 @@ const Component: React.FC = () => {
     getAllData();
   }, [id]);
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
       {selectedNode ? (
         <ConfirmDialog
           icon="WARNING"
