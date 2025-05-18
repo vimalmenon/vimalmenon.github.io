@@ -54,6 +54,13 @@ export const reducer = (
       workflowTypes,
     };
   }
+  if (type === ActionType.ADD_SERVICES) {
+    const services = payload as string[];
+    return {
+      ...state,
+      services,
+    };
+  }
   return state;
 };
 
@@ -69,7 +76,7 @@ export const addWorkflowTypes = (dispatch: DispatchType<string[]>, types: string
 };
 
 export const addServices = (dispatch: DispatchType<string[]>, services: string[]): void => {
-  dispatch({ payload: services, type: ActionType.ADD_WORKFLOW_TYPES });
+  dispatch({ payload: services, type: ActionType.ADD_SERVICES });
 };
 
 export const getTools = async (dispatch: DispatchType<string[]>): Promise<void> => {

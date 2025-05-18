@@ -12,7 +12,7 @@ export interface IAdminContext {
   getServices: VoidFunction<Promise<void>>;
 }
 
-export type ActionType = 'ADD_LLMS' | 'ADD_TOOLS' | 'ADD_WORKFLOW_TYPES';
+export type ActionType = 'ADD_LLMS' | 'ADD_TOOLS' | 'ADD_WORKFLOW_TYPES' | 'ADD_SERVICES';
 
 export interface IAdminAction<T> {
   type: ActionType;
