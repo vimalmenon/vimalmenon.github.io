@@ -18,6 +18,7 @@ export enum fields {
   Tools = 'Tools',
   Input = 'Input',
   Tool = 'Tool',
+  Service = 'Service',
   Next = 'Next',
   IsStart = 'IsStart',
 }
@@ -34,6 +35,9 @@ export const nodeType = (type?: string): string[] => {
   }
   if (type === 'LLM') {
     return [fields.Prompt, fields.Next, fields.IsStart];
+  }
+  if (type === 'Service') {
+    return [fields.Service, fields.IsStart];
   }
   return [];
 };

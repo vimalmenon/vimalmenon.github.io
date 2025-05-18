@@ -43,7 +43,7 @@ export const NodeForm: React.FC<INodeForm> = ({
   } = useNodeForm(data);
 
   const value = nodeType(type);
-  const { llms, tools: toolsList, workflowTypes } = useAdminContext();
+  const { llms, services, tools: toolsList, workflowTypes } = useAdminContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {mode === 'UPDATE' && data ? (
@@ -145,10 +145,10 @@ export const NodeForm: React.FC<INodeForm> = ({
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tool) ? (
         <FormControl fullWidth required size="small">
-          <InputLabel id="node-type">Tool</InputLabel>
+          <InputLabel id="tool">Tool</InputLabel>
           <Select
             value={tool}
-            labelId="node-type"
+            labelId="tool"
             label="Tool"
             name="tool"
             onChange={onSelectUpdate}
@@ -158,6 +158,28 @@ export const NodeForm: React.FC<INodeForm> = ({
               <em>None</em>
             </MenuItem>
             {convertToolsToOption(toolsList).map((node) => (
+              <MenuItem value={node.value} key={node.value}>
+                {node.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      ) : null}
+      {mode === 'UPDATE' && value.includes(fields.Service) ? (
+        <FormControl fullWidth required size="small">
+          <InputLabel id="service">Tool</InputLabel>
+          <Select
+            value={tool}
+            labelId="service"
+            label="Service"
+            name="service"
+            onChange={onSelectUpdate}
+            disabled={loading}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {convertToolsToOption(services).map((node) => (
               <MenuItem value={node.value} key={node.value}>
                 {node.label}
               </MenuItem>
