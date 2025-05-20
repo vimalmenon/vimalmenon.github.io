@@ -11,4 +11,8 @@ export const links = [
     link: 'https://copilot.microsoft.com/chats/7JLnUWoy4RPYmZW3xL6sm',
     name: 'Copilot',
   },
+  {
+    link: 'https://github.com/poe-platform/server-bot-quick-start/tree/main',
+    name: 'Poe GitHub',
+  },
 ];
