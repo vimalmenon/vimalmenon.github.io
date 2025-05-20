@@ -7,4 +7,8 @@ export const links = [
     link: 'https://poloclub.github.io/transformer-explainer/',
     name: 'Transformers',
   },
+  {
+    link: 'https://copilot.microsoft.com/chats/7JLnUWoy4RPYmZW3xL6sm',
+    name: 'Copilot',
+  },
 ];
