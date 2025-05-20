@@ -64,14 +64,10 @@ const UpdateWorkflow = (id: string, body: IWorkflow): IAPI => ({
 });
 
 const ExecuteWorkflow = (id: string): IAPI => ({
-  method: 'POST',
+  method: 'PUT',
   url: `workflow/execute/${id}`,
 });
 
-const HistoryWorkflow = (): IAPI => ({
-  method: 'POST',
-  url: 'workflow/history',
-});
 const GetWorkflowTypes = (): IAPI => ({
   method: 'GET',
   url: 'workflow_types',
@@ -90,7 +86,6 @@ export const APIs = {
   GetWorkflowById,
   GetWorkflows,
   GetWorkflowTypes,
-  HistoryWorkflow,
   UpdateWorkflow,
   UpdateWorkflowNode,
 };
