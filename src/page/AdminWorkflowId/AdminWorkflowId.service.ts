@@ -120,15 +120,13 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowFormMode('VIEW');
     setNodeFormMode('UPDATE');
   };
-  const executeWorkflow = async (): Promise<void> => {
-    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
-  };
+
   return {
     createNode,
     deleteNode,
     deleteNodeCancel,
     deleteNodeConfirm,
-    executeWorkflow,
+
     getAllData,
     id,
     updateNode,
@@ -194,11 +192,15 @@ export const useTabHelper = (): IUseTabHelper => {
   };
 };
 
-export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
+export const useWorkflowExecuteHelper = (id: string): IUseWorkflowExecuteHelper => {
   const getExecutedWorkflow = async (): Promise<void> => {
-    await makeRequest(APIs.GetExecutedWorkflow('0'));
+    await makeRequest(APIs.GetExecutedWorkflow(id));
+  };
+  const executeWorkflow = async (): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
   };
   return {
+    executeWorkflow,
     getExecutedWorkflow,
   };
 };

@@ -66,7 +66,6 @@ export interface IUseWorkflowFormHelper {
 export interface IUseWorkflowDataHelper {
   createNode: (data: INodeSlim) => Promise<void>;
   deleteNode: (nodeId: string) => Promise<void>;
-  executeWorkflow: VoidFunction<Promise<void>>;
   id: string;
   updateNode: (nodeId: string, data: INode) => Promise<void>;
   updateWorkflow: (data: IWorkflow) => Promise<void>;
@@ -77,4 +76,5 @@ export interface IUseWorkflowDataHelper {
 
 export interface IUseWorkflowExecuteHelper {
   getExecutedWorkflow: VoidFunction<Promise<void>>;
+  executeWorkflow: VoidFunction<Promise<void>>;
 }
