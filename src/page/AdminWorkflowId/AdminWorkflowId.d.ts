@@ -74,3 +74,7 @@ export interface IUseWorkflowDataHelper {
   deleteNodeCancel: VoidFunction;
   getAllData: VoidFunction<Promise<void>>;
 }
+
+export interface IUseWorkflowExecuteHelper {
+  getExecutedWorkflow: VoidFunction<Promise<void>>;
+}

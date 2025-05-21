@@ -68,6 +68,11 @@ const ExecuteWorkflow = (id: string): IAPI => ({
   url: `workflow/execute/${id}`,
 });
 
+const GetExecutedWorkflow = (id: string): IAPI => ({
+  method: 'GET',
+  url: `workflow/executed/${id}`,
+});
+
 const GetWorkflowTypes = (): IAPI => ({
   method: 'GET',
   url: 'workflow_types',
@@ -79,6 +84,7 @@ export const APIs = {
   DeleteWorkflow,
   DeleteWorkflowNode,
   ExecuteWorkflow,
+  GetExecutedWorkflow,
   GetLLMs,
   GetServices,
   GetTools,

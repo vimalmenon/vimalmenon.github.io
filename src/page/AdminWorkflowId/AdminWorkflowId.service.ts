@@ -10,6 +10,7 @@ import {
   INodeTab,
   IUseTabHelper,
   IUseWorkflowDataHelper,
+  IUseWorkflowExecuteHelper,
   IUseWorkflowFormHelper,
 } from './AdminWorkflowId';
 
@@ -190,5 +191,14 @@ export const useTabHelper = (): IUseTabHelper => {
     onTabChange,
     selectedTab: selectedTab === -1 ? 0 : selectedTab,
     setNodeMode,
+  };
+};
+
+export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
+  const getExecutedWorkflow = async (): Promise<void> => {
+    await makeRequest(APIs.GetExecutedWorkflow('0'));
+  };
+  return {
+    getExecutedWorkflow,
   };
 };
