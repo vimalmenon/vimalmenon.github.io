@@ -2,29 +2,23 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { IModal } from './Modal';
 
-export const Modal: React.FC<IModal> = ({ open, title }) => (
+export const Modal: React.FC<IModal> = ({ children, onClose, open, title }) => (
   <Dialog
     open={open}
     // slots={{
     //   transition: Transition,
     // }}
     keepMounted
-    onClose={() => false}
+    onClose={onClose}
   >
     <DialogTitle>{title}</DialogTitle>
-    <DialogContent>
-      <DialogContentText>
-        Let Google help apps determine location. This means sending anonymous location data to
-        Google, even when no apps are running.
-      </DialogContentText>
-    </DialogContent>
+    <DialogContent>{children}</DialogContent>
     <DialogActions>
       <Button onClick={() => false}>Disagree</Button>
-      <Button onClick={() => false}>Agree</Button>
+      <Button onClick={onClose}>Close</Button>
     </DialogActions>
   </Dialog>
 );
