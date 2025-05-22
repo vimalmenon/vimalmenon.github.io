@@ -7,14 +7,13 @@ import { Icons } from '@data';
 import {
   useTabHelper,
   useWorkflowContext,
-  useWorkflowExecuteHelper,
   useWorkflowFormHelper,
 } from '../../AdminWorkflowId.service';
 
 export const Header: React.FC = () => {
-  const { id, setShowHistory, showHistory, workflow, workflowFormMode } = useWorkflowContext();
+  const { setShowExecuteWorkflow, setShowHistory, showHistory, workflow, workflowFormMode } =
+    useWorkflowContext();
   const { editWorkflowFormMode } = useWorkflowFormHelper();
-  const { executeWorkflow } = useWorkflowExecuteHelper(id);
   const { onAddNodeTab } = useTabHelper();
   return (
     <CardHeader
@@ -26,7 +25,11 @@ export const Header: React.FC = () => {
               <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
               <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={editWorkflowFormMode} />
               {workflow?.complete ? (
-                <Icon toolTip="Execute" icon={<Icons.Play />} onClick={executeWorkflow} />
+                <Icon
+                  toolTip="Execute"
+                  icon={<Icons.Play />}
+                  onClick={() => setShowExecuteWorkflow(true)}
+                />
               ) : null}
               {showHistory ? (
                 <Icon

@@ -79,6 +79,10 @@ export interface IMultiSelectOption {
   disabled?: boolean;
 }
 
+export interface IExecuteWorkflow {
+  name: string;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';

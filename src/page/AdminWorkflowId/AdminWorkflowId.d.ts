@@ -1,6 +1,7 @@
 import { SyntheticEvent } from 'react';
 import {
   FormMode,
+  IExecuteWorkflow,
   INode,
   INodeSlim,
   IReactChildren,
@@ -46,6 +47,8 @@ export interface IContext {
   setError: ReactSetState<string | null>;
   showHistory: boolean;
   setShowHistory: ReactSetState<boolean>;
+  showExecuteWorkflow: boolean;
+  setShowExecuteWorkflow: ReactSetState<boolean>;
 }
 
 export interface IUseTabHelper {
@@ -76,5 +79,5 @@ export interface IUseWorkflowDataHelper {
 
 export interface IUseWorkflowExecuteHelper {
   getExecutedWorkflow: VoidFunction<Promise<void>>;
-  executeWorkflow: VoidFunction<Promise<void>>;
+  executeWorkflow: (data: IExecuteWorkflow) => Promise<void>;
 }

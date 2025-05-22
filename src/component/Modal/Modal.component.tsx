@@ -1,3 +1,5 @@
+'use client';
+
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -17,8 +19,8 @@ export const Modal: React.FC<IModal> = ({ children, onClose, open, title }) => (
     <DialogTitle>{title}</DialogTitle>
     <DialogContent>{children}</DialogContent>
     <DialogActions>
-      <Button onClick={() => false}>Disagree</Button>
       <Button onClick={onClose}>Close</Button>
+      <Button onClick={() => false}>Submit</Button>
     </DialogActions>
   </Dialog>
 );

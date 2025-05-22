@@ -16,6 +16,7 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
   const [selectedNode, setSelectedNode] = useState<INode | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showHistory, setShowHistory] = useState<boolean>(false);
+  const [showExecuteWorkflow, setShowExecuteWorkflow] = useState<boolean>(false);
   return (
     <Context.Provider
       value={{
@@ -32,10 +33,12 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdContext> = ({ chil
         setNodes,
         setNodeTabs,
         setSelectedNode,
+        setShowExecuteWorkflow,
         setShowHistory,
         setWorkflow,
         setWorkflowFormMode,
         setWorkflowLoading,
+        showExecuteWorkflow,
         showHistory,
         workflow,
         workflowFormMode,

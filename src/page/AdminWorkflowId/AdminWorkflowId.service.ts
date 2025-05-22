@@ -3,7 +3,7 @@
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { FormMode, IGenericResponse, INode, INodeSlim, IWorkflow } from '@types';
+import { FormMode, IExecuteWorkflow, IGenericResponse, INode, INodeSlim, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
@@ -28,10 +28,12 @@ export const Context = createContext<IContext>({
   setNodes: NotImplemented,
   setNodeTabs: NotImplemented,
   setSelectedNode: NotImplemented,
+  setShowExecuteWorkflow: NotImplemented,
   setShowHistory: NotImplemented,
   setWorkflow: NotImplemented,
   setWorkflowFormMode: NotImplemented,
   setWorkflowLoading: NotImplemented,
+  showExecuteWorkflow: false,
   showHistory: false,
   workflowFormMode: 'VIEW',
   workflowLoading: false,
@@ -196,8 +198,8 @@ export const useWorkflowExecuteHelper = (id: string): IUseWorkflowExecuteHelper 
   const getExecutedWorkflow = async (): Promise<void> => {
     await makeRequest(APIs.GetExecutedWorkflow(id));
   };
-  const executeWorkflow = async (): Promise<void> => {
-    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id));
+  const executeWorkflow = async (data: IExecuteWorkflow): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id, data));
   };
   return {
     executeWorkflow,
