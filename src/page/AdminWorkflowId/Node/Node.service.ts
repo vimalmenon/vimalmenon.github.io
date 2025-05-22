@@ -43,7 +43,7 @@ export const nodeType = (type?: string): string[] => {
 };
 
 export const cleanData = (data: INode): INode => {
-  const { input, llm, prompt, tool, type, ...rest } = data;
+  const { input, llm, prompt, service, tool, type, ...rest } = data;
   const result: INode = { ...rest };
   if (llm) {
     result.llm = llm;
@@ -59,6 +59,9 @@ export const cleanData = (data: INode): INode => {
   }
   if (tool) {
     result.tool = tool;
+  }
+  if (service) {
+    result.service = service;
   }
   return result;
 };
