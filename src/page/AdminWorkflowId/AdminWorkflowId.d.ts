@@ -47,8 +47,6 @@ export interface IContext {
   setError: ReactSetState<string | null>;
   showHistory: boolean;
   setShowHistory: ReactSetState<boolean>;
-  showExecuteWorkflow: boolean;
-  setShowExecuteWorkflow: ReactSetState<boolean>;
 }
 
 export interface IUseTabHelper {

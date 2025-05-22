@@ -11,8 +11,7 @@ import {
 } from '../../AdminWorkflowId.service';
 
 export const Header: React.FC = () => {
-  const { setShowExecuteWorkflow, setShowHistory, showHistory, workflow, workflowFormMode } =
-    useWorkflowContext();
+  const { setShowHistory, showHistory, workflowFormMode } = useWorkflowContext();
   const { editWorkflowFormMode } = useWorkflowFormHelper();
   const { onAddNodeTab } = useTabHelper();
   return (
@@ -24,13 +23,6 @@ export const Header: React.FC = () => {
             <Fragment>
               <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
               <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={editWorkflowFormMode} />
-              {workflow?.complete ? (
-                <Icon
-                  toolTip="Execute"
-                  icon={<Icons.Play />}
-                  onClick={() => setShowExecuteWorkflow(true)}
-                />
-              ) : null}
               {showHistory ? (
                 <Icon
                   toolTip="Graph"
