@@ -6,7 +6,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { IModal } from './Modal';
 
-export const Modal: React.FC<IModal> = ({ open }) => (
+export const Modal: React.FC<IModal> = ({ open, title }) => (
   <Dialog
     open={open}
     // slots={{
@@ -15,7 +15,7 @@ export const Modal: React.FC<IModal> = ({ open }) => (
     keepMounted
     onClose={() => false}
   >
-    <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+    <DialogTitle>{title}</DialogTitle>
     <DialogContent>
       <DialogContentText>
         Let Google help apps determine location. This means sending anonymous location data to
