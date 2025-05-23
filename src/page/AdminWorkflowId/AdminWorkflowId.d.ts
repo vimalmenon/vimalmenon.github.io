@@ -4,7 +4,6 @@ import {
   IExecuteWorkflow,
   INode,
   INodeSlim,
-  IReactChildren,
   IWorkflow,
   ReactSetState,
   VoidFunction,
@@ -15,10 +14,6 @@ export interface INodeTab {
   label: string;
   mode: FormMode;
   selected: boolean;
-}
-
-export interface IAdminWorkflowIdContext extends IReactChildren {
-  id: string;
 }
 
 export interface IContext {
