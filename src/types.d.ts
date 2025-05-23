@@ -83,6 +83,10 @@ export interface IExecuteWorkflow {
   name: string;
 }
 
+export interface IAdminWorkflowIdPage {
+  id: string;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';

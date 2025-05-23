@@ -10,10 +10,6 @@ import {
   VoidFunction,
 } from '@types';
 
-export interface IAdminWorkflowId {
-  id: string;
-}
-
 export interface INodeTab {
   name: string;
   label: string;

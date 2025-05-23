@@ -1,6 +1,7 @@
 import type { Metadata, NextPage } from 'next';
 import { Breadcrumbs } from '@common';
 import { APIs, GenerateExecuteWorkflow } from '@data';
+import { AdminWorkflowIdExecute } from '@page';
 import { StyledPage } from '@style';
 import { IGenericResponse, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
@@ -16,7 +17,7 @@ const Page: NextPage<IPage> = async ({ params }) => {
   return (
     <StyledPage sx={{ flexDirection: 'column' }}>
       <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
-      <div>This is execute workflow {id}</div>
+      <AdminWorkflowIdExecute id={id} />
     </StyledPage>
   );
 };

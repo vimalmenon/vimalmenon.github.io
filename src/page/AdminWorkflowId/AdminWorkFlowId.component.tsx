@@ -7,7 +7,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { Fragment, useEffect } from 'react';
 import { ConfirmDialog } from '@component';
-import { IAdminWorkflowId } from './AdminWorkflowId';
+import { IAdminWorkflowIdPage } from '@types';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
   useTabHelper,
@@ -96,7 +96,7 @@ const Component: React.FC = () => {
   );
 };
 
-export const AdminWorkflowId: React.FC<IAdminWorkflowId> = ({ id }) => (
+export const AdminWorkflowId: React.FC<IAdminWorkflowIdPage> = ({ id }) => (
   <AdminWorkflowIdContext id={id}>
     <Component />
   </AdminWorkflowIdContext>
