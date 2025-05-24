@@ -17,6 +17,7 @@ import {
   useWorkflowExecuteHelper,
 } from './AdminWorkflowIdExecute.service';
 import { ExecuteForm } from './ExecuteForm';
+import { Header } from './Header';
 
 const Component: React.FC = () => {
   const { workflows } = useAdminWorkflowIdExecuteContext();
@@ -26,6 +27,7 @@ const Component: React.FC = () => {
   }, []);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
+      <Header />
       <ExecuteForm />
       <TableContainer component={Paper}>
         <Table>
