@@ -1,7 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 import { Icons } from '@data';
 import { IAdminWorkflowIdPage } from '@types';
 import { AdminWorkflowIdExecuteContext } from './AdminWorkflowIdExecute.context';

@@ -9,5 +9,10 @@ export const AdminWorkflowIdExecuteContext: React.FC<IReactChildren & IAdminWork
   id,
 }) => {
   const [workflows, setWorkFlows] = useState<IExecuteWorkflow[]>([]);
-  return <Context.Provider value={{ id, setWorkFlows, workflows }}>{children}</Context.Provider>;
+  const [loading, setLoading] = useState<boolean>(false);
+  return (
+    <Context.Provider value={{ id, loading, setLoading, setWorkFlows, workflows }}>
+      {children}
+    </Context.Provider>
+  );
 };
