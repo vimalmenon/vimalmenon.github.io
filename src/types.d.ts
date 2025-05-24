@@ -48,7 +48,9 @@ export interface INode extends INodeSlim {
   input?: string;
   next: string[];
   tool?: string;
+  service?: string;
   updated_at?: string;
+  is_start: boolean;
 }
 
 export interface IWorkflow extends IWorkflowSlim {
@@ -77,10 +79,25 @@ export interface IMultiSelectOption {
   disabled?: boolean;
 }
 
+export interface IExecuteWorkflowSlim {
+  name: string;
+}
+
+export interface IExecuteWorkflow extends IExecuteWorkflowSlim {
+  id: string;
+  status: string;
+  created_at: string;
+}
+
+export interface IAdminWorkflowIdPage {
+  id: string;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
 
 export type InputChangeType = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+export type SwitchChangeType = (event: ChangeEvent<HTMLInputElement>) => void;
 
 export type SelectChangeType<T> = (event: SelectChangeEvent<T>) => void;

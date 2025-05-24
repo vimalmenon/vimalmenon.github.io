@@ -5,6 +5,7 @@ import { IReactChildren } from '@types';
 import {
   Context,
   getLLMs,
+  getServices,
   getTools,
   getWorkflowTypes,
   initialState,
@@ -20,6 +21,9 @@ export const AdminContext: React.FC<IReactChildren> = ({ children }) => {
         ...state,
         getLLMs: async () => {
           await getLLMs(dispatch);
+        },
+        getServices: async () => {
+          await getServices(dispatch);
         },
         getTools: async () => {
           await getTools(dispatch);

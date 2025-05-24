@@ -268,6 +268,37 @@ export const GenerateWorkflow = (id: string): INavigation => ({
   title: `${id} | Workflows | Admin | Vimal Menon`,
 });
 
+export const GenerateExecuteWorkflow = (id: string): INavigation => ({
+  breadcrumbs: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '/admin/',
+      name: 'Admin',
+    },
+    {
+      link: '/admin/workflows/',
+      name: 'Workflows',
+    },
+    {
+      link: `/admin/workflows/${id}`,
+      name: id,
+    },
+    {
+      link: ``,
+      name: 'execute',
+    },
+  ],
+  children: [],
+  description: 'This is Vimal Menon personal website',
+  link: `/admin/workflows/${id}/execute`,
+  name: id,
+  show: env.IS_LOCAL,
+  title: `${id} | Workflows | Admin | Vimal Menon`,
+});
+
 export const Navigation = {
   About,
   Admin,

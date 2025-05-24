@@ -8,9 +8,11 @@ import { DispatchType, IAdminAction, IAdminContext } from './AdminContext';
 
 export const initialState: IAdminContext = {
   getLLMs: NotImplemented,
+  getServices: NotImplemented,
   getTools: NotImplemented,
   getWorkflowTypes: NotImplemented,
   llms: [],
+  services: [],
   tools: [],
   workflowTypes: [],
 };
@@ -23,6 +25,7 @@ export enum ActionType {
   ADD_LLMS = 'ADD_LLMS',
   ADD_TOOLS = 'ADD_TOOLS',
   ADD_WORKFLOW_TYPES = 'ADD_WORKFLOW_TYPES',
+  ADD_SERVICES = 'ADD_SERVICES',
 }
 
 export const reducer = (
@@ -51,6 +54,13 @@ export const reducer = (
       workflowTypes,
     };
   }
+  if (type === ActionType.ADD_SERVICES) {
+    const services = payload as string[];
+    return {
+      ...state,
+      services,
+    };
+  }
   return state;
 };
 
@@ -63,6 +73,10 @@ export const addTools = (dispatch: DispatchType<string[]>, tools: string[]): voi
 };
 export const addWorkflowTypes = (dispatch: DispatchType<string[]>, types: string[]): void => {
   dispatch({ payload: types, type: ActionType.ADD_WORKFLOW_TYPES });
+};
+
+export const addServices = (dispatch: DispatchType<string[]>, services: string[]): void => {
+  dispatch({ payload: services, type: ActionType.ADD_SERVICES });
 };
 
 export const getTools = async (dispatch: DispatchType<string[]>): Promise<void> => {
@@ -78,4 +92,9 @@ export const getLLMs = async (dispatch: DispatchType<ILLM[]>): Promise<void> => 
 export const getWorkflowTypes = async (dispatch: DispatchType<string[]>): Promise<void> => {
   const { response } = await makeRequest<IGenericResponse<string[]>>(APIs.GetWorkflowTypes());
   addWorkflowTypes(dispatch, response.data);
+};
+
+export const getServices = async (dispatch: DispatchType<string[]>): Promise<void> => {
+  const { response } = await makeRequest<IGenericResponse<string[]>>(APIs.GetServices());
+  addServices(dispatch, response.data);
 };

@@ -5,6 +5,7 @@ import {
   INodeSlim,
   InputChangeType,
   SelectChangeType,
+  SwitchChangeType,
   VoidFunction,
 } from '@types';
 
@@ -21,6 +22,7 @@ export interface INode {
 export interface IUseNodeForm extends INodeData {
   onInputUpdate: InputChangeType;
   onMultiSelectUpdate: SelectChangeType<string[]>;
+  onSwitchUpdate: SwitchChangeType;
   onSelectClear: (input: string) => void;
   onSelectUpdate: SelectChangeType<string>;
   convertNodeToOptions: () => IMultiSelectOption[];

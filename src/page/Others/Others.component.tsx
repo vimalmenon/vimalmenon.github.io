@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import React from 'react';
 import { LLM } from './LLM';
 import { useOthersHelper } from './Others.service';
+import { Service } from './Services';
 import { Tools } from './Tools';
 
 export const Others: React.FC = () => {
@@ -23,6 +24,10 @@ export const Others: React.FC = () => {
       <Divider />
       <br />
       <Tools />
+      <br />
+      <Divider />
+      <br />
+      <Service />
       <br />
       <Divider />
       <br />

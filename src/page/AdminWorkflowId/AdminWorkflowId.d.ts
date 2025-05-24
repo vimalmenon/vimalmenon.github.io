@@ -1,27 +1,11 @@
 import { SyntheticEvent } from 'react';
-import {
-  FormMode,
-  INode,
-  INodeSlim,
-  IReactChildren,
-  IWorkflow,
-  ReactSetState,
-  VoidFunction,
-} from '@types';
-
-export interface IAdminWorkflowId {
-  id: string;
-}
+import { FormMode, INode, INodeSlim, IWorkflow, ReactSetState, VoidFunction } from '@types';
 
 export interface INodeTab {
   name: string;
   label: string;
   mode: FormMode;
   selected: boolean;
-}
-
-export interface IAdminWorkflowIdContext extends IReactChildren {
-  id: string;
 }
 
 export interface IContext {
@@ -44,8 +28,6 @@ export interface IContext {
   setSelectedNode: ReactSetState<INode | null>;
   error: string | null;
   setError: ReactSetState<string | null>;
-  showHistory: boolean;
-  setShowHistory: ReactSetState<boolean>;
 }
 
 export interface IUseTabHelper {
@@ -54,6 +36,7 @@ export interface IUseTabHelper {
   onAddNodeTab: VoidFunction;
   onAddNodeCancel: VoidFunction;
   nodeFormMode: FormMode;
+  setNodeMode: (index: number, mode: FormMode) => void;
 }
 
 export interface IUseWorkflowFormHelper {
@@ -65,19 +48,10 @@ export interface IUseWorkflowFormHelper {
 export interface IUseWorkflowDataHelper {
   createNode: (data: INodeSlim) => Promise<void>;
   deleteNode: (nodeId: string) => Promise<void>;
-  executeWorkflow: VoidFunction<Promise<void>>;
-  getLLMs: VoidFunction<Promise<void>>;
-  getTools: VoidFunction<Promise<void>>;
-  getWorkFlow: VoidFunction<Promise<void>>;
   id: string;
   updateNode: (nodeId: string, data: INode) => Promise<void>;
   updateWorkflow: (data: IWorkflow) => Promise<void>;
   deleteNodeConfirm: VoidFunction<Promise<void>>;
   deleteNodeCancel: VoidFunction;
-  getWorkflowTypes: VoidFunction<Promise<void>>;
-}
-
-export interface IUseNodeTabsHelper {
-  nodeTabs: INodeTab[];
-  setNodeMode: (index: number, mode: FormMode) => void;
+  getAllData: VoidFunction<Promise<void>>;
 }

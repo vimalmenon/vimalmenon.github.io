@@ -3,12 +3,13 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
-import { TextInput } from '..';
-import { AsyncButton, MultiSelect } from '@component';
+import { AsyncButton, MultiSelect, TextInput } from '@component';
 import { useAdminContext } from '@context';
 import { Icons } from '@data';
 import { convertToolsToOption, fields, nodeType, useNodeForm } from '../../Node/Node.service';
@@ -25,6 +26,7 @@ export const NodeForm: React.FC<INodeForm> = ({
   const {
     convertNodeToOptions,
     input,
+    is_start,
     llm,
     name,
     next,
@@ -32,14 +34,16 @@ export const NodeForm: React.FC<INodeForm> = ({
     onMultiSelectUpdate,
     onSelectClear,
     onSelectUpdate,
+    onSwitchUpdate,
     prompt,
+    service,
     tool,
     tools,
     type,
   } = useNodeForm(data);
 
   const value = nodeType(type);
-  const { llms, tools: toolsList, workflowTypes } = useAdminContext();
+  const { llms, services, tools: toolsList, workflowTypes } = useAdminContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {mode === 'UPDATE' && data ? (
@@ -141,10 +145,10 @@ export const NodeForm: React.FC<INodeForm> = ({
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tool) ? (
         <FormControl fullWidth required size="small">
-          <InputLabel id="node-type">Tool</InputLabel>
+          <InputLabel id="tool">Tool</InputLabel>
           <Select
             value={tool}
-            labelId="node-type"
+            labelId="tool"
             label="Tool"
             name="tool"
             onChange={onSelectUpdate}
@@ -161,18 +165,47 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
+      {mode === 'UPDATE' && value.includes(fields.Service) ? (
+        <FormControl fullWidth required size="small">
+          <InputLabel id="service">Service</InputLabel>
+          <Select
+            value={service}
+            labelId="service"
+            label="Service"
+            name="service"
+            onChange={onSelectUpdate}
+            disabled={loading}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {convertToolsToOption(services).map((node) => (
+              <MenuItem value={node.value} key={node.value}>
+                {node.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      ) : null}
       {mode === 'UPDATE' && value.includes(fields.Next) ? (
         <MultiSelect
           options={convertNodeToOptions()}
           value={next ?? []}
           label={'Next'}
           id={'next'}
-          name={'next'}
+          name="next"
           onChange={onMultiSelectUpdate}
           onClear={() => onSelectClear('next')}
           disabled={loading}
         />
       ) : null}
+      {mode === 'UPDATE' && value.includes(fields.IsStart) ? (
+        <FormControlLabel
+          control={<Switch checked={is_start} name="isStart" onChange={onSwitchUpdate} />}
+          label="Is Start"
+        />
+      ) : null}
+
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           variant="outlined"
@@ -193,10 +226,12 @@ export const NodeForm: React.FC<INodeForm> = ({
               updateNode({
                 id: data?.id ?? '',
                 input,
+                is_start,
                 llm,
                 name,
                 next,
                 prompt,
+                service,
                 tool,
                 tools,
                 type,

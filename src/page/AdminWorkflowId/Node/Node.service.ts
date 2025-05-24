@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { FormMode, IMultiSelectOption, INode, InputChangeType, SelectChangeType } from '@types';
+import {
+  FormMode,
+  IMultiSelectOption,
+  INode,
+  InputChangeType,
+  SelectChangeType,
+  SwitchChangeType,
+} from '@types';
 import { useWorkflowContext } from '../AdminWorkflowId.service';
 import { IUseNodeForm } from './Node';
 
@@ -11,27 +18,32 @@ export enum fields {
   Tools = 'Tools',
   Input = 'Input',
   Tool = 'Tool',
+  Service = 'Service',
   Next = 'Next',
+  IsStart = 'IsStart',
 }
 
 export const nodeType = (type?: string): string[] => {
   if (type === 'Agent') {
-    return [fields.LLM, fields.Prompt, fields.Tools, fields.Next];
+    return [fields.LLM, fields.Prompt, fields.Tools, fields.Next, fields.IsStart];
   }
   if (type === 'HumanInput') {
-    return [fields.Input, fields.Next];
+    return [fields.Input, fields.Next, fields.IsStart];
   }
   if (type === 'Tool') {
-    return [fields.Tool, fields.Next];
+    return [fields.Tool, fields.Next, fields.IsStart];
   }
   if (type === 'LLM') {
-    return [fields.Prompt, fields.Next];
+    return [fields.Prompt, fields.Next, fields.IsStart];
+  }
+  if (type === 'Service') {
+    return [fields.Service, fields.IsStart];
   }
   return [];
 };
 
 export const cleanData = (data: INode): INode => {
-  const { input, llm, prompt, tool, type, ...rest } = data;
+  const { input, llm, prompt, service, tool, type, ...rest } = data;
   const result: INode = { ...rest };
   if (llm) {
     result.llm = llm;
@@ -47,6 +59,9 @@ export const cleanData = (data: INode): INode => {
   }
   if (tool) {
     result.tool = tool;
+  }
+  if (service) {
+    result.service = service;
   }
   return result;
 };
@@ -65,6 +80,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [input, setInput] = useState<string>(data?.input ?? '');
   const [next, setNext] = useState<string[]>(data?.next ?? []);
   const [tool, setTool] = useState<string>(data?.tool ?? '');
+  const [service, setService] = useState<string>(data?.service ?? '');
+  const [isStart, setIsStart] = useState<boolean>(data?.is_start ?? false);
+
   const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {
     const { name, value } = event.target;
@@ -78,6 +96,14 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setPrompt(value);
     }
   };
+
+  const onSwitchUpdate: SwitchChangeType = (event) => {
+    const { checked, name } = event.target;
+
+    if (name === 'isStart') {
+      setIsStart(checked);
+    }
+  };
   const onSelectUpdate: SelectChangeType<string> = (event): void => {
     const { name, value } = event.target;
     if (name === 'llm') {
@@ -85,6 +111,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     }
     if (name === 'tool') {
       setTool(value);
+    }
+    if (name === 'service') {
+      setService(value);
     }
     if (name === 'type') {
       setType(value);
@@ -94,6 +123,8 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setInput('');
       setNext([]);
       setTool('');
+      setIsStart(false);
+      setService('');
     }
   };
   const onMultiSelectUpdate: SelectChangeType<string[]> = (event): void => {
@@ -130,6 +161,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     convertNodeToOptions,
     id: data?.id ?? '',
     input,
+    is_start: isStart,
     llm,
     name,
     next,
@@ -137,7 +169,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     onMultiSelectUpdate,
     onSelectClear,
     onSelectUpdate,
+    onSwitchUpdate,
     prompt,
+    service,
     tool,
     tools,
     type,

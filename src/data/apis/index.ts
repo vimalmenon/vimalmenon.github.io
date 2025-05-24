@@ -1,4 +1,4 @@
-import { IAPI, INode, INodeSlim, IWorkflow, IWorkflowSlim } from '@types';
+import { IAPI, IExecuteWorkflowSlim, INode, INodeSlim, IWorkflow, IWorkflowSlim } from '@types';
 
 const GetWorkflows = (): IAPI => ({
   method: 'GET',
@@ -18,6 +18,11 @@ const getUUID = (): IAPI => ({
 const GetTools = (): IAPI => ({
   method: 'GET',
   url: 'tools',
+});
+
+const GetServices = (): IAPI => ({
+  method: 'GET',
+  url: 'services',
 });
 
 const GetWorkflowById = (id: string): IAPI => ({
@@ -58,33 +63,42 @@ const UpdateWorkflow = (id: string, body: IWorkflow): IAPI => ({
   url: `workflow/${id}`,
 });
 
-const ExecuteWorkflow = (id: string): IAPI => ({
-  method: 'POST',
+const ExecuteWorkflow = (id: string, body: IExecuteWorkflowSlim): IAPI => ({
+  body,
+  method: 'PUT',
   url: `workflow/execute/${id}`,
 });
 
-const HistoryWorkflow = (): IAPI => ({
-  method: 'POST',
-  url: 'workflow/history',
+const GetExecutedWorkflow = (id: string): IAPI => ({
+  method: 'GET',
+  url: `workflow/execute/${id}`,
 });
+
 const GetWorkflowTypes = (): IAPI => ({
   method: 'GET',
   url: 'workflow_types',
 });
 
+const DeleteExecutedWorkflow = (wfId: string, id: string): IAPI => ({
+  method: 'DELETE',
+  url: `workflow/execute/${wfId}/${id}`,
+});
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
+  DeleteExecutedWorkflow,
   DeleteWorkflow,
   DeleteWorkflowNode,
   ExecuteWorkflow,
+  GetExecutedWorkflow,
   GetLLMs,
+  GetServices,
   GetTools,
   getUUID,
   GetWorkflowById,
   GetWorkflows,
   GetWorkflowTypes,
-  HistoryWorkflow,
   UpdateWorkflow,
   UpdateWorkflowNode,
 };
