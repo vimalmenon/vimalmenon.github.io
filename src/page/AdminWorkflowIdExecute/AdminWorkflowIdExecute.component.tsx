@@ -1,6 +1,13 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 import { useEffect } from 'react';
 import { Icons } from '@data';
 import { IAdminWorkflowIdPage } from '@types';
@@ -20,12 +27,28 @@ const Component: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
       <ExecuteForm />
-      {workflows.map((workflow) => (
-        <div key={workflow.id}>
-          {workflow.name} |{workflow.status} |{' '}
-          <Icons.Delete onClick={() => deleteExecutedWorkflow(workflow.id)} />
-        </div>
-      ))}
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell align="right">Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {workflows.map((workflow) => (
+              <TableRow key={workflow.id}>
+                <TableCell>{workflow.name}</TableCell>
+                <TableCell>{workflow.status}</TableCell>
+                <TableCell>
+                  <Icons.Delete onClick={() => deleteExecutedWorkflow(workflow.id)} />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 };
