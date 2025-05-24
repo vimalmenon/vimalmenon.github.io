@@ -18,7 +18,6 @@ export const Header: React.FC = () => {
           {!selectedWorkflow ? (
             <Icon toolTip="Add" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />
           ) : null}
-          {/* <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={editWorkflowFormMode} /> */}
         </Fragment>
       }
     />
