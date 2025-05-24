@@ -16,7 +16,7 @@ import {
 
 export const ListWorkflow: React.FC = () => {
   const { workflows } = useAdminWorkflowIdExecuteContext();
-  const { deleteExecutedWorkflow } = useWorkflowExecuteHelper();
+  const { deleteExecutedWorkflow, setSelectedWorkflow } = useWorkflowExecuteHelper();
 
   return (
     <TableContainer component={Paper}>
@@ -30,7 +30,11 @@ export const ListWorkflow: React.FC = () => {
         </TableHead>
         <TableBody>
           {workflows.map((workflow) => (
-            <TableRow key={workflow.id}>
+            <TableRow
+              key={workflow.id}
+              onClick={() => setSelectedWorkflow(workflow)}
+              style={{ cursor: 'pointer' }}
+            >
               <TableCell>{workflow.name}</TableCell>
               <TableCell>{workflow.status}</TableCell>
               <TableCell align="right">
