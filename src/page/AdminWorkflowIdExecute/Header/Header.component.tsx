@@ -8,14 +8,16 @@ import { Icons } from '@data';
 import { useAdminWorkflowIdExecuteContext } from '../AdminWorkflowIdExecute.service';
 
 export const Header: React.FC = () => {
-  const { setShowCreate } = useAdminWorkflowIdExecuteContext();
+  const { selectedWorkflow, setShowCreate } = useAdminWorkflowIdExecuteContext();
   return (
     <CardHeader
       title="Execute Workflow"
       component={Paper}
       action={
         <Fragment>
-          <Icon toolTip="Add" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />
+          {!selectedWorkflow ? (
+            <Icon toolTip="Add" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />
+          ) : null}
           {/* <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={editWorkflowFormMode} /> */}
         </Fragment>
       }
