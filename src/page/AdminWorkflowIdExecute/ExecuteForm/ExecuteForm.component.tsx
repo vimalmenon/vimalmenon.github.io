@@ -5,8 +5,10 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { AsyncButton, TextInput } from '@component';
 import { Icons } from '@data';
+import { useWorkflowExecuteHelper } from '../AdminWorkflowIdExecute.service';
 
 export const ExecuteForm: React.FC = () => {
+  const { executeWorkflow } = useWorkflowExecuteHelper();
   const [name, setName] = useState<string>('');
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -26,16 +28,19 @@ export const ExecuteForm: React.FC = () => {
           // loading={loading}
           // loadingPosition="end"
         >
-          {' '}
           Cancel
         </Button>
         <AsyncButton
           variant="contained"
           startIcon={<Icons.Save />}
           loadingPosition="start"
-          onClick={() => false}
+          onClick={() =>
+            executeWorkflow({
+              name,
+            })
+          }
         >
-          Update
+          Run
         </AsyncButton>
       </Box>
     </Box>

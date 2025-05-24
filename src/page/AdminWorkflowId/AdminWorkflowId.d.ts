@@ -1,13 +1,5 @@
 import { SyntheticEvent } from 'react';
-import {
-  FormMode,
-  IExecuteWorkflow,
-  INode,
-  INodeSlim,
-  IWorkflow,
-  ReactSetState,
-  VoidFunction,
-} from '@types';
+import { FormMode, INode, INodeSlim, IWorkflow, ReactSetState, VoidFunction } from '@types';
 
 export interface INodeTab {
   name: string;
@@ -62,9 +54,4 @@ export interface IUseWorkflowDataHelper {
   deleteNodeConfirm: VoidFunction<Promise<void>>;
   deleteNodeCancel: VoidFunction;
   getAllData: VoidFunction<Promise<void>>;
-}
-
-export interface IUseWorkflowExecuteHelper {
-  getExecutedWorkflow: VoidFunction<Promise<void>>;
-  executeWorkflow: (data: IExecuteWorkflow) => Promise<void>;
 }

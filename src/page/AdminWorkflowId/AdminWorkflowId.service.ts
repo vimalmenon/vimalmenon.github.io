@@ -3,14 +3,13 @@
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { FormMode, IExecuteWorkflow, IGenericResponse, INode, INodeSlim, IWorkflow } from '@types';
+import { FormMode, IGenericResponse, INode, INodeSlim, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
   INodeTab,
   IUseTabHelper,
   IUseWorkflowDataHelper,
-  IUseWorkflowExecuteHelper,
   IUseWorkflowFormHelper,
 } from './AdminWorkflowId';
 
@@ -187,18 +186,5 @@ export const useTabHelper = (): IUseTabHelper => {
     onTabChange,
     selectedTab: selectedTab === -1 ? 0 : selectedTab,
     setNodeMode,
-  };
-};
-
-export const useWorkflowExecuteHelper = (id: string): IUseWorkflowExecuteHelper => {
-  const getExecutedWorkflow = async (): Promise<void> => {
-    await makeRequest(APIs.GetExecutedWorkflow(id));
-  };
-  const executeWorkflow = async (data: IExecuteWorkflow): Promise<void> => {
-    await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id, data));
-  };
-  return {
-    executeWorkflow,
-    getExecutedWorkflow,
   };
 };
