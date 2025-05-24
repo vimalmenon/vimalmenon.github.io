@@ -16,8 +16,13 @@ export const SelectedWorkflow: React.FC = () => {
       <Button variant="text" onClick={() => setSelectedWorkflow(null)} startIcon={<Icons.Back />}>
         Back
       </Button>
-      <Box>{selectedWorkflow?.id}</Box>
-      <Box>{selectedWorkflow?.name}</Box>
+      {selectedWorkflow ? (
+        <Box>
+          <Box>{selectedWorkflow.id}</Box>
+          <Box>{selectedWorkflow.name}</Box>
+          <Box>{selectedWorkflow.status}</Box>
+        </Box>
+      ) : null}
     </Box>
   );
 };
