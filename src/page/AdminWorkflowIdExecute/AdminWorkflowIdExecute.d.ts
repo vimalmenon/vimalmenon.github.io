@@ -6,6 +6,8 @@ export interface IAdminWorkflowIdExecuteContext {
   setWorkFlows: ReactSetState<IExecuteWorkflow[]>;
   loading: boolean;
   setLoading: ReactSetState<boolean>;
+  showCreate: boolean;
+  setShowCreate: ReactSetState<boolean>;
 }
 
 export interface IUseWorkflowExecuteHelper {

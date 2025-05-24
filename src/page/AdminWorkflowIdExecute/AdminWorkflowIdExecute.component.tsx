@@ -21,7 +21,7 @@ import { ExecuteForm } from './ExecuteForm';
 import { Header } from './Header';
 
 const Component: React.FC = () => {
-  const { workflows } = useAdminWorkflowIdExecuteContext();
+  const { showCreate, workflows } = useAdminWorkflowIdExecuteContext();
   const { deleteExecutedWorkflow, getExecutedWorkflow } = useWorkflowExecuteHelper();
   useEffect(() => {
     getExecutedWorkflow();
@@ -29,33 +29,36 @@ const Component: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
       <Header />
-      <ExecuteForm />
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell align="right">Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {workflows.map((workflow) => (
-              <TableRow key={workflow.id}>
-                <TableCell>{workflow.name}</TableCell>
-                <TableCell>{workflow.status}</TableCell>
-                <TableCell align="right">
-                  <Icon
-                    icon={<Icons.Delete />}
-                    onClick={() => deleteExecutedWorkflow(workflow.id)}
-                    toolTip="Delete"
-                  />
-                </TableCell>
+      {showCreate ? (
+        <ExecuteForm />
+      ) : (
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell align="right">Action</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {workflows.map((workflow) => (
+                <TableRow key={workflow.id}>
+                  <TableCell>{workflow.name}</TableCell>
+                  <TableCell>{workflow.status}</TableCell>
+                  <TableCell align="right">
+                    <Icon
+                      icon={<Icons.Delete />}
+                      onClick={() => deleteExecutedWorkflow(workflow.id)}
+                      toolTip="Delete"
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </Box>
   );
 };
