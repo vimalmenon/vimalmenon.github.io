@@ -28,7 +28,12 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
   const executeWorkflow = async (data: IExecuteWorkflowSlim): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id, data));
   };
+  const deleteExecutedWorkflow = async (eId: string): Promise<void> => {
+    await makeRequest<IGenericResponse<unknown>>(APIs.DeleteExecutedWorkflow(id, eId));
+  };
+
   return {
+    deleteExecutedWorkflow,
     executeWorkflow,
     getExecutedWorkflow,
   };

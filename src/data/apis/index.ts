@@ -79,9 +79,15 @@ const GetWorkflowTypes = (): IAPI => ({
   url: 'workflow_types',
 });
 
+const DeleteExecutedWorkflow = (wfId: string, id: string): IAPI => ({
+  method: 'DELETE',
+  url: `workflow/execute/${wfId}/${id}`,
+});
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
+  DeleteExecutedWorkflow,
   DeleteWorkflow,
   DeleteWorkflowNode,
   ExecuteWorkflow,
