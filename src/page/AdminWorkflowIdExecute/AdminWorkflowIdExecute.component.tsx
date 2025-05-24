@@ -11,9 +11,10 @@ import {
 import { ExecuteForm } from './ExecuteForm';
 import { Header } from './Header';
 import { ListWorkflow } from './ListWorkflow';
+import { SelectedWorkflow } from './SelectedWorkflow';
 
 const Component: React.FC = () => {
-  const { showCreate } = useAdminWorkflowIdExecuteContext();
+  const { selectedWorkflow, showCreate } = useAdminWorkflowIdExecuteContext();
   const { getExecutedWorkflow } = useWorkflowExecuteHelper();
   useEffect(() => {
     getExecutedWorkflow();
@@ -21,7 +22,7 @@ const Component: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
       <Header />
-      {showCreate ? <ExecuteForm /> : <ListWorkflow />}
+      {showCreate ? <ExecuteForm /> : selectedWorkflow ? <SelectedWorkflow /> : <ListWorkflow />}
     </Box>
   );
 };
