@@ -12,7 +12,9 @@ import {
 export const Context = createContext<IAdminWorkflowIdExecuteContext>({
   id: '',
   loading: false,
+  selectedWorkflow: null,
   setLoading: NotImplemented,
+  setSelectedWorkflow: NotImplemented,
   setShowCreate: NotImplemented,
   setWorkFlows: NotImplemented,
   showCreate: false,
