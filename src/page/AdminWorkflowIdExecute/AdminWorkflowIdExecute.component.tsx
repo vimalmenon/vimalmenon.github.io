@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useEffect } from 'react';
+import { Icon } from '@component';
 import { Icons } from '@data';
 import { IAdminWorkflowIdPage } from '@types';
 import { AdminWorkflowIdExecuteContext } from './AdminWorkflowIdExecute.context';
@@ -44,7 +45,11 @@ const Component: React.FC = () => {
                 <TableCell>{workflow.name}</TableCell>
                 <TableCell>{workflow.status}</TableCell>
                 <TableCell align="right">
-                  <Icons.Delete onClick={() => deleteExecutedWorkflow(workflow.id)} />
+                  <Icon
+                    icon={<Icons.Delete />}
+                    onClick={() => deleteExecutedWorkflow(workflow.id)}
+                    toolTip="Delete"
+                  />
                 </TableCell>
               </TableRow>
             ))}
