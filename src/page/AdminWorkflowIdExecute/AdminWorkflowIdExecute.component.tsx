@@ -43,7 +43,7 @@ const Component: React.FC = () => {
               <TableRow key={workflow.id}>
                 <TableCell>{workflow.name}</TableCell>
                 <TableCell>{workflow.status}</TableCell>
-                <TableCell>
+                <TableCell align="right">
                   <Icons.Delete onClick={() => deleteExecutedWorkflow(workflow.id)} />
                 </TableCell>
               </TableRow>
