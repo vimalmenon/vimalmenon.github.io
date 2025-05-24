@@ -1,3 +1,5 @@
+'use client';
+
 import CardHeader from '@mui/material/CardHeader';
 import Paper from '@mui/material/Paper';
 import { Fragment } from 'react';
