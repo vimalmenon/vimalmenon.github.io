@@ -11,15 +11,19 @@ import {
 import { ExecuteForm } from './ExecuteForm';
 
 const Component: React.FC = () => {
-  const { id } = useAdminWorkflowIdExecuteContext();
+  const { workflows } = useAdminWorkflowIdExecuteContext();
   const { getExecutedWorkflow } = useWorkflowExecuteHelper();
   useEffect(() => {
     getExecutedWorkflow();
   }, []);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
-      This is execute workflow {id}
       <ExecuteForm />
+      {workflows.map((workflow) => (
+        <div key={workflow.id}>
+          {workflow.name} |{workflow.status}
+        </div>
+      ))}
     </Box>
   );
 };
