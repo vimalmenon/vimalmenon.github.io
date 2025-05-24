@@ -1,4 +1,4 @@
-import { IAPI, IExecuteWorkflow, INode, INodeSlim, IWorkflow, IWorkflowSlim } from '@types';
+import { IAPI, IExecuteWorkflowSlim, INode, INodeSlim, IWorkflow, IWorkflowSlim } from '@types';
 
 const GetWorkflows = (): IAPI => ({
   method: 'GET',
@@ -63,7 +63,7 @@ const UpdateWorkflow = (id: string, body: IWorkflow): IAPI => ({
   url: `workflow/${id}`,
 });
 
-const ExecuteWorkflow = (id: string, body: IExecuteWorkflow): IAPI => ({
+const ExecuteWorkflow = (id: string, body: IExecuteWorkflowSlim): IAPI => ({
   body,
   method: 'PUT',
   url: `workflow/execute/${id}`,
@@ -71,7 +71,7 @@ const ExecuteWorkflow = (id: string, body: IExecuteWorkflow): IAPI => ({
 
 const GetExecutedWorkflow = (id: string): IAPI => ({
   method: 'GET',
-  url: `workflow/executed/${id}`,
+  url: `workflow/execute/${id}`,
 });
 
 const GetWorkflowTypes = (): IAPI => ({

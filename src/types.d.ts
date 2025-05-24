@@ -79,8 +79,14 @@ export interface IMultiSelectOption {
   disabled?: boolean;
 }
 
-export interface IExecuteWorkflow {
+export interface IExecuteWorkflowSlim {
   name: string;
+}
+
+export interface IExecuteWorkflow extends IExecuteWorkflowSlim {
+  id: string;
+  status: string;
+  created_at: string;
 }
 
 export interface IAdminWorkflowIdPage {
