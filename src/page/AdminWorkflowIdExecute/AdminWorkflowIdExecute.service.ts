@@ -20,18 +20,22 @@ export const useAdminWorkflowIdExecuteContext = (): IAdminWorkflowIdExecuteConte
   useContext<IAdminWorkflowIdExecuteContext>(Context);
 
 export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
-  const { id, setWorkFlows } = useAdminWorkflowIdExecuteContext();
+  const { id, setLoading, setWorkFlows } = useAdminWorkflowIdExecuteContext();
   const getExecutedWorkflow = async (): Promise<void> => {
+    setLoading(true);
     const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow[]>>(
       APIs.GetExecutedWorkflow(id)
     );
     setWorkFlows(response.data);
+    setLoading(false);
   };
   const executeWorkflow = async (data: IExecuteWorkflowSlim): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id, data));
+    await getExecutedWorkflow();
   };
   const deleteExecutedWorkflow = async (eId: string): Promise<void> => {
     await makeRequest<IGenericResponse<unknown>>(APIs.DeleteExecutedWorkflow(id, eId));
+    await getExecutedWorkflow();
   };
 
   return {
