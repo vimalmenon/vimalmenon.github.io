@@ -16,12 +16,14 @@ import {
 export const Context = createContext<IContext>({
   error: null,
   id: '0',
+  isStart: false,
   loading: false,
   nodeFormMode: 'UPDATE',
   nodes: [],
   nodeTabs: [],
   selectedNode: null,
   setError: NotImplemented,
+  setIsStart: NotImplemented,
   setLoading: NotImplemented,
   setNodeFormMode: NotImplemented,
   setNodes: NotImplemented,
@@ -49,6 +51,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
     selectedNode,
+    setIsStart,
     setLoading,
     setNodeFormMode,
     setNodes,
@@ -80,6 +83,11 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     const workflow = response.data;
     setNodes(Object.keys(workflow.nodes));
     setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
+    Object.keys(workflow.nodes).forEach((node) => {
+      if (workflow.nodes[node].is_start) {
+        setIsStart(true);
+      }
+    });
     setWorkflow(workflow);
     if (skipLoading) {
       setWorkflowLoading(false);

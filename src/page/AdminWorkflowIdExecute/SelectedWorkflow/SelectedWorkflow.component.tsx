@@ -17,7 +17,7 @@ export const SelectedWorkflow: React.FC = () => {
         Back
       </Button>
       {selectedWorkflow ? (
-        <Box>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Box>{selectedWorkflow.id}</Box>
           <Box>{selectedWorkflow.name}</Box>
           <Box>{selectedWorkflow.status}</Box>
