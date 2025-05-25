@@ -26,8 +26,6 @@ export interface IContext {
   setSelectedNode: ReactSetState<INode | null>;
   error: string | null;
   setError: ReactSetState<string | null>;
-  isStart: boolean;
-  setIsStart: ReactSetState<boolean>;
 }
 
 export interface IUseTabHelper {

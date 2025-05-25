@@ -83,7 +83,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [service, setService] = useState<string>(data?.service ?? '');
   const [isStart, setIsStart] = useState<boolean>(data?.is_start ?? false);
 
-  const { setIsStart: setIsStartContext, workflow } = useWorkflowContext();
+  const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {
     const { name, value } = event.target;
     if (name === 'name') {
@@ -102,7 +102,6 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
 
     if (name === 'isStart') {
       setIsStart(checked);
-      setIsStartContext(checked);
     }
   };
   const onSelectUpdate: SelectChangeType<string> = (event): void => {

@@ -19,8 +19,7 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const { error, isStart, nodeTabs, selectedNode, setNodeFormMode, workflow } =
-    useWorkflowContext();
+  const { error, nodeTabs, selectedNode, setNodeFormMode, workflow } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab, setNodeMode } = useTabHelper();
   const {
     createNode,
@@ -66,7 +65,6 @@ const Component: React.FC = () => {
             mode="CREATE"
             createNode={createNode}
             cancelNode={() => setNodeFormMode('UPDATE')}
-            isStart={false}
           />
         ) : (
           nodeTabs.map((node, index) => {
@@ -80,7 +78,6 @@ const Component: React.FC = () => {
                   updateNode={(data) => updateNode(node.name, data)}
                   setMode={(mode) => setNodeMode(index, mode)}
                   cancelNode={() => setNodeMode(index, 'VIEW')}
-                  isStart={isStart}
                 />
               );
             }

@@ -18,7 +18,6 @@ export const Node: React.FC<INode> = ({
   createNode,
   data,
   deleteNode,
-  isStart,
   mode,
   setMode,
   updateNode,
@@ -70,7 +69,6 @@ export const Node: React.FC<INode> = ({
               updateNode={updateNodeWithMode}
               createNode={createNodeWithLoading}
               loading={loading}
-              isStart={isStart}
             />
           ) : null}
         </CardContent>
