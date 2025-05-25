@@ -159,6 +159,7 @@ export const useTabHelper = (): IUseTabHelper => {
         } else {
           node.selected = false;
         }
+        node.mode = 'VIEW';
         return node;
       })
     );
