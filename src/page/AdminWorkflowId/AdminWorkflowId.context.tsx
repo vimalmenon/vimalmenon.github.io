@@ -11,7 +11,6 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
 }) => {
   const [workflow, setWorkflow] = useState<IWorkflow>();
   const [workflowLoading, setWorkflowLoading] = useState<boolean>(false);
-  const [nodes, setNodes] = useState<string[]>([]);
   const [nodeTabs, setNodeTabs] = useState<INodeTab[]>([]);
   const [workflowFormMode, setWorkflowFormMode] = useState<FormMode>('VIEW');
   const [loading, setLoading] = useState<boolean>(false);
@@ -27,14 +26,12 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
         isStart,
         loading,
         nodeFormMode,
-        nodes,
         nodeTabs,
         selectedNode,
         setError,
         setIsStart,
         setLoading,
         setNodeFormMode,
-        setNodes,
         setNodeTabs,
         setSelectedNode,
         setWorkflow,

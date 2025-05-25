@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Fix the issue with node name not updated
+- [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled
 - [ ] Show workflow history
 - [ ] Show loading indicator on Pages

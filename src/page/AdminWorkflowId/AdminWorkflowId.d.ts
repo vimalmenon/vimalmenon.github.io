@@ -14,8 +14,6 @@ export interface IContext {
   setWorkflow: ReactSetState<IWorkflow | undefined>;
   workflowLoading: boolean;
   setWorkflowLoading: ReactSetState<boolean>;
-  nodes: string[];
-  setNodes: ReactSetState<string[]>;
   workflowFormMode: FormMode;
   setWorkflowFormMode: ReactSetState<FormMode>;
   loading: boolean;
