@@ -192,7 +192,7 @@ export const NodeForm: React.FC<INodeForm> = ({
         <FormControl fullWidth required size="small">
           <InputLabel id="next">Next</InputLabel>
           <Select
-            value={service}
+            value={next}
             labelId="Next"
             label="Next"
             name="next"
@@ -209,17 +209,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             ))}
           </Select>
         </FormControl>
-      ) : // <MultiSelect
-      //   options={convertNodeToOptions()}
-      //   value={next ?? []}
-      //   label={'Next'}
-      //   id={'next'}
-      //   name="next"
-      //   onChange={onMultiSelectUpdate}
-      //   onClear={() => onSelectClear('next')}
-      //   disabled={loading}
-      // />
-      null}
+      ) : null}
       {mode === 'UPDATE' && value.includes(fields.IsStart) ? (
         <FormControlLabel
           control={
