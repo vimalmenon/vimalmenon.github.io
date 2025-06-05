@@ -189,17 +189,37 @@ export const NodeForm: React.FC<INodeForm> = ({
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Next) ? (
-        <MultiSelect
-          options={convertNodeToOptions()}
-          value={next ?? []}
-          label={'Next'}
-          id={'next'}
-          name="next"
-          onChange={onMultiSelectUpdate}
-          onClear={() => onSelectClear('next')}
-          disabled={loading}
-        />
-      ) : null}
+        <FormControl fullWidth required size="small">
+          <InputLabel id="next">Next</InputLabel>
+          <Select
+            value={service}
+            labelId="Next"
+            label="Next"
+            name="next"
+            onChange={onSelectUpdate}
+            disabled={loading}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {convertNodeToOptions().map((node) => (
+              <MenuItem value={node.value} key={node.value}>
+                {node.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      ) : // <MultiSelect
+      //   options={convertNodeToOptions()}
+      //   value={next ?? []}
+      //   label={'Next'}
+      //   id={'next'}
+      //   name="next"
+      //   onChange={onMultiSelectUpdate}
+      //   onClear={() => onSelectClear('next')}
+      //   disabled={loading}
+      // />
+      null}
       {mode === 'UPDATE' && value.includes(fields.IsStart) ? (
         <FormControlLabel
           control={

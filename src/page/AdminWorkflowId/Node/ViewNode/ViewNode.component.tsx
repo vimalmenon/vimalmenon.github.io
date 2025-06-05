@@ -6,8 +6,8 @@ import { useWorkflowContext } from '../../AdminWorkflowId.service';
 import { fields, nodeType } from '../Node.service';
 import { IViewNode } from './ViewNode';
 
-const convertNextToString = (nodes: Record<string, INode>, next: string[]): string =>
-  next.map((node) => nodes[node].name).join(', ');
+const convertNextToString = (nodes: Record<string, INode>, next: string): string =>
+  nodes[next].name;
 
 export const ViewNode: React.FC<IViewNode> = ({ data }) => {
   const value = nodeType(data.type);

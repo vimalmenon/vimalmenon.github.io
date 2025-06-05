@@ -78,7 +78,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
   const [input, setInput] = useState<string>(data?.input ?? '');
-  const [next, setNext] = useState<string[]>(data?.next ?? []);
+  const [next, setNext] = useState<string>(data?.next ?? '');
   const [tool, setTool] = useState<string>(data?.tool ?? '');
   const [service, setService] = useState<string>(data?.service ?? '');
   const [isStart, setIsStart] = useState<boolean>(data?.is_start ?? false);
@@ -115,13 +115,16 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     if (name === 'service') {
       setService(value);
     }
+    if (name === 'next') {
+      setNext(value);
+    }
     if (name === 'type') {
       setType(value);
       setPrompt('');
       setLlm('');
       setTools([]);
       setInput('');
-      setNext([]);
+      setNext('');
       setTool('');
       setIsStart(false);
       setService('');
@@ -135,14 +138,8 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     if (name === 'tools') {
       setTools(values);
     }
-    if (name === 'next') {
-      setNext(values);
-    }
   };
   const onSelectClear = (input: string): void => {
-    if (input === 'next') {
-      setNext([]);
-    }
     if (input === 'tools') {
       setTools([]);
     }
