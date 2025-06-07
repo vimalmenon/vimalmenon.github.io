@@ -26,7 +26,7 @@ export enum fields {
 
 export const nodeType = (type?: string): string[] => {
   if (type === 'Agent') {
-    return [fields.LLM, fields.Prompt, fields.Tools, fields.Next, fields.IsStart];
+    return [fields.LLM, fields.Prompt, fields.Message, fields.Tools, fields.Next, fields.IsStart];
   }
   if (type === 'HumanInput') {
     return [fields.Input, fields.Next, fields.IsStart];
