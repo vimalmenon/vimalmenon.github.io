@@ -29,6 +29,7 @@ export const NodeForm: React.FC<INodeForm> = ({
     input,
     is_start,
     llm,
+    message,
     name,
     next,
     onInputUpdate,
@@ -110,9 +111,25 @@ export const NodeForm: React.FC<INodeForm> = ({
             size="small"
             required
             multiline
-            rows={5}
+            rows={3}
             value={prompt}
             name="prompt"
+            onChange={onInputUpdate}
+            disabled={loading}
+          />
+        </FormControl>
+      ) : null}
+      {mode === 'UPDATE' && value.includes(fields.Message) ? (
+        <FormControl variant="outlined" fullWidth required>
+          <TextField
+            label="Message"
+            variant="outlined"
+            size="small"
+            required
+            multiline
+            rows={5}
+            value={message}
+            name="message"
             onChange={onInputUpdate}
             disabled={loading}
           />

@@ -15,6 +15,7 @@ import { IUseNodeForm } from './Node';
 export enum fields {
   LLM = 'LLM',
   Prompt = 'Prompt',
+  Message = 'Message',
   Tools = 'Tools',
   Input = 'Input',
   Tool = 'Tool',
@@ -34,7 +35,7 @@ export const nodeType = (type?: string): string[] => {
     return [fields.Tool, fields.Next, fields.IsStart];
   }
   if (type === 'LLM') {
-    return [fields.Prompt, fields.Next, fields.IsStart];
+    return [fields.Prompt, fields.Message, fields.Next, fields.IsStart];
   }
   if (type === 'Service') {
     return [fields.Service, fields.Next, fields.IsStart];
@@ -43,7 +44,7 @@ export const nodeType = (type?: string): string[] => {
 };
 
 export const cleanData = (data: INode): INode => {
-  const { input, llm, prompt, service, tool, type, ...rest } = data;
+  const { input, llm, message, next, prompt, service, tool, type, ...rest } = data;
   const result: INode = { ...rest };
   if (llm) {
     result.llm = llm;
@@ -63,6 +64,12 @@ export const cleanData = (data: INode): INode => {
   if (service) {
     result.service = service;
   }
+  if (next) {
+    result.next = next;
+  }
+  if (message) {
+    result.message = message;
+  }
   return result;
 };
 export const convertToolsToOption = (tools: string[]): IMultiSelectOption[] =>
@@ -76,6 +83,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [type, setType] = useState<string>(data?.type ?? '');
   const [llm, setLlm] = useState<string | undefined>(data?.llm);
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
+  const [message, setMessage] = useState<string>(data?.message ?? '');
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
   const [input, setInput] = useState<string>(data?.input ?? '');
   const [next, setNext] = useState<string>(data?.next ?? '');
@@ -94,6 +102,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     }
     if (name === 'prompt') {
       setPrompt(value);
+    }
+    if (name === 'message') {
+      setMessage(value);
     }
   };
 
@@ -160,6 +171,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     input,
     is_start: isStart,
     llm,
+    message,
     name,
     next,
     onInputUpdate,
