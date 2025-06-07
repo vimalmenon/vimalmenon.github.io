@@ -12,7 +12,11 @@ export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box>Name</Box>
-      <NextLink href={`/admin/workflows/${data.id}/execute/`}>{data.name}</NextLink>
+      {data.complete ? (
+        <NextLink href={`/admin/workflows/${data.id}/execute/`}>{data.name}</NextLink>
+      ) : (
+        data.name
+      )}
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box>Detail</Box>
