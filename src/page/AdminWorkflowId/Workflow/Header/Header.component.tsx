@@ -9,8 +9,9 @@ import {
   useWorkflowContext,
   useWorkflowFormHelper,
 } from '../../AdminWorkflowId.service';
+import { IHeader } from './Header';
 
-export const Header: React.FC = () => {
+export const Header: React.FC<IHeader> = ({ complete }) => {
   const { workflowFormMode } = useWorkflowContext();
   const { editWorkflowFormMode } = useWorkflowFormHelper();
   const { onAddNodeTab } = useTabHelper();
@@ -21,7 +22,9 @@ export const Header: React.FC = () => {
         <Fragment>
           {workflowFormMode === 'VIEW' ? (
             <Fragment>
-              <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
+              {!complete ? (
+                <Icon toolTip="Add Node" icon={<Icons.Add />} onClick={onAddNodeTab} />
+              ) : null}
               <Icon toolTip="Edit Workflow" icon={<Icons.Edit />} onClick={editWorkflowFormMode} />
             </Fragment>
           ) : null}

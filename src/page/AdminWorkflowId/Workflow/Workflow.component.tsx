@@ -17,7 +17,7 @@ export const Workflow: React.FC<IWorkflowComponent> = ({ data, onCancel }) => {
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Card>
-        <Header />
+        <Header complete={data?.complete ?? false} />
         {workflowLoading ? <LinearProgress /> : null}
         <CardContent>
           {data && workflowFormMode === 'UPDATE' ? (
