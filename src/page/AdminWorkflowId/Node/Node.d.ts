@@ -18,6 +18,7 @@ export interface INode {
   mode: FormMode;
   setMode?: (mode: FormMode) => void;
   isStart: boolean;
+  complete: boolean;
 }
 
 export interface IUseNodeForm extends INodeData {

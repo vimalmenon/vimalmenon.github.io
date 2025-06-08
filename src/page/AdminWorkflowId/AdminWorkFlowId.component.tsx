@@ -67,6 +67,7 @@ const Component: React.FC = () => {
             createNode={createNode}
             cancelNode={() => setNodeFormMode('UPDATE')}
             isStart={false}
+            complete={false}
           />
         ) : (
           nodeTabs.map((node, index) => {
@@ -81,6 +82,7 @@ const Component: React.FC = () => {
                   setMode={(mode) => setNodeMode(index, mode)}
                   cancelNode={() => setNodeMode(index, 'VIEW')}
                   isStart={isStart}
+                  complete={workflow.complete}
                 />
               );
             }

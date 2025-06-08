@@ -15,6 +15,7 @@ import { ViewNode } from './ViewNode';
 
 export const Node: React.FC<INode> = ({
   cancelNode,
+  complete,
   createNode,
   data,
   deleteNode,
@@ -47,7 +48,7 @@ export const Node: React.FC<INode> = ({
           title={title}
           action={
             <Fragment>
-              {mode === 'VIEW' ? (
+              {mode === 'VIEW' && !complete ? (
                 <Fragment>
                   <Icon toolTip="Delete Node" icon={<Icons.Delete />} onClick={deleteNode} />
                   <Icon
