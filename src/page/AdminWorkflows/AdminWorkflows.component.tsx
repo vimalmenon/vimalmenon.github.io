@@ -6,7 +6,7 @@ import { Workflows } from './Workflows';
 
 export const AdminWorkflows: React.FC = () => (
   <AdminWorkflowsContext>
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
       <Workflows />
     </Box>
   </AdminWorkflowsContext>
