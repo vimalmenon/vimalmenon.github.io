@@ -263,6 +263,7 @@ export const NodeForm: React.FC<INodeForm> = ({
                 input,
                 is_start,
                 llm,
+                message,
                 name,
                 next,
                 prompt,
