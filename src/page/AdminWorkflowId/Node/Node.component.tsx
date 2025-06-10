@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
+import Divider from '@mui/material/Divider';
 import { Fragment, useState } from 'react';
 import { Icon } from '@component';
 import { Icons } from '@data';
@@ -61,6 +62,7 @@ export const Node: React.FC<INode> = ({
             </Fragment>
           }
         />
+        <Divider />
         <CardContent>
           {mode === 'VIEW' && data ? <ViewNode data={data} /> : null}
           {mode === 'UPDATE' || mode === 'CREATE' ? (
