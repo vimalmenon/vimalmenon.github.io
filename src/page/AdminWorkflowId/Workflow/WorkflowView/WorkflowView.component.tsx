@@ -1,7 +1,6 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import NextLink from 'next/link';
 import { IWorkflowView } from './WorkflowView';
 
 export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (
@@ -12,11 +11,7 @@ export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box>Name</Box>
-      {data.complete ? (
-        <NextLink href={`/admin/workflows/${data.id}/execute/`}>{data.name}</NextLink>
-      ) : (
-        data.name
-      )}
+      <Box>{data.name}</Box>
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box>Detail</Box>
