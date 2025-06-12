@@ -40,6 +40,7 @@ This is Website for Vimal Menon
 - [ ] Create API for production
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
+- [ ] Show time in more readable format
 
 ## Ideas
 
