@@ -13,7 +13,6 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [x] Fix the issue with node name not updated
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled
