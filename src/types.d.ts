@@ -50,15 +50,19 @@ export interface INode extends INodeSlim {
   next?: string;
   tool?: string;
   service?: string;
-  updatedAt?: string;
   is_start: boolean;
+}
+
+export interface INodeFull extends INode {
+  requestAtRunTime: boolean;
+  updatedAt: string;
 }
 
 export interface IWorkflow extends IWorkflowSlim {
   id: string;
   detail: string;
   connections: Record<string, string[]>;
-  nodes: Record<string, INode>;
+  nodes: Record<string, INodeFull>;
   complete: boolean;
   updatedAt: string;
 }

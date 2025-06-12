@@ -1,5 +1,5 @@
-import { INode } from '@types';
+import { INodeFull } from '@types';
 
 export interface IViewNode {
-  data: INode;
+  data: INodeFull;
 }
