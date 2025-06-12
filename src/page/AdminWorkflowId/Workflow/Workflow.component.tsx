@@ -19,20 +19,23 @@ export const Workflow: React.FC<IWorkflowComponent> = ({ data, onCancel }) => {
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Card>
         <Header complete={data?.complete ?? false} />
-        {workflowLoading ? <LinearProgress /> : null}
         <Divider />
-        <CardContent>
-          {data && workflowFormMode === 'UPDATE' ? (
-            <WorkflowForm
-              mode="UPDATE"
-              data={data}
-              onCancel={onCancel}
-              updateWorkflow={updateWorkflow}
-              loading={loading}
-            />
-          ) : null}
-          {data && workflowFormMode === 'VIEW' ? <WorkflowView data={data} /> : null}
-        </CardContent>
+        {workflowLoading ? (
+          <LinearProgress />
+        ) : (
+          <CardContent>
+            {data && workflowFormMode === 'UPDATE' ? (
+              <WorkflowForm
+                mode="UPDATE"
+                data={data}
+                onCancel={onCancel}
+                updateWorkflow={updateWorkflow}
+                loading={loading}
+              />
+            ) : null}
+            {data && workflowFormMode === 'VIEW' ? <WorkflowView data={data} /> : null}
+          </CardContent>
+        )}
       </Card>
     </Box>
   );
