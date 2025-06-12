@@ -91,8 +91,17 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   };
   const updateWorkflow = async (data: IWorkflow): Promise<void> => {
     setLoading(true);
-    await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
-    await getWorkFlow();
+    const { response } = await makeRequest<IGenericResponse<IWorkflow>>(
+      APIs.UpdateWorkflow(id, data)
+    );
+    const workflow = response.data;
+    setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
+    Object.keys(workflow.nodes).forEach((node) => {
+      if (workflow.nodes[node].isStart) {
+        setIsStart(true);
+      }
+    });
+    setWorkflow(workflow);
     setWorkflowFormMode('VIEW');
     setLoading(false);
   };
