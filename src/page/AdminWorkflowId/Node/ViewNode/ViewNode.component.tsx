@@ -78,7 +78,7 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Updated at</Box>
-        <Box>{data.updated_at}</Box>
+        <Box>{data.updatedAt}</Box>
       </Box>
     </Box>
   );

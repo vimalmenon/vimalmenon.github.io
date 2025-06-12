@@ -50,7 +50,7 @@ export interface INode extends INodeSlim {
   next?: string;
   tool?: string;
   service?: string;
-  updated_at?: string;
+  updatedAt?: string;
   is_start: boolean;
 }
 
