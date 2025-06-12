@@ -50,7 +50,7 @@ export interface INode extends INodeSlim {
   next?: string;
   tool?: string;
   service?: string;
-  is_start: boolean;
+  isStart: boolean;
 }
 
 export interface INodeFull extends INode {

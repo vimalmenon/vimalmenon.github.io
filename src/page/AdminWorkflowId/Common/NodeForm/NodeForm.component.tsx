@@ -18,7 +18,7 @@ import { INodeForm } from './NodeForm';
 export const NodeForm: React.FC<INodeForm> = ({
   createNode,
   data,
-  isStart,
+  isStart: isStartProps,
   loading,
   mode,
   onCancel,
@@ -27,7 +27,7 @@ export const NodeForm: React.FC<INodeForm> = ({
   const {
     convertNodeToOptions,
     input,
-    is_start,
+    isStart,
     llm,
     message,
     name,
@@ -231,10 +231,10 @@ export const NodeForm: React.FC<INodeForm> = ({
         <FormControlLabel
           control={
             <Switch
-              checked={is_start}
+              checked={isStartProps}
               name="isStart"
               onChange={onSwitchUpdate}
-              disabled={isStart && !is_start}
+              disabled={isStart && !isStartProps}
             />
           }
           label="Is Start"
@@ -261,7 +261,7 @@ export const NodeForm: React.FC<INodeForm> = ({
               updateNode({
                 id: data?.id ?? '',
                 input,
-                is_start,
+                isStart,
                 llm,
                 message,
                 name,

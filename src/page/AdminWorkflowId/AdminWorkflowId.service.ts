@@ -80,7 +80,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     const workflow = response.data;
     setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
     Object.keys(workflow.nodes).forEach((node) => {
-      if (workflow.nodes[node].is_start) {
+      if (workflow.nodes[node].isStart) {
         setIsStart(true);
       }
     });
