@@ -6,7 +6,7 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.26
+<b>Version</b>: 0.0.27
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
@@ -14,6 +14,8 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Fix the issue with node name not updated
+- [ ] Handle errors more gracefully
+- [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled
 - [ ] Show workflow history
 - [ ] Show loading indicator on Pages
@@ -38,6 +40,7 @@ This is Website for Vimal Menon
 - [ ] Create API for production
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
+- [ ] Show time in more readable format
 
 ## Ideas
 

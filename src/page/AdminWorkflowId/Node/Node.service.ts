@@ -15,6 +15,7 @@ import { IUseNodeForm } from './Node';
 export enum fields {
   LLM = 'LLM',
   Prompt = 'Prompt',
+  Message = 'Message',
   Tools = 'Tools',
   Input = 'Input',
   Tool = 'Tool',
@@ -25,7 +26,7 @@ export enum fields {
 
 export const nodeType = (type?: string): string[] => {
   if (type === 'Agent') {
-    return [fields.LLM, fields.Prompt, fields.Tools, fields.Next, fields.IsStart];
+    return [fields.LLM, fields.Prompt, fields.Message, fields.Tools, fields.Next, fields.IsStart];
   }
   if (type === 'HumanInput') {
     return [fields.Input, fields.Next, fields.IsStart];
@@ -34,16 +35,16 @@ export const nodeType = (type?: string): string[] => {
     return [fields.Tool, fields.Next, fields.IsStart];
   }
   if (type === 'LLM') {
-    return [fields.Prompt, fields.Next, fields.IsStart];
+    return [fields.Prompt, fields.Message, fields.Next, fields.IsStart];
   }
   if (type === 'Service') {
-    return [fields.Service, fields.IsStart];
+    return [fields.Service, fields.Next, fields.IsStart];
   }
   return [];
 };
 
 export const cleanData = (data: INode): INode => {
-  const { input, llm, prompt, service, tool, type, ...rest } = data;
+  const { input, llm, message, next, prompt, service, tool, type, ...rest } = data;
   const result: INode = { ...rest };
   if (llm) {
     result.llm = llm;
@@ -63,6 +64,12 @@ export const cleanData = (data: INode): INode => {
   if (service) {
     result.service = service;
   }
+  if (next) {
+    result.next = next;
+  }
+  if (message) {
+    result.message = message;
+  }
   return result;
 };
 export const convertToolsToOption = (tools: string[]): IMultiSelectOption[] =>
@@ -76,12 +83,13 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [type, setType] = useState<string>(data?.type ?? '');
   const [llm, setLlm] = useState<string | undefined>(data?.llm);
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
+  const [message, setMessage] = useState<string>(data?.message ?? '');
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
   const [input, setInput] = useState<string>(data?.input ?? '');
-  const [next, setNext] = useState<string[]>(data?.next ?? []);
+  const [next, setNext] = useState<string>(data?.next ?? '');
   const [tool, setTool] = useState<string>(data?.tool ?? '');
   const [service, setService] = useState<string>(data?.service ?? '');
-  const [isStart, setIsStart] = useState<boolean>(data?.is_start ?? false);
+  const [isStart, setIsStart] = useState<boolean>(data?.isStart ?? false);
 
   const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {
@@ -94,6 +102,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     }
     if (name === 'prompt') {
       setPrompt(value);
+    }
+    if (name === 'message') {
+      setMessage(value);
     }
   };
 
@@ -115,13 +126,16 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     if (name === 'service') {
       setService(value);
     }
+    if (name === 'next') {
+      setNext(value);
+    }
     if (name === 'type') {
       setType(value);
       setPrompt('');
       setLlm('');
       setTools([]);
       setInput('');
-      setNext([]);
+      setNext('');
       setTool('');
       setIsStart(false);
       setService('');
@@ -135,14 +149,8 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     if (name === 'tools') {
       setTools(values);
     }
-    if (name === 'next') {
-      setNext(values);
-    }
   };
   const onSelectClear = (input: string): void => {
-    if (input === 'next') {
-      setNext([]);
-    }
     if (input === 'tools') {
       setTools([]);
     }
@@ -161,8 +169,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     convertNodeToOptions,
     id: data?.id ?? '',
     input,
-    is_start: isStart,
+    isStart,
     llm,
+    message,
     name,
     next,
     onInputUpdate,

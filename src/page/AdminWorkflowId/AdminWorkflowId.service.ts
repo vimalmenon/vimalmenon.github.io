@@ -16,15 +16,15 @@ import {
 export const Context = createContext<IContext>({
   error: null,
   id: '0',
+  isStart: false,
   loading: false,
   nodeFormMode: 'UPDATE',
-  nodes: [],
   nodeTabs: [],
   selectedNode: null,
   setError: NotImplemented,
+  setIsStart: NotImplemented,
   setLoading: NotImplemented,
   setNodeFormMode: NotImplemented,
-  setNodes: NotImplemented,
   setNodeTabs: NotImplemented,
   setSelectedNode: NotImplemented,
   setWorkflow: NotImplemented,
@@ -49,9 +49,9 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
     selectedNode,
+    setIsStart,
     setLoading,
     setNodeFormMode,
-    setNodes,
     setNodeTabs,
     setSelectedNode,
     setWorkflow,
@@ -78,8 +78,12 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     }
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(APIs.GetWorkflowById(id));
     const workflow = response.data;
-    setNodes(Object.keys(workflow.nodes));
     setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
+    Object.keys(workflow.nodes).forEach((node) => {
+      if (workflow.nodes[node].isStart) {
+        setIsStart(true);
+      }
+    });
     setWorkflow(workflow);
     if (skipLoading) {
       setWorkflowLoading(false);
@@ -123,7 +127,6 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     deleteNode,
     deleteNodeCancel,
     deleteNodeConfirm,
-
     getAllData,
     id,
     updateNode,
@@ -156,6 +159,7 @@ export const useTabHelper = (): IUseTabHelper => {
         } else {
           node.selected = false;
         }
+        node.mode = 'VIEW';
         return node;
       })
     );

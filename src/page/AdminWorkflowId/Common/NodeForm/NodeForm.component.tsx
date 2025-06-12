@@ -18,6 +18,7 @@ import { INodeForm } from './NodeForm';
 export const NodeForm: React.FC<INodeForm> = ({
   createNode,
   data,
+  isStart: isStartProps,
   loading,
   mode,
   onCancel,
@@ -26,8 +27,9 @@ export const NodeForm: React.FC<INodeForm> = ({
   const {
     convertNodeToOptions,
     input,
-    is_start,
+    isStart,
     llm,
+    message,
     name,
     next,
     onInputUpdate,
@@ -109,9 +111,25 @@ export const NodeForm: React.FC<INodeForm> = ({
             size="small"
             required
             multiline
-            rows={5}
+            rows={3}
             value={prompt}
             name="prompt"
+            onChange={onInputUpdate}
+            disabled={loading}
+          />
+        </FormControl>
+      ) : null}
+      {mode === 'UPDATE' && value.includes(fields.Message) ? (
+        <FormControl variant="outlined" fullWidth required>
+          <TextField
+            label="Message"
+            variant="outlined"
+            size="small"
+            required
+            multiline
+            rows={5}
+            value={message}
+            name="message"
             onChange={onInputUpdate}
             disabled={loading}
           />
@@ -188,20 +206,37 @@ export const NodeForm: React.FC<INodeForm> = ({
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Next) ? (
-        <MultiSelect
-          options={convertNodeToOptions()}
-          value={next ?? []}
-          label={'Next'}
-          id={'next'}
-          name="next"
-          onChange={onMultiSelectUpdate}
-          onClear={() => onSelectClear('next')}
-          disabled={loading}
-        />
+        <FormControl fullWidth required size="small">
+          <InputLabel id="next">Next</InputLabel>
+          <Select
+            value={next}
+            labelId="Next"
+            label="Next"
+            name="next"
+            onChange={onSelectUpdate}
+            disabled={loading}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {convertNodeToOptions().map((node) => (
+              <MenuItem value={node.value} key={node.value}>
+                {node.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.IsStart) ? (
         <FormControlLabel
-          control={<Switch checked={is_start} name="isStart" onChange={onSwitchUpdate} />}
+          control={
+            <Switch
+              checked={isStartProps}
+              name="isStart"
+              onChange={onSwitchUpdate}
+              disabled={isStart && !isStartProps}
+            />
+          }
           label="Is Start"
         />
       ) : null}
@@ -226,8 +261,9 @@ export const NodeForm: React.FC<INodeForm> = ({
               updateNode({
                 id: data?.id ?? '',
                 input,
-                is_start,
+                isStart,
                 llm,
+                message,
                 name,
                 next,
                 prompt,

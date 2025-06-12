@@ -11,27 +11,27 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
 }) => {
   const [workflow, setWorkflow] = useState<IWorkflow>();
   const [workflowLoading, setWorkflowLoading] = useState<boolean>(false);
-  const [nodes, setNodes] = useState<string[]>([]);
   const [nodeTabs, setNodeTabs] = useState<INodeTab[]>([]);
   const [workflowFormMode, setWorkflowFormMode] = useState<FormMode>('VIEW');
   const [loading, setLoading] = useState<boolean>(false);
   const [nodeFormMode, setNodeFormMode] = useState<FormMode>('UPDATE');
   const [selectedNode, setSelectedNode] = useState<INode | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isStart, setIsStart] = useState<boolean>(false);
   return (
     <Context.Provider
       value={{
         error,
         id,
+        isStart,
         loading,
         nodeFormMode,
-        nodes,
         nodeTabs,
         selectedNode,
         setError,
+        setIsStart,
         setLoading,
         setNodeFormMode,
-        setNodes,
         setNodeTabs,
         setSelectedNode,
         setWorkflow,

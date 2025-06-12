@@ -42,24 +42,29 @@ export interface INodeSlim {
 export interface INode extends INodeSlim {
   id: string;
   prompt?: string;
+  message?: string;
   type?: string;
   llm?: string;
   tools: string[];
   input?: string;
-  next: string[];
+  next?: string;
   tool?: string;
   service?: string;
-  updated_at?: string;
-  is_start: boolean;
+  isStart: boolean;
+}
+
+export interface INodeFull extends INode {
+  requestAtRunTime: boolean;
+  updatedAt: string;
 }
 
 export interface IWorkflow extends IWorkflowSlim {
   id: string;
   detail: string;
   connections: Record<string, string[]>;
-  nodes: Record<string, INode>;
+  nodes: Record<string, INodeFull>;
   complete: boolean;
-  updated_at: string;
+  updatedAt: string;
 }
 
 export interface IMakeRequest<T, E = string> {

@@ -12,7 +12,7 @@ import {
 
 export const ExecuteForm: React.FC = () => {
   const { executeWorkflow } = useWorkflowExecuteHelper();
-  const { loading } = useAdminWorkflowIdExecuteContext();
+  const { loading, setShowCreate } = useAdminWorkflowIdExecuteContext();
   const [name, setName] = useState<string>('');
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -27,7 +27,7 @@ export const ExecuteForm: React.FC = () => {
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           variant="outlined"
-          onClick={() => false}
+          onClick={() => setShowCreate(false)}
           endIcon={<Icons.Close />}
           disabled={loading}
           // loading={loading}

@@ -2,6 +2,7 @@ import {
   FormMode,
   IMultiSelectOption,
   INode as INodeData,
+  INodeFull,
   INodeSlim,
   InputChangeType,
   SelectChangeType,
@@ -10,13 +11,15 @@ import {
 } from '@types';
 
 export interface INode {
-  data?: INodeData;
+  data?: INodeFull;
   deleteNode?: () => Promise<void>;
   updateNode?: (data: INodeData) => Promise<void>;
   createNode?: (data: INodeSlim) => Promise<void>;
   cancelNode: VoidFunction;
   mode: FormMode;
   setMode?: (mode: FormMode) => void;
+  isStart: boolean;
+  complete: boolean;
 }
 
 export interface IUseNodeForm extends INodeData {
