@@ -26,7 +26,6 @@ export const NodeForm: React.FC<INodeForm> = ({
 }) => {
   const {
     convertNodeToOptions,
-    input,
     isStart,
     llm,
     message,
@@ -147,20 +146,6 @@ export const NodeForm: React.FC<INodeForm> = ({
           disabled={loading}
         />
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.Input) ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="Input"
-            variant="outlined"
-            size="small"
-            required
-            value={input}
-            name="input"
-            onChange={onInputUpdate}
-            disabled={loading}
-          />
-        </FormControl>
-      ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tool) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="tool">Tool</InputLabel>
@@ -260,7 +245,6 @@ export const NodeForm: React.FC<INodeForm> = ({
             onClick={() =>
               updateNode({
                 id: data?.id ?? '',
-                input,
                 isStart,
                 llm,
                 message,

@@ -17,7 +17,6 @@ export enum fields {
   Prompt = 'Prompt',
   Message = 'Message',
   Tools = 'Tools',
-  Input = 'Input',
   Tool = 'Tool',
   Service = 'Service',
   Next = 'Next',
@@ -29,7 +28,7 @@ export const nodeType = (type?: string): string[] => {
     return [fields.LLM, fields.Prompt, fields.Message, fields.Tools, fields.Next, fields.IsStart];
   }
   if (type === 'HumanInput') {
-    return [fields.Input, fields.Next, fields.IsStart];
+    return [fields.Next, fields.IsStart];
   }
   if (type === 'Tool') {
     return [fields.Tool, fields.Next, fields.IsStart];
@@ -44,7 +43,7 @@ export const nodeType = (type?: string): string[] => {
 };
 
 export const cleanData = (data: INode): INode => {
-  const { input, llm, message, next, prompt, service, tool, type, ...rest } = data;
+  const { llm, message, next, prompt, service, tool, type, ...rest } = data;
   const result: INode = { ...rest };
   if (llm) {
     result.llm = llm;
@@ -54,9 +53,6 @@ export const cleanData = (data: INode): INode => {
   }
   if (prompt) {
     result.prompt = prompt;
-  }
-  if (input) {
-    result.input = input;
   }
   if (tool) {
     result.tool = tool;
@@ -85,7 +81,6 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [prompt, setPrompt] = useState<string>(data?.prompt ?? '');
   const [message, setMessage] = useState<string>(data?.message ?? '');
   const [tools, setTools] = useState<string[]>(data?.tools ?? []);
-  const [input, setInput] = useState<string>(data?.input ?? '');
   const [next, setNext] = useState<string>(data?.next ?? '');
   const [tool, setTool] = useState<string>(data?.tool ?? '');
   const [service, setService] = useState<string>(data?.service ?? '');
@@ -96,9 +91,6 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
-    }
-    if (name === 'input') {
-      setInput(value);
     }
     if (name === 'prompt') {
       setPrompt(value);
@@ -134,7 +126,6 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setPrompt('');
       setLlm('');
       setTools([]);
-      setInput('');
       setNext('');
       setTool('');
       setIsStart(false);
@@ -168,7 +159,6 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   return {
     convertNodeToOptions,
     id: data?.id ?? '',
-    input,
     isStart,
     llm,
     message,
