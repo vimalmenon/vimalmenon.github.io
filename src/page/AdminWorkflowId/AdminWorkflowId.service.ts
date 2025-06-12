@@ -112,12 +112,30 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setSelectedNode(null);
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
-    await makeRequest<IGenericResponse<string[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
-    await getWorkFlow();
+    const { response } = await makeRequest<IGenericResponse<IWorkflow>>(
+      APIs.UpdateWorkflowNode(id, nodeId, data)
+    );
+    const workflow = response.data;
+    setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
+    Object.keys(workflow.nodes).forEach((node) => {
+      if (workflow.nodes[node].isStart) {
+        setIsStart(true);
+      }
+    });
+    setWorkflow(workflow);
   };
   const createNode = async (data: INodeSlim): Promise<void> => {
-    await makeRequest(APIs.CreateWorkflowNode(id, data));
-    await getWorkFlow();
+    const { response } = await makeRequest<IGenericResponse<IWorkflow>>(
+      APIs.CreateWorkflowNode(id, data)
+    );
+    const workflow = response.data;
+    setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
+    Object.keys(workflow.nodes).forEach((node) => {
+      if (workflow.nodes[node].isStart) {
+        setIsStart(true);
+      }
+    });
+    setWorkflow(workflow);
     setWorkflowFormMode('VIEW');
     setNodeFormMode('UPDATE');
   };
