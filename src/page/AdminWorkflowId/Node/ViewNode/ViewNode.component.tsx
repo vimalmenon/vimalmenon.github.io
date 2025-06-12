@@ -70,6 +70,12 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
           <Box>{convertNextToString(workflow?.nodes, data.next)}</Box>
         </Box>
       ) : null}
+      {data.requestAtRunTime ? (
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box>Request at run time</Box>
+          <Box>{data.requestAtRunTime ? 'True' : 'False'}</Box>
+        </Box>
+      ) : null}
       {data.isStart ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Is Start</Box>
