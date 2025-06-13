@@ -15,4 +15,8 @@ export const links = [
     link: 'https://github.com/poe-platform/server-bot-quick-start/tree/main',
     name: 'Poe GitHub',
   },
+  {
+    link: 'hhttps://github.com/agno-agi/agno',
+    name: 'Agno',
+  },
 ];
