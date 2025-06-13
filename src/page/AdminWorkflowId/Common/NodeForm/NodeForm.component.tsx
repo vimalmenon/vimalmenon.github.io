@@ -216,10 +216,10 @@ export const NodeForm: React.FC<INodeForm> = ({
         <FormControlLabel
           control={
             <Switch
-              checked={isStartProps}
+              checked={isStart}
               name="isStart"
               onChange={onSwitchUpdate}
-              disabled={isStart && !isStartProps}
+              disabled={isStartProps && !isStart}
             />
           }
           label="Is Start"
