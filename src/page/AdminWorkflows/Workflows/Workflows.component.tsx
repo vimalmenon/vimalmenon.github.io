@@ -18,7 +18,7 @@ import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.s
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
-  const { mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
+  const { dataLoading, mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
   const {
     deleteWorkflow,
     deleteWorkflowCancel,
@@ -46,7 +46,7 @@ export const Workflows: React.FC = () => {
         />
       ) : null}
       {mode === 'CREATE' ? (
-        <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} />
+        <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} loading={dataLoading} />
       ) : (
         <TableContainer component={Paper}>
           <Table>

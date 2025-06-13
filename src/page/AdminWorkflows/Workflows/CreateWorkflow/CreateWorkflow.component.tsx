@@ -9,7 +9,7 @@ import { Icons } from '@data';
 import { useAdminWorkflows } from '../../AdminWorkflows.services';
 import { ICreateWorkflow } from './CreateWorkflow';
 
-export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow }) => {
+export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow, loading }) => {
   const [name, setName] = useState<string>('');
   const { createWorkflow } = useAdminWorkflows();
   return (
@@ -22,13 +22,14 @@ export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow }) =>
           fullWidth
           value={name}
           onChange={(e) => setName(e.target.value)}
+          disabled={loading}
         />
       </FormControl>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           variant="outlined"
           endIcon={<Icons.Close />}
-          disabled={false}
+          disabled={loading}
           onClick={cancelWorkflow}
         >
           Cancel
@@ -38,6 +39,7 @@ export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow }) =>
           onClick={() => createWorkflow(name)}
           startIcon={<Icons.Save />}
           loadingPosition="start"
+          loading={loading}
         >
           Create
         </Button>

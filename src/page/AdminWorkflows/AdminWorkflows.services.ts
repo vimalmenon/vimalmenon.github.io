@@ -7,9 +7,11 @@ import { makeRequest, NotImplemented } from '@utility';
 import { IContext, IUseAdminWorkflows } from './AdminWorkflows';
 
 export const Context = createContext<IContext>({
+  dataLoading: false,
   loading: false,
   mode: 'VIEW',
   selectedWorkflow: null,
+  setDataLoading: NotImplemented,
   setLoading: NotImplemented,
   setMode: NotImplemented,
   setSelectedWorkflow: NotImplemented,
@@ -23,6 +25,7 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
   const {
     loading,
     selectedWorkflow,
+    setDataLoading,
     setLoading,
     setMode,
     setSelectedWorkflow,
@@ -37,14 +40,14 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
   };
 
   const createWorkflow = async (name: string): Promise<void> => {
-    setLoading(true);
+    setDataLoading(true);
     await makeRequest<IGenericResponse<string[]>>(
       APIs.CreateWorkflow({
         name,
       })
     );
     await getWorkflows();
-    setLoading(false);
+    setDataLoading(false);
     setMode('VIEW');
   };
 
