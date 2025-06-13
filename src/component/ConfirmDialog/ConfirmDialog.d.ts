@@ -6,6 +6,7 @@ export interface IConfirmDialog extends IShowTitle {
   open: boolean;
   onConfirm: VoidFunction<Promise<void>>;
   onCancel: VoidFunction;
+  loading?: boolean;
 }
 
 export interface IShowIcon {

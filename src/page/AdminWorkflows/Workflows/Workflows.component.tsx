@@ -43,6 +43,7 @@ export const Workflows: React.FC = () => {
           open={!!selectedWorkflow}
           onConfirm={deleteWorkflowConfirm}
           onCancel={deleteWorkflowCancel}
+          loading={loading}
         />
       ) : null}
       {mode === 'CREATE' ? (

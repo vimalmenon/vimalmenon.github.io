@@ -29,6 +29,7 @@ const ShowTitle: React.FC<IShowTitle> = ({ icon, title }) => (
 
 export const ConfirmDialog: React.FC<IConfirmDialog> = ({
   icon,
+  loading = false,
   onCancel,
   onConfirm,
   open,
@@ -39,7 +40,7 @@ export const ConfirmDialog: React.FC<IConfirmDialog> = ({
       <ShowTitle icon={icon} title={title} />
     </DialogTitle>
     <DialogActions>
-      <Button onClick={onCancel} variant="outlined" endIcon={<Icons.Close />}>
+      <Button onClick={onCancel} variant="outlined" endIcon={<Icons.Close />} disabled={loading}>
         Cancel
       </Button>
       <AsyncButton
