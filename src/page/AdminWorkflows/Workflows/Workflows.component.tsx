@@ -50,13 +50,19 @@ export const Workflows: React.FC = () => {
         <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} loading={dataLoading} />
       ) : (
         <TableContainer component={Paper}>
-          <Table>
+          <Table size="small">
             <TableHead>
               <TableRow>
                 <TableCell colSpan={2}>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                  <Box
+                    sx={{
+                      alignItems: 'center',
+                      display: 'flex',
+                      fontWeight: 'bold',
+                      justifyContent: 'space-between',
+                    }}
+                  >
                     <span>Workflows</span>
-
                     <IconButton onClick={() => setMode('CREATE')}>
                       <Icons.Add />
                     </IconButton>
@@ -68,7 +74,7 @@ export const Workflows: React.FC = () => {
           {loading ? (
             <LinearProgress />
           ) : (
-            <Table>
+            <Table size="small">
               <TableHead>
                 <TableRow>
                   <TableCell>Name</TableCell>

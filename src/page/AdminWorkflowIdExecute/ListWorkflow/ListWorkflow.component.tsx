@@ -20,7 +20,7 @@ export const ListWorkflow: React.FC = () => {
 
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
