@@ -85,7 +85,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [tool, setTool] = useState<string>(data?.tool ?? '');
   const [service, setService] = useState<string>(data?.service ?? '');
   const [isStart, setIsStart] = useState<boolean>(data?.isStart ?? false);
-  const [fromPreviousNode, setFromPreviousNode] = useState<boolean>(false);
+  const [fromPreviousNode, setFromPreviousNode] = useState<boolean>(
+    data?.fromPreviousNode ?? false
+  );
 
   const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {

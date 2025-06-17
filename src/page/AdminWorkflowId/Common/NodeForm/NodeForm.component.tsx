@@ -260,6 +260,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             loadingPosition="start"
             onClick={() =>
               updateNode({
+                fromPreviousNode,
                 id: data?.id ?? '',
                 isStart,
                 llm,
@@ -271,7 +272,6 @@ export const NodeForm: React.FC<INodeForm> = ({
                 tool,
                 tools,
                 type,
-                fromPreviousNode
               })
             }
           >
