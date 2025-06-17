@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
+import { Fragment } from 'react';
 import { AsyncButton, MultiSelect, TextInput } from '@component';
 import { useAdminContext } from '@context';
 import { Icons } from '@data';
@@ -26,6 +27,7 @@ export const NodeForm: React.FC<INodeForm> = ({
 }) => {
   const {
     convertNodeToOptions,
+    fromPreviousNode,
     isStart,
     llm,
     message,
@@ -119,20 +121,34 @@ export const NodeForm: React.FC<INodeForm> = ({
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Message) ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="Message"
-            variant="outlined"
-            size="small"
-            required
-            multiline
-            rows={5}
-            value={message}
-            name="message"
-            onChange={onInputUpdate}
-            disabled={loading}
+        <Fragment>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={fromPreviousNode}
+                name="fromPreviousNode"
+                onChange={onSwitchUpdate}
+              />
+            }
+            label="Get message from previous node"
           />
-        </FormControl>
+          {fromPreviousNode ? null : (
+            <FormControl variant="outlined" fullWidth required>
+              <TextField
+                label="Message"
+                variant="outlined"
+                size="small"
+                required
+                multiline
+                rows={5}
+                value={message}
+                name="message"
+                onChange={onInputUpdate}
+                disabled={loading}
+              />
+            </FormControl>
+          )}
+        </Fragment>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tools) ? (
         <MultiSelect
@@ -255,6 +271,7 @@ export const NodeForm: React.FC<INodeForm> = ({
                 tool,
                 tools,
                 type,
+                fromPreviousNode
               })
             }
           >

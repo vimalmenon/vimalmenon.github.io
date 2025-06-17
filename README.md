@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [ ] Handle errors more gracefully
+- [ ] Get data from previous node
 - [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled
 - [ ] Show workflow history
