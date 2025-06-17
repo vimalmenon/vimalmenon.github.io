@@ -3,7 +3,14 @@
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { FormMode, IGenericResponse, INode, INodeSlim, IWorkflow } from '@types';
+import {
+  FormMode,
+  IGenericResponse,
+  IGenericResponseError,
+  INode,
+  INodeSlim,
+  IWorkflow,
+} from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
@@ -49,6 +56,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
     selectedNode,
+    setError,
     setIsStart,
     setLoading,
     setNodeFormMode,
@@ -91,9 +99,16 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   };
   const updateWorkflow = async (data: IWorkflow): Promise<void> => {
     setLoading(true);
-    const { response } = await makeRequest<IGenericResponse<IWorkflow>>(
-      APIs.UpdateWorkflow(id, data)
-    );
+    const { error, response } = await makeRequest<
+      IGenericResponse<IWorkflow>,
+      IGenericResponseError
+    >(APIs.UpdateWorkflow(id, data));
+    if (error) {
+      setError(error.detail);
+      setWorkflowFormMode('VIEW');
+      setLoading(false);
+      return;
+    }
     const workflow = response.data;
     setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
     Object.keys(workflow.nodes).forEach((node) => {

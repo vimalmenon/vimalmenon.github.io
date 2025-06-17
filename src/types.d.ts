@@ -31,6 +31,10 @@ export interface IGenericResponse<T> {
   data: T;
 }
 
+export interface IGenericResponseError {
+  detail: string;
+}
+
 export interface IWorkflowSlim {
   name: string;
 }
