@@ -27,7 +27,7 @@ export const NodeForm: React.FC<INodeForm> = ({
 }) => {
   const {
     convertNodeToOptions,
-    fromPreviousNode,
+    dataFromPreviousNode,
     isStart,
     llm,
     message,
@@ -125,14 +125,14 @@ export const NodeForm: React.FC<INodeForm> = ({
           <FormControlLabel
             control={
               <Switch
-                checked={fromPreviousNode}
-                name="fromPreviousNode"
+                checked={dataFromPreviousNode}
+                name="dataFromPreviousNode"
                 onChange={onSwitchUpdate}
               />
             }
             label="Get message from previous node"
           />
-          {fromPreviousNode ? null : (
+          {dataFromPreviousNode ? null : (
             <FormControl variant="outlined" fullWidth required>
               <TextField
                 label="Message"
@@ -260,7 +260,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             loadingPosition="start"
             onClick={() =>
               updateNode({
-                fromPreviousNode,
+                dataFromPreviousNode,
                 id: data?.id ?? '',
                 isStart,
                 llm,

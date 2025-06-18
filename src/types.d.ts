@@ -54,7 +54,7 @@ export interface INode extends INodeSlim {
   tool?: string;
   service?: string;
   isStart: boolean;
-  fromPreviousNode?: boolean;
+  dataFromPreviousNode?: boolean;
 }
 
 export interface INodeFull extends INode {

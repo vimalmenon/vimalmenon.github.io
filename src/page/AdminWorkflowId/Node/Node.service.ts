@@ -85,8 +85,8 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [tool, setTool] = useState<string>(data?.tool ?? '');
   const [service, setService] = useState<string>(data?.service ?? '');
   const [isStart, setIsStart] = useState<boolean>(data?.isStart ?? false);
-  const [fromPreviousNode, setFromPreviousNode] = useState<boolean>(
-    data?.fromPreviousNode ?? false
+  const [dataFromPreviousNode, setDataFromPreviousNode] = useState<boolean>(
+    data?.dataFromPreviousNode ?? false
   );
 
   const { workflow } = useWorkflowContext();
@@ -109,8 +109,8 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     if (name === 'isStart') {
       setIsStart(checked);
     }
-    if (name === 'fromPreviousNode') {
-      setFromPreviousNode(checked);
+    if (name === 'dataFromPreviousNode') {
+      setDataFromPreviousNode(checked);
     }
   };
   const onSelectUpdate: SelectChangeType<string> = (event): void => {
@@ -136,7 +136,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
       setTool('');
       setIsStart(false);
       setService('');
-      setFromPreviousNode(false);
+      setDataFromPreviousNode(false);
     }
   };
   const onMultiSelectUpdate: SelectChangeType<string[]> = (event): void => {
@@ -165,7 +165,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   };
   return {
     convertNodeToOptions,
-    fromPreviousNode,
+    dataFromPreviousNode,
     id: data?.id ?? '',
     isStart,
     llm,
