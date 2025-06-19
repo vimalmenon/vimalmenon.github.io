@@ -42,6 +42,7 @@ export const ListWorkflow: React.FC = () => {
                   icon={<Icons.Delete />}
                   onClick={() => deleteExecutedWorkflow(workflow.id)}
                   toolTip="Delete"
+                  size="small"
                 />
               </TableCell>
             </TableRow>

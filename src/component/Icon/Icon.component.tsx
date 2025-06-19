@@ -5,7 +5,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { useState } from 'react';
 import { IIcon } from './Icon.d';
 
-export const Icon: React.FC<IIcon> = ({ icon, onClick, toolTip }) => {
+export const Icon: React.FC<IIcon> = ({ icon, onClick, size, toolTip }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const handleClick = async (): Promise<void> => {
     if (onClick) {
@@ -16,7 +16,7 @@ export const Icon: React.FC<IIcon> = ({ icon, onClick, toolTip }) => {
   };
   return (
     <Tooltip title={toolTip}>
-      <IconButton onClick={handleClick} loading={loading}>
+      <IconButton onClick={handleClick} loading={loading} size={size}>
         {icon}
       </IconButton>
     </Tooltip>
