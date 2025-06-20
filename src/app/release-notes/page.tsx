@@ -12,12 +12,13 @@ const Page: React.FC = () => (
   <StyledPage>
     <Breadcrumbs navigation={Navigation.ReleaseNote} />
     <div>
-      <div>0.0.22</div>
-      <ul></ul>
+      <div>0.0.27</div>
+      <ul>Execute Workflow </ul>
     </div>
     <div>
-      <div>[0.0.21 - 0.0.0]</div>
+      <div>[0.0.26 - 0.0.0]</div>
       <ul>
+        <li>Improve workflow UI</li>
         <li>Add Workflow and nodes</li>
         <li>Env Set up</li>
         <li>Limited Access to admin</li>
