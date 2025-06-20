@@ -2,6 +2,8 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { Fragment } from 'react';
+import { ReactFlow } from '@component';
 import { Icons } from '@data';
 import {
   useAdminWorkflowIdExecuteContext,
@@ -17,11 +19,18 @@ export const SelectedWorkflow: React.FC = () => {
         Back
       </Button>
       {selectedWorkflow ? (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Box>{selectedWorkflow.id}</Box>
-          <Box>{selectedWorkflow.name}</Box>
-          <Box>{selectedWorkflow.status}</Box>
-        </Box>
+        <Fragment>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box>{selectedWorkflow.id}</Box>
+            <Box>{selectedWorkflow.name}</Box>
+            <Box>{selectedWorkflow.status}</Box>
+          </Box>
+          <Box>
+            <div style={{ height: '600px', width: '500px' }}>
+              <ReactFlow />
+            </div>
+          </Box>
+        </Fragment>
       ) : null}
     </Box>
   );

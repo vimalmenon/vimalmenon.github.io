@@ -5,4 +5,5 @@ export * from './CopyToClipboard';
 export * from './Icon';
 export * from './Modal';
 export * from './MultiSelect';
+export * from './ReactFlow';
 export * from './TextInput';
