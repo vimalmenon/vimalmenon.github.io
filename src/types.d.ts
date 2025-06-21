@@ -116,6 +116,7 @@ export interface IAdminWorkflowIdPage {
 export interface IViewData {
   label: string;
   value: string;
+  hidden?: boolean;
 }
 
 export type VoidFunction<T = void> = () => T;
