@@ -27,7 +27,7 @@ export const SelectedWorkflow: React.FC = () => {
           </Box>
           <Box>
             <div style={{ height: '600px', width: '500px' }}>
-              <ReactFlow />
+              <ReactFlow nodes={[]} />
             </div>
           </Box>
         </Fragment>

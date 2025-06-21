@@ -1,6 +1,7 @@
 'use client';
 import '@xyflow/react/dist/style.css';
 import { Background, Controls, ReactFlow as ReactFlowComponent } from '@xyflow/react';
+import { IReactFlow } from './ReactFlow';
 
 const nodes = [
   {
@@ -16,7 +17,7 @@ const nodes = [
 ];
 const edges = [{ id: 'a->b', source: '1', target: '2' }];
 
-export const ReactFlow: React.FC = () => (
+export const ReactFlow: React.FC<IReactFlow> = () => (
   <ReactFlowComponent nodes={nodes} edges={edges} fitView>
     <Background />
     <Controls />

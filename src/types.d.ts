@@ -92,10 +92,20 @@ export interface IExecuteWorkflowSlim {
   name: string;
 }
 
+export interface IExecuteWorkflowNode {
+  id: string;
+  status: string;
+  startedAt: string;
+  completedAt?: string;
+  content: string;
+}
+
 export interface IExecuteWorkflow extends IExecuteWorkflowSlim {
   id: string;
   status: string;
-  created_at: string;
+  createdAt: string;
+  completedAt?: string;
+  nodes: IExecuteWorkflowNode[];
 }
 
 export interface IAdminWorkflowIdPage {
