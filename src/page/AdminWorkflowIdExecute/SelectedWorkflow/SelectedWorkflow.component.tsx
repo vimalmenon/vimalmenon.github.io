@@ -31,6 +31,12 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
       value: data.status,
     });
   }
+  if (data.createdAt) {
+    result.push({
+      label: 'Created At',
+      value: new Date(data.createdAt).toLocaleString(),
+    });
+  }
   return result;
 };
 
