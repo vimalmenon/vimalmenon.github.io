@@ -2,6 +2,7 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
 import { Icons } from '@data';
@@ -48,14 +49,11 @@ export const SelectedWorkflow: React.FC = () => {
       <Button variant="text" onClick={() => setSelectedWorkflow(null)} startIcon={<Icons.Back />}>
         Back
       </Button>
+      <Divider />
       {selectedWorkflow ? (
         <Fragment>
           <ViewData data={convertWorkflowToView(selectedWorkflow)} />
-          {/* <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Box>{selectedWorkflow.id}</Box>
-            <Box>{selectedWorkflow.name}</Box>
-            <Box>{selectedWorkflow.status}</Box>
-          </Box> */}
+          <Divider />
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
               <ReactFlow nodes={[]} />
