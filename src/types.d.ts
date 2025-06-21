@@ -98,6 +98,7 @@ export interface IExecuteWorkflowNode {
   startedAt: string;
   completedAt?: string;
   content: string;
+  node: INode;
 }
 
 export interface IExecuteWorkflow extends IExecuteWorkflowSlim {

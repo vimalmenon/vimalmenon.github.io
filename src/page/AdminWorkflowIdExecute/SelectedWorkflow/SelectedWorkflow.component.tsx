@@ -26,7 +26,7 @@ export const SelectedWorkflow: React.FC = () => {
             <Box>{selectedWorkflow.status}</Box>
           </Box>
           <Box>
-            <div style={{ height: '600px', width: '500px' }}>
+            <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
               <ReactFlow nodes={[]} />
             </div>
           </Box>
