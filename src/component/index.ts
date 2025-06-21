@@ -7,3 +7,4 @@ export * from './Modal';
 export * from './MultiSelect';
 export * from './ReactFlow';
 export * from './TextInput';
+export * from './ViewData';

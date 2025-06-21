@@ -113,6 +113,11 @@ export interface IAdminWorkflowIdPage {
   id: string;
 }
 
+export interface IViewData {
+  label: string;
+  value: string;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
