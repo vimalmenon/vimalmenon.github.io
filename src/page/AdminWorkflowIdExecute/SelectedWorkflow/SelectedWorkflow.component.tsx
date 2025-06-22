@@ -6,7 +6,7 @@ import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
 import { Icons } from '@data';
-import { IExecuteWorkflow, IViewData } from '@types';
+import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowNode, IViewData } from '@types';
 import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
@@ -41,6 +41,13 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
   return result;
 };
 
+const convertNodesToReactFlow = (nodes: IExecuteWorkflowNode[]): IReactFlowNode[] =>
+  nodes.map<IReactFlowNode>((node, index) => ({
+    data: { label: node.node.name },
+    id: node.id,
+    position: { x: 0, y: index * 100 },
+  }));
+
 export const SelectedWorkflow: React.FC = () => {
   const { setSelectedWorkflow } = useWorkflowExecuteHelper();
   const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
@@ -56,7 +63,7 @@ export const SelectedWorkflow: React.FC = () => {
           <Divider />
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
-              <ReactFlow nodes={[]} />
+              <ReactFlow nodes={convertNodesToReactFlow(selectedWorkflow?.nodes ?? [])} />
             </div>
           </Box>
         </Fragment>

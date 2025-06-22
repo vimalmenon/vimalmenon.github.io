@@ -119,6 +119,12 @@ export interface IViewData {
   hidden?: boolean;
 }
 
+export interface IReactFlowNode {
+  data: { label: string };
+  id: string;
+  position: { x: number; y: number };
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
