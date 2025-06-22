@@ -52,6 +52,7 @@ const convertNodesToReactFlow = (nodes: IExecuteWorkflowNode[]): IReactFlowNode[
     data: { label: node.node.name },
     id: node.id,
     position: { x: 0, y: index * 100 },
+    type: node.node.type === 'HumanInput' ? 'HumanInput' : undefined,
   }));
 
 const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>

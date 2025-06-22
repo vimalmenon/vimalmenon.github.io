@@ -124,6 +124,7 @@ export interface IReactFlowNode {
   id: string;
   position: { x: number; y: number };
   style?: React.CSSProperties;
+  type?: 'HumanInput';
 }
 
 export interface IReactFlowEdge {
