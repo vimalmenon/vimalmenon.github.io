@@ -125,6 +125,12 @@ export interface IReactFlowNode {
   position: { x: number; y: number };
 }
 
+export interface IReactFlowEdge {
+  id: string;
+  source: string;
+  target: string;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';

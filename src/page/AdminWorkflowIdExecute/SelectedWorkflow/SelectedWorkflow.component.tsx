@@ -6,7 +6,13 @@ import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
 import { Icons } from '@data';
-import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowNode, IViewData } from '@types';
+import {
+  IExecuteWorkflow,
+  IExecuteWorkflowNode,
+  IReactFlowEdge,
+  IReactFlowNode,
+  IViewData,
+} from '@types';
 import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
@@ -48,6 +54,20 @@ const convertNodesToReactFlow = (nodes: IExecuteWorkflowNode[]): IReactFlowNode[
     position: { x: 0, y: index * 100 },
   }));
 
+const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
+  nodes
+    .map<IReactFlowEdge | null>((node, index, nodes) => {
+      if (node.id && nodes[index + 1]?.id) {
+        return {
+          id: `${node.id}-${nodes[index + 1].id}`,
+          source: node.id,
+          target: nodes[index + 1].id,
+        };
+      }
+      return null;
+    })
+    .filter((node) => node !== null);
+
 export const SelectedWorkflow: React.FC = () => {
   const { setSelectedWorkflow } = useWorkflowExecuteHelper();
   const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
@@ -63,7 +83,10 @@ export const SelectedWorkflow: React.FC = () => {
           <Divider />
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
-              <ReactFlow nodes={convertNodesToReactFlow(selectedWorkflow?.nodes ?? [])} />
+              <ReactFlow
+                nodes={convertNodesToReactFlow(selectedWorkflow?.nodes ?? [])}
+                edges={createEdgesForNode(selectedWorkflow?.nodes ?? [])}
+              />
             </div>
           </Box>
         </Fragment>
