@@ -4,7 +4,13 @@ import { Background, Controls, ReactFlow as ReactFlowComponent } from '@xyflow/r
 import { IReactFlow } from './ReactFlow';
 
 export const ReactFlow: React.FC<IReactFlow> = ({ edges, nodes }) => (
-  <ReactFlowComponent nodes={nodes} edges={edges} fitView>
+  <ReactFlowComponent
+    nodes={nodes}
+    edges={edges}
+    fitView
+    nodesConnectable={false}
+    nodesDraggable={false}
+  >
     <Background />
     <Controls />
   </ReactFlowComponent>

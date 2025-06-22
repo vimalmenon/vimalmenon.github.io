@@ -93,7 +93,7 @@ export interface IExecuteWorkflowSlim {
 }
 
 export interface IExecuteWorkflowNode {
-  id: string;
+  id: 'NEW' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELLED';
   status: string;
   startedAt: string;
   completedAt?: string;
@@ -123,6 +123,7 @@ export interface IReactFlowNode {
   data: { label: string };
   id: string;
   position: { x: number; y: number };
+  style?: React.CSSProperties;
 }
 
 export interface IReactFlowEdge {
