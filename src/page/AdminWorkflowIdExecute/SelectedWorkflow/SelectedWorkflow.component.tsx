@@ -49,10 +49,10 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
 
 const convertNodesToReactFlow = (nodes: IExecuteWorkflowNode[]): IReactFlowNode[] =>
   nodes.map<IReactFlowNode>((node, index) => ({
-    data: { label: node.node.name },
+    data: { label: node.node.name, status: node.status, type: node.node.type },
     id: node.id,
     position: { x: 0, y: index * 100 },
-    type: node.node.type === 'HumanInput' ? 'HumanInput' : undefined,
+    type: node.node.type === 'HumanInput' ? 'HumanInput' : 'Execute',
   }));
 
 const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>

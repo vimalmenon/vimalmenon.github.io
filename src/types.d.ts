@@ -120,11 +120,11 @@ export interface IViewData {
 }
 
 export interface IReactFlowNode {
-  data: { label: string };
+  data: { label: string; [string]: string };
   id: string;
   position: { x: number; y: number };
   style?: React.CSSProperties;
-  type?: 'HumanInput';
+  type?: 'HumanInput' | 'Execute';
 }
 
 export interface IReactFlowEdge {
