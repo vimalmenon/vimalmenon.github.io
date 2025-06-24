@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 import { Handle, Position } from '@xyflow/react';
 import { useState } from 'react';
 import { Icon, TextInput } from '@component';
@@ -14,7 +15,8 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
     <Box
       className="text-updater-node"
       minWidth={'300px'}
-      sx={{ background: 'white', border: '1px solid #ddd', borderRadius: '5px', padding: '10px' }}
+      component={Paper}
+      sx={{ borderRadius: '5px', padding: '10px' }}
     >
       <Box>
         {data.label} ({data.type})
