@@ -9,10 +9,11 @@ import { INodeType } from './NodeType';
 export const ExecuteNode: React.FC<INodeType> = ({ data }) => (
   <Box
     className="text-updater-node"
-    sx={{ border: '1px solid #ddd', borderRadius: '5px', padding: '10px' }}
+    minWidth={'300px'}
+    sx={{ background: 'white', border: '1px solid #ddd', borderRadius: '5px', padding: '10px' }}
   >
     <Box>
-      {data.label}({data.type})
+      {data.label} ({data.type})
       <Icon
         toolTip="Execute"
         icon={<Icons.Play />}

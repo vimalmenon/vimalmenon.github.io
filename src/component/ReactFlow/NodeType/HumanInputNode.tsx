@@ -6,16 +6,18 @@ import { useState } from 'react';
 import { Icon, TextInput } from '@component';
 import { Icons } from '@data';
 import { INodeType } from './NodeType';
+// import Divider from '@mui/material/Divider';
 
 export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
   const [value, setValue] = useState<string>('');
   return (
     <Box
       className="text-updater-node"
-      sx={{ border: '1px solid #ddd', borderRadius: '5px', padding: '10px' }}
+      minWidth={'300px'}
+      sx={{ background: 'white', border: '1px solid #ddd', borderRadius: '5px', padding: '10px' }}
     >
       <Box>
-        {data.label}({data.type})
+        {data.label} ({data.type})
         <Icon
           toolTip="Execute"
           icon={<Icons.Play />}
@@ -27,6 +29,7 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
           }
         />
       </Box>
+      {/* <Divider /> */}
       <Box>
         <TextInput
           value={value}

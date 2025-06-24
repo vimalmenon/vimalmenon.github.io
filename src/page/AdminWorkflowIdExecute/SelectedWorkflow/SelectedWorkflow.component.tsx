@@ -60,7 +60,7 @@ const convertNodesToReactFlow = (
       type: node.node.type,
     },
     id: node.id,
-    position: { x: 0, y: index * 100 },
+    position: { x: 0, y: index * 150 },
     type: node.node.type === 'HumanInput' ? 'HumanInput' : 'Execute',
   }));
 
