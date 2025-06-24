@@ -16,7 +16,7 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
     >
       <Box>
         {data.label}({data.type})
-        <Icon toolTip="Execute" icon={<Icons.Play />} />
+        <Icon toolTip="Execute" icon={<Icons.Play />} onClick={data.onExecute} />
       </Box>
       <Box>
         <TextInput
