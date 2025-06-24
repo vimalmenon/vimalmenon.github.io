@@ -11,8 +11,10 @@ export const ExecuteNode: React.FC<INodeType> = ({ data }) => (
     className="text-updater-node"
     sx={{ border: '1px solid #ddd', borderRadius: '5px', padding: '10px' }}
   >
-    <Box>{data.label}</Box>
-    <Icon toolTip="Execute" icon={<Icons.Play />} />
+    <Box>
+      {data.label}({data.type})
+      <Icon toolTip="Execute" icon={<Icons.Play />} />
+    </Box>
     <Handle type="target" position={Position.Top} />
     <Handle type="source" position={Position.Bottom} />
   </Box>
