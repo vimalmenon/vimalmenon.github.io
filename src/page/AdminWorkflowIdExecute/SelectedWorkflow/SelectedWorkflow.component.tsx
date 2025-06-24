@@ -47,9 +47,17 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
   return result;
 };
 
-const convertNodesToReactFlow = (nodes: IExecuteWorkflowNode[]): IReactFlowNode[] =>
+const convertNodesToReactFlow = (
+  nodes: IExecuteWorkflowNode[],
+  onExecute: VoidFunction
+): IReactFlowNode[] =>
   nodes.map<IReactFlowNode>((node, index) => ({
-    data: { label: node.node.name, status: node.status, type: node.node.type },
+    data: {
+      label: node.node.name,
+      onExecute,
+      status: node.status,
+      type: node.node.type,
+    },
     id: node.id,
     position: { x: 0, y: index * 100 },
     type: node.node.type === 'HumanInput' ? 'HumanInput' : 'Execute',
@@ -70,7 +78,7 @@ const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
     .filter((node) => node !== null);
 
 export const SelectedWorkflow: React.FC = () => {
-  const { setSelectedWorkflow } = useWorkflowExecuteHelper();
+  const { onExecuteWorkflowNode, setSelectedWorkflow } = useWorkflowExecuteHelper();
   const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
   return (
     <Box>
@@ -85,7 +93,10 @@ export const SelectedWorkflow: React.FC = () => {
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
               <ReactFlow
-                nodes={convertNodesToReactFlow(selectedWorkflow?.nodes ?? [])}
+                nodes={convertNodesToReactFlow(
+                  selectedWorkflow?.nodes ?? [],
+                  onExecuteWorkflowNode
+                )}
                 edges={createEdgesForNode(selectedWorkflow?.nodes ?? [])}
               />
             </div>

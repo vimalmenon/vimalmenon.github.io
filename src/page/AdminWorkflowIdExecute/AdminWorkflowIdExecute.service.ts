@@ -52,10 +52,14 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     await getExecutedWorkflow(false);
     setLoading(false);
   };
+  const onExecuteWorkflowNode = async (): Promise<void> => {
+    Promise.resolve();
+  };
   return {
     deleteExecutedWorkflow,
     executeWorkflow,
     getExecutedWorkflow,
+    onExecuteWorkflowNode,
     setSelectedWorkflow,
   };
 };

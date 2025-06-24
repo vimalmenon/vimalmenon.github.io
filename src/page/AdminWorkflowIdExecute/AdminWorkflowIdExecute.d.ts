@@ -17,4 +17,5 @@ export interface IUseWorkflowExecuteHelper {
   executeWorkflow: (data: IExecuteWorkflowSlim) => Promise<void>;
   deleteExecutedWorkflow: (id: string) => Promise<void>;
   setSelectedWorkflow: ReactSetState<IExecuteWorkflow | null>;
+  onExecuteWorkflowNode: VoidFunction<Promise<void>>;
 }

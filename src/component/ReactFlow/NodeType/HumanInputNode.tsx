@@ -3,13 +3,17 @@
 import Box from '@mui/material/Box';
 import { Handle, Position } from '@xyflow/react';
 import { useState } from 'react';
-import { TextInput } from '@component';
+import { Icon, TextInput } from '@component';
+import { Icons } from '@data';
 import { INodeType } from './NodeType';
 
 export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
   const [value, setValue] = useState<string>('');
   return (
-    <Box className="text-updater-node">
+    <Box
+      className="text-updater-node"
+      sx={{ border: '1px solid #ddd', borderRadius: '5px', padding: '10px' }}
+    >
       <Box>{data.label}</Box>
       <TextInput
         value={value}
@@ -18,6 +22,8 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
         name="humanInput"
         onChange={(e) => setValue(e.target.value)}
       />
+      <Icon toolTip="Execute" icon={<Icons.Play />} />
+
       <Handle type="target" position={Position.Top} />
       <Handle type="source" position={Position.Bottom} />
     </Box>
