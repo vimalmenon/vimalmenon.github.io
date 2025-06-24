@@ -14,6 +14,7 @@ export const ReactFlow: React.FC<IReactFlow> = ({ edges, nodes }) => (
     fitView
     nodesConnectable={false}
     nodesDraggable={false}
+    colorMode="light"
   >
     <Background />
     <Controls />
