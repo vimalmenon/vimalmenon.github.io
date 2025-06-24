@@ -13,7 +13,15 @@ export const ExecuteNode: React.FC<INodeType> = ({ data }) => (
   >
     <Box>
       {data.label}({data.type})
-      <Icon toolTip="Execute" icon={<Icons.Play />} onClick={data.onExecute} />
+      <Icon
+        toolTip="Execute"
+        icon={<Icons.Play />}
+        onClick={() =>
+          data.onExecute({
+            id: data.id,
+          })
+        }
+      />
     </Box>
     <Handle type="target" position={Position.Top} />
     <Handle type="source" position={Position.Bottom} />

@@ -53,6 +53,7 @@ const convertNodesToReactFlow = (
 ): IReactFlowNode[] =>
   nodes.map<IReactFlowNode>((node, index) => ({
     data: {
+      id: node.id,
       label: node.node.name,
       onExecute,
       status: node.status,
