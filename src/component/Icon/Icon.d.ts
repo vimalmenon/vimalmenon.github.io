@@ -6,4 +6,5 @@ export interface IIcon {
   toolTip: string;
   icon: React.ReactNode;
   size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
 }
