@@ -84,6 +84,11 @@ const DeleteExecutedWorkflow = (wfId: string, id: string): IAPI => ({
   url: `workflow/execute/${wfId}/${id}`,
 });
 
+const ExecuteWorkflowNode = (wfId: string): IAPI => ({
+  method: 'POST',
+  url: `workflow/execute/resume/${wfId}`,
+});
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
@@ -91,6 +96,7 @@ export const APIs = {
   DeleteWorkflow,
   DeleteWorkflowNode,
   ExecuteWorkflow,
+  ExecuteWorkflowNode,
   GetExecutedWorkflow,
   GetLLMs,
   GetServices,
