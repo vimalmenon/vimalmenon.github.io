@@ -1,5 +1,5 @@
 import { IExecuteWorkflow, IExecuteWorkflowSlim } from '@types';
-import { ReactSetState, VoidFunction } from '@types';
+import { IWorkflowExecuteParams, ReactSetState, VoidFunction } from '@types';
 export interface IAdminWorkflowIdExecuteContext {
   id: string;
   workflows: IExecuteWorkflow[];
@@ -17,5 +17,5 @@ export interface IUseWorkflowExecuteHelper {
   executeWorkflow: (data: IExecuteWorkflowSlim) => Promise<void>;
   deleteExecutedWorkflow: (id: string) => Promise<void>;
   setSelectedWorkflow: ReactSetState<IExecuteWorkflow | null>;
-  onExecuteWorkflowNode: VoidFunction<Promise<void>>;
+  onExecuteWorkflowNode: (data: IWorkflowExecuteParams) => Promise<void>;
 }

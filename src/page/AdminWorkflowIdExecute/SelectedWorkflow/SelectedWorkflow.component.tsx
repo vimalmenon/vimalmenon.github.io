@@ -12,6 +12,7 @@ import {
   IReactFlowEdge,
   IReactFlowNode,
   IViewData,
+  IWorkflowExecuteParams,
 } from '@types';
 import {
   useAdminWorkflowIdExecuteContext,
@@ -49,7 +50,7 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
 
 const convertNodesToReactFlow = (
   nodes: IExecuteWorkflowNode[],
-  onExecute: VoidFunction
+  onExecute: (data: IWorkflowExecuteParams) => void
 ): IReactFlowNode[] =>
   nodes.map<IReactFlowNode>((node, index) => ({
     data: {

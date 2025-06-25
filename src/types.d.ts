@@ -133,6 +133,11 @@ export interface IReactFlowEdge {
   target: string;
 }
 
+export interface IWorkflowExecuteParams {
+  id: string;
+  data?: string;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';

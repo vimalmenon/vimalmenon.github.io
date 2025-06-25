@@ -2,7 +2,12 @@
 
 import { createContext, useContext } from 'react';
 import { APIs } from '@data';
-import { IExecuteWorkflow, IExecuteWorkflowSlim, IGenericResponse } from '@types';
+import {
+  IExecuteWorkflow,
+  IExecuteWorkflowSlim,
+  IGenericResponse,
+  IWorkflowExecuteParams,
+} from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IAdminWorkflowIdExecuteContext,
@@ -52,7 +57,8 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     await getExecutedWorkflow(false);
     setLoading(false);
   };
-  const onExecuteWorkflowNode = async (): Promise<void> => {
+  const onExecuteWorkflowNode = async (data: IWorkflowExecuteParams): Promise<void> => {
+    console.log(data);
     Promise.resolve();
   };
   return {

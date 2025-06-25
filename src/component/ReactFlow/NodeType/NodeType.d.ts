@@ -1,12 +1,9 @@
-interface IExecuteParams {
-  id: string;
-  data?: string;
-}
+import { IWorkflowExecuteParams } from '@types';
 
 interface INodeTypeData {
   id: string;
   label: string;
-  onExecute: (data: IExecuteParams) => void;
+  onExecute: (data: IWorkflowExecuteParams) => void;
   status: string;
   type: string;
 }
