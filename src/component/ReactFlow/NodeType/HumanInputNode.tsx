@@ -18,8 +18,10 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
       component={Paper}
       sx={{ borderRadius: '5px', padding: '10px' }}
     >
-      <Box>
-        {data.label} ({data.type})
+      <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
+        <span>
+          {data.label} ({data.type})
+        </span>
         <Icon
           toolTip="Execute"
           icon={<Icons.Play />}
@@ -41,7 +43,7 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
           onChange={(e) => setValue(e.target.value)}
         />
       </Box>
-
+      <Box></Box>
       <Handle type="target" position={Position.Top} />
       <Handle type="source" position={Position.Bottom} />
     </Box>
