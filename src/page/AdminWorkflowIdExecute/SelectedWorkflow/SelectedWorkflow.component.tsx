@@ -83,10 +83,12 @@ export const SelectedWorkflow: React.FC = () => {
   const { onExecuteWorkflowNode, setSelectedWorkflow } = useWorkflowExecuteHelper();
   const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
   return (
-    <Box>
-      <Button variant="text" onClick={() => setSelectedWorkflow(null)} startIcon={<Icons.Back />}>
-        Back
-      </Button>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
+      <Box>
+        <Button variant="text" onClick={() => setSelectedWorkflow(null)} startIcon={<Icons.Back />}>
+          Back
+        </Button>
+      </Box>
       <Divider />
       {selectedWorkflow ? (
         <Fragment>
