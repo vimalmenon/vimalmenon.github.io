@@ -57,8 +57,8 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     await getExecutedWorkflow(false);
     setLoading(false);
   };
-  const onExecuteWorkflowNode = async (data: IWorkflowExecuteParams): Promise<void> => {
-    APIs.ExecuteWorkflowNode(data.id);
+  const onExecuteWorkflowNode = async (id: string, data: IWorkflowExecuteParams): Promise<void> => {
+    APIs.ExecuteWorkflowNode(data.id, id, data);
   };
   return {
     deleteExecutedWorkflow,

@@ -91,7 +91,11 @@ export const SelectedWorkflow: React.FC = () => {
               <ReactFlow
                 nodes={convertNodesToReactFlow(
                   selectedWorkflow?.nodes ?? [],
-                  onExecuteWorkflowNode
+                  (data: IWorkflowExecuteParams) => {
+                    if (selectedWorkflow?.id) {
+                      onExecuteWorkflowNode(selectedWorkflow.id, data);
+                    }
+                  }
                 )}
                 edges={createEdgesForNode(selectedWorkflow?.nodes ?? [])}
               />
