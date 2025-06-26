@@ -1,11 +1,9 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
-import { Icons } from '@data';
 import {
   IExecuteWorkflow,
   IExecuteWorkflowNode,
@@ -80,16 +78,10 @@ const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
     .filter((node) => node !== null);
 
 export const SelectedWorkflow: React.FC = () => {
-  const { onExecuteWorkflowNode, setSelectedWorkflow } = useWorkflowExecuteHelper();
+  const { onExecuteWorkflowNode } = useWorkflowExecuteHelper();
   const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
-      <Box>
-        <Button variant="text" onClick={() => setSelectedWorkflow(null)} startIcon={<Icons.Back />}>
-          Back
-        </Button>
-      </Box>
-      <Divider />
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {selectedWorkflow ? (
         <Fragment>
           <ViewData data={convertWorkflowToView(selectedWorkflow)} />
