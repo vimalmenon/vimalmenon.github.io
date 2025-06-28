@@ -30,7 +30,7 @@ export enum ActionType {
 
 export const reducer = (
   state: IAdminContext,
-  action: IAdminAction<ILLM[] | string[] | string[]>
+  action: IAdminAction<ILLM[] | string[]>
 ): IAdminContext => {
   const { payload, type } = action;
   if (type === ActionType.ADD_LLMS) {
