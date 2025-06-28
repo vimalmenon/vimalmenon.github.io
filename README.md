@@ -56,6 +56,11 @@ Eslint copilot
 ```sh
 copilot-debug npm run eslint:fix
 ```
-
+Start K3S in windows
+```sh
+wsl -d myk3s
+openrc default
+kubectl get nodes
+```
 
 https://reactflow.dev/components/templates/workflow-editor
