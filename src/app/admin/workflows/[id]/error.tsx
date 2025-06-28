@@ -2,11 +2,11 @@
 
 import { IError } from './id';
 
-const Error: React.FC<IError> = async ({ reset }) => (
+const ErrorPage: React.FC<IError> = async ({ reset }) => (
   <div>
     <h2>Something went wrong!</h2>
     <button onClick={() => reset()}>Try again</button>
   </div>
 );
 
-export default Error;
+export default ErrorPage;

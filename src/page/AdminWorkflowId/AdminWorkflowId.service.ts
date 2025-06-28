@@ -3,7 +3,14 @@
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
-import { FormMode, IGenericResponse, INode, INodeSlim, IWorkflow } from '@types';
+import {
+  FormMode,
+  IGenericResponse,
+  IGenericResponseError,
+  INode,
+  INodeSlim,
+  IWorkflow,
+} from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
@@ -49,6 +56,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
     selectedNode,
+    setError,
     setIsStart,
     setLoading,
     setNodeFormMode,
@@ -91,8 +99,24 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   };
   const updateWorkflow = async (data: IWorkflow): Promise<void> => {
     setLoading(true);
-    await makeRequest<IGenericResponse<unknown>>(APIs.UpdateWorkflow(id, data));
-    await getWorkFlow();
+    const { error, response } = await makeRequest<
+      IGenericResponse<IWorkflow>,
+      IGenericResponseError
+    >(APIs.UpdateWorkflow(id, data));
+    if (error) {
+      setError(error.detail);
+      setWorkflowFormMode('VIEW');
+      setLoading(false);
+      return;
+    }
+    const workflow = response.data;
+    setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
+    Object.keys(workflow.nodes).forEach((node) => {
+      if (workflow.nodes[node].isStart) {
+        setIsStart(true);
+      }
+    });
+    setWorkflow(workflow);
     setWorkflowFormMode('VIEW');
     setLoading(false);
   };
@@ -112,12 +136,30 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setSelectedNode(null);
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
-    await makeRequest<IGenericResponse<string[]>>(APIs.UpdateWorkflowNode(id, nodeId, data));
-    await getWorkFlow();
+    const { response } = await makeRequest<IGenericResponse<IWorkflow>>(
+      APIs.UpdateWorkflowNode(id, nodeId, data)
+    );
+    const workflow = response.data;
+    setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
+    Object.keys(workflow.nodes).forEach((node) => {
+      if (workflow.nodes[node].isStart) {
+        setIsStart(true);
+      }
+    });
+    setWorkflow(workflow);
   };
   const createNode = async (data: INodeSlim): Promise<void> => {
-    await makeRequest(APIs.CreateWorkflowNode(id, data));
-    await getWorkFlow();
+    const { response } = await makeRequest<IGenericResponse<IWorkflow>>(
+      APIs.CreateWorkflowNode(id, data)
+    );
+    const workflow = response.data;
+    setNodeTabs(createNodeTab(Object.keys(workflow.nodes), workflow.nodes));
+    Object.keys(workflow.nodes).forEach((node) => {
+      if (workflow.nodes[node].isStart) {
+        setIsStart(true);
+      }
+    });
+    setWorkflow(workflow);
     setWorkflowFormMode('VIEW');
     setNodeFormMode('UPDATE');
   };

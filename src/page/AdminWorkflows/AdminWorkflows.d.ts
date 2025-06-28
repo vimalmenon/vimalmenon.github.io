@@ -20,4 +20,6 @@ export interface IContext {
   setWorkflows: ReactSetState<IWorkflow[]>;
   selectedWorkflow: IWorkflow | null;
   setSelectedWorkflow: ReactSetState<IWorkflow | null>;
+  dataLoading: boolean;
+  setDataLoading: ReactSetState<boolean>;
 }

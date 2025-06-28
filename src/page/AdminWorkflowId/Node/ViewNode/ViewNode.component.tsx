@@ -40,7 +40,14 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
           <Box>{data.prompt}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Message) ? (
+
+      {data.dataFromPreviousNode ? (
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box>Get message from previous node</Box>
+          <Box>True</Box>
+        </Box>
+      ) : null}
+      {value.includes(fields.Message) && !data.dataFromPreviousNode ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Message</Box>
           <Box>{data.message}</Box>
@@ -68,6 +75,12 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Next</Box>
           <Box>{convertNextToString(workflow?.nodes, data.next)}</Box>
+        </Box>
+      ) : null}
+      {data.requestAtRunTime ? (
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box>Request at run time</Box>
+          <Box>{data.requestAtRunTime ? 'True' : 'False'}</Box>
         </Box>
       ) : null}
       {data.isStart ? (

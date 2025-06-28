@@ -9,12 +9,15 @@ export const AdminWorkflowsContext: React.FC<IReactChildren> = ({ children }) =>
   const [loading, setLoading] = useState<boolean>(false);
   const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
   const [selectedWorkflow, setSelectedWorkflow] = useState<IWorkflow | null>(null);
+  const [dataLoading, setDataLoading] = useState<boolean>(false);
   return (
     <Context.Provider
       value={{
+        dataLoading,
         loading,
         mode,
         selectedWorkflow,
+        setDataLoading,
         setLoading,
         setMode,
         setSelectedWorkflow,

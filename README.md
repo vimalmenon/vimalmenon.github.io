@@ -6,15 +6,16 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.27
+<b>Version</b>: 0.0.28
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Fix the issue with node name not updated
 - [ ] Handle errors more gracefully
+- [ ] Set up sonar
+- [ ] Get data from previous node
 - [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled
 - [ ] Show workflow history

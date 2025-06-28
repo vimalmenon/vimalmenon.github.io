@@ -19,7 +19,7 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({
 }) => {
   const [name, setName] = useState<string>(data?.name ?? '');
   const [detail, setDetail] = useState<string>(data?.detail ?? '');
-  const [complete, setComplete] = useState<boolean>(data?.complete || false);
+  const [complete, setComplete] = useState<boolean>(data?.complete ?? false);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

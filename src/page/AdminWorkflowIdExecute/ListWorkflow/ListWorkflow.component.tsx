@@ -20,7 +20,7 @@ export const ListWorkflow: React.FC = () => {
 
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -42,6 +42,7 @@ export const ListWorkflow: React.FC = () => {
                   icon={<Icons.Delete />}
                   onClick={() => deleteExecutedWorkflow(workflow.id)}
                   toolTip="Delete"
+                  size="small"
                 />
               </TableCell>
             </TableRow>

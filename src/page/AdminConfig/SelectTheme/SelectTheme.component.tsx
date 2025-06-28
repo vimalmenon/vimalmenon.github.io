@@ -44,7 +44,7 @@ export const SelectTheme: React.FC = () => {
       <Box sx={{ display: 'flex', gap: 1 }}>
         <Box
           sx={{
-            background: theme.main ? theme.main : 'white',
+            background: theme.main ?? 'white',
             border: '1px solid red',
             display: 'flex',
             height: '70px',
@@ -56,7 +56,7 @@ export const SelectTheme: React.FC = () => {
         </Box>
         <Box
           sx={{
-            background: theme.dark ? theme.dark : 'white',
+            background: theme.dark ?? 'white',
             border: '1px solid red',
             display: 'flex',
             height: '70px',
@@ -68,7 +68,7 @@ export const SelectTheme: React.FC = () => {
         </Box>
         <Box
           sx={{
-            background: theme.light ? theme.light : 'white',
+            background: theme.light ?? 'white',
             border: '1px solid red',
             display: 'flex',
             height: '70px',

@@ -18,7 +18,7 @@ import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.s
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
-  const { mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
+  const { dataLoading, mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
   const {
     deleteWorkflow,
     deleteWorkflowCancel,
@@ -43,19 +43,26 @@ export const Workflows: React.FC = () => {
           open={!!selectedWorkflow}
           onConfirm={deleteWorkflowConfirm}
           onCancel={deleteWorkflowCancel}
+          loading={loading}
         />
       ) : null}
       {mode === 'CREATE' ? (
-        <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} />
+        <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} loading={dataLoading} />
       ) : (
         <TableContainer component={Paper}>
-          <Table>
+          <Table size="small">
             <TableHead>
               <TableRow>
                 <TableCell colSpan={2}>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                  <Box
+                    sx={{
+                      alignItems: 'center',
+                      display: 'flex',
+                      fontWeight: 'bold',
+                      justifyContent: 'space-between',
+                    }}
+                  >
                     <span>Workflows</span>
-
                     <IconButton onClick={() => setMode('CREATE')}>
                       <Icons.Add />
                     </IconButton>
@@ -67,7 +74,7 @@ export const Workflows: React.FC = () => {
           {loading ? (
             <LinearProgress />
           ) : (
-            <Table>
+            <Table size="small">
               <TableHead>
                 <TableRow>
                   <TableCell>Name</TableCell>

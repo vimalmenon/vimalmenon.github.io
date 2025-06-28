@@ -31,6 +31,10 @@ export interface IGenericResponse<T> {
   data: T;
 }
 
+export interface IGenericResponseError {
+  detail: string;
+}
+
 export interface IWorkflowSlim {
   name: string;
 }
@@ -46,11 +50,11 @@ export interface INode extends INodeSlim {
   type?: string;
   llm?: string;
   tools: string[];
-  input?: string;
   next?: string;
   tool?: string;
   service?: string;
   isStart: boolean;
+  dataFromPreviousNode?: boolean;
 }
 
 export interface INodeFull extends INode {
@@ -88,14 +92,50 @@ export interface IExecuteWorkflowSlim {
   name: string;
 }
 
+export interface IExecuteWorkflowNode {
+  id: 'NEW' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELLED';
+  status: string;
+  startedAt: string;
+  completedAt?: string;
+  content: string;
+  node: INode;
+}
+
 export interface IExecuteWorkflow extends IExecuteWorkflowSlim {
   id: string;
   status: string;
-  created_at: string;
+  createdAt: string;
+  completedAt?: string;
+  nodes: IExecuteWorkflowNode[];
 }
 
 export interface IAdminWorkflowIdPage {
   id: string;
+}
+
+export interface IViewData {
+  label: string;
+  value: string;
+  hidden?: boolean;
+}
+
+export interface IReactFlowNode {
+  data: { label: string; [string]: string };
+  id: string;
+  position: { x: number; y: number };
+  style?: React.CSSProperties;
+  type?: 'HumanInput' | 'Execute';
+}
+
+export interface IReactFlowEdge {
+  id: string;
+  source: string;
+  target: string;
+}
+
+export interface IWorkflowExecuteParams {
+  id: string;
+  data?: string;
 }
 
 export type VoidFunction<T = void> = () => T;

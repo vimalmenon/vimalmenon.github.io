@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
+import { Fragment } from 'react';
 import { AsyncButton, MultiSelect, TextInput } from '@component';
 import { useAdminContext } from '@context';
 import { Icons } from '@data';
@@ -26,7 +27,7 @@ export const NodeForm: React.FC<INodeForm> = ({
 }) => {
   const {
     convertNodeToOptions,
-    input,
+    dataFromPreviousNode,
     isStart,
     llm,
     message,
@@ -120,20 +121,34 @@ export const NodeForm: React.FC<INodeForm> = ({
         </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Message) ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="Message"
-            variant="outlined"
-            size="small"
-            required
-            multiline
-            rows={5}
-            value={message}
-            name="message"
-            onChange={onInputUpdate}
-            disabled={loading}
+        <Fragment>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={dataFromPreviousNode}
+                name="dataFromPreviousNode"
+                onChange={onSwitchUpdate}
+              />
+            }
+            label="Get message from previous node"
           />
-        </FormControl>
+          {dataFromPreviousNode ? null : (
+            <FormControl variant="outlined" fullWidth required>
+              <TextField
+                label="Message"
+                variant="outlined"
+                size="small"
+                required
+                multiline
+                rows={5}
+                value={message}
+                name="message"
+                onChange={onInputUpdate}
+                disabled={loading}
+              />
+            </FormControl>
+          )}
+        </Fragment>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tools) ? (
         <MultiSelect
@@ -146,20 +161,6 @@ export const NodeForm: React.FC<INodeForm> = ({
           onClear={() => onSelectClear('tools')}
           disabled={loading}
         />
-      ) : null}
-      {mode === 'UPDATE' && value.includes(fields.Input) ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="Input"
-            variant="outlined"
-            size="small"
-            required
-            value={input}
-            name="input"
-            onChange={onInputUpdate}
-            disabled={loading}
-          />
-        </FormControl>
       ) : null}
       {mode === 'UPDATE' && value.includes(fields.Tool) ? (
         <FormControl fullWidth required size="small">
@@ -231,10 +232,10 @@ export const NodeForm: React.FC<INodeForm> = ({
         <FormControlLabel
           control={
             <Switch
-              checked={isStartProps}
+              checked={isStart}
               name="isStart"
               onChange={onSwitchUpdate}
-              disabled={isStart && !isStartProps}
+              disabled={isStartProps && !isStart}
             />
           }
           label="Is Start"
@@ -259,8 +260,8 @@ export const NodeForm: React.FC<INodeForm> = ({
             loadingPosition="start"
             onClick={() =>
               updateNode({
+                dataFromPreviousNode,
                 id: data?.id ?? '',
-                input,
                 isStart,
                 llm,
                 message,
