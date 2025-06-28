@@ -65,5 +65,5 @@ kubectl get nodes\
 wsl -d myk3s openrc default
 ```
 
-https://reactflow.dev/components/templates/workflow-editor
-https://mrtn.me/autocloud/main/howtos/k3s-windows-install/
+- https://reactflow.dev/components/templates/workflow-editor
+- https://mrtn.me/autocloud/main/howtos/k3s-windows-install/
