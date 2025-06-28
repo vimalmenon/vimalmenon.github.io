@@ -55,7 +55,7 @@ export const Node: React.FC<INode> = ({
                   <Icon
                     toolTip={`Edit Node`}
                     icon={<Icons.Edit />}
-                    onClick={() => setMode && setMode('UPDATE')}
+                    onClick={() => setMode?.('UPDATE')}
                   />
                 </Fragment>
               ) : null}
