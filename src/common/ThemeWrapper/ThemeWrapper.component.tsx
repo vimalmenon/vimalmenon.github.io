@@ -11,7 +11,7 @@ export const ThemeWrapper: React.FC<IReactChildren> = ({ children }) => {
   const { mode, primaryTheme } = useAppContext();
   return (
     <AppRouterCacheProvider>
-      <ThemeProvider theme={getTheme(mode, primaryTheme)}>
+      <ThemeProvider theme={getTheme(primaryTheme, mode)}>
         <CssBaseline />
         {children}
       </ThemeProvider>
