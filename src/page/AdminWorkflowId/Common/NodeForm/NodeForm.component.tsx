@@ -243,14 +243,7 @@ export const NodeForm: React.FC<INodeForm> = ({
       ) : null}
 
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button
-          variant="outlined"
-          onClick={onCancel}
-          endIcon={<Icons.Close />}
-          disabled={loading}
-          // loading={loading}
-          // loadingPosition="end"
-        >
+        <Button variant="outlined" onClick={onCancel} endIcon={<Icons.Close />} disabled={loading}>
           Cancel
         </Button>
         {mode === 'UPDATE' && updateNode ? (
