@@ -9,6 +9,7 @@ export const Icon: React.FC<IIcon> = ({ disabled, icon, onClick, size, toolTip }
   const [loading, setLoading] = useState<boolean>(false);
   const handleClick: MouseEventHandler<HTMLButtonElement> = async (event): Promise<void> => {
     event.preventDefault();
+    event.stopPropagation();
     if (onClick) {
       setLoading(true);
       await onClick();
