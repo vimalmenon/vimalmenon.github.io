@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import { lightGreen } from '@mui/material/colors';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import { Handle, Position } from '@xyflow/react';
 import { INodeType } from './NodeType';
 
@@ -29,20 +30,20 @@ export const CompletedNode: React.FC<INodeType> = ({ data }) => (
       <Divider />
       <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-          <span>Type</span>
+          <Typography sx={{ fontWeight: 'bold' }}>Type</Typography>
           <span>{data.type}</span>
         </Box>
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-          <span>Label</span>
+          <Typography sx={{ fontWeight: 'bold' }}>Label</Typography>
           <span>{data.label}</span>
         </Box>
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-          <span>Data</span>
-          {data.data}
+          <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
+          <span>{data.data}</span>
         </Box>
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-          <span>Status</span>
-          {data.status}
+          <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
+          <span>{data.status}</span>
         </Box>
       </Box>
     </Box>
