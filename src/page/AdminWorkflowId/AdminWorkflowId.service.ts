@@ -218,7 +218,6 @@ export const useTabHelper = (): IUseTabHelper => {
       nodeTabs.map<INodeTab>((node, indexValue) => {
         if (indexValue === index) {
           node.mode = mode;
-          return node;
         }
         return node;
       })
