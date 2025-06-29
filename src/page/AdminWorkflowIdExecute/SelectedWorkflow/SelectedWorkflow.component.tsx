@@ -72,7 +72,7 @@ const convertNodesToReactFlow = (
       type: node.node.type,
     },
     id: node.id,
-    position: { x: 0, y: index * 150 },
+    position: { x: 0, y: index * 200 },
     type: getNodeType(node),
   }));
 

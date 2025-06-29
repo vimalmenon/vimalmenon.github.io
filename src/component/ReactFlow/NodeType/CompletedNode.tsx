@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import { lightGreen } from '@mui/material/colors';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import { Handle, Position } from '@xyflow/react';
@@ -11,16 +12,22 @@ export const CompletedNode: React.FC<INodeType> = ({ data }) => (
     className="text-updater-node"
     component={Paper}
     minWidth={'300px'}
-    sx={{ borderRadius: '5px', padding: '10px' }}
+    sx={{ backgroundColor: lightGreen[100], borderRadius: '5px', padding: '10px' }}
   >
-    <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
-      <Box
-        sx={{ display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}
-      >
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 1,
+      }}
+    >
+      <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex' }}>
           {data.label} ({data.type})
         </Box>
-        <Divider />
+      </Box>
+      <Divider />
+      <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
           <span>Type</span>
           <span>{data.type}</span>
