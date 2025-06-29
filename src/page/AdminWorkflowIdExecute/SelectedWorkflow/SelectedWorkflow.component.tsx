@@ -11,6 +11,7 @@ import {
   IReactFlowNode,
   IViewData,
   IWorkflowExecuteParams,
+  ReactFlowType,
 } from '@types';
 import {
   useAdminWorkflowIdExecuteContext,
@@ -46,6 +47,17 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
   return result;
 };
 
+const getNodeType = (node: IExecuteWorkflowNode): ReactFlowType => {
+  if (node.status === 'COMPLETED') {
+    return 'Completed';
+  }
+  switch (node.node.type) {
+    case 'HumanInput':
+      return 'HumanInput';
+    default:
+      return 'Execute';
+  }
+};
 const convertNodesToReactFlow = (
   nodes: IExecuteWorkflowNode[],
   onExecute: (data: IWorkflowExecuteParams) => void
@@ -61,7 +73,7 @@ const convertNodesToReactFlow = (
     },
     id: node.id,
     position: { x: 0, y: index * 150 },
-    type: node.node.type === 'HumanInput' ? 'HumanInput' : 'Execute',
+    type: getNodeType(node),
   }));
 
 const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>

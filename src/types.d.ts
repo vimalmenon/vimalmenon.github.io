@@ -124,9 +124,10 @@ export interface IReactFlowNode {
   id: string;
   position: { x: number; y: number };
   style?: React.CSSProperties;
-  type?: 'HumanInput' | 'Execute';
+  type?: ReactFlowType;
 }
 
+export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed';
 export interface IReactFlowEdge {
   id: string;
   source: string;
