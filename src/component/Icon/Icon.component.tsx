@@ -2,12 +2,13 @@
 
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import { IIcon } from './Icon.d';
 
 export const Icon: React.FC<IIcon> = ({ disabled, icon, onClick, size, toolTip }) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const handleClick = async (): Promise<void> => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = async (event): Promise<void> => {
+    event.preventDefault();
     if (onClick) {
       setLoading(true);
       await onClick();

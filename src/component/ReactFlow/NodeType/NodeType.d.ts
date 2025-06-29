@@ -6,6 +6,7 @@ interface INodeTypeData {
   onExecute: (data: IWorkflowExecuteParams) => void;
   status: string;
   type: string;
+  data: string;
 }
 
 export interface INodeType {
