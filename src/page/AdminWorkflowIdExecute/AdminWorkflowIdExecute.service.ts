@@ -30,7 +30,7 @@ export const useAdminWorkflowIdExecuteContext = (): IAdminWorkflowIdExecuteConte
   useContext<IAdminWorkflowIdExecuteContext>(Context);
 
 export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
-  const { id, selectedWorkflow, setLoading, setSelectedWorkflow, setShowCreate, setWorkFlows } =
+  const { id, setLoading, setSelectedWorkflow, setShowCreate, setWorkFlows } =
     useAdminWorkflowIdExecuteContext();
   const getExecutedWorkflow = async (handle: boolean = true): Promise<void> => {
     if (handle) {
@@ -61,9 +61,10 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     nodeID: string,
     data: IWorkflowExecuteParams
   ): Promise<void> => {
-    if (selectedWorkflow) {
-      await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflowNode(id, nodeID, data));
-    }
+    const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
+      APIs.ExecuteWorkflowNode(id, nodeID, data)
+    );
+    setSelectedWorkflow(response.data);
   };
   return {
     deleteExecutedWorkflow,
