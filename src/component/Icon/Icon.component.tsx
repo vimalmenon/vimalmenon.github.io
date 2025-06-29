@@ -18,7 +18,7 @@ export const Icon: React.FC<IIcon> = ({ disabled, icon, onClick, size, toolTip }
   };
   if (disabled) {
     return (
-      <IconButton onClick={handleClick} loading={loading} size={size} disabled={disabled}>
+      <IconButton loading={loading} size={size} disabled={disabled}>
         {icon}
       </IconButton>
     );
