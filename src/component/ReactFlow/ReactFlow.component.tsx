@@ -1,14 +1,19 @@
 'use client';
 import '@xyflow/react/dist/style.css';
-import { Background, Controls, ReactFlow as ReactFlowComponent } from '@xyflow/react';
-import { CompletedNode, ExecuteNode, HumanInputNode } from './NodeType';
+import { Background, Controls, Node, ReactFlow as ReactFlowComponent } from '@xyflow/react';
+import { CompletedNode, ExecuteNode, HumanInputNode, LlmNode } from './NodeType';
 import { IReactFlow } from './ReactFlow';
 
-const nodeTypes = { Completed: CompletedNode, Execute: ExecuteNode, HumanInput: HumanInputNode };
+const nodeTypes = {
+  Completed: CompletedNode,
+  Execute: ExecuteNode,
+  HumanInput: HumanInputNode,
+  LLM: LlmNode,
+};
 
 export const ReactFlow: React.FC<IReactFlow> = ({ edges, nodes }) => (
   <ReactFlowComponent
-    nodes={nodes}
+    nodes={nodes as unknown as Node[]}
     edges={edges}
     nodeTypes={nodeTypes}
     fitView

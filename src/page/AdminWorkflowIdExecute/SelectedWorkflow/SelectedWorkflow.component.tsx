@@ -54,6 +54,8 @@ const getNodeType = (node: IExecuteWorkflowNode): ReactFlowType => {
   switch (node.node.type) {
     case 'HumanInput':
       return 'HumanInput';
+    case 'LLM':
+      return 'LLM';
     default:
       return 'Execute';
   }
@@ -67,9 +69,10 @@ const convertNodesToReactFlow = (
       data: node.content,
       id: node.id,
       label: node.node.name,
+      node: node.node,
       onExecute,
       status: node.status,
-      type: node.node.type,
+      type: node.node.type ?? '',
     },
     id: node.id,
     position: { x: 0, y: index * 200 },

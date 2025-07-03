@@ -51,7 +51,6 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
           disabled={isComplete}
         />
       </Box>
-      <Box></Box>
       <Handle type="target" position={Position.Top} />
       <Handle type="source" position={Position.Bottom} />
     </Box>

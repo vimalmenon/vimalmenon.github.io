@@ -16,6 +16,17 @@ export interface INavigation extends INavigationSlim {
   show: boolean;
   children: INavigationSlim[];
 }
+
+interface IReactFlowData {
+  id: string;
+  label: string;
+  onExecute: (data: IWorkflowExecuteParams) => void;
+  status: string;
+  type: string;
+  data: string;
+  node: INode;
+}
+
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
@@ -120,14 +131,14 @@ export interface IViewData {
 }
 
 export interface IReactFlowNode {
-  data: { label: string; [string]: string };
+  data: IReactFlowData;
   id: string;
   position: { x: number; y: number };
   style?: React.CSSProperties;
   type?: ReactFlowType;
 }
 
-export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed';
+export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed' | 'LLM';
 export interface IReactFlowEdge {
   id: string;
   source: string;
