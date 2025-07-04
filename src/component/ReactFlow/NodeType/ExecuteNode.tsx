@@ -1,7 +1,6 @@
 'use client';
 
 import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { Handle, Position } from '@xyflow/react';
 import { Icon } from '@component';
@@ -30,11 +29,6 @@ export const ExecuteNode: React.FC<INodeType> = ({ data }) => (
         }
       />
     </Box>
-    {/* <Box>
-      <Button variant="outlined" endIcon={<Icons.Close />}>
-        Cancel
-      </Button>
-    </Box> */}
     <Handle type="target" position={Position.Top} />
     <Handle type="source" position={Position.Bottom} />
   </Box>
