@@ -20,7 +20,7 @@ export interface INavigation extends INavigationSlim {
 interface IReactFlowData {
   id: string;
   label: string;
-  onExecute: (data: IWorkflowExecuteParams) => void;
+  onExecute: (data: IWorkflowExecuteParams) => Promise<void>;
   status: string;
   type: string;
   data: string;

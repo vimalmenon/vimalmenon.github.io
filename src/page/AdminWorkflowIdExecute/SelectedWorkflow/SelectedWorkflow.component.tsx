@@ -44,6 +44,12 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
       value: new Date(data.createdAt).toLocaleString(),
     });
   }
+  if (data.completedAt) {
+    result.push({
+      label: 'Completed At',
+      value: new Date(data.completedAt).toLocaleString(),
+    });
+  }
   return result;
 };
 
@@ -62,7 +68,7 @@ const getNodeType = (node: IExecuteWorkflowNode): ReactFlowType => {
 };
 const convertNodesToReactFlow = (
   nodes: IExecuteWorkflowNode[],
-  onExecute: (data: IWorkflowExecuteParams) => void
+  onExecute: (data: IWorkflowExecuteParams) => Promise<void>
 ): IReactFlowNode[] =>
   nodes.map<IReactFlowNode>((node, index) => ({
     data: {
@@ -107,9 +113,9 @@ export const SelectedWorkflow: React.FC = () => {
               <ReactFlow
                 nodes={convertNodesToReactFlow(
                   selectedWorkflow?.nodes ?? [],
-                  (data: IWorkflowExecuteParams) => {
+                  async (data: IWorkflowExecuteParams) => {
                     if (selectedWorkflow?.id) {
-                      onExecuteWorkflowNode(selectedWorkflow.id, data);
+                      await onExecuteWorkflowNode(selectedWorkflow.id, data);
                     }
                   }
                 )}

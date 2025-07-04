@@ -39,7 +39,7 @@ export const CompletedNode: React.FC<INodeType> = ({ data }) => (
         </Box>
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
           <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
-          <span>{data.data}</span>
+          <span>{data.data.slice(0, 30)}...</span>
         </Box>
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
           <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
