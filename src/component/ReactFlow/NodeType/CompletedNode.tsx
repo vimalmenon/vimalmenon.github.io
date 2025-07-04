@@ -12,7 +12,7 @@ export const CompletedNode: React.FC<INodeType> = ({ data }) => (
   <Box
     className="text-updater-node"
     component={Paper}
-    minWidth={'300px'}
+    minWidth={'400px'}
     sx={{ backgroundColor: lightGreen[100], borderRadius: '5px', padding: '10px' }}
   >
     <Box

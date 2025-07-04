@@ -112,7 +112,7 @@ export const NodeForm: React.FC<INodeForm> = ({
             size="small"
             required
             multiline
-            rows={3}
+            rows={2}
             value={prompt}
             name="prompt"
             onChange={onInputUpdate}

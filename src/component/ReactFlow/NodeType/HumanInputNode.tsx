@@ -13,7 +13,7 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
   const [value, setValue] = useState<string>(data.data ?? '');
   const isComplete = data.status === 'COMPLETED';
   return (
-    <Box className="text-updater-node" minWidth={'300px'} component={Paper}>
+    <Box className="text-updater-node" minWidth={'400px'} component={Paper}>
       <Box
         sx={{
           alignItems: 'center',

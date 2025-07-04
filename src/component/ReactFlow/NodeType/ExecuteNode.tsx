@@ -12,7 +12,7 @@ export const ExecuteNode: React.FC<INodeType> = ({ data }) => (
   <Box
     className="text-updater-node"
     component={Paper}
-    minWidth={'300px'}
+    minWidth={'400px'}
     sx={{ borderRadius: '5px', padding: '10px' }}
   >
     <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
