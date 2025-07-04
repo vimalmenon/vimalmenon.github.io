@@ -41,6 +41,10 @@ export const LlmNode: React.FC<INodeType> = ({ data }) => (
           <Typography sx={{ fontWeight: 'bold' }}>Prompt</Typography>
           <span>{data.node.prompt}</span>
         </Box>
+        <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+          <Typography sx={{ fontWeight: 'bold' }}>LLM</Typography>
+          <span>{data.node.llm}</span>
+        </Box>
       </Box>
       <Handle type="target" position={Position.Top} />
       <Handle type="source" position={Position.Bottom} />
