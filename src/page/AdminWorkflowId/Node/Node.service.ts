@@ -34,7 +34,7 @@ export const nodeType = (type?: string): string[] => {
     return [fields.Tool, fields.Next, fields.IsStart];
   }
   if (type === 'LLM') {
-    return [fields.Prompt, fields.Message, fields.Next, fields.IsStart];
+    return [fields.LLM, fields.Prompt, fields.Message, fields.Next, fields.IsStart];
   }
   if (type === 'Service') {
     return [fields.Service, fields.Next, fields.IsStart];

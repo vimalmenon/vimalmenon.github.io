@@ -120,8 +120,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowFormMode('VIEW');
     setLoading(false);
   };
-  const getNodeByID = (nodeId: string): INode | null =>
-    (workflow && workflow.nodes[nodeId]) ?? null;
+  const getNodeByID = (nodeId: string): INode | null => workflow?.nodes?.[nodeId] ?? null;
   const deleteNode = async (nodeId: string): Promise<void> => {
     setSelectedNode(getNodeByID(nodeId));
   };
@@ -219,7 +218,6 @@ export const useTabHelper = (): IUseTabHelper => {
       nodeTabs.map<INodeTab>((node, indexValue) => {
         if (indexValue === index) {
           node.mode = mode;
-          return node;
         }
         return node;
       })

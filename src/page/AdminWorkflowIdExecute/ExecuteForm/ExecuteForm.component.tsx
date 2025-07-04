@@ -30,8 +30,6 @@ export const ExecuteForm: React.FC = () => {
           onClick={() => setShowCreate(false)}
           endIcon={<Icons.Close />}
           disabled={loading}
-          // loading={loading}
-          // loadingPosition="end"
         >
           Cancel
         </Button>

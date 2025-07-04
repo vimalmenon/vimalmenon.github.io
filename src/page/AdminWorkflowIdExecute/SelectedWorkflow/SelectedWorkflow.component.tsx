@@ -11,6 +11,7 @@ import {
   IReactFlowNode,
   IViewData,
   IWorkflowExecuteParams,
+  ReactFlowType,
 } from '@types';
 import {
   useAdminWorkflowIdExecuteContext,
@@ -43,24 +44,45 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
       value: new Date(data.createdAt).toLocaleString(),
     });
   }
+  if (data.completedAt) {
+    result.push({
+      label: 'Completed At',
+      value: new Date(data.completedAt).toLocaleString(),
+    });
+  }
   return result;
 };
 
+const getNodeType = (node: IExecuteWorkflowNode): ReactFlowType => {
+  if (node.status === 'COMPLETED') {
+    return 'Completed';
+  }
+  switch (node.node.type) {
+    case 'HumanInput':
+      return 'HumanInput';
+    case 'LLM':
+      return 'LLM';
+    default:
+      return 'Execute';
+  }
+};
 const convertNodesToReactFlow = (
   nodes: IExecuteWorkflowNode[],
-  onExecute: (data: IWorkflowExecuteParams) => void
+  onExecute: (data: IWorkflowExecuteParams) => Promise<void>
 ): IReactFlowNode[] =>
   nodes.map<IReactFlowNode>((node, index) => ({
     data: {
+      data: node.content,
       id: node.id,
       label: node.node.name,
+      node: node.node,
       onExecute,
       status: node.status,
-      type: node.node.type,
+      type: node.node.type ?? '',
     },
     id: node.id,
-    position: { x: 0, y: index * 150 },
-    type: node.node.type === 'HumanInput' ? 'HumanInput' : 'Execute',
+    position: { x: 0, y: index * 200 },
+    type: getNodeType(node),
   }));
 
 const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
@@ -91,9 +113,9 @@ export const SelectedWorkflow: React.FC = () => {
               <ReactFlow
                 nodes={convertNodesToReactFlow(
                   selectedWorkflow?.nodes ?? [],
-                  (data: IWorkflowExecuteParams) => {
+                  async (data: IWorkflowExecuteParams) => {
                     if (selectedWorkflow?.id) {
-                      onExecuteWorkflowNode(selectedWorkflow.id, data);
+                      await onExecuteWorkflowNode(selectedWorkflow.id, data);
                     }
                   }
                 )}

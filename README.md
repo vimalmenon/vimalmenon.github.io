@@ -6,7 +6,7 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.28
+<b>Version</b>: 0.0.29
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
@@ -56,6 +56,16 @@ Eslint copilot
 ```sh
 copilot-debug npm run eslint:fix
 ```
+Start K3S in windows
+```sh
+wsl -d myk3s
+openrc default
+kubectl get nodes\
+----
+wsl -d myk3s openrc default
+```
 
-
-https://reactflow.dev/components/templates/workflow-editor
+## Links
+- [ReactFlow](https://reactflow.dev/components/templates/workflow-editor)
+- [K3S Windows](https://mrtn.me/autocloud/main/howtos/k3s-windows-install/)
+- [Sonar](https://sonarcloud.io/project/overview?id=vimalmenon_vimalmenon.github.io)
