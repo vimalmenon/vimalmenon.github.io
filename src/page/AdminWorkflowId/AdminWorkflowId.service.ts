@@ -42,15 +42,51 @@ export const Context = createContext<IContext>({
 });
 
 export const useWorkflowContext = (): IContext => useContext(Context);
+const processNode = (data: INode, names: string[], nodeMap: Record<string, INode>): INodeTab[] => {
+  names.splice(names.indexOf(data.id), 1);
+  if (data.next) {
+    return [
+      {
+        isBroken: false,
+        label: data.name,
+        mode: 'VIEW',
+        name: data.id,
+        selected: false,
+      },
+      ...processNode(nodeMap[data.next], names, nodeMap),
+    ];
+  }
+  return [
+    {
+      isBroken: false,
+      label: data.name,
+      mode: 'VIEW',
+      name: data.id,
+      selected: false,
+    },
+    ...names.map<INodeTab>((name) => ({
+      isBroken: false,
+      label: nodeMap[name].name,
+      mode: 'VIEW',
+      name: name,
+      selected: false,
+    })),
+  ];
+};
 
-export const createNodeTab = (names: string[], nodeMap: Record<string, INode>): INodeTab[] =>
-  names.map<INodeTab>((name) => ({
-    disabled: false,
-    label: nodeMap[name].name,
+export const createNodeTab = (names: string[], nodeMap: Record<string, INode>): INodeTab[] => {
+  const firstNode = names.find((name) => nodeMap[name].isStart);
+  if (firstNode) {
+    return processNode(nodeMap[firstNode], names, nodeMap);
+  }
+  return names.map<INodeTab>((value) => ({
+    isBroken: true,
+    label: nodeMap[value].name,
     mode: 'VIEW',
-    name: name,
+    name: value,
     selected: false,
   }));
+};
 
 export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
