@@ -21,6 +21,7 @@ This is Website for Vimal Menon
 - [x] Show Graph at the side
 - [x] Show the Graph for the Workflow
 - [x] Show workflow history
+- [ ] Create validate nodes
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled

@@ -31,7 +31,7 @@ export const nodeType = (type?: string): string[] => {
     return [fields.Next, fields.IsStart];
   }
   if (type === 'Tool') {
-    return [fields.Tool, fields.Next, fields.IsStart];
+    return [fields.Tool, fields.Message, fields.Next, fields.IsStart];
   }
   if (type === 'LLM') {
     return [fields.LLM, fields.Prompt, fields.Message, fields.Next, fields.IsStart];
