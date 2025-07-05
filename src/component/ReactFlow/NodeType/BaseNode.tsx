@@ -12,7 +12,7 @@ import { IBaseNodeType } from './NodeType';
 export const BaseNode: React.FC<IReactChildren & IBaseNodeType> = ({
   children,
   data,
-  disableExecute,
+  disableExecute = false,
   onExecute,
 }) => {
   const isReady = data.status === Enums.WorkflowNodeStatus.READY;

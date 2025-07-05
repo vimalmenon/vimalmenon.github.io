@@ -7,7 +7,7 @@ export interface INodeType {
 export interface IBaseNodeType {
   data: IReactFlowData;
   onExecute: VoidFunction<Promise<void>>;
-  disableExecute: boolean;
+  disableExecute?: boolean;
 }
 
 export interface INodeStyled {
