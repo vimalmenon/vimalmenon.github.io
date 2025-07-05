@@ -13,22 +13,23 @@ This is Website for Vimal Menon
 
 ## To Do
 
+
+- [x] Set up sonar
+- [x] Get data from previous node
+- [x] Update MetaData on Workflow
+- [x] Create a Graph for the Workflow
+- [x] Show Graph at the side
+- [x] Show the Graph for the Workflow
+- [x] Show workflow history
 - [ ] Handle errors more gracefully
-- [ ] Set up sonar
-- [ ] Get data from previous node
 - [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled
-- [ ] Show workflow history
 - [ ] Show loading indicator on Pages
 - [ ] Show error in UI
 - [ ] Close confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
-- [ ] Update MetaData on Workflow
-- [ ] Create a Graph for the Workflow
-- [ ] Show Graph at the side
-- [ ] Show the Graph for the Workflow
 - [ ] Improve Our Team
 - [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
