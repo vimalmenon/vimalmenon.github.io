@@ -62,6 +62,8 @@ const getNodeType = (node: IExecuteWorkflowNode): ReactFlowType => {
       return 'HumanInput';
     case 'LLM':
       return 'LLM';
+    case 'Tool':
+      return 'Tool';
     default:
       return 'Execute';
   }

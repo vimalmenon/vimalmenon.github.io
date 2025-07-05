@@ -20,10 +20,6 @@ export const CompletedNode: React.FC<INodeType> = ({ data }) => (
         <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
         <span>{data.data.slice(0, 30)}...</span>
       </Box>
-      <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-        <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
-        <span>{data.status}</span>
-      </Box>
     </Box>
   </BaseNode>
 );

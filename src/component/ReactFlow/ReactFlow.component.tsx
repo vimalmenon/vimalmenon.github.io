@@ -1,7 +1,7 @@
 'use client';
 import '@xyflow/react/dist/style.css';
 import { Background, Controls, Node, ReactFlow as ReactFlowComponent } from '@xyflow/react';
-import { CompletedNode, ExecuteNode, HumanInputNode, LlmNode } from './NodeType';
+import { CompletedNode, ExecuteNode, HumanInputNode, LlmNode, ToolNode } from './NodeType';
 import { IReactFlow } from './ReactFlow';
 
 const nodeTypes = {
@@ -9,6 +9,7 @@ const nodeTypes = {
   Execute: ExecuteNode,
   HumanInput: HumanInputNode,
   LLM: LlmNode,
+  Tool: ToolNode,
 };
 
 export const ReactFlow: React.FC<IReactFlow> = ({ edges, nodes }) => (
