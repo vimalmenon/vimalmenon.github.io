@@ -1,5 +1,6 @@
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import BrokenImageIcon from '@mui/icons-material/BrokenImage';
 import CloseIcon from '@mui/icons-material/Close';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DangerousIcon from '@mui/icons-material/Dangerous';
@@ -21,6 +22,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 export const Icons = {
   Add: AddIcon,
   Back: ArrowBackIosIcon,
+  Broken: BrokenImageIcon,
   Check: DoneIcon,
   Close: CloseIcon,
   Copy: ContentCopyIcon,

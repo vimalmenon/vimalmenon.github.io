@@ -7,6 +7,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useEffect } from 'react';
 import { ConfirmDialog } from '@component';
+import { Icons } from '@data';
 import { IAdminWorkflowIdPage } from '@types';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
@@ -58,7 +59,17 @@ const Component: React.FC = () => {
           {nodeFormMode === 'CREATE' ? (
             <Tab label="Create Node" />
           ) : (
-            nodeTabs.map((node) => <Tab label={node.label} key={node.name} />)
+            nodeTabs.map((node) => (
+              <Tab
+                label={
+                  <Box sx={{ display: 'flex', gap: 1 }}>
+                    <span>{node.label}</span>
+                    {node.isBroken ? <Icons.Broken fontSize="small" /> : null}
+                  </Box>
+                }
+                key={node.name}
+              />
+            ))
           )}
         </Tabs>
         {nodeFormMode === 'CREATE' ? (

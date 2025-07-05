@@ -65,7 +65,7 @@ const processNode = (data: INode, names: string[], nodeMap: Record<string, INode
       selected: false,
     },
     ...names.map<INodeTab>((name) => ({
-      isBroken: false,
+      isBroken: true,
       label: nodeMap[name].name,
       mode: 'VIEW',
       name: name,
