@@ -138,7 +138,8 @@ export interface IReactFlowNode {
   type?: ReactFlowType;
 }
 
-export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed' | 'LLM' | 'Tool';
+export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed' | 'LLM' | 'Service';
+
 export interface IReactFlowEdge {
   id: string;
   source: string;

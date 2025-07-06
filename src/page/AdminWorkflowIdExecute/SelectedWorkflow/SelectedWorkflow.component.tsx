@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
+import { Enums } from '@data';
 import {
   IExecuteWorkflow,
   IExecuteWorkflowNode,
@@ -59,11 +60,11 @@ const getNodeType = (node: IExecuteWorkflowNode): ReactFlowType => {
   }
   switch (node.node.type) {
     case 'HumanInput':
-      return 'HumanInput';
-    case 'LLM':
-      return 'LLM';
-    case 'Tool':
-      return 'Tool';
+      return Enums.WorkflowNodeType.HumanInput;
+    case Enums.WorkflowNodeType.LLM:
+      return Enums.WorkflowNodeType.LLM;
+    case 'Service':
+      return Enums.WorkflowNodeType.Service;
     default:
       return 'Execute';
   }
