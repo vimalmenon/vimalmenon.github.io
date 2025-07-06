@@ -5,20 +5,27 @@ import Typography from '@mui/material/Typography';
 import { BaseNode } from './BaseNode';
 import { INodeType } from './NodeType';
 
-export const CompletedNode: React.FC<INodeType> = ({ data }) => (
-  <BaseNode data={data} onExecute={data.onExecute}>
+export const ToolNode: React.FC<INodeType> = ({ data }) => (
+  <BaseNode
+    data={data}
+    onExecute={async () => {
+      await data.onExecute({
+        id: data.id,
+      });
+    }}
+  >
     <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
       <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
         <Typography sx={{ fontWeight: 'bold' }}>Type</Typography>
         <span>{data.type}</span>
       </Box>
       <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-        <Typography sx={{ fontWeight: 'bold' }}>Label</Typography>
-        <span>{data.label}</span>
+        <Typography sx={{ fontWeight: 'bold' }}>Tool Name</Typography>
+        <span>{data.node.tool}</span>
       </Box>
       <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-        <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
-        <span>{data.data.slice(0, 30)}...</span>
+        <Typography sx={{ fontWeight: 'bold' }}>Message</Typography>
+        <span>{data.node.message}</span>
       </Box>
     </Box>
   </BaseNode>

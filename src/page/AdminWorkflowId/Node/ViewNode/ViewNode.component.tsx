@@ -1,9 +1,10 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import { Enums } from '@data';
 import { INode } from '@types';
 import { useWorkflowContext } from '../../AdminWorkflowId.service';
-import { fields, nodeType } from '../Node.service';
+import { nodeType } from '../Node.service';
 import { IViewNode } from './ViewNode';
 
 const convertNextToString = (nodes: Record<string, INode>, next: string): string =>
@@ -28,13 +29,13 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
           <Box>{data.type}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.LLM) ? (
+      {value.includes(Enums.WorkflowNodeFields.LLM) ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>LLM</Box>
           <Box>{data.llm}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Prompt) ? (
+      {value.includes(Enums.WorkflowNodeFields.Prompt) ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Prompt</Box>
           <Box>{data.prompt}</Box>
@@ -47,31 +48,31 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
           <Box>True</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Message) && !data.dataFromPreviousNode ? (
+      {value.includes(Enums.WorkflowNodeFields.Message) && !data.dataFromPreviousNode ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Message</Box>
           <Box>{data.message}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Tools) && data.tools.length ? (
+      {value.includes(Enums.WorkflowNodeFields.Tools) && data.tools.length ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Tools</Box>
           <Box>{data.tools.join(', ')}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Tool) ? (
+      {value.includes(Enums.WorkflowNodeFields.Tool) ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Tool</Box>
           <Box>{data.tool}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Service) ? (
+      {value.includes(Enums.WorkflowNodeFields.Service) ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Service</Box>
           <Box>{data.service}</Box>
         </Box>
       ) : null}
-      {value.includes(fields.Next) && workflow && data.next ? (
+      {value.includes(Enums.WorkflowNodeFields.Next) && workflow && data.next ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>Next</Box>
           <Box>{convertNextToString(workflow?.nodes, data.next)}</Box>

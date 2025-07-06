@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import React, { useEffect } from 'react';
+import { ListItem } from '@component';
 import { useAdminContext } from '@context';
 
 export const Service: React.FC = () => {
@@ -32,11 +33,14 @@ export const Service: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {services.map((service, index) => (
-              <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell>{service}</TableCell>
-              </TableRow>
-            ))}
+            <ListItem<string>
+              items={services}
+              Render={({ data }) => (
+                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell>{data}</TableCell>
+                </TableRow>
+              )}
+            />
           </TableBody>
         </Table>
       </TableContainer>

@@ -6,29 +6,31 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.29
+<b>Version</b>: 0.0.30
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
+
+- [x] Set up sonar
+- [x] Get data from previous node
+- [x] Update MetaData on Workflow
+- [x] Create a Graph for the Workflow
+- [x] Show Graph at the side
+- [x] Show the Graph for the Workflow
+- [x] Show workflow history
+- [ ] Create validate nodes
 - [ ] Handle errors more gracefully
-- [ ] Set up sonar
-- [ ] Get data from previous node
 - [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled
-- [ ] Show workflow history
 - [ ] Show loading indicator on Pages
 - [ ] Show error in UI
 - [ ] Close confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
-- [ ] Update MetaData on Workflow
-- [ ] Create a Graph for the Workflow
-- [ ] Show Graph at the side
-- [ ] Show the Graph for the Workflow
 - [ ] Improve Our Team
 - [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically

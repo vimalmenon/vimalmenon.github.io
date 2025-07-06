@@ -6,6 +6,7 @@ export interface INodeTab {
   label: string;
   mode: FormMode;
   selected: boolean;
+  isBroken: boolean;
 }
 
 export interface IContext {

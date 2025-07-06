@@ -10,10 +10,11 @@ import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import { Fragment } from 'react';
-import { AsyncButton, MultiSelect, TextInput } from '@component';
+import { AsyncButton, ListItem, MultiSelect, TextInput } from '@component';
 import { useAdminContext } from '@context';
-import { Icons } from '@data';
-import { convertToolsToOption, fields, nodeType, useNodeForm } from '../../Node/Node.service';
+import { Enums, Icons } from '@data';
+import { ILLM } from '@types';
+import { convertToolsToOption, nodeType, useNodeForm } from '../../Node/Node.service';
 import { INodeForm } from './NodeForm';
 
 export const NodeForm: React.FC<INodeForm> = ({
@@ -82,7 +83,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.LLM) ? (
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.LLM) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">LLM</InputLabel>
           <Select
@@ -96,15 +97,18 @@ export const NodeForm: React.FC<INodeForm> = ({
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {llms.map((node) => (
-              <MenuItem value={node.name} key={node.name}>
-                {node.name} {node.model}
-              </MenuItem>
-            ))}
+            <ListItem<ILLM>
+              items={llms}
+              Render={({ data }) => (
+                <MenuItem value={data.name} key={data.name}>
+                  {data.name} {data.model}
+                </MenuItem>
+              )}
+            />
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.Prompt) ? (
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Prompt) ? (
         <FormControl variant="outlined" fullWidth required>
           <TextField
             label="Prompt"
@@ -120,7 +124,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           />
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.Message) ? (
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Message) ? (
         <Fragment>
           <FormControlLabel
             control={
@@ -150,7 +154,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           )}
         </Fragment>
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.Tools) ? (
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Tools) ? (
         <MultiSelect
           options={convertToolsToOption(toolsList)}
           value={tools}
@@ -162,7 +166,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           disabled={loading}
         />
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.Tool) ? (
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Tool) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="tool">Tool</InputLabel>
           <Select
@@ -184,7 +188,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.Service) ? (
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Service) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="service">Service</InputLabel>
           <Select
@@ -206,7 +210,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.Next) ? (
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Next) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="next">Next</InputLabel>
           <Select
@@ -228,7 +232,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(fields.IsStart) ? (
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.IsStart) ? (
         <FormControlLabel
           control={
             <Switch

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Enums } from '@data';
 import {
   FormMode,
   IMultiSelectOption,
@@ -12,32 +13,35 @@ import {
 import { useWorkflowContext } from '../AdminWorkflowId.service';
 import { IUseNodeForm } from './Node';
 
-export enum fields {
-  LLM = 'LLM',
-  Prompt = 'Prompt',
-  Message = 'Message',
-  Tools = 'Tools',
-  Tool = 'Tool',
-  Service = 'Service',
-  Next = 'Next',
-  IsStart = 'IsStart',
-}
-
 export const nodeType = (type?: string): string[] => {
-  if (type === 'Agent') {
-    return [fields.LLM, fields.Prompt, fields.Message, fields.Tools, fields.Next, fields.IsStart];
+  if (type === Enums.WorkflowNodeType.Agent) {
+    return [
+      Enums.WorkflowNodeFields.LLM,
+      Enums.WorkflowNodeFields.Prompt,
+      Enums.WorkflowNodeFields.Message,
+      Enums.WorkflowNodeFields.Tools,
+      Enums.WorkflowNodeFields.Next,
+      Enums.WorkflowNodeFields.IsStart,
+    ];
   }
-  if (type === 'HumanInput') {
-    return [fields.Next, fields.IsStart];
+  if (type === Enums.WorkflowNodeType.HumanInput) {
+    return [Enums.WorkflowNodeFields.Next, Enums.WorkflowNodeFields.IsStart];
   }
-  if (type === 'Tool') {
-    return [fields.Tool, fields.Next, fields.IsStart];
+  if (type === Enums.WorkflowNodeType.LLM) {
+    return [
+      Enums.WorkflowNodeFields.LLM,
+      Enums.WorkflowNodeFields.Prompt,
+      Enums.WorkflowNodeFields.Message,
+      Enums.WorkflowNodeFields.Next,
+      Enums.WorkflowNodeFields.IsStart,
+    ];
   }
-  if (type === 'LLM') {
-    return [fields.LLM, fields.Prompt, fields.Message, fields.Next, fields.IsStart];
-  }
-  if (type === 'Service') {
-    return [fields.Service, fields.Next, fields.IsStart];
+  if (type === Enums.WorkflowNodeType.Service) {
+    return [
+      Enums.WorkflowNodeFields.Service,
+      Enums.WorkflowNodeFields.Next,
+      Enums.WorkflowNodeFields.IsStart,
+    ];
   }
   return [];
 };
