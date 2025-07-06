@@ -11,6 +11,13 @@ import TableRow from '@mui/material/TableRow';
 import React, { useEffect } from 'react';
 import { ListItem } from '@component';
 import { useAdminContext } from '@context';
+import { IListViewRender } from '@types';
+
+const ServiceItemRender: React.FC<IListViewRender<string>> = ({ data }) => (
+  <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+    <TableCell>{data}</TableCell>
+  </TableRow>
+);
 
 export const Service: React.FC = () => {
   const { getServices, services } = useAdminContext();
@@ -33,14 +40,7 @@ export const Service: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ListItem<string>
-              items={services}
-              Render={({ data }) => (
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell>{data}</TableCell>
-                </TableRow>
-              )}
-            />
+            <ListItem<string> items={services} Render={ServiceItemRender} />
           </TableBody>
         </Table>
       </TableContainer>

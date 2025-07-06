@@ -150,6 +150,11 @@ export interface IWorkflowExecuteParams {
   data?: string;
 }
 
+export interface IListViewRender<T> {
+  readonly data: T;
+  readonly index: number;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';

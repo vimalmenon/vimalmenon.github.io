@@ -1,9 +1,6 @@
-interface IRender<T> {
-  data: T;
-  index: number;
-}
+import { IListViewRender } from '@types';
 
 export interface IListItem<T> {
   items: T[];
-  Render: React.FC<IRender<T>>;
+  Render: React.FC<IListViewRender<T>>;
 }
