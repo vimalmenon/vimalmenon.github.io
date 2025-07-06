@@ -13,14 +13,6 @@ This is Website for Vimal Menon
 
 ## To Do
 
-
-- [x] Set up sonar
-- [x] Get data from previous node
-- [x] Update MetaData on Workflow
-- [x] Create a Graph for the Workflow
-- [x] Show Graph at the side
-- [x] Show the Graph for the Workflow
-- [x] Show workflow history
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change
