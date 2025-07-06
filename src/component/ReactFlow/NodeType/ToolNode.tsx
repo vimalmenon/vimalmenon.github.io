@@ -8,8 +8,8 @@ import { INodeType } from './NodeType';
 export const ToolNode: React.FC<INodeType> = ({ data }) => (
   <BaseNode
     data={data}
-    onExecute={() => {
-      data.onExecute({
+    onExecute={async () => {
+      await data.onExecute({
         id: data.id,
       });
     }}

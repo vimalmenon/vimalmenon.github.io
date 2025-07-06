@@ -13,8 +13,8 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
   return (
     <BaseNode
       data={data}
-      onExecute={() =>
-        data.onExecute({
+      onExecute={async () =>
+        await data.onExecute({
           data: value,
           id: data.id,
         })
