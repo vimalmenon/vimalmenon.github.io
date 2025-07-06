@@ -10,9 +10,10 @@ import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import { Fragment } from 'react';
-import { AsyncButton, MultiSelect, TextInput } from '@component';
+import { AsyncButton, ListItem, MultiSelect, TextInput } from '@component';
 import { useAdminContext } from '@context';
 import { Icons } from '@data';
+import { ILLM } from '@types';
 import { convertToolsToOption, fields, nodeType, useNodeForm } from '../../Node/Node.service';
 import { INodeForm } from './NodeForm';
 
@@ -96,11 +97,14 @@ export const NodeForm: React.FC<INodeForm> = ({
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {llms.map((node) => (
-              <MenuItem value={node.name} key={node.name}>
-                {node.name} {node.model}
-              </MenuItem>
-            ))}
+            <ListItem<ILLM>
+              items={llms}
+              Render={({ data }) => (
+                <MenuItem value={data.name} key={data.name}>
+                  {data.name} {data.model}
+                </MenuItem>
+              )}
+            />
           </Select>
         </FormControl>
       ) : null}

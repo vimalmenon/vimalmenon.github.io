@@ -3,6 +3,7 @@ export * from './ComingSoon';
 export * from './ConfirmDialog';
 export * from './CopyToClipboard';
 export * from './Icon';
+export * from './ListItem';
 export * from './Modal';
 export * from './MultiSelect';
 export * from './ReactFlow';

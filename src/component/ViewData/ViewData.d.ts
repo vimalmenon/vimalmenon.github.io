@@ -1,5 +1,5 @@
 import { IViewData } from '@types';
 
-export interface IViewData {
+export interface IViewDataProps {
   data: IViewData[];
 }

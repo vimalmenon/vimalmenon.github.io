@@ -6,9 +6,10 @@ import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useEffect } from 'react';
-import { ConfirmDialog } from '@component';
+import { ConfirmDialog, ListItem } from '@component';
 import { Icons } from '@data';
 import { IAdminWorkflowIdPage } from '@types';
+import { INodeTab } from './AdminWorkflowId';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
   useTabHelper,
@@ -59,17 +60,20 @@ const Component: React.FC = () => {
           {nodeFormMode === 'CREATE' ? (
             <Tab label="Create Node" />
           ) : (
-            nodeTabs.map((node) => (
-              <Tab
-                label={
-                  <Box sx={{ display: 'flex', gap: 1 }}>
-                    <span>{node.label}</span>
-                    {node.isBroken ? <Icons.Broken fontSize="small" /> : null}
-                  </Box>
-                }
-                key={node.name}
-              />
-            ))
+            <ListItem<INodeTab>
+              items={nodeTabs}
+              Render={({ data }) => (
+                <Tab
+                  label={
+                    <Box sx={{ display: 'flex', gap: 1 }}>
+                      <span>{data.label}</span>
+                      {data.isBroken ? <Icons.Broken fontSize="small" /> : null}
+                    </Box>
+                  }
+                  key={data.name}
+                />
+              )}
+            />
           )}
         </Tabs>
         {nodeFormMode === 'CREATE' ? (
@@ -81,23 +85,26 @@ const Component: React.FC = () => {
             complete={false}
           />
         ) : (
-          nodeTabs.map((node, index) => {
-            if (selectedTab === index && workflow) {
-              return (
-                <Node
-                  data={workflow.nodes[node.name]}
-                  key={node.name}
-                  mode={node.mode}
-                  deleteNode={() => deleteNode(node.name)}
-                  updateNode={(data) => updateNode(node.name, data)}
-                  setMode={(mode) => setNodeMode(index, mode)}
-                  cancelNode={() => setNodeMode(index, 'VIEW')}
-                  isStart={isStart}
-                  complete={workflow.complete}
-                />
-              );
-            }
-          })
+          <ListItem<INodeTab>
+            items={nodeTabs}
+            Render={({ data, index }) => {
+              if (selectedTab === index && workflow) {
+                return (
+                  <Node
+                    data={workflow.nodes[data.name]}
+                    key={data.name}
+                    mode={data.mode}
+                    deleteNode={() => deleteNode(data.name)}
+                    updateNode={(data) => updateNode(data.name, data)}
+                    setMode={(mode) => setNodeMode(index, mode)}
+                    cancelNode={() => setNodeMode(index, 'VIEW')}
+                    isStart={isStart}
+                    complete={workflow.complete}
+                  />
+                );
+              }
+            }}
+          />
         )}
       </Box>
     </Box>
