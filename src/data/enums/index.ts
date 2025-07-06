@@ -18,7 +18,16 @@ export enum WorkflowNodeFields {
   IsStart = 'IsStart',
 }
 
+export enum WorkflowNodeType {
+  Agent = 'Agent',
+  LLM = 'LLM',
+  HumanInput = 'HumanInput',
+  Service = 'Service',
+  ManualConfirmation = 'ManualConfirmation',
+}
+
 export const Enums = {
   WorkflowNodeFields,
   WorkflowNodeStatus,
+  WorkflowNodeType,
 };

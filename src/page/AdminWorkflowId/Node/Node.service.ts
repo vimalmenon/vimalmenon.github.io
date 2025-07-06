@@ -14,7 +14,7 @@ import { useWorkflowContext } from '../AdminWorkflowId.service';
 import { IUseNodeForm } from './Node';
 
 export const nodeType = (type?: string): string[] => {
-  if (type === 'Agent') {
+  if (type === Enums.WorkflowNodeType.Agent) {
     return [
       Enums.WorkflowNodeFields.LLM,
       Enums.WorkflowNodeFields.Prompt,
@@ -24,18 +24,10 @@ export const nodeType = (type?: string): string[] => {
       Enums.WorkflowNodeFields.IsStart,
     ];
   }
-  if (type === 'HumanInput') {
+  if (type === Enums.WorkflowNodeType.HumanInput) {
     return [Enums.WorkflowNodeFields.Next, Enums.WorkflowNodeFields.IsStart];
   }
-  if (type === 'Tool') {
-    return [
-      Enums.WorkflowNodeFields.Tool,
-      Enums.WorkflowNodeFields.Message,
-      Enums.WorkflowNodeFields.Next,
-      Enums.WorkflowNodeFields.IsStart,
-    ];
-  }
-  if (type === 'LLM') {
+  if (type === Enums.WorkflowNodeType.LLM) {
     return [
       Enums.WorkflowNodeFields.LLM,
       Enums.WorkflowNodeFields.Prompt,
@@ -44,7 +36,7 @@ export const nodeType = (type?: string): string[] => {
       Enums.WorkflowNodeFields.IsStart,
     ];
   }
-  if (type === 'Service') {
+  if (type === Enums.WorkflowNodeType.Service) {
     return [
       Enums.WorkflowNodeFields.Service,
       Enums.WorkflowNodeFields.Next,
