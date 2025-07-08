@@ -98,6 +98,11 @@ const ExecuteWorkflowNode = (wfId: string, id: string, body: IWorkflowExecutePar
   url: `workflow/execute/resume/${wfId}/${id}`,
 });
 
+const GetDbServiceData = (id: string): IAPI => ({
+  method: 'GET',
+  url: `from_db/${id}`,
+});
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
@@ -106,6 +111,7 @@ export const APIs = {
   DeleteWorkflowNode,
   ExecuteWorkflow,
   ExecuteWorkflowNode,
+  GetDbServiceData,
   GetExecutedWorkflow,
   GetLLMs,
   GetServices,

@@ -1,7 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { IAdminWorkflowIdPage, IDbServiceData, IExecuteWorkflow, IReactChildren } from '@types';
+import {
+  IAdminWorkflowIdPage,
+  IDbServiceData,
+  IExecuteWorkflow,
+  IExecuteWorkflowNode,
+  IReactChildren,
+} from '@types';
 import { Context } from './AdminWorkflowIdExecute.service';
 
 export const AdminWorkflowIdExecuteContext: React.FC<IReactChildren & IAdminWorkflowIdPage> = ({
@@ -13,6 +19,9 @@ export const AdminWorkflowIdExecuteContext: React.FC<IReactChildren & IAdminWork
   const [loading, setLoading] = useState<boolean>(false);
   const [showCreate, setShowCreate] = useState<boolean>(false);
   const [dbServiceData, setDbServiceData] = useState<IDbServiceData[]>([]);
+  const [selectedWorkflowNode, setSelectedWorkflowNode] = useState<IExecuteWorkflowNode | null>(
+    null
+  );
   return (
     <Context.Provider
       value={{
@@ -20,9 +29,11 @@ export const AdminWorkflowIdExecuteContext: React.FC<IReactChildren & IAdminWork
         id,
         loading,
         selectedWorkflow,
+        selectedWorkflowNode,
         setDbServiceData,
         setLoading,
         setSelectedWorkflow,
+        setSelectedWorkflowNode,
         setShowCreate,
         setWorkFlows,
         showCreate,

@@ -18,6 +18,7 @@ import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
 } from '../AdminWorkflowIdExecute.service';
+import { WorkflowNodeDetail } from './WorkflowNodeDetail';
 
 const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
   const result: IViewData[] = [];
@@ -107,6 +108,7 @@ export const SelectedWorkflow: React.FC = () => {
   const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <WorkflowNodeDetail />
       {selectedWorkflow ? (
         <Fragment>
           <ViewData data={convertWorkflowToView(selectedWorkflow)} />

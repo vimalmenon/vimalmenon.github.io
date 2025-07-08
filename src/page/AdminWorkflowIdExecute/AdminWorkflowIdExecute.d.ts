@@ -1,5 +1,13 @@
-import { IDbServiceData, IExecuteWorkflow, IExecuteWorkflowSlim } from '@types';
-import { IWorkflowExecuteParams, ReactSetState, VoidFunction } from '@types';
+import {
+  IDbServiceData,
+  IExecuteWorkflow,
+  IExecuteWorkflowNode,
+  IExecuteWorkflowSlim,
+  IWorkflowExecuteParams,
+  ReactSetState,
+  VoidFunction,
+} from '@types';
+
 export interface IAdminWorkflowIdExecuteContext {
   id: string;
   workflows: IExecuteWorkflow[];
@@ -12,6 +20,8 @@ export interface IAdminWorkflowIdExecuteContext {
   setSelectedWorkflow: ReactSetState<IExecuteWorkflow | null>;
   dbServiceData: IDbServiceData[];
   setDbServiceData: ReactSetState<IDbServiceData[]>;
+  selectedWorkflowNode: IExecuteWorkflowNode | null;
+  setSelectedWorkflowNode: ReactSetState<IExecuteWorkflowNode | null>;
 }
 
 export interface IUseWorkflowExecuteHelper {
