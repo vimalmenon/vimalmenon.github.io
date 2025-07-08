@@ -12,6 +12,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import HistoryIcon from '@mui/icons-material/History';
 import InfoIcon from '@mui/icons-material/Info';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SaveIcon from '@mui/icons-material/Save';
 import SchemaIcon from '@mui/icons-material/Schema';
@@ -34,6 +35,7 @@ export const Icons = {
   History: HistoryIcon,
   Info: InfoIcon,
   LinkedIn: LinkedInIcon,
+  OpenInNew: OpenInNewIcon,
   Play: PlayArrowIcon,
   Save: SaveIcon,
   Schema: SchemaIcon,

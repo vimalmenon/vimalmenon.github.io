@@ -25,7 +25,6 @@ export const BaseNode: React.FC<IReactChildren & IBaseNodeType> = ({
           borderRadius: '5px',
           display: 'flex',
           justifyContent: 'space-between',
-          padding: 1,
         }}
       >
         <span>
@@ -42,6 +41,9 @@ export const BaseNode: React.FC<IReactChildren & IBaseNodeType> = ({
       </Box>
       <Divider />
       {children}
+      <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+        <Icons.OpenInNew fontSize="small" />
+      </Box>
       <Handle type="target" position={Position.Top} />
       <Handle type="source" position={Position.Bottom} />
     </NodeStyled>
