@@ -156,6 +156,12 @@ export interface IListViewRender<T> {
   readonly index: number;
 }
 
+export interface IDbServiceData {
+  id: string;
+  data: string;
+  createdDate: string;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
