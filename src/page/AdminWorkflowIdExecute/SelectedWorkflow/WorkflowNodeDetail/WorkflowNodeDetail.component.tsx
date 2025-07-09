@@ -1,20 +1,26 @@
 'use client';
 
+import Box from '@mui/material/Box';
 import React from 'react';
 import { Modal } from '@component';
 import { useWorkflowNodeDetailHelper } from '../../AdminWorkflowIdExecute.service';
 
 export const WorkflowNodeDetail: React.FC = () => {
-  const { closeSelectedWorkflow, selectedWorkflowNode } = useWorkflowNodeDetailHelper();
+  const { closeSelectedWorkflow, onSelectedWorkflowNodeSubmit, selectedWorkflowNode } =
+    useWorkflowNodeDetailHelper();
   if (selectedWorkflowNode) {
     return (
       <Modal
         open={true}
-        title="This is Workflow Detail"
+        title={
+          <Box>
+            {selectedWorkflowNode.node.type} ({selectedWorkflowNode.node.name})
+          </Box>
+        }
         onClose={closeSelectedWorkflow}
-        onConfirm={() => Promise.resolve()}
+        onConfirm={onSelectedWorkflowNodeSubmit}
       >
-        <div>This is selected workflow node</div>
+        <Box>This is selected workflow node</Box>
       </Modal>
     );
   }

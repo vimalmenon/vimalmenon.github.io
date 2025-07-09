@@ -36,4 +36,5 @@ export interface IUseWorkflowExecuteHelper {
 export interface IUseWorkflowNodeDetailHelper {
   closeSelectedWorkflow: VoidFunction;
   selectedWorkflowNode: IExecuteWorkflowNode | null;
+  onSelectedWorkflowNodeSubmit: VoidFunction<Promise<void>>;
 }

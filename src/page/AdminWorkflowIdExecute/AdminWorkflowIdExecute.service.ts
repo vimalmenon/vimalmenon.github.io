@@ -130,8 +130,12 @@ export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
   const closeSelectedWorkflow = (): void => {
     setSelectedWorkflowNode(null);
   };
+  const onSelectedWorkflowNodeSubmit = async (): Promise<void> => {
+    await Promise.resolve([]);
+  };
   return {
     closeSelectedWorkflow,
+    onSelectedWorkflowNodeSubmit,
     selectedWorkflowNode,
   };
 };
