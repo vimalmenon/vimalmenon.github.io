@@ -4,16 +4,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
-import { Enums } from '@data';
-import {
-  IExecuteWorkflow,
-  IExecuteWorkflowNode,
-  IReactFlowEdge,
-  IReactFlowNode,
-  IViewData,
-  IWorkflowExecuteParams,
-  ReactFlowType,
-} from '@types';
+import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowEdge, IViewData } from '@types';
 import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
@@ -55,40 +46,6 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
   return result;
 };
 
-const getNodeType = (node: IExecuteWorkflowNode): ReactFlowType => {
-  if (node.status === 'COMPLETED') {
-    return 'Completed';
-  }
-  switch (node.node.type) {
-    case 'HumanInput':
-      return Enums.WorkflowNodeType.HumanInput;
-    case Enums.WorkflowNodeType.LLM:
-      return Enums.WorkflowNodeType.LLM;
-    case 'Service':
-      return Enums.WorkflowNodeType.Service;
-    default:
-      return 'Execute';
-  }
-};
-const convertNodesToReactFlow = (
-  nodes: IExecuteWorkflowNode[],
-  onExecute: (data: IWorkflowExecuteParams) => Promise<void>
-): IReactFlowNode[] =>
-  nodes.map<IReactFlowNode>((node, index) => ({
-    data: {
-      data: node.content,
-      id: node.id,
-      label: node.node.name,
-      node: node.node,
-      onExecute,
-      status: node.status,
-      type: node.node.type ?? '',
-    },
-    id: node.id,
-    position: { x: 0, y: index * 200 },
-    type: getNodeType(node),
-  }));
-
 const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
   nodes
     .map<IReactFlowEdge | null>((node, index, nodes) => {
@@ -104,7 +61,7 @@ const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
     .filter((node) => node !== null);
 
 export const SelectedWorkflow: React.FC = () => {
-  const { onExecuteWorkflowNode } = useWorkflowExecuteHelper();
+  const { convertNodesToReactFlow } = useWorkflowExecuteHelper();
   const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -116,14 +73,7 @@ export const SelectedWorkflow: React.FC = () => {
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
               <ReactFlow
-                nodes={convertNodesToReactFlow(
-                  selectedWorkflow?.nodes ?? [],
-                  async (data: IWorkflowExecuteParams) => {
-                    if (selectedWorkflow?.id) {
-                      await onExecuteWorkflowNode(selectedWorkflow.id, data);
-                    }
-                  }
-                )}
+                nodes={convertNodesToReactFlow(selectedWorkflow?.nodes ?? [])}
                 edges={createEdgesForNode(selectedWorkflow?.nodes ?? [])}
               />
             </div>

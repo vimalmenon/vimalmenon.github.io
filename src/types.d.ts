@@ -21,6 +21,7 @@ interface IReactFlowData {
   id: string;
   label: string;
   onExecute: (data: IWorkflowExecuteParams) => Promise<void>;
+  onSelect: (data: IExecuteWorkflowNode) => void;
   status: string;
   type: string;
   data: string;

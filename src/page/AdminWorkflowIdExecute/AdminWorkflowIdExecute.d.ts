@@ -3,7 +3,7 @@ import {
   IExecuteWorkflow,
   IExecuteWorkflowNode,
   IExecuteWorkflowSlim,
-  IWorkflowExecuteParams,
+  IReactFlowNode,
   ReactSetState,
   VoidFunction,
 } from '@types';
@@ -29,5 +29,11 @@ export interface IUseWorkflowExecuteHelper {
   executeWorkflow: (data: IExecuteWorkflowSlim) => Promise<void>;
   deleteExecutedWorkflow: (id: string) => Promise<void>;
   setSelectedWorkflow: ReactSetState<IExecuteWorkflow | null>;
-  onExecuteWorkflowNode: (id: string, data: IWorkflowExecuteParams) => Promise<void>;
+  onSelectedWorkflowNode: (data: IExecuteWorkflowNode) => void;
+  convertNodesToReactFlow: (nodes: IExecuteWorkflowNode[]) => IReactFlowNode[];
+}
+
+export interface IUseWorkflowNodeDetailHelper {
+  closeSelectedWorkflow: VoidFunction;
+  selectedWorkflowNode: IExecuteWorkflowNode | null;
 }
