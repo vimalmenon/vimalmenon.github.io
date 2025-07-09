@@ -24,7 +24,7 @@ export const ServiceNode: React.FC<INodeType> = ({ data }) => (
       </Box>
       <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
         <Typography sx={{ fontWeight: 'bold' }}>Service</Typography>
-        <span>{data.node.service}</span>
+        <span>{data.node.node.service}</span>
       </Box>
     </Box>
   </BaseNode>

@@ -29,7 +29,7 @@ export interface IUseWorkflowExecuteHelper {
   executeWorkflow: (data: IExecuteWorkflowSlim) => Promise<void>;
   deleteExecutedWorkflow: (id: string) => Promise<void>;
   setSelectedWorkflow: ReactSetState<IExecuteWorkflow | null>;
-  onSelectedWorkflowNode: (data: IExecuteWorkflowNode) => void;
+  onSelectedWorkflowNode: (data: IIExecuteWorkflowNodeNode) => void;
   convertNodesToReactFlow: (nodes: IExecuteWorkflowNode[]) => IReactFlowNode[];
 }
 

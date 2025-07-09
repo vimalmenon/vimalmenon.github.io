@@ -25,7 +25,7 @@ interface IReactFlowData {
   status: string;
   type: string;
   data: string;
-  node: INode;
+  node: IExecuteWorkflowNode;
 }
 
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;

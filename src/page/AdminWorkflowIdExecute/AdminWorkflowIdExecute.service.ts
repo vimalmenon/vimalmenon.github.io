@@ -104,7 +104,7 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
         data: node.content,
         id: node.id,
         label: node.node.name,
-        node: node.node,
+        node: node,
         onExecute: onExecuteWorkflowNode,
         onSelect: onSelectedWorkflowNode,
         status: node.status,
