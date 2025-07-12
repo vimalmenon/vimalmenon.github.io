@@ -12,7 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { ConfirmDialog } from '@component';
+import { ConfirmDialog, Icon } from '@component';
 import { Icons } from '@data';
 import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
@@ -97,15 +97,19 @@ export const Workflows: React.FC = () => {
                     </TableCell>
                     <TableCell>{workflow.executedWorkflows.length}</TableCell>
                     <TableCell align="right">
-                      <IconButton
+                      <Icon
+                        icon={<Icons.Delete />}
                         onClick={() => deleteWorkflow(workflow)}
                         disabled={workflow.executedWorkflows.length > 0}
-                      >
-                        <Icons.Delete />
-                      </IconButton>
-                      <IconButton onClick={() => push(`/admin/workflows/${workflow.id}/`)}>
-                        <Icons.Play />
-                      </IconButton>
+                        toolTip="Delete"
+                        size="small"
+                      />
+                      <Icon
+                        icon={<Icons.Play />}
+                        onClick={() => push(`/admin/workflows/${workflow.id}/`)}
+                        toolTip="Go"
+                        size="small"
+                      />
                     </TableCell>
                   </TableRow>
                 ))}
