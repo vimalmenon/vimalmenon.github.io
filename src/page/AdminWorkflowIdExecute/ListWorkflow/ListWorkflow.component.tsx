@@ -10,7 +10,6 @@ import TableRow from '@mui/material/TableRow';
 import NextLink from 'next/link';
 import { Icon } from '@component';
 import { Icons } from '@data';
-import { useAdminWorkflowContext } from '../../AdminWorkflowContext';
 import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
@@ -19,7 +18,6 @@ import {
 export const ListWorkflow: React.FC = () => {
   const { executedWorkflows, id } = useAdminWorkflowIdExecuteContext();
   const { deleteExecutedWorkflow } = useWorkflowExecuteHelper();
-  const { setSelectedExecutedWorkflow } = useAdminWorkflowContext();
 
   return (
     <TableContainer component={Paper}>
@@ -35,10 +33,7 @@ export const ListWorkflow: React.FC = () => {
           {executedWorkflows.map((workflow) => (
             <TableRow key={workflow.id} style={{ cursor: 'pointer' }}>
               <TableCell>
-                <NextLink
-                  href={`/admin/workflows/${id}/execute/${workflow.id}`}
-                  onClick={() => setSelectedExecutedWorkflow(workflow)}
-                >
+                <NextLink href={`/admin/workflows/${id}/execute/${workflow.id}`}>
                   {workflow.name}
                 </NextLink>
               </TableCell>

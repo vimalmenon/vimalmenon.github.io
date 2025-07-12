@@ -10,7 +10,6 @@ import {
   WorkflowPage,
 } from '@data';
 import {
-  AdminWorkflowContext,
   AdminWorkflowExecuteId,
   AdminWorkflowId,
   AdminWorkflowIdExecute,
@@ -45,35 +44,33 @@ const Page: NextPage<IPage> = async ({ params }) => {
   const page = getPage(data);
   const [id, , executeId] = data ?? [];
   return (
-    <AdminWorkflowContext id={id} executeId={executeId}>
-      <StyledPage sx={{ flexDirection: 'column' }}>
-        {page === WorkflowPage.Workflow ? (
-          <Fragment>
-            <Breadcrumbs navigation={Navigation.AdminWorkflow} />
-            <AdminWorkflows />
-          </Fragment>
-        ) : null}
+    <StyledPage sx={{ flexDirection: 'column' }}>
+      {page === WorkflowPage.Workflow ? (
+        <Fragment>
+          <Breadcrumbs navigation={Navigation.AdminWorkflow} />
+          <AdminWorkflows />
+        </Fragment>
+      ) : null}
 
-        {page === WorkflowPage.WorkflowExecutedId ? (
-          <Fragment>
-            <Breadcrumbs navigation={GenerateWorkflowExecuteId(id, executeId)} />
-            <AdminWorkflowExecuteId id={id} executeId={executeId} />
-          </Fragment>
-        ) : null}
-        {page === WorkflowPage.WorkflowExecuted ? (
-          <Fragment>
-            <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
-            <AdminWorkflowIdExecute id={id} />
-          </Fragment>
-        ) : null}
-        {page === WorkflowPage.WorkflowId ? (
-          <Fragment>
-            <Breadcrumbs navigation={GenerateWorkflow(id)} />
-            <AdminWorkflowId id={id} />
-          </Fragment>
-        ) : null}
-      </StyledPage>
-    </AdminWorkflowContext>
+      {page === WorkflowPage.WorkflowExecutedId ? (
+        <Fragment>
+          <Breadcrumbs navigation={GenerateWorkflowExecuteId(id, executeId)} />
+          <AdminWorkflowExecuteId id={id} executeId={executeId} />
+        </Fragment>
+      ) : null}
+      {page === WorkflowPage.WorkflowExecuted ? (
+        <Fragment>
+          <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
+          <AdminWorkflowIdExecute id={id} />
+        </Fragment>
+      ) : null}
+      {page === WorkflowPage.WorkflowId ? (
+        <Fragment>
+          <Breadcrumbs navigation={GenerateWorkflow(id)} />
+          <AdminWorkflowId id={id} />
+        </Fragment>
+      ) : null}
+    </StyledPage>
   );
 };
 
