@@ -16,6 +16,7 @@ import {
   IAdminWorkflowExecuteIdContext,
   IUseAdminWorkflowIdExecuteHelper,
   IUseWorkflowExecuteHelper,
+  IUseWorkflowNodeDetailHelper,
 } from './AdminWorkflowExecuteId';
 
 export const Context = createContext<IAdminWorkflowExecuteIdContext>({
@@ -113,5 +114,20 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     executeWorkflow,
     onSelectedWorkflowNode,
     setSelectedExecutedWorkflow,
+  };
+};
+
+export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
+  const { selectedWorkflowNode, setSelectedWorkflowNode } = useAdminWorkflowIdExecuteIdContext();
+  const closeSelectedWorkflow = (): void => {
+    setSelectedWorkflowNode(null);
+  };
+  const onSelectedWorkflowNodeSubmit = async (): Promise<void> => {
+    await Promise.resolve([]);
+  };
+  return {
+    closeSelectedWorkflow,
+    onSelectedWorkflowNodeSubmit,
+    selectedWorkflowNode,
   };
 };

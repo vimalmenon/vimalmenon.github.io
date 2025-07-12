@@ -33,3 +33,8 @@ export interface IUseWorkflowExecuteHelper {
   convertNodesToReactFlow: (nodes: IExecuteWorkflowNode[]) => IReactFlowNode[];
   onSelectedWorkflowNode: (data: IIExecuteWorkflowNodeNode) => void;
 }
+export interface IUseWorkflowNodeDetailHelper {
+  closeSelectedWorkflow: VoidFunction;
+  selectedWorkflowNode: IExecuteWorkflowNode | null;
+  onSelectedWorkflowNodeSubmit: VoidFunction<Promise<void>>;
+}

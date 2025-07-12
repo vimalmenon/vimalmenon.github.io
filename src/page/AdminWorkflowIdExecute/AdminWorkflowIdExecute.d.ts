@@ -24,9 +24,3 @@ export interface IUseWorkflowExecuteHelper {
   deleteExecutedWorkflow: (id: string) => Promise<void>;
   onSelectedWorkflowNode: (data: IExecuteWorkflowNodeNode) => void;
 }
-
-export interface IUseWorkflowNodeDetailHelper {
-  closeSelectedWorkflow: VoidFunction;
-  selectedWorkflowNode: IExecuteWorkflowNode | null;
-  onSelectedWorkflowNodeSubmit: VoidFunction<Promise<void>>;
-}
