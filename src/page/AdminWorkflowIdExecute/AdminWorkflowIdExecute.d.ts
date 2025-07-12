@@ -1,5 +1,4 @@
 import {
-  IDbServiceData,
   IExecuteWorkflow,
   IExecuteWorkflowNode,
   IExecuteWorkflowSlim,
@@ -18,8 +17,6 @@ export interface IAdminWorkflowIdExecuteContext {
   setShowCreate: ReactSetState<boolean>;
   selectedWorkflow: IExecuteWorkflow | null;
   setSelectedWorkflow: ReactSetState<IExecuteWorkflow | null>;
-  dbServiceData: IDbServiceData[];
-  setDbServiceData: ReactSetState<IDbServiceData[]>;
   selectedWorkflowNode: IExecuteWorkflowNode | null;
   setSelectedWorkflowNode: ReactSetState<IExecuteWorkflowNode | null>;
 }

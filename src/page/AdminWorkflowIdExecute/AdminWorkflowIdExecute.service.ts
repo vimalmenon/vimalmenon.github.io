@@ -19,13 +19,11 @@ import {
 } from './AdminWorkflowIdExecute';
 
 export const Context = createContext<IAdminWorkflowIdExecuteContext>({
-  dbServiceData: [],
   executedWorkflows: [],
   id: '',
   loading: false,
   selectedWorkflow: null,
   selectedWorkflowNode: null,
-  setDbServiceData: NotImplemented,
   setExecutedWorkflows: NotImplemented,
   setLoading: NotImplemented,
   setSelectedWorkflow: NotImplemented,
