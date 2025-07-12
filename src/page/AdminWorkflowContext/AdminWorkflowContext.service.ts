@@ -21,13 +21,12 @@ export const useAdminWorkflowContext = (): IAdminWorkflowContext =>
   useContext<IAdminWorkflowContext>(Context);
 
 export const useAdminWorkflowHelper = (): IUseAdminWorkflowHelper => {
-  const { setSelectedWorkflow, setWorkflows } = useAdminWorkflowContext();
+  const { setWorkflows } = useAdminWorkflowContext();
   const getWorkflows = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
     setWorkflows(response.data);
   };
   return {
     getWorkflows,
-    setSelectedWorkflow,
   };
 };
