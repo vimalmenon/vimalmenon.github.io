@@ -3,8 +3,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import { Modal } from '@component';
-import { TextInput } from '@component';
+import { Modal, TextInput } from '@component';
 import { Enums } from '@data';
 import { formatDate } from '@utility';
 import { useWorkflowNodeDetailHelper } from '../../../AdminWorkflowIdExecute/AdminWorkflowIdExecute.service';
