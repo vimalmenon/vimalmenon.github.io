@@ -60,19 +60,19 @@ const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
 
 export const SelectedWorkflow: React.FC = () => {
   const { convertNodesToReactFlow } = useWorkflowExecuteHelper();
-  const { selectedWorkflow } = useAdminWorkflowIdExecuteIdContext();
+  const { selectedExecutedWorkflow } = useAdminWorkflowIdExecuteIdContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <WorkflowNodeDetail />
-      {selectedWorkflow ? (
+      {selectedExecutedWorkflow ? (
         <Fragment>
-          <ViewData data={convertWorkflowToView(selectedWorkflow)} />
+          <ViewData data={convertWorkflowToView(selectedExecutedWorkflow)} />
           <Divider />
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
               <ReactFlow
-                nodes={convertNodesToReactFlow(selectedWorkflow?.nodes ?? [])}
-                edges={createEdgesForNode(selectedWorkflow?.nodes ?? [])}
+                nodes={convertNodesToReactFlow(selectedExecutedWorkflow?.nodes ?? [])}
+                edges={createEdgesForNode(selectedExecutedWorkflow?.nodes ?? [])}
               />
             </div>
           </Box>

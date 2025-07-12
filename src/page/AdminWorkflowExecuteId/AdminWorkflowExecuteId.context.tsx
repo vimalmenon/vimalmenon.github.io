@@ -23,10 +23,10 @@ export const AdminWorkflowExecuteIdContext: React.FC<IReactChildren & IAdminWork
         dbServiceData,
         executeId,
         id,
-        selectedWorkflow: selectedExecutedWorkflow,
+        selectedExecutedWorkflow,
         selectedWorkflowNode,
         setDbServiceData,
-        setSelectedWorkflow: setSelectedExecutedWorkflow,
+        setSelectedExecutedWorkflow,
         setSelectedWorkflowNode,
       }}
     >

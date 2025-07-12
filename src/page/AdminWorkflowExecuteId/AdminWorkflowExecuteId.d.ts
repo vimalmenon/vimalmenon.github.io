@@ -6,10 +6,14 @@ export interface IAdminWorkflowExecuteId {
 }
 
 export interface IAdminWorkflowExecuteIdContext extends IAdminWorkflowExecuteId {
-  selectedWorkflow: IExecuteWorkflow | null;
-  setSelectedWorkflow: ReactSetState<IExecuteWorkflow | null>;
+  selectedExecutedWorkflow: IExecuteWorkflow | null;
+  setSelectedExecutedWorkflow: ReactSetState<IExecuteWorkflow | null>;
   selectedWorkflowNode: IExecuteWorkflowNode | null;
   setSelectedWorkflowNode: ReactSetState<IExecuteWorkflowNode | null>;
   dbServiceData: IDbServiceData[];
   setDbServiceData: ReactSetState<IDbServiceData[]>;
+}
+
+export interface IUseAdminWorkflowIdExecuteHelper {
+  getExecutedWorkflow: VoidFunction<Promise<void>>;
 }
