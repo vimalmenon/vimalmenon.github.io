@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { FormMode, IReactChildren, IWorkflow } from '@types';
-import { useAdminWorkflowContext } from '../AdminWorkflowContext';
 import { Context } from './AdminWorkflows.services';
 
 export const AdminWorkflowsContext: React.FC<IReactChildren> = ({ children }) => {
@@ -10,7 +9,8 @@ export const AdminWorkflowsContext: React.FC<IReactChildren> = ({ children }) =>
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedWorkflow, setSelectedWorkflow] = useState<IWorkflow | null>(null);
   const [dataLoading, setDataLoading] = useState<boolean>(false);
-  const { setWorkflows, workflows } = useAdminWorkflowContext();
+  const [workflows, setWorkflows] = useState<IWorkflow[]>([]);
+
   return (
     <Context.Provider
       value={{
