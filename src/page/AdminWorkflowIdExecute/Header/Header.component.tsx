@@ -8,26 +8,19 @@ import { Icons } from '@data';
 import { useAdminWorkflowIdExecuteContext } from '../AdminWorkflowIdExecute.service';
 
 export const Header: React.FC = () => {
-  const { selectedWorkflow, setSelectedWorkflow, setShowCreate } =
-    useAdminWorkflowIdExecuteContext();
+  const { setShowCreate } = useAdminWorkflowIdExecuteContext();
   return (
     <CardHeader
       title={
         <Fragment>
-          {selectedWorkflow ? (
+          {/* {selectedWorkflow ? (
             <Icon toolTip="Back" icon={<Icons.Back />} onClick={() => setSelectedWorkflow(null)} />
-          ) : null}
+          ) : null} */}
           <span>Execute Workflow</span>
         </Fragment>
       }
       component={Paper}
-      action={
-        <Fragment>
-          {!selectedWorkflow ? (
-            <Icon toolTip="Add" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />
-          ) : null}
-        </Fragment>
-      }
+      action={<Icon toolTip="Add" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />}
     />
   );
 };

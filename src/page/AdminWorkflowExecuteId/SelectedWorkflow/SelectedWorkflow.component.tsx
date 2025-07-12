@@ -5,8 +5,10 @@ import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
 import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowEdge, IViewData } from '@types';
-import { useWorkflowExecuteHelper } from '../../AdminWorkflowIdExecute/AdminWorkflowIdExecute.service';
-import { useAdminWorkflowIdExecuteIdContext } from '../AdminWorkflowExecuteId.service';
+import {
+  useAdminWorkflowIdExecuteIdContext,
+  useWorkflowExecuteHelper,
+} from '../AdminWorkflowExecuteId.service';
 import { WorkflowNodeDetail } from './WorkflowNodeDetail';
 
 const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
