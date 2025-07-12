@@ -79,6 +79,7 @@ export const Workflows: React.FC = () => {
                 <TableRow>
                   <TableCell>Name</TableCell>
                   <TableCell>Status</TableCell>
+                  <TableCell>Executed Workflows</TableCell>
                   <TableCell align="right">Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -95,8 +96,12 @@ export const Workflows: React.FC = () => {
                         <Icons.Close color="warning" />
                       )}
                     </TableCell>
+                    <TableCell>{workflow.executedWorkflows.length}</TableCell>
                     <TableCell align="right">
-                      <IconButton onClick={() => deleteWorkflow(workflow)}>
+                      <IconButton
+                        onClick={() => deleteWorkflow(workflow)}
+                        disabled={workflow.executedWorkflows.length > 0}
+                      >
                         <Icons.Delete />
                       </IconButton>
                     </TableCell>
