@@ -5,10 +5,8 @@ import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
 import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowEdge, IViewData } from '@types';
-import {
-  useAdminWorkflowIdExecuteContext,
-  useWorkflowExecuteHelper,
-} from '../../AdminWorkflowIdExecute/AdminWorkflowIdExecute.service';
+import { useWorkflowExecuteHelper } from '../../AdminWorkflowIdExecute/AdminWorkflowIdExecute.service';
+import { useAdminWorkflowIdExecuteIdContext } from '../AdminWorkflowExecuteId.service';
 import { WorkflowNodeDetail } from './WorkflowNodeDetail';
 
 const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
@@ -62,7 +60,7 @@ const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
 
 export const SelectedWorkflow: React.FC = () => {
   const { convertNodesToReactFlow } = useWorkflowExecuteHelper();
-  const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
+  const { selectedWorkflow } = useAdminWorkflowIdExecuteIdContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <WorkflowNodeDetail />

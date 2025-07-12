@@ -10,8 +10,8 @@ import {
 
 export interface IAdminWorkflowIdExecuteContext {
   id: string;
-  workflows: IExecuteWorkflow[];
-  setWorkFlows: ReactSetState<IExecuteWorkflow[]>;
+  executedWorkflows: IExecuteWorkflow[];
+  setExecutedWorkflows: ReactSetState<IExecuteWorkflow[]>;
   loading: boolean;
   setLoading: ReactSetState<boolean>;
   showCreate: boolean;

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { IDbServiceData, IExecuteWorkflow, IExecuteWorkflowNode, IReactChildren } from '@types';
+import { IDbServiceData, IExecuteWorkflowNode, IReactChildren } from '@types';
+import { useAdminWorkflowContext } from '../AdminWorkflowContext';
 import { IAdminWorkflowExecuteId } from './AdminWorkflowExecuteId';
 import { Context } from './AdminWorkflowExecuteId.service';
 
@@ -10,11 +11,11 @@ export const AdminWorkflowExecuteIdContext: React.FC<IReactChildren & IAdminWork
   executeId,
   id,
 }) => {
-  const [selectedWorkflow, setSelectedWorkflow] = useState<IExecuteWorkflow | null>(null);
   const [selectedWorkflowNode, setSelectedWorkflowNode] = useState<IExecuteWorkflowNode | null>(
     null
   );
   const [dbServiceData, setDbServiceData] = useState<IDbServiceData[]>([]);
+  const { selectedExecutedWorkflow, setSelectedExecutedWorkflow } = useAdminWorkflowContext();
 
   return (
     <Context.Provider
@@ -22,10 +23,10 @@ export const AdminWorkflowExecuteIdContext: React.FC<IReactChildren & IAdminWork
         dbServiceData,
         executeId,
         id,
-        selectedWorkflow,
+        selectedWorkflow: selectedExecutedWorkflow,
         selectedWorkflowNode,
         setDbServiceData,
-        setSelectedWorkflow,
+        setSelectedWorkflow: setSelectedExecutedWorkflow,
         setSelectedWorkflowNode,
       }}
     >
