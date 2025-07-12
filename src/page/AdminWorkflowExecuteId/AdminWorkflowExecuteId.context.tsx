@@ -15,6 +15,8 @@ export const AdminWorkflowExecuteIdContext: React.FC<IReactChildren & IAdminWork
     null
   );
   const [dbServiceData, setDbServiceData] = useState<IDbServiceData[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const { selectedExecutedWorkflow, setSelectedExecutedWorkflow } = useAdminWorkflowContext();
 
   return (
@@ -23,9 +25,11 @@ export const AdminWorkflowExecuteIdContext: React.FC<IReactChildren & IAdminWork
         dbServiceData,
         executeId,
         id,
+        loading,
         selectedExecutedWorkflow,
         selectedWorkflowNode,
         setDbServiceData,
+        setLoading,
         setSelectedExecutedWorkflow,
         setSelectedWorkflowNode,
       }}
