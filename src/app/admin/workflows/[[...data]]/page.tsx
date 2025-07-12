@@ -1,4 +1,5 @@
 import type { Metadata, NextPage } from 'next';
+import { Fragment } from 'react';
 import { Breadcrumbs } from '@common';
 import {
   APIs,
@@ -8,6 +9,7 @@ import {
   Navigation,
 } from '@data';
 import {
+  AdminWorkflowContext,
   AdminWorkflowExecuteId,
   AdminWorkflowId,
   AdminWorkflowIdExecute,
@@ -23,41 +25,55 @@ export const metadata: Metadata = {
   title: 'Workflows | Admin | Vimal Menon',
 };
 
-const Page: NextPage<IPage> = async ({ params }) => {
-  const { data } = await params;
+const getPage = (data?: string[]): string => {
   if (!data) {
-    return (
-      <StyledPage sx={{ flexDirection: 'column' }}>
-        <Breadcrumbs navigation={Navigation.AdminWorkflow} />
-        <AdminWorkflows />
-      </StyledPage>
-    );
+    return 'Workflow';
   }
-  const [id, execute, executeId] = data;
+  const [, execute, executeId] = data;
   if (executeId) {
-    return (
-      <StyledPage sx={{ flexDirection: 'column' }}>
-        <Breadcrumbs navigation={GenerateWorkflowExecuteId(id, executeId)} />
-        <AdminWorkflowExecuteId id={id} executeId={executeId} />
-      </StyledPage>
-    );
+    return 'WorkflowExecutedId';
   }
   if (execute) {
-    return (
-      <StyledPage sx={{ flexDirection: 'column' }}>
-        <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
-        <AdminWorkflowIdExecute id={id} />
-      </StyledPage>
-    );
+    return 'WorkflowExecuted';
   }
-  if (id) {
-    return (
+  return 'WorkflowId';
+};
+
+const Page: NextPage<IPage> = async ({ params }) => {
+  const { data } = await params;
+  const page = getPage(data);
+  const [id, , executeId] = data ?? [];
+  return (
+    <AdminWorkflowContext id={id} executeId={executeId}>
       <StyledPage sx={{ flexDirection: 'column' }}>
-        <Breadcrumbs navigation={GenerateWorkflow(id)} />
-        <AdminWorkflowId id={id} />
+        {page === 'Workflow' ? (
+          <Fragment>
+            <Breadcrumbs navigation={Navigation.AdminWorkflow} />
+            <AdminWorkflows />
+          </Fragment>
+        ) : null}
+
+        {page === 'WorkflowExecutedId' ? (
+          <Fragment>
+            <Breadcrumbs navigation={GenerateWorkflowExecuteId(id, executeId)} />
+            <AdminWorkflowExecuteId id={id} executeId={executeId} />
+          </Fragment>
+        ) : null}
+        {page === 'WorkflowExecuted' ? (
+          <Fragment>
+            <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
+            <AdminWorkflowIdExecute id={id} />
+          </Fragment>
+        ) : null}
+        {page === 'WorkflowId' ? (
+          <Fragment>
+            <Breadcrumbs navigation={GenerateWorkflow(id)} />
+            <AdminWorkflowId id={id} />
+          </Fragment>
+        ) : null}
       </StyledPage>
-    );
-  }
+    </AdminWorkflowContext>
+  );
 };
 
 export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
