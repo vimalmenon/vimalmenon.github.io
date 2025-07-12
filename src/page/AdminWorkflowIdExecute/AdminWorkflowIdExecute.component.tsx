@@ -3,7 +3,6 @@
 import Box from '@mui/material/Box';
 import { useEffect } from 'react';
 import { IAdminWorkflowIdPage } from '@types';
-import { SelectedWorkflow } from '../AdminWorkflowExecuteId/SelectedWorkflow';
 import { AdminWorkflowIdExecuteContext } from './AdminWorkflowIdExecute.context';
 import {
   useAdminWorkflowIdExecuteContext,
@@ -14,7 +13,7 @@ import { Header } from './Header';
 import { ListWorkflow } from './ListWorkflow';
 
 const Component: React.FC = () => {
-  const { selectedWorkflow, showCreate } = useAdminWorkflowIdExecuteContext();
+  const { showCreate } = useAdminWorkflowIdExecuteContext();
   const { getExecutedWorkflow } = useWorkflowExecuteHelper();
   useEffect(() => {
     getExecutedWorkflow();
@@ -22,7 +21,7 @@ const Component: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
       <Header />
-      {showCreate ? <ExecuteForm /> : selectedWorkflow ? <SelectedWorkflow /> : <ListWorkflow />}
+      {showCreate ? <ExecuteForm /> : <ListWorkflow />}
     </Box>
   );
 };
