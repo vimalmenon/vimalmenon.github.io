@@ -5,10 +5,14 @@ import { NotImplemented } from '@utility';
 import { IAdminWorkflowExecuteIdContext } from './AdminWorkflowExecuteId';
 
 export const Context = createContext<IAdminWorkflowExecuteIdContext>({
+  dbServiceData: [],
   executeId: '',
   id: '',
   selectedWorkflow: null,
+  selectedWorkflowNode: null,
+  setDbServiceData: NotImplemented,
   setSelectedWorkflow: NotImplemented,
+  setSelectedWorkflowNode: NotImplemented,
 });
 
 export const useAdminWorkflowIdExecuteIdContext = (): IAdminWorkflowExecuteIdContext =>
