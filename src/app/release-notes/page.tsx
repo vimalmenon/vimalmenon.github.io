@@ -12,11 +12,11 @@ const Page: React.FC = () => (
   <StyledPage>
     <Breadcrumbs navigation={Navigation.ReleaseNote} />
     <div>
-      <div>0.0.31</div>
+      <div>0.0.32</div>
       <ul>Enhance Workflow</ul>
     </div>
     <div>
-      <div>[0.0.30 - 0.0.0]</div>
+      <div>[0.0.31 - 0.0.0]</div>
       <ul>
         <li>Execute workflow</li>
         <li>Set up ReactFlow</li>
