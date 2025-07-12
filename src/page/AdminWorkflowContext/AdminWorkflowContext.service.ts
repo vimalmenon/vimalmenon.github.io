@@ -26,11 +26,8 @@ export const useAdminWorkflowHelper = (): IUseAdminWorkflowHelper => {
     const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
     setWorkflows(response.data);
   };
-  const setWorkflowById = (data: IWorkflow): void => {
-    setSelectedWorkflow(data);
-  };
   return {
     getWorkflows,
-    setWorkflowById,
+    setSelectedWorkflow,
   };
 };

@@ -18,5 +18,5 @@ export interface IAdminWorkflowContext extends IAdminWorkflowContextComponent {
 
 export interface IUseAdminWorkflowHelper {
   getWorkflows: VoidFunction<Promise<void>>;
-  setWorkflowById: (data: IWorkflow) => void;
+  setSelectedWorkflow: (data: IWorkflow) => void;
 }

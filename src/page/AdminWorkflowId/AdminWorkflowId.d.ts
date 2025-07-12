@@ -11,8 +11,8 @@ export interface INodeTab {
 
 export interface IContext {
   id: string;
-  workflow?: IWorkflow;
-  setWorkflow: ReactSetState<IWorkflow | undefined>;
+  workflow: IWorkflow | null;
+  setWorkflow: ReactSetState<IWorkflow | null>;
   workflowLoading: boolean;
   setWorkflowLoading: ReactSetState<boolean>;
   workflowFormMode: FormMode;

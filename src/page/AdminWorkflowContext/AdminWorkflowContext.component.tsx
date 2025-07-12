@@ -16,7 +16,6 @@ export const AdminWorkflowContext: React.FC<IAdminWorkflowContextComponent & IRe
   const [selectedExecutedWorkflow, setSelectedExecutedWorkflow] = useState<IExecuteWorkflow | null>(
     null
   );
-
   return (
     <Context.Provider
       value={{
