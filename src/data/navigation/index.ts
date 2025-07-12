@@ -257,7 +257,7 @@ export const GenerateWorkflow = (id: string): INavigation => ({
     },
     {
       link: '',
-      name: id,
+      name: `${id.slice(0, 5)}...`,
     },
   ],
   children: [],
@@ -284,11 +284,11 @@ export const GenerateExecuteWorkflow = (id: string): INavigation => ({
     },
     {
       link: `/admin/workflows/${id}`,
-      name: id,
+      name: `${id.slice(0, 5)}...`,
     },
     {
       link: ``,
-      name: 'execute',
+      name: 'Execute',
     },
   ],
   children: [],
