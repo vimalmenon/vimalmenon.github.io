@@ -1,8 +1,10 @@
 'use client';
 
 import { createContext, useContext } from 'react';
-import { NotImplemented } from '@utility';
-import { IAdminWorkflowContext } from './AdminWorkflowContext';
+import { APIs } from '@data';
+import { IGenericResponse, IWorkflow } from '@types';
+import { makeRequest, NotImplemented } from '@utility';
+import { IAdminWorkflowContext, IUseAdminWorkflowHelper } from './AdminWorkflowContext';
 
 export const Context = createContext<IAdminWorkflowContext>({
   executedWorkflows: [],
@@ -17,3 +19,18 @@ export const Context = createContext<IAdminWorkflowContext>({
 
 export const useAdminWorkflowContext = (): IAdminWorkflowContext =>
   useContext<IAdminWorkflowContext>(Context);
+
+export const useAdminWorkflowHelper = (): IUseAdminWorkflowHelper => {
+  const { setSelectedWorkflow, setWorkflows } = useAdminWorkflowContext();
+  const getWorkflows = async (): Promise<void> => {
+    const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
+    setWorkflows(response.data);
+  };
+  const setWorkflowById = (data: IWorkflow): void => {
+    setSelectedWorkflow(data);
+  };
+  return {
+    getWorkflows,
+    setWorkflowById,
+  };
+};
