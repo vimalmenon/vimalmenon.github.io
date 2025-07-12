@@ -10,7 +10,6 @@ export const AdminWorkflowContext: React.FC<IAdminWorkflowContextComponent & IRe
   executeId,
   id,
 }) => {
-  const [selectedWorkflow, setSelectedWorkflow] = useState<IWorkflow | null>(null);
   const [executedWorkflows, setExecutedWorkflows] = useState<IExecuteWorkflow[]>([]);
   const [selectedExecutedWorkflow, setSelectedExecutedWorkflow] = useState<IExecuteWorkflow | null>(
     null
@@ -23,10 +22,8 @@ export const AdminWorkflowContext: React.FC<IAdminWorkflowContextComponent & IRe
         executeId,
         id,
         selectedExecutedWorkflow,
-        selectedWorkflow,
         setExecutedWorkflows,
         setSelectedExecutedWorkflow,
-        setSelectedWorkflow,
       }}
     >
       {children}

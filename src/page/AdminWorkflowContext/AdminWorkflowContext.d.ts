@@ -6,8 +6,6 @@ export interface IAdminWorkflowContextComponent {
 }
 
 export interface IAdminWorkflowContext extends IAdminWorkflowContextComponent {
-  selectedWorkflow: IWorkflow | null;
-  setSelectedWorkflow: ReactSetState<IWorkflow | null>;
   executedWorkflows: IExecuteWorkflow[];
   setExecutedWorkflows: ReactSetState<IExecuteWorkflow[]>;
   selectedExecutedWorkflow: IExecuteWorkflow | null;

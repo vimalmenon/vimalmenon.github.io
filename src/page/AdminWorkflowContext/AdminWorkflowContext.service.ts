@@ -7,10 +7,8 @@ import { IAdminWorkflowContext } from './AdminWorkflowContext';
 export const Context = createContext<IAdminWorkflowContext>({
   executedWorkflows: [],
   selectedExecutedWorkflow: null,
-  selectedWorkflow: null,
   setExecutedWorkflows: NotImplemented,
   setSelectedExecutedWorkflow: NotImplemented,
-  setSelectedWorkflow: NotImplemented,
 });
 
 export const useAdminWorkflowContext = (): IAdminWorkflowContext =>
