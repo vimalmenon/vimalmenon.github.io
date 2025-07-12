@@ -13,11 +13,19 @@ export const metadata: Metadata = {
 };
 
 const Page: NextPage<IPage> = async ({ params }) => {
-  const { id } = await params;
+  const { id: data } = await params;
+  const [id] = data || [];
+  if (id) {
+    return (
+      <StyledPage sx={{ flexDirection: 'column' }}>
+        <Breadcrumbs navigation={GenerateWorkflow(id)} />
+        <AdminWorkflowId id={id} />
+      </StyledPage>
+    );
+  }
   return (
     <StyledPage sx={{ flexDirection: 'column' }}>
-      <Breadcrumbs navigation={GenerateWorkflow(id)} />
-      <AdminWorkflowId id={id} />
+      <div>No ID</div>
     </StyledPage>
   );
 };
@@ -27,13 +35,30 @@ export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
   if (error) {
     return [
       {
-        id: '123',
+        id: ['123'],
       },
     ];
   }
-  return response.data.map((data) => ({
-    id: data.id,
-  }));
+  return response.data.reduce<IWorkflowId[]>((result, value) => {
+    const executedWorkflows = value.executedWorkflows.map((data) => ({
+      id: [value.id, 'execute', data.id],
+    }));
+    return [
+      ...result,
+      ...[
+        {
+          id: [value.id],
+        },
+        {
+          id: [value.id, 'execute'],
+        },
+        {
+          id: [''],
+        },
+      ],
+      ...executedWorkflows,
+    ];
+  }, []);
 };
 
 export default Page;

@@ -81,6 +81,7 @@ export interface IWorkflow extends IWorkflowSlim {
   nodes: Record<string, INodeFull>;
   complete: boolean;
   updatedAt: string;
+  executedWorkflows: IExecuteWorkflow[];
 }
 
 export interface IMakeRequest<T, E = string> {
