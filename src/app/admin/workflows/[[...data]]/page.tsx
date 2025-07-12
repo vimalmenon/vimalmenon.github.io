@@ -1,7 +1,7 @@
 import type { Metadata, NextPage } from 'next';
 import { Breadcrumbs } from '@common';
 import { APIs, GenerateWorkflow } from '@data';
-import { AdminWorkflowId } from '@page';
+import { AdminWorkflowId, AdminWorkflowIdExecute, AdminWorkflows } from '@page';
 import { StyledPage } from '@style';
 import { IGenericResponse, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
@@ -13,8 +13,22 @@ export const metadata: Metadata = {
 };
 
 const Page: NextPage<IPage> = async ({ params }) => {
-  const { id: data } = await params;
-  const [id] = data || [];
+  const { data } = await params;
+  if (!data) {
+    return (
+      <StyledPage sx={{ flexDirection: 'column' }}>
+        <AdminWorkflows />
+      </StyledPage>
+    );
+  }
+  const [id, execute] = data;
+  if (execute) {
+    return (
+      <StyledPage sx={{ flexDirection: 'column' }}>
+        <AdminWorkflowIdExecute id={id} />
+      </StyledPage>
+    );
+  }
   if (id) {
     return (
       <StyledPage sx={{ flexDirection: 'column' }}>
@@ -23,11 +37,6 @@ const Page: NextPage<IPage> = async ({ params }) => {
       </StyledPage>
     );
   }
-  return (
-    <StyledPage sx={{ flexDirection: 'column' }}>
-      <div>No ID</div>
-    </StyledPage>
-  );
 };
 
 export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
@@ -35,25 +44,25 @@ export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
   if (error) {
     return [
       {
-        id: ['123'],
+        data: ['123'],
       },
     ];
   }
   return response.data.reduce<IWorkflowId[]>((result, value) => {
     const executedWorkflows = value.executedWorkflows.map((data) => ({
-      id: [value.id, 'execute', data.id],
+      data: [value.id, 'execute', data.id],
     }));
     return [
       ...result,
       ...[
         {
-          id: [value.id],
+          data: [value.id],
         },
         {
-          id: [value.id, 'execute'],
+          data: [value.id, 'execute'],
         },
         {
-          id: [''],
+          data: [''],
         },
       ],
       ...executedWorkflows,
