@@ -7,11 +7,14 @@ import { INodeStyled } from './NodeType';
 
 export const NodeStyled = styled(Paper, {
   shouldForwardProp: (prop) => prop !== 'isComplete' && prop !== 'isReady',
-})<INodeStyled>(({ isComplete, isReady }) => {
+})<INodeStyled>(({ isComplete, isReady, theme }) => {
   if (isComplete) {
     return {
       backgroundColor: lightGreen[100],
       borderRadius: '5px',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: theme.spacing(1),
       minWidth: '400px',
       padding: '10px',
     };

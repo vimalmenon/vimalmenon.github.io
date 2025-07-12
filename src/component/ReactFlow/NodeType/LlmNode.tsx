@@ -17,15 +17,15 @@ export const LlmNode: React.FC<INodeType> = ({ data }) => (
     <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 1 }}>
       <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
         <Typography sx={{ fontWeight: 'bold' }}>LLM</Typography>
-        <span>{data.node.llm}</span>
+        <span>{data.node.node.llm}</span>
       </Box>
       <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
         <Typography sx={{ fontWeight: 'bold' }}>Prompt</Typography>
-        <span>{data.node.prompt}</span>
+        <span>{data.node.node.prompt}</span>
       </Box>
       <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
         <Typography sx={{ fontWeight: 'bold' }}>Message</Typography>
-        <span>{data.node.message}</span>
+        <span>{data.node.node.message}</span>
       </Box>
     </Box>
   </BaseNode>

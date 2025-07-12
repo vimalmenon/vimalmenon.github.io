@@ -1,29 +1,33 @@
 'use client';
 
 import { useState } from 'react';
-import { IAdminWorkflowIdPage, IExecuteWorkflow, IReactChildren } from '@types';
+import { IAdminWorkflowIdPage, IExecuteWorkflowNode, IReactChildren } from '@types';
+import { useAdminWorkflowContext } from '../AdminWorkflowContext';
 import { Context } from './AdminWorkflowIdExecute.service';
 
 export const AdminWorkflowIdExecuteContext: React.FC<IReactChildren & IAdminWorkflowIdPage> = ({
   children,
   id,
 }) => {
-  const [workflows, setWorkFlows] = useState<IExecuteWorkflow[]>([]);
-  const [selectedWorkflow, setSelectedWorkflow] = useState<IExecuteWorkflow | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [showCreate, setShowCreate] = useState<boolean>(false);
+  const [selectedWorkflowNode, setSelectedWorkflowNode] = useState<IExecuteWorkflowNode | null>(
+    null
+  );
+  const { executedWorkflows, setExecutedWorkflows } = useAdminWorkflowContext();
+
   return (
     <Context.Provider
       value={{
+        executedWorkflows,
         id,
         loading,
-        selectedWorkflow,
+        selectedWorkflowNode,
+        setExecutedWorkflows,
         setLoading,
-        setSelectedWorkflow,
+        setSelectedWorkflowNode,
         setShowCreate,
-        setWorkFlows,
         showCreate,
-        workflows,
       }}
     >
       {children}

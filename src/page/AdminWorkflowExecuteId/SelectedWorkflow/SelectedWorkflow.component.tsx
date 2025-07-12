@@ -4,19 +4,12 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
+import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowEdge, IViewData } from '@types';
 import {
-  IExecuteWorkflow,
-  IExecuteWorkflowNode,
-  IReactFlowEdge,
-  IReactFlowNode,
-  IViewData,
-  IWorkflowExecuteParams,
-  ReactFlowType,
-} from '@types';
-import {
-  useAdminWorkflowIdExecuteContext,
+  useAdminWorkflowIdExecuteIdContext,
   useWorkflowExecuteHelper,
-} from '../AdminWorkflowIdExecute.service';
+} from '../AdminWorkflowExecuteId.service';
+import { WorkflowNodeDetail } from './WorkflowNodeDetail';
 
 const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
   const result: IViewData[] = [];
@@ -53,40 +46,6 @@ const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
   return result;
 };
 
-const getNodeType = (node: IExecuteWorkflowNode): ReactFlowType => {
-  if (node.status === 'COMPLETED') {
-    return 'Completed';
-  }
-  switch (node.node.type) {
-    case 'HumanInput':
-      return 'HumanInput';
-    case 'LLM':
-      return 'LLM';
-    case 'Tool':
-      return 'Tool';
-    default:
-      return 'Execute';
-  }
-};
-const convertNodesToReactFlow = (
-  nodes: IExecuteWorkflowNode[],
-  onExecute: (data: IWorkflowExecuteParams) => Promise<void>
-): IReactFlowNode[] =>
-  nodes.map<IReactFlowNode>((node, index) => ({
-    data: {
-      data: node.content,
-      id: node.id,
-      label: node.node.name,
-      node: node.node,
-      onExecute,
-      status: node.status,
-      type: node.node.type ?? '',
-    },
-    id: node.id,
-    position: { x: 0, y: index * 200 },
-    type: getNodeType(node),
-  }));
-
 const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
   nodes
     .map<IReactFlowEdge | null>((node, index, nodes) => {
@@ -102,26 +61,20 @@ const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
     .filter((node) => node !== null);
 
 export const SelectedWorkflow: React.FC = () => {
-  const { onExecuteWorkflowNode } = useWorkflowExecuteHelper();
-  const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
+  const { convertNodesToReactFlow } = useWorkflowExecuteHelper();
+  const { selectedExecutedWorkflow } = useAdminWorkflowIdExecuteIdContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      {selectedWorkflow ? (
+      <WorkflowNodeDetail />
+      {selectedExecutedWorkflow ? (
         <Fragment>
-          <ViewData data={convertWorkflowToView(selectedWorkflow)} />
+          <ViewData data={convertWorkflowToView(selectedExecutedWorkflow)} />
           <Divider />
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
               <ReactFlow
-                nodes={convertNodesToReactFlow(
-                  selectedWorkflow?.nodes ?? [],
-                  async (data: IWorkflowExecuteParams) => {
-                    if (selectedWorkflow?.id) {
-                      await onExecuteWorkflowNode(selectedWorkflow.id, data);
-                    }
-                  }
-                )}
-                edges={createEdgesForNode(selectedWorkflow?.nodes ?? [])}
+                nodes={convertNodesToReactFlow(selectedExecutedWorkflow?.nodes ?? [])}
+                edges={createEdgesForNode(selectedExecutedWorkflow?.nodes ?? [])}
               />
             </div>
           </Box>

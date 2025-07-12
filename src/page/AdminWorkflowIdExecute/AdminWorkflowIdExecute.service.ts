@@ -4,33 +4,34 @@ import { createContext, useContext } from 'react';
 import { APIs } from '@data';
 import {
   IExecuteWorkflow,
+  IExecuteWorkflowNode,
   IExecuteWorkflowSlim,
   IGenericResponse,
-  IWorkflowExecuteParams,
 } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IAdminWorkflowIdExecuteContext,
   IUseWorkflowExecuteHelper,
+  IUseWorkflowNodeDetailHelper,
 } from './AdminWorkflowIdExecute';
 
 export const Context = createContext<IAdminWorkflowIdExecuteContext>({
+  executedWorkflows: [],
   id: '',
   loading: false,
-  selectedWorkflow: null,
+  selectedWorkflowNode: null,
+  setExecutedWorkflows: NotImplemented,
   setLoading: NotImplemented,
-  setSelectedWorkflow: NotImplemented,
+  setSelectedWorkflowNode: NotImplemented,
   setShowCreate: NotImplemented,
-  setWorkFlows: NotImplemented,
   showCreate: false,
-  workflows: [],
 });
 
 export const useAdminWorkflowIdExecuteContext = (): IAdminWorkflowIdExecuteContext =>
   useContext<IAdminWorkflowIdExecuteContext>(Context);
 
 export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
-  const { id, setLoading, setSelectedWorkflow, setShowCreate, setWorkFlows } =
+  const { id, setExecutedWorkflows, setLoading, setSelectedWorkflowNode, setShowCreate } =
     useAdminWorkflowIdExecuteContext();
   const getExecutedWorkflow = async (handle: boolean = true): Promise<void> => {
     if (handle) {
@@ -39,7 +40,7 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow[]>>(
       APIs.GetExecutedWorkflow(id)
     );
-    setWorkFlows(response.data);
+    setExecutedWorkflows(response.data);
     if (handle) {
       setLoading(false);
     }
@@ -57,20 +58,29 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     await getExecutedWorkflow(false);
     setLoading(false);
   };
-  const onExecuteWorkflowNode = async (
-    nodeID: string,
-    data: IWorkflowExecuteParams
-  ): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
-      APIs.ExecuteWorkflowNode(id, nodeID, data)
-    );
-    setSelectedWorkflow(response.data);
+  const onSelectedWorkflowNode = (data: IExecuteWorkflowNode): void => {
+    setSelectedWorkflowNode(data);
   };
+
   return {
     deleteExecutedWorkflow,
     executeWorkflow,
     getExecutedWorkflow,
-    onExecuteWorkflowNode,
-    setSelectedWorkflow,
+    onSelectedWorkflowNode,
+  };
+};
+
+export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
+  const { selectedWorkflowNode, setSelectedWorkflowNode } = useAdminWorkflowIdExecuteContext();
+  const closeSelectedWorkflow = (): void => {
+    setSelectedWorkflowNode(null);
+  };
+  const onSelectedWorkflowNodeSubmit = async (): Promise<void> => {
+    await Promise.resolve([]);
+  };
+  return {
+    closeSelectedWorkflow,
+    onSelectedWorkflowNodeSubmit,
+    selectedWorkflowNode,
   };
 };

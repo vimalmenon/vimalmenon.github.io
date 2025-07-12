@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { FormMode, IAdminWorkflowIdPage, INode, IReactChildren, IWorkflow } from '@types';
+import { FormMode, IAdminWorkflowIdPage, INode, IReactChildren } from '@types';
+import { useAdminWorkflowContext } from '../AdminWorkflowContext';
 import { INodeTab } from './AdminWorkflowId';
 import { Context } from './AdminWorkflowId.service';
 
@@ -9,7 +10,6 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
   children,
   id,
 }) => {
-  const [workflow, setWorkflow] = useState<IWorkflow>();
   const [workflowLoading, setWorkflowLoading] = useState<boolean>(false);
   const [nodeTabs, setNodeTabs] = useState<INodeTab[]>([]);
   const [workflowFormMode, setWorkflowFormMode] = useState<FormMode>('VIEW');
@@ -18,6 +18,8 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
   const [selectedNode, setSelectedNode] = useState<INode | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isStart, setIsStart] = useState<boolean>(false);
+  const { selectedWorkflow, setSelectedWorkflow } = useAdminWorkflowContext();
+
   return (
     <Context.Provider
       value={{
@@ -34,10 +36,10 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
         setNodeFormMode,
         setNodeTabs,
         setSelectedNode,
-        setWorkflow,
+        setWorkflow: setSelectedWorkflow,
         setWorkflowFormMode,
         setWorkflowLoading,
-        workflow,
+        workflow: selectedWorkflow,
         workflowFormMode,
         workflowLoading,
       }}

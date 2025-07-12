@@ -26,8 +26,16 @@ export enum WorkflowNodeType {
   ManualConfirmation = 'ManualConfirmation',
 }
 
+export enum WorkflowPage {
+  Workflow = 'Workflow',
+  WorkflowExecutedId = 'WorkflowExecutedId',
+  WorkflowExecuted = 'WorkflowExecuted',
+  WorkflowId = 'WorkflowId',
+}
+
 export const Enums = {
   WorkflowNodeFields,
   WorkflowNodeStatus,
   WorkflowNodeType,
+  WorkflowPage,
 };

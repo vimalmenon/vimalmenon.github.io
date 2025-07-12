@@ -82,6 +82,11 @@ const GetExecutedWorkflow = (id: string): IAPI => ({
   url: `workflow/execute/${id}`,
 });
 
+const GetExecutedWorkflowId = (wfId: string, id: string): IAPI => ({
+  method: 'GET',
+  url: `workflow/execute/${wfId}/${id}`,
+});
+
 const GetWorkflowTypes = (): IAPI => ({
   method: 'GET',
   url: 'workflow_types',
@@ -98,6 +103,11 @@ const ExecuteWorkflowNode = (wfId: string, id: string, body: IWorkflowExecutePar
   url: `workflow/execute/resume/${wfId}/${id}`,
 });
 
+const GetDbServiceData = (id: string): IAPI => ({
+  method: 'GET',
+  url: `from_db/${id}`,
+});
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
@@ -106,7 +116,9 @@ export const APIs = {
   DeleteWorkflowNode,
   ExecuteWorkflow,
   ExecuteWorkflowNode,
+  GetDbServiceData,
   GetExecutedWorkflow,
+  GetExecutedWorkflowId,
   GetLLMs,
   GetServices,
   GetTools,

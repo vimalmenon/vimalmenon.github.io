@@ -28,7 +28,7 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
           placeholder="Name"
           name="humanInput"
           onChange={(e) => setValue(e.target.value)}
-          disabled={isReady}
+          disabled={!isReady}
         />
       </Box>
     </BaseNode>

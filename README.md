@@ -6,21 +6,14 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.30
+<b>Version</b>: 0.0.31
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-
-- [x] Set up sonar
-- [x] Get data from previous node
-- [x] Update MetaData on Workflow
-- [x] Create a Graph for the Workflow
-- [x] Show Graph at the side
-- [x] Show the Graph for the Workflow
-- [x] Show workflow history
+- [ ] Make the Workflow more consistent
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change

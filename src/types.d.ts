@@ -21,10 +21,11 @@ interface IReactFlowData {
   id: string;
   label: string;
   onExecute: (data: IWorkflowExecuteParams) => Promise<void>;
+  onSelect: (data: IExecuteWorkflowNode) => void;
   status: string;
   type: string;
   data: string;
-  node: INode;
+  node: IExecuteWorkflowNode;
 }
 
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
@@ -80,6 +81,7 @@ export interface IWorkflow extends IWorkflowSlim {
   nodes: Record<string, INodeFull>;
   complete: boolean;
   updatedAt: string;
+  executedWorkflows: IExecuteWorkflow[];
 }
 
 export interface IMakeRequest<T, E = string> {
@@ -138,7 +140,8 @@ export interface IReactFlowNode {
   type?: ReactFlowType;
 }
 
-export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed' | 'LLM' | 'Tool';
+export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed' | 'LLM' | 'Service';
+
 export interface IReactFlowEdge {
   id: string;
   source: string;
@@ -148,6 +151,17 @@ export interface IReactFlowEdge {
 export interface IWorkflowExecuteParams {
   id: string;
   data?: string;
+}
+
+export interface IListViewRender<T> {
+  readonly data: T;
+  readonly index: number;
+}
+
+export interface IDbServiceData {
+  id: string;
+  data: string;
+  createdDate: string;
 }
 
 export type VoidFunction<T = void> = () => T;

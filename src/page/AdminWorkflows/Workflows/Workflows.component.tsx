@@ -14,6 +14,7 @@ import NextLink from 'next/link';
 import { useEffect } from 'react';
 import { ConfirmDialog } from '@component';
 import { Icons } from '@data';
+import { useAdminWorkflowHelper } from '../../AdminWorkflowContext';
 import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
 
@@ -27,6 +28,7 @@ export const Workflows: React.FC = () => {
     loading,
     workflows,
   } = useAdminWorkflows();
+  const { setSelectedWorkflow } = useAdminWorkflowHelper();
   useEffect(() => {
     getWorkflows();
   }, []);
@@ -79,6 +81,7 @@ export const Workflows: React.FC = () => {
                 <TableRow>
                   <TableCell>Name</TableCell>
                   <TableCell>Status</TableCell>
+                  <TableCell>Executed Workflows</TableCell>
                   <TableCell align="right">Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -86,7 +89,12 @@ export const Workflows: React.FC = () => {
                 {workflows?.map((workflow) => (
                   <TableRow key={workflow.id}>
                     <TableCell>
-                      <NextLink href={`/admin/workflows/${workflow.id}/`}>{workflow.name}</NextLink>
+                      <NextLink
+                        href={`/admin/workflows/${workflow.id}/`}
+                        onClick={() => setSelectedWorkflow(workflow)}
+                      >
+                        {workflow.name}
+                      </NextLink>
                     </TableCell>
                     <TableCell>
                       {workflow.complete ? (
@@ -95,8 +103,12 @@ export const Workflows: React.FC = () => {
                         <Icons.Close color="warning" />
                       )}
                     </TableCell>
+                    <TableCell>{workflow.executedWorkflows.length}</TableCell>
                     <TableCell align="right">
-                      <IconButton onClick={() => deleteWorkflow(workflow)}>
+                      <IconButton
+                        onClick={() => deleteWorkflow(workflow)}
+                        disabled={workflow.executedWorkflows.length > 0}
+                      >
                         <Icons.Delete />
                       </IconButton>
                     </TableCell>
