@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { IExecuteWorkflow, IReactChildren, IWorkflow } from '@types';
 import { IAdminWorkflowContextComponent } from './AdminWorkflowContext';
 import { Context } from './AdminWorkflowContext.service';
@@ -16,22 +16,21 @@ export const AdminWorkflowContext: React.FC<IAdminWorkflowContextComponent & IRe
   const [selectedExecutedWorkflow, setSelectedExecutedWorkflow] = useState<IExecuteWorkflow | null>(
     null
   );
-  return (
-    <Context.Provider
-      value={{
-        executedWorkflows,
-        executeId,
-        id,
-        selectedExecutedWorkflow,
-        selectedWorkflow,
-        setExecutedWorkflows,
-        setSelectedExecutedWorkflow,
-        setSelectedWorkflow,
-        setWorkflows,
-        workflows,
-      }}
-    >
-      {children}
-    </Context.Provider>
+
+  const value = useMemo(
+    () => ({
+      executedWorkflows,
+      executeId,
+      id,
+      selectedExecutedWorkflow,
+      selectedWorkflow,
+      setExecutedWorkflows,
+      setSelectedExecutedWorkflow,
+      setSelectedWorkflow,
+      setWorkflows,
+      workflows,
+    }),
+    []
   );
+  return <Context.Provider value={value}>{children}</Context.Provider>;
 };
