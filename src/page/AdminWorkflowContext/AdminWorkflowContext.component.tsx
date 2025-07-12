@@ -17,8 +17,7 @@ export const AdminWorkflowContext: React.FC<IAdminWorkflowContextComponent & IRe
     null
   );
 
-  const value = useMemo(
-    () => ({
+  return <Context.Provider value={{
       executedWorkflows,
       executeId,
       id,
@@ -29,8 +28,5 @@ export const AdminWorkflowContext: React.FC<IAdminWorkflowContextComponent & IRe
       setSelectedWorkflow,
       setWorkflows,
       workflows,
-    }),
-    []
-  );
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+    }}>{children}</Context.Provider>;
 };
