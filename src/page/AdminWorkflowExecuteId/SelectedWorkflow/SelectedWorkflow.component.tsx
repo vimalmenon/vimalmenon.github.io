@@ -6,9 +6,9 @@ import { Fragment } from 'react';
 import { ReactFlow, ViewData } from '@component';
 import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowEdge, IViewData } from '@types';
 import {
-  useAdminWorkflowIdExecuteContext,
+  useAdminWorkflowIdExecuteIdContext,
   useWorkflowExecuteHelper,
-} from '../AdminWorkflowIdExecute.service';
+} from '../AdminWorkflowExecuteId.service';
 import { WorkflowNodeDetail } from './WorkflowNodeDetail';
 
 const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
@@ -62,19 +62,19 @@ const createEdgesForNode = (nodes: IExecuteWorkflowNode[]): IReactFlowEdge[] =>
 
 export const SelectedWorkflow: React.FC = () => {
   const { convertNodesToReactFlow } = useWorkflowExecuteHelper();
-  const { selectedWorkflow } = useAdminWorkflowIdExecuteContext();
+  const { selectedExecutedWorkflow } = useAdminWorkflowIdExecuteIdContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <WorkflowNodeDetail />
-      {selectedWorkflow ? (
+      {selectedExecutedWorkflow ? (
         <Fragment>
-          <ViewData data={convertWorkflowToView(selectedWorkflow)} />
+          <ViewData data={convertWorkflowToView(selectedExecutedWorkflow)} />
           <Divider />
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>
               <ReactFlow
-                nodes={convertNodesToReactFlow(selectedWorkflow?.nodes ?? [])}
-                edges={createEdgesForNode(selectedWorkflow?.nodes ?? [])}
+                nodes={convertNodesToReactFlow(selectedExecutedWorkflow?.nodes ?? [])}
+                edges={createEdgesForNode(selectedExecutedWorkflow?.nodes ?? [])}
               />
             </div>
           </Box>

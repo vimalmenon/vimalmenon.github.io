@@ -7,16 +7,19 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import NextLink from 'next/link';
 import { Icon } from '@component';
 import { Icons } from '@data';
+import { useAdminWorkflowContext } from '../../AdminWorkflowContext';
 import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
 } from '../AdminWorkflowIdExecute.service';
 
 export const ListWorkflow: React.FC = () => {
-  const { workflows } = useAdminWorkflowIdExecuteContext();
-  const { deleteExecutedWorkflow, setSelectedWorkflow } = useWorkflowExecuteHelper();
+  const { executedWorkflows, id } = useAdminWorkflowIdExecuteContext();
+  const { deleteExecutedWorkflow } = useWorkflowExecuteHelper();
+  const { setSelectedExecutedWorkflow } = useAdminWorkflowContext();
 
   return (
     <TableContainer component={Paper}>
@@ -29,13 +32,16 @@ export const ListWorkflow: React.FC = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {workflows.map((workflow) => (
-            <TableRow
-              key={workflow.id}
-              onClick={() => setSelectedWorkflow(workflow)}
-              style={{ cursor: 'pointer' }}
-            >
-              <TableCell>{workflow.name}</TableCell>
+          {executedWorkflows.map((workflow) => (
+            <TableRow key={workflow.id} style={{ cursor: 'pointer' }}>
+              <TableCell>
+                <NextLink
+                  href={`/admin/workflows/${id}/execute/${workflow.id}`}
+                  onClick={() => setSelectedExecutedWorkflow(workflow)}
+                >
+                  {workflow.name}
+                </NextLink>
+              </TableCell>
               <TableCell>{workflow.status}</TableCell>
               <TableCell align="right">
                 <Icon

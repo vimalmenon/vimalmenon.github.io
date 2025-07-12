@@ -37,6 +37,7 @@ export const Context = createContext<IContext>({
   setWorkflow: NotImplemented,
   setWorkflowFormMode: NotImplemented,
   setWorkflowLoading: NotImplemented,
+  workflow: null,
   workflowFormMode: 'VIEW',
   workflowLoading: false,
 });

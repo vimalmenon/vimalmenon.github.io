@@ -4,6 +4,7 @@ import { createContext, useContext } from 'react';
 import { APIs } from '@data';
 import { IGenericResponse, IWorkflow } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
+import { useAdminWorkflowHelper } from '../AdminWorkflowContext';
 import { IContext, IUseAdminWorkflows } from './AdminWorkflows';
 
 export const Context = createContext<IContext>({
@@ -29,13 +30,12 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
     setLoading,
     setMode,
     setSelectedWorkflow,
-    setWorkflows,
     workflows,
   } = useAdminWorkflowsContext();
+  const { getWorkflows: getWorkflowsHelper } = useAdminWorkflowHelper();
   const getWorkflows = async (): Promise<void> => {
     setLoading(true);
-    const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
-    setWorkflows(response.data);
+    await getWorkflowsHelper();
     setLoading(false);
   };
 
