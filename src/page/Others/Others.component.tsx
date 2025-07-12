@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import React from 'react';
-import { LLM } from './LLM';
+import { Llm } from './LLM';
 import { useOthersHelper } from './Others.service';
 import { Service } from './Services';
 import { Tools } from './Tools';
@@ -30,7 +30,7 @@ export const Others: React.FC = () => {
       </Box>
       <Divider />
       <Box sx={{ marginY: 2 }}>
-        <LLM />
+        <Llm />
       </Box>
     </Box>
   );

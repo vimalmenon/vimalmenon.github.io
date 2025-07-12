@@ -12,7 +12,7 @@ import React, { useEffect } from 'react';
 import { useAdminContext } from '@context';
 import { Icons } from '@data';
 
-export const LLM: React.FC = () => {
+export const Llm: React.FC = () => {
   const { getLLMs, llms } = useAdminContext();
   useEffect(() => {
     getLLMs();
