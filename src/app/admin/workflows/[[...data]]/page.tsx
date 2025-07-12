@@ -1,7 +1,12 @@
 import type { Metadata, NextPage } from 'next';
 import { Breadcrumbs } from '@common';
 import { APIs, GenerateExecuteWorkflow, GenerateWorkflow } from '@data';
-import { AdminWorkflowId, AdminWorkflowIdExecute, AdminWorkflows } from '@page';
+import {
+  AdminWorkflowExecuteId,
+  AdminWorkflowId,
+  AdminWorkflowIdExecute,
+  AdminWorkflows,
+} from '@page';
 import { StyledPage } from '@style';
 import { IGenericResponse, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
@@ -21,7 +26,15 @@ const Page: NextPage<IPage> = async ({ params }) => {
       </StyledPage>
     );
   }
-  const [id, execute] = data;
+  const [id, execute, executeId] = data;
+  if (executeId) {
+    return (
+      <StyledPage sx={{ flexDirection: 'column' }}>
+        <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
+        <AdminWorkflowExecuteId id={id} executeId={executeId} />
+      </StyledPage>
+    );
+  }
   if (execute) {
     return (
       <StyledPage sx={{ flexDirection: 'column' }}>
