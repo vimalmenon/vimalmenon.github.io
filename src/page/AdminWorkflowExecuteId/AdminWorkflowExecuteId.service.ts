@@ -17,3 +17,5 @@ export const Context = createContext<IAdminWorkflowExecuteIdContext>({
 
 export const useAdminWorkflowIdExecuteIdContext = (): IAdminWorkflowExecuteIdContext =>
   useContext<IAdminWorkflowExecuteIdContext>(Context);
+
+export const useAdminWorkflowExecuteIdHelper = () => {};

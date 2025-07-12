@@ -7,7 +7,7 @@ import { Modal } from '@component';
 import { TextInput } from '@component';
 import { Enums } from '@data';
 import { formatDate } from '@utility';
-import { useWorkflowNodeDetailHelper } from '../../AdminWorkflowIdExecute.service';
+import { useWorkflowNodeDetailHelper } from '../../../AdminWorkflowIdExecute/AdminWorkflowIdExecute.service';
 
 export const WorkflowNodeDetail: React.FC = () => {
   const { closeSelectedWorkflow, onSelectedWorkflowNodeSubmit, selectedWorkflowNode } =

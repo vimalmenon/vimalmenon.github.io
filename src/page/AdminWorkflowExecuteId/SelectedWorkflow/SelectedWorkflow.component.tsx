@@ -8,7 +8,7 @@ import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowEdge, IViewData } fro
 import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
-} from '../AdminWorkflowIdExecute.service';
+} from '../../AdminWorkflowIdExecute/AdminWorkflowIdExecute.service';
 import { WorkflowNodeDetail } from './WorkflowNodeDetail';
 
 const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {
