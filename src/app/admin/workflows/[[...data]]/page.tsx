@@ -1,6 +1,12 @@
 import type { Metadata, NextPage } from 'next';
 import { Breadcrumbs } from '@common';
-import { APIs, GenerateExecuteWorkflow, GenerateWorkflow, GenerateWorkflowExecuteId } from '@data';
+import {
+  APIs,
+  GenerateExecuteWorkflow,
+  GenerateWorkflow,
+  GenerateWorkflowExecuteId,
+  Navigation,
+} from '@data';
 import {
   AdminWorkflowExecuteId,
   AdminWorkflowId,
@@ -22,6 +28,7 @@ const Page: NextPage<IPage> = async ({ params }) => {
   if (!data) {
     return (
       <StyledPage sx={{ flexDirection: 'column' }}>
+        <Breadcrumbs navigation={Navigation.AdminWorkflow} />
         <AdminWorkflows />
       </StyledPage>
     );
