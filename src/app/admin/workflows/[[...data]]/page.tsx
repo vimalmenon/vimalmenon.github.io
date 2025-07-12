@@ -7,6 +7,7 @@ import {
   GenerateWorkflow,
   GenerateWorkflowExecuteId,
   Navigation,
+  WorkflowPage,
 } from '@data';
 import {
   AdminWorkflowContext,
@@ -25,18 +26,18 @@ export const metadata: Metadata = {
   title: 'Workflows | Admin | Vimal Menon',
 };
 
-const getPage = (data?: string[]): string => {
+const getPage = (data?: string[]): WorkflowPage => {
   if (!data) {
-    return 'Workflow';
+    return WorkflowPage.Workflow;
   }
   const [, execute, executeId] = data;
   if (executeId) {
-    return 'WorkflowExecutedId';
+    return WorkflowPage.WorkflowExecutedId;
   }
   if (execute) {
-    return 'WorkflowExecuted';
+    return WorkflowPage.WorkflowExecuted;
   }
-  return 'WorkflowId';
+  return WorkflowPage.WorkflowId;
 };
 
 const Page: NextPage<IPage> = async ({ params }) => {
@@ -46,26 +47,26 @@ const Page: NextPage<IPage> = async ({ params }) => {
   return (
     <AdminWorkflowContext id={id} executeId={executeId}>
       <StyledPage sx={{ flexDirection: 'column' }}>
-        {page === 'Workflow' ? (
+        {page === WorkflowPage.Workflow ? (
           <Fragment>
             <Breadcrumbs navigation={Navigation.AdminWorkflow} />
             <AdminWorkflows />
           </Fragment>
         ) : null}
 
-        {page === 'WorkflowExecutedId' ? (
+        {page === WorkflowPage.WorkflowExecutedId ? (
           <Fragment>
             <Breadcrumbs navigation={GenerateWorkflowExecuteId(id, executeId)} />
             <AdminWorkflowExecuteId id={id} executeId={executeId} />
           </Fragment>
         ) : null}
-        {page === 'WorkflowExecuted' ? (
+        {page === WorkflowPage.WorkflowExecuted ? (
           <Fragment>
             <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
             <AdminWorkflowIdExecute id={id} />
           </Fragment>
         ) : null}
-        {page === 'WorkflowId' ? (
+        {page === WorkflowPage.WorkflowId ? (
           <Fragment>
             <Breadcrumbs navigation={GenerateWorkflow(id)} />
             <AdminWorkflowId id={id} />
