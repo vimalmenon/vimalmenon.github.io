@@ -13,6 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [ ] Improve Workflow
 - [ ] Make the Workflow more consistent
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
