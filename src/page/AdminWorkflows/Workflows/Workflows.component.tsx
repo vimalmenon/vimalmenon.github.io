@@ -11,6 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { ConfirmDialog } from '@component';
 import { Icons } from '@data';
@@ -20,6 +21,7 @@ import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
   const { dataLoading, mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
+  const { push } = useRouter();
   const {
     deleteWorkflow,
     deleteWorkflowCancel,
@@ -110,6 +112,9 @@ export const Workflows: React.FC = () => {
                         disabled={workflow.executedWorkflows.length > 0}
                       >
                         <Icons.Delete />
+                      </IconButton>
+                      <IconButton onClick={() => push(`/admin/workflows/${workflow.id}/`)}>
+                        <Icons.Play />
                       </IconButton>
                     </TableCell>
                   </TableRow>
