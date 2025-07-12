@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { IDbServiceData, IExecuteWorkflow, IExecuteWorkflowNode, IReactChildren } from '@types';
 import { IAdminWorkflowExecuteId } from './AdminWorkflowExecuteId';
 import { Context } from './AdminWorkflowExecuteId.service';
@@ -18,20 +18,22 @@ export const AdminWorkflowExecuteIdContext: React.FC<IReactChildren & IAdminWork
   const [selectedExecutedWorkflow, setSelectedExecutedWorkflow] = useState<IExecuteWorkflow | null>(
     null
   );
-  const value = useMemo(
-    () => ({
-      dbServiceData,
-      executeId,
-      id,
-      loading,
-      selectedExecutedWorkflow,
-      selectedWorkflowNode,
-      setDbServiceData,
-      setLoading,
-      setSelectedExecutedWorkflow,
-      setSelectedWorkflowNode,
-    }),
-    []
+  return (
+    <Context.Provider
+      value={{
+        dbServiceData,
+        executeId,
+        id,
+        loading,
+        selectedExecutedWorkflow,
+        selectedWorkflowNode,
+        setDbServiceData,
+        setLoading,
+        setSelectedExecutedWorkflow,
+        setSelectedWorkflowNode,
+      }}
+    >
+      {children}
+    </Context.Provider>
   );
-  return <Context.Provider value={value}>{children}</Context.Provider>;
 };
