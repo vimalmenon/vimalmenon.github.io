@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { FormMode, IAdminWorkflowIdPage, INode, IReactChildren, IWorkflow } from '@types';
-import { useAdminWorkflowContext } from '../AdminWorkflowContext';
 import { INodeTab } from './AdminWorkflowId';
 import { Context } from './AdminWorkflowId.service';
 

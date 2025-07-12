@@ -1,4 +1,4 @@
-import { IExecuteWorkflow, IWorkflow, ReactSetState } from '@types';
+import { IExecuteWorkflow, ReactSetState } from '@types';
 
 export interface IAdminWorkflowContextComponent {
   id?: string;
@@ -6,8 +6,6 @@ export interface IAdminWorkflowContextComponent {
 }
 
 export interface IAdminWorkflowContext extends IAdminWorkflowContextComponent {
-  executedWorkflows: IExecuteWorkflow[];
-  setExecutedWorkflows: ReactSetState<IExecuteWorkflow[]>;
   selectedExecutedWorkflow: IExecuteWorkflow | null;
   setSelectedExecutedWorkflow: ReactSetState<IExecuteWorkflow | null>;
 }
