@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import type { Metadata } from 'next';
 import { AdminNavigation as Navigation } from '@common';
 import { ComingSoon } from '@component';
@@ -18,6 +19,7 @@ const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
       <AdminContext>
         <Box sx={{ display: 'flex', flex: '1 1 100%', gap: 2 }}>
           <Navigation />
+          <Divider orientation="vertical" flexItem />
           {children}
         </Box>
       </AdminContext>
