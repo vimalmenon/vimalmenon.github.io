@@ -3,6 +3,7 @@
 import { createContext, useContext } from 'react';
 import { APIs, Enums } from '@data';
 import {
+  IDbServiceData,
   IExecuteWorkflow,
   IExecuteWorkflowNode,
   IExecuteWorkflowSlim,
@@ -36,14 +37,22 @@ export const useAdminWorkflowIdExecuteIdContext = (): IAdminWorkflowExecuteIdCon
   useContext<IAdminWorkflowExecuteIdContext>(Context);
 
 export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHelper => {
-  const { executeId, id, setSelectedExecutedWorkflow } = useAdminWorkflowIdExecuteIdContext();
+  const { executeId, id, setDbServiceData, setSelectedExecutedWorkflow } =
+    useAdminWorkflowIdExecuteIdContext();
   const getExecutedWorkflow = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
       APIs.GetExecutedWorkflowId(id, executeId)
     );
     setSelectedExecutedWorkflow(response.data);
   };
+  const getDatabaseData = async (): Promise<void> => {
+    const { response } = await makeRequest<IGenericResponse<IDbServiceData[]>>(
+      APIs.GetDbServiceData(executeId)
+    );
+    setDbServiceData(response.data);
+  };
   return {
+    getDatabaseData,
     getExecutedWorkflow,
   };
 };

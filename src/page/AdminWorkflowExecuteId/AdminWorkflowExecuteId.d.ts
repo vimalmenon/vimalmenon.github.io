@@ -25,6 +25,7 @@ export interface IAdminWorkflowExecuteIdContext extends IAdminWorkflowExecuteId 
 
 export interface IUseAdminWorkflowIdExecuteHelper {
   getExecutedWorkflow: VoidFunction<Promise<void>>;
+  getDatabaseData: VoidFunction<Promise<void>>;
 }
 
 export interface IUseWorkflowExecuteHelper {

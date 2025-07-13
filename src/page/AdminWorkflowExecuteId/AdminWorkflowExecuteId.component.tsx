@@ -8,9 +8,10 @@ import { useAdminWorkflowIdExecuteHelper } from './AdminWorkflowExecuteId.servic
 import { SelectedWorkflow } from './SelectedWorkflow';
 
 const Component: React.FC = () => {
-  const { getExecutedWorkflow } = useAdminWorkflowIdExecuteHelper();
+  const { getDatabaseData, getExecutedWorkflow } = useAdminWorkflowIdExecuteHelper();
   useEffect(() => {
     getExecutedWorkflow();
+    getDatabaseData();
   }, []);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
