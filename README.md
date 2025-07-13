@@ -13,6 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
+- [ ] Make Admin Page full page
 - [ ] Improve Workflow
 - [ ] Make the Workflow more consistent
 - [ ] Create validate nodes
