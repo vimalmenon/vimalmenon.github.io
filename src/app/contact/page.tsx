@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
-import { ComingSoon } from '@component';
+import { ComingSoon, MainLayout } from '@component';
 import { Navigation } from '@data';
 
 export const metadata: Metadata = {
@@ -10,10 +10,12 @@ export const metadata: Metadata = {
 };
 
 const Page: React.FC = () => (
-  <Box component="main">
-    <Breadcrumbs navigation={Navigation.Contact} />
-    <ComingSoon page="Contact page" />
-  </Box>
+  <MainLayout>
+    <Box component="main">
+      <Breadcrumbs navigation={Navigation.Contact} />
+      <ComingSoon page="Contact page" />
+    </Box>
+  </MainLayout>
 );
 
 export default Page;
