@@ -17,7 +17,7 @@ const AdminLayout: React.FC<IReactChildren> = ({ children }) => {
   if (env.IS_LOCAL) {
     return (
       <AdminContext>
-        <Box sx={{ display: 'flex', flex: '1 1 100%', gap: 2 }}>
+        <Box sx={{ display: 'flex', flex: '1 1 100%' }}>
           <Navigation />
           <Divider orientation="vertical" flexItem />
           {children}

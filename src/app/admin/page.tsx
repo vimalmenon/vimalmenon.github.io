@@ -1,3 +1,4 @@
+import Divider from '@mui/material/Divider';
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@common';
 import { AdminLayout } from '@component';
@@ -14,6 +15,7 @@ const Page: React.FC = () => (
   <AdminLayout>
     <StyledPage sx={{ flexDirection: 'column' }}>
       <Breadcrumbs navigation={Navigation.Admin} />
+      <Divider />
       <Admin />
     </StyledPage>
   </AdminLayout>
