@@ -18,7 +18,7 @@ export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow, load
   const [name, setName] = useState<string>('');
   const { createWorkflow } = useAdminWorkflows();
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 2 }}>
       <Card component={Paper}>
         <CardHeader title="Create Workflow" />
         <Divider />
