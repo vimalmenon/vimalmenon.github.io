@@ -1,7 +1,9 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import { useEffect } from 'react';
+import Divider from '@mui/material/Divider';
+import { Fragment, useEffect } from 'react';
+import { WorkflowHeader } from '@component';
 import { IAdminWorkflowExecuteId } from './AdminWorkflowExecuteId';
 import { AdminWorkflowExecuteIdContext } from './AdminWorkflowExecuteId.context';
 import { useAdminWorkflowIdExecuteHelper } from './AdminWorkflowExecuteId.service';
@@ -14,9 +16,13 @@ const Component: React.FC = () => {
     getDatabaseData();
   }, []);
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
-      <SelectedWorkflow />
-    </Box>
+    <Fragment>
+      <WorkflowHeader title="Executed Workflow" />
+      <Divider />
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
+        <SelectedWorkflow />
+      </Box>
+    </Fragment>
   );
 };
 
