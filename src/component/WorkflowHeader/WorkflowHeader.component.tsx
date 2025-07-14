@@ -1,5 +1,9 @@
 import Box from '@mui/material/Box';
+import { IWorkflowHeader } from './WorkflowHeader';
 
-export const WorkflowHeader: React.FC = () => (
-  <Box sx={{ display: 'flex', margin: 1 }}>this is Header</Box>
+export const WorkflowHeader: React.FC<IWorkflowHeader> = ({ action, title }) => (
+  <Box sx={{ display: 'flex', justifyContent: 'space-between', margin: 1 }}>
+    <Box>{title}</Box>
+    <Box>{action}</Box>
+  </Box>
 );

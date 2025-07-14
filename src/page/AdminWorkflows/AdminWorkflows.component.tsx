@@ -8,7 +8,7 @@ import { Workflows } from './Workflows';
 
 export const AdminWorkflows: React.FC = () => (
   <AdminWorkflowsContext>
-    <WorkflowHeader />
+    <WorkflowHeader title="Workflow" />
     <Divider />
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
       <Workflows />
