@@ -1,7 +1,6 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
 import LinearProgress from '@mui/material/LinearProgress';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -51,27 +50,6 @@ export const Workflows: React.FC = () => {
         <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} loading={dataLoading} />
       ) : (
         <TableContainer component={Paper}>
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell colSpan={2}>
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      fontWeight: 'bold',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <span>Workflows</span>
-                    <IconButton onClick={() => setMode('CREATE')}>
-                      <Icons.Add />
-                    </IconButton>
-                  </Box>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-          </Table>
           {loading ? (
             <LinearProgress />
           ) : (
