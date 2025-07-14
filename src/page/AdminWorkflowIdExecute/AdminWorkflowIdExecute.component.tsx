@@ -15,9 +15,8 @@ import { ExecuteForm } from './ExecuteForm';
 import { ListWorkflow } from './ListWorkflow';
 
 const Component: React.FC = () => {
-  const { showCreate } = useAdminWorkflowIdExecuteContext();
+  const { setShowCreate, showCreate } = useAdminWorkflowIdExecuteContext();
   const { getExecutedWorkflow } = useWorkflowExecuteHelper();
-  const { setShowCreate } = useAdminWorkflowIdExecuteContext();
 
   useEffect(() => {
     getExecutedWorkflow();
