@@ -4,8 +4,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Divider from '@mui/material/Divider';
 import FormControl from '@mui/material/FormControl';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
@@ -20,8 +18,6 @@ export const CreateWorkflow: React.FC<ICreateWorkflow> = ({ cancelWorkflow, load
   return (
     <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 2 }}>
       <Card component={Paper}>
-        <CardHeader title="Create Workflow" />
-        <Divider />
         <CardContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <FormControl variant="outlined" fullWidth required>

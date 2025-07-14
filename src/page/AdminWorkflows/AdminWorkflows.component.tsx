@@ -2,24 +2,26 @@
 
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import React, { Fragment } from 'react';
-import { WorkflowHeader } from '@component';
+import { Icon, WorkflowHeader } from '@component';
 import { Icons } from '@data';
 import { AdminWorkflowsContext } from './AdminWorkflows.context';
 import { useAdminWorkflowsContext } from './AdminWorkflows.services';
 import { Workflows } from './Workflows';
 
 export const Component: React.FC = () => {
-  const { setMode } = useAdminWorkflowsContext();
+  const { mode, setMode } = useAdminWorkflowsContext();
   return (
     <Fragment>
       <WorkflowHeader
-        title="List Workflows"
+        title={mode === 'CREATE' ? 'Create Workflow' : 'List Workflow'}
         action={
-          <IconButton onClick={() => setMode('CREATE')} size="small">
-            <Icons.Add />
-          </IconButton>
+          <Icon
+            toolTip="Create Workflow"
+            size="small"
+            icon={<Icons.Add />}
+            onClick={() => setMode('CREATE')}
+          />
         }
       />
       <Divider />
