@@ -1,7 +1,10 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import { useEffect } from 'react';
+import Divider from '@mui/material/Divider';
+import { Fragment, useEffect } from 'react';
+import { Icon, WorkflowHeader } from '@component';
+import { Icons } from '@data';
 import { IAdminWorkflowIdPage } from '@types';
 import { AdminWorkflowIdExecuteContext } from './AdminWorkflowIdExecute.context';
 import {
@@ -9,20 +12,27 @@ import {
   useWorkflowExecuteHelper,
 } from './AdminWorkflowIdExecute.service';
 import { ExecuteForm } from './ExecuteForm';
-import { Header } from './Header';
 import { ListWorkflow } from './ListWorkflow';
 
 const Component: React.FC = () => {
   const { showCreate } = useAdminWorkflowIdExecuteContext();
   const { getExecutedWorkflow } = useWorkflowExecuteHelper();
+  const { setShowCreate } = useAdminWorkflowIdExecuteContext();
+
   useEffect(() => {
     getExecutedWorkflow();
   }, []);
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
-      <Header />
-      {showCreate ? <ExecuteForm /> : <ListWorkflow />}
-    </Box>
+    <Fragment>
+      <WorkflowHeader
+        title="Execute Workflow"
+        action={<Icon toolTip="Add" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />}
+      />
+      <Divider />
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
+        {showCreate ? <ExecuteForm /> : <ListWorkflow />}
+      </Box>
+    </Fragment>
   );
 };
 export const AdminWorkflowIdExecute: React.FC<IAdminWorkflowIdPage> = ({ id }) => (
