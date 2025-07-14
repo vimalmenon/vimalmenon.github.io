@@ -16,12 +16,16 @@ export const Component: React.FC = () => {
       <WorkflowHeader
         title={mode === 'CREATE' ? 'Create Workflow' : 'List Workflow'}
         action={
-          <Icon
-            toolTip="Create Workflow"
-            size="small"
-            icon={<Icons.Add />}
-            onClick={() => setMode('CREATE')}
-          />
+          <Fragment>
+            {mode === 'CREATE' ? null : (
+              <Icon
+                toolTip="Create Workflow"
+                size="small"
+                icon={<Icons.Add />}
+                onClick={() => setMode('CREATE')}
+              />
+            )}
+          </Fragment>
         }
       />
       <Divider />
