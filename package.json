@@ -22,7 +22,7 @@
     "@mui/material": "^7.2.0",
     "@mui/material-nextjs": "^7.2.0",
     "@xyflow/react": "^12.8.2",
-    "framer-motion": "^12.23.3",
+    "framer-motion": "^12.23.5",
     "next": "15.3.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
