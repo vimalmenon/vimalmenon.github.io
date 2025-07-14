@@ -18,7 +18,7 @@ export const Workflow: React.FC<IWorkflowComponent> = ({ data, onCancel }) => {
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Card>
-        <Header complete={data?.complete ?? false} />
+        <Header />
         <Divider />
         {workflowLoading ? (
           <LinearProgress />
