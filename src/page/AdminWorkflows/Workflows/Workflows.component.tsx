@@ -31,7 +31,7 @@ export const Workflows: React.FC = () => {
     getWorkflows();
   }, []);
   return (
-    <Box>
+    <Box sx={{ display: 'flex', margin: 1 }}>
       {selectedWorkflow ? (
         <ConfirmDialog
           icon="WARNING"

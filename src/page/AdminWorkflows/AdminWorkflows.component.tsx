@@ -15,7 +15,7 @@ export const Component: React.FC = () => {
   return (
     <Fragment>
       <WorkflowHeader
-        title="Workflows"
+        title="List Workflows"
         action={
           <IconButton onClick={() => setMode('CREATE')} size="small">
             <Icons.Add />
@@ -23,7 +23,7 @@ export const Component: React.FC = () => {
         }
       />
       <Divider />
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Workflows />
       </Box>
     </Fragment>
