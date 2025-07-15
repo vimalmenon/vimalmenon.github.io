@@ -33,7 +33,7 @@ const Component: React.FC = () => {
     id,
     updateNode,
   } = useWorkflowDataHelper();
-  const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
+  const { deleteWorkflow, editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
   const { onAddNodeTab } = useTabHelper();
   useEffect(() => {
     getAllData();
@@ -62,6 +62,12 @@ const Component: React.FC = () => {
                     onClick={() => push(`/admin/workflows/${id}/execute/`)}
                   />
                 ) : null}
+                <Icon
+                  toolTip="Delete"
+                  icon={<Icons.Delete />}
+                  onClick={deleteWorkflow}
+                  disabled={(workflow?.executedWorkflows.length ?? 0) > 0}
+                />
               </Fragment>
             ) : null}
           </Fragment>

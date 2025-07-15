@@ -44,6 +44,7 @@ export interface IUseWorkflowFormHelper {
   editWorkflowFormMode: VoidFunction;
   viewWorkflowFormMode: VoidFunction;
   workflowFormMode: FormMode;
+  deleteWorkflow: VoidFunction<Promise<void>>;
 }
 
 export interface IUseWorkflowDataHelper {

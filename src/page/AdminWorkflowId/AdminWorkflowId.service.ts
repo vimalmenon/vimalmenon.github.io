@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
@@ -213,14 +214,22 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
 };
 
 export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
-  const { setWorkflowFormMode, workflowFormMode } = useWorkflowContext();
+  const { setWorkflowFormMode, workflow, workflowFormMode } = useWorkflowContext();
+  const { push } = useRouter();
   const editWorkflowFormMode = (): void => {
     setWorkflowFormMode('UPDATE');
   };
   const viewWorkflowFormMode = (): void => {
     setWorkflowFormMode('VIEW');
   };
+  const deleteWorkflow = async (): Promise<void> => {
+    if (workflow) {
+      await makeRequest<IGenericResponse<string[]>>(APIs.DeleteWorkflow(workflow.id));
+      push('/admin/workflows/');
+    }
+  };
   return {
+    deleteWorkflow,
     editWorkflowFormMode,
     viewWorkflowFormMode,
     workflowFormMode,
