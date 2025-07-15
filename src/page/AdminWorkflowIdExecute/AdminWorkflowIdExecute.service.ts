@@ -2,27 +2,19 @@
 
 import { createContext, useContext } from 'react';
 import { APIs } from '@data';
-import {
-  IExecuteWorkflow,
-  IExecuteWorkflowNode,
-  IExecuteWorkflowSlim,
-  IGenericResponse,
-} from '@types';
+import { IExecuteWorkflow, IExecuteWorkflowSlim, IGenericResponse } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
 import {
   IAdminWorkflowIdExecuteContext,
   IUseWorkflowExecuteHelper,
-  IUseWorkflowNodeDetailHelper,
 } from './AdminWorkflowIdExecute';
 
 export const Context = createContext<IAdminWorkflowIdExecuteContext>({
   executedWorkflows: [],
   id: '',
   loading: false,
-  selectedWorkflowNode: null,
   setExecutedWorkflows: NotImplemented,
   setLoading: NotImplemented,
-  setSelectedWorkflowNode: NotImplemented,
   setShowCreate: NotImplemented,
   showCreate: false,
 });
@@ -31,7 +23,7 @@ export const useAdminWorkflowIdExecuteContext = (): IAdminWorkflowIdExecuteConte
   useContext<IAdminWorkflowIdExecuteContext>(Context);
 
 export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
-  const { id, setExecutedWorkflows, setLoading, setSelectedWorkflowNode, setShowCreate } =
+  const { id, setExecutedWorkflows, setLoading, setShowCreate } =
     useAdminWorkflowIdExecuteContext();
   const getExecutedWorkflow = async (handle: boolean = true): Promise<void> => {
     if (handle) {
@@ -58,29 +50,10 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     await getExecutedWorkflow(false);
     setLoading(false);
   };
-  const onSelectedWorkflowNode = (data: IExecuteWorkflowNode): void => {
-    setSelectedWorkflowNode(data);
-  };
 
   return {
     deleteExecutedWorkflow,
     executeWorkflow,
     getExecutedWorkflow,
-    onSelectedWorkflowNode,
-  };
-};
-
-export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
-  const { selectedWorkflowNode, setSelectedWorkflowNode } = useAdminWorkflowIdExecuteContext();
-  const closeSelectedWorkflow = (): void => {
-    setSelectedWorkflowNode(null);
-  };
-  const onSelectedWorkflowNodeSubmit = async (): Promise<void> => {
-    await Promise.resolve([]);
-  };
-  return {
-    closeSelectedWorkflow,
-    onSelectedWorkflowNodeSubmit,
-    selectedWorkflowNode,
   };
 };

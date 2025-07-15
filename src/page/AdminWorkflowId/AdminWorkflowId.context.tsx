@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FormMode, IAdminWorkflowIdPage, INode, IReactChildren } from '@types';
-import { useAdminWorkflowContext } from '../AdminWorkflowContext';
+import { FormMode, IAdminWorkflowIdPage, INode, IReactChildren, IWorkflow } from '@types';
 import { INodeTab } from './AdminWorkflowId';
 import { Context } from './AdminWorkflowId.service';
 
@@ -18,7 +17,7 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
   const [selectedNode, setSelectedNode] = useState<INode | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isStart, setIsStart] = useState<boolean>(false);
-  const { selectedWorkflow, setSelectedWorkflow } = useAdminWorkflowContext();
+  const [selectedWorkflow, setSelectedWorkflow] = useState<IWorkflow | null>(null);
 
   return (
     <Context.Provider

@@ -13,7 +13,7 @@ export const StyledMain = styled('main')(({ theme }) => ({
 
 export const StyledMainContainer = styled(Container)({
   display: 'flex',
-  flex: '0 0 100%',
+  flex: '1',
   flexDirection: 'column',
   marginY: 1,
 });

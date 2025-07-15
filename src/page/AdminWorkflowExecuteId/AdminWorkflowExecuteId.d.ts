@@ -25,6 +25,7 @@ export interface IAdminWorkflowExecuteIdContext extends IAdminWorkflowExecuteId 
 
 export interface IUseAdminWorkflowIdExecuteHelper {
   getExecutedWorkflow: VoidFunction<Promise<void>>;
+  getDatabaseData: VoidFunction<Promise<void>>;
 }
 
 export interface IUseWorkflowExecuteHelper {
@@ -32,4 +33,9 @@ export interface IUseWorkflowExecuteHelper {
   setSelectedExecutedWorkflow: ReactSetState<IExecuteWorkflow | null>;
   convertNodesToReactFlow: (nodes: IExecuteWorkflowNode[]) => IReactFlowNode[];
   onSelectedWorkflowNode: (data: IIExecuteWorkflowNodeNode) => void;
+}
+export interface IUseWorkflowNodeDetailHelper {
+  closeSelectedWorkflow: VoidFunction;
+  selectedWorkflowNode: IExecuteWorkflowNode | null;
+  onSelectedWorkflowNodeSubmit: VoidFunction<Promise<void>>;
 }

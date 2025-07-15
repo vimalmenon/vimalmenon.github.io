@@ -1,7 +1,6 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
 import LinearProgress from '@mui/material/LinearProgress';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -10,16 +9,16 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { ConfirmDialog } from '@component';
+import { ConfirmDialog, Icon } from '@component';
 import { Icons } from '@data';
-import { useAdminWorkflowHelper } from '../../AdminWorkflowContext';
 import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
   const { dataLoading, mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
+  const { push } = useRouter();
   const {
     deleteWorkflow,
     deleteWorkflowCancel,
@@ -28,12 +27,11 @@ export const Workflows: React.FC = () => {
     loading,
     workflows,
   } = useAdminWorkflows();
-  const { setSelectedWorkflow } = useAdminWorkflowHelper();
   useEffect(() => {
     getWorkflows();
   }, []);
   return (
-    <Box>
+    <Box sx={{ display: 'flex', margin: 1 }}>
       {selectedWorkflow ? (
         <ConfirmDialog
           icon="WARNING"
@@ -52,27 +50,6 @@ export const Workflows: React.FC = () => {
         <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} loading={dataLoading} />
       ) : (
         <TableContainer component={Paper}>
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell colSpan={2}>
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      fontWeight: 'bold',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <span>Workflows</span>
-                    <IconButton onClick={() => setMode('CREATE')}>
-                      <Icons.Add />
-                    </IconButton>
-                  </Box>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-          </Table>
           {loading ? (
             <LinearProgress />
           ) : (
@@ -88,14 +65,7 @@ export const Workflows: React.FC = () => {
               <TableBody>
                 {workflows?.map((workflow) => (
                   <TableRow key={workflow.id}>
-                    <TableCell>
-                      <NextLink
-                        href={`/admin/workflows/${workflow.id}/`}
-                        onClick={() => setSelectedWorkflow(workflow)}
-                      >
-                        {workflow.name}
-                      </NextLink>
-                    </TableCell>
+                    <TableCell>{workflow.name}</TableCell>
                     <TableCell>
                       {workflow.complete ? (
                         <Icons.Check color="success" />
@@ -105,12 +75,19 @@ export const Workflows: React.FC = () => {
                     </TableCell>
                     <TableCell>{workflow.executedWorkflows.length}</TableCell>
                     <TableCell align="right">
-                      <IconButton
+                      <Icon
+                        icon={<Icons.Delete />}
                         onClick={() => deleteWorkflow(workflow)}
                         disabled={workflow.executedWorkflows.length > 0}
-                      >
-                        <Icons.Delete />
-                      </IconButton>
+                        toolTip="Delete"
+                        size="small"
+                      />
+                      <Icon
+                        icon={<Icons.Play />}
+                        onClick={() => push(`/admin/workflows/${workflow.id}/`)}
+                        toolTip="Go"
+                        size="small"
+                      />
                     </TableCell>
                   </TableRow>
                 ))}

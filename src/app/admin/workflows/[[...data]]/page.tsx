@@ -1,6 +1,8 @@
+import Divider from '@mui/material/Divider';
 import type { Metadata, NextPage } from 'next';
 import { Fragment } from 'react';
 import { Breadcrumbs } from '@common';
+import { AdminLayout } from '@component';
 import {
   APIs,
   GenerateExecuteWorkflow,
@@ -10,7 +12,6 @@ import {
   WorkflowPage,
 } from '@data';
 import {
-  AdminWorkflowContext,
   AdminWorkflowExecuteId,
   AdminWorkflowId,
   AdminWorkflowIdExecute,
@@ -45,11 +46,12 @@ const Page: NextPage<IPage> = async ({ params }) => {
   const page = getPage(data);
   const [id, , executeId] = data ?? [];
   return (
-    <AdminWorkflowContext id={id} executeId={executeId}>
+    <AdminLayout>
       <StyledPage sx={{ flexDirection: 'column' }}>
         {page === WorkflowPage.Workflow ? (
           <Fragment>
             <Breadcrumbs navigation={Navigation.AdminWorkflow} />
+            <Divider />
             <AdminWorkflows />
           </Fragment>
         ) : null}
@@ -57,23 +59,26 @@ const Page: NextPage<IPage> = async ({ params }) => {
         {page === WorkflowPage.WorkflowExecutedId ? (
           <Fragment>
             <Breadcrumbs navigation={GenerateWorkflowExecuteId(id, executeId)} />
+            <Divider />
             <AdminWorkflowExecuteId id={id} executeId={executeId} />
           </Fragment>
         ) : null}
         {page === WorkflowPage.WorkflowExecuted ? (
           <Fragment>
             <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
+            <Divider />
             <AdminWorkflowIdExecute id={id} />
           </Fragment>
         ) : null}
         {page === WorkflowPage.WorkflowId ? (
           <Fragment>
             <Breadcrumbs navigation={GenerateWorkflow(id)} />
+            <Divider />
             <AdminWorkflowId id={id} />
           </Fragment>
         ) : null}
       </StyledPage>
-    </AdminWorkflowContext>
+    </AdminLayout>
   );
 };
 

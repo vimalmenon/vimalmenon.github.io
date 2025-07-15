@@ -18,6 +18,10 @@ export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (
       <Box>{data.detail}</Box>
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box>Executed Workflow Count</Box>
+      <Box>{data.executedWorkflows.length}</Box>
+    </Box>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box>Complete</Box>
       <Box>{data.complete ? 'True' : 'False'}</Box>
     </Box>

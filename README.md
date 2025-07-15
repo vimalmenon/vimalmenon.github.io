@@ -6,13 +6,15 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.31
+<b>Version</b>: 0.0.32
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
+- [ ] Make Admin Page full page
+- [ ] Improve Workflow
 - [ ] Make the Workflow more consistent
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully

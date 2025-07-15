@@ -7,10 +7,9 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Icon } from '@component';
 import { Icons } from '@data';
-import { useAdminWorkflowContext } from '../../AdminWorkflowContext';
 import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
@@ -19,7 +18,7 @@ import {
 export const ListWorkflow: React.FC = () => {
   const { executedWorkflows, id } = useAdminWorkflowIdExecuteContext();
   const { deleteExecutedWorkflow } = useWorkflowExecuteHelper();
-  const { setSelectedExecutedWorkflow } = useAdminWorkflowContext();
+  const { push } = useRouter();
 
   return (
     <TableContainer component={Paper}>
@@ -34,20 +33,19 @@ export const ListWorkflow: React.FC = () => {
         <TableBody>
           {executedWorkflows.map((workflow) => (
             <TableRow key={workflow.id} style={{ cursor: 'pointer' }}>
-              <TableCell>
-                <NextLink
-                  href={`/admin/workflows/${id}/execute/${workflow.id}`}
-                  onClick={() => setSelectedExecutedWorkflow(workflow)}
-                >
-                  {workflow.name}
-                </NextLink>
-              </TableCell>
+              <TableCell>{workflow.name}</TableCell>
               <TableCell>{workflow.status}</TableCell>
               <TableCell align="right">
                 <Icon
                   icon={<Icons.Delete />}
                   onClick={() => deleteExecutedWorkflow(workflow.id)}
                   toolTip="Delete"
+                  size="small"
+                />
+                <Icon
+                  icon={<Icons.Play />}
+                  onClick={() => push(`/admin/workflows/${id}/execute/${workflow.id}`)}
+                  toolTip="Go"
                   size="small"
                 />
               </TableCell>
