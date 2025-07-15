@@ -57,7 +57,7 @@ const Component: React.FC = () => {
                 />
                 {workflow?.complete ? (
                   <Icon
-                    toolTip="Executed workflows"
+                    toolTip="Executed Workflows"
                     icon={<Icons.History />}
                     onClick={() => push(`/admin/workflows/${id}/execute/`)}
                   />
