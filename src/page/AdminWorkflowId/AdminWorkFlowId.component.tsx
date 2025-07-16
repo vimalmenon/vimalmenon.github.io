@@ -17,6 +17,7 @@ import {
   useWorkflowDataHelper,
   useWorkflowFormHelper,
 } from './AdminWorkflowId.service';
+import { Execute } from './Execute';
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
@@ -135,6 +136,8 @@ const Component: React.FC = () => {
             })
           )}
         </Box>
+        <Divider />
+        {id ? <Execute executedWorkflows={workflow?.executedWorkflows ?? []} id={id} /> : null}
       </Box>
     </Fragment>
   );
