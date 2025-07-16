@@ -67,13 +67,6 @@ export const Workflows: React.FC = () => {
                         iconSize="small"
                       />
                       <Icon
-                        icon={<Icons.Delete />}
-                        onClick={() => deleteWorkflow(workflow)}
-                        disabled={workflow.executedWorkflows.length > 0}
-                        toolTip="Delete"
-                        size="small"
-                      />
-                      <Icon
                         icon={<Icons.Play />}
                         onClick={() => push(`/admin/workflows/${workflow.id}/`)}
                         toolTip="Go"
