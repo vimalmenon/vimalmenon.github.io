@@ -137,7 +137,7 @@ const Component: React.FC = () => {
           )}
         </Box>
         <Divider />
-        {id ? <Execute executedWorkflows={workflow?.executedWorkflows ?? []} id={id} /> : null}
+        {id && workflow ? <Execute executedWorkflows={workflow.executedWorkflows} id={id} /> : null}
       </Box>
     </Fragment>
   );
