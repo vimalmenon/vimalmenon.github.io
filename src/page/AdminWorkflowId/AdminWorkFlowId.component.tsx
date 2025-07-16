@@ -7,9 +7,9 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useRouter } from 'next/navigation';
 import { Fragment, useEffect } from 'react';
-import { ConfirmDialog, Icon, WorkflowHeader } from '@component';
+import { ConfirmDialog, DeleteConfirm, Icon, WorkflowHeader } from '@component';
 import { Icons } from '@data';
-import { IAdminWorkflowIdPage } from '@types';
+import { IAdminWorkflowIdPage, IWorkflow } from '@types';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
   useTabHelper,
@@ -62,12 +62,19 @@ const Component: React.FC = () => {
                     onClick={() => push(`/admin/workflows/${id}/execute/`)}
                   />
                 ) : null}
-                <Icon
-                  toolTip="Delete"
-                  icon={<Icons.Delete />}
-                  onClick={deleteWorkflow}
-                  disabled={(workflow?.executedWorkflows.length ?? 0) > 0}
-                />
+                {workflow ? (
+                  <DeleteConfirm<IWorkflow>
+                    onDelete={deleteWorkflow}
+                    deleteMsg={
+                      <span>
+                        Delete Workflow <b>{workflow.name}</b>?
+                      </span>
+                    }
+                    data={workflow}
+                    disable={workflow.executedWorkflows.length > 0}
+                    iconSize="small"
+                  />
+                ) : null}
               </Fragment>
             ) : null}
           </Fragment>
