@@ -10,11 +10,9 @@ export const Context = createContext<IContext>({
   dataLoading: false,
   loading: false,
   mode: 'VIEW',
-  selectedWorkflow: null,
   setDataLoading: NotImplemented,
   setLoading: NotImplemented,
   setMode: NotImplemented,
-  setSelectedWorkflow: NotImplemented,
   setWorkflows: NotImplemented,
   workflows: [],
 });
@@ -22,16 +20,8 @@ export const Context = createContext<IContext>({
 export const useAdminWorkflowsContext = (): IContext => useContext<IContext>(Context);
 
 export const useAdminWorkflows = (): IUseAdminWorkflows => {
-  const {
-    loading,
-    selectedWorkflow,
-    setDataLoading,
-    setLoading,
-    setMode,
-    setSelectedWorkflow,
-    setWorkflows,
-    workflows,
-  } = useAdminWorkflowsContext();
+  const { loading, setDataLoading, setLoading, setMode, setWorkflows, workflows } =
+    useAdminWorkflowsContext();
   const getWorkflows = async (): Promise<void> => {
     setLoading(true);
     const { response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
@@ -52,25 +42,14 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
   };
 
   const deleteWorkflow = async (workflow: IWorkflow): Promise<void> => {
-    setSelectedWorkflow(workflow);
-  };
-  const deleteWorkflowConfirm = async (): Promise<void> => {
-    if (selectedWorkflow) {
-      setLoading(true);
-      await makeRequest<IGenericResponse<string[]>>(APIs.DeleteWorkflow(selectedWorkflow.id));
-      await getWorkflows();
-      setLoading(false);
-      setSelectedWorkflow(null);
-    }
-  };
-  const deleteWorkflowCancel = (): void => {
-    setSelectedWorkflow(null);
+    setLoading(true);
+    await makeRequest<IGenericResponse<string[]>>(APIs.DeleteWorkflow(workflow.id));
+    await getWorkflows();
+    setLoading(false);
   };
   return {
     createWorkflow,
     deleteWorkflow,
-    deleteWorkflowCancel,
-    deleteWorkflowConfirm,
     getWorkflows,
     loading,
     setLoading,

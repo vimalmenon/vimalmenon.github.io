@@ -11,41 +11,21 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { ConfirmDialog, Icon } from '@component';
+import { DeleteConfirm, Icon } from '@component';
 import { Icons } from '@data';
+import { IWorkflow } from '@types';
 import { useAdminWorkflows, useAdminWorkflowsContext } from '../AdminWorkflows.services';
 import { CreateWorkflow } from './CreateWorkflow';
 
 export const Workflows: React.FC = () => {
-  const { dataLoading, mode, selectedWorkflow, setMode } = useAdminWorkflowsContext();
+  const { dataLoading, mode, setMode } = useAdminWorkflowsContext();
   const { push } = useRouter();
-  const {
-    deleteWorkflow,
-    deleteWorkflowCancel,
-    deleteWorkflowConfirm,
-    getWorkflows,
-    loading,
-    workflows,
-  } = useAdminWorkflows();
+  const { deleteWorkflow, getWorkflows, loading, workflows } = useAdminWorkflows();
   useEffect(() => {
     getWorkflows();
   }, []);
   return (
     <Box sx={{ display: 'flex', margin: 1 }}>
-      {selectedWorkflow ? (
-        <ConfirmDialog
-          icon="WARNING"
-          title={
-            <span>
-              Delete Workflow <b>{selectedWorkflow.name}</b>?
-            </span>
-          }
-          open={!!selectedWorkflow}
-          onConfirm={deleteWorkflowConfirm}
-          onCancel={deleteWorkflowCancel}
-          loading={loading}
-        />
-      ) : null}
       {mode === 'CREATE' ? (
         <CreateWorkflow cancelWorkflow={() => setMode('VIEW')} loading={dataLoading} />
       ) : (
@@ -75,6 +55,17 @@ export const Workflows: React.FC = () => {
                     </TableCell>
                     <TableCell>{workflow.executedWorkflows.length}</TableCell>
                     <TableCell align="right">
+                      <DeleteConfirm<IWorkflow>
+                        onDelete={deleteWorkflow}
+                        deleteMsg={
+                          <span>
+                            Delete Workflow <b>{workflow.name}</b>?
+                          </span>
+                        }
+                        data={workflow}
+                        disable={workflow.executedWorkflows.length > 0}
+                        iconSize="small"
+                      />
                       <Icon
                         icon={<Icons.Delete />}
                         onClick={() => deleteWorkflow(workflow)}
