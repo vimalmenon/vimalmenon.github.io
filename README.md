@@ -13,9 +13,9 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Make Admin Page full page
+- [x] Make Admin Page full page
+- [x] Make the Workflow more consistent
 - [ ] Improve Workflow
-- [ ] Make the Workflow more consistent
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change
