@@ -145,7 +145,7 @@ export interface IReactFlowNode {
   type?: ReactFlowType;
 }
 
-export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed' | 'LLM' | 'Service';
+export type ReactFlowType = 'Completed' | 'Basic';
 
 export interface IReactFlowEdge {
   id: string;

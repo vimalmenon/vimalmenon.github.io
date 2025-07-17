@@ -30,25 +30,25 @@ export const BaseNode: React.FC<IReactChildren & IBaseNodeType> = ({
         <span>
           {data.label} ({data.type})
         </span>
-        {isReady ? (
+        <Box>
+          {isReady ? (
+            <Icon
+              toolTip="Execute"
+              icon={<Icons.Play />}
+              disabled={disableExecute}
+              onClick={onExecute}
+            />
+          ) : null}
           <Icon
-            toolTip="Execute"
-            icon={<Icons.Play />}
+            toolTip="Expand"
+            icon={<Icons.OpenInNew fontSize="small" />}
             disabled={disableExecute}
-            onClick={onExecute}
+            onClick={() => data.onSelect(data.node)}
           />
-        ) : null}
+        </Box>
       </Box>
       <Divider />
       {children}
-      <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-        <Icon
-          toolTip="Expand"
-          icon={<Icons.OpenInNew fontSize="small" />}
-          disabled={disableExecute}
-          onClick={() => data.onSelect(data.node)}
-        />
-      </Box>
       <Handle type="target" position={Position.Top} />
       <Handle type="source" position={Position.Bottom} />
     </NodeStyled>

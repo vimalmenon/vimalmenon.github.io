@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext } from 'react';
-import { APIs, Enums } from '@data';
+import { APIs } from '@data';
 import {
   IDbServiceData,
   IExecuteWorkflow,
@@ -90,16 +90,7 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     if (node.status === 'COMPLETED') {
       return 'Completed';
     }
-    switch (node.node.type) {
-      case 'HumanInput':
-        return Enums.WorkflowNodeType.HumanInput;
-      case Enums.WorkflowNodeType.LLM:
-        return Enums.WorkflowNodeType.LLM;
-      case 'Service':
-        return Enums.WorkflowNodeType.Service;
-      default:
-        return 'Execute';
-    }
+    return 'Basic';
   };
   const convertNodesToReactFlow = (nodes: IExecuteWorkflowNode[]): IReactFlowNode[] =>
     nodes.map<IReactFlowNode>((node, index) => ({
