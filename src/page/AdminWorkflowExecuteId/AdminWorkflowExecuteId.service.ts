@@ -70,7 +70,7 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
   const executeWorkflow = async (data: IExecuteWorkflowSlim): Promise<void> => {
     setLoading(true);
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id, data));
-    await getExecutedWorkflow(false);
+    await getExecutedWorkflow();
     setLoading(false);
   };
 

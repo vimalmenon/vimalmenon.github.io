@@ -59,16 +59,18 @@ export const WorkflowNodeDetail: React.FC = () => {
               <span>{formatDate(selectedWorkflowNode.completedAt)}</span>
             </Box>
           ) : null}
-          <Box sx={{ display: 'flex' }}>
-            <TextInput
-              value={value}
-              label="Human Input"
-              placeholder="Name"
-              name="humanInput"
-              onChange={(e) => setValue(e.target.value)}
-              disabled={!isReady}
-            />
-          </Box>
+          {selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput ? (
+            <Box sx={{ display: 'flex' }}>
+              <TextInput
+                value={value}
+                label="Human Input"
+                placeholder="Name"
+                name="humanInput"
+                onChange={(e) => setValue(e.target.value)}
+                disabled={!isReady}
+              />
+            </Box>
+          ) : null}
         </Box>
       </Modal>
     );

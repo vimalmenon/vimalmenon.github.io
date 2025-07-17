@@ -5,6 +5,7 @@ import {
   IExecuteWorkflowNode,
   IExecuteWorkflowSlim,
   ReactSetState,
+  VoidFunction,
 } from '@types';
 
 export interface IAdminWorkflowExecuteId {
