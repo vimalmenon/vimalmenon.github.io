@@ -136,8 +136,13 @@ const Component: React.FC = () => {
             })
           )}
         </Box>
-        <Divider />
-        {id && workflow ? <Execute executedWorkflows={workflow.executedWorkflows} id={id} /> : null}
+
+        {id && workflow && workflow.complete ? (
+          <Fragment>
+            <Divider />
+            <Execute executedWorkflows={workflow.executedWorkflows} id={id} />
+          </Fragment>
+        ) : null}
       </Box>
     </Fragment>
   );
