@@ -61,7 +61,7 @@ export const WorkflowNodeDetail: React.FC = () => {
               <span>{formatDate(selectedWorkflowNode.completedAt)}</span>
             </Box>
           ) : null}
-          {selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput ? (
+          {selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput && isReady ? (
             <Box sx={{ display: 'flex' }}>
               <TextInput
                 value={value}
@@ -69,7 +69,6 @@ export const WorkflowNodeDetail: React.FC = () => {
                 placeholder="Name"
                 name="humanInput"
                 onChange={(e) => setValue(e.target.value)}
-                disabled={!isReady}
               />
             </Box>
           ) : null}

@@ -134,6 +134,7 @@ export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
         APIs.ExecuteWorkflowNode(id, executeId, data)
       );
       setSelectedExecutedWorkflow(response.data);
+      setSelectedWorkflowNode(null);
     }
   };
   return {
