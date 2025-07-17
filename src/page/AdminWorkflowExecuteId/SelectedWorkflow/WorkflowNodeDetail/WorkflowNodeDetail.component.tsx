@@ -23,12 +23,14 @@ export const WorkflowNodeDetail: React.FC = () => {
           </Box>
         }
         onClose={closeSelectedWorkflow}
-        onConfirm={onSelectedWorkflowNodeSubmit}
+        onConfirm={() =>
+          onSelectedWorkflowNodeSubmit({
+            data: value,
+            id: selectedWorkflowNode.id,
+          })
+        }
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-          {/* {selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput} {
-
-            } */}
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
             <Typography sx={{ fontWeight: 'bold' }}>Name</Typography>
             <span>{selectedWorkflowNode.node.name}</span>

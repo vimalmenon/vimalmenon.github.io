@@ -118,12 +118,23 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
 };
 
 export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
-  const { selectedWorkflowNode, setSelectedWorkflowNode } = useAdminWorkflowIdExecuteIdContext();
+  const {
+    executeId,
+    id,
+    selectedWorkflowNode,
+    setSelectedExecutedWorkflow,
+    setSelectedWorkflowNode,
+  } = useAdminWorkflowIdExecuteIdContext();
   const closeSelectedWorkflow = (): void => {
     setSelectedWorkflowNode(null);
   };
-  const onSelectedWorkflowNodeSubmit = async (): Promise<void> => {
-    await Promise.resolve([]);
+  const onSelectedWorkflowNodeSubmit = async (data: IWorkflowExecuteParams): Promise<void> => {
+    if (selectedWorkflowNode) {
+      const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
+        APIs.ExecuteWorkflowNode(id, executeId, data)
+      );
+      setSelectedExecutedWorkflow(response.data);
+    }
   };
   return {
     closeSelectedWorkflow,
