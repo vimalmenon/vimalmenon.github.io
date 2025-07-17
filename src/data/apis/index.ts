@@ -1,109 +1,109 @@
 import {
-  IAPI,
+  IApi,
   IExecuteWorkflowSlim,
   INode,
   INodeSlim,
-  IWorkflow,
   IWorkflowExecuteParams,
   IWorkflowSlim,
+  IWorkflowUpdate,
 } from '@types';
 
-const GetWorkflows = (): IAPI => ({
+const GetWorkflows = (): IApi => ({
   method: 'GET',
   url: 'workflow',
 });
 
-const GetLLMs = (): IAPI => ({
+const GetLLMs = (): IApi => ({
   method: 'GET',
   url: 'llms',
 });
 
-const getUUID = (): IAPI => ({
+const getUUID = (): IApi => ({
   method: 'GET',
   url: 'uuid',
 });
 
-const GetTools = (): IAPI => ({
+const GetTools = (): IApi => ({
   method: 'GET',
   url: 'tools',
 });
 
-const GetServices = (): IAPI => ({
+const GetServices = (): IApi => ({
   method: 'GET',
   url: 'services',
 });
 
-const GetWorkflowById = (id: string): IAPI => ({
+const GetWorkflowById = (id: string): IApi => ({
   method: 'GET',
   url: `workflow/${id}`,
 });
 
-const CreateWorkflow = (body: IWorkflowSlim): IAPI<IWorkflowSlim> => ({
+const CreateWorkflow = (body: IWorkflowSlim): IApi<IWorkflowSlim> => ({
   body,
   method: 'PUT',
   url: 'workflow/create',
 });
 
-const CreateWorkflowNode = (wdId: string, body: INodeSlim): IAPI<INodeSlim> => ({
+const CreateWorkflowNode = (wdId: string, body: INodeSlim): IApi<INodeSlim> => ({
   body,
   method: 'PUT',
   url: `workflow/node/${wdId}`,
 });
 
-const UpdateWorkflowNode = (wfId: string, id: string, body: INode): IAPI<INode> => ({
+const UpdateWorkflowNode = (wfId: string, id: string, body: INode): IApi<INode> => ({
   body,
   method: 'POST',
   url: `workflow/node/${wfId}/${id}`,
 });
 
-const DeleteWorkflowNode = (wfId: string, id: string): IAPI => ({
+const DeleteWorkflowNode = (wfId: string, id: string): IApi => ({
   method: 'DELETE',
   url: `workflow/node/${wfId}/${id}`,
 });
-const DeleteWorkflow = (id: string): IAPI => ({
+const DeleteWorkflow = (id: string): IApi => ({
   method: 'DELETE',
   url: `workflow/${id}`,
 });
 
-const UpdateWorkflow = (id: string, body: IWorkflow): IAPI => ({
+const UpdateWorkflow = (id: string, body: IWorkflowUpdate): IApi => ({
   body,
   method: 'POST',
   url: `workflow/${id}`,
 });
 
-const ExecuteWorkflow = (id: string, body: IExecuteWorkflowSlim): IAPI => ({
+const ExecuteWorkflow = (id: string, body: IExecuteWorkflowSlim): IApi => ({
   body,
   method: 'PUT',
   url: `workflow/execute/${id}`,
 });
 
-const GetExecutedWorkflow = (id: string): IAPI => ({
+const GetExecutedWorkflow = (id: string): IApi => ({
   method: 'GET',
   url: `workflow/execute/${id}`,
 });
 
-const GetExecutedWorkflowId = (wfId: string, id: string): IAPI => ({
+const GetExecutedWorkflowId = (wfId: string, id: string): IApi => ({
   method: 'GET',
   url: `workflow/execute/${wfId}/${id}`,
 });
 
-const GetWorkflowTypes = (): IAPI => ({
+const GetWorkflowTypes = (): IApi => ({
   method: 'GET',
   url: 'workflow_types',
 });
 
-const DeleteExecutedWorkflow = (wfId: string, id: string): IAPI => ({
+const DeleteExecutedWorkflow = (wfId: string, id: string): IApi => ({
   method: 'DELETE',
   url: `workflow/execute/${wfId}/${id}`,
 });
 
-const ExecuteWorkflowNode = (wfId: string, id: string, body: IWorkflowExecuteParams): IAPI => ({
+const ExecuteWorkflowNode = (wfId: string, id: string, body: IWorkflowExecuteParams): IApi => ({
   body,
   method: 'POST',
   url: `workflow/execute/resume/${wfId}/${id}`,
 });
 
-const GetDbServiceData = (id: string): IAPI => ({
+const GetDbServiceData = (id: string): IApi => ({
   method: 'GET',
   url: `from_db/${id}`,
 });

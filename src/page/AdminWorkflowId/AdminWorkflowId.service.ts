@@ -140,7 +140,13 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     const { error, response } = await makeRequest<
       IGenericResponse<IWorkflow>,
       IGenericResponseError
-    >(APIs.UpdateWorkflow(id, data));
+    >(
+      APIs.UpdateWorkflow(id, {
+        complete: data.complete,
+        detail: data.detail,
+        name: data.name,
+      })
+    );
     if (error) {
       setError(error.detail);
       setWorkflowFormMode('VIEW');

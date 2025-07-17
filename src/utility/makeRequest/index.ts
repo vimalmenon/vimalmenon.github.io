@@ -1,7 +1,7 @@
 import { env } from '@data';
-import { IAPI, IMakeRequest } from '@types';
+import { IApi, IMakeRequest } from '@types';
 
-export const makeRequest = async <T, E = unknown>(data: IAPI): Promise<IMakeRequest<T, E>> => {
+export const makeRequest = async <T, E = unknown>(data: IApi): Promise<IMakeRequest<T, E>> => {
   const url = `${env.API}${data.url}`;
   try {
     const response = fetch(url, {
