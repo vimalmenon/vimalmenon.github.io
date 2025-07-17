@@ -13,6 +13,7 @@ export const WorkflowNodeDetail: React.FC = () => {
     useWorkflowNodeDetailHelper();
   const [value, setValue] = useState<string>(selectedWorkflowNode?.content ?? '');
   const isReady = selectedWorkflowNode?.status === Enums.WorkflowNodeStatus.READY;
+
   if (selectedWorkflowNode) {
     return (
       <Modal
@@ -23,12 +24,13 @@ export const WorkflowNodeDetail: React.FC = () => {
           </Box>
         }
         onClose={closeSelectedWorkflow}
-        onConfirm={() =>
-          onSelectedWorkflowNodeSubmit({
+        onConfirm={async () =>
+          await onSelectedWorkflowNodeSubmit({
             data: value,
             id: selectedWorkflowNode.id,
           })
         }
+        disableConfirm={selectedWorkflowNode.status === Enums.WorkflowNodeStatus.COMPLETED}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
@@ -51,10 +53,12 @@ export const WorkflowNodeDetail: React.FC = () => {
               <span>{selectedWorkflowNode.content}</span>
             </Box>
           ) : null}
-          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-            <Typography sx={{ fontWeight: 'bold' }}>Started At</Typography>
-            <span>{formatDate(selectedWorkflowNode.startedAt)}</span>
-          </Box>
+          {selectedWorkflowNode.startedAt ? (
+            <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+              <Typography sx={{ fontWeight: 'bold' }}>Started At</Typography>
+              <span>{formatDate(selectedWorkflowNode.startedAt)}</span>
+            </Box>
+          ) : null}
           {selectedWorkflowNode.completedAt ? (
             <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
               <Typography sx={{ fontWeight: 'bold' }}>Completed At</Typography>

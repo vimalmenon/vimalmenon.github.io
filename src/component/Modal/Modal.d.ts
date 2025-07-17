@@ -6,4 +6,5 @@ export interface IModal extends IReactChildren {
   title: ReactElement;
   onClose: VoidFunction;
   onConfirm: VoidFunction<Promise<void>>;
+  disableConfirm?: boolean;
 }
