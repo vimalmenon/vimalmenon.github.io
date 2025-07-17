@@ -30,27 +30,25 @@ export const WorkflowNodeDetail: React.FC = () => {
 
             } */}
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+            <Typography sx={{ fontWeight: 'bold' }}>Name</Typography>
+            <span>{selectedWorkflowNode.node.name}</span>
+          </Box>
+          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
             <Typography sx={{ fontWeight: 'bold' }}>Type</Typography>
             <span>{selectedWorkflowNode.node.type}</span>
           </Box>
+
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
             <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
             <span>{selectedWorkflowNode.status}</span>
           </Box>
-          <Box sx={{ display: 'flex' }}>
-            <TextInput
-              value={value}
-              label="Human Input"
-              placeholder="Name"
-              name="humanInput"
-              onChange={(e) => setValue(e.target.value)}
-              disabled={!isReady}
-            />
-          </Box>
-          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-            <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
-            <span>{selectedWorkflowNode.content}</span>
-          </Box>
+
+          {selectedWorkflowNode.content ? (
+            <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+              <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
+              <span>{selectedWorkflowNode.content}</span>
+            </Box>
+          ) : null}
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
             <Typography sx={{ fontWeight: 'bold' }}>Started At</Typography>
             <span>{formatDate(selectedWorkflowNode.startedAt)}</span>
@@ -61,6 +59,16 @@ export const WorkflowNodeDetail: React.FC = () => {
               <span>{formatDate(selectedWorkflowNode.completedAt)}</span>
             </Box>
           ) : null}
+          <Box sx={{ display: 'flex' }}>
+            <TextInput
+              value={value}
+              label="Human Input"
+              placeholder="Name"
+              name="humanInput"
+              onChange={(e) => setValue(e.target.value)}
+              disabled={!isReady}
+            />
+          </Box>
         </Box>
       </Modal>
     );
