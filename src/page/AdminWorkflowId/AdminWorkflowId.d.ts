@@ -56,4 +56,5 @@ export interface IUseWorkflowDataHelper {
   deleteNodeConfirm: VoidFunction<Promise<void>>;
   deleteNodeCancel: VoidFunction;
   getAllData: VoidFunction<Promise<void>>;
+  deleteExecutedWorkflow: (executedWorkflows: IExecuteWorkflow) => Promise<void>;
 }

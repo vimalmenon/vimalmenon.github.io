@@ -27,6 +27,7 @@ const Component: React.FC = () => {
   const { nodeFormMode, onTabChange, selectedTab, setNodeMode } = useTabHelper();
   const {
     createNode,
+    deleteExecutedWorkflow,
     deleteNode,
     deleteNodeCancel,
     deleteNodeConfirm,
@@ -140,7 +141,11 @@ const Component: React.FC = () => {
         {id && workflow && workflow.complete ? (
           <Fragment>
             <Divider />
-            <Execute executedWorkflows={workflow.executedWorkflows} id={id} />
+            <Execute
+              executedWorkflows={workflow.executedWorkflows}
+              id={id}
+              deleteExecutedWorkflow={deleteExecutedWorkflow}
+            />
           </Fragment>
         ) : null}
       </Box>

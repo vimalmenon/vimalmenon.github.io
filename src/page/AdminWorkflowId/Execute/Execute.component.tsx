@@ -10,11 +10,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { Icon } from '@component';
+import { DeleteConfirm, Icon } from '@component';
 import { Icons } from '@data';
+import { IExecuteWorkflow } from '@types';
 import { IExecute } from './Execute';
 
-export const Execute: React.FC<IExecute> = ({ executedWorkflows, id }) => {
+export const Execute: React.FC<IExecute> = ({ deleteExecutedWorkflow, executedWorkflows, id }) => {
   const { push } = useRouter();
 
   return (
@@ -34,12 +35,16 @@ export const Execute: React.FC<IExecute> = ({ executedWorkflows, id }) => {
                 <TableCell>{workflow.name}</TableCell>
                 <TableCell>{workflow.status}</TableCell>
                 <TableCell align="right">
-                  {/* <Icon
-                  icon={<Icons.Delete />}
-                  onClick={() => deleteExecutedWorkflow(workflow.id)}
-                  toolTip="Delete"
-                  size="small"
-                /> */}
+                  <DeleteConfirm<IExecuteWorkflow>
+                    onDelete={deleteExecutedWorkflow}
+                    deleteMsg={
+                      <span>
+                        Delete executed workflow <b>{workflow.name}</b>?
+                      </span>
+                    }
+                    data={workflow}
+                    iconSize="small"
+                  />
                   <Icon
                     icon={<Icons.Play />}
                     onClick={() => push(`/admin/workflows/${id}/execute/${workflow.id}`)}

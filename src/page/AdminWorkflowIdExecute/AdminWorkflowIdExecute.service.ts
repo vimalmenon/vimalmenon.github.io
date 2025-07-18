@@ -44,9 +44,11 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     setLoading(false);
     setShowCreate(false);
   };
-  const deleteExecutedWorkflow = async (eId: string): Promise<void> => {
+  const deleteExecutedWorkflow = async (executedWorkflows: IExecuteWorkflow): Promise<void> => {
     setLoading(true);
-    await makeRequest<IGenericResponse<unknown>>(APIs.DeleteExecutedWorkflow(id, eId));
+    await makeRequest<IGenericResponse<unknown>>(
+      APIs.DeleteExecutedWorkflow(id, executedWorkflows.id)
+    );
     await getExecutedWorkflow(false);
     setLoading(false);
   };

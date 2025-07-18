@@ -6,6 +6,7 @@ import { useAdminContext } from '@context';
 import { APIs } from '@data';
 import {
   FormMode,
+  IExecuteWorkflow,
   IGenericResponse,
   IGenericResponseError,
   INode,
@@ -206,9 +207,18 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowFormMode('VIEW');
     setNodeFormMode('UPDATE');
   };
+  const deleteExecutedWorkflow = async (executedWorkflows: IExecuteWorkflow): Promise<void> => {
+    setLoading(true);
 
+    await makeRequest<IGenericResponse<unknown>>(
+      APIs.DeleteExecutedWorkflow(id, executedWorkflows.id)
+    );
+    await getWorkFlow();
+    setLoading(false);
+  };
   return {
     createNode,
+    deleteExecutedWorkflow,
     deleteNode,
     deleteNodeCancel,
     deleteNodeConfirm,

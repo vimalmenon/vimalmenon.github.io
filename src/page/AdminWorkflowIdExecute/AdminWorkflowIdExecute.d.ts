@@ -13,5 +13,5 @@ export interface IAdminWorkflowIdExecuteContext {
 export interface IUseWorkflowExecuteHelper {
   getExecutedWorkflow: VoidFunction<Promise<void>>;
   executeWorkflow: (data: IExecuteWorkflowSlim) => Promise<void>;
-  deleteExecutedWorkflow: (id: string) => Promise<void>;
+  deleteExecutedWorkflow: (executedWorkflows: IExecuteWorkflow) => Promise<void>;
 }
