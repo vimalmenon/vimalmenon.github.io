@@ -87,7 +87,14 @@ export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
   if (error) {
     return [
       {
-        data: ['123'],
+        data: [''],
+      },
+    ];
+  }
+  if (response.data.length === 0) {
+    return [
+      {
+        data: [''],
       },
     ];
   }
