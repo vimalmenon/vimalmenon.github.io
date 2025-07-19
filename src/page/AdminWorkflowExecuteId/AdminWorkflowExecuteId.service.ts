@@ -47,7 +47,7 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
   };
   const getDatabaseData = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IDbServiceData[]>>(
-      APIs.GetDbServiceData(executeId)
+      APIs.GetDbServiceData(id)
     );
     setDbServiceData(response.data);
   };

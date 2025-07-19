@@ -6,9 +6,13 @@ import React, { useState } from 'react';
 import { Modal, TextInput } from '@component';
 import { Enums } from '@data';
 import { formatDate } from '@utility';
-import { useWorkflowNodeDetailHelper } from '../../AdminWorkflowExecuteId.service';
+import {
+  useAdminWorkflowIdExecuteIdContext,
+  useWorkflowNodeDetailHelper,
+} from '../../AdminWorkflowExecuteId.service';
 
 export const WorkflowNodeDetail: React.FC = () => {
+  const { dbServiceData } = useAdminWorkflowIdExecuteIdContext();
   const { closeSelectedWorkflow, onSelectedWorkflowNodeSubmit, selectedWorkflowNode } =
     useWorkflowNodeDetailHelper();
   const [value, setValue] = useState<string>(selectedWorkflowNode?.content ?? '');
@@ -87,6 +91,9 @@ export const WorkflowNodeDetail: React.FC = () => {
               />
             </Box>
           ) : null}
+          {dbServiceData.map((data) => (
+            <Box key={data.id}>{data.data}</Box>
+          ))}
         </Box>
       </Modal>
     );
