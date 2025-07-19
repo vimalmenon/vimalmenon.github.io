@@ -44,6 +44,7 @@ export interface IUseWorkflowFormHelper {
   editWorkflowFormMode: VoidFunction;
   viewWorkflowFormMode: VoidFunction;
   workflowFormMode: FormMode;
+  deleteWorkflow: VoidFunction<Promise<void>>;
 }
 
 export interface IUseWorkflowDataHelper {
@@ -55,4 +56,5 @@ export interface IUseWorkflowDataHelper {
   deleteNodeConfirm: VoidFunction<Promise<void>>;
   deleteNodeCancel: VoidFunction;
   getAllData: VoidFunction<Promise<void>>;
+  deleteExecutedWorkflow: (executedWorkflows: IExecuteWorkflow) => Promise<void>;
 }

@@ -6,16 +6,18 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.32
+<b>Version</b>: 0.0.33
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [ ] Make Admin Page full page
+- [x] Make Admin Page full page
+- [x] Make the Workflow more consistent
+- [ ] Add support for OpenAI
+- [ ] [fix] Google LLM not working
 - [ ] Improve Workflow
-- [ ] Make the Workflow more consistent
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change

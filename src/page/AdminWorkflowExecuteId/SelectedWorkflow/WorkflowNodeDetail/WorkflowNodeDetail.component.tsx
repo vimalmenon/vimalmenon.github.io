@@ -6,13 +6,18 @@ import React, { useState } from 'react';
 import { Modal, TextInput } from '@component';
 import { Enums } from '@data';
 import { formatDate } from '@utility';
-import { useWorkflowNodeDetailHelper } from '../../AdminWorkflowExecuteId.service';
+import {
+  useAdminWorkflowIdExecuteIdContext,
+  useWorkflowNodeDetailHelper,
+} from '../../AdminWorkflowExecuteId.service';
 
 export const WorkflowNodeDetail: React.FC = () => {
+  const { dbServiceData } = useAdminWorkflowIdExecuteIdContext();
   const { closeSelectedWorkflow, onSelectedWorkflowNodeSubmit, selectedWorkflowNode } =
     useWorkflowNodeDetailHelper();
   const [value, setValue] = useState<string>(selectedWorkflowNode?.content ?? '');
   const isReady = selectedWorkflowNode?.status === Enums.WorkflowNodeStatus.READY;
+
   if (selectedWorkflowNode) {
     return (
       <Modal
@@ -23,44 +28,72 @@ export const WorkflowNodeDetail: React.FC = () => {
           </Box>
         }
         onClose={closeSelectedWorkflow}
-        onConfirm={onSelectedWorkflowNodeSubmit}
+        onConfirm={async () =>
+          await onSelectedWorkflowNodeSubmit({
+            data: value,
+            id: selectedWorkflowNode.id,
+          })
+        }
+        disableConfirm={selectedWorkflowNode.status === Enums.WorkflowNodeStatus.COMPLETED}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-          {/* {selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput} {
-
-            } */}
+          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+            <Typography sx={{ fontWeight: 'bold' }}>Name</Typography>
+            <span>{selectedWorkflowNode.node.name}</span>
+          </Box>
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
             <Typography sx={{ fontWeight: 'bold' }}>Type</Typography>
             <span>{selectedWorkflowNode.node.type}</span>
           </Box>
+          {selectedWorkflowNode.node.llm ? (
+            <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+              <Typography sx={{ fontWeight: 'bold' }}>LLM</Typography>
+              <span>{selectedWorkflowNode.node.llm}</span>
+            </Box>
+          ) : null}
+          {selectedWorkflowNode.node.message ? (
+            <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+              <Typography sx={{ fontWeight: 'bold' }}>Message</Typography>
+              <span>{selectedWorkflowNode.node.message}</span>
+            </Box>
+          ) : null}
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
             <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
             <span>{selectedWorkflowNode.status}</span>
           </Box>
-          <Box sx={{ display: 'flex' }}>
-            <TextInput
-              value={value}
-              label="Human Input"
-              placeholder="Name"
-              name="humanInput"
-              onChange={(e) => setValue(e.target.value)}
-              disabled={!isReady}
-            />
-          </Box>
-          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-            <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
-            <span>{selectedWorkflowNode.content}</span>
-          </Box>
-          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-            <Typography sx={{ fontWeight: 'bold' }}>Started At</Typography>
-            <span>{formatDate(selectedWorkflowNode.startedAt)}</span>
-          </Box>
+
+          {selectedWorkflowNode.content ? (
+            <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+              <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
+              <span>{selectedWorkflowNode.content}</span>
+            </Box>
+          ) : null}
+          {selectedWorkflowNode.startedAt ? (
+            <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+              <Typography sx={{ fontWeight: 'bold' }}>Started At</Typography>
+              <span>{formatDate(selectedWorkflowNode.startedAt)}</span>
+            </Box>
+          ) : null}
           {selectedWorkflowNode.completedAt ? (
             <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
               <Typography sx={{ fontWeight: 'bold' }}>Completed At</Typography>
               <span>{formatDate(selectedWorkflowNode.completedAt)}</span>
             </Box>
           ) : null}
+          {selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput && isReady ? (
+            <Box sx={{ display: 'flex' }}>
+              <TextInput
+                value={value}
+                label="Human Input"
+                placeholder="Name"
+                name="humanInput"
+                onChange={(e) => setValue(e.target.value)}
+              />
+            </Box>
+          ) : null}
+          {dbServiceData.map((data) => (
+            <Box key={data.id}>{data.data}</Box>
+          ))}
         </Box>
       </Modal>
     );

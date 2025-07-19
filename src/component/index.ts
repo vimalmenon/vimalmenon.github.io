@@ -3,6 +3,7 @@ export * from './AsyncButton';
 export * from './ComingSoon';
 export * from './ConfirmDialog';
 export * from './CopyToClipboard';
+export * from './DeleteConfirm';
 export * from './Icon';
 export * from './ListItem';
 export * from './MainLayout';

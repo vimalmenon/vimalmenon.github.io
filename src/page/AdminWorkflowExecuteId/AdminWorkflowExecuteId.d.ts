@@ -4,7 +4,9 @@ import {
   IExecuteWorkflow,
   IExecuteWorkflowNode,
   IExecuteWorkflowSlim,
+  IWorkflowExecuteParams,
   ReactSetState,
+  VoidFunction,
 } from '@types';
 
 export interface IAdminWorkflowExecuteId {
@@ -37,5 +39,5 @@ export interface IUseWorkflowExecuteHelper {
 export interface IUseWorkflowNodeDetailHelper {
   closeSelectedWorkflow: VoidFunction;
   selectedWorkflowNode: IExecuteWorkflowNode | null;
-  onSelectedWorkflowNodeSubmit: VoidFunction<Promise<void>>;
+  onSelectedWorkflowNodeSubmit: (data: IWorkflowExecuteParams) => Promise<void>;
 }

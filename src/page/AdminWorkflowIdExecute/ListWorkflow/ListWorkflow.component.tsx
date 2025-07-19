@@ -8,8 +8,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useRouter } from 'next/navigation';
-import { Icon } from '@component';
+import { DeleteConfirm, Icon } from '@component';
 import { Icons } from '@data';
+import { IExecuteWorkflow } from '@types';
 import {
   useAdminWorkflowIdExecuteContext,
   useWorkflowExecuteHelper,
@@ -36,11 +37,15 @@ export const ListWorkflow: React.FC = () => {
               <TableCell>{workflow.name}</TableCell>
               <TableCell>{workflow.status}</TableCell>
               <TableCell align="right">
-                <Icon
-                  icon={<Icons.Delete />}
-                  onClick={() => deleteExecutedWorkflow(workflow.id)}
-                  toolTip="Delete"
-                  size="small"
+                <DeleteConfirm<IExecuteWorkflow>
+                  onDelete={deleteExecutedWorkflow}
+                  deleteMsg={
+                    <span>
+                      Delete executed workflow <b>{workflow.name}</b>?
+                    </span>
+                  }
+                  data={workflow}
+                  iconSize="small"
                 />
                 <Icon
                   icon={<Icons.Play />}

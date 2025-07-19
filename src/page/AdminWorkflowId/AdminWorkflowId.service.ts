@@ -1,10 +1,12 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { createContext, useContext } from 'react';
 import { useAdminContext } from '@context';
 import { APIs } from '@data';
 import {
   FormMode,
+  IExecuteWorkflow,
   IGenericResponse,
   IGenericResponseError,
   INode,
@@ -139,7 +141,13 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     const { error, response } = await makeRequest<
       IGenericResponse<IWorkflow>,
       IGenericResponseError
-    >(APIs.UpdateWorkflow(id, data));
+    >(
+      APIs.UpdateWorkflow(id, {
+        complete: data.complete,
+        detail: data.detail,
+        name: data.name,
+      })
+    );
     if (error) {
       setError(error.detail);
       setWorkflowFormMode('VIEW');
@@ -199,9 +207,18 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowFormMode('VIEW');
     setNodeFormMode('UPDATE');
   };
+  const deleteExecutedWorkflow = async (executedWorkflows: IExecuteWorkflow): Promise<void> => {
+    setLoading(true);
 
+    await makeRequest<IGenericResponse<unknown>>(
+      APIs.DeleteExecutedWorkflow(id, executedWorkflows.id)
+    );
+    await getWorkFlow();
+    setLoading(false);
+  };
   return {
     createNode,
+    deleteExecutedWorkflow,
     deleteNode,
     deleteNodeCancel,
     deleteNodeConfirm,
@@ -213,14 +230,22 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
 };
 
 export const useWorkflowFormHelper = (): IUseWorkflowFormHelper => {
-  const { setWorkflowFormMode, workflowFormMode } = useWorkflowContext();
+  const { setWorkflowFormMode, workflow, workflowFormMode } = useWorkflowContext();
+  const { push } = useRouter();
   const editWorkflowFormMode = (): void => {
     setWorkflowFormMode('UPDATE');
   };
   const viewWorkflowFormMode = (): void => {
     setWorkflowFormMode('VIEW');
   };
+  const deleteWorkflow = async (): Promise<void> => {
+    if (workflow) {
+      await makeRequest<IGenericResponse<string[]>>(APIs.DeleteWorkflow(workflow.id));
+      push('/admin/workflows/');
+    }
+  };
   return {
+    deleteWorkflow,
     editWorkflowFormMode,
     viewWorkflowFormMode,
     workflowFormMode,

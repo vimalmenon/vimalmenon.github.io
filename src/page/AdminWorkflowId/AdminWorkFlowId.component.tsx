@@ -7,9 +7,9 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useRouter } from 'next/navigation';
 import { Fragment, useEffect } from 'react';
-import { ConfirmDialog, Icon, WorkflowHeader } from '@component';
+import { ConfirmDialog, DeleteConfirm, Icon, WorkflowHeader } from '@component';
 import { Icons } from '@data';
-import { IAdminWorkflowIdPage } from '@types';
+import { IAdminWorkflowIdPage, IWorkflow } from '@types';
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
   useTabHelper,
@@ -17,6 +17,7 @@ import {
   useWorkflowDataHelper,
   useWorkflowFormHelper,
 } from './AdminWorkflowId.service';
+import { Execute } from './Execute';
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
@@ -26,6 +27,7 @@ const Component: React.FC = () => {
   const { nodeFormMode, onTabChange, selectedTab, setNodeMode } = useTabHelper();
   const {
     createNode,
+    deleteExecutedWorkflow,
     deleteNode,
     deleteNodeCancel,
     deleteNodeConfirm,
@@ -33,7 +35,7 @@ const Component: React.FC = () => {
     id,
     updateNode,
   } = useWorkflowDataHelper();
-  const { editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
+  const { deleteWorkflow, editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
   const { onAddNodeTab } = useTabHelper();
   useEffect(() => {
     getAllData();
@@ -60,6 +62,19 @@ const Component: React.FC = () => {
                     toolTip="Executed Workflows"
                     icon={<Icons.History />}
                     onClick={() => push(`/admin/workflows/${id}/execute/`)}
+                  />
+                ) : null}
+                {workflow ? (
+                  <DeleteConfirm<IWorkflow>
+                    onDelete={deleteWorkflow}
+                    deleteMsg={
+                      <span>
+                        Delete Workflow <b>{workflow.name}</b>?
+                      </span>
+                    }
+                    data={workflow}
+                    disable={workflow.executedWorkflows.length > 0}
+                    iconSize="small"
                   />
                 ) : null}
               </Fragment>
@@ -122,6 +137,17 @@ const Component: React.FC = () => {
             })
           )}
         </Box>
+
+        {id && workflow && workflow.complete ? (
+          <Fragment>
+            <Divider />
+            <Execute
+              executedWorkflows={workflow.executedWorkflows}
+              id={id}
+              deleteExecutedWorkflow={deleteExecutedWorkflow}
+            />
+          </Fragment>
+        ) : null}
       </Box>
     </Fragment>
   );

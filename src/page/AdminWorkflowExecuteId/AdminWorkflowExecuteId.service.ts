@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext } from 'react';
-import { APIs, Enums } from '@data';
+import { APIs } from '@data';
 import {
   IDbServiceData,
   IExecuteWorkflow,
@@ -47,7 +47,7 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
   };
   const getDatabaseData = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IDbServiceData[]>>(
-      APIs.GetDbServiceData(executeId)
+      APIs.GetDbServiceData(id)
     );
     setDbServiceData(response.data);
   };
@@ -70,7 +70,7 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
   const executeWorkflow = async (data: IExecuteWorkflowSlim): Promise<void> => {
     setLoading(true);
     await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id, data));
-    await getExecutedWorkflow(false);
+    await getExecutedWorkflow();
     setLoading(false);
   };
 
@@ -90,16 +90,7 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
     if (node.status === 'COMPLETED') {
       return 'Completed';
     }
-    switch (node.node.type) {
-      case 'HumanInput':
-        return Enums.WorkflowNodeType.HumanInput;
-      case Enums.WorkflowNodeType.LLM:
-        return Enums.WorkflowNodeType.LLM;
-      case 'Service':
-        return Enums.WorkflowNodeType.Service;
-      default:
-        return 'Execute';
-    }
+    return 'Basic';
   };
   const convertNodesToReactFlow = (nodes: IExecuteWorkflowNode[]): IReactFlowNode[] =>
     nodes.map<IReactFlowNode>((node, index) => ({
@@ -127,12 +118,24 @@ export const useWorkflowExecuteHelper = (): IUseWorkflowExecuteHelper => {
 };
 
 export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
-  const { selectedWorkflowNode, setSelectedWorkflowNode } = useAdminWorkflowIdExecuteIdContext();
+  const {
+    executeId,
+    id,
+    selectedWorkflowNode,
+    setSelectedExecutedWorkflow,
+    setSelectedWorkflowNode,
+  } = useAdminWorkflowIdExecuteIdContext();
   const closeSelectedWorkflow = (): void => {
     setSelectedWorkflowNode(null);
   };
-  const onSelectedWorkflowNodeSubmit = async (): Promise<void> => {
-    await Promise.resolve([]);
+  const onSelectedWorkflowNodeSubmit = async (data: IWorkflowExecuteParams): Promise<void> => {
+    if (selectedWorkflowNode) {
+      const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
+        APIs.ExecuteWorkflowNode(id, executeId, data)
+      );
+      setSelectedExecutedWorkflow(response.data);
+      setSelectedWorkflowNode(null);
+    }
   };
   return {
     closeSelectedWorkflow,

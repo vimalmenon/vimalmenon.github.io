@@ -33,7 +33,7 @@ export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export type AnyType = any;
 
-export interface IAPI<T = unknown> {
+export interface IApi<T = unknown> {
   url: string;
   method: 'GET' | 'DELETE' | 'POST' | 'PUT';
   body?: T;
@@ -72,6 +72,11 @@ export interface INode extends INodeSlim {
 export interface INodeFull extends INode {
   requestAtRunTime: boolean;
   updatedAt: string;
+}
+
+export interface IWorkflowUpdate extends IWorkflowSlim {
+  detail: string;
+  complete: boolean;
 }
 
 export interface IWorkflow extends IWorkflowSlim {
@@ -140,7 +145,7 @@ export interface IReactFlowNode {
   type?: ReactFlowType;
 }
 
-export type ReactFlowType = 'HumanInput' | 'Execute' | 'Completed' | 'LLM' | 'Service';
+export type ReactFlowType = 'Completed' | 'Basic';
 
 export interface IReactFlowEdge {
   id: string;
