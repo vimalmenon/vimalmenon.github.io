@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { Modal, TextInput } from '@component';
@@ -91,6 +92,7 @@ export const WorkflowNodeDetail: React.FC = () => {
               />
             </Box>
           ) : null}
+          <Divider />
           {dbServiceData.map((data) => (
             <Box key={data.id}>{data.data}</Box>
           ))}
