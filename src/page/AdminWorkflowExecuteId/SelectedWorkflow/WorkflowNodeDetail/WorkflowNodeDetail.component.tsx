@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { DeleteConfirm, Modal, Table, TextInput } from '@component';
 import { Enums } from '@data';
 import { formatDate } from '@utility';
@@ -110,34 +110,38 @@ export const WorkflowNodeDetail: React.FC = () => {
               />
             </Box>
           ) : null}
-          <Divider />
-          <Table
-            items={dbServiceData}
-            RenderHead={() => (
-              <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>Data</TableCell>
-                <TableCell>Action</TableCell>
-              </TableRow>
-            )}
-            RenderBody={({ data, index }) => (
-              <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
-                <TableCell>{data.id}</TableCell>
-                <TableCell>{data.data}</TableCell>
-                <TableCell>
-                  <DeleteConfirm
-                    onDelete={dbServiceDelete}
-                    deleteMsg={
-                      <span>
-                        Delete Workflow <b>{data.id}</b>?
-                      </span>
-                    }
-                    data={data}
-                  />
-                </TableCell>
-              </TableRow>
-            )}
-          />
+          {selectedWorkflowNode.node.service === Enums.WorkflowNodeService.GetFromDB ? (
+            <Fragment>
+              <Divider />
+              <Table
+                items={dbServiceData}
+                RenderHead={() => (
+                  <TableRow>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Data</TableCell>
+                    <TableCell>Action</TableCell>
+                  </TableRow>
+                )}
+                RenderBody={({ data, index }) => (
+                  <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
+                    <TableCell>{data.id}</TableCell>
+                    <TableCell>{data.data}</TableCell>
+                    <TableCell>
+                      <DeleteConfirm
+                        onDelete={dbServiceDelete}
+                        deleteMsg={
+                          <span>
+                            Delete Workflow <b>{data.id}</b>?
+                          </span>
+                        }
+                        data={data}
+                      />
+                    </TableCell>
+                  </TableRow>
+                )}
+              />
+            </Fragment>
+          ) : null}
         </Box>
       </Modal>
     );
