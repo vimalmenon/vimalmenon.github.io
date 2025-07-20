@@ -2,9 +2,11 @@
 
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import { Modal, TextInput } from '@component';
+import { Modal, Table, TextInput } from '@component';
 import { Enums } from '@data';
 import { formatDate } from '@utility';
 import {
@@ -93,9 +95,21 @@ export const WorkflowNodeDetail: React.FC = () => {
             </Box>
           ) : null}
           <Divider />
-          {dbServiceData.map((data) => (
-            <Box key={data.id}>{data.data}</Box>
-          ))}
+          <Table
+            items={dbServiceData}
+            RenderBody={({ data }) => (
+              <TableRow>
+                <TableCell>{data.id}</TableCell>
+                <TableCell>{data.id}</TableCell>
+              </TableRow>
+            )}
+            RenderHead={() => (
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Data</TableCell>
+              </TableRow>
+            )}
+          />
         </Box>
       </Modal>
     );

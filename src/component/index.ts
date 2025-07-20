@@ -10,6 +10,7 @@ export * from './MainLayout';
 export * from './Modal';
 export * from './MultiSelect';
 export * from './ReactFlow';
+export * from './Table';
 export * from './TextInput';
 export * from './ViewData';
 export * from './WorkflowHeader';
