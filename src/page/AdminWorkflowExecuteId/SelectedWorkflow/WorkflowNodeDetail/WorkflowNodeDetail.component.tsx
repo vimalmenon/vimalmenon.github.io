@@ -37,7 +37,7 @@ export const WorkflowNodeDetail: React.FC = () => {
             id: selectedWorkflowNode.id,
           })
         }
-        disableConfirm={selectedWorkflowNode.status === Enums.WorkflowNodeStatus.COMPLETED}
+        disableConfirm={!isReady}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
