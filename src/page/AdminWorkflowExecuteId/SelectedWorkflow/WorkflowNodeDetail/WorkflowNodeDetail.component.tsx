@@ -19,6 +19,7 @@ export const WorkflowNodeDetail: React.FC = () => {
   const { closeSelectedWorkflow, onSelectedWorkflowNodeSubmit, selectedWorkflowNode } =
     useWorkflowNodeDetailHelper();
   const [value, setValue] = useState<string>(selectedWorkflowNode?.content ?? '');
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const isReady = selectedWorkflowNode?.status === Enums.WorkflowNodeStatus.READY;
 
   if (selectedWorkflowNode) {
@@ -97,16 +98,16 @@ export const WorkflowNodeDetail: React.FC = () => {
           <Divider />
           <Table
             items={dbServiceData}
-            RenderBody={({ data }) => (
-              <TableRow>
-                <TableCell>{data.id}</TableCell>
-                <TableCell>{data.id}</TableCell>
-              </TableRow>
-            )}
             RenderHead={() => (
               <TableRow>
                 <TableCell>ID</TableCell>
                 <TableCell>Data</TableCell>
+              </TableRow>
+            )}
+            RenderBody={({ data, index }) => (
+              <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
+                <TableCell>{data.id}</TableCell>
+                <TableCell>{data.data}</TableCell>
               </TableRow>
             )}
           />
