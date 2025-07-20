@@ -103,9 +103,9 @@ const ExecuteWorkflowNode = (wfId: string, id: string, body: IWorkflowExecutePar
   url: `workflow/execute/resume/${wfId}/${id}`,
 });
 
-const GetDbServiceData = (wfId: string): IApi => ({
+const GetDbServiceData = (): IApi => ({
   method: 'GET',
-  url: `llm_data/db/${wfId}`,
+  url: `llm_data/db`,
 });
 
 export const APIs = {
