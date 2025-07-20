@@ -13,9 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [x] Make Admin Page full page
-- [x] Make the Workflow more consistent
-- [ ] Add support for OpenAI
+- [x] Add support for OpenAI
 - [ ] [fix] Google LLM not working
 - [ ] Improve Workflow
 - [ ] Create validate nodes
