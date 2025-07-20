@@ -33,8 +33,17 @@ export enum WorkflowPage {
   WorkflowId = 'WorkflowId',
 }
 
+export enum WorkflowNodeService {
+  GetFromDB = 'GetFromDB',
+  GetFromS3 = 'GetFromS3',
+  SaveToDB = 'SaveToDB',
+  SaveToS3 = 'SaveToS3',
+  InternetSearch = 'InternetSearch',
+}
+
 export const Enums = {
   WorkflowNodeFields,
+  WorkflowNodeService,
   WorkflowNodeStatus,
   WorkflowNodeType,
   WorkflowPage,

@@ -23,7 +23,22 @@ export const WorkflowNodeDetail: React.FC = () => {
   const [value, setValue] = useState<string>(selectedWorkflowNode?.content ?? '');
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const isReady = selectedWorkflowNode?.status === Enums.WorkflowNodeStatus.READY;
-
+  const onValueSubmit = async (): Promise<void> => {
+    if (selectedWorkflowNode) {
+      if (selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput) {
+        await onSelectedWorkflowNodeSubmit({
+          data: value,
+          id: selectedWorkflowNode.id,
+        });
+      }
+      if (selectedWorkflowNode.node.service === Enums.WorkflowNodeService.GetFromDB) {
+        await onSelectedWorkflowNodeSubmit({
+          data: dbServiceData[selectedRow ?? 0].data,
+          id: selectedWorkflowNode.id,
+        });
+      }
+    }
+  };
   if (selectedWorkflowNode) {
     return (
       <Modal
@@ -34,12 +49,7 @@ export const WorkflowNodeDetail: React.FC = () => {
           </Box>
         }
         onClose={closeSelectedWorkflow}
-        onConfirm={async () =>
-          await onSelectedWorkflowNodeSubmit({
-            data: value,
-            id: selectedWorkflowNode.id,
-          })
-        }
+        onConfirm={onValueSubmit}
         disableConfirm={!isReady}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
