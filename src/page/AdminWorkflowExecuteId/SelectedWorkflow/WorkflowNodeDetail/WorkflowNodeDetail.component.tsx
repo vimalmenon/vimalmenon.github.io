@@ -102,12 +102,14 @@ export const WorkflowNodeDetail: React.FC = () => {
               <TableRow>
                 <TableCell>ID</TableCell>
                 <TableCell>Data</TableCell>
+                <TableCell>Action</TableCell>
               </TableRow>
             )}
             RenderBody={({ data, index }) => (
               <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
                 <TableCell>{data.id}</TableCell>
                 <TableCell>{data.data}</TableCell>
+                <TableCell> Delete</TableCell>
               </TableRow>
             )}
           />
