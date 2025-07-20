@@ -6,10 +6,11 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import { Modal, Table, TextInput } from '@component';
+import { DeleteConfirm, Modal, Table, TextInput } from '@component';
 import { Enums } from '@data';
 import { formatDate } from '@utility';
 import {
+  useAdminWorkflowIdExecuteHelper,
   useAdminWorkflowIdExecuteIdContext,
   useWorkflowNodeDetailHelper,
 } from '../../AdminWorkflowExecuteId.service';
@@ -18,6 +19,7 @@ export const WorkflowNodeDetail: React.FC = () => {
   const { dbServiceData } = useAdminWorkflowIdExecuteIdContext();
   const { closeSelectedWorkflow, onSelectedWorkflowNodeSubmit, selectedWorkflowNode } =
     useWorkflowNodeDetailHelper();
+  const { dbServiceDelete } = useAdminWorkflowIdExecuteHelper();
   const [value, setValue] = useState<string>(selectedWorkflowNode?.content ?? '');
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const isReady = selectedWorkflowNode?.status === Enums.WorkflowNodeStatus.READY;
@@ -109,7 +111,17 @@ export const WorkflowNodeDetail: React.FC = () => {
               <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
                 <TableCell>{data.id}</TableCell>
                 <TableCell>{data.data}</TableCell>
-                <TableCell> Delete</TableCell>
+                <TableCell>
+                  <DeleteConfirm
+                    onDelete={dbServiceDelete}
+                    deleteMsg={
+                      <span>
+                        Delete Workflow <b>{data.id}</b>?
+                      </span>
+                    }
+                    data={data}
+                  />
+                </TableCell>
               </TableRow>
             )}
           />

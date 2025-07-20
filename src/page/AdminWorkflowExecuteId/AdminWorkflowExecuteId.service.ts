@@ -51,9 +51,14 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
     );
     setDbServiceData(response.data);
   };
+  const dbServiceDelete = async (data: IDbServiceData): Promise<void> => {
+    await makeRequest<unknown>(APIs.DeleteDbServiceData(data.id));
+    await getDatabaseData();
+  };
   return {
     getDatabaseData,
     getExecutedWorkflow,
+    dbServiceDelete,
   };
 };
 
@@ -137,6 +142,7 @@ export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
       setSelectedWorkflowNode(null);
     }
   };
+
   return {
     closeSelectedWorkflow,
     onSelectedWorkflowNodeSubmit,

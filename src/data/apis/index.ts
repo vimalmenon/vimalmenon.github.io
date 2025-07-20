@@ -108,9 +108,15 @@ const GetDbServiceData = (): IApi => ({
   url: `llm_data/db`,
 });
 
+const DeleteDbServiceData = (id: string): IApi => ({
+  method: 'DELETE',
+  url: `llm_data/db/${id}`,
+});
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
+  DeleteDbServiceData,
   DeleteExecutedWorkflow,
   DeleteWorkflow,
   DeleteWorkflowNode,
