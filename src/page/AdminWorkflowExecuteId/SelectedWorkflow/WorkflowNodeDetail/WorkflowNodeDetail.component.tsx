@@ -70,20 +70,20 @@ export const WorkflowNodeDetail: React.FC = () => {
               <span>{selectedWorkflowNode.node.llm}</span>
             </Box>
           ) : null}
+          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+            <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
+            <span>{selectedWorkflowNode.status}</span>
+          </Box>
           {selectedWorkflowNode.node.message ? (
             <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
               <Typography sx={{ fontWeight: 'bold' }}>Message</Typography>
               <span>{selectedWorkflowNode.node.message}</span>
             </Box>
           ) : null}
-          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-            <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
-            <span>{selectedWorkflowNode.status}</span>
-          </Box>
 
           {selectedWorkflowNode.content ? (
             <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-              <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
+              <Typography sx={{ fontWeight: 'bold', minWidth: '250px' }}>Data</Typography>
               <span>{selectedWorkflowNode.content}</span>
             </Box>
           ) : null}
