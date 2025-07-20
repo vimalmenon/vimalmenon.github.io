@@ -5,9 +5,13 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import Divider from '@mui/material/Divider';
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
 import React from 'react';
 import { AsyncButton } from '@component';
 import { Icons } from '@data';
+import { AnyType } from '@types';
 import { IConfirmDialog, IShowIcon, IShowTitle } from './ConfirmDialog';
 
 const ShowIcon: React.FC<IShowIcon> = ({ icon }) => {
@@ -27,6 +31,15 @@ const ShowTitle: React.FC<IShowTitle> = ({ icon, title }) => (
   </Box>
 );
 
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<IConfirmDialog, AnyType>;
+  },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 export const ConfirmDialog: React.FC<IConfirmDialog> = ({
   icon,
   loading = false,
@@ -35,10 +48,20 @@ export const ConfirmDialog: React.FC<IConfirmDialog> = ({
   open,
   title,
 }) => (
-  <Dialog open={open} keepMounted onClose={onCancel} maxWidth="md" fullWidth>
+  <Dialog
+    open={open}
+    keepMounted
+    onClose={onCancel}
+    maxWidth="md"
+    fullWidth
+    slots={{
+      transition: Transition,
+    }}
+  >
     <DialogTitle>
       <ShowTitle icon={icon} title={title} />
     </DialogTitle>
+    <Divider />
     <DialogActions>
       <Button onClick={onCancel} variant="outlined" endIcon={<Icons.Close />} disabled={loading}>
         Cancel
