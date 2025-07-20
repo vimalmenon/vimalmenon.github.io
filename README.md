@@ -14,8 +14,9 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Add support for OpenAI
+- [x] Improve Workflow
+- [x] Show time in more readable format
 - [ ] [fix] Google LLM not working
-- [ ] Improve Workflow
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change
@@ -38,7 +39,6 @@ This is Website for Vimal Menon
 - [ ] Create API for production
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
-- [ ] Show time in more readable format
 
 ## Ideas
 
