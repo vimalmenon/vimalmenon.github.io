@@ -119,6 +119,7 @@ export const WorkflowNodeDetail: React.FC = () => {
                   <TableRow>
                     <TableCell>ID</TableCell>
                     <TableCell>Data</TableCell>
+                    <TableCell>Created Date</TableCell>
                     <TableCell>Action</TableCell>
                   </TableRow>
                 )}
@@ -126,6 +127,7 @@ export const WorkflowNodeDetail: React.FC = () => {
                   <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
                     <TableCell>{data.id}</TableCell>
                     <TableCell>{data.data}</TableCell>
+                    <TableCell>{formatDate(data.createdDate)}</TableCell>
                     <TableCell>
                       <DeleteConfirm
                         onDelete={dbServiceDelete}
