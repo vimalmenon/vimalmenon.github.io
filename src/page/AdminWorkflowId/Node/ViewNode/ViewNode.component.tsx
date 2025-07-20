@@ -3,6 +3,7 @@
 import Box from '@mui/material/Box';
 import { Enums } from '@data';
 import { INode } from '@types';
+import { formatDate } from '@utility';
 import { useWorkflowContext } from '../../AdminWorkflowId.service';
 import { nodeType } from '../Node.service';
 import { IViewNode } from './ViewNode';
@@ -92,7 +93,7 @@ export const ViewNode: React.FC<IViewNode> = ({ data }) => {
       ) : null}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>Updated at</Box>
-        <Box>{data.updatedAt}</Box>
+        <Box>{formatDate(data.updatedAt)}</Box>
       </Box>
     </Box>
   );
