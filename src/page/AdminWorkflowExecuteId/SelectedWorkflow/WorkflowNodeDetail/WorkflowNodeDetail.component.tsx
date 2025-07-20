@@ -30,10 +30,13 @@ export const WorkflowNodeDetail: React.FC = () => {
           data: value,
           id: selectedWorkflowNode.id,
         });
-      }
-      if (selectedWorkflowNode.node.service === Enums.WorkflowNodeService.GetFromDB) {
+      } else if (selectedWorkflowNode.node.service === Enums.WorkflowNodeService.GetFromDB) {
         await onSelectedWorkflowNodeSubmit({
           data: dbServiceData[selectedRow ?? 0].data,
+          id: selectedWorkflowNode.id,
+        });
+      } else {
+        await onSelectedWorkflowNodeSubmit({
           id: selectedWorkflowNode.id,
         });
       }
