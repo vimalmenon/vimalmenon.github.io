@@ -56,9 +56,9 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
     await getDatabaseData();
   };
   return {
+    dbServiceDelete,
     getDatabaseData,
     getExecutedWorkflow,
-    dbServiceDelete,
   };
 };
 
