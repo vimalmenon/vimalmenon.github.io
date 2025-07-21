@@ -16,6 +16,7 @@ This is Website for Vimal Menon
 - [x] Add support for OpenAI
 - [x] Improve Workflow
 - [x] Show time in more readable format
+- [ ] Remove execute from workflow
 - [ ] [fix] Google LLM not working
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
