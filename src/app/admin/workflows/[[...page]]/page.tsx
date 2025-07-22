@@ -18,9 +18,8 @@ import {
   AdminWorkflows,
 } from '@page';
 import { StyledPage } from '@style';
-import { IGenericResponse, IWorkflow } from '@types';
+import { ICatchAll, ICatchAllParams, IGenericResponse, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
-import { IPage, IWorkflowId } from './id';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
@@ -41,7 +40,7 @@ const getPage = (data?: string[]): WorkflowPage => {
   return WorkflowPage.WorkflowId;
 };
 
-const Page: NextPage<IPage> = async ({ params }) => {
+const Page: NextPage<ICatchAllParams> = async ({ params }) => {
   const { page: pageParams } = await params;
   const page = getPage(pageParams);
   const [id, , executeId] = pageParams ?? [];
@@ -82,7 +81,7 @@ const Page: NextPage<IPage> = async ({ params }) => {
   );
 };
 
-export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
+export const generateStaticParams = async (): Promise<ICatchAll[]> => {
   const { error, response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
   if (error) {
     return [
@@ -98,7 +97,7 @@ export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
       },
     ];
   }
-  return response.data.reduce<IWorkflowId[]>((result, value) => {
+  return response.data.reduce<ICatchAll[]>((result, value) => {
     const executedWorkflows = value.executedWorkflows.map((data) => ({
       page: [value.id, 'execute', data.id],
     }));
