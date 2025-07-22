@@ -42,9 +42,9 @@ const getPage = (data?: string[]): WorkflowPage => {
 };
 
 const Page: NextPage<IPage> = async ({ params }) => {
-  const { data } = await params;
-  const page = getPage(data);
-  const [id, , executeId] = data ?? [];
+  const { page: pageParams } = await params;
+  const page = getPage(pageParams);
+  const [id, , executeId] = pageParams ?? [];
   return (
     <AdminLayout>
       <StyledPage sx={{ flexDirection: 'column' }}>
@@ -87,32 +87,32 @@ export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
   if (error) {
     return [
       {
-        data: [''],
+        page: [''],
       },
     ];
   }
   if (response.data.length === 0) {
     return [
       {
-        data: [''],
+        page: [''],
       },
     ];
   }
   return response.data.reduce<IWorkflowId[]>((result, value) => {
     const executedWorkflows = value.executedWorkflows.map((data) => ({
-      data: [value.id, 'execute', data.id],
+      page: [value.id, 'execute', data.id],
     }));
     return [
       ...result,
       ...[
         {
-          data: [value.id],
+          page: [value.id],
         },
         {
-          data: [value.id, 'execute'],
+          page: [value.id, 'execute'],
         },
         {
-          data: [''],
+          page: [''],
         },
       ],
       ...executedWorkflows,

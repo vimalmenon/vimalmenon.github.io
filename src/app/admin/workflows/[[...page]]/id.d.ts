@@ -1,7 +1,7 @@
 import { VoidFunction } from '@types';
 
 export interface IWorkflowId {
-  data?: string[];
+  page?: string[];
 }
 
 export interface IPage {
