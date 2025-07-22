@@ -2,7 +2,7 @@ import Divider from '@mui/material/Divider';
 import type { Metadata, NextPage } from 'next';
 import { Fragment } from 'react';
 import { Breadcrumbs } from '@common';
-import { AdminLayout } from '@component';
+import { MainLayout } from '@component';
 import {
   APIs,
   GenerateExecuteWorkflow,
@@ -45,7 +45,7 @@ const Page: NextPage<ICatchAllParams> = async ({ params }) => {
   const page = getPage(pageParams);
   const [id, , executeId] = pageParams ?? [];
   return (
-    <AdminLayout>
+    <MainLayout>
       <StyledPage sx={{ flexDirection: 'column' }}>
         {page === WorkflowPage.Workflow ? (
           <Fragment>
@@ -77,7 +77,7 @@ const Page: NextPage<ICatchAllParams> = async ({ params }) => {
           </Fragment>
         ) : null}
       </StyledPage>
-    </AdminLayout>
+    </MainLayout>
   );
 };
 
