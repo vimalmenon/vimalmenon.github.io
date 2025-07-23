@@ -169,6 +169,14 @@ export interface IDbServiceData {
   createdDate: string;
 }
 
+export interface ICatchAll {
+  page?: string[];
+}
+
+export interface ICatchAllParams {
+  params: Promise<ICatchAll>;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';

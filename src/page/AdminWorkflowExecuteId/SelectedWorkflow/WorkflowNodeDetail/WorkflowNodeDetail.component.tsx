@@ -1,12 +1,16 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import React, { useState } from 'react';
-import { Modal, TextInput } from '@component';
+import React, { Fragment, useState } from 'react';
+import { DeleteConfirm, Modal, Table, TextInput } from '@component';
 import { Enums } from '@data';
 import { formatDate } from '@utility';
 import {
+  useAdminWorkflowIdExecuteHelper,
   useAdminWorkflowIdExecuteIdContext,
   useWorkflowNodeDetailHelper,
 } from '../../AdminWorkflowExecuteId.service';
@@ -15,9 +19,29 @@ export const WorkflowNodeDetail: React.FC = () => {
   const { dbServiceData } = useAdminWorkflowIdExecuteIdContext();
   const { closeSelectedWorkflow, onSelectedWorkflowNodeSubmit, selectedWorkflowNode } =
     useWorkflowNodeDetailHelper();
+  const { dbServiceDelete } = useAdminWorkflowIdExecuteHelper();
   const [value, setValue] = useState<string>(selectedWorkflowNode?.content ?? '');
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const isReady = selectedWorkflowNode?.status === Enums.WorkflowNodeStatus.READY;
-
+  const onValueSubmit = async (): Promise<void> => {
+    if (selectedWorkflowNode) {
+      if (selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput) {
+        await onSelectedWorkflowNodeSubmit({
+          data: value,
+          id: selectedWorkflowNode.id,
+        });
+      } else if (selectedWorkflowNode.node.service === Enums.WorkflowNodeService.GetFromDB) {
+        await onSelectedWorkflowNodeSubmit({
+          data: dbServiceData[selectedRow ?? 0].data,
+          id: selectedWorkflowNode.id,
+        });
+      } else {
+        await onSelectedWorkflowNodeSubmit({
+          id: selectedWorkflowNode.id,
+        });
+      }
+    }
+  };
   if (selectedWorkflowNode) {
     return (
       <Modal
@@ -28,13 +52,8 @@ export const WorkflowNodeDetail: React.FC = () => {
           </Box>
         }
         onClose={closeSelectedWorkflow}
-        onConfirm={async () =>
-          await onSelectedWorkflowNodeSubmit({
-            data: value,
-            id: selectedWorkflowNode.id,
-          })
-        }
-        disableConfirm={selectedWorkflowNode.status === Enums.WorkflowNodeStatus.COMPLETED}
+        onConfirm={onValueSubmit}
+        disableConfirm={!isReady}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
@@ -51,20 +70,20 @@ export const WorkflowNodeDetail: React.FC = () => {
               <span>{selectedWorkflowNode.node.llm}</span>
             </Box>
           ) : null}
+          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+            <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
+            <span>{selectedWorkflowNode.status}</span>
+          </Box>
           {selectedWorkflowNode.node.message ? (
             <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
               <Typography sx={{ fontWeight: 'bold' }}>Message</Typography>
               <span>{selectedWorkflowNode.node.message}</span>
             </Box>
           ) : null}
-          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-            <Typography sx={{ fontWeight: 'bold' }}>Status</Typography>
-            <span>{selectedWorkflowNode.status}</span>
-          </Box>
 
           {selectedWorkflowNode.content ? (
             <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-              <Typography sx={{ fontWeight: 'bold' }}>Data</Typography>
+              <Typography sx={{ fontWeight: 'bold', minWidth: '250px' }}>Data</Typography>
               <span>{selectedWorkflowNode.content}</span>
             </Box>
           ) : null}
@@ -91,9 +110,40 @@ export const WorkflowNodeDetail: React.FC = () => {
               />
             </Box>
           ) : null}
-          {dbServiceData.map((data) => (
-            <Box key={data.id}>{data.data}</Box>
-          ))}
+          {selectedWorkflowNode.node.service === Enums.WorkflowNodeService.GetFromDB ? (
+            <Fragment>
+              <Divider />
+              <Table
+                items={dbServiceData}
+                RenderHead={() => (
+                  <TableRow>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Data</TableCell>
+                    <TableCell>Created Date</TableCell>
+                    <TableCell>Action</TableCell>
+                  </TableRow>
+                )}
+                RenderBody={({ data, index }) => (
+                  <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
+                    <TableCell>{data.id}</TableCell>
+                    <TableCell>{data.data}</TableCell>
+                    <TableCell>{formatDate(data.createdDate)}</TableCell>
+                    <TableCell>
+                      <DeleteConfirm
+                        onDelete={dbServiceDelete}
+                        deleteMsg={
+                          <span>
+                            Delete Workflow <b>{data.id}</b>?
+                          </span>
+                        }
+                        data={data}
+                      />
+                    </TableCell>
+                  </TableRow>
+                )}
+              />
+            </Fragment>
+          ) : null}
         </Box>
       </Modal>
     );

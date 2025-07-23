@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import { formatDate } from '@utility';
 import { IWorkflowView } from './WorkflowView';
 
 export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (
@@ -18,16 +19,12 @@ export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (
       <Box>{data.detail}</Box>
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Box>Executed Workflow Count</Box>
-      <Box>{data.executedWorkflows.length}</Box>
-    </Box>
-    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box>Complete</Box>
       <Box>{data.complete ? 'True' : 'False'}</Box>
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box>Updated At</Box>
-      <Box>{data.updatedAt}</Box>
+      <Box>{formatDate(data.updatedAt)}</Box>
     </Box>
   </Box>
 );

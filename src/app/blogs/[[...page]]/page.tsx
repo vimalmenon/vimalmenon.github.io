@@ -2,7 +2,7 @@ import Divider from '@mui/material/Divider';
 import type { Metadata, NextPage } from 'next';
 import { Fragment } from 'react';
 import { Breadcrumbs } from '@common';
-import { AdminLayout } from '@component';
+import { MainLayout } from '@component';
 import {
   APIs,
   GenerateExecuteWorkflow,
@@ -18,9 +18,8 @@ import {
   AdminWorkflows,
 } from '@page';
 import { StyledPage } from '@style';
-import { IGenericResponse, IWorkflow } from '@types';
+import { ICatchAll, ICatchAllParams, IGenericResponse, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
-import { IPage, IWorkflowId } from './id';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
@@ -41,12 +40,12 @@ const getPage = (data?: string[]): WorkflowPage => {
   return WorkflowPage.WorkflowId;
 };
 
-const Page: NextPage<IPage> = async ({ params }) => {
-  const { data } = await params;
-  const page = getPage(data);
-  const [id, , executeId] = data ?? [];
+const Page: NextPage<ICatchAllParams> = async ({ params }) => {
+  const { page: pageParams } = await params;
+  const page = getPage(pageParams);
+  const [id, , executeId] = pageParams ?? [];
   return (
-    <AdminLayout>
+    <MainLayout>
       <StyledPage sx={{ flexDirection: 'column' }}>
         {page === WorkflowPage.Workflow ? (
           <Fragment>
@@ -78,41 +77,41 @@ const Page: NextPage<IPage> = async ({ params }) => {
           </Fragment>
         ) : null}
       </StyledPage>
-    </AdminLayout>
+    </MainLayout>
   );
 };
 
-export const generateStaticParams = async (): Promise<IWorkflowId[]> => {
+export const generateStaticParams = async (): Promise<ICatchAll[]> => {
   const { error, response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
   if (error) {
     return [
       {
-        data: [''],
+        page: [''],
       },
     ];
   }
   if (response.data.length === 0) {
     return [
       {
-        data: [''],
+        page: [''],
       },
     ];
   }
-  return response.data.reduce<IWorkflowId[]>((result, value) => {
+  return response.data.reduce<ICatchAll[]>((result, value) => {
     const executedWorkflows = value.executedWorkflows.map((data) => ({
-      data: [value.id, 'execute', data.id],
+      page: [value.id, 'execute', data.id],
     }));
     return [
       ...result,
       ...[
         {
-          data: [value.id],
+          page: [value.id],
         },
         {
-          data: [value.id, 'execute'],
+          page: [value.id, 'execute'],
         },
         {
-          data: [''],
+          page: [''],
         },
       ],
       ...executedWorkflows,

@@ -6,18 +6,18 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.33
+<b>Version</b>: 0.0.34
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
 ## To Do
 
-- [x] Make Admin Page full page
-- [x] Make the Workflow more consistent
-- [ ] Add support for OpenAI
+- [x] Add support for OpenAI
+- [x] Improve Workflow
+- [x] Show time in more readable format
+- [ ] Remove execute from workflow
 - [ ] [fix] Google LLM not working
-- [ ] Improve Workflow
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change
@@ -40,7 +40,6 @@ This is Website for Vimal Menon
 - [ ] Create API for production
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
-- [ ] Show time in more readable format
 
 ## Ideas
 

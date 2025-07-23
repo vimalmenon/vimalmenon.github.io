@@ -84,6 +84,16 @@ const Component: React.FC = () => {
       />
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
+        {id && workflow && workflow.complete ? (
+          <Fragment>
+            <Execute
+              executedWorkflows={workflow.executedWorkflows}
+              id={id}
+              deleteExecutedWorkflow={deleteExecutedWorkflow}
+            />
+            <Divider />
+          </Fragment>
+        ) : null}
         {selectedNode ? (
           <ConfirmDialog
             icon="WARNING"
@@ -137,17 +147,6 @@ const Component: React.FC = () => {
             })
           )}
         </Box>
-
-        {id && workflow && workflow.complete ? (
-          <Fragment>
-            <Divider />
-            <Execute
-              executedWorkflows={workflow.executedWorkflows}
-              id={id}
-              deleteExecutedWorkflow={deleteExecutedWorkflow}
-            />
-          </Fragment>
-        ) : null}
       </Box>
     </Fragment>
   );

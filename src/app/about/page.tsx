@@ -39,7 +39,7 @@ const Page: React.FC = () => (
           My expertise lies in <b>AI</b>, <b>Python</b>, and <b>JavaScript</b>, and I love using
           these tools to solve complex problems and create innovative solutions. Whether it&apos;s
           building intelligent systems, developing web applications, or diving into the latest
-          advancements in AI, I’m always eager to learn and grow.{' '}
+          advancements in AI, I&apos;m always eager to learn and grow.{' '}
         </Box>
         <Box component="h3" sx={{ color: 'primary.main' }}>
           What I Do
@@ -49,7 +49,7 @@ const Page: React.FC = () => (
           Through my <b>blogs</b> and <b>YouTube videos</b>, I aim to make complex topics in
           software engineering and AI more accessible and engaging. My goal is to inspire others to
           explore these fields and discover the endless possibilities they offer. -
-          <b>YouTube Channel</b> :{' '}
+          <b>YouTube Channel</b> :
           <MuiLink
             href="https://www.youtube.com/@real_vimal_menon"
             target="_blank"
@@ -58,10 +58,10 @@ const Page: React.FC = () => (
             real_vimal_menon
           </MuiLink>{' '}
           Here, I share tutorials, insights, and discussions on topics related to AI, Python,
-          JavaScript, and more. Whether you’re a beginner or an experienced developer, there’s
-          something for everyone! - <b>Email</b> :{' '}
+          JavaScript, and more. Whether you&apos;re a beginner or an experienced developer,
+          there&apos;s something for everyone! - <b>Email</b> :{' '}
           <CopyToClipboard text="realvimalmenon@proton.me" /> Feel free to reach out if you have any
-          questions, collaboration ideas, or just want to connect. I’d love to hear from you!
+          questions, collaboration ideas, or just want to connect. I&apos;d love to hear from you!
         </Box>
         <Box component="h3" sx={{ color: 'primary.main' }}>
           Why I Do It
@@ -75,9 +75,9 @@ const Page: React.FC = () => (
           Let’s Connect!
         </Box>
         <Box sx={{ textIndent: '20px' }}>
-          If you’re as passionate about software engineering, AI, or technology in general as I am,
-          I’d love to connect with you. Subscribe to my YouTube channel, drop me an email, or follow
-          my journey as I continue to explore and share the exciting world of technology.
+          If you&apos;re as passionate about software engineering, AI, or technology in general as I
+          am, I&apos;d love to connect with you. Subscribe to my YouTube channel, drop me an email,
+          or follow my journey as I continue to explore and share the exciting world of technology.
         </Box>
         <div>Thank you for stopping by, and I look forward to connecting with you! </div>
         <br />

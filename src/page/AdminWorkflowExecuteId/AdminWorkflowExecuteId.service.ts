@@ -47,11 +47,16 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
   };
   const getDatabaseData = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IDbServiceData[]>>(
-      APIs.GetDbServiceData(id)
+      APIs.GetDbServiceData()
     );
     setDbServiceData(response.data);
   };
+  const dbServiceDelete = async (data: IDbServiceData): Promise<void> => {
+    await makeRequest<unknown>(APIs.DeleteDbServiceData(data.id));
+    await getDatabaseData();
+  };
   return {
+    dbServiceDelete,
     getDatabaseData,
     getExecutedWorkflow,
   };
@@ -137,6 +142,7 @@ export const useWorkflowNodeDetailHelper = (): IUseWorkflowNodeDetailHelper => {
       setSelectedWorkflowNode(null);
     }
   };
+
   return {
     closeSelectedWorkflow,
     onSelectedWorkflowNodeSubmit,

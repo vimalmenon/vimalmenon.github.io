@@ -5,6 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
@@ -54,7 +55,9 @@ export const Modal: React.FC<IModal> = ({
     >
       <Icons.Close />
     </IconButton>
+    <Divider />
     <DialogContent>{children}</DialogContent>
+    <Divider />
     <DialogActions>
       <Button variant="outlined" onClick={onClose}>
         Close
