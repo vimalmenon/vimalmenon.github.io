@@ -14,27 +14,28 @@ import { Tools } from './Tools';
 export const Others: React.FC = () => {
   const { createUUID, uuid } = useOthersHelper();
   return (
-    <Box sx={{ paddingY: 2 }}>
-      <Box sx={{ marginY: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
+      <Box sx={{ paddingX: 2 }}>
         <TextField required label="UUID" value={uuid} size="small" disabled={true} />
         <Button variant="outlined" onClick={createUUID}>
           Create
         </Button>
       </Box>
       <Divider />
-      <Box sx={{ marginY: 2 }}>
+      <Box sx={{ paddingX: 2 }}>
         <Tools />
       </Box>
       <Divider />
-      <Box sx={{ marginY: 2 }}>
+      <Box sx={{ paddingX: 2 }}>
         <Service />
       </Box>
       <Divider />
-      <Box sx={{ marginY: 2 }}>
-        <Llm />
-      </Box>
-      <Box sx={{ marginY: 2 }}>
+      <Box sx={{ paddingX: 2 }}>
         <StructuredOutput />
+      </Box>
+      <Divider />
+      <Box sx={{ paddingX: 2 }}>
+        <Llm />
       </Box>
     </Box>
   );
