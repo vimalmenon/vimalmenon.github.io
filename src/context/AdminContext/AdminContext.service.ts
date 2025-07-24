@@ -9,10 +9,12 @@ import { DispatchType, IAdminAction, IAdminContext } from './AdminContext';
 export const initialState: IAdminContext = {
   getLLMs: NotImplemented,
   getServices: NotImplemented,
+  getStructuredOutputTypes: NotImplemented,
   getTools: NotImplemented,
   getWorkflowTypes: NotImplemented,
   llms: [],
   services: [],
+  structuredOutputTypes: [],
   tools: [],
   workflowTypes: [],
 };
@@ -26,6 +28,7 @@ export enum ActionType {
   ADD_TOOLS = 'ADD_TOOLS',
   ADD_WORKFLOW_TYPES = 'ADD_WORKFLOW_TYPES',
   ADD_SERVICES = 'ADD_SERVICES',
+  ADD_STRUCTURED_OUTPUT_TYPES = 'ADD_STRUCTURED_OUTPUT_TYPES',
 }
 
 export const reducer = (
@@ -59,6 +62,13 @@ export const reducer = (
     return {
       ...state,
       services,
+    };
+  }
+  if (type === ActionType.ADD_STRUCTURED_OUTPUT_TYPES) {
+    const structuredOutputTypes = payload as string[];
+    return {
+      ...state,
+      structuredOutputTypes,
     };
   }
   return state;
@@ -97,4 +107,11 @@ export const getWorkflowTypes = async (dispatch: DispatchType<string[]>): Promis
 export const getServices = async (dispatch: DispatchType<string[]>): Promise<void> => {
   const { response } = await makeRequest<IGenericResponse<string[]>>(APIs.GetServices());
   addServices(dispatch, response.data);
+};
+
+export const getStructuredOutputTypes = async (dispatch: DispatchType<string[]>): Promise<void> => {
+  const { response } = await makeRequest<IGenericResponse<string[]>>(
+    APIs.GetStructuredOutputTypes()
+  );
+  dispatch({ payload: response.data, type: ActionType.ADD_STRUCTURED_OUTPUT_TYPES });
 };

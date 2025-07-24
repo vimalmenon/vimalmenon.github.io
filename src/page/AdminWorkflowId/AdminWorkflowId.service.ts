@@ -106,7 +106,8 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowLoading,
     workflow,
   } = useWorkflowContext();
-  const { getLLMs, getServices, getTools, getWorkflowTypes } = useAdminContext();
+  const { getLLMs, getServices, getStructuredOutputTypes, getTools, getWorkflowTypes } =
+    useAdminContext();
 
   const getAllData = async (): Promise<void> => {
     setWorkflowLoading(true);
@@ -116,6 +117,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
       getTools(),
       getWorkflowTypes(),
       getWorkFlow(false),
+      getStructuredOutputTypes(),
     ]);
     setWorkflowLoading(false);
   };

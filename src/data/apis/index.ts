@@ -33,6 +33,16 @@ const GetServices = (): IApi => ({
   url: 'services',
 });
 
+const GetWorkflowTypes = (): IApi => ({
+  method: 'GET',
+  url: 'workflow_types',
+});
+
+const GetStructuredOutputTypes = (): IApi => ({
+  method: 'GET',
+  url: 'structured_output_types',
+});
+
 const GetWorkflowById = (id: string): IApi => ({
   method: 'GET',
   url: `workflow/${id}`,
@@ -87,11 +97,6 @@ const GetExecutedWorkflowId = (wfId: string, id: string): IApi => ({
   url: `workflow/execute/${wfId}/${id}`,
 });
 
-const GetWorkflowTypes = (): IApi => ({
-  method: 'GET',
-  url: 'workflow_types',
-});
-
 const DeleteExecutedWorkflow = (wfId: string, id: string): IApi => ({
   method: 'DELETE',
   url: `workflow/execute/${wfId}/${id}`,
@@ -127,6 +132,7 @@ export const APIs = {
   GetExecutedWorkflowId,
   GetLLMs,
   GetServices,
+  GetStructuredOutputTypes,
   GetTools,
   getUUID,
   GetWorkflowById,
