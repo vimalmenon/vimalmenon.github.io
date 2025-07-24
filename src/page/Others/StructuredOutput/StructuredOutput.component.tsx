@@ -13,16 +13,16 @@ import { ListItem } from '@component';
 import { useAdminContext } from '@context';
 import { IListViewRender } from '@types';
 
-const ServiceItemRender: React.FC<IListViewRender<string>> = ({ data }) => (
+const ItemRender: React.FC<IListViewRender<string>> = ({ data }) => (
   <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
     <TableCell>{data}</TableCell>
   </TableRow>
 );
 
-export const Service: React.FC = () => {
-  const { getServices, services } = useAdminContext();
+export const StructuredOutput: React.FC = () => {
+  const { getStructuredOutputTypes, structuredOutputTypes } = useAdminContext();
   useEffect(() => {
-    getServices();
+    getStructuredOutputTypes();
   }, []);
   return (
     <Box>
@@ -31,15 +31,16 @@ export const Service: React.FC = () => {
           <TableHead>
             <TableRow>
               <TableCell colSpan={3} align="center">
-                Services
+                Structured Output Types
               </TableCell>
             </TableRow>
+
             <TableRow>
               <TableCell>Name</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            <ListItem<string> items={services} Render={ServiceItemRender} />
+            <ListItem<string> items={structuredOutputTypes} Render={ItemRender} />
           </TableBody>
         </Table>
       </TableContainer>

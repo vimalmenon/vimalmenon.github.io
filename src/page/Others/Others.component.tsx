@@ -8,6 +8,7 @@ import React from 'react';
 import { Llm } from './LLM';
 import { useOthersHelper } from './Others.service';
 import { Service } from './Services';
+import { StructuredOutput } from './StructuredOutput';
 import { Tools } from './Tools';
 
 export const Others: React.FC = () => {
@@ -31,6 +32,9 @@ export const Others: React.FC = () => {
       <Divider />
       <Box sx={{ marginY: 2 }}>
         <Llm />
+      </Box>
+      <Box sx={{ marginY: 2 }}>
+        <StructuredOutput />
       </Box>
     </Box>
   );
