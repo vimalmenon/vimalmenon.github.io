@@ -19,4 +19,8 @@ export const links = [
     link: 'hhttps://github.com/agno-agi/agno',
     name: 'Agno',
   },
+  {
+    link: 'https://chat.qwen.ai/',
+    name: 'Qwen',
+  },
 ];
