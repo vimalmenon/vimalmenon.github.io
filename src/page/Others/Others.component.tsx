@@ -22,16 +22,18 @@ export const Others: React.FC = () => {
         </Button>
       </Box>
       <Divider />
-      <Box sx={{ paddingX: 2 }}>
-        <Tools />
-      </Box>
-      <Divider />
-      <Box sx={{ paddingX: 2 }}>
-        <Service />
-      </Box>
-      <Divider />
-      <Box sx={{ paddingX: 2 }}>
-        <StructuredOutput />
+      <Box sx={{ display: 'flex', flex: 1, gap: 2, paddingX: 2 }}>
+        <Box sx={{ display: 'flex', flex: 1 }}>
+          <Tools />
+        </Box>
+        <Divider orientation="vertical" flexItem />
+        <Box sx={{ display: 'flex', flex: 1 }}>
+          <Service />
+        </Box>
+        <Divider orientation="vertical" flexItem />
+        <Box sx={{ display: 'flex', flex: 1 }}>
+          <StructuredOutput />
+        </Box>
       </Box>
       <Divider />
       <Box sx={{ paddingX: 2 }}>

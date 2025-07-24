@@ -25,7 +25,7 @@ export const Tools: React.FC = () => {
     getTools();
   }, []);
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flex: 1 }}>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

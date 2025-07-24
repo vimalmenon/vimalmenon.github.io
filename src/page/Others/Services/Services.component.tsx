@@ -25,7 +25,7 @@ export const Service: React.FC = () => {
     getServices();
   }, []);
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flex: 1 }}>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
