@@ -22,6 +22,7 @@ export const nodeType = (type?: string): string[] => {
       Enums.WorkflowNodeFields.Tools,
       Enums.WorkflowNodeFields.Next,
       Enums.WorkflowNodeFields.IsStart,
+      Enums.WorkflowNodeFields.StructuredOutput,
     ];
   }
   if (type === Enums.WorkflowNodeType.HumanInput) {
@@ -34,6 +35,7 @@ export const nodeType = (type?: string): string[] => {
       Enums.WorkflowNodeFields.Message,
       Enums.WorkflowNodeFields.Next,
       Enums.WorkflowNodeFields.IsStart,
+      Enums.WorkflowNodeFields.StructuredOutput,
     ];
   }
   if (type === Enums.WorkflowNodeType.Service) {

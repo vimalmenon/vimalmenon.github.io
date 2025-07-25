@@ -16,6 +16,7 @@ export enum WorkflowNodeFields {
   Service = 'Service',
   Next = 'Next',
   IsStart = 'IsStart',
+  StructuredOutput = 'StructuredOutput',
 }
 
 export enum WorkflowNodeType {

@@ -67,6 +67,7 @@ export interface INode extends INodeSlim {
   service?: string;
   isStart: boolean;
   dataFromPreviousNode?: boolean;
+  structuredOutput?: string;
 }
 
 export interface INodeFull extends INode {

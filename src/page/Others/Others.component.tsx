@@ -15,6 +15,7 @@ export const Others: React.FC = () => {
   const { createUUID, uuid } = useOthersHelper();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingY: 2 }}>
+      <Divider />
       <Box sx={{ paddingX: 2 }}>
         <TextField required label="UUID" value={uuid} size="small" disabled={true} />
         <Button variant="outlined" onClick={createUUID}>
