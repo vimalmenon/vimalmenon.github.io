@@ -49,7 +49,7 @@ export const nodeType = (type?: string): string[] => {
 };
 
 export const cleanData = (data: INode): INode => {
-  const { llm, message, next, prompt, service, tool, type, ...rest } = data;
+  const { llm, message, next, prompt, service, structuredOutput, tool, type, ...rest } = data;
   const result: INode = { ...rest };
   if (llm) {
     result.llm = llm;
@@ -71,6 +71,9 @@ export const cleanData = (data: INode): INode => {
   }
   if (message) {
     result.message = message;
+  }
+  if (structuredOutput) {
+    result.structuredOutput = structuredOutput;
   }
   return result;
 };
