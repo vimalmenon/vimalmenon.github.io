@@ -94,6 +94,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [dataFromPreviousNode, setDataFromPreviousNode] = useState<boolean>(
     data?.dataFromPreviousNode ?? false
   );
+  const [structuredOutput, setStructuredOutput] = useState<string>(data?.structuredOutput ?? '');
 
   const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {
@@ -132,6 +133,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     }
     if (name === 'next') {
       setNext(value);
+    }
+    if (name === 'structuredOutput') {
+      setStructuredOutput(value);
     }
     if (name === 'type') {
       setType(value);
@@ -185,6 +189,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     onSwitchUpdate,
     prompt,
     service,
+    structuredOutput,
     tool,
     tools,
     type,

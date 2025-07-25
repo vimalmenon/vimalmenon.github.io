@@ -112,12 +112,12 @@ export const NodeForm: React.FC<INodeForm> = ({
       ) : null}
       {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.StructuredOutput) ? (
         <FormControl fullWidth required size="small">
-          <InputLabel id="service">Service</InputLabel>
+          <InputLabel id="structuredOutput">Structured Output</InputLabel>
           <Select
             value={service}
-            labelId="service"
-            label="Service"
-            name="service"
+            labelId="structuredOutput"
+            label="Structured Output"
+            name="structuredOutput"
             onChange={onSelectUpdate}
             disabled={loading}
           >
