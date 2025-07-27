@@ -13,12 +13,6 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
   return (
     <BaseNode
       data={data}
-      onExecute={async () =>
-        await data.onExecute({
-          data: value,
-          id: data.id,
-        })
-      }
       disableExecute={!value}
     >
       <Box sx={{ borderRadius: '5px', padding: 1 }}>

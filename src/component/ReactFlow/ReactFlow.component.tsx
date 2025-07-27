@@ -4,7 +4,6 @@ import { Background, Controls, Node, ReactFlow as ReactFlowComponent } from '@xy
 import {
   BasicNode,
   CompletedNode,
-  ExecuteNode,
   HumanInputNode,
   LlmNode,
   ServiceNode,
@@ -14,7 +13,6 @@ import { IReactFlow } from './ReactFlow';
 const nodeTypes = {
   Basic: BasicNode,
   Completed: CompletedNode,
-  Execute: ExecuteNode,
   HumanInput: HumanInputNode,
   LLM: LlmNode,
   Service: ServiceNode,
