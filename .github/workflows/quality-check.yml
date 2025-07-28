@@ -3,17 +3,15 @@ name: Quality Check
 on:
   push:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 env:
   tag: '0.0.10'
-
 
 permissions:
   contents: write
   pull-requests: write
   repository-projects: write
-
 
 jobs:
   # Single deploy job since we're just deploying
