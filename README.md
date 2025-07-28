@@ -11,12 +11,13 @@ This is Website for Vimal Menon
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
+
 ## To Do
 
 - [x] Add support for OpenAI
 - [x] Improve Workflow
 - [x] Show time in more readable format
-- [ ] Remove execute from workflow
+- [x] Remove execute from workflow
 - [ ] [fix] Google LLM not working
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
@@ -41,11 +42,14 @@ This is Website for Vimal Menon
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
 
+
 ## Ideas
 
 - Show Team Members
 
+
 ## Command
+
 Clean up Remote branch
 ```sh
 git remote update origin --prune
@@ -64,6 +68,7 @@ wsl -d myk3s openrc default
 ```
 
 ## Links
+
 - [ReactFlow](https://reactflow.dev/components/templates/workflow-editor)
 - [K3S Windows](https://mrtn.me/autocloud/main/howtos/k3s-windows-install/)
 - [Sonar](https://sonarcloud.io/project/overview?id=vimalmenon_vimalmenon.github.io)
