@@ -7,9 +7,11 @@ import { makeRequest, NotImplemented } from '@utility';
 import { IContext, IUseAdminWorkflows } from './AdminWorkflows';
 
 export const Context = createContext<IContext>({
+  alert: null,
   dataLoading: false,
   loading: false,
   mode: 'VIEW',
+  setAlert: NotImplemented,
   setDataLoading: NotImplemented,
   setLoading: NotImplemented,
   setMode: NotImplemented,
@@ -20,7 +22,7 @@ export const Context = createContext<IContext>({
 export const useAdminWorkflowsContext = (): IContext => useContext<IContext>(Context);
 
 export const useAdminWorkflows = (): IUseAdminWorkflows => {
-  const { loading, setDataLoading, setLoading, setMode, setWorkflows, workflows } =
+  const { loading, setAlert, setDataLoading, setLoading, setMode, setWorkflows, workflows } =
     useAdminWorkflowsContext();
   const getWorkflows = async (): Promise<void> => {
     setLoading(true);
@@ -47,11 +49,15 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
     await getWorkflows();
     setLoading(false);
   };
+  const onAlertClose = (): void => {
+    setAlert(null);
+  };
   return {
     createWorkflow,
     deleteWorkflow,
     getWorkflows,
     loading,
+    onAlertClose,
     setLoading,
     workflows,
   };

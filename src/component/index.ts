@@ -1,4 +1,5 @@
 export * from './AdminLayout';
+export * from './Alert';
 export * from './AsyncButton';
 export * from './ComingSoon';
 export * from './ConfirmDialog';

@@ -21,12 +21,12 @@ This is Website for Vimal Menon
 - [x] Maintain the state to it doesn't change on tab change
 - [x] Add Links to Admin Page
 - [x] Handle errors more gracefully
+- [x] Show loading indicator on Pages
+- [x] Disable starting point for other nodes when enabled
 - [ ] Show error in UI
 - [ ] Show All past links in Admin Page
 - [ ] Move all the reducer to useState (Hard to manage useReducer)
 - [ ] Create validate nodes
-- [ ] Disable starting point for other nodes when enabled
-- [ ] Show loading indicator on Pages
 - [ ] Close confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
