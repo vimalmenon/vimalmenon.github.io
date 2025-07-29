@@ -3,7 +3,7 @@
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { Fragment } from 'react';
-import { ReactFlow, ViewData } from '@component';
+import { ReactFlow, ReactFlowLegend, ViewData } from '@component';
 import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowEdge, IViewData } from '@types';
 import {
   useAdminWorkflowIdExecuteIdContext,
@@ -66,6 +66,7 @@ export const SelectedWorkflow: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <WorkflowNodeDetail />
+      <ReactFlowLegend />
       {selectedExecutedWorkflow ? (
         <Fragment>
           <ViewData data={convertWorkflowToView(selectedExecutedWorkflow)} />
