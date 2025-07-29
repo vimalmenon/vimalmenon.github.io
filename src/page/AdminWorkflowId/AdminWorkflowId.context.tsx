@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FormMode, IAdminWorkflowIdPage, INode, IReactChildren, IWorkflow } from '@types';
+import { FormMode, IAdminWorkflowIdPage, IAlert, INode, IReactChildren, IWorkflow } from '@types';
 import { INodeTab } from './AdminWorkflowId';
 import { Context } from './AdminWorkflowId.service';
 
@@ -18,10 +18,12 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
   const [error, setError] = useState<string | null>(null);
   const [isStart, setIsStart] = useState<boolean>(false);
   const [selectedWorkflow, setSelectedWorkflow] = useState<IWorkflow | null>(null);
+  const [alert, setAlert] = useState<IAlert | null>(null);
 
   return (
     <Context.Provider
       value={{
+        alert,
         error,
         id,
         isStart,
@@ -29,6 +31,7 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
         nodeFormMode,
         nodeTabs,
         selectedNode,
+        setAlert,
         setError,
         setIsStart,
         setLoading,

@@ -1,5 +1,5 @@
 import { SyntheticEvent } from 'react';
-import { FormMode, INode, INodeSlim, IWorkflow, ReactSetState, VoidFunction } from '@types';
+import { FormMode, IAlert, INode, INodeSlim, IWorkflow, ReactSetState, VoidFunction } from '@types';
 
 export interface INodeTab {
   name: string;
@@ -29,6 +29,8 @@ export interface IContext {
   setError: ReactSetState<string | null>;
   isStart: boolean;
   setIsStart: ReactSetState<boolean>;
+  alert: IAlert | null;
+  setAlert: ReactSetState<IAlert | null>;
 }
 
 export interface IUseTabHelper {
@@ -57,4 +59,5 @@ export interface IUseWorkflowDataHelper {
   deleteNodeCancel: VoidFunction;
   getAllData: VoidFunction<Promise<void>>;
   deleteExecutedWorkflow: (executedWorkflows: IExecuteWorkflow) => Promise<void>;
+  onAlertClose: VoidFunction;
 }

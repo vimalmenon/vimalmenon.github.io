@@ -17,12 +17,12 @@ This is Website for Vimal Menon
 - [x] Add support for OpenAI
 - [x] Improve Workflow
 - [x] Show time in more readable format
-- [x] Remove execute from workflow
 - [x] Maintain the state to it doesn't change on tab change
 - [x] Add Links to Admin Page
 - [x] Handle errors more gracefully
 - [x] Show loading indicator on Pages
 - [x] Disable starting point for other nodes when enabled
+- [ ] Remove execute from workflow
 - [ ] Show error in UI
 - [ ] Show All past links in Admin Page
 - [ ] Move all the reducer to useState (Hard to manage useReducer)

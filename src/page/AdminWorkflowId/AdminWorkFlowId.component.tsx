@@ -22,8 +22,16 @@ import { Node } from './Node';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const { error, isStart, nodeTabs, selectedNode, setNodeFormMode, workflow, workflowFormMode } =
-    useWorkflowContext();
+  const {
+    alert,
+    error,
+    isStart,
+    nodeTabs,
+    selectedNode,
+    setNodeFormMode,
+    workflow,
+    workflowFormMode,
+  } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab, setNodeMode } = useTabHelper();
   const {
     createNode,
@@ -33,6 +41,7 @@ const Component: React.FC = () => {
     deleteNodeConfirm,
     getAllData,
     id,
+    onAlertClose,
     updateNode,
   } = useWorkflowDataHelper();
   const { deleteWorkflow, editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
@@ -82,6 +91,14 @@ const Component: React.FC = () => {
           </Fragment>
         }
       />
+      <Divider />
+      <Box sx={{ margin: 1 }}>
+        {alert ? (
+          <Alert severity={alert.severity} onClose={onAlertClose}>
+            {alert.children}
+          </Alert>
+        ) : null}
+      </Box>
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
         {id && workflow && workflow.complete ? (

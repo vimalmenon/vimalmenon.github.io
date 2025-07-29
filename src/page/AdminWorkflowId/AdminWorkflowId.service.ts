@@ -23,6 +23,7 @@ import {
 } from './AdminWorkflowId';
 
 export const Context = createContext<IContext>({
+  alert: null,
   error: null,
   id: '0',
   isStart: false,
@@ -30,6 +31,7 @@ export const Context = createContext<IContext>({
   nodeFormMode: 'UPDATE',
   nodeTabs: [],
   selectedNode: null,
+  setAlert: NotImplemented,
   setError: NotImplemented,
   setIsStart: NotImplemented,
   setLoading: NotImplemented,
@@ -95,6 +97,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
     selectedNode,
+    setAlert,
     setError,
     setIsStart,
     setLoading,
@@ -218,6 +221,9 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     await getWorkFlow();
     setLoading(false);
   };
+  const onAlertClose = (): void => {
+    setAlert(null);
+  };
   return {
     createNode,
     deleteExecutedWorkflow,
@@ -226,6 +232,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     deleteNodeConfirm,
     getAllData,
     id,
+    onAlertClose,
     updateNode,
     updateWorkflow,
   };
