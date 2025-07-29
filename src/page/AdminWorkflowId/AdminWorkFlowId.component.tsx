@@ -92,14 +92,17 @@ const Component: React.FC = () => {
         }
       />
       <Divider />
-      <Box sx={{ margin: 1 }}>
-        {alert ? (
-          <Alert severity={alert.severity} onClose={onAlertClose}>
-            {alert.children}
-          </Alert>
-        ) : null}
-      </Box>
-      <Divider />
+      {alert ? (
+        <Fragment>
+          <Box sx={{ margin: 1 }}>
+            <Alert severity={alert.severity} onClose={onAlertClose}>
+              {alert.children}
+            </Alert>
+          </Box>
+          <Divider />
+        </Fragment>
+      ) : null}
+
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
         {id && workflow && workflow.complete ? (
           <Fragment>
@@ -145,23 +148,29 @@ const Component: React.FC = () => {
               complete={false}
             />
           ) : (
-            nodeTabs.map((node, index) => {
-              if (selectedTab === index && workflow) {
-                return (
-                  <Node
-                    data={workflow.nodes[node.name]}
-                    key={node.name}
-                    mode={node.mode}
-                    deleteNode={() => deleteNode(node.name)}
-                    updateNode={(data) => updateNode(node.name, data)}
-                    setMode={(mode) => setNodeMode(index, mode)}
-                    cancelNode={() => setNodeMode(index, 'VIEW')}
-                    isStart={isStart}
-                    complete={workflow.complete}
-                  />
-                );
-              }
-            })
+            <Fragment>
+              {nodeTabs.length ? (
+                nodeTabs.map((node, index) => {
+                  if (selectedTab === index && workflow) {
+                    return (
+                      <Node
+                        data={workflow.nodes[node.name]}
+                        key={node.name}
+                        mode={node.mode}
+                        deleteNode={() => deleteNode(node.name)}
+                        updateNode={(data) => updateNode(node.name, data)}
+                        setMode={(mode) => setNodeMode(index, mode)}
+                        cancelNode={() => setNodeMode(index, 'VIEW')}
+                        isStart={isStart}
+                        complete={workflow.complete}
+                      />
+                    );
+                  }
+                })
+              ) : (
+                <Box>No node created</Box>
+              )}
+            </Fragment>
           )}
         </Box>
       </Box>
