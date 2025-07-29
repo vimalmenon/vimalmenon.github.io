@@ -73,12 +73,10 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
   const onAlertClose = (): void => {
     setAlert(null);
   };
-  const deleteExecutedWorkflow = async (
-    executedWorkflow: IExecuteWorkflow | null
-  ): Promise<void> => {
-    if (executedWorkflow) {
+  const deleteExecutedWorkflow = async (): Promise<void> => {
+    if (selectedExecutedWorkflow) {
       await makeRequest<IGenericResponse<unknown>>(
-        APIs.DeleteExecutedWorkflow(id, executedWorkflow.id)
+        APIs.DeleteExecutedWorkflow(id, selectedExecutedWorkflow.id)
       );
       push(`/admin/workflows/${id}`);
     }
@@ -90,7 +88,6 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
     getDatabaseData,
     getExecutedWorkflow,
     onAlertClose,
-    selectedExecutedWorkflow,
   };
 };
 

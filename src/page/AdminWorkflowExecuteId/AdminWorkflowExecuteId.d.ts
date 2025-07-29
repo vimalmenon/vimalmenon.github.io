@@ -33,8 +33,7 @@ export interface IUseAdminWorkflowIdExecuteHelper {
   dbServiceDelete: (data: IDbServiceData) => Promise<void>;
   onAlertClose: VoidFunction;
   alert: IAlert | null;
-  deleteExecutedWorkflow: (executedWorkflows: IExecuteWorkflow | null) => Promise<void>;
-  selectedExecutedWorkflow: IExecuteWorkflow | null;
+  deleteExecutedWorkflow: VoidFunction<Promise<void>>;
 }
 
 export interface IUseWorkflowExecuteHelper {

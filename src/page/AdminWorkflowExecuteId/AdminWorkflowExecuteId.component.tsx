@@ -11,14 +11,8 @@ import { useAdminWorkflowIdExecuteHelper } from './AdminWorkflowExecuteId.servic
 import { SelectedWorkflow } from './SelectedWorkflow';
 
 const Component: React.FC = () => {
-  const {
-    alert,
-    deleteExecutedWorkflow,
-    getDatabaseData,
-    getExecutedWorkflow,
-    onAlertClose,
-    selectedExecutedWorkflow,
-  } = useAdminWorkflowIdExecuteHelper();
+  const { alert, deleteExecutedWorkflow, getDatabaseData, getExecutedWorkflow, onAlertClose } =
+    useAdminWorkflowIdExecuteHelper();
   useEffect(() => {
     getExecutedWorkflow();
     getDatabaseData();
@@ -27,13 +21,7 @@ const Component: React.FC = () => {
     <Fragment>
       <WorkflowHeader
         title="Executed Workflow"
-        action={
-          <Icon
-            toolTip="Delete"
-            icon={<Icons.Delete />}
-            onClick={() => deleteExecutedWorkflow(selectedExecutedWorkflow)}
-          />
-        }
+        action={<Icon toolTip="Delete" icon={<Icons.Delete />} onClick={deleteExecutedWorkflow} />}
       />
       <Divider />
       <Box sx={{ margin: 1 }}>
