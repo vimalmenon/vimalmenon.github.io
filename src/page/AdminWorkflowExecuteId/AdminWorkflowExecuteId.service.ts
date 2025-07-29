@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { createContext, useContext } from 'react';
 import { APIs } from '@data';
 import {
@@ -39,13 +40,25 @@ export const useAdminWorkflowIdExecuteIdContext = (): IAdminWorkflowExecuteIdCon
   useContext<IAdminWorkflowExecuteIdContext>(Context);
 
 export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHelper => {
-  const { alert, executeId, id, setAlert, setDbServiceData, setSelectedExecutedWorkflow } =
-    useAdminWorkflowIdExecuteIdContext();
+  const {
+    alert,
+    executeId,
+    id,
+    selectedExecutedWorkflow,
+    setAlert,
+    setDbServiceData,
+    setLoading,
+    setSelectedExecutedWorkflow,
+  } = useAdminWorkflowIdExecuteIdContext();
+  const { push } = useRouter();
+
   const getExecutedWorkflow = async (): Promise<void> => {
+    setLoading(true);
     const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
       APIs.GetExecutedWorkflowId(id, executeId)
     );
     setSelectedExecutedWorkflow(response.data);
+    setLoading(false);
   };
   const getDatabaseData = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IDbServiceData[]>>(
@@ -60,12 +73,24 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
   const onAlertClose = (): void => {
     setAlert(null);
   };
+  const deleteExecutedWorkflow = async (
+    executedWorkflow: IExecuteWorkflow | null
+  ): Promise<void> => {
+    if (executedWorkflow) {
+      await makeRequest<IGenericResponse<unknown>>(
+        APIs.DeleteExecutedWorkflow(id, executedWorkflow.id)
+      );
+      push(`/admin/workflows/${id}`);
+    }
+  };
   return {
     alert,
     dbServiceDelete,
+    deleteExecutedWorkflow,
     getDatabaseData,
     getExecutedWorkflow,
     onAlertClose,
+    selectedExecutedWorkflow,
   };
 };
 

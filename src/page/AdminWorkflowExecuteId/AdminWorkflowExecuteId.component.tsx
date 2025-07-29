@@ -3,22 +3,38 @@
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { Fragment, useEffect } from 'react';
-import { Alert, WorkflowHeader } from '@component';
+import { Alert, Icon, WorkflowHeader } from '@component';
+import { Icons } from '@data';
 import { IAdminWorkflowExecuteId } from './AdminWorkflowExecuteId';
 import { AdminWorkflowExecuteIdContext } from './AdminWorkflowExecuteId.context';
 import { useAdminWorkflowIdExecuteHelper } from './AdminWorkflowExecuteId.service';
 import { SelectedWorkflow } from './SelectedWorkflow';
 
 const Component: React.FC = () => {
-  const { alert, getDatabaseData, getExecutedWorkflow, onAlertClose } =
-    useAdminWorkflowIdExecuteHelper();
+  const {
+    alert,
+    deleteExecutedWorkflow,
+    getDatabaseData,
+    getExecutedWorkflow,
+    onAlertClose,
+    selectedExecutedWorkflow,
+  } = useAdminWorkflowIdExecuteHelper();
   useEffect(() => {
     getExecutedWorkflow();
     getDatabaseData();
   }, []);
   return (
     <Fragment>
-      <WorkflowHeader title="Executed Workflow" />
+      <WorkflowHeader
+        title="Executed Workflow"
+        action={
+          <Icon
+            toolTip="Delete"
+            icon={<Icons.Delete />}
+            onClick={() => deleteExecutedWorkflow(selectedExecutedWorkflow)}
+          />
+        }
+      />
       <Divider />
       <Box sx={{ margin: 1 }}>
         {alert ? (
