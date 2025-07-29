@@ -14,7 +14,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Remove execute from workflow
+- [ ] Remove execute path from workflow
 - [ ] Show error in UI
 - [ ] Add Links to Admin Page
 - [ ] Show All past links in Admin Page
