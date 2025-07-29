@@ -16,8 +16,9 @@ export const BaseNode: React.FC<IReactChildren & IBaseNodeType> = ({
 }) => {
   const isReady = data.status === Enums.WorkflowNodeStatus.READY;
   const isComplete = data.status === Enums.WorkflowNodeStatus.COMPLETED;
+  const isRunning = data.status === Enums.WorkflowNodeStatus.RUNNING;
   return (
-    <NodeStyled isComplete={isComplete} isReady={isReady}>
+    <NodeStyled isComplete={isComplete} isReady={isReady} isRunning={isRunning}>
       <Box
         sx={{
           alignItems: 'center',

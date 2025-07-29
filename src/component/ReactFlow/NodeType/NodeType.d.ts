@@ -12,4 +12,5 @@ export interface IBaseNodeType {
 export interface INodeStyled {
   isComplete: boolean;
   isReady: boolean;
+  isRunning: boolean;
 }

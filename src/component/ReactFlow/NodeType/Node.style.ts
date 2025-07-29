@@ -7,7 +7,7 @@ import { INodeStyled } from './NodeType';
 
 export const NodeStyled = styled(Paper, {
   shouldForwardProp: (prop) => prop !== 'isComplete' && prop !== 'isReady',
-})<INodeStyled>(({ isComplete, isReady, theme }) => {
+})<INodeStyled>(({ isComplete, isReady, isRunning, theme }) => {
   if (isComplete) {
     return {
       backgroundColor: ReactFlowColors.Complete,
@@ -22,6 +22,14 @@ export const NodeStyled = styled(Paper, {
   if (isReady) {
     return {
       backgroundColor: ReactFlowColors.Ready,
+      borderRadius: '5px',
+      minWidth: '400px',
+      padding: '10px',
+    };
+  }
+  if (isRunning) {
+    return {
+      backgroundColor: ReactFlowColors.Running,
       borderRadius: '5px',
       minWidth: '400px',
       padding: '10px',
