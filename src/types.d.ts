@@ -180,7 +180,6 @@ export interface ICatchAllParams {
 
 export interface IAlert extends IReactChildren {
   severity: SeverityType;
-  onClose: VoidFunction;
 }
 
 export type VoidFunction<T = void> = () => T;

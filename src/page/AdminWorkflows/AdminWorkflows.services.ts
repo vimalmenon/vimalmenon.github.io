@@ -33,11 +33,20 @@ export const useAdminWorkflows = (): IUseAdminWorkflows => {
 
   const createWorkflow = async (name: string): Promise<void> => {
     setDataLoading(true);
-    await makeRequest<IGenericResponse<string[]>>(
+    const { error } = await makeRequest<IGenericResponse<string[]>>(
       APIs.CreateWorkflow({
         name,
       })
     );
+    if (error) {
+      setAlert({
+        children: 'Error while creating workflow.',
+        severity: 'warning',
+      });
+      setDataLoading(false);
+      setMode('VIEW');
+      return;
+    }
     await getWorkflows();
     setDataLoading(false);
     setMode('VIEW');
