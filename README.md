@@ -6,7 +6,7 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.35
+<b>Version</b>: 0.0.36
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
@@ -14,16 +14,9 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [x] Add support for OpenAI
-- [x] Improve Workflow
-- [x] Show time in more readable format
-- [x] Maintain the state to it doesn't change on tab change
-- [x] Add Links to Admin Page
-- [x] Handle errors more gracefully
-- [x] Show loading indicator on Pages
-- [x] Disable starting point for other nodes when enabled
 - [ ] Remove execute from workflow
 - [ ] Show error in UI
+- [ ] Add Links to Admin Page
 - [ ] Show All past links in Admin Page
 - [ ] Move all the reducer to useState (Hard to manage useReducer)
 - [ ] Create validate nodes
