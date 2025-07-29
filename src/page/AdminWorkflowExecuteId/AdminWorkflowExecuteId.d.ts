@@ -1,4 +1,5 @@
 import {
+  IAlert,
   IDbServiceData,
   IExecuteWorkflow,
   IExecuteWorkflow,
@@ -23,12 +24,16 @@ export interface IAdminWorkflowExecuteIdContext extends IAdminWorkflowExecuteId 
   setDbServiceData: ReactSetState<IDbServiceData[]>;
   loading: boolean;
   setLoading: ReactSetState<boolean>;
+  alert: IAlert | null;
+  setAlert: ReactSetState<IAlert | null>;
 }
 
 export interface IUseAdminWorkflowIdExecuteHelper {
   getExecutedWorkflow: VoidFunction<Promise<void>>;
   getDatabaseData: VoidFunction<Promise<void>>;
   dbServiceDelete: (data: IDbServiceData) => Promise<void>;
+  onAlertClose: VoidFunction;
+  alert: IAlert | null;
 }
 
 export interface IUseWorkflowExecuteHelper {

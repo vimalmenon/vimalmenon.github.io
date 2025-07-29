@@ -37,6 +37,7 @@ export const Component: React.FC = () => {
           </Alert>
         ) : null}
       </Box>
+      <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Workflows />
       </Box>

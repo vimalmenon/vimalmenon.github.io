@@ -21,12 +21,14 @@ import {
 } from './AdminWorkflowExecuteId';
 
 export const Context = createContext<IAdminWorkflowExecuteIdContext>({
+  alert: null,
   dbServiceData: [],
   executeId: '',
   id: '',
   loading: false,
   selectedExecutedWorkflow: null,
   selectedWorkflowNode: null,
+  setAlert: NotImplemented,
   setDbServiceData: NotImplemented,
   setLoading: NotImplemented,
   setSelectedExecutedWorkflow: NotImplemented,
@@ -37,7 +39,7 @@ export const useAdminWorkflowIdExecuteIdContext = (): IAdminWorkflowExecuteIdCon
   useContext<IAdminWorkflowExecuteIdContext>(Context);
 
 export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHelper => {
-  const { executeId, id, setDbServiceData, setSelectedExecutedWorkflow } =
+  const { alert, executeId, id, setAlert, setDbServiceData, setSelectedExecutedWorkflow } =
     useAdminWorkflowIdExecuteIdContext();
   const getExecutedWorkflow = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
@@ -55,10 +57,15 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
     await makeRequest<unknown>(APIs.DeleteDbServiceData(data.id));
     await getDatabaseData();
   };
+  const onAlertClose = (): void => {
+    setAlert(null);
+  };
   return {
+    alert,
     dbServiceDelete,
     getDatabaseData,
     getExecutedWorkflow,
+    onAlertClose,
   };
 };
 
