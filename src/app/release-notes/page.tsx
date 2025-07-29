@@ -14,7 +14,7 @@ const Page: React.FC = () => (
     <StyledPage>
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
-        <div>0.0.34</div>
+        <div>0.0.35</div>
         <ul>Enhance Workflow</ul>
       </div>
       <div>

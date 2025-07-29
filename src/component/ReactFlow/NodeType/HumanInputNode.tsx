@@ -11,16 +11,7 @@ export const HumanInputNode: React.FC<INodeType> = ({ data }) => {
   const [value, setValue] = useState<string>(data.data ?? '');
   const isReady = data.status === Enums.WorkflowNodeStatus.READY;
   return (
-    <BaseNode
-      data={data}
-      onExecute={async () =>
-        await data.onExecute({
-          data: value,
-          id: data.id,
-        })
-      }
-      disableExecute={!value}
-    >
+    <BaseNode data={data} disableExecute={!value}>
       <Box sx={{ borderRadius: '5px', padding: 1 }}>
         <TextInput
           value={value}

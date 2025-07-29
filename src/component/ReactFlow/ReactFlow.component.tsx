@@ -1,20 +1,12 @@
 'use client';
 import '@xyflow/react/dist/style.css';
 import { Background, Controls, Node, ReactFlow as ReactFlowComponent } from '@xyflow/react';
-import {
-  BasicNode,
-  CompletedNode,
-  ExecuteNode,
-  HumanInputNode,
-  LlmNode,
-  ServiceNode,
-} from './NodeType';
+import { BasicNode, CompletedNode, HumanInputNode, LlmNode, ServiceNode } from './NodeType';
 import { IReactFlow } from './ReactFlow';
 
 const nodeTypes = {
   Basic: BasicNode,
   Completed: CompletedNode,
-  Execute: ExecuteNode,
   HumanInput: HumanInputNode,
   LLM: LlmNode,
   Service: ServiceNode,

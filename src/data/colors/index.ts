@@ -58,3 +58,11 @@ export const shades: (string | number)[] = [
   'A200',
   'A100',
 ];
+
+export const ReactFlowColors = {
+  Complete: lightGreen[100],
+  Failed: red[100],
+  New: blueGrey[50],
+  Ready: lightBlue[100],
+  Running: lightBlue[100],
+};

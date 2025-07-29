@@ -13,12 +13,12 @@ export const BaseNode: React.FC<IReactChildren & IBaseNodeType> = ({
   children,
   data,
   disableExecute = false,
-  onExecute,
 }) => {
   const isReady = data.status === Enums.WorkflowNodeStatus.READY;
   const isComplete = data.status === Enums.WorkflowNodeStatus.COMPLETED;
+  const isRunning = data.status === Enums.WorkflowNodeStatus.RUNNING;
   return (
-    <NodeStyled isComplete={isComplete} isReady={isReady}>
+    <NodeStyled isComplete={isComplete} isReady={isReady} isRunning={isRunning}>
       <Box
         sx={{
           alignItems: 'center',
@@ -31,14 +31,6 @@ export const BaseNode: React.FC<IReactChildren & IBaseNodeType> = ({
           {data.label} ({data.type})
         </span>
         <Box>
-          {isReady ? (
-            <Icon
-              toolTip="Execute"
-              icon={<Icons.Play />}
-              disabled={disableExecute}
-              onClick={onExecute}
-            />
-          ) : null}
           <Icon
             toolTip="Expand"
             icon={<Icons.OpenInNew fontSize="small" />}

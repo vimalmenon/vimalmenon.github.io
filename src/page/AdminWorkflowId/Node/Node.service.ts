@@ -22,6 +22,7 @@ export const nodeType = (type?: string): string[] => {
       Enums.WorkflowNodeFields.Tools,
       Enums.WorkflowNodeFields.Next,
       Enums.WorkflowNodeFields.IsStart,
+      Enums.WorkflowNodeFields.StructuredOutput,
     ];
   }
   if (type === Enums.WorkflowNodeType.HumanInput) {
@@ -34,6 +35,7 @@ export const nodeType = (type?: string): string[] => {
       Enums.WorkflowNodeFields.Message,
       Enums.WorkflowNodeFields.Next,
       Enums.WorkflowNodeFields.IsStart,
+      Enums.WorkflowNodeFields.StructuredOutput,
     ];
   }
   if (type === Enums.WorkflowNodeType.Service) {
@@ -47,7 +49,7 @@ export const nodeType = (type?: string): string[] => {
 };
 
 export const cleanData = (data: INode): INode => {
-  const { llm, message, next, prompt, service, tool, type, ...rest } = data;
+  const { llm, message, next, prompt, service, structuredOutput, tool, type, ...rest } = data;
   const result: INode = { ...rest };
   if (llm) {
     result.llm = llm;
@@ -69,6 +71,9 @@ export const cleanData = (data: INode): INode => {
   }
   if (message) {
     result.message = message;
+  }
+  if (structuredOutput) {
+    result.structuredOutput = structuredOutput;
   }
   return result;
 };
@@ -92,6 +97,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
   const [dataFromPreviousNode, setDataFromPreviousNode] = useState<boolean>(
     data?.dataFromPreviousNode ?? false
   );
+  const [structuredOutput, setStructuredOutput] = useState<string>(data?.structuredOutput ?? '');
 
   const { workflow } = useWorkflowContext();
   const onInputUpdate: InputChangeType = (event) => {
@@ -130,6 +136,9 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     }
     if (name === 'next') {
       setNext(value);
+    }
+    if (name === 'structuredOutput') {
+      setStructuredOutput(value);
     }
     if (name === 'type') {
       setType(value);
@@ -183,6 +192,7 @@ export const useNodeForm = (data?: INode): IUseNodeForm => {
     onSwitchUpdate,
     prompt,
     service,
+    structuredOutput,
     tool,
     tools,
     type,

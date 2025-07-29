@@ -67,6 +67,7 @@ export interface INode extends INodeSlim {
   service?: string;
   isStart: boolean;
   dataFromPreviousNode?: boolean;
+  structuredOutput?: string;
 }
 
 export interface INodeFull extends INode {
@@ -177,9 +178,15 @@ export interface ICatchAllParams {
   params: Promise<ICatchAll>;
 }
 
+export interface IAlert extends IReactChildren {
+  severity: SeverityType;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
+
+export type SeverityType = 'success' | 'info' | 'warning' | 'error';
 
 export type InputChangeType = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 export type SwitchChangeType = (event: ChangeEvent<HTMLInputElement>) => void;

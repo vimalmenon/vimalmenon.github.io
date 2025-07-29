@@ -3,14 +3,15 @@
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import React, { Fragment } from 'react';
-import { Icon, WorkflowHeader } from '@component';
+import { Alert, Icon, WorkflowHeader } from '@component';
 import { Icons } from '@data';
 import { AdminWorkflowsContext } from './AdminWorkflows.context';
-import { useAdminWorkflowsContext } from './AdminWorkflows.services';
+import { useAdminWorkflows, useAdminWorkflowsContext } from './AdminWorkflows.services';
 import { Workflows } from './Workflows';
 
 export const Component: React.FC = () => {
-  const { mode, setMode } = useAdminWorkflowsContext();
+  const { alert, mode, setMode } = useAdminWorkflowsContext();
+  const { onAlertClose } = useAdminWorkflows();
   return (
     <Fragment>
       <WorkflowHeader
@@ -29,6 +30,13 @@ export const Component: React.FC = () => {
         }
       />
       <Divider />
+      <Box sx={{ margin: 1 }}>
+        {alert ? (
+          <Alert severity={alert.severity} onClose={onAlertClose}>
+            {alert.children}
+          </Alert>
+        ) : null}
+      </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Workflows />
       </Box>

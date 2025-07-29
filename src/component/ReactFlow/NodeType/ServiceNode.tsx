@@ -5,14 +5,7 @@ import { BaseNode } from './BaseNode';
 import { INodeType } from './NodeType';
 
 export const ServiceNode: React.FC<INodeType> = ({ data }) => (
-  <BaseNode
-    data={data}
-    onExecute={async () => {
-      await data.onExecute({
-        id: data.id,
-      });
-    }}
-  >
+  <BaseNode data={data}>
     <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
       <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
         <Typography sx={{ fontWeight: 'bold' }}>Label</Typography>

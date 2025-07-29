@@ -1,4 +1,4 @@
-import { FormMode, IWorkflow, ReactSetState } from '@types';
+import { FormMode, IAlert, IWorkflow, ReactSetState } from '@types';
 
 export interface IContext {
   mode: FormMode;
@@ -9,6 +9,8 @@ export interface IContext {
   setWorkflows: ReactSetState<IWorkflow[]>;
   dataLoading: boolean;
   setDataLoading: ReactSetState<boolean>;
+  alert: IAlert | null;
+  setAlert: ReactSetState<IAlert | null>;
 }
 export interface IUseAdminWorkflows {
   createWorkflow: (name: string) => Promise<void>;
@@ -17,4 +19,5 @@ export interface IUseAdminWorkflows {
   workflows: IWorkflow[];
   loading: boolean;
   setLoading: ReactSetState<boolean>;
+  onAlertClose: VoidFunction;
 }

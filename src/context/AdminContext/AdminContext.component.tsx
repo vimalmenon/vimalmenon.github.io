@@ -6,6 +6,7 @@ import {
   Context,
   getLLMs,
   getServices,
+  getStructuredOutputTypes,
   getTools,
   getWorkflowTypes,
   initialState,
@@ -24,6 +25,9 @@ export const AdminContext: React.FC<IReactChildren> = ({ children }) => {
         },
         getServices: async () => {
           await getServices(dispatch);
+        },
+        getStructuredOutputTypes: async () => {
+          await getStructuredOutputTypes(dispatch);
         },
         getTools: async () => {
           await getTools(dispatch);

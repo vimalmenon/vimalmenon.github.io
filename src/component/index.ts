@@ -1,4 +1,5 @@
 export * from './AdminLayout';
+export * from './Alert';
 export * from './AsyncButton';
 export * from './ComingSoon';
 export * from './ConfirmDialog';
@@ -10,6 +11,7 @@ export * from './MainLayout';
 export * from './Modal';
 export * from './MultiSelect';
 export * from './ReactFlow';
+export * from './ReactFlowLegend';
 export * from './Table';
 export * from './TextInput';
 export * from './ViewData';

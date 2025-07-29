@@ -40,13 +40,20 @@ export const NodeForm: React.FC<INodeForm> = ({
     onSwitchUpdate,
     prompt,
     service,
+    structuredOutput,
     tool,
     tools,
     type,
   } = useNodeForm(data);
 
   const value = nodeType(type);
-  const { llms, services, tools: toolsList, workflowTypes } = useAdminContext();
+  const {
+    llms,
+    services,
+    structuredOutputTypes,
+    tools: toolsList,
+    workflowTypes,
+  } = useAdminContext();
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       {mode === 'UPDATE' && data ? (
@@ -99,6 +106,28 @@ export const NodeForm: React.FC<INodeForm> = ({
             {llms.map((llm) => (
               <MenuItem value={llm.name} key={llm.name}>
                 {llm.name} {llm.model}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      ) : null}
+      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.StructuredOutput) ? (
+        <FormControl fullWidth required size="small">
+          <InputLabel id="structuredOutput">Structured Output</InputLabel>
+          <Select
+            value={service}
+            labelId="structuredOutput"
+            label="Structured Output"
+            name="structuredOutput"
+            onChange={onSelectUpdate}
+            disabled={loading}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {convertToolsToOption(structuredOutputTypes).map((node) => (
+              <MenuItem value={node.value} key={node.value}>
+                {node.label}
               </MenuItem>
             ))}
           </Select>
@@ -262,6 +291,7 @@ export const NodeForm: React.FC<INodeForm> = ({
                 next,
                 prompt,
                 service,
+                structuredOutput,
                 tool,
                 tools,
                 type,
