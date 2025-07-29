@@ -19,6 +19,7 @@ This is Website for Vimal Menon
 - [x] Show time in more readable format
 - [x] Remove execute from workflow
 - [ ] [fix] Google LLM not working
+- [ ] Move all the reducer to useState (Hard to manage useReducer)
 - [ ] Create validate nodes
 - [ ] Handle errors more gracefully
 - [ ] Maintain the state to it doesn't change on tab change

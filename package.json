@@ -22,10 +22,10 @@
     "@mui/material": "^7.2.0",
     "@mui/material-nextjs": "^7.2.0",
     "@xyflow/react": "^12.8.2",
-    "framer-motion": "^12.23.10",
+    "framer-motion": "^12.23.11",
     "next": "15.4.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "react-gtm-module": "^2.0.11"
   },
   "devDependencies": {
