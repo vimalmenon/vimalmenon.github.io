@@ -18,20 +18,20 @@ This is Website for Vimal Menon
 - [x] Improve Workflow
 - [x] Show time in more readable format
 - [x] Remove execute from workflow
-- [ ] [fix] Google LLM not working
+- [x] Maintain the state to it doesn't change on tab change
+- [x] Add Links to Admin Page
+- [x] Handle errors more gracefully
+- [ ] Show error in UI
+- [ ] Show All past links in Admin Page
 - [ ] Move all the reducer to useState (Hard to manage useReducer)
 - [ ] Create validate nodes
-- [ ] Handle errors more gracefully
-- [ ] Maintain the state to it doesn't change on tab change
 - [ ] Disable starting point for other nodes when enabled
 - [ ] Show loading indicator on Pages
-- [ ] Show error in UI
 - [ ] Close confirm dialogue when error
 - [ ] Fix clear on multiselect
 - [ ] Store value in Cookie
 - [ ] Create cookie accepter
 - [ ] Improve Our Team
-- [ ] Add Links to Admin Page
 - [ ] Get Tag Number automatically
 - [ ] Improve the theme choosing UI
 - [ ] Improve UI for Mobile Header Navigation
