@@ -5,10 +5,10 @@ import { ReactFlowColors } from '@data';
 const size = '30px';
 
 export const status = [
-  { color: ReactFlowColors.Complete, label: 'Complete' },
+  { color: ReactFlowColors.New, label: 'New' },
   { color: ReactFlowColors.Ready, label: 'Ready' },
   { color: ReactFlowColors.Running, label: 'Running' },
-  { color: ReactFlowColors.New, label: 'New' },
+  { color: ReactFlowColors.Complete, label: 'Complete' },
   { color: ReactFlowColors.Failed, label: 'Failed' },
 ];
 
