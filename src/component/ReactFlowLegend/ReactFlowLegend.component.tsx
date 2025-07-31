@@ -1,8 +1,7 @@
 import Box from '@mui/material/Box';
-import { Fragment } from 'react';
 import { ReactFlowColors } from '@data';
 
-const size = '30px';
+const size = '28px';
 
 export const status = [
   { color: ReactFlowColors.New, label: 'New' },
@@ -13,19 +12,31 @@ export const status = [
 ];
 
 export const ReactFlowLegend: React.FC = () => (
-  <Box sx={{ alignItems: 'center', display: 'flex', gap: 1, margin: 1 }}>
+  <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 1 }}>
     {status.map(({ color, label }) => (
-      <Fragment key={label}>
-        <Box sx={{ fontSize: '12px' }}>{label}</Box>
+      <Box
+        sx={{
+          alignItems: 'center',
+          display: 'flex',
+          gap: 1,
+          justifyContent: 'space-between',
+          minWidth: '200px',
+        }}
+        key={color}
+      >
+        <Box sx={{ display: 'flex', fontSize: '14px' }}>
+          <b>{label}</b>
+        </Box>
         <Box
           sx={{
             background: color,
+            border: '1px solid gray',
             display: 'flex',
             height: size,
             width: size,
           }}
         />
-      </Fragment>
+      </Box>
     ))}
   </Box>
 );
