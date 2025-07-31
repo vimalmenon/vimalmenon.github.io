@@ -6,7 +6,9 @@ import { makeRequest, NotImplemented } from '@utility';
 import { IAdminLinksContext } from './AdminLinks';
 
 export const Context = createContext<IAdminLinksContext>({
+  alert: null,
   linkGroups: [],
+  setAlert: NotImplemented,
   setLinkGroups: NotImplemented,
 });
 
@@ -21,5 +23,19 @@ export const useLinkHelper = () => {
   return {
     getLinks,
     linkGroups,
+  };
+};
+
+export const useCreateLinkHelper = () => {
+  const { setLinkGroups } = useLinkContext();
+
+  const createLink = async (name: string): Promise<void> => {
+    const { response } = await makeRequest<IGenericResponse<ILinkGroup[]>>(
+      APIs.CreateLinkGroup(name)
+    );
+    setLinkGroups(response.data);
+  };
+  return {
+    createLink,
   };
 };

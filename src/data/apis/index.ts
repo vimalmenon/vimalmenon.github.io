@@ -123,7 +123,16 @@ const GetLinkGroup = (): IApi => ({
   url: `links`,
 });
 
+const CreateLinkGroup = (name: string): IApi => ({
+  body: {
+    name,
+  },
+  method: 'PUT',
+  url: `links`,
+});
+
 export const APIs = {
+  CreateLinkGroup,
   CreateWorkflow,
   CreateWorkflowNode,
   DeleteDbServiceData,
