@@ -14,9 +14,10 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Remove execute path from workflow
+- [x] Remove execute path from workflow
 - [ ] Show error in UI
 - [ ] Add Links to Admin Page
+- [ ] Add UI for links
 - [ ] Show All past links in Admin Page
 - [ ] Move all the reducer to useState (Hard to manage useReducer)
 - [ ] Create validate nodes

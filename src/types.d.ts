@@ -182,6 +182,18 @@ export interface IAlert extends IReactChildren {
   severity: SeverityType;
 }
 
+export interface ILink {
+  id: string;
+  name: string;
+  link: string;
+}
+
+export interface ILinkGroup {
+  id: string;
+  name: string;
+  links: ILink[];
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
