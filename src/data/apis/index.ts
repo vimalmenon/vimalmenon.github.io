@@ -131,7 +131,14 @@ const CreateLinkGroup = (name: string): IApi => ({
   url: `links`,
 });
 
+const CreateLink = (id: string, body: { name: string; link: string; reference: string }): IApi => ({
+  body,
+  method: 'PUT',
+  url: `links/${id}`,
+});
+
 export const APIs = {
+  CreateLink,
   CreateLinkGroup,
   CreateWorkflow,
   CreateWorkflowNode,

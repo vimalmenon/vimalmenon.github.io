@@ -10,7 +10,7 @@ import { useCreateLinkHelper } from '../AdminLinks.service';
 
 export const CreateGroupLink: React.FC = () => {
   const [name, setName] = useState<string>('');
-  const { createLink } = useCreateLinkHelper();
+  const { createLinkGroup } = useCreateLinkHelper();
   return (
     <Box>
       <FormControl variant="outlined" fullWidth required>
@@ -32,7 +32,7 @@ export const CreateGroupLink: React.FC = () => {
           variant="contained"
           startIcon={<Icons.Save />}
           loadingPosition="start"
-          onClick={async () => await createLink(name)}
+          onClick={async () => await createLinkGroup(name)}
         >
           Save
         </AsyncButton>

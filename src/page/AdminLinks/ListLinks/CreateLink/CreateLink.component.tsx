@@ -6,11 +6,15 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { AsyncButton } from '@component';
 import { Icons } from '@data';
+import { useCreateLinkHelper } from '../../AdminLinks.service';
+import { ICreateLink } from './CreateLink';
 
-export const CreateLink: React.FC = () => {
+export const CreateLink: React.FC<ICreateLink> = ({ id }) => {
   const [name, setName] = useState<string>('');
   const [link, setLink] = useState<string>('');
   const [reference, setReference] = useState<string>('');
+  const { createLink } = useCreateLinkHelper();
+
   return (
     <Box>
       <FormControl variant="outlined" fullWidth required>
@@ -54,7 +58,7 @@ export const CreateLink: React.FC = () => {
           variant="contained"
           startIcon={<Icons.Save />}
           loadingPosition="start"
-          //   onClick={async () => await createLink(name)}
+          onClick={async () => await createLink(id, name, link, reference)}
         >
           Save
         </AsyncButton>

@@ -29,13 +29,29 @@ export const useLinkHelper = () => {
 export const useCreateLinkHelper = () => {
   const { setLinkGroups } = useLinkContext();
 
-  const createLink = async (name: string): Promise<void> => {
+  const createLinkGroup = async (name: string): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<ILinkGroup[]>>(
       APIs.CreateLinkGroup(name)
     );
     setLinkGroups(response.data);
   };
+  const createLink = async (
+    id: string,
+    name: string,
+    link: string,
+    reference: string
+  ): Promise<void> => {
+    const { response } = await makeRequest<IGenericResponse<ILinkGroup[]>>(
+      APIs.CreateLink(id, {
+        link,
+        name,
+        reference,
+      })
+    );
+    setLinkGroups(response.data);
+  };
   return {
     createLink,
+    createLinkGroup,
   };
 };

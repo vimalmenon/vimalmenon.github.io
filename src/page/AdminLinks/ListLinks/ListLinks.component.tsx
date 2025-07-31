@@ -9,7 +9,7 @@ export const ListLinks: React.FC<IListLinks> = ({ linkGroups }) => (
     {linkGroups.map((link) => (
       <Box key={link.id}>
         {link.name}
-        <CreateLink />
+        <CreateLink id={link.id} />
         {link.links.map((data) => (
           <Box key={data.id}>
             <a href={data.link} target="_blank" rel="noreferrer">
