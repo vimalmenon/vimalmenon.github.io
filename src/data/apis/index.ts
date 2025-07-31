@@ -118,6 +118,11 @@ const DeleteDbServiceData = (id: string): IApi => ({
   url: `llm_data/db/${id}`,
 });
 
+const GetLinkGroup = (): IApi => ({
+  method: 'GET',
+  url: `links`,
+});
+
 export const APIs = {
   CreateWorkflow,
   CreateWorkflowNode,
@@ -130,6 +135,7 @@ export const APIs = {
   GetDbServiceData,
   GetExecutedWorkflow,
   GetExecutedWorkflowId,
+  GetLinkGroup,
   GetLLMs,
   GetServices,
   GetStructuredOutputTypes,

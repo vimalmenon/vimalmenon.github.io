@@ -23,4 +23,16 @@ export const links = [
     link: 'https://chat.qwen.ai/',
     name: 'Qwen',
   },
+  {
+    link: 'https://mrtn.me/autocloud/main/howtos/k3s-windows-install/',
+    name: 'k3s install',
+  },
+  {
+    link: 'https://elevenlabs.io/docs/api-reference/text-to-speech/convert',
+    name: 'Eleven labs',
+  },
+  {
+    link: 'https://manus.im/app',
+    name: 'manus',
+  },
 ];
