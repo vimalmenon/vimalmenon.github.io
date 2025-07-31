@@ -47,7 +47,7 @@ export const Execute: React.FC<IExecute> = ({ deleteExecutedWorkflow, executedWo
                   />
                   <Icon
                     icon={<Icons.Play />}
-                    onClick={() => push(`/admin/workflows/${id}/execute/${workflow.id}`)}
+                    onClick={() => push(`/admin/workflows/${id}/${workflow.id}`)}
                     toolTip="Go"
                     size="small"
                   />

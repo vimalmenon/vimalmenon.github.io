@@ -19,6 +19,7 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
   const [isStart, setIsStart] = useState<boolean>(false);
   const [selectedWorkflow, setSelectedWorkflow] = useState<IWorkflow | null>(null);
   const [alert, setAlert] = useState<IAlert | null>(null);
+  const [showCreate, setShowCreate] = useState<boolean>(false);
 
   return (
     <Context.Provider
@@ -38,9 +39,11 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
         setNodeFormMode,
         setNodeTabs,
         setSelectedNode,
+        setShowCreate,
         setWorkflow: setSelectedWorkflow,
         setWorkflowFormMode,
         setWorkflowLoading,
+        showCreate,
         workflow: selectedWorkflow,
         workflowFormMode,
         workflowLoading,

@@ -30,14 +30,16 @@ export const Component: React.FC = () => {
         }
       />
       <Divider />
-      <Box sx={{ margin: 1 }}>
-        {alert ? (
-          <Alert severity={alert.severity} onClose={onAlertClose}>
-            {alert.children}
-          </Alert>
-        ) : null}
-      </Box>
-      <Divider />
+      {alert ? (
+        <Fragment>
+          <Box sx={{ margin: 1 }}>
+            <Alert severity={alert.severity} onClose={onAlertClose}>
+              {alert.children}
+            </Alert>
+          </Box>
+          <Divider />
+        </Fragment>
+      ) : null}
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Workflows />
       </Box>

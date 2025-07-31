@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import { useRouter } from 'next/navigation';
 import { Fragment, useEffect } from 'react';
 import { ConfirmDialog, DeleteConfirm, Icon, WorkflowHeader } from '@component';
 import { Icons } from '@data';
@@ -18,6 +17,7 @@ import {
   useWorkflowFormHelper,
 } from './AdminWorkflowId.service';
 import { Execute } from './Execute';
+import { ExecuteForm } from './ExecuteForm';
 import { Node } from './Node';
 import { Workflow } from './Workflow';
 
@@ -29,6 +29,8 @@ const Component: React.FC = () => {
     nodeTabs,
     selectedNode,
     setNodeFormMode,
+    setShowCreate,
+    showCreate,
     workflow,
     workflowFormMode,
   } = useWorkflowContext();
@@ -49,7 +51,6 @@ const Component: React.FC = () => {
   useEffect(() => {
     getAllData();
   }, [id]);
-  const { push } = useRouter();
   return (
     <Fragment>
       <WorkflowHeader
@@ -66,13 +67,6 @@ const Component: React.FC = () => {
                   icon={<Icons.Edit />}
                   onClick={editWorkflowFormMode}
                 />
-                {workflow?.complete ? (
-                  <Icon
-                    toolTip="Executed Workflows"
-                    icon={<Icons.History />}
-                    onClick={() => push(`/admin/workflows/${id}/execute/`)}
-                  />
-                ) : null}
                 {workflow ? (
                   <DeleteConfirm<IWorkflow>
                     onDelete={deleteWorkflow}
@@ -88,6 +82,7 @@ const Component: React.FC = () => {
                 ) : null}
               </Fragment>
             ) : null}
+            <Icon toolTip="Add" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />
           </Fragment>
         }
       />
@@ -129,6 +124,7 @@ const Component: React.FC = () => {
         ) : null}
 
         {error ? <Alert severity="error">{error}</Alert> : null}
+        {showCreate ? <ExecuteForm /> : null}
         <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
         <Divider />
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
