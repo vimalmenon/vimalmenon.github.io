@@ -6,3 +6,10 @@ export interface IAdminLinksContext {
   alert: IAlert | null;
   setAlert: ReactSetState<IAlert | null>;
 }
+
+export interface IUseLinkHelper {
+  createLink: (id: string, name: string, link: string, reference: string) => Promise<void>;
+  createLinkGroup: (name: string) => Promise<void>;
+  deleteLink: (gpId: string, id: string) => Promise<void>;
+  getLinks: VoidFunction<Promise<void>>;
+}

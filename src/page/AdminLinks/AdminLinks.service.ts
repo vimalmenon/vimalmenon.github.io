@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react';
 import { APIs } from '@data';
 import { IGenericResponse, ILinkGroup } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
-import { IAdminLinksContext } from './AdminLinks';
+import { IAdminLinksContext, IUseLinkHelper } from './AdminLinks';
 
 export const Context = createContext<IAdminLinksContext>({
   alert: null,
@@ -14,21 +14,12 @@ export const Context = createContext<IAdminLinksContext>({
 
 export const useLinkContext = (): IAdminLinksContext => useContext<IAdminLinksContext>(Context);
 
-export const useLinkHelper = () => {
-  const { linkGroups, setLinkGroups } = useLinkContext();
+export const useLinkHelper = (): IUseLinkHelper => {
+  const { setLinkGroups } = useLinkContext();
   const getLinks = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.GetLinkGroup());
     setLinkGroups(response.data);
   };
-  return {
-    getLinks,
-    linkGroups,
-  };
-};
-
-export const useCreateLinkHelper = () => {
-  const { setLinkGroups } = useLinkContext();
-
   const createLinkGroup = async (name: string): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<ILinkGroup[]>>(
       APIs.CreateLinkGroup(name)
@@ -50,8 +41,14 @@ export const useCreateLinkHelper = () => {
     );
     setLinkGroups(response.data);
   };
+  const deleteLink = async (gpId: string, id: string): Promise<void> => {
+    await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.DeleteLink(gpId, id));
+    await getLinks();
+  };
   return {
     createLink,
     createLinkGroup,
+    deleteLink,
+    getLinks,
   };
 };

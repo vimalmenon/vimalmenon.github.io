@@ -6,14 +6,14 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { AsyncButton } from '@component';
 import { Icons } from '@data';
-import { useCreateLinkHelper } from '../../../AdminLinks.service';
+import { useLinkHelper } from '../../../AdminLinks.service';
 import { ICreateLink } from './CreateLink';
 
-export const CreateLink: React.FC<ICreateLink> = ({ id }) => {
+export const CreateLink: React.FC<ICreateLink> = ({ id, setShowCreate }) => {
   const [name, setName] = useState<string>('');
   const [link, setLink] = useState<string>('');
   const [reference, setReference] = useState<string>('');
-  const { createLink } = useCreateLinkHelper();
+  const { createLink } = useLinkHelper();
 
   return (
     <Box>
@@ -51,7 +51,7 @@ export const CreateLink: React.FC<ICreateLink> = ({ id }) => {
         />
       </FormControl>
       <Box sx={{ display: 'flex', gap: 1 }}>
-        <Button variant="outlined" endIcon={<Icons.Close />}>
+        <Button variant="outlined" endIcon={<Icons.Close />} onClick={() => setShowCreate(false)}>
           Cancel
         </Button>
         <AsyncButton

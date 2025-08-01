@@ -4,12 +4,13 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { useEffect } from 'react';
 import { AdminLinksContext } from './AdminLinks.context';
-import { useLinkHelper } from './AdminLinks.service';
+import { useLinkContext, useLinkHelper } from './AdminLinks.service';
 import { CreateGroupLink } from './CreateGroupLink';
 import { ListLinks } from './ListLinks';
 
 const Component: React.FC = () => {
-  const { getLinks, linkGroups } = useLinkHelper();
+  const { getLinks } = useLinkHelper();
+  const { linkGroups } = useLinkContext();
   useEffect(() => {
     getLinks();
   }, []);

@@ -6,11 +6,11 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { AsyncButton } from '@component';
 import { Icons } from '@data';
-import { useCreateLinkHelper } from '../AdminLinks.service';
+import { useLinkHelper } from '../AdminLinks.service';
 
 export const CreateGroupLink: React.FC = () => {
   const [name, setName] = useState<string>('');
-  const { createLinkGroup } = useCreateLinkHelper();
+  const { createLinkGroup } = useLinkHelper();
   return (
     <Box>
       <FormControl variant="outlined" fullWidth required>

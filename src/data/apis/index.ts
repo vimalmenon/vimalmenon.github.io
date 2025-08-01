@@ -137,6 +137,15 @@ const CreateLink = (id: string, body: { name: string; link: string; reference: s
   url: `links/${id}`,
 });
 
+const DeleteLink = (gpId: string, id: string): IApi => ({
+  method: 'DELETE',
+  url: `links/${gpId}/${id}`,
+});
+
+const DeleteGroupLink = (id: string): IApi => ({
+  method: 'DELETE',
+  url: `links/${id}`,
+});
 export const APIs = {
   CreateLink,
   CreateLinkGroup,
@@ -144,6 +153,8 @@ export const APIs = {
   CreateWorkflowNode,
   DeleteDbServiceData,
   DeleteExecutedWorkflow,
+  DeleteGroupLink,
+  DeleteLink,
   DeleteWorkflow,
   DeleteWorkflowNode,
   ExecuteWorkflow,
