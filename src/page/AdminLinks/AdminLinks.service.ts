@@ -45,9 +45,14 @@ export const useLinkHelper = (): IUseLinkHelper => {
     await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.DeleteLink(gpId, id));
     await getLinks();
   };
+  const deleteGroupLink = async (id: string): Promise<void> => {
+    await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.DeleteGroupLink(id));
+    await getLinks();
+  };
   return {
     createLink,
     createLinkGroup,
+    deleteGroupLink,
     deleteLink,
     getLinks,
   };

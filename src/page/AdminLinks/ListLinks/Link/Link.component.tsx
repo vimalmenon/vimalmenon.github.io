@@ -10,13 +10,17 @@ import { ILink } from './Link';
 
 export const Link: React.FC<ILink> = ({ link }) => {
   const [showCreate, setShowCreate] = useState<boolean>(false);
-  const { deleteLink } = useLinkHelper();
+  const { deleteGroupLink, deleteLink } = useLinkHelper();
   return (
     <Box key={link.id}>
       {showCreate ? <CreateLink id={link.id} setShowCreate={setShowCreate} /> : null}
       {link.name}
       <Icon toolTip="Add Link" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />
-      <Icon toolTip="Delete Group" icon={<Icons.Delete />} />
+      <Icon
+        toolTip="Delete Group"
+        icon={<Icons.Delete />}
+        onClick={async () => await deleteGroupLink(link.id)}
+      />
       {link.links.map((data) => (
         <Box key={data.id}>
           <a href={data.link} target="_blank" rel="noreferrer">

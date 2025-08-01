@@ -12,4 +12,5 @@ export interface IUseLinkHelper {
   createLinkGroup: (name: string) => Promise<void>;
   deleteLink: (gpId: string, id: string) => Promise<void>;
   getLinks: VoidFunction<Promise<void>>;
+  deleteGroupLink: (id: string) => Promise<void>;
 }
