@@ -15,6 +15,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Remove execute path from workflow
+- [ ] Add blogs for Command
 - [ ] Show error in UI
 - [ ] Add Links to Admin Page
 - [ ] Add UI for links

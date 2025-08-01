@@ -1,97 +1,60 @@
-import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
 import type { Metadata, NextPage } from 'next';
-import { Fragment } from 'react';
-import { Breadcrumbs } from '@common';
+import NextLink from 'next/link';
 import { MainLayout } from '@component';
-import { APIs, GenerateWorkflow, GenerateWorkflowExecuteId, Navigation, WorkflowPage } from '@data';
-import { AdminWorkflowExecuteId, AdminWorkflowId, AdminWorkflows } from '@page';
-import { StyledPage } from '@style';
-import { ICatchAll, ICatchAllParams, IGenericResponse, IWorkflow } from '@types';
-import { makeRequest } from '@utility';
+import { blogs } from '@data';
+import { ICatchAll, ICatchAllParams } from '@types';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
-  title: 'Workflows | Admin | Vimal Menon',
-};
-
-const getPage = (data?: string[]): WorkflowPage => {
-  if (!data) {
-    return WorkflowPage.Workflow;
-  }
-  const [, executeId] = data;
-  if (executeId) {
-    return WorkflowPage.WorkflowExecutedId;
-  }
-  return WorkflowPage.WorkflowId;
+  title: 'Blogs | Vimal Menon',
 };
 
 const Page: NextPage<ICatchAllParams> = async ({ params }) => {
-  const { page: pageParams } = await params;
-  const page = getPage(pageParams);
-  const [id, executeId] = pageParams ?? [];
+  const { page } = await params;
+  const selectedPage = blogs.find((blog) => blog.link == String(page?.[0]));
   return (
     <MainLayout>
-      <StyledPage sx={{ flexDirection: 'column' }}>
-        {page === WorkflowPage.Workflow ? (
-          <Fragment>
-            <Breadcrumbs navigation={Navigation.AdminWorkflow} />
-            <Divider />
-            <AdminWorkflows />
-          </Fragment>
-        ) : null}
-
-        {page === WorkflowPage.WorkflowExecutedId ? (
-          <Fragment>
-            <Breadcrumbs navigation={GenerateWorkflowExecuteId(id, executeId)} />
-            <Divider />
-            <AdminWorkflowExecuteId id={id} executeId={executeId} />
-          </Fragment>
-        ) : null}
-        {page === WorkflowPage.WorkflowId ? (
-          <Fragment>
-            <Breadcrumbs navigation={GenerateWorkflow(id)} />
-            <Divider />
-            <AdminWorkflowId id={id} />
-          </Fragment>
-        ) : null}
-      </StyledPage>
+      <Box>
+        <Box>
+          <span>
+            <NextLink href="/blogs">Blog</NextLink> |
+          </span>
+          {blogs.map((blog) => (
+            <span key={blog.link}>
+              <NextLink href={`/blogs/${blog.link}`}>{blog.title}</NextLink> |
+            </span>
+          ))}
+        </Box>
+        <Box>{page}</Box>
+        <Box>{selectedPage?.name}</Box>
+        <Box>
+          {selectedPage?.topics.map((data) => (
+            <Box key={data.link}>
+              <Box>{data.name}</Box>
+              <Box>{data.tags}</Box>
+              <Box>{data.title}</Box>
+              <Box dangerouslySetInnerHTML={{ __html: data.text }}></Box>
+              <Box></Box>
+              <Box></Box>
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </MainLayout>
   );
 };
 
 export const generateStaticParams = async (): Promise<ICatchAll[]> => {
-  const { error, response } = await makeRequest<IGenericResponse<IWorkflow[]>>(APIs.GetWorkflows());
-  if (error) {
-    return [
-      {
-        page: [''],
-      },
-    ];
-  }
-  if (response.data.length === 0) {
-    return [
-      {
-        page: [''],
-      },
-    ];
-  }
-  return response.data.reduce<ICatchAll[]>((result, value) => {
-    const executedWorkflows = value.executedWorkflows.map((data) => ({
-      page: [value.id, data.id],
-    }));
-    return [
-      ...result,
-      ...[
-        {
-          page: [value.id],
-        },
-        {
-          page: [''],
-        },
-      ],
-      ...executedWorkflows,
-    ];
-  }, []);
+  const links = blogs.map((value) => ({
+    page: [value.link],
+  }));
+  return [
+    {
+      page: [''],
+    },
+    ...links,
+  ];
 };
 
 export default Page;
