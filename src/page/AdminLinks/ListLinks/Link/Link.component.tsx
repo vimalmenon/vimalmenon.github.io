@@ -7,10 +7,15 @@ import { ILink } from './Link';
 export const Link: React.FC<ILink> = ({ link }) => (
   <Box key={link.id}>
     <CreateLink id={link.id} />
-    <a href={link.link} target="_blank" rel="noreferrer">
-      {link.name}
-    </a>
+    {link.name}
+    {link.links.map((data) => (
+      <Box key={data.id}>
+        <a href={data.link} target="_blank" rel="noreferrer">
+          {data.name}
+        </a>
 
-    {link.reference}
+        {data.reference}
+      </Box>
+    ))}
   </Box>
 );

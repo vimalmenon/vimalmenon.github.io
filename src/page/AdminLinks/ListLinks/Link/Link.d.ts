@@ -1,5 +1,5 @@
-import { ILink as ILinkType } from '@types';
+import { ILinkGroup } from '@types';
 
 export interface ILink {
-  link: ILinkType;
+  link: ILinkGroup;
 }
