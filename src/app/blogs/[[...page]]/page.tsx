@@ -35,8 +35,6 @@ const Page: NextPage<ICatchAllParams> = async ({ params }) => {
               <Box>{data.tags}</Box>
               <Box>{data.title}</Box>
               <Box dangerouslySetInnerHTML={{ __html: data.text }}></Box>
-              <Box></Box>
-              <Box></Box>
             </Box>
           ))}
         </Box>
