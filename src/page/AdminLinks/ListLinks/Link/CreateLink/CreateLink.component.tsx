@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { AsyncButton } from '@component';
 import { Icons } from '@data';
-import { useCreateLinkHelper } from '../../AdminLinks.service';
+import { useCreateLinkHelper } from '../../../AdminLinks.service';
 import { ICreateLink } from './CreateLink';
 
 export const CreateLink: React.FC<ICreateLink> = ({ id }) => {

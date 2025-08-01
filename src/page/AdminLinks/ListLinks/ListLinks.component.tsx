@@ -1,7 +1,7 @@
 'use client';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import { CreateLink } from './CreateLink';
+import { Link } from './Link';
 import { IListLinks } from './ListLinks';
 
 export const ListLinks: React.FC<IListLinks> = ({ linkGroups }) => (
@@ -9,15 +9,9 @@ export const ListLinks: React.FC<IListLinks> = ({ linkGroups }) => (
     {linkGroups.map((link) => (
       <Box key={link.id}>
         {link.name}
-        <CreateLink id={link.id} />
-        {link.links.map((data) => (
-          <Box key={data.id}>
-            <a href={data.link} target="_blank" rel="noreferrer">
-              {data.name}
-            </a>
 
-            {data.reference}
-          </Box>
+        {link.links.map((data) => (
+          <Link link={data} key={data.id} />
         ))}
         <Divider />
       </Box>
