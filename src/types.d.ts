@@ -195,6 +195,10 @@ export interface ILinkGroup {
   links: ILink[];
 }
 
+export interface IErrorPage {
+  reset: VoidFunction;
+}
+
 export type VoidFunction<T = void> = () => T;
 
 export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
