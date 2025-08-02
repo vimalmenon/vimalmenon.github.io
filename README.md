@@ -15,10 +15,10 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Remove execute path from workflow
+- [x] Add UI for links
+- [x] Add Links to Admin Page
 - [ ] Add blogs for Command
 - [ ] Show error in UI
-- [ ] Add Links to Admin Page
-- [ ] Add UI for links
 - [ ] Show All past links in Admin Page
 - [ ] Move all the reducer to useState (Hard to manage useReducer)
 - [ ] Create validate nodes
@@ -61,6 +61,10 @@ openrc default
 kubectl get nodes\
 ----
 wsl -d myk3s openrc default
+```
+Remove old branch
+```sh
+git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
 ```
 
 ## Links
