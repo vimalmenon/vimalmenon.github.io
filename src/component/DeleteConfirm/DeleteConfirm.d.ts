@@ -1,7 +1,7 @@
 export interface IDeleteConfirm<T> {
-  disable?: boolean;
+  readonly disable?: boolean;
   onDelete: (data: T) => Promise<void>;
-  deleteMsg: string | JSX.Element;
-  iconSize?: 'small' | 'medium' | 'large';
-  data: T;
+  readonly deleteMsg: string | JSX.Element;
+  readonly iconSize?: 'small' | 'medium' | 'large';
+  readonly data: T;
 }
