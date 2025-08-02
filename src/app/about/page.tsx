@@ -49,7 +49,7 @@ const Page: React.FC = () => (
           Through my <b>blogs</b> and <b>YouTube videos</b>, I aim to make complex topics in
           software engineering and AI more accessible and engaging. My goal is to inspire others to
           explore these fields and discover the endless possibilities they offer. -
-          <b>YouTube Channel</b> :
+          <b>YouTube Channel</b>:
           <MuiLink
             href="https://www.youtube.com/@real_vimal_menon"
             target="_blank"
