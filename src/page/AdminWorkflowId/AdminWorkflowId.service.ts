@@ -235,6 +235,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     deleteNodeCancel,
     deleteNodeConfirm,
     getAllData,
+    getWorkFlow,
     id,
     onAlertClose,
     updateNode,
@@ -309,14 +310,15 @@ export const useTabHelper = (): IUseTabHelper => {
 };
 
 export const useExecuteWorkflowHelper = (): IUseExecuteWorkflowHelper => {
-  const { id, setShowCreate } = useWorkflowContext();
+  const { id, setLoading, setShowCreate } = useWorkflowContext();
+  const { getWorkFlow } = useWorkflowDataHelper();
   const executeWorkflow = async (data: IExecuteWorkflowSlim): Promise<void> => {
     if (id) {
-      // setLoading(true);
+      setLoading(true);
       await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id, data));
-      // await getExecutedWorkflow(false);
-      // setLoading(false);
-      // setShowCreate(false);
+      await getWorkFlow(false);
+      setLoading(false);
+      setShowCreate(false);
     }
   };
   return {

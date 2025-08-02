@@ -61,6 +61,7 @@ export interface IUseWorkflowDataHelper {
   deleteNodeCancel: VoidFunction;
   getAllData: VoidFunction<Promise<void>>;
   deleteExecutedWorkflow: (executedWorkflows: IExecuteWorkflow) => Promise<void>;
+  getWorkFlow: (skipLoading?: boolean) => Promise<void>;
   onAlertClose: VoidFunction;
 }
 
