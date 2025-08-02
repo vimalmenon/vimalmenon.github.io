@@ -66,10 +66,14 @@ export const SelectedWorkflow: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <WorkflowNodeDetail />
-      <ReactFlowLegend />
       {selectedExecutedWorkflow ? (
         <Fragment>
-          <ViewData data={convertWorkflowToView(selectedExecutedWorkflow)} />
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <ViewData data={convertWorkflowToView(selectedExecutedWorkflow)} />
+            <Divider orientation="vertical" flexItem />
+            <ReactFlowLegend />
+          </Box>
+
           <Divider />
           <Box>
             <div style={{ display: 'flex', flex: '1 1 100%', height: '600px' }}>

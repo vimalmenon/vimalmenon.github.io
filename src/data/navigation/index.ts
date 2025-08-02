@@ -287,47 +287,13 @@ export const GenerateWorkflowExecuteId = (id: string, executeId: string): INavig
       name: `${id.slice(0, 5)}...`,
     },
     {
-      link: `/admin/workflows/${id}/execute/`,
-      name: 'Execute',
-    },
-    {
       link: '',
       name: `${executeId.slice(0, 5)}...`,
     },
   ],
   children: [],
   description: 'This is Vimal Menon personal website',
-  link: `/admin/workflows/${id}/execute/${executeId}`,
-  name: id,
-  show: env.IS_LOCAL,
-  title: `${id} | Workflows | Admin | Vimal Menon`,
-});
-export const GenerateExecuteWorkflow = (id: string): INavigation => ({
-  breadcrumbs: [
-    {
-      link: '/',
-      name: 'Home',
-    },
-    {
-      link: '/admin/',
-      name: 'Admin',
-    },
-    {
-      link: '/admin/workflows/',
-      name: 'Workflows',
-    },
-    {
-      link: `/admin/workflows/${id}`,
-      name: `${id.slice(0, 5)}...`,
-    },
-    {
-      link: ``,
-      name: 'Execute',
-    },
-  ],
-  children: [],
-  description: 'This is Vimal Menon personal website',
-  link: `/admin/workflows/${id}/execute`,
+  link: `/admin/workflows/${id}/${executeId}`,
   name: id,
   show: env.IS_LOCAL,
   title: `${id} | Workflows | Admin | Vimal Menon`,

@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { createContext, useContext } from 'react';
 import { APIs } from '@data';
 import {
@@ -21,12 +22,14 @@ import {
 } from './AdminWorkflowExecuteId';
 
 export const Context = createContext<IAdminWorkflowExecuteIdContext>({
+  alert: null,
   dbServiceData: [],
   executeId: '',
   id: '',
   loading: false,
   selectedExecutedWorkflow: null,
   selectedWorkflowNode: null,
+  setAlert: NotImplemented,
   setDbServiceData: NotImplemented,
   setLoading: NotImplemented,
   setSelectedExecutedWorkflow: NotImplemented,
@@ -37,13 +40,25 @@ export const useAdminWorkflowIdExecuteIdContext = (): IAdminWorkflowExecuteIdCon
   useContext<IAdminWorkflowExecuteIdContext>(Context);
 
 export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHelper => {
-  const { executeId, id, setDbServiceData, setSelectedExecutedWorkflow } =
-    useAdminWorkflowIdExecuteIdContext();
+  const {
+    alert,
+    executeId,
+    id,
+    selectedExecutedWorkflow,
+    setAlert,
+    setDbServiceData,
+    setLoading,
+    setSelectedExecutedWorkflow,
+  } = useAdminWorkflowIdExecuteIdContext();
+  const { push } = useRouter();
+
   const getExecutedWorkflow = async (): Promise<void> => {
+    setLoading(true);
     const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
       APIs.GetExecutedWorkflowId(id, executeId)
     );
     setSelectedExecutedWorkflow(response.data);
+    setLoading(false);
   };
   const getDatabaseData = async (): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IDbServiceData[]>>(
@@ -55,10 +70,24 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
     await makeRequest<unknown>(APIs.DeleteDbServiceData(data.id));
     await getDatabaseData();
   };
+  const onAlertClose = (): void => {
+    setAlert(null);
+  };
+  const deleteExecutedWorkflow = async (): Promise<void> => {
+    if (selectedExecutedWorkflow) {
+      await makeRequest<IGenericResponse<unknown>>(
+        APIs.DeleteExecutedWorkflow(id, selectedExecutedWorkflow.id)
+      );
+      push(`/admin/workflows/${id}`);
+    }
+  };
   return {
+    alert,
     dbServiceDelete,
+    deleteExecutedWorkflow,
     getDatabaseData,
     getExecutedWorkflow,
+    onAlertClose,
   };
 };
 

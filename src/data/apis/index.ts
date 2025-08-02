@@ -118,11 +118,43 @@ const DeleteDbServiceData = (id: string): IApi => ({
   url: `llm_data/db/${id}`,
 });
 
+const GetLinkGroup = (): IApi => ({
+  method: 'GET',
+  url: `links`,
+});
+
+const CreateLinkGroup = (name: string): IApi => ({
+  body: {
+    name,
+  },
+  method: 'PUT',
+  url: `links`,
+});
+
+const CreateLink = (id: string, body: { name: string; link: string; reference: string }): IApi => ({
+  body,
+  method: 'PUT',
+  url: `links/${id}`,
+});
+
+const DeleteLink = (gpId: string, id: string): IApi => ({
+  method: 'DELETE',
+  url: `links/${gpId}/${id}`,
+});
+
+const DeleteGroupLink = (id: string): IApi => ({
+  method: 'DELETE',
+  url: `links/${id}`,
+});
 export const APIs = {
+  CreateLink,
+  CreateLinkGroup,
   CreateWorkflow,
   CreateWorkflowNode,
   DeleteDbServiceData,
   DeleteExecutedWorkflow,
+  DeleteGroupLink,
+  DeleteLink,
   DeleteWorkflow,
   DeleteWorkflowNode,
   ExecuteWorkflow,
@@ -130,6 +162,7 @@ export const APIs = {
   GetDbServiceData,
   GetExecutedWorkflow,
   GetExecutedWorkflowId,
+  GetLinkGroup,
   GetLLMs,
   GetServices,
   GetStructuredOutputTypes,

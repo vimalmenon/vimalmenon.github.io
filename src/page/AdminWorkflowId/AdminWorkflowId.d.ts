@@ -31,6 +31,8 @@ export interface IContext {
   setIsStart: ReactSetState<boolean>;
   alert: IAlert | null;
   setAlert: ReactSetState<IAlert | null>;
+  showCreate: boolean;
+  setShowCreate: ReactSetState<boolean>;
 }
 
 export interface IUseTabHelper {
@@ -60,4 +62,10 @@ export interface IUseWorkflowDataHelper {
   getAllData: VoidFunction<Promise<void>>;
   deleteExecutedWorkflow: (executedWorkflows: IExecuteWorkflow) => Promise<void>;
   onAlertClose: VoidFunction;
+}
+
+export interface IUseExecuteWorkflowHelper {
+  executeWorkflow: (data: IExecuteWorkflowSlim) => Promise<void>;
+  id: string;
+  setShowCreate: ReactSetState<boolean>;
 }

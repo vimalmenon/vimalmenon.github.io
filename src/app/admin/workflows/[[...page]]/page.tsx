@@ -3,20 +3,8 @@ import type { Metadata, NextPage } from 'next';
 import { Fragment } from 'react';
 import { Breadcrumbs } from '@common';
 import { AdminLayout } from '@component';
-import {
-  APIs,
-  GenerateExecuteWorkflow,
-  GenerateWorkflow,
-  GenerateWorkflowExecuteId,
-  Navigation,
-  WorkflowPage,
-} from '@data';
-import {
-  AdminWorkflowExecuteId,
-  AdminWorkflowId,
-  AdminWorkflowIdExecute,
-  AdminWorkflows,
-} from '@page';
+import { APIs, GenerateWorkflow, GenerateWorkflowExecuteId, Navigation, WorkflowPage } from '@data';
+import { AdminWorkflowExecuteId, AdminWorkflowId, AdminWorkflows } from '@page';
 import { StyledPage } from '@style';
 import { ICatchAll, ICatchAllParams, IGenericResponse, IWorkflow } from '@types';
 import { makeRequest } from '@utility';
@@ -30,12 +18,9 @@ const getPage = (data?: string[]): WorkflowPage => {
   if (!data) {
     return WorkflowPage.Workflow;
   }
-  const [, execute, executeId] = data;
+  const [, executeId] = data;
   if (executeId) {
     return WorkflowPage.WorkflowExecutedId;
-  }
-  if (execute) {
-    return WorkflowPage.WorkflowExecuted;
   }
   return WorkflowPage.WorkflowId;
 };
@@ -43,7 +28,7 @@ const getPage = (data?: string[]): WorkflowPage => {
 const Page: NextPage<ICatchAllParams> = async ({ params }) => {
   const { page: pageParams } = await params;
   const page = getPage(pageParams);
-  const [id, , executeId] = pageParams ?? [];
+  const [id, executeId] = pageParams ?? [];
   return (
     <AdminLayout>
       <StyledPage sx={{ flexDirection: 'column' }}>
@@ -60,13 +45,6 @@ const Page: NextPage<ICatchAllParams> = async ({ params }) => {
             <Breadcrumbs navigation={GenerateWorkflowExecuteId(id, executeId)} />
             <Divider />
             <AdminWorkflowExecuteId id={id} executeId={executeId} />
-          </Fragment>
-        ) : null}
-        {page === WorkflowPage.WorkflowExecuted ? (
-          <Fragment>
-            <Breadcrumbs navigation={GenerateExecuteWorkflow(id)} />
-            <Divider />
-            <AdminWorkflowIdExecute id={id} />
           </Fragment>
         ) : null}
         {page === WorkflowPage.WorkflowId ? (
@@ -99,16 +77,13 @@ export const generateStaticParams = async (): Promise<ICatchAll[]> => {
   }
   return response.data.reduce<ICatchAll[]>((result, value) => {
     const executedWorkflows = value.executedWorkflows.map((data) => ({
-      page: [value.id, 'execute', data.id],
+      page: [value.id, data.id],
     }));
     return [
       ...result,
       ...[
         {
           page: [value.id],
-        },
-        {
-          page: [value.id, 'execute'],
         },
         {
           page: [''],

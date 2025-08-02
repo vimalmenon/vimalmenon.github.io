@@ -13,6 +13,7 @@ import React from 'react';
 import { DeleteConfirm, Icon } from '@component';
 import { Icons } from '@data';
 import { IExecuteWorkflow } from '@types';
+import { formatDate } from '@utility';
 import { IExecute } from './Execute';
 
 export const Execute: React.FC<IExecute> = ({ deleteExecutedWorkflow, executedWorkflows, id }) => {
@@ -26,6 +27,8 @@ export const Execute: React.FC<IExecute> = ({ deleteExecutedWorkflow, executedWo
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell>Status</TableCell>
+              <TableCell>Created At</TableCell>
+              <TableCell>Completed At</TableCell>
               <TableCell align="right">Action</TableCell>
             </TableRow>
           </TableHead>
@@ -34,6 +37,10 @@ export const Execute: React.FC<IExecute> = ({ deleteExecutedWorkflow, executedWo
               <TableRow key={workflow.id} style={{ cursor: 'pointer' }}>
                 <TableCell>{workflow.name}</TableCell>
                 <TableCell>{workflow.status}</TableCell>
+                <TableCell>{formatDate(workflow.createdAt)}</TableCell>
+                <TableCell>
+                  {workflow.completedAt ? formatDate(workflow.completedAt) : null}
+                </TableCell>
                 <TableCell align="right">
                   <DeleteConfirm<IExecuteWorkflow>
                     onDelete={deleteExecutedWorkflow}
@@ -47,7 +54,7 @@ export const Execute: React.FC<IExecute> = ({ deleteExecutedWorkflow, executedWo
                   />
                   <Icon
                     icon={<Icons.Play />}
-                    onClick={() => push(`/admin/workflows/${id}/execute/${workflow.id}`)}
+                    onClick={() => push(`/admin/workflows/${id}/${workflow.id}`)}
                     toolTip="Go"
                     size="small"
                   />

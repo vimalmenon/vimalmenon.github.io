@@ -15,7 +15,7 @@ const ViewDataItem: React.FC<IListViewRender<IViewData>> = ({ data }) => {
 };
 
 export const ViewData: React.FC<IViewDataProps> = ({ data }) => (
-  <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
+  <Box sx={{ display: 'flex', flex: '1', flexDirection: 'column', gap: 2 }}>
     <ListItem<IViewData> items={data} Render={ViewDataItem} />
   </Box>
 );
