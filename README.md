@@ -17,7 +17,8 @@ This is Website for Vimal Menon
 - [x] Remove execute path from workflow
 - [x] Add UI for links
 - [x] Add Links to Admin Page
-- [ ] Add blogs for Command
+- [ ] Get release automatically
+- [ ] Add blog for Command
 - [ ] Show error in UI
 - [ ] Show All past links in Admin Page
 - [ ] Move all the reducer to useState (Hard to manage useReducer)
