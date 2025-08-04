@@ -13,7 +13,7 @@ import { ListLinks } from './ListLinks';
 
 const Component: React.FC = () => {
   const { getLinks } = useLinkHelper();
-  const { linkGroups, loading, showCreate } = useLinkContext();
+  const { linkGroups, loading, setShowCreate, showCreate } = useLinkContext();
   useEffect(() => {
     getLinks();
   }, []);
@@ -22,7 +22,9 @@ const Component: React.FC = () => {
       <Divider />
       <WorkflowHeader
         title="Executed Workflow"
-        action={<Icon toolTip="Delete" icon={<Icons.Delete />} />}
+        action={
+          <Icon toolTip="Add Link" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />
+        }
       />
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>

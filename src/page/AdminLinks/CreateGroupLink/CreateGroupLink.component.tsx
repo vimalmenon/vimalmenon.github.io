@@ -6,11 +6,13 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { AsyncButton } from '@component';
 import { Icons } from '@data';
-import { useLinkHelper } from '../AdminLinks.service';
+import { useLinkContext, useLinkHelper } from '../AdminLinks.service';
 
 export const CreateGroupLink: React.FC = () => {
   const [name, setName] = useState<string>('');
   const { createLinkGroup } = useLinkHelper();
+  const { setShowCreate } = useLinkContext();
+
   return (
     <Box>
       <FormControl variant="outlined" fullWidth required>
@@ -25,7 +27,7 @@ export const CreateGroupLink: React.FC = () => {
         />
       </FormControl>
       <Box sx={{ display: 'flex', gap: 1 }}>
-        <Button variant="outlined" endIcon={<Icons.Close />}>
+        <Button variant="outlined" endIcon={<Icons.Close />} onClick={() => setShowCreate(false)}>
           Cancel
         </Button>
         <AsyncButton
