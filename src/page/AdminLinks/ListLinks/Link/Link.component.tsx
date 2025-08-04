@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 import { Icon } from '@component';
 import { Icons } from '@data';
@@ -25,6 +26,7 @@ export const Link: React.FC<ILink> = ({ link }) => {
           />
         </Box>
       </Box>
+      <Divider />
       <Box>
         {link.links.map((data) => (
           <Box key={data.id}>
