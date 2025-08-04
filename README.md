@@ -11,7 +11,6 @@ This is Website for Vimal Menon
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
-
 ## To Do
 
 - [x] Remove execute path from workflow
@@ -39,23 +38,26 @@ This is Website for Vimal Menon
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
 
-
 ## Ideas
 
 - Show Team Members
 
-
 ## Command
 
 Clean up Remote branch
+
 ```sh
 git remote update origin --prune
 ```
+
 Eslint copilot
+
 ```sh
 copilot-debug npm run eslint:fix
 ```
+
 Start K3S in windows
+
 ```sh
 wsl -d myk3s
 openrc default
@@ -63,7 +65,9 @@ kubectl get nodes\
 ----
 wsl -d myk3s openrc default
 ```
+
 Remove old branch
+
 ```sh
 git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
 ```
