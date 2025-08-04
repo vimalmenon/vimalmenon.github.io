@@ -29,16 +29,29 @@ export const Link: React.FC<ILink> = ({ link }) => {
       <Divider />
       <Box>
         {link.links.map((data) => (
-          <Box key={data.id}>
-            <a href={data.link} target="_blank" rel="noreferrer">
-              {data.name}
-            </a>
-            {data.reference}
-            <Icon
-              toolTip="Delete Link"
-              icon={<Icons.Delete />}
-              onClick={async () => await deleteLink(link.id, data.id)}
-            />
+          <Box
+            key={data.id}
+            sx={{
+              alignItems: 'center',
+              display: 'flex',
+              gap: 1,
+              justifyContent: 'space-between',
+              marginLeft: 3,
+            }}
+          >
+            <Box sx={{ display: 'flex', gap: 2 }}>
+              <a href={data.link} target="_blank" rel="noreferrer">
+                {data.name}
+              </a>
+              {data.reference}
+            </Box>
+            <Box>
+              <Icon
+                toolTip="Delete Link"
+                icon={<Icons.Delete />}
+                onClick={async () => await deleteLink(link.id, data.id)}
+              />
+            </Box>
           </Box>
         ))}
       </Box>
