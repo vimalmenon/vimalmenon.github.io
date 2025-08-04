@@ -7,9 +7,21 @@ import { Context } from './AdminLinks.service';
 export const AdminLinksContext: React.FC<IReactChildren> = ({ children }) => {
   const [linkGroups, setLinkGroups] = useState<ILinkGroup[]>([]);
   const [alert, setAlert] = useState<IAlert | null>(null);
-
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showCreate, setShowCreate] = useState<boolean>(false);
   return (
-    <Context.Provider value={{ alert, linkGroups, setAlert, setLinkGroups }}>
+    <Context.Provider
+      value={{
+        alert,
+        linkGroups,
+        loading,
+        setAlert,
+        setLinkGroups,
+        setLoading,
+        setShowCreate,
+        showCreate,
+      }}
+    >
       {children}
     </Context.Provider>
   );

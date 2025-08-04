@@ -5,6 +5,10 @@ export interface IAdminLinksContext {
   setLinkGroups: ReactSetState<ILinkGroup[]>;
   alert: IAlert | null;
   setAlert: ReactSetState<IAlert | null>;
+  loading: boolean;
+  setLoading: ReactSetState<boolean>;
+  showCreate: boolean;
+  setShowCreate: ReactSetState<boolean>;
 }
 
 export interface IUseLinkHelper {

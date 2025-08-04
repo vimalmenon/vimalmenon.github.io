@@ -8,17 +8,23 @@ import { IAdminLinksContext, IUseLinkHelper } from './AdminLinks';
 export const Context = createContext<IAdminLinksContext>({
   alert: null,
   linkGroups: [],
+  loading: false,
   setAlert: NotImplemented,
   setLinkGroups: NotImplemented,
+  setLoading: NotImplemented,
+  setShowCreate: NotImplemented,
+  showCreate: false,
 });
 
 export const useLinkContext = (): IAdminLinksContext => useContext<IAdminLinksContext>(Context);
 
 export const useLinkHelper = (): IUseLinkHelper => {
-  const { setLinkGroups } = useLinkContext();
+  const { setLinkGroups, setLoading } = useLinkContext();
   const getLinks = async (): Promise<void> => {
+    setLoading(true);
     const { response } = await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.GetLinkGroup());
     setLinkGroups(response.data);
+    setLoading(false);
   };
   const createLinkGroup = async (name: string): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<ILinkGroup[]>>(
