@@ -2,23 +2,44 @@
 
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+import LinearProgress from '@mui/material/LinearProgress';
 import { Fragment, useEffect } from 'react';
-import { WorkflowHeader } from '@component';
+import { Alert, Icon, WorkflowHeader } from '@component';
+import { Icons } from '@data';
 import { IAdminWorkflowExecuteId } from './AdminWorkflowExecuteId';
 import { AdminWorkflowExecuteIdContext } from './AdminWorkflowExecuteId.context';
-import { useAdminWorkflowIdExecuteHelper } from './AdminWorkflowExecuteId.service';
+import {
+  useAdminWorkflowIdExecuteHelper,
+  useAdminWorkflowIdExecuteIdContext,
+} from './AdminWorkflowExecuteId.service';
 import { SelectedWorkflow } from './SelectedWorkflow';
 
 const Component: React.FC = () => {
-  const { getDatabaseData, getExecutedWorkflow } = useAdminWorkflowIdExecuteHelper();
+  const { alert, deleteExecutedWorkflow, getDatabaseData, getExecutedWorkflow, onAlertClose } =
+    useAdminWorkflowIdExecuteHelper();
+  const { loading } = useAdminWorkflowIdExecuteIdContext();
   useEffect(() => {
     getExecutedWorkflow();
     getDatabaseData();
   }, []);
   return (
     <Fragment>
-      <WorkflowHeader title="Executed Workflow" />
+      <WorkflowHeader
+        title="Executed Workflow"
+        action={<Icon toolTip="Delete" icon={<Icons.Delete />} onClick={deleteExecutedWorkflow} />}
+      />
       <Divider />
+      {alert ? (
+        <Fragment>
+          <Box sx={{ margin: 1 }}>
+            <Alert severity={alert.severity} onClose={onAlertClose}>
+              {alert.children}
+            </Alert>{' '}
+          </Box>
+          <Divider />
+        </Fragment>
+      ) : null}
+      {loading ? <LinearProgress /> : null}
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
         <SelectedWorkflow />
       </Box>

@@ -6,23 +6,19 @@ This is Website for Vimal Menon
 
 <b>Name</b>: Vimal Menon
 <br/>
-<b>Version</b>: 0.0.35
+<b>Version</b>: 0.0.36
 <br/>
 <b>Website</b>: [vimalmenon.com](https://vimalmenon.com)
 <br/>
 
-
 ## To Do
 
-- [x] Add support for OpenAI
-- [x] Improve Workflow
-- [x] Show time in more readable format
-- [x] Maintain the state to it doesn't change on tab change
+- [x] Remove execute path from workflow
+- [x] Add UI for links
 - [x] Add Links to Admin Page
-- [x] Handle errors more gracefully
-- [x] Show loading indicator on Pages
-- [x] Disable starting point for other nodes when enabled
-- [ ] Remove execute from workflow
+- [ ] Make the group Link name consistent(Use the name LinkGroup and not GroupLink)
+- [ ] Get release automatically
+- [ ] Add blog for Command
 - [ ] Show error in UI
 - [ ] Show All past links in Admin Page
 - [ ] Move all the reducer to useState (Hard to manage useReducer)
@@ -43,29 +39,38 @@ This is Website for Vimal Menon
 - [ ] Create Contact US Page
 - [ ] Add Sitemap.xml
 
-
 ## Ideas
 
 - Show Team Members
 
-
 ## Command
 
 Clean up Remote branch
+
 ```sh
 git remote update origin --prune
 ```
+
 Eslint copilot
+
 ```sh
 copilot-debug npm run eslint:fix
 ```
+
 Start K3S in windows
+
 ```sh
 wsl -d myk3s
 openrc default
 kubectl get nodes\
 ----
 wsl -d myk3s openrc default
+```
+
+Remove old branch
+
+```sh
+git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
 ```
 
 ## Links

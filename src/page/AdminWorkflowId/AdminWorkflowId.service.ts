@@ -7,6 +7,7 @@ import { APIs } from '@data';
 import {
   FormMode,
   IExecuteWorkflow,
+  IExecuteWorkflowSlim,
   IGenericResponse,
   IGenericResponseError,
   INode,
@@ -17,6 +18,7 @@ import { makeRequest, NotImplemented } from '@utility';
 import {
   IContext,
   INodeTab,
+  IUseExecuteWorkflowHelper,
   IUseTabHelper,
   IUseWorkflowDataHelper,
   IUseWorkflowFormHelper,
@@ -38,9 +40,11 @@ export const Context = createContext<IContext>({
   setNodeFormMode: NotImplemented,
   setNodeTabs: NotImplemented,
   setSelectedNode: NotImplemented,
+  setShowCreate: NotImplemented,
   setWorkflow: NotImplemented,
   setWorkflowFormMode: NotImplemented,
   setWorkflowLoading: NotImplemented,
+  showCreate: false,
   workflow: null,
   workflowFormMode: 'VIEW',
   workflowLoading: false,
@@ -231,6 +235,7 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     deleteNodeCancel,
     deleteNodeConfirm,
     getAllData,
+    getWorkFlow,
     id,
     onAlertClose,
     updateNode,
@@ -301,5 +306,24 @@ export const useTabHelper = (): IUseTabHelper => {
     onTabChange,
     selectedTab: selectedTab === -1 ? 0 : selectedTab,
     setNodeMode,
+  };
+};
+
+export const useExecuteWorkflowHelper = (): IUseExecuteWorkflowHelper => {
+  const { id, setLoading, setShowCreate } = useWorkflowContext();
+  const { getWorkFlow } = useWorkflowDataHelper();
+  const executeWorkflow = async (data: IExecuteWorkflowSlim): Promise<void> => {
+    if (id) {
+      setLoading(true);
+      await makeRequest<IGenericResponse<unknown>>(APIs.ExecuteWorkflow(id, data));
+      await getWorkFlow(false);
+      setLoading(false);
+      setShowCreate(false);
+    }
+  };
+  return {
+    executeWorkflow,
+    id,
+    setShowCreate,
   };
 };

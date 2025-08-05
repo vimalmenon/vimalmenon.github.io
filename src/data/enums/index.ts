@@ -30,7 +30,6 @@ export enum WorkflowNodeType {
 export enum WorkflowPage {
   Workflow = 'Workflow',
   WorkflowExecutedId = 'WorkflowExecutedId',
-  WorkflowExecuted = 'WorkflowExecuted',
   WorkflowId = 'WorkflowId',
 }
 
