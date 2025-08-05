@@ -8,7 +8,7 @@ import { AsyncButton } from '@component';
 import { Icons } from '@data';
 import { useLinkContext, useLinkHelper } from '../AdminLinks.service';
 
-export const CreateGroupLink: React.FC = () => {
+export const CreateLinkGroup: React.FC = () => {
   const [name, setName] = useState<string>('');
   const { createLinkGroup } = useLinkHelper();
   const { setShowCreate } = useLinkContext();

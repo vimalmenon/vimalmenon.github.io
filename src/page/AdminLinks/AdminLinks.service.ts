@@ -52,7 +52,7 @@ export const useLinkHelper = (): IUseLinkHelper => {
     await getLinks();
   };
   const deleteGroupLink = async (id: string): Promise<void> => {
-    await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.DeleteGroupLink(id));
+    await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.DeleteLinkGroup(id));
     await getLinks();
   };
   return {
