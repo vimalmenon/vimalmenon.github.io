@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Divider from '@mui/material/Divider';
 import { Fragment, useState } from 'react';
-import { Icon } from '@component';
+import { DeleteConfirm, Icon } from '@component';
 import { Icons } from '@data';
 import { INode as INodeData, INodeSlim } from '@types';
 import { NodeForm } from '../Common';
@@ -49,9 +49,18 @@ export const Node: React.FC<INode> = ({
           title={title}
           action={
             <Fragment>
-              {mode === 'VIEW' && !complete ? (
+              {mode === 'VIEW' && !complete && deleteNode ? (
                 <Fragment>
-                  <Icon toolTip="Delete Node" icon={<Icons.Delete />} onClick={deleteNode} />
+                  <DeleteConfirm
+                    onDelete={deleteNode}
+                    deleteMsg={
+                      <span>
+                        Delete Workflow <b>{data?.name}</b>?
+                      </span>
+                    }
+                    iconSize="small"
+                    data={data}
+                  />
                   <Icon
                     toolTip={`Edit Node`}
                     icon={<Icons.Edit />}

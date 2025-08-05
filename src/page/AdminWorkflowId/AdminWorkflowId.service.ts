@@ -11,6 +11,7 @@ import {
   IGenericResponse,
   IGenericResponseError,
   INode,
+  INodeFull,
   INodeSlim,
   IWorkflow,
 } from '@types';
@@ -32,14 +33,12 @@ export const Context = createContext<IContext>({
   loading: false,
   nodeFormMode: 'UPDATE',
   nodeTabs: [],
-  selectedNode: null,
   setAlert: NotImplemented,
   setError: NotImplemented,
   setIsStart: NotImplemented,
   setLoading: NotImplemented,
   setNodeFormMode: NotImplemented,
   setNodeTabs: NotImplemented,
-  setSelectedNode: NotImplemented,
   setShowCreate: NotImplemented,
   setWorkflow: NotImplemented,
   setWorkflowFormMode: NotImplemented,
@@ -100,18 +99,15 @@ export const createNodeTab = (names: string[], nodeMap: Record<string, INode>): 
 export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
-    selectedNode,
     setAlert,
     setError,
     setIsStart,
     setLoading,
     setNodeFormMode,
     setNodeTabs,
-    setSelectedNode,
     setWorkflow,
     setWorkflowFormMode,
     setWorkflowLoading,
-    workflow,
   } = useWorkflowContext();
   const { getLLMs, getServices, getStructuredOutputTypes, getTools, getWorkflowTypes } =
     useAdminContext();
@@ -174,19 +170,11 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
     setWorkflowFormMode('VIEW');
     setLoading(false);
   };
-  const getNodeByID = (nodeId: string): INode | null => workflow?.nodes?.[nodeId] ?? null;
-  const deleteNode = async (nodeId: string): Promise<void> => {
-    setSelectedNode(getNodeByID(nodeId));
-  };
-  const deleteNodeConfirm = async (): Promise<void> => {
-    if (selectedNode) {
-      await makeRequest(APIs.DeleteWorkflowNode(id, selectedNode.id));
+  const deleteNodeConfirm = async (data?: INodeFull): Promise<void> => {
+    if (data) {
+      await makeRequest(APIs.DeleteWorkflowNode(id, data.id));
       await getWorkFlow();
-      setSelectedNode(null);
     }
-  };
-  const deleteNodeCancel = (): void => {
-    setSelectedNode(null);
   };
   const updateNode = async (nodeId: string, data: INode): Promise<void> => {
     const { response } = await makeRequest<IGenericResponse<IWorkflow>>(
@@ -231,8 +219,6 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   return {
     createNode,
     deleteExecutedWorkflow,
-    deleteNode,
-    deleteNodeCancel,
     deleteNodeConfirm,
     getAllData,
     getWorkFlow,
