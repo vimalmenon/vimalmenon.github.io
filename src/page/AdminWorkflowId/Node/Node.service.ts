@@ -33,6 +33,7 @@ export const nodeType = (type?: string): string[] => {
       Enums.WorkflowNodeFields.LLM,
       Enums.WorkflowNodeFields.Prompt,
       Enums.WorkflowNodeFields.Message,
+      Enums.WorkflowNodeFields.Tools,
       Enums.WorkflowNodeFields.Next,
       Enums.WorkflowNodeFields.IsStart,
       Enums.WorkflowNodeFields.StructuredOutput,
