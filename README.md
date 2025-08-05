@@ -13,7 +13,7 @@ This is Website for Vimal Menon
 
 ## To Do
 
-- [ ] Make the group Link name consistent(Use the name LinkGroup and not GroupLink)
+- [x] Make the group Link name consistent(Use the name LinkGroup and not GroupLink)
 - [ ] Get release automatically
 - [ ] Add blog for Command
 - [ ] Show error in UI
