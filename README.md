@@ -16,6 +16,7 @@ This is Website for Vimal Menon
 - [x] Remove execute path from workflow
 - [x] Add UI for links
 - [x] Add Links to Admin Page
+- [ ] Make the group Link name consistent(Use the name LinkGroup and not GroupLink)
 - [ ] Get release automatically
 - [ ] Add blog for Command
 - [ ] Show error in UI
