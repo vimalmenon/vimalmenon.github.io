@@ -14,6 +14,8 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Make the group Link name consistent(Use the name LinkGroup and not GroupLink)
+- [ ] Improve Home page
+- [ ] Improve About page
 - [ ] Get release automatically
 - [ ] Add blog for Command
 - [ ] Show error in UI
