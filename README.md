@@ -14,6 +14,7 @@ This is Website for Vimal Menon
 ## To Do
 
 - [x] Make the group Link name consistent(Use the name LinkGroup and not GroupLink)
+- [ ] Separate Workflow from Execute workflow
 - [ ] Improve Home page
 - [ ] Improve About page
 - [ ] Improve UI for Workflow Page
