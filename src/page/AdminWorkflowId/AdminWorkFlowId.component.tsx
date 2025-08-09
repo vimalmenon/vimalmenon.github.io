@@ -23,8 +23,7 @@ import { Nodes } from './Nodes';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const { alert, error, setShowCreate, showCreate, workflow, workflowFormMode } =
-    useWorkflowContext();
+  const { alert, setShowCreate, showCreate, workflow, workflowFormMode } = useWorkflowContext();
   const { deleteExecutedWorkflow, getAllData, id, onAlertClose } = useWorkflowDataHelper();
   const { deleteWorkflow, editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
   const { onAddNodeTab } = useTabHelper();
@@ -96,7 +95,6 @@ const Component: React.FC = () => {
             <Divider />
           </Fragment>
         ) : null}
-        {error ? <Alert severity="error">{error}</Alert> : null}
         <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
         <Divider />
         <Nodes />

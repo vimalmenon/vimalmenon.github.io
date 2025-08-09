@@ -47,6 +47,7 @@ export interface IGenericResponse<T> {
 
 export interface IGenericResponseError {
   detail: string;
+  message: string;
 }
 
 export interface IWorkflowSlim {
