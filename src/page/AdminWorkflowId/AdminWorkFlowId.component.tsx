@@ -86,7 +86,7 @@ const Component: React.FC = () => {
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
         {showCreate ? <ExecuteForm /> : null}
-        {id && workflow && workflow.complete ? (
+        {id && workflow?.complete ? (
           <Fragment>
             <Execute
               executedWorkflows={workflow.executedWorkflows}
