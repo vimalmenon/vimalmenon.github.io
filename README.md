@@ -3,7 +3,7 @@
 A modern, responsive personal website built with Next.js, React, and Material-UI. Features a dynamic admin panel, workflow management system, and a blog platform.
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fvimalmenon.com)](https://vimalmenon.com)
-[![Version](https://img.shields.io/badge/version-0.0.37-blue.svg)](https://github.com/vimalmenon/vimalmenon.github.io)
+[![Version](https://img.shields.io/badge/version-0.0.38-blue.svg)](https://github.com/vimalmenon/vimalmenon.github.io)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## 🌐 Live Website

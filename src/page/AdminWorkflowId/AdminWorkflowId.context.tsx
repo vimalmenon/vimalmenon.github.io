@@ -16,7 +16,6 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
   const [workflowFormMode, setWorkflowFormMode] = useState<FormMode>('VIEW');
   const [loading, setLoading] = useState<boolean>(false);
   const [nodeFormMode, setNodeFormMode] = useState<FormMode>('UPDATE');
-  const [error, setError] = useState<string | null>(null);
   const [isStart, setIsStart] = useState<boolean>(false);
   const [selectedWorkflow, setSelectedWorkflow] = useState<IWorkflow | null>(null);
   const [alert, setAlert] = useState<IAlert | null>(null);
@@ -26,14 +25,12 @@ export const AdminWorkflowIdContext: React.FC<IAdminWorkflowIdPage & IReactChild
     <Context.Provider
       value={{
         alert,
-        error,
         id,
         isStart,
         loading,
         nodeFormMode,
         nodeTabs,
         setAlert,
-        setError,
         setIsStart,
         setLoading,
         setNodeFormMode,

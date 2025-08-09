@@ -30,14 +30,12 @@ import {
 
 export const Context = createContext<IContext>({
   alert: null,
-  error: null,
   id: '0',
   isStart: false,
   loading: false,
   nodeFormMode: 'UPDATE',
   nodeTabs: [],
   setAlert: NotImplemented,
-  setError: NotImplemented,
   setIsStart: NotImplemented,
   setLoading: NotImplemented,
   setNodeFormMode: NotImplemented,
@@ -103,7 +101,6 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
   const {
     id,
     setAlert,
-    setError,
     setIsStart,
     setLoading,
     setNodeFormMode,
@@ -157,7 +154,10 @@ export const useWorkflowDataHelper = (): IUseWorkflowDataHelper => {
       })
     );
     if (error) {
-      setError(error.detail);
+      setAlert({
+        children: error.message,
+        severity: 'error',
+      });
       setWorkflowFormMode('VIEW');
       setLoading(false);
       return;

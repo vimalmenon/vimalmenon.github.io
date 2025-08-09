@@ -24,8 +24,6 @@ export interface IContext {
   setNodeTabs: ReactSetState<INodeTab[]>;
   nodeFormMode: FormMode;
   setNodeFormMode: ReactSetState<FormMode>;
-  error: string | null;
-  setError: ReactSetState<string | null>;
   isStart: boolean;
   setIsStart: ReactSetState<boolean>;
   alert: IAlert | null;

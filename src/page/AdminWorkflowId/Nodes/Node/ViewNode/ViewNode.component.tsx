@@ -6,7 +6,7 @@ import { Enums } from '@data';
 import { INode } from '@types';
 import { formatDate } from '@utility';
 
-import { useWorkflowContext } from '../../AdminWorkflowId.service';
+import { useWorkflowContext } from '../../../AdminWorkflowId.service';
 import { nodeType } from '../Node.service';
 
 import { IViewNode } from './ViewNode';
