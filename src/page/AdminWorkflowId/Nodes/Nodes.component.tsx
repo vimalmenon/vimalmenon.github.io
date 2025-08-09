@@ -11,15 +11,10 @@ import {
   useWorkflowContext,
   useWorkflowDataHelper,
 } from '../AdminWorkflowId.service';
+
 import { Node } from './Node';
 export const Nodes: React.FC = () => {
-  const {
-    isStart,
-    nodeTabs,
-    setNodeFormMode,
-    workflowLoading,
-    workflow,
-  } = useWorkflowContext();
+  const { isStart, nodeTabs, setNodeFormMode, workflow, workflowLoading } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab, setNodeMode } = useTabHelper();
   const { createNode, deleteNodeConfirm, updateNode } = useWorkflowDataHelper();
   if (workflowLoading) {
