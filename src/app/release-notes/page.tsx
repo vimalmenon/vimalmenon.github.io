@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { Breadcrumbs } from '@common';
 import { MainLayout } from '@component';
 import { Navigation } from '@data';

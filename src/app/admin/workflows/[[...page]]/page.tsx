@@ -1,6 +1,9 @@
-import Divider from '@mui/material/Divider';
-import type { Metadata, NextPage } from 'next';
 import { Fragment } from 'react';
+
+import Divider from '@mui/material/Divider';
+
+import type { Metadata, NextPage } from 'next';
+
 import { Breadcrumbs } from '@common';
 import { AdminLayout } from '@component';
 import { APIs, GenerateWorkflow, GenerateWorkflowExecuteId, Navigation, WorkflowPage } from '@data';

@@ -1,14 +1,18 @@
 'use client';
 
+import { Fragment } from 'react';
+
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import { Fragment } from 'react';
+
 import { ReactFlow, ReactFlowLegend, ViewData } from '@component';
 import { IExecuteWorkflow, IExecuteWorkflowNode, IReactFlowEdge, IViewData } from '@types';
+
 import {
   useAdminWorkflowIdExecuteIdContext,
   useWorkflowExecuteHelper,
 } from '../AdminWorkflowExecuteId.service';
+
 import { WorkflowNodeDetail } from './WorkflowNodeDetail';
 
 const convertWorkflowToView = (data: IExecuteWorkflow): IViewData[] => {

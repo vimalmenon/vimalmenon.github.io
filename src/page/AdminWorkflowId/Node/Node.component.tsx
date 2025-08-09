@@ -1,15 +1,19 @@
 'use client';
 
+import { Fragment, useState } from 'react';
+
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Divider from '@mui/material/Divider';
-import { Fragment, useState } from 'react';
+
 import { DeleteConfirm, Icon } from '@component';
 import { Icons } from '@data';
 import { INode as INodeData, INodeSlim } from '@types';
+
 import { NodeForm } from '../Common';
+
 import { INode } from './Node';
 import { cleanData, getTitleFromMode } from './Node.service';
 import { ViewNode } from './ViewNode';

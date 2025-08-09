@@ -1,6 +1,7 @@
 'use client'; // Error boundaries must be Client Components
 
 import Box from '@mui/material/Box';
+
 import { IErrorPage } from '@types';
 
 const ErrorPage: React.FC<IErrorPage> = async ({ reset }) => (

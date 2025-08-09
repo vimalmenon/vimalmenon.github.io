@@ -1,4 +1,5 @@
 import pluginJs from '@eslint/js';
+import pluginImport from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import pluginReact from 'eslint-plugin-react';
 import sort from 'eslint-plugin-sort';
@@ -26,6 +27,22 @@ export default [
   eslintPluginPrettierRecommended,
   pluginReact.configs.flat.recommended,
   {
+    plugins: {
+      import: pluginImport,
+    },
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+      },
+    },
+  },
+  {
     ignores: [
       'node_modules/*',
       '.next/*',
@@ -51,25 +68,90 @@ export default [
       '@typescript-eslint/no-unused-vars': ['error'],
       'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
 
-      // 'import/order': [
-      //   'error',
-      //   {
-      //     alphabetize: {
-      //       caseInsensitive: true,
-      //       order: 'asc',
-      //     },
-      //     groups: ['builtin', 'external', 'internal'],
-      //     'newlines-between': 'always',
-      //     pathGroups: [
-      //       {
-      //         group: 'external',
-      //         pattern: 'react',
-      //         position: 'before',
-      //       },
-      //     ],
-      //     pathGroupsExcludedImportTypes: ['react'],
-      //   },
-      // ],
+      'import/order': [
+        'error',
+        {
+          alphabetize: {
+            caseInsensitive: true,
+            order: 'asc',
+          },
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          'newlines-between': 'always',
+          pathGroups: [
+            {
+              group: 'external',
+              pattern: 'react',
+              position: 'before',
+            },
+            {
+              group: 'external',
+              pattern: 'react-dom',
+              position: 'before',
+            },
+            {
+              group: 'external',
+              pattern: 'react/**',
+              position: 'before',
+            },
+            {
+              group: 'external',
+              pattern: 'next',
+              position: 'after',
+            },
+            {
+              group: 'external',
+              pattern: 'next/**',
+              position: 'after',
+            },
+            {
+              group: 'internal',
+              pattern: '@/**',
+              position: 'before',
+            },
+            {
+              group: 'internal',
+              pattern: '@common/**',
+              position: 'before',
+            },
+            {
+              group: 'internal',
+              pattern: '@component/**',
+              position: 'before',
+            },
+            {
+              group: 'internal',
+              pattern: '@context/**',
+              position: 'before',
+            },
+            {
+              group: 'internal',
+              pattern: '@data/**',
+              position: 'before',
+            },
+            {
+              group: 'internal',
+              pattern: '@page/**',
+              position: 'before',
+            },
+            {
+              group: 'internal',
+              pattern: '@style/**',
+              position: 'before',
+            },
+            {
+              group: 'internal',
+              pattern: '@types/**',
+              position: 'before',
+            },
+            {
+              group: 'internal',
+              pattern: '@utility/**',
+              position: 'before',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['react', 'react-dom'],
+        },
+      ],
       // This rule is not compatible with Next.js's <Link /> components
       'jsx-a11y/anchor-is-valid': 'off',
       'jsx-a11y/no-onchange': 0,
@@ -81,6 +163,8 @@ export default [
       // No need to import React when using Next.js
       'react/react-in-jsx-scope': 'off',
       'react-hooks/exhaustive-deps': 'off',
+      // Disable sort/imports to avoid conflicts with import/order
+      'sort/imports': 'off',
     },
   },
 ];

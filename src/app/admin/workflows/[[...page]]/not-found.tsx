@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box';
+
 import type { Metadata } from 'next';
+
 import { Breadcrumbs } from '@common';
 import { Navigation } from '@data';
 import { StyledPage } from '@style';

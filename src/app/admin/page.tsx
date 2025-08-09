@@ -1,5 +1,7 @@
 import Divider from '@mui/material/Divider';
+
 import type { Metadata } from 'next';
+
 import { Breadcrumbs } from '@common';
 import { AdminLayout } from '@component';
 import { Navigation } from '@data';

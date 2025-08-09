@@ -1,4 +1,5 @@
 import { SelectChangeEvent } from '@mui/material';
+
 import { IMultiSelectOption } from '@types';
 
 export interface ISelect {

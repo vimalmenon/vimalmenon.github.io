@@ -1,7 +1,9 @@
+import React from 'react';
+
 import { teal } from '@mui/material/colors';
 import MuiLink from '@mui/material/Link';
+
 import NextLink from 'next/link';
-import React from 'react';
 
 export const Logo: React.FC = () => (
   <MuiLink

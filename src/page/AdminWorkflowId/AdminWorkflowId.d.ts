@@ -1,4 +1,5 @@
 import { SyntheticEvent } from 'react';
+
 import { FormMode, IAlert, INode, INodeSlim, IWorkflow, ReactSetState, VoidFunction } from '@types';
 
 export interface INodeTab {

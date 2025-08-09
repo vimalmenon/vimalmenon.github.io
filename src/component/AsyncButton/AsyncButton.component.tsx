@@ -1,8 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
 import { ButtonProps } from '@mui/material';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
 
 export const AsyncButton: React.FC<ButtonProps> = ({ onClick, ...rest }) => {
   const [loading, setLoading] = useState(false);

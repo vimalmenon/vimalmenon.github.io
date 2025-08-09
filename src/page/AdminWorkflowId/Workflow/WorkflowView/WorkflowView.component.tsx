@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+
 import { IWorkflowView } from './WorkflowView';
 
 export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (

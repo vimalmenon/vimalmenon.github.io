@@ -1,5 +1,7 @@
-import { PaletteColorOptions } from '@mui/material/styles';
 import { ActionDispatch } from 'react';
+
+import { PaletteColorOptions } from '@mui/material/styles';
+
 import { AnyType } from '@types';
 
 export interface IAppReducer {

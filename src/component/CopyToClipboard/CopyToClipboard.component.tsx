@@ -1,8 +1,11 @@
 'use client';
+import { useState } from 'react';
+
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { useState } from 'react';
+
 import { Icons } from '@data';
+
 import { ICopyToClipboard } from './CopyToClipboard';
 
 export const CopyToClipboard: React.FC<ICopyToClipboard> = ({ text }) => {

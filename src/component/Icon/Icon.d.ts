@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { VoidFunction } from '@types';
 
 export interface IIcon {

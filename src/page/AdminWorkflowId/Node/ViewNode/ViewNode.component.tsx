@@ -1,11 +1,14 @@
 'use client';
 
 import Box from '@mui/material/Box';
+
 import { Enums } from '@data';
 import { INode } from '@types';
 import { formatDate } from '@utility';
+
 import { useWorkflowContext } from '../../AdminWorkflowId.service';
 import { nodeType } from '../Node.service';
+
 import { IViewNode } from './ViewNode';
 
 const convertNextToString = (nodes: Record<string, INode>, next: string): string =>

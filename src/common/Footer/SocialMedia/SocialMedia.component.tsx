@@ -1,10 +1,13 @@
 'use client';
 
+import React from 'react';
+
 import IconButton from '@mui/material/IconButton';
 import MuiLink from '@mui/material/Link';
 import Tooltip from '@mui/material/Tooltip';
+
 import Link from 'next/link';
-import React from 'react';
+
 import { SocialMedias } from '@data';
 import { StyledSocialMedia } from '@style';
 

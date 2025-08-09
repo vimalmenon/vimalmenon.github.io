@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 import MuiLink from '@mui/material/Link';
+
 import type { Metadata } from 'next';
+
 import { Breadcrumbs } from '@common';
 import { CopyToClipboard, MainLayout } from '@component';
 import { Navigation } from '@data';

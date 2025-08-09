@@ -3,6 +3,7 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+
 import { useAppContext } from '@context';
 import { getTheme } from '@data';
 import { IReactChildren } from '@types';

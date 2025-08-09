@@ -1,5 +1,6 @@
 'use client';
 import Box from '@mui/material/Box';
+
 import { useAppContext } from '@context';
 
 export const AcceptCookie: React.FC = () => {

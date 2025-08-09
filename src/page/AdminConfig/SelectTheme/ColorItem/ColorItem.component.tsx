@@ -2,7 +2,9 @@
 
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
+
 import { Icons } from '@data';
+
 import { IColorItem } from './ColorItem';
 
 const { Check } = Icons;

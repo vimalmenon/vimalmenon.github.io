@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+
 import { ReactFlowColors } from '@data';
 
 const size = '28px';

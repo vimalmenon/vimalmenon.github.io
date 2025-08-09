@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+
 import { IWorkflowHeader } from './WorkflowHeader';
 
 export const WorkflowHeader: React.FC<IWorkflowHeader> = ({ action, title }) => (

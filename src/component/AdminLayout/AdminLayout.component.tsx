@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+
 import { StyledMainContainer } from '@style';
 import { IReactChildren } from '@types';
 
