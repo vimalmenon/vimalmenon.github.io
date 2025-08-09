@@ -17,7 +17,7 @@ import { useAdminContext } from '@context';
 import { Enums, Icons } from '@data';
 import { FormMode } from '@types';
 
-import { convertToolsToOption, nodeType, useNodeForm } from '../../Node/Node.service';
+import { convertToolsToOption, nodeType, useNodeForm } from '../../Nodes/Node/Node.service';
 
 import { INodeForm } from './NodeForm';
 

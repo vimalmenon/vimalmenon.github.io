@@ -12,7 +12,7 @@ import {
   SwitchChangeType,
 } from '@types';
 
-import { useWorkflowContext } from '../AdminWorkflowId.service';
+import { useWorkflowContext } from '../../AdminWorkflowId.service';
 
 import { IUseNodeForm } from './Node';
 

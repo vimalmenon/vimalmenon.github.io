@@ -11,17 +11,20 @@ import {
   useWorkflowContext,
   useWorkflowDataHelper,
 } from '../AdminWorkflowId.service';
-import { Node } from '../Node';
+import { Node } from './Node';
 export const Nodes: React.FC = () => {
   const {
     isStart,
     nodeTabs,
     setNodeFormMode,
-
+    workflowLoading,
     workflow,
   } = useWorkflowContext();
   const { nodeFormMode, onTabChange, selectedTab, setNodeMode } = useTabHelper();
   const { createNode, deleteNodeConfirm, updateNode } = useWorkflowDataHelper();
+  if (workflowLoading) {
+    return null;
+  }
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       <Tabs value={selectedTab} onChange={onTabChange}>

@@ -12,7 +12,7 @@ import { DeleteConfirm, Icon } from '@component';
 import { Icons } from '@data';
 import { INode as INodeData, INodeSlim } from '@types';
 
-import { NodeForm } from '../Common';
+import { NodeForm } from '../../Common';
 
 import { INode } from './Node';
 import { cleanData, getTitleFromMode } from './Node.service';
