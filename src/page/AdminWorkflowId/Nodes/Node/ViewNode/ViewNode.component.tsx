@@ -3,20 +3,28 @@
 import Box from '@mui/material/Box';
 
 import { Enums } from '@data';
-import { INode } from '@types';
+import { INode, INodeFull } from '@types';
 import { formatDate } from '@utility';
 
 import { useWorkflowContext } from '../../../AdminWorkflowId.service';
 import { nodeType } from '../Node.service';
 
-import { IViewNode } from './ViewNode';
+import { INodeViewData, IViewNode } from './ViewNode';
 
 const convertNextToString = (nodes: Record<string, INode>, next: string): string =>
   nodes[next].name;
 
+const getViewData = (data: INodeFull, values: string[]): INodeViewData[] =>
+  //TODO :  Convert data to for easy use
+  [
+    { id: "id", title: 'ID', value: data.id },
+    { id: "name", title: 'Name', value: data.name },
+  ];
+
 export const ViewNode: React.FC<IViewNode> = ({ data }) => {
   const value = nodeType(data.type);
   const { workflow } = useWorkflowContext();
+  getViewData(data, value);
   return (
     <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
