@@ -15,10 +15,14 @@ import TextField from '@mui/material/TextField';
 import { AsyncButton, MultiSelect, TextInput } from '@component';
 import { useAdminContext } from '@context';
 import { Enums, Icons } from '@data';
+import { FormMode } from '@types';
 
 import { convertToolsToOption, nodeType, useNodeForm } from '../../Node/Node.service';
 
 import { INodeForm } from './NodeForm';
+
+const showInputField = (mode: FormMode, value: string[], input: string): boolean =>
+  mode === 'UPDATE' && value.includes(input);
 
 export const NodeForm: React.FC<INodeForm> = ({
   createNode,
@@ -93,7 +97,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.LLM) ? (
+      {showInputField(mode, value, Enums.WorkflowNodeFields.LLM) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="node-type">LLM</InputLabel>
           <Select
@@ -115,7 +119,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.StructuredOutput) ? (
+      {showInputField(mode, value, Enums.WorkflowNodeFields.StructuredOutput) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="structuredOutput">Structured Output</InputLabel>
           <Select
@@ -137,7 +141,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Prompt) ? (
+      {showInputField(mode, value, Enums.WorkflowNodeFields.Prompt) ? (
         <FormControl variant="outlined" fullWidth required>
           <TextField
             label="Prompt"
@@ -183,7 +187,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           )}
         </Fragment>
       ) : null}
-      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Tools) ? (
+      {showInputField(mode, value, Enums.WorkflowNodeFields.Tools) ? (
         <MultiSelect
           options={convertToolsToOption(toolsList)}
           value={tools}
@@ -195,7 +199,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           disabled={loading}
         />
       ) : null}
-      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Tool) ? (
+      {showInputField(mode, value, Enums.WorkflowNodeFields.Tool) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="tool">Tool</InputLabel>
           <Select
@@ -217,7 +221,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Service) ? (
+      {showInputField(mode, value, Enums.WorkflowNodeFields.Service) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="service">Service</InputLabel>
           <Select
@@ -239,7 +243,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.Next) ? (
+      {showInputField(mode, value, Enums.WorkflowNodeFields.Next) ? (
         <FormControl fullWidth required size="small">
           <InputLabel id="next">Next</InputLabel>
           <Select
@@ -261,7 +265,7 @@ export const NodeForm: React.FC<INodeForm> = ({
           </Select>
         </FormControl>
       ) : null}
-      {mode === 'UPDATE' && value.includes(Enums.WorkflowNodeFields.IsStart) ? (
+      {showInputField(mode, value, Enums.WorkflowNodeFields.IsStart) ? (
         <FormControlLabel
           control={
             <Switch
