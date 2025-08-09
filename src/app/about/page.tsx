@@ -61,7 +61,7 @@ const Page: React.FC = () => (
           </MuiLink>{' '}
           Here, I share tutorials, insights, and discussions on topics related to AI, Python,
           JavaScript, and more. Whether you&apos;re a beginner or an experienced developer,
-          there&apos;s something for everyone! - <b>Email</b> :{' '}
+          there&apos;s something for everyone! - <b>Email</b>:{' '}
           <CopyToClipboard text="realvimalmenon@proton.me" /> Feel free to reach out if you have any
           questions, collaboration ideas, or just want to connect. I&apos;d love to hear from you!
         </Box>
