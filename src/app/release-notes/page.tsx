@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { Breadcrumbs } from '@common';
 import { MainLayout } from '@component';
 import { Navigation } from '@data';
@@ -14,7 +15,7 @@ const Page: React.FC = () => (
     <StyledPage>
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
-        <div>0.0.36</div>
+        <div>0.0.37</div>
         <ul>Enhance Workflow</ul>
       </div>
       <div>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { Breadcrumbs } from '@common';
 import { Navigation } from '@data';
 import { AdminConfig } from '@page';

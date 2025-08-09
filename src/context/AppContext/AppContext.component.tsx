@@ -1,7 +1,9 @@
 'use client';
 
 import { useReducer } from 'react';
+
 import { IReactChildren } from '@types';
+
 import {
   changeTheme,
   closeDrawer,

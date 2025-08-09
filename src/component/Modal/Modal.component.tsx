@@ -1,5 +1,7 @@
 'use client';
 
+import React from 'react';
+
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -9,10 +11,12 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import React from 'react';
+
 import { Icons } from '@data';
 import { AnyType } from '@types';
+
 import { AsyncButton } from '../AsyncButton';
+
 import { IModal } from './Modal';
 
 const Transition = React.forwardRef(function Transition(

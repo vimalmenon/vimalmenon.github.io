@@ -1,8 +1,10 @@
 'use client';
 import { createContext, useContext } from 'react';
+
 import { APIs } from '@data';
 import { IGenericResponse, ILinkGroup } from '@types';
 import { makeRequest, NotImplemented } from '@utility';
+
 import { IAdminLinksContext, IUseLinkHelper } from './AdminLinks';
 
 export const Context = createContext<IAdminLinksContext>({
@@ -51,15 +53,15 @@ export const useLinkHelper = (): IUseLinkHelper => {
     await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.DeleteLink(gpId, id));
     await getLinks();
   };
-  const deleteGroupLink = async (id: string): Promise<void> => {
-    await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.DeleteGroupLink(id));
+  const deleteLinkGroup = async (id: string): Promise<void> => {
+    await makeRequest<IGenericResponse<ILinkGroup[]>>(APIs.DeleteLinkGroup(id));
     await getLinks();
   };
   return {
     createLink,
     createLinkGroup,
-    deleteGroupLink,
     deleteLink,
+    deleteLinkGroup,
     getLinks,
   };
 };

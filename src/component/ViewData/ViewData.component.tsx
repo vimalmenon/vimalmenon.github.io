@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
+
 import { ListItem } from '@component';
 import { IListViewRender, IViewData } from '@types';
+
 import { IViewDataProps } from './ViewData';
 
 const ViewDataItem: React.FC<IListViewRender<IViewData>> = ({ data }) => {

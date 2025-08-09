@@ -12,7 +12,7 @@ import {
 
 export interface INode {
   data?: INodeFull;
-  deleteNode?: () => Promise<void>;
+  deleteNode?: (data: INodeFull | undefined) => Promise<void>;
   updateNode?: (data: INodeData) => Promise<void>;
   createNode?: (data: INodeSlim) => Promise<void>;
   cancelNode: VoidFunction;

@@ -3,9 +3,11 @@
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { Handle, Position } from '@xyflow/react';
+
 import { Icon } from '@component';
 import { Enums, Icons } from '@data';
 import { IReactChildren } from '@types';
+
 import { NodeStyled } from './Node.style';
 import { IBaseNodeType } from './NodeType';
 

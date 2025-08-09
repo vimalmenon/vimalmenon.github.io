@@ -1,9 +1,12 @@
 'use client';
 
-import { teal } from '@mui/material/colors';
 import { createContext, useContext } from 'react';
+
+import { teal } from '@mui/material/colors';
+
 import { AnyType } from '@types';
 import { NotImplemented } from '@utility';
+
 import { DispatchType, IAppAction, IAppContext, IAppReducer } from './AppContext';
 
 export enum ActionType {

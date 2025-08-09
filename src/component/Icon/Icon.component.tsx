@@ -1,8 +1,10 @@
 'use client';
 
+import { MouseEventHandler, useState } from 'react';
+
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { MouseEventHandler, useState } from 'react';
+
 import { IIcon } from './Icon.d';
 
 export const Icon: React.FC<IIcon> = ({ disabled, icon, onClick, size, toolTip }) => {

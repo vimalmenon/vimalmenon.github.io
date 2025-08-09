@@ -1,5 +1,6 @@
-import { SelectChangeEvent } from '@mui/material';
 import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
+
+import { SelectChangeEvent } from '@mui/material';
 export interface IReactChildren {
   children: React.ReactNode;
 }
@@ -86,7 +87,6 @@ export interface IWorkflow extends IWorkflowSlim {
   connections: Record<string, string[]>;
   nodes: Record<string, INodeFull>;
   complete: boolean;
-  updatedAt: string;
   executedWorkflows: IExecuteWorkflow[];
 }
 

@@ -1,6 +1,9 @@
 import Box from '@mui/material/Box';
+
 import type { Metadata, NextPage } from 'next';
+
 import NextLink from 'next/link';
+
 import { MainLayout } from '@component';
 import { blogs } from '@data';
 import { ICatchAll, ICatchAllParams } from '@types';

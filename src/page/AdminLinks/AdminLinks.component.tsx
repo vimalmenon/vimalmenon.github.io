@@ -1,14 +1,17 @@
 'use client';
 
+import { Fragment, useEffect } from 'react';
+
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import LinearProgress from '@mui/material/LinearProgress';
-import { Fragment, useEffect } from 'react';
+
 import { Icon, WorkflowHeader } from '@component';
 import { Icons } from '@data';
+
 import { AdminLinksContext } from './AdminLinks.context';
 import { useLinkContext, useLinkHelper } from './AdminLinks.service';
-import { CreateGroupLink } from './CreateGroupLink';
+import { CreateLinkGroup } from './CreateLinkGroup';
 import { ListLinks } from './ListLinks';
 
 const Component: React.FC = () => {
@@ -31,7 +34,7 @@ const Component: React.FC = () => {
         {loading ? <LinearProgress /> : null}
         {showCreate && (
           <Fragment>
-            <CreateGroupLink />
+            <CreateLinkGroup />
             <Divider />
           </Fragment>
         )}

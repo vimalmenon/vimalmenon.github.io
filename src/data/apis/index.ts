@@ -142,7 +142,7 @@ const DeleteLink = (gpId: string, id: string): IApi => ({
   url: `links/${gpId}/${id}`,
 });
 
-const DeleteGroupLink = (id: string): IApi => ({
+const DeleteLinkGroup = (id: string): IApi => ({
   method: 'DELETE',
   url: `links/${id}`,
 });
@@ -153,8 +153,8 @@ export const APIs = {
   CreateWorkflowNode,
   DeleteDbServiceData,
   DeleteExecutedWorkflow,
-  DeleteGroupLink,
   DeleteLink,
+  DeleteLinkGroup,
   DeleteWorkflow,
   DeleteWorkflowNode,
   ExecuteWorkflow,

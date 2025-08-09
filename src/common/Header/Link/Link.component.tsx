@@ -2,9 +2,12 @@
 
 import { teal } from '@mui/material/colors';
 import MuiLink from '@mui/material/Link';
+
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
+
 import { useAppContext } from '@context';
+
 import { ILink } from '../Header';
 
 export const Link: React.FC<ILink> = ({ navigation }) => {

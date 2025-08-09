@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { AcceptCookie, Footer, Google, Header, ThemeWrapper } from '@common';
 import { AppContext } from '@context';
 import { StyledBox, StyledMain } from '@style';

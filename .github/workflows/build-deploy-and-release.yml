@@ -1,7 +1,7 @@
 name: Build, deploy and Release
 
 env:
-  tag: '0.0.36'
+  tag: '0.0.37'
   ENV: ${{ secrets.ENV }}
   NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
   NEXT_PUBLIC_ENV: ${{ secrets.NEXT_PUBLIC_ENV }}
@@ -13,6 +13,16 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      Release:
+        description: 'Select a Release Type'
+        type: choice
+        required: true
+        default: Patch
+        options:
+          - Patch
+          - Minor
+          - Major
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -29,6 +39,48 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  Prepare:
+    name: Prepare release
+    runs-on: ubuntu-latest
+    outputs:
+      patch: ${{ steps.values.outputs.patch }}
+      minor: ${{ steps.values.outputs.minor }}
+      major: ${{ steps.values.outputs.major }}
+      date: ${{ steps.values.outputs.date }}
+      selected: ${{ steps.values.outputs.selected }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required due to the weg Git works, without it this action won't be able to find any or the correct tags
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
+        with:
+          fallback: 0.0.0 # Optional fallback tag to use when no tag can be found
+      - name: 'Get next minor version'
+        id: semvers
+        uses: 'WyriHaximus/github-action-next-semvers@v1'
+        with:
+          version: ${{ steps.previoustag.outputs.tag }}
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - name: 'Setting values'
+        id: values
+        run: |
+          echo "patch=${{ steps.semvers.outputs.patch }}" >> $GITHUB_OUTPUT
+          echo "minor=${{ steps.semvers.outputs.minor }}" >> $GITHUB_OUTPUT
+          echo "major=${{ steps.semvers.outputs.major }}" >> $GITHUB_OUTPUT
+          echo "date=$(date +'%d-%b-%Y')" >> $GITHUB_OUTPUT
+          selected="${{ steps.semvers.outputs.patch }}"
+          if [[ "${{ github.event.inputs.Release }}" == "Patch" ]]; then
+            selected="${{ steps.semvers.outputs.patch }}"
+          elif [[ "${{ github.event.inputs.Release }}" == "Minor" ]]; then
+            selected="${{ steps.semvers.outputs.minor }}"
+          elif [[ "${{ github.event.inputs.Release }}" == "Major" ]]; then
+            selected="${{ steps.semvers.outputs.major }}"
+          fi
+          echo "selected=$selected" >> $GITHUB_OUTPUT
+
   # Single deploy job since we're just deploying
   build-deploy-and-release:
     environment:

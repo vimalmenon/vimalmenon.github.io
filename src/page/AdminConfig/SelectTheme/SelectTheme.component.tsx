@@ -1,10 +1,13 @@
 'use client';
 
+import { useState } from 'react';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+
 import { colors, Icons, shades } from '@data';
 import { AnyType } from '@types';
+
 import { ColorItem } from './ColorItem';
 
 export const SelectTheme: React.FC = () => {

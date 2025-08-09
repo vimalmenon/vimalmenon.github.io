@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box';
+
 import { env } from '@data';
+
 import { SelectTheme } from './SelectTheme';
 
 export const AdminConfig: React.FC = () => (

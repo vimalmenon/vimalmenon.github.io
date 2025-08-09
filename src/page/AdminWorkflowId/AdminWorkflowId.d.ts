@@ -1,4 +1,5 @@
 import { SyntheticEvent } from 'react';
+
 import { FormMode, IAlert, INode, INodeSlim, IWorkflow, ReactSetState, VoidFunction } from '@types';
 
 export interface INodeTab {
@@ -23,8 +24,6 @@ export interface IContext {
   setNodeTabs: ReactSetState<INodeTab[]>;
   nodeFormMode: FormMode;
   setNodeFormMode: ReactSetState<FormMode>;
-  selectedNode: INode | null;
-  setSelectedNode: ReactSetState<INode | null>;
   error: string | null;
   setError: ReactSetState<string | null>;
   isStart: boolean;
@@ -53,12 +52,10 @@ export interface IUseWorkflowFormHelper {
 
 export interface IUseWorkflowDataHelper {
   createNode: (data: INodeSlim) => Promise<void>;
-  deleteNode: (nodeId: string) => Promise<void>;
   id: string;
   updateNode: (nodeId: string, data: INode) => Promise<void>;
   updateWorkflow: (data: IWorkflow) => Promise<void>;
-  deleteNodeConfirm: VoidFunction<Promise<void>>;
-  deleteNodeCancel: VoidFunction;
+  deleteNodeConfirm: (data?: INodeFull) => Promise<void>;
   getAllData: VoidFunction<Promise<void>>;
   deleteExecutedWorkflow: (executedWorkflows: IExecuteWorkflow) => Promise<void>;
   getWorkFlow: (skipLoading?: boolean) => Promise<void>;

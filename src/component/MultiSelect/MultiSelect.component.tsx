@@ -8,8 +8,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Select from '@mui/material/Select';
+
 import { Icons } from '@data';
 import { IMultiSelectOption } from '@types';
+
 import { IMultiSelect } from './MultiSelect';
 
 const renderValue = (selected: string[], options: IMultiSelectOption[]): string =>

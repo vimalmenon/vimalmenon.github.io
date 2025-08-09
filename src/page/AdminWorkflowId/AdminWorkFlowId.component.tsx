@@ -1,14 +1,17 @@
 'use client';
 
+import { Fragment, useEffect } from 'react';
+
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import { Fragment, useEffect } from 'react';
-import { ConfirmDialog, DeleteConfirm, Icon, WorkflowHeader } from '@component';
+
+import { DeleteConfirm, Icon, WorkflowHeader } from '@component';
 import { Icons } from '@data';
 import { IAdminWorkflowIdPage, IWorkflow } from '@types';
+
 import { AdminWorkflowIdContext } from './AdminWorkflowId.context';
 import {
   useTabHelper,
@@ -27,7 +30,6 @@ const Component: React.FC = () => {
     error,
     isStart,
     nodeTabs,
-    selectedNode,
     setNodeFormMode,
     setShowCreate,
     showCreate,
@@ -38,8 +40,6 @@ const Component: React.FC = () => {
   const {
     createNode,
     deleteExecutedWorkflow,
-    deleteNode,
-    deleteNodeCancel,
     deleteNodeConfirm,
     getAllData,
     id,
@@ -82,7 +82,13 @@ const Component: React.FC = () => {
                 ) : null}
               </Fragment>
             ) : null}
-            <Icon toolTip="Add" icon={<Icons.Add />} onClick={() => setShowCreate(true)} />
+            {workflow?.complete ? (
+              <Icon
+                toolTip="Execute Workflow"
+                icon={<Icons.Add />}
+                onClick={() => setShowCreate(true)}
+              />
+            ) : null}
           </Fragment>
         }
       />
@@ -99,6 +105,7 @@ const Component: React.FC = () => {
       ) : null}
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
+        {showCreate ? <ExecuteForm /> : null}
         {id && workflow && workflow.complete ? (
           <Fragment>
             <Execute
@@ -109,22 +116,7 @@ const Component: React.FC = () => {
             <Divider />
           </Fragment>
         ) : null}
-        {selectedNode ? (
-          <ConfirmDialog
-            icon="WARNING"
-            title={
-              <span>
-                Delete node <b>{selectedNode.name}</b>?
-              </span>
-            }
-            open={!!selectedNode}
-            onConfirm={deleteNodeConfirm}
-            onCancel={deleteNodeCancel}
-          />
-        ) : null}
-
         {error ? <Alert severity="error">{error}</Alert> : null}
-        {showCreate ? <ExecuteForm /> : null}
         <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
         <Divider />
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -153,7 +145,7 @@ const Component: React.FC = () => {
                         data={workflow.nodes[node.name]}
                         key={node.name}
                         mode={node.mode}
-                        deleteNode={() => deleteNode(node.name)}
+                        deleteNode={deleteNodeConfirm}
                         updateNode={(data) => updateNode(node.name, data)}
                         setMode={(mode) => setNodeMode(index, mode)}
                         cancelNode={() => setNodeMode(index, 'VIEW')}

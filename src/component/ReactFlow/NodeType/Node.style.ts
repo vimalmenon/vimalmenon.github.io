@@ -2,7 +2,9 @@
 
 import { styled } from '@mui/material';
 import Paper from '@mui/material/Paper';
+
 import { ReactFlowColors } from '@data';
+
 import { INodeStyled } from './NodeType';
 
 export const NodeStyled = styled(Paper, {

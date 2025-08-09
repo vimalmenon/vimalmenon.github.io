@@ -1,17 +1,21 @@
 'use client';
 
+import { useState } from 'react';
+
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import { useState } from 'react';
+
 import { Icon } from '@component';
 import { Icons } from '@data';
+
 import { useLinkHelper } from '../../AdminLinks.service';
+
 import { CreateLink } from './CreateLink';
 import { ILink } from './Link';
 
 export const Link: React.FC<ILink> = ({ link }) => {
   const [showCreate, setShowCreate] = useState<boolean>(false);
-  const { deleteGroupLink, deleteLink } = useLinkHelper();
+  const { deleteLink, deleteLinkGroup } = useLinkHelper();
   return (
     <Box key={link.id} sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
       {showCreate ? <CreateLink id={link.id} setShowCreate={setShowCreate} /> : null}
@@ -22,7 +26,7 @@ export const Link: React.FC<ILink> = ({ link }) => {
           <Icon
             toolTip="Delete Group"
             icon={<Icons.Delete />}
-            onClick={async () => await deleteGroupLink(link.id)}
+            onClick={async () => await deleteLinkGroup(link.id)}
           />
         </Box>
       </Box>

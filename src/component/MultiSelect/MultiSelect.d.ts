@@ -1,4 +1,5 @@
 import { SelectChangeEvent } from '@mui/material/Select';
+
 import { IMultiSelectOption, VoidFunction } from '@types';
 
 export interface IMultiSelect {

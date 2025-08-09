@@ -1,8 +1,10 @@
 'use client';
 
 import { Fragment, ReactElement, useState } from 'react';
+
 import { ConfirmDialog, Icon } from '@component';
 import { Icons } from '@data';
+
 import { IDeleteConfirm } from './DeleteConfirm';
 
 export function DeleteConfirm<T>({
