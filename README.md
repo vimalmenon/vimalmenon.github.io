@@ -104,6 +104,7 @@ src/
 - [ ] Improved Workflow UI/UX
 - [ ] Error handling and user feedback
 - [ ] Mobile navigation improvements
+- [ ] Select with search for items
 
 ### 📋 Planned Features
 - [ ] Automated release management

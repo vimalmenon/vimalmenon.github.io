@@ -14,12 +14,17 @@ import { INodeViewData, IViewNode } from './ViewNode';
 const convertNextToString = (nodes: Record<string, INode>, next: string): string =>
   nodes[next].name;
 
-const getViewData = (data: INodeFull, values: string[]): INodeViewData[] =>
+const getViewData = (data: INodeFull, values: string[]): INodeViewData[] => {
   //TODO :  Convert data to for easy use
-  [
-    { id: "id", title: 'ID', value: data.id },
-    { id: "name", title: 'Name', value: data.name },
+  const result = [
+    { id: 'id', title: 'ID', value: data.id },
+    { id: 'name', title: 'Name', value: data.name },
   ];
+  if (values.includes(Enums.WorkflowNodeFields.LLM)) {
+    result.push({ id: 'llm', title: 'LLM', value: data.llm ?? '' });
+  }
+  return result;
+};
 
 export const ViewNode: React.FC<IViewNode> = ({ data }) => {
   const value = nodeType(data.type);
