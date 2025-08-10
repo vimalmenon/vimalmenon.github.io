@@ -24,6 +24,7 @@ import { INodeForm } from './NodeForm';
 const showInputField = (mode: FormMode, value: string[], input: string): boolean =>
   mode === 'UPDATE' && value.includes(input);
 
+// TODO: Improve this form
 export const NodeForm: React.FC<INodeForm> = ({
   createNode,
   data,
