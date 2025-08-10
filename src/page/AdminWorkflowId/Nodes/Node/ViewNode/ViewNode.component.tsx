@@ -20,8 +20,21 @@ const getViewData = (data: INodeFull, values: string[]): INodeViewData[] => {
     { id: 'id', title: 'ID', value: data.id },
     { id: 'name', title: 'Name', value: data.name },
   ];
+  if (data.type) {
+    result.push({ id: 'type', title: 'Type', value: data.type });
+  }
   if (values.includes(Enums.WorkflowNodeFields.LLM)) {
     result.push({ id: 'llm', title: 'LLM', value: data.llm ?? '' });
+  }
+  if (values.includes(Enums.WorkflowNodeFields.Prompt)) {
+    result.push({ id: 'prompt', title: 'Prompt', value: data.prompt ?? '' });
+  }
+  if (data.dataFromPreviousNode) {
+    result.push({
+      id: 'dataFromPreviousNode',
+      title: 'Get message from previous node',
+      value: 'True',
+    });
   }
   return result;
 };
