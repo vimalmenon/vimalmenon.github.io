@@ -27,6 +27,7 @@ const TableRenderHead: React.FC = () => (
   </TableRow>
 );
 
+// TODO: Need to make this page simple
 export const WorkflowNodeDetail: React.FC = () => {
   const { dbServiceData } = useAdminWorkflowIdExecuteIdContext();
   const { closeSelectedWorkflow, onSelectedWorkflowNodeSubmit, selectedWorkflowNode } =
@@ -37,7 +38,7 @@ export const WorkflowNodeDetail: React.FC = () => {
   const isReady = selectedWorkflowNode?.status === Enums.WorkflowNodeStatus.READY;
   const onValueSubmit = async (): Promise<void> => {
     if (selectedWorkflowNode) {
-      if (selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput) {
+      if (selectedWorkflowNode.node.service === Enums.WorkflowNodeService.HumanInput) {
         await onSelectedWorkflowNodeSubmit({
           data: value,
           id: selectedWorkflowNode.id,
@@ -113,7 +114,7 @@ export const WorkflowNodeDetail: React.FC = () => {
             <span>{formatDate(selectedWorkflowNode.completedAt)}</span>
           </Box>
         ) : null}
-        {selectedWorkflowNode.node.type === Enums.WorkflowNodeType.HumanInput && isReady ? (
+        {selectedWorkflowNode.node.service === Enums.WorkflowNodeService.HumanInput && isReady ? (
           <Box sx={{ display: 'flex' }}>
             <TextInput
               value={value}

@@ -36,11 +36,39 @@ const getViewData = (data: INodeFull, values: string[]): INodeViewData[] => {
       value: 'True',
     });
   }
+  if (values.includes(Enums.WorkflowNodeFields.Message) && !data.dataFromPreviousNode) {
+    result.push({
+      id: 'message',
+      title: 'Message',
+      value: data.message ?? '',
+    });
+  }
+  if (values.includes(Enums.WorkflowNodeFields.Tools) && data.tools.length) {
+    result.push({
+      id: 'tools',
+      title: 'Tools',
+      value: data.tools.join(', '),
+    });
+  }
+  if (values.includes(Enums.WorkflowNodeFields.Tool)) {
+    result.push({
+      id: 'tool',
+      title: 'Tool',
+      value: data.tool ?? '',
+    });
+  }
+  if (values.includes(Enums.WorkflowNodeFields.Service)) {
+    result.push({
+      id: 'service',
+      title: 'Service',
+      value: data.service ?? '',
+    });
+  }
   return result;
 };
 
 export const ViewNode: React.FC<IViewNode> = ({ data }) => {
-  const value = nodeType(data.type);
+  const value = nodeType(data.type, data.service);
   const { workflow } = useWorkflowContext();
   getViewData(data, value);
   return (

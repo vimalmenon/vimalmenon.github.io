@@ -16,7 +16,7 @@ import { useWorkflowContext } from '../../AdminWorkflowId.service';
 
 import { IUseNodeForm } from './Node';
 
-export const nodeType = (type?: string): string[] => {
+export const nodeType = (type?: string, service?: string): string[] => {
   if (type === Enums.WorkflowNodeType.Agent) {
     return [
       Enums.WorkflowNodeFields.LLM,
@@ -28,7 +28,7 @@ export const nodeType = (type?: string): string[] => {
       Enums.WorkflowNodeFields.StructuredOutput,
     ];
   }
-  if (type === Enums.WorkflowNodeType.HumanInput) {
+  if (service === Enums.WorkflowNodeService.HumanInput) {
     return [Enums.WorkflowNodeFields.Next, Enums.WorkflowNodeFields.IsStart];
   }
   if (type === Enums.WorkflowNodeType.LLM) {
