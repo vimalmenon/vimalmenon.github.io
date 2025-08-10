@@ -1,6 +1,6 @@
 # Vimal Menon's Personal Website
 
-A modern, responsive personal website built with Next.js, React, and Material-UI. Features a dynamic admin panel, workflow management system, and a blog platform.
+A modern, responsive personal website built with Next.js, React, and Material-UI. Features a## � Todo
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fvimalmenon.com)](https://vimalmenon.com)
 [![Version](https://img.shields.io/badge/version-0.0.38-blue.svg)](https://github.com/vimalmenon/vimalmenon.github.io)
@@ -38,23 +38,26 @@ Visit the live website at [vimalmenon.com](https://vimalmenon.com)
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/vimalmenon/vimalmenon.github.io.git
 cd vimalmenon.github.io
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -92,6 +95,7 @@ src/
 ## 🔄 Development Roadmap
 
 ### ✅ Completed
+
 - [x] Consistent Link group naming (LinkGroup vs GroupLink)
 - [x] Cookie acceptance functionality
 - [x] Theme switching UI
@@ -99,6 +103,7 @@ src/
 - [x] Favicon integration
 
 ### 🚧 In Progress
+
 - [ ] Workflow and Execute workflow separation
 - [ ] Enhanced Home and About pages
 - [ ] Improved Workflow UI/UX
@@ -107,6 +112,7 @@ src/
 - [ ] Select with search for items
 
 ### 📋 Planned Features
+
 - [ ] Automated release management
 - [ ] Command documentation blog
 - [ ] Admin panel enhancements
@@ -127,20 +133,20 @@ src/
 ## � Todo
 
 - [ ] NodeForm component improvements (`src/page/AdminWorkflowId/Common/NodeForm/NodeForm.component.tsx`)
-- [ ] Add items here as needed
-- [ ] General development tasks
-- [ ] Bug fixes and improvements
+- [ ] ViewNode component improvements (`src/page/AdminWorkflowId/Nodes/Node/ViewNode/ViewNode.component.tsx`)namic admin panel, workflow management system, and a blog platform.
 
 ## �🛠️ Development Commands
 
 ### Git Operations
 
 Clean up remote branches:
+
 ```bash
 git remote update origin --prune
 ```
 
 Remove local branches (except current):
+
 ```bash
 git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
 ```
@@ -148,6 +154,7 @@ git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
 ### Code Quality
 
 ESLint with Copilot debugging:
+
 ```bash
 copilot-debug npm run eslint:fix
 ```
@@ -155,6 +162,7 @@ copilot-debug npm run eslint:fix
 ### K3S Development (Windows)
 
 Start K3S cluster:
+
 ```bash
 wsl -d myk3s
 openrc default
@@ -162,6 +170,7 @@ kubectl get nodes
 ```
 
 Quick start:
+
 ```bash
 wsl -d myk3s openrc default
 ```
@@ -187,6 +196,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📧 Contact
 
 **Vimal Menon**
+
 - Website: [vimalmenon.com](https://vimalmenon.com)
 - GitHub: [@vimalmenon](https://github.com/vimalmenon)
 
