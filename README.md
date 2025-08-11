@@ -1,6 +1,6 @@
 # Vimal Menon's Personal Website
 
-A modern, responsive personal website built with Next.js, React, and Material-UI. Features a## � Todo
+A modern, responsive personal website built with Next.js, React, and Material-UI. Features a dynamic blog, admin panel, theme switching, workflow management, and more.
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fvimalmenon.com)](https://vimalmenon.com)
 [![Version](https://img.shields.io/badge/version-0.0.38-blue.svg)](https://github.com/vimalmenon/vimalmenon.github.io)
