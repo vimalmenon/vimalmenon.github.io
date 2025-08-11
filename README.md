@@ -137,7 +137,7 @@ src/
 - [ ] ViewNode component improvements (`src/page/AdminWorkflowId/Nodes/Node/ViewNode/ViewNode.component.tsx`)
 - [ ] WorkflowNodeDetail component improvements (`src/page/AdminWorkflowExecuteId/SelectedWorkflow/WorkflowNodeDetail/WorkflowNodeDetail.component.tsx`)namic admin panel, workflow management system, and a blog platform.
 
-## �🛠️ Development Commands
+## 🛠️ Development Commands
 
 ### Git Operations
 
