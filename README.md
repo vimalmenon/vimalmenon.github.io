@@ -135,7 +135,7 @@ src/
 
 - [ ] NodeForm component improvements (`src/page/AdminWorkflowId/Common/NodeForm/NodeForm.component.tsx`)
 - [ ] ViewNode component improvements (`src/page/AdminWorkflowId/Nodes/Node/ViewNode/ViewNode.component.tsx`)
-- [ ] WorkflowNodeDetail component improvements (`src/page/AdminWorkflowExecuteId/SelectedWorkflow/WorkflowNodeDetail/WorkflowNodeDetail.component.tsx`)namic admin panel, workflow management system, and a blog platform.
+- [ ] WorkflowNodeDetail component improvements (`src/page/AdminWorkflowExecuteId/SelectedWorkflow/WorkflowNodeDetail/WorkflowNodeDetail.component.tsx`)
 
 ## 🛠️ Development Commands
 
