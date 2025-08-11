@@ -123,6 +123,7 @@ src/
 - [ ] Blog sub-navigation
 - [ ] Production API integration
 - [ ] Sitemap.xml generation
+- [ ] 100% test confidence (Not ready for all screen)
 
 ## 💡 Feature Ideas
 

@@ -1,6 +1,7 @@
 export * from './AdminLayout';
 export * from './Alert';
 export * from './AsyncButton';
+export * from './AutoComplete';
 export * from './ComingSoon';
 export * from './ConfirmDialog';
 export * from './CopyToClipboard';

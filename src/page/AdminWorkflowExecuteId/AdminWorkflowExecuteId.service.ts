@@ -11,6 +11,7 @@ import {
   IExecuteWorkflowNode,
   IExecuteWorkflowSlim,
   IGenericResponse,
+  IGenericResponseError,
   IReactFlowNode,
   IWorkflowExecuteParams,
   ReactFlowType,
@@ -57,16 +58,33 @@ export const useAdminWorkflowIdExecuteHelper = (): IUseAdminWorkflowIdExecuteHel
 
   const getExecutedWorkflow = async (): Promise<void> => {
     setLoading(true);
-    const { response } = await makeRequest<IGenericResponse<IExecuteWorkflow>>(
-      APIs.GetExecutedWorkflowId(id, executeId)
-    );
+    const { error, response } = await makeRequest<
+      IGenericResponse<IExecuteWorkflow>,
+      IGenericResponseError
+    >(APIs.GetExecutedWorkflowId(id, executeId));
+    if (error) {
+      setAlert({
+        children: error.message,
+        severity: 'error',
+      });
+      setLoading(false);
+      return;
+    }
     setSelectedExecutedWorkflow(response.data);
     setLoading(false);
   };
   const getDatabaseData = async (): Promise<void> => {
-    const { response } = await makeRequest<IGenericResponse<IDbServiceData[]>>(
-      APIs.GetDbServiceData()
-    );
+    const { error, response } = await makeRequest<
+      IGenericResponse<IDbServiceData[]>,
+      IGenericResponseError
+    >(APIs.GetDbServiceData());
+    if (error) {
+      setAlert({
+        children: error.message,
+        severity: 'error',
+      });
+      return;
+    }
     setDbServiceData(response.data);
   };
   const dbServiceDelete = async (data: IDbServiceData): Promise<void> => {

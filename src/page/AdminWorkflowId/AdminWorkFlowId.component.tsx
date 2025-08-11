@@ -33,7 +33,7 @@ const Component: React.FC = () => {
   return (
     <Fragment>
       <WorkflowHeader
-        title={'Workflow'}
+        title="Workflow"
         action={
           <Fragment>
             {workflowFormMode === 'VIEW' ? (

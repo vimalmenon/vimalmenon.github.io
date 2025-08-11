@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 
 import { DeleteConfirm, Modal, Table, TextInput } from '@component';
 import { Enums } from '@data';
+import { IDbServiceData, IListViewRender } from '@types';
 import { formatDate } from '@utility';
 
 import {
@@ -36,6 +37,24 @@ export const WorkflowNodeDetail: React.FC = () => {
   const [value, setValue] = useState<string>(selectedWorkflowNode?.content ?? '');
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const isReady = selectedWorkflowNode?.status === Enums.WorkflowNodeStatus.READY;
+  const TableRenderBody: React.FC<IListViewRender<IDbServiceData>> = ({ data, index }) => (
+    <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
+      <TableCell>{data.id}</TableCell>
+      <TableCell>{data.data}</TableCell>
+      <TableCell>{formatDate(data.createdDate)}</TableCell>
+      <TableCell>
+        <DeleteConfirm
+          onDelete={dbServiceDelete}
+          deleteMsg={
+            <span>
+              Delete Workflow <b>{data.id}</b>?
+            </span>
+          }
+          data={data}
+        />
+      </TableCell>
+    </TableRow>
+  );
   const onValueSubmit = async (): Promise<void> => {
     if (selectedWorkflowNode) {
       if (selectedWorkflowNode.node.service === Enums.WorkflowNodeService.HumanInput) {
@@ -131,24 +150,7 @@ export const WorkflowNodeDetail: React.FC = () => {
             <Table
               items={dbServiceData}
               RenderHead={TableRenderHead}
-              RenderBody={({ data, index }) => (
-                <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
-                  <TableCell>{data.id}</TableCell>
-                  <TableCell>{data.data}</TableCell>
-                  <TableCell>{formatDate(data.createdDate)}</TableCell>
-                  <TableCell>
-                    <DeleteConfirm
-                      onDelete={dbServiceDelete}
-                      deleteMsg={
-                        <span>
-                          Delete Workflow <b>{data.id}</b>?
-                        </span>
-                      }
-                      data={data}
-                    />
-                  </TableCell>
-                </TableRow>
-              )}
+              RenderBody={TableRenderBody}
             />
           </Fragment>
         ) : null}
