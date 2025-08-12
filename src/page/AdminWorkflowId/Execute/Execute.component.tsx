@@ -13,10 +13,9 @@ import TableRow from '@mui/material/TableRow';
 
 import { useRouter } from 'next/navigation';
 
-import { DeleteConfirm, Icon } from '@component';
+import { DateViewer, DeleteConfirm, Icon } from '@component';
 import { Icons } from '@data';
 import { IExecuteWorkflow } from '@types';
-import { formatDate } from '@utility';
 
 import { IExecute } from './Execute';
 
@@ -41,9 +40,11 @@ export const Execute: React.FC<IExecute> = ({ deleteExecutedWorkflow, executedWo
               <TableRow key={workflow.id} style={{ cursor: 'pointer' }}>
                 <TableCell>{workflow.name}</TableCell>
                 <TableCell>{workflow.status}</TableCell>
-                <TableCell>{formatDate(workflow.createdAt)}</TableCell>
                 <TableCell>
-                  {workflow.completedAt ? formatDate(workflow.completedAt) : null}
+                  <DateViewer date={workflow.createdAt} />
+                </TableCell>
+                <TableCell>
+                  {workflow.completedAt ? <DateViewer date={workflow.completedAt} /> : null}
                 </TableCell>
                 <TableCell align="right">
                   <DeleteConfirm<IExecuteWorkflow>

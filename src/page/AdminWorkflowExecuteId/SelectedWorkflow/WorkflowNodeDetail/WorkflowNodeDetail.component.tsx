@@ -8,10 +8,9 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 
-import { DeleteConfirm, Modal, Table, TextInput } from '@component';
+import { DateViewer, DeleteConfirm, Modal, Table, TextInput } from '@component';
 import { Enums } from '@data';
 import { IDbServiceData, IListViewRender } from '@types';
-import { formatDate } from '@utility';
 
 import {
   useAdminWorkflowIdExecuteHelper,
@@ -41,7 +40,9 @@ export const WorkflowNodeDetail: React.FC = () => {
     <TableRow onClick={() => setSelectedRow(index)} selected={selectedRow === index}>
       <TableCell>{data.id}</TableCell>
       <TableCell>{data.data}</TableCell>
-      <TableCell>{formatDate(data.createdDate)}</TableCell>
+      <TableCell>
+        <DateViewer date={data.createdDate} />
+      </TableCell>
       <TableCell>
         <DeleteConfirm
           onDelete={dbServiceDelete}
@@ -124,13 +125,18 @@ export const WorkflowNodeDetail: React.FC = () => {
         {selectedWorkflowNode.startedAt ? (
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
             <Typography sx={{ fontWeight: 'bold' }}>Started At</Typography>
-            <span>{formatDate(selectedWorkflowNode.startedAt)}</span>
+            <span>
+              {' '}
+              <DateViewer date={selectedWorkflowNode.startedAt} />
+            </span>
           </Box>
         ) : null}
         {selectedWorkflowNode.completedAt ? (
           <Box sx={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
             <Typography sx={{ fontWeight: 'bold' }}>Completed At</Typography>
-            <span>{formatDate(selectedWorkflowNode.completedAt)}</span>
+            <span>
+              <DateViewer date={selectedWorkflowNode.completedAt} />
+            </span>
           </Box>
         ) : null}
         {selectedWorkflowNode.node.service === Enums.WorkflowNodeService.HumanInput && isReady ? (

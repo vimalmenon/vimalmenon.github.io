@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box';
 
+import { formatDate } from '@utility';
+
 import { IDateViewer } from './DateViewer';
 
 // TODO: implement the logic for date
@@ -28,7 +30,7 @@ const showDateDetails = (date: string): string => {
 
 export const DateViewer: React.FC<IDateViewer> = ({ date, sx }) => (
   <Box sx={sx}>
-    <span>{date}</span>
+    <span>{formatDate(date)}</span>
     <span>{showDateDetails(date)}</span>
   </Box>
 );
