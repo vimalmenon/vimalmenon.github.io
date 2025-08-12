@@ -1,4 +1,4 @@
-export const showDateDetails = (date: string): string => {
+export const getTimeElapsed = (date: string): string => {
   const now = new Date();
   const inputDate = new Date(date);
   const diffMs = now.getTime() - inputDate.getTime();
