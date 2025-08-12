@@ -101,6 +101,7 @@ src/
 - [x] Theme switching UI
 - [x] Contact page implementation
 - [x] Favicon integration
+- [x] Date component to show time from now like (5 days from now, 2 hours from now)
 
 ### 🚧 In Progress
 
@@ -110,11 +111,10 @@ src/
 - [ ] Error handling and user feedback
 - [ ] Mobile navigation improvements
 - [ ] Select with search for items
-- [ ] Date component to show time from now like (5 days from now, 2 hours from now)
+- [ ] Automated release management
 
 ### 📋 Planned Features
 
-- [ ] Automated release management
 - [ ] Command documentation blog
 - [ ] Admin panel enhancements
 - [ ] React state management refactoring
