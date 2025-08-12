@@ -7,12 +7,13 @@ import { IWorkflowView } from './WorkflowView';
 export const WorkflowView: React.FC<IWorkflowView> = ({ data }) => (
   <Box sx={{ display: 'flex', flex: '1 1 100%', flexDirection: 'column', gap: 2 }}>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Box>ID</Box>
-      <Box>{data.id}</Box>
+      <Box>
+        <b>{data.name}</b> ({data.id})
+      </Box>
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Box>Name</Box>
-      <Box>{data.name}</Box>
+      <Box>ID</Box>
+      <Box></Box>
     </Box>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box>Detail</Box>

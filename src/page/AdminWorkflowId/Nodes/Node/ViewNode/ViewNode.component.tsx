@@ -19,7 +19,7 @@ const getViewData = (
   values: string[],
   workflow: IWorkflow | null
 ): INodeViewData[] => {
-  // TODO :  Need to verify
+  // TODO :  This is not Working
   const result = [
     { id: 'id', title: 'ID', value: data.id },
     { id: 'name', title: 'Name', value: data.name },

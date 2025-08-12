@@ -5,6 +5,7 @@ export * from './AutoComplete';
 export * from './ComingSoon';
 export * from './ConfirmDialog';
 export * from './CopyToClipboard';
+export * from './DateViewer';
 export * from './DeleteConfirm';
 export * from './Icon';
 export * from './ListItem';

@@ -110,6 +110,7 @@ src/
 - [ ] Error handling and user feedback
 - [ ] Mobile navigation improvements
 - [ ] Select with search for items
+- [ ] Date component to show time from now like (5 days from now, 2 hours from now)
 
 ### 📋 Planned Features
 
