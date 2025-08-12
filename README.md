@@ -105,13 +105,12 @@ src/
 
 ### 🚧 In Progress
 
+- [ ] Automated release management (verify)
 - [ ] Workflow and Execute workflow separation
 - [ ] Enhanced Home and About pages
 - [ ] Improved Workflow UI/UX
 - [ ] Error handling and user feedback
-- [ ] Mobile navigation improvements
 - [ ] Select with search for items
-- [ ] Automated release management
 
 ### 📋 Planned Features
 
