@@ -17,4 +17,4 @@ export * from './ReactFlowLegend';
 export * from './Table';
 export * from './TextInput';
 export * from './ViewData';
-export * from './WorkflowHeader';
+export * from './Workflow';
