@@ -9,12 +9,11 @@ import { Icons } from '@data';
 import { ICopyToClipboard } from './CopyToClipboard';
 
 export const CopyToClipboard: React.FC<ICopyToClipboard> = ({ text }) => {
+  const [open, setOpen] = useState(false);
   const onClick = (): void => {
     navigator.clipboard.writeText(text);
     setOpen(true);
   };
-  const [open, setOpen] = useState(false);
-
   return (
     <Tooltip title="Copied" open={open} onClose={() => setOpen(false)}>
       <span>
