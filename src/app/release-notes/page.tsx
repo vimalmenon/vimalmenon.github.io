@@ -15,12 +15,14 @@ const Page: React.FC = () => (
     <StyledPage>
       <Breadcrumbs navigation={Navigation.ReleaseNote} />
       <div>
-        <div>0.0.37</div>
-        <ul>Enhance Workflow</ul>
+        <div>0.0.39</div>
+        <ul>Improve Pages</ul>
       </div>
       <div>
-        <div>[0.0.35 - 0.0.0]</div>
+        <div>[0.0.38 - 0.0.0]</div>
         <ul>
+          <ul>Storybook added</ul>
+          <ul>Enhance Workflow</ul>
           <li>Execute workflow</li>
           <li>Set up ReactFlow</li>
           <li>Improve workflow UI</li>

@@ -1,8 +1,11 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+
 import pluginJs from '@eslint/js';
 import pluginImport from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import pluginReact from 'eslint-plugin-react';
 import sort from 'eslint-plugin-sort';
+import storybook from 'eslint-plugin-storybook';
 import tseslint from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -167,4 +170,5 @@ export default [
       'sort/imports': 'off',
     },
   },
+  ...storybook.configs['flat/recommended'],
 ];

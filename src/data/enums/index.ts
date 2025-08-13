@@ -22,9 +22,7 @@ export enum WorkflowNodeFields {
 export enum WorkflowNodeType {
   Agent = 'Agent',
   LLM = 'LLM',
-  HumanInput = 'HumanInput',
   Service = 'Service',
-  ManualConfirmation = 'ManualConfirmation',
 }
 
 export enum WorkflowPage {
@@ -39,6 +37,8 @@ export enum WorkflowNodeService {
   SaveToDB = 'SaveToDB',
   SaveToS3 = 'SaveToS3',
   InternetSearch = 'InternetSearch',
+  HumanInput = 'HumanInput',
+  ManualConfirmation = 'ManualConfirmation',
 }
 
 export const Enums = {

@@ -5,8 +5,6 @@ import { Fragment, useEffect } from 'react';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 
 import { DeleteConfirm, Icon, WorkflowHeader } from '@component';
 import { Icons } from '@data';
@@ -21,31 +19,12 @@ import {
 } from './AdminWorkflowId.service';
 import { Execute } from './Execute';
 import { ExecuteForm } from './ExecuteForm';
-import { Node } from './Node';
+import { Nodes } from './Nodes';
 import { Workflow } from './Workflow';
 
 const Component: React.FC = () => {
-  const {
-    alert,
-    error,
-    isStart,
-    nodeTabs,
-    setNodeFormMode,
-    setShowCreate,
-    showCreate,
-    workflow,
-    workflowFormMode,
-  } = useWorkflowContext();
-  const { nodeFormMode, onTabChange, selectedTab, setNodeMode } = useTabHelper();
-  const {
-    createNode,
-    deleteExecutedWorkflow,
-    deleteNodeConfirm,
-    getAllData,
-    id,
-    onAlertClose,
-    updateNode,
-  } = useWorkflowDataHelper();
+  const { alert, setShowCreate, showCreate, workflow, workflowFormMode } = useWorkflowContext();
+  const { deleteExecutedWorkflow, getAllData, id, onAlertClose } = useWorkflowDataHelper();
   const { deleteWorkflow, editWorkflowFormMode, viewWorkflowFormMode } = useWorkflowFormHelper();
   const { onAddNodeTab } = useTabHelper();
   useEffect(() => {
@@ -54,7 +33,7 @@ const Component: React.FC = () => {
   return (
     <Fragment>
       <WorkflowHeader
-        title={'Workflow'}
+        title="Workflow"
         action={
           <Fragment>
             {workflowFormMode === 'VIEW' ? (
@@ -106,7 +85,7 @@ const Component: React.FC = () => {
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: 1 }}>
         {showCreate ? <ExecuteForm /> : null}
-        {id && workflow && workflow.complete ? (
+        {id && workflow?.complete ? (
           <Fragment>
             <Execute
               executedWorkflows={workflow.executedWorkflows}
@@ -116,51 +95,9 @@ const Component: React.FC = () => {
             <Divider />
           </Fragment>
         ) : null}
-        {error ? <Alert severity="error">{error}</Alert> : null}
         <Workflow onCancel={viewWorkflowFormMode} data={workflow} />
         <Divider />
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Tabs value={selectedTab} onChange={onTabChange}>
-            {nodeFormMode === 'CREATE' ? (
-              <Tab label="Create Node" />
-            ) : (
-              nodeTabs.map((node) => <Tab label={node.label} key={node.name} />)
-            )}
-          </Tabs>
-          {nodeFormMode === 'CREATE' ? (
-            <Node
-              mode="CREATE"
-              createNode={createNode}
-              cancelNode={() => setNodeFormMode('UPDATE')}
-              isStart={false}
-              complete={false}
-            />
-          ) : (
-            <Fragment>
-              {nodeTabs.length ? (
-                nodeTabs.map((node, index) => {
-                  if (selectedTab === index && workflow) {
-                    return (
-                      <Node
-                        data={workflow.nodes[node.name]}
-                        key={node.name}
-                        mode={node.mode}
-                        deleteNode={deleteNodeConfirm}
-                        updateNode={(data) => updateNode(node.name, data)}
-                        setMode={(mode) => setNodeMode(index, mode)}
-                        cancelNode={() => setNodeMode(index, 'VIEW')}
-                        isStart={isStart}
-                        complete={workflow.complete}
-                      />
-                    );
-                  }
-                })
-              ) : (
-                <Box>No node created</Box>
-              )}
-            </Fragment>
-          )}
-        </Box>
+        <Nodes />
       </Box>
     </Fragment>
   );

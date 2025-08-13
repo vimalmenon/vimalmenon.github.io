@@ -1,6 +1,7 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 import { SelectChangeEvent } from '@mui/material';
+
 export interface IReactChildren {
   children: React.ReactNode;
 }
@@ -46,6 +47,7 @@ export interface IGenericResponse<T> {
 
 export interface IGenericResponseError {
   detail: string;
+  message: string;
 }
 
 export interface IWorkflowSlim {
@@ -84,7 +86,6 @@ export interface IWorkflowUpdate extends IWorkflowSlim {
 export interface IWorkflow extends IWorkflowSlim {
   id: string;
   detail: string;
-  connections: Record<string, string[]>;
   nodes: Record<string, INodeFull>;
   complete: boolean;
   executedWorkflows: IExecuteWorkflow[];

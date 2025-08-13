@@ -1,9 +1,9 @@
 # Vimal Menon's Personal Website
 
-A modern, responsive personal website built with Next.js, React, and Material-UI. Features a dynamic admin panel, workflow management system, and a blog platform.
+A modern, responsive personal website built with Next.js, React, and Material-UI. Features a dynamic blog, admin panel, theme switching, workflow management, and more.
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fvimalmenon.com)](https://vimalmenon.com)
-[![Version](https://img.shields.io/badge/version-0.0.37-blue.svg)](https://github.com/vimalmenon/vimalmenon.github.io)
+[![Version](https://img.shields.io/badge/version-0.0.38-blue.svg)](https://github.com/vimalmenon/vimalmenon.github.io)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## 🌐 Live Website
@@ -38,23 +38,26 @@ Visit the live website at [vimalmenon.com](https://vimalmenon.com)
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/vimalmenon/vimalmenon.github.io.git
 cd vimalmenon.github.io
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -92,21 +95,28 @@ src/
 ## 🔄 Development Roadmap
 
 ### ✅ Completed
+
 - [x] Consistent Link group naming (LinkGroup vs GroupLink)
 - [x] Cookie acceptance functionality
 - [x] Theme switching UI
 - [x] Contact page implementation
 - [x] Favicon integration
+- [x] Date component to show time from now like (5 days from now, 2 hours from now)
+- [x] Added storybook
 
 ### 🚧 In Progress
+
+- [ ] Automated release management (verify)
 - [ ] Workflow and Execute workflow separation
 - [ ] Enhanced Home and About pages
 - [ ] Improved Workflow UI/UX
 - [ ] Error handling and user feedback
-- [ ] Mobile navigation improvements
+- [ ] Select with search for items
+- [ ] Give Material UI theme to storybook
+- [ ] Added faker
 
 ### 📋 Planned Features
-- [ ] Automated release management
+
 - [ ] Command documentation blog
 - [ ] Admin panel enhancements
 - [ ] React state management refactoring
@@ -116,6 +126,7 @@ src/
 - [ ] Blog sub-navigation
 - [ ] Production API integration
 - [ ] Sitemap.xml generation
+- [ ] 100% test confidence (Not ready for all screen)
 
 ## 💡 Feature Ideas
 
@@ -123,16 +134,24 @@ src/
 - Enhanced workflow visualization
 - Real-time collaboration features
 
+## 📝 Todo
+
+- [ ] NodeForm component improvements (`src/page/AdminWorkflowId/Common/NodeForm/NodeForm.component.tsx`)
+- [ ] ViewNode component improvements (`src/page/AdminWorkflowId/Nodes/Node/ViewNode/ViewNode.component.tsx`)
+- [ ] WorkflowNodeDetail component improvements (`src/page/AdminWorkflowExecuteId/SelectedWorkflow/WorkflowNodeDetail/WorkflowNodeDetail.component.tsx`)
+
 ## 🛠️ Development Commands
 
 ### Git Operations
 
 Clean up remote branches:
+
 ```bash
 git remote update origin --prune
 ```
 
 Remove local branches (except current):
+
 ```bash
 git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
 ```
@@ -140,6 +159,7 @@ git branch | grep -v "$(git branch --show-current)" | xargs git branch -D
 ### Code Quality
 
 ESLint with Copilot debugging:
+
 ```bash
 copilot-debug npm run eslint:fix
 ```
@@ -147,6 +167,7 @@ copilot-debug npm run eslint:fix
 ### K3S Development (Windows)
 
 Start K3S cluster:
+
 ```bash
 wsl -d myk3s
 openrc default
@@ -154,6 +175,7 @@ kubectl get nodes
 ```
 
 Quick start:
+
 ```bash
 wsl -d myk3s openrc default
 ```
@@ -179,6 +201,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📧 Contact
 
 **Vimal Menon**
+
 - Website: [vimalmenon.com](https://vimalmenon.com)
 - GitHub: [@vimalmenon](https://github.com/vimalmenon)
 
