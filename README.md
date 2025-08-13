@@ -103,10 +103,11 @@ src/
 - [x] Favicon integration
 - [x] Date component to show time from now like (5 days from now, 2 hours from now)
 - [x] Added storybook
+- [x] Automated release management (verify)
 
 ### 🚧 In Progress
 
-- [ ] Automated release management (verify)
+- [ ] UI Rewrite
 - [ ] Workflow and Execute workflow separation
 - [ ] Enhanced Home and About pages
 - [ ] Improved Workflow UI/UX
