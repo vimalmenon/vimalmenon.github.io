@@ -102,6 +102,7 @@ src/
 - [x] Contact page implementation
 - [x] Favicon integration
 - [x] Date component to show time from now like (5 days from now, 2 hours from now)
+- [x] Added storybook
 
 ### 🚧 In Progress
 
@@ -111,6 +112,8 @@ src/
 - [ ] Improved Workflow UI/UX
 - [ ] Error handling and user feedback
 - [ ] Select with search for items
+- [ ] Give Material UI theme to storybook
+- [ ] Added faker
 
 ### 📋 Planned Features
 
