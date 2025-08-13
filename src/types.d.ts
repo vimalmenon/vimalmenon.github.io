@@ -86,7 +86,6 @@ export interface IWorkflowUpdate extends IWorkflowSlim {
 export interface IWorkflow extends IWorkflowSlim {
   id: string;
   detail: string;
-  connections: Record<string, string[]>;
   nodes: Record<string, INodeFull>;
   complete: boolean;
   executedWorkflows: IExecuteWorkflow[];
