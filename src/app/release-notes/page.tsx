@@ -19,7 +19,7 @@ const Page: React.FC = () => (
         <ul>Improve Pages</ul>
       </div>
       <div>
-        <div>[0.0.38 - 0.0.0]</div>
+        <div>[0.0.39 - 0.0.0]</div>
         <ul>
           <ul>Storybook added</ul>
           <ul>Enhance Workflow</ul>
