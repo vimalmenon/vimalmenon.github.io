@@ -26,18 +26,6 @@ export const WorkflowForm: React.FC<IWorkflowForm> = ({
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      {mode === 'UPDATE' ? (
-        <FormControl variant="outlined" fullWidth required>
-          <TextField
-            label="ID"
-            variant="outlined"
-            size="small"
-            required
-            defaultValue={data?.id}
-            disabled
-          />
-        </FormControl>
-      ) : null}
       <FormControl variant="outlined" fullWidth required>
         <TextField
           label="Name"
