@@ -1,11 +1,7 @@
-import Box from '@mui/material/Box';
-
 import type { Metadata } from 'next';
 
-import { Breadcrumbs } from '@common';
-import { MainLayout } from '@component';
-import { Navigation } from '@data';
-import { StyledPage } from '@style';
+import { Layout } from '@common';
+import { NotFound } from '@page';
 
 export const metadata: Metadata = {
   description: "This is Vimal Menon's personal website",
@@ -13,11 +9,8 @@ export const metadata: Metadata = {
 };
 
 const Page: React.FC = () => (
-  <MainLayout>
-    <StyledPage>
-      <Breadcrumbs navigation={Navigation.NotFound} />
-      <Box>Requested page not found</Box>
-    </StyledPage>
-  </MainLayout>
+  <Layout>
+    <NotFound />
+  </Layout>
 );
 export default Page;

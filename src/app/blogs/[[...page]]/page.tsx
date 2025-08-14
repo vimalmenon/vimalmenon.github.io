@@ -4,7 +4,7 @@ import type { Metadata, NextPage } from 'next';
 
 import NextLink from 'next/link';
 
-import { MainLayout } from '@component';
+import { Layout } from '@common';
 import { blogs } from '@data';
 import { ICatchAll, ICatchAllParams } from '@types';
 
@@ -17,7 +17,7 @@ const Page: NextPage<ICatchAllParams> = async ({ params }) => {
   const { page } = await params;
   const selectedPage = blogs.find((blog) => blog.link == String(page?.[0]));
   return (
-    <MainLayout>
+    <Layout>
       <Box>
         <Box>
           <span>
@@ -42,7 +42,7 @@ const Page: NextPage<ICatchAllParams> = async ({ params }) => {
           ))}
         </Box>
       </Box>
-    </MainLayout>
+    </Layout>
   );
 };
 

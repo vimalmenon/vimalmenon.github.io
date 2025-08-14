@@ -4,4 +4,6 @@ export * from './Breadcrumbs';
 export * from './Footer';
 export * from './Google';
 export * from './Header';
+export * from './Layout';
+export * from './ThemeProvider';
 export * from './ThemeWrapper';

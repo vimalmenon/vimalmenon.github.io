@@ -5,4 +5,5 @@ export * from './AdminWorkflowExecuteId';
 export * from './AdminWorkflowId';
 export * from './AdminWorkflows';
 export * from './Home';
+export * from './NotFound';
 export * from './Others';
