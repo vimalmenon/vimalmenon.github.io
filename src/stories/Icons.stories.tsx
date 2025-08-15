@@ -15,6 +15,14 @@ const meta = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   title: 'Component/Icons',
+  decorators: [(Story) => {
+    return (
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        tjis
+        <Story />
+      </div>
+    );
+  }]
 } satisfies Meta<typeof Icon>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
