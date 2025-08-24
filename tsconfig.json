@@ -38,6 +38,20 @@
       "@views": ["./src/views"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.config.js"],
-  "exclude": ["node_modules", "postcss.config.js"]
+  "include": [
+    "next-env.d.ts", 
+    "src/**/*", 
+    ".next/types/**/*.ts", 
+    "jest.config.js",
+    "vitest.config.ts",
+    "next.config.ts"
+  ],
+  "exclude": [
+    "node_modules", 
+    "postcss.config.js", 
+    "tailwind.config.js",
+    "backup",
+    "backup/**",
+    "**/backup/**"
+  ]
 }
