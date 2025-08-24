@@ -136,7 +136,7 @@ export function SimpleModeToggle(): JSX.Element {
 }
 
 // Color theme selector component
-export function ColorThemeSelector() {
+export function ColorThemeSelector(): JSX.Element {
   const { colorTheme, setColorTheme } = useTheme();
 
   return (

@@ -9,7 +9,7 @@ import { INextLinkProps } from './NextLink';
 
 export const NextLink: React.FC<INextLinkProps> = ({ className, link }) => {
   const pathname = usePathname();
-  const isActive = (url: string) => pathname === url;
+  const isActive = (url: string): boolean => pathname === url;
 
   return (
     <Link href={link.url}>

@@ -1,9 +1,11 @@
+import { JSX } from 'react';
+
 import { NotFound } from '@/views';
 
 import { navigationMap } from '@data';
 import { MainLayout } from '@layouts';
 
-export default function NotFoundPage() {
+export default function NotFoundPage(): JSX.Element {
   return (
     <MainLayout navigation={navigationMap.Home}>
       <NotFound />
