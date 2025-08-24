@@ -51,6 +51,7 @@ export default [
       '.next/*',
       '/pages/api/**/*.ts',
       'out/*',
+      'backup/*',
       'jest.setup.js',
       'jest.config.js',
       '.eslintrc.js',

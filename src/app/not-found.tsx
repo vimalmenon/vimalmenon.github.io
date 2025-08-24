@@ -1,16 +1,12 @@
-import type { Metadata } from 'next';
+import { NotFound } from '@/views';
 
-import { Layout } from '@common';
-import { NotFound } from '@page';
+import { navigationMap } from '@data';
+import { MainLayout } from '@layouts';
 
-export const metadata: Metadata = {
-  description: "This is Vimal Menon's personal website",
-  title: 'Page Not Found | Vimal Menon',
-};
-
-const Page: React.FC = () => (
-  <Layout>
-    <NotFound />
-  </Layout>
-);
-export default Page;
+export default function NotFoundPage() {
+  return (
+    <MainLayout navigation={navigationMap.Home}>
+      <NotFound />
+    </MainLayout>
+  );
+}

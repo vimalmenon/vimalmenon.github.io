@@ -1,212 +1,46 @@
-import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
-
-import { SelectChangeEvent } from '@mui/material';
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+export type AnyType = any;
 
 export interface IReactChildren {
   children: React.ReactNode;
 }
 
-export interface INavigationSlim {
-  name: string;
-  link: string;
+export type ThemeMode = 'light' | 'dark' | 'system';
+
+export type ColorTheme = 'default' | 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'pink';
+
+export interface ThemeConfig {
+  colorTheme: ColorTheme;
+  mode: ThemeMode;
 }
 
-export interface INavigation extends INavigationSlim {
-  title: string;
+export interface IColorThemeItem {
+  color: string;
+  value: ColorTheme;
   description: string;
-  breadcrumbs: INavigationSlim[];
-  show: boolean;
-  children: INavigationSlim[];
+  name: string;
 }
 
-interface IReactFlowData {
-  id: string;
-  label: string;
-  onExecute: (data: IWorkflowExecuteParams) => Promise<void>;
-  onSelect: (data: IExecuteWorkflowNode) => void;
-  status: string;
-  type: string;
-  data: string;
-  node: IExecuteWorkflowNode;
+export interface IColorModeItem {
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  value: ThemeMode;
+  description: string;
+  name: string;
 }
 
-export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
+export interface ILocalStorageKey {
+  colorTheme: ColorTheme;
+  mode: ThemeMode;
+}
 
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
-export type AnyType = any;
-
-export interface IApi<T = unknown> {
+export interface INavigationItemSlim {
+  name: string;
   url: string;
-  method: 'GET' | 'DELETE' | 'POST' | 'PUT';
-  body?: T;
+  // Icon?: AnyType;
 }
 
-export interface IGenericResponse<T> {
-  data: T;
+export interface INavigationItem extends INavigationItemSlim {
+  segments: string[];
+  breadcrumb: INavigationItemSlim[];
+  exact: boolean;
 }
-
-export interface IGenericResponseError {
-  detail: string;
-  message: string;
-}
-
-export interface IWorkflowSlim {
-  name: string;
-}
-
-export interface INodeSlim {
-  name: string;
-}
-
-export interface INode extends INodeSlim {
-  id: string;
-  prompt?: string;
-  message?: string;
-  type?: string;
-  llm?: string;
-  tools: string[];
-  next?: string;
-  tool?: string;
-  service?: string;
-  isStart: boolean;
-  dataFromPreviousNode?: boolean;
-  structuredOutput?: string;
-}
-
-export interface INodeFull extends INode {
-  requestAtRunTime: boolean;
-  updatedAt: string;
-}
-
-export interface IWorkflowUpdate extends IWorkflowSlim {
-  detail: string;
-  complete: boolean;
-}
-
-export interface IWorkflow extends IWorkflowSlim {
-  id: string;
-  detail: string;
-  nodes: Record<string, INodeFull>;
-  complete: boolean;
-  executedWorkflows: IExecuteWorkflow[];
-}
-
-export interface IMakeRequest<T, E = string> {
-  response: T;
-  error?: E;
-}
-
-export interface ILLM {
-  name: string;
-  model: string;
-  supported: boolean;
-}
-
-export interface IMultiSelectOption {
-  label: string;
-  value: string;
-  disabled?: boolean;
-}
-
-export interface IExecuteWorkflowSlim {
-  name: string;
-}
-
-export interface IExecuteWorkflowNode {
-  id: 'NEW' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELLED';
-  status: string;
-  startedAt: string;
-  completedAt?: string;
-  content: string;
-  node: INode;
-}
-
-export interface IExecuteWorkflow extends IExecuteWorkflowSlim {
-  id: string;
-  status: string;
-  createdAt: string;
-  completedAt?: string;
-  nodes: IExecuteWorkflowNode[];
-}
-
-export interface IAdminWorkflowIdPage {
-  id: string;
-}
-
-export interface IViewData {
-  label: string;
-  value: string;
-  hidden?: boolean;
-}
-
-export interface IReactFlowNode {
-  data: IReactFlowData;
-  id: string;
-  position: { x: number; y: number };
-  style?: React.CSSProperties;
-  type?: ReactFlowType;
-}
-
-export type ReactFlowType = 'Completed' | 'Basic';
-
-export interface IReactFlowEdge {
-  id: string;
-  source: string;
-  target: string;
-}
-
-export interface IWorkflowExecuteParams {
-  id: string;
-  data?: string;
-}
-
-export interface IListViewRender<T> {
-  readonly data: T;
-  readonly index: number;
-}
-
-export interface IDbServiceData {
-  id: string;
-  data: string;
-  createdDate: string;
-}
-
-export interface ICatchAll {
-  page?: string[];
-}
-
-export interface ICatchAllParams {
-  params: Promise<ICatchAll>;
-}
-
-export interface IAlert extends IReactChildren {
-  severity: SeverityType;
-}
-
-export interface ILink {
-  id: string;
-  name: string;
-  link: string;
-  reference: string;
-}
-
-export interface ILinkGroup {
-  id: string;
-  name: string;
-  links: ILink[];
-}
-
-export interface IErrorPage {
-  reset: VoidFunction;
-}
-
-export type VoidFunction<T = void> = () => T;
-
-export type FormMode = 'VIEW' | 'UPDATE' | 'CREATE';
-
-export type SeverityType = 'success' | 'info' | 'warning' | 'error';
-
-export type InputChangeType = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-export type SwitchChangeType = (event: ChangeEvent<HTMLInputElement>) => void;
-
-export type SelectChangeType<T> = (event: SelectChangeEvent<T>) => void;
