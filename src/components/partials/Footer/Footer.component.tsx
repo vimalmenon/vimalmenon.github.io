@@ -3,7 +3,7 @@ import * as motion from 'motion/react-client';
 import { Button, Separator } from '@components';
 import { socialLinks } from '@data';
 
-export const Footer = () => (
+export const Footer: React.FC = () => (
   <footer className="border-t bg-background">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col items-center space-y-6">

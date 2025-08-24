@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { JSX } from 'react';
 
 import { Check, Moon, Palette, Sun } from 'lucide-react';
 import * as motion from 'motion/react-client';
@@ -20,7 +20,7 @@ import {
 import { useTheme } from '@contexts';
 import { colorModeOptions, colorThemeOptions } from '@data';
 
-export function ThemeToggle() {
+export function ThemeToggle(): JSX.Element {
   const { actualMode, colorTheme, mode, setColorTheme, setMode } = useTheme();
 
   return (
@@ -106,10 +106,10 @@ export function ThemeToggle() {
 }
 
 // Simple mode toggle for mobile or minimal interfaces
-export function SimpleModeToggle() {
+export function SimpleModeToggle(): JSX.Element {
   const { actualMode, mode, setMode } = useTheme();
 
-  const handleToggle = () => {
+  const handleToggle = (): void => {
     if (mode === 'light') {
       setMode('dark');
     } else if (mode === 'dark') {

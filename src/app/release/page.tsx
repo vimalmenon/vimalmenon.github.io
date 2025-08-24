@@ -1,6 +1,8 @@
+import { JSX } from 'react';
+
 import { navigationMap } from '@data';
 import { MainLayout } from '@layouts';
 
-export default function Release() {
+export default function Release(): JSX.Element {
   return <MainLayout navigation={navigationMap.Release}>Release</MainLayout>;
 }

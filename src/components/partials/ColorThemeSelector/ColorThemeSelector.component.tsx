@@ -1,10 +1,12 @@
 'use client';
 
+import { JSX } from 'react';
+
 import { Button } from '@components';
 import { useTheme } from '@contexts';
 import { colorThemeOptions } from '@data';
 
-export function ColorThemeSelector() {
+export function ColorThemeSelector(): JSX.Element {
   const { colorTheme, setColorTheme } = useTheme();
 
   return (

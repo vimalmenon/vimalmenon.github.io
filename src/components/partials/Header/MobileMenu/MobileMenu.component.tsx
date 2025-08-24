@@ -12,7 +12,7 @@ import { ColorThemeSelector, ThemeToggle } from '../ThemeToggle';
 
 export const MobileMenu: React.FC<IHeaderProps> = ({ url }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const isActive = (path: string) => path === url;
+  const isActive = (path: string): boolean => path === url;
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>

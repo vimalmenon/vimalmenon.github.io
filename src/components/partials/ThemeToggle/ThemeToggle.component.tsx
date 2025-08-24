@@ -1,5 +1,7 @@
 'use client';
 
+import { JSX } from 'react';
+
 import { Check, Moon, Palette, Sun } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
@@ -18,7 +20,7 @@ import {
 import { useTheme } from '@contexts';
 import { colorModeOptions, colorThemeOptions } from '@data';
 
-export function ThemeToggle() {
+export function ThemeToggle(): JSX.Element {
   const { actualMode, colorTheme, mode, setColorTheme, setMode } = useTheme();
   return (
     <DropdownMenu>
