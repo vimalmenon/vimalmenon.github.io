@@ -1,15 +1,17 @@
 'use client';
 
+import { JSX } from 'react';
+
 import { Moon, Sun } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
 import { Button } from '@components';
 import { useTheme } from '@contexts';
 
-export function SimpleModeToggle() {
+export function SimpleModeToggle(): JSX.Element {
   const { actualMode, mode, setMode } = useTheme();
 
-  const handleToggle = () => {
+  const handleToggle = (): void => {
     if (mode === 'light') {
       setMode('dark');
     } else if (mode === 'dark') {
