@@ -1,4 +1,4 @@
-import { INavigationItemSlim } from '@/types';
+import { INavigationItemSlim } from '@types';
 
 export interface IDynamicBreadcrumbProps {
   breadcrumbs: INavigationItemSlim[];

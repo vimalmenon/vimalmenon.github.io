@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-import { ColorTheme, IReactChildren } from '@/types';
-
 import { localStorageHook } from '@hooks';
+import { ColorTheme, IReactChildren } from '@types';
 import { ThemeConfig, ThemeMode } from '@types';
 
 import { IContext } from './ThemeContext';
