@@ -44,3 +44,11 @@ export interface INavigationItem extends INavigationItemSlim {
   breadcrumb: INavigationItemSlim[];
   exact: boolean;
 }
+
+export interface ICatchAll {
+  page?: string[];
+}
+
+export interface ICatchAllParams {
+  params: Promise<ICatchAll>;
+}
