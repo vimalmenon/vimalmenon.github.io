@@ -30,7 +30,7 @@ export const ThemeContext: React.FC<IReactChildren> = ({ children }) => {
     const root = window.document.documentElement;
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-    const updateMode = () => {
+    const updateMode = (): void => {
       let resolvedMode: 'light' | 'dark';
 
       if (themeConfig.mode === 'system') {
@@ -66,7 +66,7 @@ export const ThemeContext: React.FC<IReactChildren> = ({ children }) => {
     updateMode();
 
     // Listen for system theme changes
-    const handleMediaChange = () => {
+    const handleMediaChange = (): void => {
       if (themeConfig.mode === 'system') {
         updateMode();
       }
@@ -75,7 +75,7 @@ export const ThemeContext: React.FC<IReactChildren> = ({ children }) => {
     mediaQuery.addEventListener('change', handleMediaChange);
     return () => mediaQuery.removeEventListener('change', handleMediaChange);
   }, [themeConfig, mounted]);
-  const saveTheme = (config: ThemeConfig) => {
+  const saveTheme = (config: ThemeConfig): void => {
     setStoredValue(config);
     setThemeConfig(config);
   };

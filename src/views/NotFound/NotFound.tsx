@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { Button, Input } from '@components';
 
-export const NotFound = () => (
+export const NotFound: React.FC = () => (
   <div className="min-h-screen bg-background flex items-center justify-center">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
