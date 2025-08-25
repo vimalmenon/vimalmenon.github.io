@@ -9,3 +9,4 @@ export * from './Input';
 export * from './NextLink';
 export * from './Separator';
 export * from './Sheet';
+export * from './Tabs';
