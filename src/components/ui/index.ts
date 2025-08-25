@@ -10,6 +10,7 @@ export * from './Drawer';
 export * from './DropdownMenu';
 export * from './ImageWithFallback';
 export * from './Input';
+export * from './Label';
 export * from './NextLink';
 export * from './Progress';
 export * from './RadioGroup';
