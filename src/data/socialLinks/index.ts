@@ -15,7 +15,7 @@ export const socialLinks = [
   },
   {
     color: 'hover:text-green-600',
-    href: 'mailto:john@example.com',
+    href: 'mailto:realvimalmenon@proton.me',
     icon: Icons.Mail,
     name: 'Email',
   },
