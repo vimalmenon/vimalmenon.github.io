@@ -9,15 +9,9 @@ export const socialLinks = [
   },
   {
     color: 'hover:text-blue-600',
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/real-vimal-menon/',
     icon: Icons.Linkedin,
     name: 'LinkedIn',
-  },
-  {
-    color: 'hover:text-blue-400',
-    href: 'https://twitter.com',
-    icon: Icons.X,
-    name: 'Twitter',
   },
   {
     color: 'hover:text-green-600',
