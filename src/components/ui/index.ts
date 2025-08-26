@@ -8,6 +8,7 @@ export * from './Card';
 export * from './Checkbox';
 export * from './Drawer';
 export * from './DropdownMenu';
+export * from './Icon';
 export * from './ImageWithFallback';
 export * from './Input';
 export * from './Label';

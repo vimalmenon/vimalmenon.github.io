@@ -11,6 +11,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
+  Icon,
 } from '@components';
 
 import { IDynamicBreadcrumbProps } from './DynamicBreadcrumb';
@@ -30,7 +31,7 @@ export const DynamicBreadcrumb: React.FC<IDynamicBreadcrumbProps> = ({ breadcrum
             <BreadcrumbItem>
               {index == breadcrumbs.length - 1 ? (
                 <BreadcrumbPage className="flex items-center gap-1 hover:text-primary transition-colors">
-                  {/* <breadcrumb.Icon className="h-4 w-4" /> */}
+                  <Icon icon={breadcrumb.icon} className="h-4 w-4" />
                   {breadcrumb.name}
                 </BreadcrumbPage>
               ) : (
@@ -39,7 +40,7 @@ export const DynamicBreadcrumb: React.FC<IDynamicBreadcrumbProps> = ({ breadcrum
                     href={breadcrumb.url}
                     className="flex items-center gap-1 hover:text-primary transition-colors"
                   >
-                    {/* <breadcrumb.Icon className="h-4 w-4" /> */}
+                    <Icon icon={breadcrumb.icon} className="h-4 w-4" />
                     <span className="sr-only sm:not-sr-only">{breadcrumb.name}</span>
                   </Link>
                 </BreadcrumbLink>

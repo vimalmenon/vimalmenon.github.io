@@ -7,7 +7,9 @@ import { IMainLayoutProps } from './MainLayout';
 export const MainLayout: React.FC<IMainLayoutProps> = ({ children, navigation }) => (
   <div className="min-h-screen flex flex-col">
     <Header url={navigation.url} />
-    <DynamicBreadcrumb breadcrumbs={navigation.breadcrumb} />
+    {navigation.breadcrumb.length ? (
+      <DynamicBreadcrumb breadcrumbs={navigation.breadcrumb} />
+    ) : null}
     <motion.main
       className="flex-1"
       initial={{ opacity: 0 }}

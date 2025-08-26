@@ -13,6 +13,7 @@ export const ThemeContext: React.FC<IReactChildren> = ({ children }) => {
   const [mounted, setMounted] = useState<boolean>(false);
   const [themeConfig, setThemeConfig] = useState<ThemeConfig>(defaultThemeConfig);
   const [actualMode, setActualMode] = useState<ThemeMode>('light');
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [storedValue, setStoredValue] = localStorageHook();
   useEffect(() => {
     if (storedValue) {
@@ -81,11 +82,13 @@ export const ThemeContext: React.FC<IReactChildren> = ({ children }) => {
   const value: IContext = {
     actualMode,
     colorTheme: themeConfig.colorTheme,
+    isDrawerOpen,
     mode: themeConfig.mode,
     mounted,
     setColorTheme: (colorTheme: ColorTheme) => {
       saveTheme({ ...themeConfig, colorTheme });
     },
+    setIsDrawerOpen,
     setMode: (mode: ThemeMode) => {
       saveTheme({ ...themeConfig, mode });
     },

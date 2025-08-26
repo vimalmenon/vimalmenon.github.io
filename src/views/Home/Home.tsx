@@ -28,25 +28,25 @@ import {
 export const Home: React.FC = () => {
   const experiences = [
     {
-      company: 'Tech Solutions Inc',
+      company: 'SocGen',
       description:
         'Leading full-stack development projects using React, Node.js, and cloud technologies. Mentoring junior developers and architecting scalable solutions.',
-      duration: '2022 - Present',
+      duration: 'Sept 2021 - Present',
       id: 1,
-      location: 'San Francisco, CA',
+      location: 'Hong Kong',
       position: 'Senior Software Engineer',
-      technologies: ['React', 'TypeScript', 'Node.js', 'AWS', 'Docker'],
+      technologies: ['React', 'TypeScript', 'FastApi', 'Python', 'Kubernetes', 'Docker'],
       type: 'current',
     },
     {
-      company: 'Digital Innovations Ltd',
+      company: 'Luxoft Private HK',
       description:
         'Developed and maintained web applications serving 100k+ users. Implemented CI/CD pipelines and improved application performance by 40%.',
-      duration: '2020 - 2022',
+      duration: '2020 - 2021',
       id: 2,
-      location: 'New York, NY',
-      position: 'Full Stack Developer',
-      technologies: ['Vue.js', 'Python', 'PostgreSQL', 'Redis', 'Kubernetes'],
+      location: 'Hong Kong',
+      position: 'Senior Software Engineer',
+      technologies: ['React', 'TypeScript', 'JavaScript'],
       type: 'previous',
     },
     {
@@ -55,9 +55,9 @@ export const Home: React.FC = () => {
         'Built responsive web applications from ground up. Collaborated with design team to implement pixel-perfect UI components.',
       duration: '2019 - 2020',
       id: 3,
-      location: 'Austin, TX',
-      position: 'Frontend Developer',
-      technologies: ['React', 'JavaScript', 'SASS', 'Webpack', 'Jest'],
+      location: 'Hong Kong',
+      position: 'Senior Software Engineer',
+      technologies: ['React', 'TypeScript', 'JavaScript'],
       type: 'previous',
     },
   ];
@@ -65,27 +65,19 @@ export const Home: React.FC = () => {
   const certifications = [
     {
       badge: 'Professional',
-      date: '2023',
+      date: '2021',
       icon: Award,
       id: 1,
-      issuer: 'Amazon Web Services',
-      title: 'AWS Solutions Architect',
+      issuer: 'Linux foundation',
+      title: 'CKAD',
     },
     {
-      badge: 'Professional',
-      date: '2022',
-      icon: Award,
-      id: 2,
-      issuer: 'Google Cloud',
-      title: 'Google Cloud Professional',
-    },
-    {
-      badge: 'Expert',
+      badge: 'Beginner',
       date: '2023',
       icon: Award,
-      id: 3,
-      issuer: 'Meta',
-      title: 'React Advanced Patterns',
+      id: 2,
+      issuer: 'Microsoft',
+      title: 'AZ900',
     },
   ];
 
@@ -144,10 +136,12 @@ export const Home: React.FC = () => {
                   View My Work
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-                <Button size="lg" variant="outline">
-                  <Download className="mr-2 h-4 w-4" />
-                  Download Resume
-                </Button>
+                <a href="./vimal-menon.pdf" target="_blank">
+                  <Button size="lg" variant="outline">
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Resume
+                  </Button>
+                </a>
               </motion.div>
 
               <motion.div
@@ -192,7 +186,7 @@ export const Home: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-2xl transform rotate-3"></div>
                 <div className="relative bg-card border rounded-2xl overflow-hidden shadow-xl">
                   <ImageWithFallback
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop&crop=face"
+                    src="./profile.jpg?w=500&h=500&fit=crop&crop=face"
                     alt="Vimal Menon"
                     className="w-full h-full object-cover"
                   />

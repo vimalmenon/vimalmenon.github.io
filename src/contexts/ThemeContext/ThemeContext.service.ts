@@ -10,9 +10,11 @@ import { IContext } from './ThemeContext';
 const initialState: IContext = {
   actualMode: 'light',
   colorTheme: 'default',
+  isDrawerOpen: false,
   mode: 'system',
   mounted: false,
   setColorTheme: notImplemented,
+  setIsDrawerOpen: notImplemented,
   setMode: notImplemented,
   setTheme: notImplemented,
 };

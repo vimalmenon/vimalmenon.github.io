@@ -1,8 +1,9 @@
 import { INavigationItem } from '@types';
 
 export const Home: INavigationItem = {
-  breadcrumb: [{ name: 'Home', url: '' }],
+  breadcrumb: [],
   exact: true,
+  icon: 'Home',
   name: 'Home',
   segments: ['/'],
   url: '/',
@@ -10,11 +11,11 @@ export const Home: INavigationItem = {
 
 export const blogs: INavigationItem = {
   breadcrumb: [
-    { name: 'Home', url: '/' },
-    { name: 'Blogs', url: '' },
+    { icon: 'Home', name: 'Home', url: '/' },
+    { icon: 'BookOpen', name: 'Blogs', url: '' },
   ],
   exact: false,
-  // Icon: Icons.BookOpen,
+  icon: 'BookOpen',
   name: 'Blogs',
   segments: ['/blogs'],
   url: '/blogs',
@@ -22,11 +23,11 @@ export const blogs: INavigationItem = {
 
 export const Release: INavigationItem = {
   breadcrumb: [
-    { name: 'Home', url: '/' },
-    { name: 'Release', url: '' },
+    { icon: 'Home', name: 'Home', url: '/' },
+    { icon: 'Package', name: 'Release', url: '' },
   ],
   exact: true,
-  // Icon: Icons.Package,
+  icon: 'Package',
   name: 'Release',
   segments: ['/release'],
   url: '/release',
@@ -34,20 +35,46 @@ export const Release: INavigationItem = {
 
 export const admin: INavigationItem = {
   breadcrumb: [
-    { name: 'Home', url: '/' },
     {
-      // Icon: Icons.Settings,
+      icon: 'Home',
+      name: 'Home',
+      url: '/',
+    },
+    {
+      icon: 'Settings',
       name: 'Admin',
       url: '/admin',
     },
   ],
   exact: true,
+  icon: 'Settings',
   name: 'Admin',
   segments: ['/admin'],
   url: '/admin',
 };
 
-export const adminNavigation: INavigationItem[] = [admin];
+export const workflows: INavigationItem = {
+  breadcrumb: [
+    { icon: 'Home', name: 'Home', url: '/' },
+    {
+      icon: 'Settings',
+      // Icon: Icons.Settings,
+      name: 'Admin',
+      url: '/admin',
+    },
+    {
+      icon: 'Settings',
+      name: 'Workflows',
+      url: '/admin/workflows',
+    },
+  ],
+  exact: true,
+  icon: 'Settings',
+  name: 'Workflows',
+  segments: ['/admin', '/workflows'],
+  url: '/admin/workflows',
+};
+export const adminNavigation: INavigationItem[] = [admin, workflows];
 
 export const mainNavigation: INavigationItem[] = [Home, blogs, Release, admin];
 
@@ -56,4 +83,5 @@ export const navigationMap = {
   blogs,
   Home,
   Release,
+  workflows,
 };

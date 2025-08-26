@@ -36,7 +36,7 @@ export interface ILocalStorageKey {
 export interface INavigationItemSlim {
   name: string;
   url: string;
-  // Icon?: AnyType;
+  icon: string;
 }
 
 export interface INavigationItem extends INavigationItemSlim {
@@ -52,3 +52,7 @@ export interface ICatchAll {
 export interface ICatchAllParams {
   params: Promise<ICatchAll>;
 }
+
+export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
+
+export type VoidFunction<T = void> = () => T;

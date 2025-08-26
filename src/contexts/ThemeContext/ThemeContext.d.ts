@@ -1,4 +1,4 @@
-import { ColorTheme, ThemeConfig, ThemeMode } from '@types';
+import { ColorTheme, ReactSetState, ThemeConfig, ThemeMode } from '@types';
 
 export interface IContext {
   colorTheme: ColorTheme;
@@ -8,4 +8,6 @@ export interface IContext {
   setMode: (mode: ThemeMode) => void;
   setTheme: (config: ThemeConfig) => void;
   mounted: boolean;
+  isDrawerOpen: boolean;
+  setIsDrawerOpen: ReactSetState<boolean>;
 }
