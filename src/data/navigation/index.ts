@@ -78,6 +78,8 @@ export const adminNavigation: INavigationItem[] = [admin, workflows];
 
 export const mainNavigation: INavigationItem[] = [Home, blogs, Release, admin];
 
+export const footerNavigation: INavigationItem[] = [Home, blogs, Release];
+
 export const navigationMap = {
   admin,
   blogs,

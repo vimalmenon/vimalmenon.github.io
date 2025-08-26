@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
     { href: '/release', icon: Award, name: 'Releases' },
   ];
 
-  const technologies = ['React', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker'];
+  const technologies = ['React', 'TypeScript', 'Python', 'FastAPI', 'k8s', 'Docker'];
 
   const funFacts = [
     "☕ I've probably consumed enough coffee to power a small server farm",
