@@ -3,7 +3,7 @@ import { Icons } from '@data';
 export const socialLinks = [
   {
     color: 'hover:text-gray-600',
-    href: 'https://github.com',
+    href: 'https://github.com/vimalmenon',
     icon: Icons.Github,
     name: 'GitHub',
   },
