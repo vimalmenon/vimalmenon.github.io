@@ -28,7 +28,7 @@ import {
 export const Home: React.FC = () => {
   const experiences = [
     {
-      company: 'SocGen',
+      company: 'Société Générale (SocGen).',
       description:
         'Leading full-stack development projects using React, Node.js, and cloud technologies. Mentoring junior developers and architecting scalable solutions.',
       duration: 'Sept 2021 - Present',
@@ -39,7 +39,7 @@ export const Home: React.FC = () => {
       type: 'current',
     },
     {
-      company: 'Luxoft Private HK',
+      company: 'Luxoft Hong Kong Pte. Limited.',
       description:
         'Developed and maintained web applications serving 100k+ users. Implemented CI/CD pipelines and improved application performance by 40%.',
       duration: '2020 - 2021',
@@ -50,7 +50,7 @@ export const Home: React.FC = () => {
       type: 'previous',
     },
     {
-      company: 'StartupCo',
+      company: 'Capgemini Hong Kong Limited.',
       description:
         'Built responsive web applications from ground up. Collaborated with design team to implement pixel-perfect UI components.',
       duration: '2019 - 2020',
@@ -65,19 +65,19 @@ export const Home: React.FC = () => {
   const certifications = [
     {
       badge: 'Professional',
-      date: '2021',
+      date: '2023',
       icon: Award,
       id: 1,
-      issuer: 'Linux foundation',
-      title: 'CKAD',
+      issuer: 'The Linux Foundation',
+      title: 'Certified Kubernetes Application Developer (CKAD)',
     },
     {
       badge: 'Beginner',
-      date: '2023',
+      date: '2024',
       icon: Award,
       id: 2,
       issuer: 'Microsoft',
-      title: 'AZ900',
+      title: 'Microsoft Azure Fundamentals (AZ-900)',
     },
   ];
 

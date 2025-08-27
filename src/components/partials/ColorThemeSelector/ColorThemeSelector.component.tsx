@@ -33,3 +33,12 @@ export function ColorThemeSelector(): JSX.Element {
     </div>
   );
 }
+
+export function CompactThemeSelector() {
+  return (
+    <div className="space-y-2.5">
+      {/* <ModeThemeSelector /> */}
+      <ColorThemeSelector />
+    </div>
+  );
+}
